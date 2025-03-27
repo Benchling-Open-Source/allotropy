@@ -21,6 +21,7 @@ from allotropy.parsers.flowjo.flowjo_structure import (
     create_measurement_groups,
     create_metadata,
     RegionType,
+    VertexRole,
 )
 from allotropy.parsers.utils.strict_xml_element import StrictXmlElement
 
@@ -73,6 +74,58 @@ SAMPLE_XML = """<?xml version="1.0" encoding="UTF-8"?>
                       <data-type:fcs-dimension data-type:name="CD4"/>
                     </gating:dimension>
                   </gating:RectangleGate>
+                </Gate>
+              </Population>
+              <Population name="Ellipsoid Population" count="2000">
+                <Gate gating:id="ID789" gating:parent_id="ID456">
+                  <gating:EllipsoidGate eventsInside="1" gating:distance="55.631724741469334">
+                    <gating:dimension>
+                      <data-type:fcs-dimension data-type:name="Comp-PE-A" />
+                    </gating:dimension>
+                    <gating:dimension>
+                      <data-type:fcs-dimension data-type:name="Comp-BV786-A" />
+                    </gating:dimension>
+                    <gating:foci>
+                      <gating:vertex>
+                        <gating:coordinate data-type:value="57.89" />
+                        <gating:coordinate data-type:value="94.97" />
+                      </gating:vertex>
+                      <gating:vertex>
+                        <gating:coordinate data-type:value="98.10" />
+                        <gating:coordinate data-type:value="74.02" />
+                      </gating:vertex>
+                    </gating:foci>
+                    <gating:edge>
+                      <gating:vertex>
+                        <gating:coordinate data-type:value="54" />
+                        <gating:coordinate data-type:value="97" />
+                      </gating:vertex>
+                      <gating:vertex>
+                        <gating:coordinate data-type:value="102" />
+                        <gating:coordinate data-type:value="72" />
+                      </gating:vertex>
+                    <gating:vertex>
+                        <gating:coordinate data-type:value="36" />
+                        <gating:coordinate data-type:value="22" />
+                      </gating:vertex>
+                      <gating:vertex>
+                        <gating:coordinate data-type:value="22" />
+                        <gating:coordinate data-type:value="92" />
+                      </gating:vertex>
+                    </gating:edge>
+                  </gating:EllipsoidGate>
+                </Gate>
+              </Population>
+              <Population name="CurlyQuad Population" count="1500">
+                <Gate gating:id="ID987" gating:parent_id="ID456">
+                  <gating:CurlyQuad eventsInside="1">
+                    <gating:dimension gating:min="100" gating:max="900">
+                      <data-type:fcs-dimension data-type:name="CD8"/>
+                    </gating:dimension>
+                    <gating:dimension gating:min="200" gating:max="800">
+                      <data-type:fcs-dimension data-type:name="CD45"/>
+                    </gating:dimension>
+                  </gating:CurlyQuad>
                 </Gate>
               </Population>
             </Subpopulations>
@@ -183,7 +236,7 @@ def test_process_sample() -> None:
     assert lymphocytes.count == 5000
 
     assert lymphocytes.sub_populations is not None
-    assert len(lymphocytes.sub_populations) == 1
+    assert len(lymphocytes.sub_populations) == 3
 
     t_cells = lymphocytes.sub_populations[0]
     assert t_cells.parent_population_identifier == lymphocytes.population_identifier
@@ -213,7 +266,7 @@ def test_create_populations() -> None:
     assert lymphocytes.data_region_identifier == "ID123"
 
     assert lymphocytes.sub_populations is not None
-    assert len(lymphocytes.sub_populations) == 1
+    assert len(lymphocytes.sub_populations) == 3
 
     t_cells = lymphocytes.sub_populations[0]
     assert t_cells.written_name == "T Cells"
@@ -230,7 +283,7 @@ def test_create_data_regions() -> None:
     data_regions = _create_data_regions(sample)
 
     assert data_regions is not None
-    assert len(data_regions) == 2
+    assert len(data_regions) == 4
 
     lymphocyte_region = next(
         (r for r in data_regions if r.region_data_identifier == "ID123"), None
@@ -249,6 +302,24 @@ def test_create_data_regions() -> None:
     assert t_cell_region.parent_data_region_identifier == "ID123"
     assert t_cell_region.x_coordinate_dimension_identifier == "CD3"
     assert t_cell_region.y_coordinate_dimension_identifier == "CD4"
+
+    ellipsoid_region = next(
+        (r for r in data_regions if r.region_data_identifier == "ID789"), None
+    )
+    assert ellipsoid_region is not None
+    assert ellipsoid_region.region_data_type == RegionType.ELLIPSOID.value
+    assert ellipsoid_region.parent_data_region_identifier == "ID456"
+    assert ellipsoid_region.x_coordinate_dimension_identifier == "Comp-PE-A"
+    assert ellipsoid_region.y_coordinate_dimension_identifier == "Comp-BV786-A"
+
+    curly_quad_region = next(
+        (r for r in data_regions if r.region_data_identifier == "ID987"), None
+    )
+    assert curly_quad_region is not None
+    assert curly_quad_region.region_data_type == RegionType.CURLY_QUAD.value
+    assert curly_quad_region.parent_data_region_identifier == "ID456"
+    assert curly_quad_region.x_coordinate_dimension_identifier == "CD8"
+    assert curly_quad_region.y_coordinate_dimension_identifier == "CD45"
 
 
 def test_create_compensation_matrix_groups() -> None:
@@ -453,4 +524,71 @@ def test_create_measurement_groups() -> None:
     assert root_population.count == 10000
 
     assert measurement.data_regions is not None
-    assert len(measurement.data_regions) == 2
+    assert len(measurement.data_regions) == 4
+
+
+def test_extract_ellipsoid_vertices() -> None:
+    root_element = load_sample_xml()
+
+    ellipsoid_population = None
+
+    lymphocytes = root_element.recursive_find_or_none(
+        ["SampleList", "Sample", "SampleNode", "Subpopulations", "Population"]
+    )
+    assert lymphocytes is not None
+
+    subpops = lymphocytes.find_or_none("Subpopulations")
+    assert subpops is not None
+
+    for pop in subpops.findall("Population"):
+        if pop.get_attr_or_none("name") == "Ellipsoid Population":
+            ellipsoid_population = pop
+            break
+
+    assert ellipsoid_population is not None
+    assert ellipsoid_population.get_attr_or_none("name") == "Ellipsoid Population"
+
+    gate = ellipsoid_population.find_or_none("Gate")
+    assert gate is not None
+
+    gate_type = _get_gate_type(gate)
+    assert gate_type == RegionType.ELLIPSOID.value
+
+    ellipsoid_gate = gate.find_or_none(f"gating:{RegionType.ELLIPSOID.value}Gate")
+    assert ellipsoid_gate is not None
+
+    x_dim, y_dim = _extract_dimension_identifiers(ellipsoid_gate)
+    assert x_dim == "Comp-PE-A"
+    assert y_dim == "Comp-BV786-A"
+
+    vertices = _extract_vertices(ellipsoid_gate, gate_type, x_dim, y_dim)
+
+    # Verify vertices
+    assert vertices is not None
+    assert len(vertices) == 6
+
+    foci_vertices = [v for v in vertices if v.vertex_role == VertexRole.FOCI.value]
+    edge_vertices = [v for v in vertices if v.vertex_role == VertexRole.EDGE.value]
+
+    assert len(foci_vertices) == 2
+    assert len(edge_vertices) == 4
+
+    # Check coordinates of foci vertices
+    assert foci_vertices[0].x_coordinate == 57.89
+    assert foci_vertices[0].y_coordinate == 94.97
+    assert foci_vertices[1].x_coordinate == 98.10
+    assert foci_vertices[1].y_coordinate == 74.02
+
+    # Check coordinates of all 4 edge vertices
+    assert edge_vertices[0].x_coordinate == 54.0
+    assert edge_vertices[0].y_coordinate == 97.0
+    assert edge_vertices[1].x_coordinate == 102.0
+    assert edge_vertices[1].y_coordinate == 72.0
+    assert edge_vertices[2].x_coordinate == 36.0
+    assert edge_vertices[2].y_coordinate == 22.0
+    assert edge_vertices[3].x_coordinate == 22.0
+    assert edge_vertices[3].y_coordinate == 92.0
+
+    for vertex in vertices:
+        assert vertex.x_unit is not None
+        assert vertex.y_unit is not None

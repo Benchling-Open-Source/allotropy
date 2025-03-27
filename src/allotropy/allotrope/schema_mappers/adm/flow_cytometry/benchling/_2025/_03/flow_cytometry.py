@@ -26,6 +26,8 @@ from allotropy.allotrope.models.adm.flow_cytometry.benchling._2025._03.flow_cyto
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
+    StatisticDimensionAggregateDocument,
+    StatisticDimensionDocumentItem,
     StatisticsAggregateDocument,
     StatisticsDocumentItem,
     VertexAggregateDocument,
@@ -34,6 +36,10 @@ from allotropy.allotrope.models.adm.flow_cytometry.benchling._2025._03.flow_cyto
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCounts,
     TQuantityValueUnitless,
+)
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    TQuantityValue,
+    TStatisticDatumRole,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
@@ -46,6 +52,7 @@ class Vertex:
     y_coordinate: float
     x_unit: str
     y_unit: str
+    vertex_role: str | None = None
 
 
 @dataclass(frozen=True)
@@ -71,8 +78,16 @@ class CompensationMatrixGroup:
 
 
 @dataclass(frozen=True)
+class StatisticDimension:
+    value: float
+    unit: str
+    has_statistic_datum_role: str | None = None
+    dimension_identifier: str | None = None
+
+
+@dataclass(frozen=True)
 class Statistic:
-    dimension_identifier: str
+    statistic_dimension: list[StatisticDimension]
     statistical_feature: str
 
 
@@ -269,6 +284,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 VertexDocumentItem(
                     x_coordinate=quantity_or_none_from_unit(vertex.x_unit, vertex.x_coordinate),  # type: ignore[arg-type]
                     y_coordinate=quantity_or_none_from_unit(vertex.y_unit, vertex.y_coordinate),  # type: ignore[arg-type]
+                    vertex_role=vertex.vertex_role,
                 )
                 for vertex in vertices
             ]
@@ -294,7 +310,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 ]
                 if population.sub_populations
                 else None,
-                statisticsAggregateDocument=self._get_statistics_aggregate_document(
+                statistics_aggregate_document=self._get_statistics_aggregate_document(
                     population.statistics
                 ),
             ),
@@ -330,6 +346,24 @@ class Mapper(SchemaMapper[Data, Model]):
             statistics_document=[
                 StatisticsDocumentItem(
                     statistical_feature=statistic.statistical_feature,
+                    statistic_dimension_aggregate_document=StatisticDimensionAggregateDocument(
+                        statistic_dimension_document=[
+                            StatisticDimensionDocumentItem(
+                                dimension_identifier=statistic_dimension.dimension_identifier,
+                                statistical_value=TQuantityValue(
+                                    value=statistic_dimension.value,
+                                    unit=statistic_dimension.unit,
+                                    has_statistic_datum_role=TStatisticDatumRole(
+                                        statistic_dimension.has_statistic_datum_role
+                                    )
+                                    if statistic_dimension.has_statistic_datum_role
+                                    in {role.value for role in TStatisticDatumRole}
+                                    else None,
+                                ),
+                            )
+                            for statistic_dimension in statistic.statistic_dimension
+                        ]
+                    ),
                 )
                 for statistic in statistics
             ]

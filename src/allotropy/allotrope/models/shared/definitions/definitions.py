@@ -70,6 +70,19 @@ class TStatisticDatumRole(Enum):
     variance_role = "variance role"
     maximum_value_role = "maximum value role"
     minimum_value_role = "minimum value role"
+    final_value_role = "final value role"
+    coefficient_of_variation_role = "coefficient of variation role"
+    robust_coefficient_of_variation_role = "robust coefficient of variation role"
+    geometric_mean_role = "geometric mean role"
+    percentile_role = "percentile role"
+    median_absolute_deviation_percentile_role = (
+        "median absolute deviation percentile role"
+    )
+    robust_standard_deviation_role = "robust standard deviation role"
+    median_absolute_deviation_role = "median absolute deviation role"
+    frequency_of_parent_role = "frequency of parent role"
+    frequency_of_grandparent_role = "frequency of grandparent role"
+    frequency_of_total_role = "frequency of total role"
 
 
 class InvalidJsonFloat(Enum):

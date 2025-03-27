@@ -1,0 +1,2454 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/flow-cytometry/BENCHLING/2025/03/flow-cytometry.manifest",
+    "flow cytometry aggregate document": {
+        "flow cytometry document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "Flow Cytometer"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "FLOWJO_TEST_ID_0",
+                            "sample document": {
+                                "sample identifier": "33",
+                                "written name": "Spleenocytes_Tcells"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "method version": "20.0",
+                                            "data processing time": "2025-03-14T08:24:55-07:00"
+                                        },
+                                        "processed data identifier": "FLOWJO_TEST_ID_1",
+                                        "data region aggregate document": {
+                                            "data region document": [
+                                                {
+                                                    "data region identifier": "ID54392396",
+                                                    "region type": "Polygon",
+                                                    "x coordinate dimension identifier": "FSC-A",
+                                                    "y coordinate dimension identifier": "SSC-A",
+                                                    "vertex aggregate document": {
+                                                        "vertex document": [
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 71593.9495798319,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 37622.5185185185,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 73796.8403361345,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 31554.3703703704,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 78202.6218487395,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 27913.4814814815,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 82608.4033613445,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 25486.2222222222,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 90318.5210084034,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 25486.2222222222,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 94724.3025210084,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 29127.1111111111,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 99130.0840336134,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 31554.3703703704,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 104637.3109243698,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 36408.8888888889,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 107941.6470588235,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 40049.7777777778,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 111245.9831932773,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 44904.2962962963,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 113448.8739495798,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 49758.8148148148,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 115651.7647058823,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 55826.962962963,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 115651.7647058823,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 63108.7407407407,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 111245.9831932773,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 69176.8888888889,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 107941.6470588235,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 71604.1481481481,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 101332.974789916,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 75245.037037037,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 96927.1932773109,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 77672.2962962963,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 89217.0756302521,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 77672.2962962963,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 84811.2941176471,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 72817.7777777778,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 82608.4033613445,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 67963.2592592593,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 80405.512605042,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 61895.1111111111,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 79304.0672268908,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 55826.962962963,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 75999.731092437,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 49758.8148148148,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 72695.3949579832,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 43690.6666666667,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 71593.9495798319,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 37622.5185185185,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "data region identifier": "ID1107410471",
+                                                    "region type": "Polygon",
+                                                    "parent data region identifier": "ID54392396",
+                                                    "x coordinate dimension identifier": "SSC-A",
+                                                    "y coordinate dimension identifier": "SSC-H",
+                                                    "vertex aggregate document": {
+                                                        "vertex document": [
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 20927.4621848739,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 30340.7407407407,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 28637.5798319328,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 25486.2222222222,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 95825.7478991597,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 91022.2222222222,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 94724.3025210084,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 109226.6666666667,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "data region identifier": "ID601242514",
+                                                    "region type": "Polygon",
+                                                    "parent data region identifier": "ID1107410471",
+                                                    "x coordinate dimension identifier": "FSC-A",
+                                                    "y coordinate dimension identifier": "FSC-H",
+                                                    "vertex aggregate document": {
+                                                        "vertex document": [
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 63883.8319327731,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 69176.8888888889,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 72695.3949579832,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 66749.6296296296,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 123361.8823529412,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 117722.0740740741,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 122260.4369747899,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 134712.8888888889,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "data region identifier": "ID1816187205",
+                                                    "region type": "Rectangle",
+                                                    "parent data region identifier": "ID601242514",
+                                                    "x coordinate dimension identifier": "Comp-PerCP-Cy5-5-A",
+                                                    "y coordinate dimension identifier": "FSC-H",
+                                                    "vertex aggregate document": {
+                                                        "vertex document": [
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": -323.58444311606615,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 16990.814814814814,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": -323.58444311606615,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 241512.2962962963,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 543.0716378479536,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 241512.2962962963,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 543.0716378479536,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 16990.814814814814,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "data region identifier": "ID381290195",
+                                                    "region type": "Rectangle",
+                                                    "parent data region identifier": "ID1816187205",
+                                                    "x coordinate dimension identifier": "Comp-APC-A",
+                                                    "y coordinate dimension identifier": "FSC-H",
+                                                    "vertex aggregate document": {
+                                                        "vertex document": [
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 1801.67871597249,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 41263.40740740741,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 1801.67871597249,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 146849.1851851852,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 132607.85615042184,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 146849.1851851852,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 132607.85615042184,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 41263.40740740741,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "data region identifier": "ID1029297903",
+                                                    "region type": "Rectangle",
+                                                    "parent data region identifier": "ID381290195",
+                                                    "x coordinate dimension identifier": "Comp-PE-A",
+                                                    "y coordinate dimension identifier": "Comp-BV786-A",
+                                                    "vertex aggregate document": {
+                                                        "vertex document": [
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 638.6573799097873,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 1846.0620122272846,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "data region identifier": "ID753466671",
+                                                    "region type": "Rectangle",
+                                                    "parent data region identifier": "ID381290195",
+                                                    "x coordinate dimension identifier": "Comp-PE-A",
+                                                    "y coordinate dimension identifier": "Comp-BV786-A",
+                                                    "vertex aggregate document": {
+                                                        "vertex document": [
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 638.6573799097873,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 1846.0620122272846,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "data region identifier": "ID622803157",
+                                                    "region type": "Rectangle",
+                                                    "parent data region identifier": "ID381290195",
+                                                    "x coordinate dimension identifier": "Comp-PE-A",
+                                                    "y coordinate dimension identifier": "Comp-BV786-A",
+                                                    "vertex aggregate document": {
+                                                        "vertex document": [
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 638.6573799097873,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 1846.0620122272846,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "data region identifier": "ID1583637704",
+                                                    "region type": "Rectangle",
+                                                    "parent data region identifier": "ID381290195",
+                                                    "x coordinate dimension identifier": "Comp-PE-A",
+                                                    "y coordinate dimension identifier": "Comp-BV786-A",
+                                                    "vertex aggregate document": {
+                                                        "vertex document": [
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 638.6573799097873,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 1846.0620122272846,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "data region identifier": "ID1630875370",
+                                                    "region type": "Ellipsoid",
+                                                    "parent data region identifier": "ID1583637704",
+                                                    "x coordinate dimension identifier": "Comp-PE-A",
+                                                    "y coordinate dimension identifier": "Comp-BV786-A",
+                                                    "vertex aggregate document": {
+                                                        "vertex document": [
+                                                            {
+                                                                "vertex role": "foci",
+                                                                "x coordinate": {
+                                                                    "value": 57.8922669442,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 94.9727776332,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "vertex role": "foci",
+                                                                "x coordinate": {
+                                                                    "value": 98.1077330558,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 74.0272223668,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "vertex role": "edge",
+                                                                "x coordinate": {
+                                                                    "value": 54.0,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 97.0,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "vertex role": "edge",
+                                                                "x coordinate": {
+                                                                    "value": 102.0,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 72.0,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "vertex role": "edge",
+                                                                "x coordinate": {
+                                                                    "value": 72.0,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 71.0,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "vertex role": "edge",
+                                                                "x coordinate": {
+                                                                    "value": 84.0,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 98.0,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "data region identifier": "ID1574385746",
+                                                    "region type": "Ellipsoid",
+                                                    "parent data region identifier": "ID1583637704",
+                                                    "x coordinate dimension identifier": "Comp-PE-A",
+                                                    "y coordinate dimension identifier": "Comp-BV786-A",
+                                                    "vertex aggregate document": {
+                                                        "vertex document": [
+                                                            {
+                                                                "vertex role": "foci",
+                                                                "x coordinate": {
+                                                                    "value": 55.7548347679,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 96.0688631844,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "vertex role": "foci",
+                                                                "x coordinate": {
+                                                                    "value": 101.2451652321,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 71.9311368156,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "vertex role": "edge",
+                                                                "x coordinate": {
+                                                                    "value": 54.0,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 97.0,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "vertex role": "edge",
+                                                                "x coordinate": {
+                                                                    "value": 103.0,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 71.0,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "vertex role": "edge",
+                                                                "x coordinate": {
+                                                                    "value": 76.0,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 74.0,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "vertex role": "edge",
+                                                                "x coordinate": {
+                                                                    "value": 81.0,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 94.0,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "data region identifier": "ID1385334932",
+                                                    "region type": "CurlyQuad",
+                                                    "parent data region identifier": "ID1574385746",
+                                                    "x coordinate dimension identifier": "Comp-PE-A",
+                                                    "y coordinate dimension identifier": "Comp-BV786-A",
+                                                    "vertex aggregate document": {
+                                                        "vertex document": [
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 292.6491374776836,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 434.6014486060488,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "data region identifier": "ID1039510638",
+                                                    "region type": "CurlyQuad",
+                                                    "parent data region identifier": "ID1574385746",
+                                                    "x coordinate dimension identifier": "Comp-PE-A",
+                                                    "y coordinate dimension identifier": "Comp-BV786-A",
+                                                    "vertex aggregate document": {
+                                                        "vertex document": [
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 292.6491374776836,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 434.6014486060488,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "data region identifier": "ID724572069",
+                                                    "region type": "CurlyQuad",
+                                                    "parent data region identifier": "ID1574385746",
+                                                    "x coordinate dimension identifier": "Comp-PE-A",
+                                                    "y coordinate dimension identifier": "Comp-BV786-A",
+                                                    "vertex aggregate document": {
+                                                        "vertex document": [
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 292.6491374776836,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 434.6014486060488,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "data region identifier": "ID246829924",
+                                                    "region type": "CurlyQuad",
+                                                    "parent data region identifier": "ID1574385746",
+                                                    "x coordinate dimension identifier": "Comp-PE-A",
+                                                    "y coordinate dimension identifier": "Comp-BV786-A",
+                                                    "vertex aggregate document": {
+                                                        "vertex document": [
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 292.6491374776836,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 434.6014486060488,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "data region identifier": "ID2118391290",
+                                                    "region type": "Polygon",
+                                                    "parent data region identifier": "ID1583637704",
+                                                    "x coordinate dimension identifier": "Comp-PE-A",
+                                                    "y coordinate dimension identifier": "Comp-BV786-A",
+                                                    "vertex aggregate document": {
+                                                        "vertex document": [
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": -231.3870626569,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": -65.7068430199,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": -231.3870626569,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 269668.1302319579,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 52.2885411185,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 269668.1302319579,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 38.4884251959,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": -99.382691488,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "data region identifier": "ID714384950",
+                                                    "region type": "Polygon",
+                                                    "parent data region identifier": "ID1583637704",
+                                                    "x coordinate dimension identifier": "Comp-PE-A",
+                                                    "y coordinate dimension identifier": "Comp-BV786-A",
+                                                    "vertex aggregate document": {
+                                                        "vertex document": [
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 261713.8971285171,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": -65.7068430199,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 261713.8971285171,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 269668.1302319579,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 52.2885411185,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": 269668.1302319579,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 38.4884251959,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": -99.382691488,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "data region identifier": "ID1278107227",
+                                                    "region type": "Polygon",
+                                                    "parent data region identifier": "ID1583637704",
+                                                    "x coordinate dimension identifier": "Comp-PE-A",
+                                                    "y coordinate dimension identifier": "Comp-BV786-A",
+                                                    "vertex aggregate document": {
+                                                        "vertex document": [
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 261713.8971285171,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": -65.7068430199,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 261713.8971285171,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": -1019.6209464534,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 52.2885411185,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": -1019.6209464534,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 38.4884251959,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": -99.382691488,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "data region identifier": "ID1722477981",
+                                                    "region type": "Polygon",
+                                                    "parent data region identifier": "ID1583637704",
+                                                    "x coordinate dimension identifier": "Comp-PE-A",
+                                                    "y coordinate dimension identifier": "Comp-BV786-A",
+                                                    "vertex aggregate document": {
+                                                        "vertex document": [
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": -231.3870626569,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": -65.7068430199,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": -231.3870626569,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": -1019.6209464534,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 52.2885411185,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": -1019.6209464534,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            },
+                                                            {
+                                                                "x coordinate": {
+                                                                    "value": 38.4884251959,
+                                                                    "unit": "RFU"
+                                                                },
+                                                                "y coordinate": {
+                                                                    "value": -99.382691488,
+                                                                    "unit": "RFU"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "population aggregate document": [
+                                            {
+                                                "population document": [
+                                                    {
+                                                        "population identifier": "FLOWJO_TEST_ID_2",
+                                                        "written name": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs",
+                                                        "count": {
+                                                            "value": 65121,
+                                                            "unit": "Counts"
+                                                        },
+                                                        "population aggregate document": [
+                                                            {
+                                                                "population document": [
+                                                                    {
+                                                                        "population identifier": "FLOWJO_TEST_ID_3",
+                                                                        "written name": "Lymphocytes",
+                                                                        "count": {
+                                                                            "value": 39426,
+                                                                            "unit": "Counts"
+                                                                        },
+                                                                        "data region identifier": "ID54392396",
+                                                                        "parent population identifier": "FLOWJO_TEST_ID_2",
+                                                                        "population aggregate document": [
+                                                                            {
+                                                                                "population document": [
+                                                                                    {
+                                                                                        "population identifier": "FLOWJO_TEST_ID_4",
+                                                                                        "written name": "Single Cells",
+                                                                                        "count": {
+                                                                                            "value": 37464,
+                                                                                            "unit": "Counts"
+                                                                                        },
+                                                                                        "data region identifier": "ID1107410471",
+                                                                                        "parent population identifier": "FLOWJO_TEST_ID_3",
+                                                                                        "population aggregate document": [
+                                                                                            {
+                                                                                                "population document": [
+                                                                                                    {
+                                                                                                        "population identifier": "FLOWJO_TEST_ID_5",
+                                                                                                        "written name": "Single Cells",
+                                                                                                        "count": {
+                                                                                                            "value": 35058,
+                                                                                                            "unit": "Counts"
+                                                                                                        },
+                                                                                                        "data region identifier": "ID601242514",
+                                                                                                        "parent population identifier": "FLOWJO_TEST_ID_4",
+                                                                                                        "population aggregate document": [
+                                                                                                            {
+                                                                                                                "population document": [
+                                                                                                                    {
+                                                                                                                        "population identifier": "FLOWJO_TEST_ID_6",
+                                                                                                                        "written name": "Live cells",
+                                                                                                                        "count": {
+                                                                                                                            "value": 34753,
+                                                                                                                            "unit": "Counts"
+                                                                                                                        },
+                                                                                                                        "data region identifier": "ID1816187205",
+                                                                                                                        "parent population identifier": "FLOWJO_TEST_ID_5",
+                                                                                                                        "population aggregate document": [
+                                                                                                                            {
+                                                                                                                                "population document": [
+                                                                                                                                    {
+                                                                                                                                        "population identifier": "FLOWJO_TEST_ID_7",
+                                                                                                                                        "written name": "CD3+",
+                                                                                                                                        "count": {
+                                                                                                                                            "value": 6891,
+                                                                                                                                            "unit": "Counts"
+                                                                                                                                        },
+                                                                                                                                        "data region identifier": "ID381290195",
+                                                                                                                                        "parent population identifier": "FLOWJO_TEST_ID_6",
+                                                                                                                                        "population aggregate document": [
+                                                                                                                                            {
+                                                                                                                                                "population document": [
+                                                                                                                                                    {
+                                                                                                                                                        "population identifier": "FLOWJO_TEST_ID_8",
+                                                                                                                                                        "written name": "Q1: Comp-PE-A- , Comp-BV786-A+",
+                                                                                                                                                        "count": {
+                                                                                                                                                            "value": 4651,
+                                                                                                                                                            "unit": "Counts"
+                                                                                                                                                        },
+                                                                                                                                                        "data region identifier": "ID1029297903",
+                                                                                                                                                        "parent population identifier": "FLOWJO_TEST_ID_7",
+                                                                                                                                                        "custom information document": {
+                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                        }
+                                                                                                                                                    },
+                                                                                                                                                    {
+                                                                                                                                                        "population identifier": "FLOWJO_TEST_ID_9",
+                                                                                                                                                        "written name": "Q2: Comp-PE-A+ , Comp-BV786-A+",
+                                                                                                                                                        "count": {
+                                                                                                                                                            "value": 13,
+                                                                                                                                                            "unit": "Counts"
+                                                                                                                                                        },
+                                                                                                                                                        "data region identifier": "ID753466671",
+                                                                                                                                                        "parent population identifier": "FLOWJO_TEST_ID_7",
+                                                                                                                                                        "custom information document": {
+                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                        }
+                                                                                                                                                    },
+                                                                                                                                                    {
+                                                                                                                                                        "population identifier": "FLOWJO_TEST_ID_10",
+                                                                                                                                                        "written name": "Q3: Comp-PE-A+ , Comp-BV786-A-",
+                                                                                                                                                        "count": {
+                                                                                                                                                            "value": 1968,
+                                                                                                                                                            "unit": "Counts"
+                                                                                                                                                        },
+                                                                                                                                                        "data region identifier": "ID622803157",
+                                                                                                                                                        "parent population identifier": "FLOWJO_TEST_ID_7",
+                                                                                                                                                        "custom information document": {
+                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                        }
+                                                                                                                                                    },
+                                                                                                                                                    {
+                                                                                                                                                        "population identifier": "FLOWJO_TEST_ID_11",
+                                                                                                                                                        "written name": "Q4: Comp-PE-A- , Comp-BV786-A- (ellipsoid, spider)",
+                                                                                                                                                        "count": {
+                                                                                                                                                            "value": 259,
+                                                                                                                                                            "unit": "Counts"
+                                                                                                                                                        },
+                                                                                                                                                        "data region identifier": "ID1583637704",
+                                                                                                                                                        "parent population identifier": "FLOWJO_TEST_ID_7",
+                                                                                                                                                        "population aggregate document": [
+                                                                                                                                                            {
+                                                                                                                                                                "population document": [
+                                                                                                                                                                    {
+                                                                                                                                                                        "population identifier": "FLOWJO_TEST_ID_12",
+                                                                                                                                                                        "written name": "CD8, CD4 subset",
+                                                                                                                                                                        "count": {
+                                                                                                                                                                            "value": 18,
+                                                                                                                                                                            "unit": "Counts"
+                                                                                                                                                                        },
+                                                                                                                                                                        "data region identifier": "ID1630875370",
+                                                                                                                                                                        "parent population identifier": "FLOWJO_TEST_ID_11",
+                                                                                                                                                                        "custom information document": {
+                                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                                        }
+                                                                                                                                                                    },
+                                                                                                                                                                    {
+                                                                                                                                                                        "population identifier": "FLOWJO_TEST_ID_13",
+                                                                                                                                                                        "written name": "CD8, CD4 subset (Curly Gate)",
+                                                                                                                                                                        "count": {
+                                                                                                                                                                            "value": 13,
+                                                                                                                                                                            "unit": "Counts"
+                                                                                                                                                                        },
+                                                                                                                                                                        "data region identifier": "ID1574385746",
+                                                                                                                                                                        "parent population identifier": "FLOWJO_TEST_ID_11",
+                                                                                                                                                                        "population aggregate document": [
+                                                                                                                                                                            {
+                                                                                                                                                                                "population document": [
+                                                                                                                                                                                    {
+                                                                                                                                                                                        "population identifier": "FLOWJO_TEST_ID_14",
+                                                                                                                                                                                        "written name": "Q1: CD8- , CD4+",
+                                                                                                                                                                                        "count": {
+                                                                                                                                                                                            "value": 5,
+                                                                                                                                                                                            "unit": "Counts"
+                                                                                                                                                                                        },
+                                                                                                                                                                                        "data region identifier": "ID1385334932",
+                                                                                                                                                                                        "parent population identifier": "FLOWJO_TEST_ID_13",
+                                                                                                                                                                                        "custom information document": {
+                                                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                                                        }
+                                                                                                                                                                                    },
+                                                                                                                                                                                    {
+                                                                                                                                                                                        "population identifier": "FLOWJO_TEST_ID_15",
+                                                                                                                                                                                        "written name": "Q2: CD8+ , CD4+",
+                                                                                                                                                                                        "count": {
+                                                                                                                                                                                            "value": 2,
+                                                                                                                                                                                            "unit": "Counts"
+                                                                                                                                                                                        },
+                                                                                                                                                                                        "data region identifier": "ID1039510638",
+                                                                                                                                                                                        "parent population identifier": "FLOWJO_TEST_ID_13",
+                                                                                                                                                                                        "custom information document": {
+                                                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                                                        }
+                                                                                                                                                                                    },
+                                                                                                                                                                                    {
+                                                                                                                                                                                        "population identifier": "FLOWJO_TEST_ID_16",
+                                                                                                                                                                                        "written name": "Q3: CD8+ , CD4-",
+                                                                                                                                                                                        "count": {
+                                                                                                                                                                                            "value": 6,
+                                                                                                                                                                                            "unit": "Counts"
+                                                                                                                                                                                        },
+                                                                                                                                                                                        "data region identifier": "ID724572069",
+                                                                                                                                                                                        "parent population identifier": "FLOWJO_TEST_ID_13",
+                                                                                                                                                                                        "custom information document": {
+                                                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                                                        }
+                                                                                                                                                                                    },
+                                                                                                                                                                                    {
+                                                                                                                                                                                        "population identifier": "FLOWJO_TEST_ID_17",
+                                                                                                                                                                                        "written name": "Q4: CD8- , CD4-",
+                                                                                                                                                                                        "count": {
+                                                                                                                                                                                            "value": 0,
+                                                                                                                                                                                            "unit": "Counts"
+                                                                                                                                                                                        },
+                                                                                                                                                                                        "data region identifier": "ID246829924",
+                                                                                                                                                                                        "parent population identifier": "FLOWJO_TEST_ID_13",
+                                                                                                                                                                                        "custom information document": {
+                                                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                                                        }
+                                                                                                                                                                                    }
+                                                                                                                                                                                ]
+                                                                                                                                                                            }
+                                                                                                                                                                        ],
+                                                                                                                                                                        "custom information document": {
+                                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                                        }
+                                                                                                                                                                    },
+                                                                                                                                                                    {
+                                                                                                                                                                        "population identifier": "FLOWJO_TEST_ID_18",
+                                                                                                                                                                        "written name": "Q1: CD8- , CD4+",
+                                                                                                                                                                        "count": {
+                                                                                                                                                                            "value": 77,
+                                                                                                                                                                            "unit": "Counts"
+                                                                                                                                                                        },
+                                                                                                                                                                        "data region identifier": "ID2118391290",
+                                                                                                                                                                        "parent population identifier": "FLOWJO_TEST_ID_11",
+                                                                                                                                                                        "custom information document": {
+                                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                                        }
+                                                                                                                                                                    },
+                                                                                                                                                                    {
+                                                                                                                                                                        "population identifier": "FLOWJO_TEST_ID_19",
+                                                                                                                                                                        "written name": "Q2: CD8+ , CD4+",
+                                                                                                                                                                        "count": {
+                                                                                                                                                                            "value": 102,
+                                                                                                                                                                            "unit": "Counts"
+                                                                                                                                                                        },
+                                                                                                                                                                        "data region identifier": "ID714384950",
+                                                                                                                                                                        "parent population identifier": "FLOWJO_TEST_ID_11",
+                                                                                                                                                                        "custom information document": {
+                                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                                        }
+                                                                                                                                                                    },
+                                                                                                                                                                    {
+                                                                                                                                                                        "population identifier": "FLOWJO_TEST_ID_20",
+                                                                                                                                                                        "written name": "Q3: CD8+ , CD4-",
+                                                                                                                                                                        "count": {
+                                                                                                                                                                            "value": 43,
+                                                                                                                                                                            "unit": "Counts"
+                                                                                                                                                                        },
+                                                                                                                                                                        "data region identifier": "ID1278107227",
+                                                                                                                                                                        "parent population identifier": "FLOWJO_TEST_ID_11",
+                                                                                                                                                                        "custom information document": {
+                                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                                        }
+                                                                                                                                                                    },
+                                                                                                                                                                    {
+                                                                                                                                                                        "population identifier": "FLOWJO_TEST_ID_21",
+                                                                                                                                                                        "written name": "Q4: CD8- , CD4-",
+                                                                                                                                                                        "count": {
+                                                                                                                                                                            "value": 37,
+                                                                                                                                                                            "unit": "Counts"
+                                                                                                                                                                        },
+                                                                                                                                                                        "data region identifier": "ID1722477981",
+                                                                                                                                                                        "parent population identifier": "FLOWJO_TEST_ID_11",
+                                                                                                                                                                        "custom information document": {
+                                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                                        }
+                                                                                                                                                                    }
+                                                                                                                                                                ]
+                                                                                                                                                            }
+                                                                                                                                                        ],
+                                                                                                                                                        "custom information document": {
+                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                        }
+                                                                                                                                                    }
+                                                                                                                                                ]
+                                                                                                                                            }
+                                                                                                                                        ],
+                                                                                                                                        "custom information document": {
+                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                ]
+                                                                                                                            }
+                                                                                                                        ],
+                                                                                                                        "custom information document": {
+                                                                                                                            "group identifier": "All Samples"
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                ]
+                                                                                                            }
+                                                                                                        ],
+                                                                                                        "custom information document": {
+                                                                                                            "group identifier": "All Samples"
+                                                                                                        }
+                                                                                                    }
+                                                                                                ]
+                                                                                            }
+                                                                                        ],
+                                                                                        "custom information document": {
+                                                                                            "group identifier": "All Samples"
+                                                                                        }
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        ],
+                                                                        "custom information document": {
+                                                                            "group identifier": "All Samples"
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "analyst": "Administrator",
+                    "measurement time": "2021-12-10T17:28:48+00:00",
+                    "experimental data identifier": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs"
+                },
+                "compensation matrix aggregate document": {
+                    "compensation matrix document": [
+                        {
+                            "dimension identifier": "BV421-A",
+                            "matrix aggregate document": {
+                                "matrix document": [
+                                    {
+                                        "dimension identifier": "BV421-A",
+                                        "compensation value": {
+                                            "value": 1.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV510-A",
+                                        "compensation value": {
+                                            "value": 0.1552047133,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV605-A",
+                                        "compensation value": {
+                                            "value": 0.0070707756,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV650-A",
+                                        "compensation value": {
+                                            "value": 0.0015525852,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV786-A",
+                                        "compensation value": {
+                                            "value": 0.0001366839,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BB515-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-CF594-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PerCP-Cy5-5-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-R700-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-Cy7-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "dimension identifier": "BV510-A",
+                            "matrix aggregate document": {
+                                "matrix document": [
+                                    {
+                                        "dimension identifier": "BV421-A",
+                                        "compensation value": {
+                                            "value": 0.0693255216,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV510-A",
+                                        "compensation value": {
+                                            "value": 1.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV605-A",
+                                        "compensation value": {
+                                            "value": 0.3164453804,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV650-A",
+                                        "compensation value": {
+                                            "value": 0.1562869102,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV786-A",
+                                        "compensation value": {
+                                            "value": 0.0170378592,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BB515-A",
+                                        "compensation value": {
+                                            "value": 0.0013170874,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-A",
+                                        "compensation value": {
+                                            "value": 0.0009745969,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-CF594-A",
+                                        "compensation value": {
+                                            "value": 0.0004871629,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PerCP-Cy5-5-A",
+                                        "compensation value": {
+                                            "value": 0.0003942144,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-R700-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-Cy7-A",
+                                        "compensation value": {
+                                            "value": 0.0001915892,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "dimension identifier": "BV605-A",
+                            "matrix aggregate document": {
+                                "matrix document": [
+                                    {
+                                        "dimension identifier": "BV421-A",
+                                        "compensation value": {
+                                            "value": 0.0198942553,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV510-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV605-A",
+                                        "compensation value": {
+                                            "value": 1.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV650-A",
+                                        "compensation value": {
+                                            "value": 0.6566870213,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV786-A",
+                                        "compensation value": {
+                                            "value": 0.0633363873,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BB515-A",
+                                        "compensation value": {
+                                            "value": 0.0002494187,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-A",
+                                        "compensation value": {
+                                            "value": 0.0062285764,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-CF594-A",
+                                        "compensation value": {
+                                            "value": 0.018224353,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PerCP-Cy5-5-A",
+                                        "compensation value": {
+                                            "value": 0.0069903312,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-A",
+                                        "compensation value": {
+                                            "value": 0.0030740064,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-R700-A",
+                                        "compensation value": {
+                                            "value": 9.78058e-05,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-Cy7-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "dimension identifier": "BV650-A",
+                            "matrix aggregate document": {
+                                "matrix document": [
+                                    {
+                                        "dimension identifier": "BV421-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV510-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV605-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV650-A",
+                                        "compensation value": {
+                                            "value": 1.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV786-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BB515-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-CF594-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PerCP-Cy5-5-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-R700-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-Cy7-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "dimension identifier": "BV786-A",
+                            "matrix aggregate document": {
+                                "matrix document": [
+                                    {
+                                        "dimension identifier": "BV421-A",
+                                        "compensation value": {
+                                            "value": 0.0286829975,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV510-A",
+                                        "compensation value": {
+                                            "value": 0.0055983257,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV605-A",
+                                        "compensation value": {
+                                            "value": 0.0009154325,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV650-A",
+                                        "compensation value": {
+                                            "value": 0.0028675506,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV786-A",
+                                        "compensation value": {
+                                            "value": 1.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BB515-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-CF594-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PerCP-Cy5-5-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-A",
+                                        "compensation value": {
+                                            "value": 0.0003855596,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-R700-A",
+                                        "compensation value": {
+                                            "value": 0.0030639537,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-Cy7-A",
+                                        "compensation value": {
+                                            "value": 0.0376155712,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "dimension identifier": "BB515-A",
+                            "matrix aggregate document": {
+                                "matrix document": [
+                                    {
+                                        "dimension identifier": "BV421-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV510-A",
+                                        "compensation value": {
+                                            "value": 0.1233772635,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV605-A",
+                                        "compensation value": {
+                                            "value": 0.0142825395,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV650-A",
+                                        "compensation value": {
+                                            "value": 0.0039697457,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV786-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BB515-A",
+                                        "compensation value": {
+                                            "value": 1.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-A",
+                                        "compensation value": {
+                                            "value": 0.3269636333,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-CF594-A",
+                                        "compensation value": {
+                                            "value": 0.0774732903,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PerCP-Cy5-5-A",
+                                        "compensation value": {
+                                            "value": 0.0143348882,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-R700-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-Cy7-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "dimension identifier": "PE-A",
+                            "matrix aggregate document": {
+                                "matrix document": [
+                                    {
+                                        "dimension identifier": "BV421-A",
+                                        "compensation value": {
+                                            "value": 7.29046e-05,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV510-A",
+                                        "compensation value": {
+                                            "value": 0.0060725003,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV605-A",
+                                        "compensation value": {
+                                            "value": 0.1414580345,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV650-A",
+                                        "compensation value": {
+                                            "value": 0.0426916294,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV786-A",
+                                        "compensation value": {
+                                            "value": 0.0027954609,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BB515-A",
+                                        "compensation value": {
+                                            "value": 0.0074323444,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-A",
+                                        "compensation value": {
+                                            "value": 1.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-CF594-A",
+                                        "compensation value": {
+                                            "value": 0.2992334366,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PerCP-Cy5-5-A",
+                                        "compensation value": {
+                                            "value": 0.065363206,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-R700-A",
+                                        "compensation value": {
+                                            "value": 0.0001150873,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-Cy7-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "dimension identifier": "PE-CF594-A",
+                            "matrix aggregate document": {
+                                "matrix document": [
+                                    {
+                                        "dimension identifier": "BV421-A",
+                                        "compensation value": {
+                                            "value": 0.0003319511,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV510-A",
+                                        "compensation value": {
+                                            "value": 0.001227204,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV605-A",
+                                        "compensation value": {
+                                            "value": 0.4062365592,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV650-A",
+                                        "compensation value": {
+                                            "value": 0.2126982212,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV786-A",
+                                        "compensation value": {
+                                            "value": 0.016153466,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BB515-A",
+                                        "compensation value": {
+                                            "value": 0.0016723977,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-A",
+                                        "compensation value": {
+                                            "value": 0.1586004049,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-CF594-A",
+                                        "compensation value": {
+                                            "value": 1.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PerCP-Cy5-5-A",
+                                        "compensation value": {
+                                            "value": 0.3456736207,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-A",
+                                        "compensation value": {
+                                            "value": 0.0054775905,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-R700-A",
+                                        "compensation value": {
+                                            "value": 0.0008336373,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-Cy7-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "dimension identifier": "PerCP-Cy5-5-A",
+                            "matrix aggregate document": {
+                                "matrix document": [
+                                    {
+                                        "dimension identifier": "BV421-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV510-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV605-A",
+                                        "compensation value": {
+                                            "value": 0.1952787787,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV650-A",
+                                        "compensation value": {
+                                            "value": 1.0275951624,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV786-A",
+                                        "compensation value": {
+                                            "value": 0.1664793342,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BB515-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-A",
+                                        "compensation value": {
+                                            "value": 0.0280153789,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-CF594-A",
+                                        "compensation value": {
+                                            "value": 0.2581709027,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PerCP-Cy5-5-A",
+                                        "compensation value": {
+                                            "value": 1.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-A",
+                                        "compensation value": {
+                                            "value": 0.1584506631,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-R700-A",
+                                        "compensation value": {
+                                            "value": 0.0458653495,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-Cy7-A",
+                                        "compensation value": {
+                                            "value": 0.0172821917,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "dimension identifier": "APC-A",
+                            "matrix aggregate document": {
+                                "matrix document": [
+                                    {
+                                        "dimension identifier": "BV421-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV510-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV605-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV650-A",
+                                        "compensation value": {
+                                            "value": 0.0801060423,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV786-A",
+                                        "compensation value": {
+                                            "value": 0.0060279248,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BB515-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-CF594-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PerCP-Cy5-5-A",
+                                        "compensation value": {
+                                            "value": 0.0019741028,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-A",
+                                        "compensation value": {
+                                            "value": 1.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-R700-A",
+                                        "compensation value": {
+                                            "value": 0.148722887,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-Cy7-A",
+                                        "compensation value": {
+                                            "value": 0.054270003,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "dimension identifier": "APC-R700-A",
+                            "matrix aggregate document": {
+                                "matrix document": [
+                                    {
+                                        "dimension identifier": "BV421-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV510-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV605-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV650-A",
+                                        "compensation value": {
+                                            "value": 0.0222544707,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV786-A",
+                                        "compensation value": {
+                                            "value": 0.0291819163,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BB515-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-CF594-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PerCP-Cy5-5-A",
+                                        "compensation value": {
+                                            "value": 0.0084592942,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-A",
+                                        "compensation value": {
+                                            "value": 0.3959051669,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-R700-A",
+                                        "compensation value": {
+                                            "value": 1.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-Cy7-A",
+                                        "compensation value": {
+                                            "value": 0.2912940681,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "dimension identifier": "APC-Cy7-A",
+                            "matrix aggregate document": {
+                                "matrix document": [
+                                    {
+                                        "dimension identifier": "BV421-A",
+                                        "compensation value": {
+                                            "value": 0.0001616274,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV510-A",
+                                        "compensation value": {
+                                            "value": 0.0007385579,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV605-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV650-A",
+                                        "compensation value": {
+                                            "value": 0.0054885657,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BV786-A",
+                                        "compensation value": {
+                                            "value": 0.1237648055,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "BB515-A",
+                                        "compensation value": {
+                                            "value": 0.0001508768,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-A",
+                                        "compensation value": {
+                                            "value": 8.43006e-05,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PE-CF594-A",
+                                        "compensation value": {
+                                            "value": 0.00019091,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "PerCP-Cy5-5-A",
+                                        "compensation value": {
+                                            "value": 0.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-A",
+                                        "compensation value": {
+                                            "value": 0.0636686012,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-R700-A",
+                                        "compensation value": {
+                                            "value": 0.0693781152,
+                                            "unit": "(unitless)"
+                                        }
+                                    },
+                                    {
+                                        "dimension identifier": "APC-Cy7-A",
+                                        "compensation value": {
+                                            "value": 1.0,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "data system document": {
+            "ASM file identifier": "flowjo_example_2.json",
+            "data system instance identifier": "N/A",
+            "UNC path": "tests/parsers/flowjo/testdata/flowjo_example_2.wsp",
+            "file name": "LST_Depletion_check_14-Feb-2022(ellispsoid,%20curly%20quad,%20spider).wsp",
+            "ASM converter name": "allotropy_flowjo",
+            "ASM converter version": "0.1.80",
+            "software name": "FlowJo",
+            "software version": "10.10.0"
+        },
+        "device system document": {
+            "device identifier": "cytometer",
+            "model number": "FACSCelesta"
+        }
+    }
+}
