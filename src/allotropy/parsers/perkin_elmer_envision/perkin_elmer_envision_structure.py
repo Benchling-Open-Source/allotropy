@@ -211,6 +211,10 @@ class CalculatedResult:
     row: str
     value: float
 
+    @property
+    def pos(self) -> str:
+        return f"{self.col}{self.row}"
+
 
 def create_calculated_results(reader: CsvReader) -> list[CalculatedResult]:
     # Calculated results may or may not have a title
