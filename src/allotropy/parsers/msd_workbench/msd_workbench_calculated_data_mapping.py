@@ -1,17 +1,29 @@
-from dataclasses import dataclass
 from enum import Enum
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
-    CalculatedDataItem,
-    DataSource,
     Measurement,
 )
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.calcdocs.config import (
+    CalcDocsConfig,
+    CalculatedDataConfig,
+    MeasurementConfig,
+)
+from allotropy.calcdocs.msd_workbench.extractor import MsdWorkbenchExtractor
+from allotropy.calcdocs.msd_workbench.views import (
+    AssayIdentifierView,
+    LocationIdentifierView,
+    SampleIdentifierView,
+    WellPlateIdentifierView,
+)
+from allotropy.parsers.msd_workbench.calculdated_data_structure import (
+    CalculatedDataMeasurementStructure,
+)
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+)
 from allotropy.parsers.utils.pandas import SeriesData
-from allotropy.parsers.utils.uuids import random_uuid_str
 
 
 class AggregatingProperty(Enum):
@@ -20,7 +32,6 @@ class AggregatingProperty(Enum):
     WELL_PLATE_IDENTIFIER = "well_plate_identifier"
     LOCATION_IDENTIFIER = "location_identifier"
     WELL_PLATE_ID = "well_plate_identifier"
-    LOCATION_ID = "location_identifier"
 
 
 class CalculatedDataColumns(Enum):
@@ -35,263 +46,132 @@ class CalculatedDataColumns(Enum):
     CALC_CONC_MEAN = "Calc. Conc. Mean"
 
 
-@dataclass
-class CalculatedDataMapping:
-    msd_column: CalculatedDataColumns
-    is_data_source_id_measurement: bool  # if True then data source id is measurement id, else calculated data id
-    data_source_feature: str
-    aggregating_property: list[str]
-
-
-calculated_data_mappings = [
-    CalculatedDataMapping(
-        msd_column=CalculatedDataColumns.ADJUSTED_SIGNAL,
-        is_data_source_id_measurement=True,
-        data_source_feature="luminescence",
-        aggregating_property=[
-            AggregatingProperty.ASSAY_IDENTIFIER.value,
-            AggregatingProperty.SAMPLE_IDENTIFIER.value,
-        ],
-    ),
-    CalculatedDataMapping(
-        msd_column=CalculatedDataColumns.MEAN,
-        is_data_source_id_measurement=True,
-        data_source_feature="luminescence",
-        aggregating_property=[AggregatingProperty.ASSAY_IDENTIFIER.value],
-    ),
-    CalculatedDataMapping(
-        msd_column=CalculatedDataColumns.ADJ_SIG_MEAN,
-        is_data_source_id_measurement=False,
-        data_source_feature=CalculatedDataColumns.MEAN.value,
-        aggregating_property=[AggregatingProperty.ASSAY_IDENTIFIER.value],
-    ),
-    CalculatedDataMapping(
-        msd_column=CalculatedDataColumns.FIT_STATISTIC_RSQUARED,
-        is_data_source_id_measurement=True,
-        data_source_feature="luminescence",
-        aggregating_property=[AggregatingProperty.ASSAY_IDENTIFIER.value],
-    ),
-    CalculatedDataMapping(
-        msd_column=CalculatedDataColumns.CV,
-        is_data_source_id_measurement=True,
-        data_source_feature="luminescence",
-        aggregating_property=[AggregatingProperty.ASSAY_IDENTIFIER.value],
-    ),
-    CalculatedDataMapping(
-        msd_column=CalculatedDataColumns.PERCENT_RECOVERY,
-        is_data_source_id_measurement=True,
-        data_source_feature="luminescence",
-        aggregating_property=[
-            AggregatingProperty.SAMPLE_IDENTIFIER.value,
-            AggregatingProperty.WELL_PLATE_IDENTIFIER.value,
-            AggregatingProperty.LOCATION_IDENTIFIER.value,
-        ],
-    ),
-    CalculatedDataMapping(
-        msd_column=CalculatedDataColumns.PERCENT_RECOVERY_MEAN,
-        is_data_source_id_measurement=False,
-        data_source_feature=CalculatedDataColumns.PERCENT_RECOVERY.value,
-        aggregating_property=[AggregatingProperty.ASSAY_IDENTIFIER.value],
-    ),
-    CalculatedDataMapping(
-        msd_column=CalculatedDataColumns.CALC_CONCENTRATION,
-        is_data_source_id_measurement=True,
-        data_source_feature="luminescence",
-        aggregating_property=[
-            AggregatingProperty.SAMPLE_IDENTIFIER.value,
-            AggregatingProperty.WELL_PLATE_IDENTIFIER.value,
-            AggregatingProperty.LOCATION_IDENTIFIER.value,
-        ],
-    ),
-    CalculatedDataMapping(
-        msd_column=CalculatedDataColumns.CALC_CONC_MEAN,
-        is_data_source_id_measurement=False,
-        data_source_feature=CalculatedDataColumns.CALC_CONCENTRATION.value,
-        aggregating_property=[AggregatingProperty.ASSAY_IDENTIFIER.value],
-    ),
-]
-
-
-def _format_r_squared_name(name: str) -> str:
-    return name.split(":")[-1].strip()
-
-
-def _get_measurement_by_location_identifier(
-    measurements: list[Measurement], well_location_identifier: str, spot_index: str
-) -> Measurement:
-    for measurement in measurements:
-        if (
-            measurement.well_location_identifier == well_location_identifier
-            and measurement.location_identifier == spot_index
-        ):
-            return measurement
-    msg = (
-        f"No measurement found for well location identifier: {well_location_identifier}"
-    )
-    raise AllotropeConversionError(msg)
-
-
-def _get_measurement_aggregate_properties(
-    measurement: Measurement, aggregating_property: list[str]
-) -> list[str]:
-    aggregating_property = aggregating_property.copy()
-    agg_properties: list[str] = []
-    if (
-        AggregatingProperty.ASSAY_IDENTIFIER.value in aggregating_property
-        and measurement.measurement_custom_info
-    ):
-        assay_id = measurement.measurement_custom_info.get(
-            AggregatingProperty.ASSAY_IDENTIFIER.value
-        )
-        if assay_id:
-            agg_properties.append(assay_id)
-        del aggregating_property[
-            aggregating_property.index(AggregatingProperty.ASSAY_IDENTIFIER.value)
-        ]
-
-    agg_properties.extend([getattr(measurement, prop) for prop in aggregating_property])
-    return agg_properties
-
-
-def _get_data_sources(
-    measurements: list[Measurement],
-    calculated_data_mapping: CalculatedDataMapping,
-    row: SeriesData,
-    calculated_data: list[CalculatedDataItem],
-) -> list[DataSource]:
-    well_location_identifier = row[str, "Well"]
-    spot_index = row[str, "Spot"]
-    current_measurement = _get_measurement_by_location_identifier(
-        measurements, well_location_identifier, spot_index
-    )
-    agg_properties = _get_measurement_aggregate_properties(
-        current_measurement, calculated_data_mapping.aggregating_property
-    )
-    # get measurements with the same aggregate properties as the current one
-    measurements_with_agg_properties = [
-        measurement
-        for measurement in measurements
-        if _get_measurement_aggregate_properties(
-            measurement, calculated_data_mapping.aggregating_property
-        )
-        == agg_properties
-    ]
-    if not calculated_data_mapping.is_data_source_id_measurement:
-        feature = calculated_data_mapping.data_source_feature
-        if feature == CalculatedDataColumns.FIT_STATISTIC_RSQUARED.value:
-            feature = _format_r_squared_name(feature)
-        calc_data_by_feature = list(
-            filter(lambda item: item.name == feature, calculated_data)
-        )
-        measurements_with_agg_properties_ids = [
-            measurement.identifier for measurement in measurements_with_agg_properties
-        ]
-        calc_data_by_feature = list(
-            filter(
-                lambda calc: all(
-                    source.identifier in measurements_with_agg_properties_ids
-                    for source in calc.data_sources
-                ),
-                calc_data_by_feature,
-            )
-        )
-        return [
-            DataSource(
-                identifier=calc_data.identifier,
-                feature=calculated_data_mapping.data_source_feature,
-            )
-            for calc_data in calc_data_by_feature
-        ]
-
-    return [
-        DataSource(
-            identifier=measurement.identifier,
-            feature=calculated_data_mapping.data_source_feature,
-        )
-        for measurement in measurements_with_agg_properties
-    ]
-
-
-def _is_calc_data_created(
-    calculated_data: list[CalculatedDataItem],
-    data_sources: list[DataSource],
-    calc_data_name: str,
-) -> bool:
-    for calc_data in calculated_data:
-        if calc_data.name == calc_data_name and set(calc_data.data_sources) == set(
-            data_sources
-        ):
-            return True
-    return False
-
-
 def create_calculated_data_groups(
     data: pd.DataFrame, measurements: list[Measurement]
-) -> list[CalculatedDataItem]:
-    calculated_data: list[CalculatedDataItem] = []
-    for _row_index, row in data.iterrows():
-        row_series = SeriesData(row)
-        for calc_data_item in calculated_data_mappings:
-            value = row_series.get(float, calc_data_item.msd_column.value)
-            data_sources = _get_data_sources(
-                measurements, calc_data_item, row_series, calculated_data
-            )
-            name = calc_data_item.msd_column.value
-            # handle special case for Fit Statistic: RSquared
-            if name == CalculatedDataColumns.FIT_STATISTIC_RSQUARED.value:
-                name = _format_r_squared_name(name)
-            if (
-                not value
-                or not data_sources
-                or _is_calc_data_created(calculated_data, data_sources, name)
-            ):
+) -> list[CalculatedDocument]:
+    calc_data_measurements: list[CalculatedDataMeasurementStructure] = []
+    for measurement in measurements:
+        for _, row in data.iterrows():
+            row_series = SeriesData(row)
+            if measurement.well_location_identifier != row_series.get(
+                str, "Well"
+            ) or measurement.location_identifier != row_series.get(str, "Spot"):
+                row_series.get_unread()
                 continue
-
-            calculated_data.append(
-                CalculatedDataItem(
-                    identifier=random_uuid_str(),
-                    data_sources=data_sources,
-                    unit=UNITLESS,
-                    name=name,
-                    value=value,
+            calc_data_measurements.append(
+                CalculatedDataMeasurementStructure(
+                    measurement=measurement,
+                    adjusted_signal=row_series.get(
+                        float, CalculatedDataColumns.ADJUSTED_SIGNAL.value
+                    ),
+                    mean=row_series.get(float, CalculatedDataColumns.MEAN.value),
+                    adj_sig_mean=row_series.get(
+                        float, CalculatedDataColumns.ADJ_SIG_MEAN.value
+                    ),
+                    fit_statistic_rsquared=row_series.get(
+                        float, CalculatedDataColumns.FIT_STATISTIC_RSQUARED.value
+                    ),
+                    cv=row_series.get(float, CalculatedDataColumns.CV.value),
+                    percent_recovery=row_series.get(
+                        float, CalculatedDataColumns.PERCENT_RECOVERY.value
+                    ),
+                    percent_recovery_mean=row_series.get(
+                        float, CalculatedDataColumns.PERCENT_RECOVERY_MEAN.value
+                    ),
+                    calc_concentration=row_series.get(
+                        float, CalculatedDataColumns.CALC_CONCENTRATION.value
+                    ),
+                    calc_conc_mean=row_series.get(
+                        float, CalculatedDataColumns.CALC_CONC_MEAN.value
+                    ),
                 )
             )
-
-    # merge calculated data that has its source as other calculated data values
-    not_data_source_measurement_id_mappings = [
-        calc_data_mapping
-        for calc_data_mapping in calculated_data_mappings
-        if not calc_data_mapping.is_data_source_id_measurement
+            # we do not need additional data for the calculated data documents
+            row_series.get_unread()
+    elements = MsdWorkbenchExtractor.get_elements(calc_data_measurements)
+    sample_assay_view = SampleIdentifierView(sub_view=AssayIdentifierView()).apply(
+        elements
+    )
+    assay_view = AssayIdentifierView().apply(elements)
+    sample_well_plate_location_id_view = AssayIdentifierView(
+        sub_view=WellPlateIdentifierView(
+            sub_view=LocationIdentifierView(SampleIdentifierView())
+        )
+    ).apply(elements)
+    measurement_conf = MeasurementConfig(
+        name="luminescence",
+        value="luminescence",
+    )
+    adj_signal_config = CalculatedDataConfig(
+        name=CalculatedDataColumns.ADJUSTED_SIGNAL.value,
+        value="adjusted_signal",
+        view_data=sample_assay_view,
+        source_configs=(measurement_conf,),
+    )
+    mean_config = CalculatedDataConfig(
+        name=CalculatedDataColumns.MEAN.value,
+        value="mean",
+        view_data=assay_view,
+        source_configs=(measurement_conf,),
+    )
+    adj_signal_mean_config = CalculatedDataConfig(
+        name=CalculatedDataColumns.ADJ_SIG_MEAN.value,
+        value="adj_sig_mean",
+        view_data=assay_view,
+        source_configs=(mean_config,),
+    )
+    rsquared_config = CalculatedDataConfig(
+        name="R-Squared",
+        value="fit_statistic_rsquared",
+        view_data=assay_view,
+        source_configs=(measurement_conf,),
+    )
+    cv_config = CalculatedDataConfig(
+        name=CalculatedDataColumns.CV.value,
+        value="cv",
+        view_data=assay_view,
+        source_configs=(measurement_conf,),
+    )
+    percent_recovery_config = CalculatedDataConfig(
+        name=CalculatedDataColumns.PERCENT_RECOVERY.value,
+        value="percent_recovery",
+        view_data=sample_well_plate_location_id_view,
+        source_configs=(measurement_conf,),
+    )
+    percent_recovery_mean_config = CalculatedDataConfig(
+        name=CalculatedDataColumns.PERCENT_RECOVERY_MEAN.value,
+        value="percent_recovery_mean",
+        view_data=assay_view,
+        source_configs=(percent_recovery_config,),
+    )
+    calc_concentration_config = CalculatedDataConfig(
+        name=CalculatedDataColumns.CALC_CONCENTRATION.value,
+        value="calc_concentration",
+        view_data=sample_well_plate_location_id_view,
+        source_configs=(measurement_conf,),
+    )
+    calc_conc_mean_config = CalculatedDataConfig(
+        name="Calc. Concentration Mean",
+        value="calc_conc_mean",
+        view_data=assay_view,
+        source_configs=(calc_concentration_config,),
+    )
+    configs = CalcDocsConfig(
+        [
+            mean_config,
+            adj_signal_config,
+            adj_signal_mean_config,
+            rsquared_config,
+            cv_config,
+            percent_recovery_config,
+            percent_recovery_mean_config,
+            calc_concentration_config,
+            calc_conc_mean_config,
+        ]
+    )
+    calc_docs = [
+        calc_doc
+        for parent_calc_doc in configs.construct()
+        for calc_doc in parent_calc_doc.iter_struct()
     ]
-    for calc_data_mapping in not_data_source_measurement_id_mappings:
-        calc_data: list[CalculatedDataItem] = [
-            calc_data_item
-            for calc_data_item in calculated_data
-            if calc_data_item.name == calc_data_mapping.msd_column.value
-        ]
-        if not calc_data:
-            continue
-        data_sources_identifiers = [
-            source.identifier for calc in calc_data for source in calc.data_sources
-        ]
-        if len(data_sources_identifiers) != len(set(data_sources_identifiers)):
-            ordered_sources = list(set(data_sources_identifiers))
-            ordered_sources.sort()
-            value = calc_data[0].value
-            new_calc_data_item = CalculatedDataItem(
-                identifier=random_uuid_str(),
-                data_sources=[
-                    DataSource(
-                        identifier=identifier,
-                        feature=calc_data_mapping.data_source_feature,
-                    )
-                    for identifier in ordered_sources
-                ],
-                unit=UNITLESS,
-                name=calc_data_mapping.msd_column.value,
-                value=value,
-            )
-            for item in calc_data:
-                calculated_data.remove(item)
-            calculated_data.append(new_calc_data_item)
-    return calculated_data
+    return calc_docs

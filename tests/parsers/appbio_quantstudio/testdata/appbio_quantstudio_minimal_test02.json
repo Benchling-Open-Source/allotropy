@@ -1,33 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",
-    "qPCR aggregate document": {
-        "device system document": {
-            "device identifier": "278880086",
-            "model number": "ViiA 7",
-            "device serial number": "278880086"
-        },
-        "qPCR document": [
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2024/09/qpcr.manifest",
+    "qpcr aggregate document": {
+        "qpcr document": [
             {
                 "measurement aggregate document": {
-                    "plate well count": {
-                        "value": 384,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
-                            "measurement time": "2001-12-31T21:09:19-05:00",
-                            "target DNA description": "B2M-Qiagen",
-                            "sample document": {
-                                "sample identifier": "1. 200217 U251p14_-ab_-SEMA3F_8h_pA_1",
-                                "sample role type": "UNKNOWN",
-                                "well location identifier": "A1",
-                                "custom information document": {
-                                    "well identifier": 1,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -35,23 +13,36 @@
                                         "measurement method identifier": "Ct",
                                         "total cycle number setting": {
                                             "value": 1.0,
-                                            "unit": "#"
+                                            "unit": "(unitless)"
                                         },
-                                        "PCR detection chemistry": "SYBR_GREEN",
+                                        "qPCR detection chemistry": "SYBR_GREEN",
                                         "reporter dye setting": "SYBR",
                                         "passive reference dye setting": "ROX"
                                     }
                                 ]
                             },
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+                            "measurement time": "2001-12-31T21:09:19-05:00",
+                            "sample document": {
+                                "sample identifier": "1. 200217 U251p14_-ab_-SEMA3F_8h_pA_1",
+                                "location identifier": "1",
+                                "sample role type": "unknown sample role",
+                                "well location identifier": "A1",
+                                "custom information document": {
+                                    "well identifier": 1,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target color": "RGB(176,23,31)"
+                                }
+                            },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
                                         "data processing document": {
-                                            "cycle threshold value setting": {
+                                            "automatic cycle threshold enabled setting": true,
+                                            "cycle threshold value setting (qPCR)": {
                                                 "value": 0.277,
                                                 "unit": "(unitless)"
                                             },
-                                            "automatic cycle threshold enabled setting": true,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
                                                 "value": 1,
@@ -60,9 +51,13 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 40,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "reference dna description": "N/A",
+                                                "reference sample description": "N/A"
                                             }
                                         },
-                                        "cycle threshold result": {
+                                        "cycle threshold result (qPCR)": {
                                             "value": 18.717,
                                             "unit": "(unitless)"
                                         },
@@ -71,7 +66,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -79,21 +74,17 @@
                                                 "measures": [
                                                     {
                                                         "@componentDatatype": "double",
-                                                        "concept": "normalized report result",
+                                                        "concept": "normalized reporter result",
                                                         "unit": "(unitless)"
                                                     }
                                                 ]
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.612
-                                                    ]
+                                                    [0.612]
                                                 ]
                                             }
                                         },
@@ -102,7 +93,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -117,9 +108,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
                                                     [
@@ -134,12 +123,13 @@
                                     }
                                 ]
                             },
-                            "reporter dye data cube": {
+                            "target DNA description": "B2M-Qiagen",
+                            "reporter data cube": {
                                 "label": "reporter dye",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
-                                            "@componentDatatype": "integer",
+                                            "@componentDatatype": "double",
                                             "concept": "cycle count",
                                             "unit": "#"
                                         }
@@ -147,30 +137,26 @@
                                     "measures": [
                                         {
                                             "@componentDatatype": "double",
-                                            "concept": "reporter dye fluorescence",
+                                            "concept": "fluorescence",
                                             "unit": "RFU"
                                         }
                                     ]
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            1
-                                        ]
+                                        [1.0]
                                     ],
                                     "measures": [
-                                        [
-                                            34014.32
-                                        ]
+                                        [34014.32]
                                     ]
                                 }
                             },
-                            "passive reference dye data cube": {
+                            "passive reference data cube": {
                                 "label": "passive reference dye",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
-                                            "@componentDatatype": "integer",
+                                            "@componentDatatype": "double",
                                             "concept": "cycle count",
                                             "unit": "#"
                                         }
@@ -178,21 +164,17 @@
                                     "measures": [
                                         {
                                             "@componentDatatype": "double",
-                                            "concept": "passive reference dye fluorescence",
+                                            "concept": "fluorescence",
                                             "unit": "RFU"
                                         }
                                     ]
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            1
-                                        ]
+                                        [1.0]
                                     ],
                                     "measures": [
-                                        [
-                                            55573.94
-                                        ]
+                                        [55573.94]
                                     ]
                                 }
                             },
@@ -203,14 +185,14 @@
                                         {
                                             "@componentDatatype": "double",
                                             "concept": "temperature",
-                                            "unit": "degrees C"
+                                            "unit": "degC"
                                         }
                                     ],
                                     "measures": [
                                         {
                                             "@componentDatatype": "double",
-                                            "concept": "reporter dye fluorescence",
-                                            "unit": "(unitless)"
+                                            "concept": "fluorescence",
+                                            "unit": "RFU"
                                         },
                                         {
                                             "@componentDatatype": "double",
@@ -221,17 +203,11 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            1
-                                        ]
+                                        [1.0]
                                     ],
                                     "measures": [
-                                        [
-                                            3.478
-                                        ],
-                                        [
-                                            0.093
-                                        ]
+                                        [3.478],
+                                        [0.093]
                                     ]
                                 }
                             }
@@ -239,18 +215,52 @@
                     ],
                     "experimental data identifier": "200224 U251p14 200217_14v9_SEMA3F_trial 1",
                     "experiment type": "comparative CT qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "PCR reaction block",
+                    "well volume": {
+                        "value": 40,
+                        "unit": "μL"
+                    },
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    }
                 }
             }
         ],
+        "calculated data aggregate document": {
+            "calculated data document": [
+                {
+                    "calculated data name": "ct mean",
+                    "calculated result": {
+                        "value": 18.717,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
         "data system document": {
+            "ASM file identifier": "appbio_quantstudio_minimal_test02.json",
             "data system instance identifier": "localhost",
             "file name": "appbio_quantstudio_minimal_test02.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test02.txt",
-            "software name": "Thermo QuantStudio",
-            "software version": "1.0",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.61"
+            "ASM converter version": "0.1.76",
+            "software name": "Thermo QuantStudio",
+            "software version": "1.0"
+        },
+        "device system document": {
+            "device identifier": "278880086",
+            "equipment serial number": "278880086",
+            "model number": "ViiA 7"
         }
     }
 }

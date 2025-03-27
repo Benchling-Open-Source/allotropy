@@ -1,33 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",
-    "qPCR aggregate document": {
-        "device system document": {
-            "device identifier": "1",
-            "model number": "QuantStudio(TM) 7 Flex System",
-            "device serial number": "1"
-        },
-        "qPCR document": [
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2024/09/qpcr.manifest",
+    "qpcr aggregate document": {
+        "qpcr document": [
             {
                 "measurement aggregate document": {
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
-                            "measurement time": "2010-10-20T02:23:34-04:00",
-                            "target DNA description": "TGF-B",
-                            "sample document": {
-                                "sample identifier": "Lung",
-                                "sample role type": "UNKNOWN",
-                                "well location identifier": "D1",
-                                "custom information document": {
-                                    "well identifier": 37,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -35,24 +13,37 @@
                                         "measurement method identifier": "Ct",
                                         "total cycle number setting": {
                                             "value": 1.0,
-                                            "unit": "#"
+                                            "unit": "(unitless)"
                                         },
-                                        "PCR detection chemistry": "TAQMAN",
-                                        "reporter dye setting": "FAM",
+                                        "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
+                                        "reporter dye setting": "FAM",
                                         "passive reference dye setting": "ROX"
                                     }
                                 ]
+                            },
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+                            "measurement time": "2010-10-20T02:23:34-04:00",
+                            "sample document": {
+                                "sample identifier": "Lung",
+                                "location identifier": "37",
+                                "sample role type": "unknown sample role",
+                                "well location identifier": "D1",
+                                "custom information document": {
+                                    "well identifier": 37,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
                                         "data processing document": {
-                                            "cycle threshold value setting": {
+                                            "automatic cycle threshold enabled setting": true,
+                                            "cycle threshold value setting (qPCR)": {
                                                 "value": 0.133,
                                                 "unit": "(unitless)"
                                             },
-                                            "automatic cycle threshold enabled setting": true,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
                                                 "value": 3,
@@ -61,9 +52,13 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 25,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "reference dna description": "GAPDH",
+                                                "reference sample description": "Liver"
                                             }
                                         },
-                                        "cycle threshold result": {
+                                        "cycle threshold result (qPCR)": {
                                             "value": 30.155,
                                             "unit": "(unitless)"
                                         },
@@ -72,7 +67,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -80,21 +75,17 @@
                                                 "measures": [
                                                     {
                                                         "@componentDatatype": "double",
-                                                        "concept": "normalized report result",
+                                                        "concept": "normalized reporter result",
                                                         "unit": "(unitless)"
                                                     }
                                                 ]
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.627
-                                                    ]
+                                                    [0.627]
                                                 ]
                                             }
                                         },
@@ -103,7 +94,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -118,14 +109,10 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.001
-                                                    ]
+                                                    [0.001]
                                                 ]
                                             }
                                         },
@@ -134,35 +121,27 @@
                                         }
                                     }
                                 ]
-                            }
+                            },
+                            "target DNA description": "TGF-B"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                     "experiment type": "comparative CT qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "PCR reaction block",
+                    "well volume": {
+                        "value": 200.0,
+                        "unit": "μL"
+                    },
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    }
                 }
             },
             {
                 "measurement aggregate document": {
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
-                            "measurement time": "2010-10-20T02:23:34-04:00",
-                            "target DNA description": "TGF-B",
-                            "sample document": {
-                                "sample identifier": "Lung",
-                                "sample role type": "UNKNOWN",
-                                "well location identifier": "D2",
-                                "custom information document": {
-                                    "well identifier": 38,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -170,24 +149,37 @@
                                         "measurement method identifier": "Ct",
                                         "total cycle number setting": {
                                             "value": 1.0,
-                                            "unit": "#"
+                                            "unit": "(unitless)"
                                         },
-                                        "PCR detection chemistry": "TAQMAN",
-                                        "reporter dye setting": "FAM",
+                                        "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
+                                        "reporter dye setting": "FAM",
                                         "passive reference dye setting": "ROX"
                                     }
                                 ]
+                            },
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
+                            "measurement time": "2010-10-20T02:23:34-04:00",
+                            "sample document": {
+                                "sample identifier": "Lung",
+                                "location identifier": "38",
+                                "sample role type": "unknown sample role",
+                                "well location identifier": "D2",
+                                "custom information document": {
+                                    "well identifier": 38,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
                                         "data processing document": {
-                                            "cycle threshold value setting": {
+                                            "automatic cycle threshold enabled setting": true,
+                                            "cycle threshold value setting (qPCR)": {
                                                 "value": 0.133,
                                                 "unit": "(unitless)"
                                             },
-                                            "automatic cycle threshold enabled setting": true,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
                                                 "value": 3,
@@ -196,9 +188,13 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 25,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "reference dna description": "GAPDH",
+                                                "reference sample description": "Liver"
                                             }
                                         },
-                                        "cycle threshold result": {
+                                        "cycle threshold result (qPCR)": {
                                             "value": 30.2,
                                             "unit": "(unitless)"
                                         },
@@ -207,7 +203,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -215,21 +211,17 @@
                                                 "measures": [
                                                     {
                                                         "@componentDatatype": "double",
-                                                        "concept": "normalized report result",
+                                                        "concept": "normalized reporter result",
                                                         "unit": "(unitless)"
                                                     }
                                                 ]
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.612
-                                                    ]
+                                                    [0.612]
                                                 ]
                                             }
                                         },
@@ -238,7 +230,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -253,9 +245,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
                                                     [
@@ -269,35 +259,27 @@
                                         }
                                     }
                                 ]
-                            }
+                            },
+                            "target DNA description": "TGF-B"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                     "experiment type": "comparative CT qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "PCR reaction block",
+                    "well volume": {
+                        "value": 200.0,
+                        "unit": "μL"
+                    },
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    }
                 }
             },
             {
                 "measurement aggregate document": {
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
-                            "measurement time": "2010-10-20T02:23:34-04:00",
-                            "target DNA description": "TGF-B",
-                            "sample document": {
-                                "sample identifier": "Liver",
-                                "sample role type": "UNKNOWN",
-                                "well location identifier": "D10",
-                                "custom information document": {
-                                    "well identifier": 46,
-                                    "sample color": "RGB(139,137,112)",
-                                    "target color": "RGB(176,23,31)"
-                                }
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -305,24 +287,37 @@
                                         "measurement method identifier": "Ct",
                                         "total cycle number setting": {
                                             "value": 1.0,
-                                            "unit": "#"
+                                            "unit": "(unitless)"
                                         },
-                                        "PCR detection chemistry": "TAQMAN",
-                                        "reporter dye setting": "FAM",
+                                        "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
+                                        "reporter dye setting": "FAM",
                                         "passive reference dye setting": "ROX"
                                     }
                                 ]
+                            },
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
+                            "measurement time": "2010-10-20T02:23:34-04:00",
+                            "sample document": {
+                                "sample identifier": "Liver",
+                                "location identifier": "46",
+                                "sample role type": "unknown sample role",
+                                "well location identifier": "D10",
+                                "custom information document": {
+                                    "well identifier": 46,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
                                         "data processing document": {
-                                            "cycle threshold value setting": {
+                                            "automatic cycle threshold enabled setting": true,
+                                            "cycle threshold value setting (qPCR)": {
                                                 "value": 0.133,
                                                 "unit": "(unitless)"
                                             },
-                                            "automatic cycle threshold enabled setting": true,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
                                                 "value": 3,
@@ -331,9 +326,13 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 25,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "reference dna description": "GAPDH",
+                                                "reference sample description": "Liver"
                                             }
                                         },
-                                        "cycle threshold result": {
+                                        "cycle threshold result (qPCR)": {
                                             "value": 29.799,
                                             "unit": "(unitless)"
                                         },
@@ -342,7 +341,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -350,21 +349,17 @@
                                                 "measures": [
                                                     {
                                                         "@componentDatatype": "double",
-                                                        "concept": "normalized report result",
+                                                        "concept": "normalized reporter result",
                                                         "unit": "(unitless)"
                                                     }
                                                 ]
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.607
-                                                    ]
+                                                    [0.607]
                                                 ]
                                             }
                                         },
@@ -373,7 +368,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -388,14 +383,10 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.0
-                                                    ]
+                                                    [0.0]
                                                 ]
                                             }
                                         },
@@ -404,35 +395,27 @@
                                         }
                                     }
                                 ]
-                            }
+                            },
+                            "target DNA description": "TGF-B"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                     "experiment type": "comparative CT qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "PCR reaction block",
+                    "well volume": {
+                        "value": 200.0,
+                        "unit": "μL"
+                    },
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    }
                 }
             },
             {
                 "measurement aggregate document": {
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
-                            "measurement time": "2010-10-20T02:23:34-04:00",
-                            "target DNA description": "TGF-B",
-                            "sample document": {
-                                "sample identifier": "Lung",
-                                "sample role type": "UNKNOWN",
-                                "well location identifier": "E1",
-                                "custom information document": {
-                                    "well identifier": 49,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -440,24 +423,37 @@
                                         "measurement method identifier": "Ct",
                                         "total cycle number setting": {
                                             "value": 1.0,
-                                            "unit": "#"
+                                            "unit": "(unitless)"
                                         },
-                                        "PCR detection chemistry": "TAQMAN",
-                                        "reporter dye setting": "FAM",
+                                        "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
+                                        "reporter dye setting": "FAM",
                                         "passive reference dye setting": "ROX"
                                     }
                                 ]
+                            },
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
+                            "measurement time": "2010-10-20T02:23:34-04:00",
+                            "sample document": {
+                                "sample identifier": "Lung",
+                                "location identifier": "49",
+                                "sample role type": "unknown sample role",
+                                "well location identifier": "E1",
+                                "custom information document": {
+                                    "well identifier": 49,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
                                         "data processing document": {
-                                            "cycle threshold value setting": {
+                                            "automatic cycle threshold enabled setting": true,
+                                            "cycle threshold value setting (qPCR)": {
                                                 "value": 0.133,
                                                 "unit": "(unitless)"
                                             },
-                                            "automatic cycle threshold enabled setting": true,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
                                                 "value": 3,
@@ -466,9 +462,13 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 25,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "reference dna description": "GAPDH",
+                                                "reference sample description": "Liver"
                                             }
                                         },
-                                        "cycle threshold result": {
+                                        "cycle threshold result (qPCR)": {
                                             "value": 30.093,
                                             "unit": "(unitless)"
                                         },
@@ -477,7 +477,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -485,21 +485,17 @@
                                                 "measures": [
                                                     {
                                                         "@componentDatatype": "double",
-                                                        "concept": "normalized report result",
+                                                        "concept": "normalized reporter result",
                                                         "unit": "(unitless)"
                                                     }
                                                 ]
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.62
-                                                    ]
+                                                    [0.62]
                                                 ]
                                             }
                                         },
@@ -508,7 +504,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -523,14 +519,10 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.001
-                                                    ]
+                                                    [0.001]
                                                 ]
                                             }
                                         },
@@ -539,35 +531,27 @@
                                         }
                                     }
                                 ]
-                            }
+                            },
+                            "target DNA description": "TGF-B"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                     "experiment type": "comparative CT qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "PCR reaction block",
+                    "well volume": {
+                        "value": 200.0,
+                        "unit": "μL"
+                    },
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    }
                 }
             },
             {
                 "measurement aggregate document": {
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_4",
-                            "measurement time": "2010-10-20T02:23:34-04:00",
-                            "target DNA description": "TGF-B",
-                            "sample document": {
-                                "sample identifier": "Liver",
-                                "sample role type": "UNKNOWN",
-                                "well location identifier": "E10",
-                                "custom information document": {
-                                    "well identifier": 58,
-                                    "sample color": "RGB(139,137,112)",
-                                    "target color": "RGB(176,23,31)"
-                                }
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -575,24 +559,37 @@
                                         "measurement method identifier": "Ct",
                                         "total cycle number setting": {
                                             "value": 1.0,
-                                            "unit": "#"
+                                            "unit": "(unitless)"
                                         },
-                                        "PCR detection chemistry": "TAQMAN",
-                                        "reporter dye setting": "FAM",
+                                        "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
+                                        "reporter dye setting": "FAM",
                                         "passive reference dye setting": "ROX"
                                     }
                                 ]
+                            },
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_4",
+                            "measurement time": "2010-10-20T02:23:34-04:00",
+                            "sample document": {
+                                "sample identifier": "Liver",
+                                "location identifier": "58",
+                                "sample role type": "unknown sample role",
+                                "well location identifier": "E10",
+                                "custom information document": {
+                                    "well identifier": 58,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target color": "RGB(176,23,31)"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
                                         "data processing document": {
-                                            "cycle threshold value setting": {
+                                            "automatic cycle threshold enabled setting": true,
+                                            "cycle threshold value setting (qPCR)": {
                                                 "value": 0.133,
                                                 "unit": "(unitless)"
                                             },
-                                            "automatic cycle threshold enabled setting": true,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
                                                 "value": 3,
@@ -601,9 +598,13 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 25,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "reference dna description": "GAPDH",
+                                                "reference sample description": "Liver"
                                             }
                                         },
-                                        "cycle threshold result": {
+                                        "cycle threshold result (qPCR)": {
                                             "value": 29.773,
                                             "unit": "(unitless)"
                                         },
@@ -612,7 +613,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -620,21 +621,17 @@
                                                 "measures": [
                                                     {
                                                         "@componentDatatype": "double",
-                                                        "concept": "normalized report result",
+                                                        "concept": "normalized reporter result",
                                                         "unit": "(unitless)"
                                                     }
                                                 ]
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.614
-                                                    ]
+                                                    [0.614]
                                                 ]
                                             }
                                         },
@@ -643,7 +640,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -658,14 +655,10 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.001
-                                                    ]
+                                                    [0.001]
                                                 ]
                                             }
                                         },
@@ -674,35 +667,27 @@
                                         }
                                     }
                                 ]
-                            }
+                            },
+                            "target DNA description": "TGF-B"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                     "experiment type": "comparative CT qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "PCR reaction block",
+                    "well volume": {
+                        "value": 200.0,
+                        "unit": "μL"
+                    },
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    }
                 }
             },
             {
                 "measurement aggregate document": {
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_5",
-                            "measurement time": "2010-10-20T02:23:34-04:00",
-                            "target DNA description": "GAPDH",
-                            "sample document": {
-                                "sample identifier": "Lung",
-                                "sample role type": "UNKNOWN",
-                                "well location identifier": "H1",
-                                "custom information document": {
-                                    "well identifier": 85,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(0,0,255)"
-                                }
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -710,24 +695,37 @@
                                         "measurement method identifier": "Ct",
                                         "total cycle number setting": {
                                             "value": 1.0,
-                                            "unit": "#"
+                                            "unit": "(unitless)"
                                         },
-                                        "PCR detection chemistry": "TAQMAN",
-                                        "reporter dye setting": "VIC",
+                                        "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
+                                        "reporter dye setting": "VIC",
                                         "passive reference dye setting": "ROX"
                                     }
                                 ]
+                            },
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_5",
+                            "measurement time": "2010-10-20T02:23:34-04:00",
+                            "sample document": {
+                                "sample identifier": "Lung",
+                                "location identifier": "85",
+                                "sample role type": "unknown sample role",
+                                "well location identifier": "H1",
+                                "custom information document": {
+                                    "well identifier": 85,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
                                         "data processing document": {
-                                            "cycle threshold value setting": {
+                                            "automatic cycle threshold enabled setting": false,
+                                            "cycle threshold value setting (qPCR)": {
                                                 "value": 0.06,
                                                 "unit": "(unitless)"
                                             },
-                                            "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
                                                 "value": 3,
@@ -736,9 +734,13 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 29,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "reference dna description": "GAPDH",
+                                                "reference sample description": "Liver"
                                             }
                                         },
-                                        "cycle threshold result": {
+                                        "cycle threshold result (qPCR)": {
                                             "value": 32.884,
                                             "unit": "(unitless)"
                                         },
@@ -747,7 +749,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -755,21 +757,17 @@
                                                 "measures": [
                                                     {
                                                         "@componentDatatype": "double",
-                                                        "concept": "normalized report result",
+                                                        "concept": "normalized reporter result",
                                                         "unit": "(unitless)"
                                                     }
                                                 ]
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        1.165
-                                                    ]
+                                                    [1.165]
                                                 ]
                                             }
                                         },
@@ -778,7 +776,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -793,14 +791,10 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.003
-                                                    ]
+                                                    [0.003]
                                                 ]
                                             }
                                         },
@@ -809,35 +803,27 @@
                                         }
                                     }
                                 ]
-                            }
+                            },
+                            "target DNA description": "GAPDH"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                     "experiment type": "comparative CT qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "PCR reaction block",
+                    "well volume": {
+                        "value": 200.0,
+                        "unit": "μL"
+                    },
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    }
                 }
             },
             {
                 "measurement aggregate document": {
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_6",
-                            "measurement time": "2010-10-20T02:23:34-04:00",
-                            "target DNA description": "GAPDH",
-                            "sample document": {
-                                "sample identifier": "Lung",
-                                "sample role type": "UNKNOWN",
-                                "well location identifier": "H2",
-                                "custom information document": {
-                                    "well identifier": 86,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(0,0,255)"
-                                }
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -845,24 +831,37 @@
                                         "measurement method identifier": "Ct",
                                         "total cycle number setting": {
                                             "value": 1.0,
-                                            "unit": "#"
+                                            "unit": "(unitless)"
                                         },
-                                        "PCR detection chemistry": "TAQMAN",
-                                        "reporter dye setting": "VIC",
+                                        "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
+                                        "reporter dye setting": "VIC",
                                         "passive reference dye setting": "ROX"
                                     }
                                 ]
+                            },
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_6",
+                            "measurement time": "2010-10-20T02:23:34-04:00",
+                            "sample document": {
+                                "sample identifier": "Lung",
+                                "location identifier": "86",
+                                "sample role type": "unknown sample role",
+                                "well location identifier": "H2",
+                                "custom information document": {
+                                    "well identifier": 86,
+                                    "sample color": "RGB(176,23,31)",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
                                         "data processing document": {
-                                            "cycle threshold value setting": {
+                                            "automatic cycle threshold enabled setting": false,
+                                            "cycle threshold value setting (qPCR)": {
                                                 "value": 0.06,
                                                 "unit": "(unitless)"
                                             },
-                                            "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
                                                 "value": 3,
@@ -871,9 +870,13 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 29,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "reference dna description": "GAPDH",
+                                                "reference sample description": "Liver"
                                             }
                                         },
-                                        "cycle threshold result": {
+                                        "cycle threshold result (qPCR)": {
                                             "value": 32.937,
                                             "unit": "(unitless)"
                                         },
@@ -882,7 +885,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -890,21 +893,17 @@
                                                 "measures": [
                                                     {
                                                         "@componentDatatype": "double",
-                                                        "concept": "normalized report result",
+                                                        "concept": "normalized reporter result",
                                                         "unit": "(unitless)"
                                                     }
                                                 ]
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        1.22
-                                                    ]
+                                                    [1.22]
                                                 ]
                                             }
                                         },
@@ -913,7 +912,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -928,14 +927,10 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.002
-                                                    ]
+                                                    [0.002]
                                                 ]
                                             }
                                         },
@@ -944,35 +939,27 @@
                                         }
                                     }
                                 ]
-                            }
+                            },
+                            "target DNA description": "GAPDH"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                     "experiment type": "comparative CT qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "PCR reaction block",
+                    "well volume": {
+                        "value": 200.0,
+                        "unit": "μL"
+                    },
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    }
                 }
             },
             {
                 "measurement aggregate document": {
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_7",
-                            "measurement time": "2010-10-20T02:23:34-04:00",
-                            "target DNA description": "GAPDH",
-                            "sample document": {
-                                "sample identifier": "Liver",
-                                "sample role type": "UNKNOWN",
-                                "well location identifier": "H10",
-                                "custom information document": {
-                                    "well identifier": 94,
-                                    "sample color": "RGB(139,137,112)",
-                                    "target color": "RGB(0,0,255)"
-                                }
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -980,24 +967,37 @@
                                         "measurement method identifier": "Ct",
                                         "total cycle number setting": {
                                             "value": 1.0,
-                                            "unit": "#"
+                                            "unit": "(unitless)"
                                         },
-                                        "PCR detection chemistry": "TAQMAN",
-                                        "reporter dye setting": "VIC",
+                                        "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
+                                        "reporter dye setting": "VIC",
                                         "passive reference dye setting": "ROX"
                                     }
                                 ]
+                            },
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_7",
+                            "measurement time": "2010-10-20T02:23:34-04:00",
+                            "sample document": {
+                                "sample identifier": "Liver",
+                                "location identifier": "94",
+                                "sample role type": "unknown sample role",
+                                "well location identifier": "H10",
+                                "custom information document": {
+                                    "well identifier": 94,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
                                         "data processing document": {
-                                            "cycle threshold value setting": {
+                                            "automatic cycle threshold enabled setting": false,
+                                            "cycle threshold value setting (qPCR)": {
                                                 "value": 0.06,
                                                 "unit": "(unitless)"
                                             },
-                                            "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
                                                 "value": 3,
@@ -1006,9 +1006,13 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 29,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "reference dna description": "GAPDH",
+                                                "reference sample description": "Liver"
                                             }
                                         },
-                                        "cycle threshold result": {
+                                        "cycle threshold result (qPCR)": {
                                             "value": 32.546,
                                             "unit": "(unitless)"
                                         },
@@ -1017,7 +1021,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -1025,21 +1029,17 @@
                                                 "measures": [
                                                     {
                                                         "@componentDatatype": "double",
-                                                        "concept": "normalized report result",
+                                                        "concept": "normalized reporter result",
                                                         "unit": "(unitless)"
                                                     }
                                                 ]
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        1.231
-                                                    ]
+                                                    [1.231]
                                                 ]
                                             }
                                         },
@@ -1048,7 +1048,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -1063,14 +1063,10 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.003
-                                                    ]
+                                                    [0.003]
                                                 ]
                                             }
                                         },
@@ -1079,35 +1075,27 @@
                                         }
                                     }
                                 ]
-                            }
+                            },
+                            "target DNA description": "GAPDH"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                     "experiment type": "comparative CT qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "PCR reaction block",
+                    "well volume": {
+                        "value": 200.0,
+                        "unit": "μL"
+                    },
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    }
                 }
             },
             {
                 "measurement aggregate document": {
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_8",
-                            "measurement time": "2010-10-20T02:23:34-04:00",
-                            "target DNA description": "GAPDH",
-                            "sample document": {
-                                "sample identifier": "Liver",
-                                "sample role type": "UNKNOWN",
-                                "well location identifier": "H11",
-                                "custom information document": {
-                                    "well identifier": 95,
-                                    "sample color": "RGB(139,137,112)",
-                                    "target color": "RGB(0,0,255)"
-                                }
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1115,24 +1103,37 @@
                                         "measurement method identifier": "Ct",
                                         "total cycle number setting": {
                                             "value": 1.0,
-                                            "unit": "#"
+                                            "unit": "(unitless)"
                                         },
-                                        "PCR detection chemistry": "TAQMAN",
-                                        "reporter dye setting": "VIC",
+                                        "qPCR detection chemistry": "TAQMAN",
                                         "quencher dye setting": "NFQ-MGB",
+                                        "reporter dye setting": "VIC",
                                         "passive reference dye setting": "ROX"
                                     }
                                 ]
+                            },
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_TEST_ID_8",
+                            "measurement time": "2010-10-20T02:23:34-04:00",
+                            "sample document": {
+                                "sample identifier": "Liver",
+                                "location identifier": "95",
+                                "sample role type": "unknown sample role",
+                                "well location identifier": "H11",
+                                "custom information document": {
+                                    "well identifier": 95,
+                                    "sample color": "RGB(139,137,112)",
+                                    "target color": "RGB(0,0,255)"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
                                         "data processing document": {
-                                            "cycle threshold value setting": {
+                                            "automatic cycle threshold enabled setting": false,
+                                            "cycle threshold value setting (qPCR)": {
                                                 "value": 0.06,
                                                 "unit": "(unitless)"
                                             },
-                                            "automatic cycle threshold enabled setting": false,
                                             "automatic baseline determination enabled setting": true,
                                             "baseline determination start cycle setting": {
                                                 "value": 3,
@@ -1141,9 +1142,13 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 29,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "reference dna description": "GAPDH",
+                                                "reference sample description": "Liver"
                                             }
                                         },
-                                        "cycle threshold result": {
+                                        "cycle threshold result (qPCR)": {
                                             "value": 33.074,
                                             "unit": "(unitless)"
                                         },
@@ -1152,7 +1157,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -1160,21 +1165,17 @@
                                                 "measures": [
                                                     {
                                                         "@componentDatatype": "double",
-                                                        "concept": "normalized report result",
+                                                        "concept": "normalized reporter result",
                                                         "unit": "(unitless)"
                                                     }
                                                 ]
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        1.217
-                                                    ]
+                                                    [1.217]
                                                 ]
                                             }
                                         },
@@ -1183,7 +1184,7 @@
                                             "cube-structure": {
                                                 "dimensions": [
                                                     {
-                                                        "@componentDatatype": "integer",
+                                                        "@componentDatatype": "double",
                                                         "concept": "cycle count",
                                                         "unit": "#"
                                                     }
@@ -1198,14 +1199,10 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [
-                                                        1
-                                                    ]
+                                                    [1.0]
                                                 ],
                                                 "measures": [
-                                                    [
-                                                        0.002
-                                                    ]
+                                                    [0.002]
                                                 ]
                                             }
                                         },
@@ -1214,27 +1211,32 @@
                                         }
                                     }
                                 ]
-                            }
+                            },
+                            "target DNA description": "GAPDH"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
                     "experiment type": "comparative CT qPCR experiment",
-                    "container type": "qPCR reaction block"
+                    "container type": "PCR reaction block",
+                    "well volume": {
+                        "value": 200.0,
+                        "unit": "μL"
+                    },
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    }
                 }
             }
         ],
-        "data system document": {
-            "data system instance identifier": "localhost",
-            "file name": "appbio_quantstudio_example06.txt",
-            "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_example06.txt",
-            "software name": "Thermo QuantStudio",
-            "software version": "1.0",
-            "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.61"
-        },
         "calculated data aggregate document": {
             "calculated data document": [
                 {
+                    "calculated data name": "amplification score",
+                    "calculated result": {
+                        "value": 1.242,
+                        "unit": "(unitless)"
+                    },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_9",
                     "data source aggregate document": {
                         "data source document": [
@@ -1243,403 +1245,191 @@
                                 "data source feature": "cycle threshold result"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "amplification score",
-                    "calculated datum": {
-                        "value": 1.242,
-                        "unit": "(unitless)"
                     }
                 },
                 {
+                    "calculated data name": "amplification score",
+                    "calculated result": {
+                        "value": 1.242,
+                        "unit": "(unitless)"
+                    },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_10",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "cq confidence",
-                    "calculated datum": {
-                        "value": 0.967,
-                        "unit": "(unitless)"
                     }
                 },
                 {
+                    "calculated data name": "amplification score",
+                    "calculated result": {
+                        "value": 1.247,
+                        "unit": "(unitless)"
+                    },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_11",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "amplification score",
-                    "calculated datum": {
-                        "value": 1.242,
-                        "unit": "(unitless)"
                     }
                 },
                 {
+                    "calculated data name": "amplification score",
+                    "calculated result": {
+                        "value": 0.936,
+                        "unit": "(unitless)"
+                    },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_12",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "cq confidence",
-                    "calculated datum": {
-                        "value": 0.964,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_13",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "amplification score",
-                    "calculated datum": {
-                        "value": 1.247,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_14",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "cq confidence",
-                    "calculated datum": {
-                        "value": 0.965,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_15",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
-                                "data source feature": "cycle threshold result"
-                            },
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
-                                "data source feature": "cycle threshold result"
-                            },
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "ct sd",
-                    "calculated datum": {
-                        "value": 0.051,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_18",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_16",
-                                "data source feature": "ct mean"
-                            },
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_17",
-                                "data source feature": "ct mean"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "delta ct se",
-                    "calculated datum": {
-                        "value": 0.15,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_16",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
-                                "data source feature": "cycle threshold result"
-                            },
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
-                                "data source feature": "cycle threshold result"
-                            },
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "ct mean",
-                    "calculated datum": {
-                        "value": 30.115,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_17",
                     "data source aggregate document": {
                         "data source document": [
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_5",
                                 "data source feature": "cycle threshold result"
-                            },
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "amplification score",
+                    "calculated result": {
+                        "value": 0.947,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_13",
+                    "data source aggregate document": {
+                        "data source document": [
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_6",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "ct mean",
-                    "calculated datum": {
-                        "value": 32.762,
-                        "unit": "(unitless)"
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_25",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_24",
-                                "data source feature": "rq"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "rq min",
-                    "calculated datum": {
-                        "value": 0.639,
+                    "calculated data name": "amplification score",
+                    "calculated result": {
+                        "value": 1.23,
                         "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_24",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_23",
-                                "data source feature": "delta delta ct"
-                            }
-                        ]
                     },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "rq",
-                    "calculated datum": {
-                        "value": 0.8,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_23",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_19",
-                                "data source feature": "delta ct mean"
-                            },
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_22",
-                                "data source feature": "delta ct mean"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "delta delta ct",
-                    "calculated datum": {
-                        "value": 0.323,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_19",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_16",
-                                "data source feature": "ct mean"
-                            },
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_17",
-                                "data source feature": "ct mean"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "delta ct mean",
-                    "calculated datum": {
-                        "value": -2.647,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_22",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_20",
-                                "data source feature": "ct mean"
-                            },
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_21",
-                                "data source feature": "ct mean"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "delta ct mean",
-                    "calculated datum": {
-                        "value": -2.969,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_20",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_14",
                     "data source aggregate document": {
                         "data source document": [
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
                                 "data source feature": "cycle threshold result"
-                            },
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "amplification score",
+                    "calculated result": {
+                        "value": 1.232,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_15",
+                    "data source aggregate document": {
+                        "data source document": [
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_4",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "ct mean",
-                    "calculated datum": {
-                        "value": 29.799,
-                        "unit": "(unitless)"
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_21",
+                    "calculated data name": "amplification score",
+                    "calculated result": {
+                        "value": 0.945,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_16",
                     "data source aggregate document": {
                         "data source document": [
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_7",
                                 "data source feature": "cycle threshold result"
-                            },
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "amplification score",
+                    "calculated result": {
+                        "value": 0.947,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_17",
+                    "data source aggregate document": {
+                        "data source document": [
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_8",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "ct mean",
-                    "calculated datum": {
-                        "value": 32.768,
-                        "unit": "(unitless)"
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_26",
+                    "calculated data name": "cq confidence",
+                    "calculated result": {
+                        "value": 0.967,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_18",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_24",
-                                "data source feature": "rq"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+                                "data source feature": "cycle threshold result"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "rq max",
-                    "calculated datum": {
-                        "value": 1.002,
-                        "unit": "(unitless)"
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_27",
+                    "calculated data name": "cq confidence",
+                    "calculated result": {
+                        "value": 0.964,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_19",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "cq confidence",
+                    "calculated result": {
+                        "value": 0.965,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_20",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "cq confidence",
+                    "calculated result": {
+                        "value": 0.954,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_21",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -1647,79 +1437,203 @@
                                 "data source feature": "cycle threshold result"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "amplification score",
-                    "calculated datum": {
-                        "value": 0.936,
-                        "unit": "(unitless)"
                     }
                 },
                 {
+                    "calculated data name": "cq confidence",
+                    "calculated result": {
+                        "value": 0.911,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_22",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_6",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "cq confidence",
+                    "calculated result": {
+                        "value": 0.968,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_23",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "cq confidence",
+                    "calculated result": {
+                        "value": 0.97,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_24",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_4",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "cq confidence",
+                    "calculated result": {
+                        "value": 0.947,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_25",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_7",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "cq confidence",
+                    "calculated result": {
+                        "value": 0.912,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_26",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_8",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "ct mean",
+                    "calculated result": {
+                        "value": 30.115,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_27",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+                                "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
+                                "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "ct mean",
+                    "calculated result": {
+                        "value": 32.762,
+                        "unit": "(unitless)"
+                    },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_28",
                     "data source aggregate document": {
                         "data source document": [
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_5",
                                 "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_6",
+                                "data source feature": "cycle threshold result"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "cq confidence",
-                    "calculated datum": {
-                        "value": 0.954,
-                        "unit": "(unitless)"
                     }
                 },
                 {
+                    "calculated data name": "ct mean",
+                    "calculated result": {
+                        "value": 29.799,
+                        "unit": "(unitless)"
+                    },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_29",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_6",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
+                                "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_4",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "amplification score",
-                    "calculated datum": {
-                        "value": 0.947,
-                        "unit": "(unitless)"
                     }
                 },
                 {
+                    "calculated data name": "ct mean",
+                    "calculated result": {
+                        "value": 32.768,
+                        "unit": "(unitless)"
+                    },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_30",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_6",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_7",
+                                "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_8",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "cq confidence",
-                    "calculated datum": {
-                        "value": 0.911,
-                        "unit": "(unitless)"
                     }
                 },
                 {
+                    "calculated data name": "ct sd",
+                    "calculated result": {
+                        "value": 0.051,
+                        "unit": "(unitless)"
+                    },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_31",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_0",
+                                "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_1",
+                                "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_3",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "ct sd",
+                    "calculated result": {
+                        "value": 0.259,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_32",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -1731,334 +1645,280 @@
                                 "data source feature": "cycle threshold result"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
+                    }
+                },
+                {
                     "calculated data name": "ct sd",
-                    "calculated datum": {
-                        "value": 0.259,
+                    "calculated result": {
+                        "value": 0.031,
                         "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_32",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
                     },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "amplification score",
-                    "calculated datum": {
-                        "value": 1.23,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_33",
                     "data source aggregate document": {
                         "data source document": [
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
                                 "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_4",
+                                "data source feature": "cycle threshold result"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "cq confidence",
-                    "calculated datum": {
-                        "value": 0.968,
-                        "unit": "(unitless)"
                     }
                 },
                 {
+                    "calculated data name": "ct sd",
+                    "calculated result": {
+                        "value": 0.274,
+                        "unit": "(unitless)"
+                    },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_34",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_4",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_7",
+                                "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_8",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "amplification score",
-                    "calculated datum": {
-                        "value": 1.232,
-                        "unit": "(unitless)"
                     }
                 },
                 {
+                    "calculated data name": "delta ct se",
+                    "calculated result": {
+                        "value": 0.15,
+                        "unit": "(unitless)"
+                    },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_35",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_4",
-                                "data source feature": "cycle threshold result"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_27",
+                                "data source feature": "ct mean"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_28",
+                                "data source feature": "ct mean"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "cq confidence",
-                    "calculated datum": {
-                        "value": 0.97,
-                        "unit": "(unitless)"
                     }
                 },
                 {
+                    "calculated data name": "delta ct se",
+                    "calculated result": {
+                        "value": 0.158,
+                        "unit": "(unitless)"
+                    },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_36",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_2",
-                                "data source feature": "cycle threshold result"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_29",
+                                "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_4",
-                                "data source feature": "cycle threshold result"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_30",
+                                "data source feature": "ct mean"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "ct sd",
-                    "calculated datum": {
-                        "value": 0.031,
-                        "unit": "(unitless)"
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_37",
+                    "calculated data name": "rq min",
+                    "calculated result": {
+                        "value": 0.639,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_41",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_20",
-                                "data source feature": "ct mean"
-                            },
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_21",
-                                "data source feature": "ct mean"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_40",
+                                "data source feature": "rq"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "delta ct se",
-                    "calculated datum": {
-                        "value": 0.158,
-                        "unit": "(unitless)"
                     }
                 },
                 {
+                    "calculated data name": "rq",
+                    "calculated result": {
+                        "value": 0.8,
+                        "unit": "(unitless)"
+                    },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_40",
                     "data source aggregate document": {
                         "data source document": [
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_39",
-                                "data source feature": "rq"
+                                "data source feature": "delta delta ct"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "rq min",
-                    "calculated datum": {
-                        "value": 0.789,
-                        "unit": "(unitless)"
                     }
                 },
                 {
+                    "calculated data name": "delta delta ct",
+                    "calculated result": {
+                        "value": 0.323,
+                        "unit": "(unitless)"
+                    },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_39",
                     "data source aggregate document": {
                         "data source document": [
                             {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_37",
+                                "data source feature": "delta ct mean"
+                            },
+                            {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_38",
-                                "data source feature": "delta delta ct"
+                                "data source feature": "delta ct mean"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "rq",
-                    "calculated datum": {
-                        "value": 1.0,
-                        "unit": "(unitless)"
                     }
                 },
                 {
+                    "calculated data name": "delta ct mean",
+                    "calculated result": {
+                        "value": -2.647,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_37",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_27",
+                                "data source feature": "ct mean"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_28",
+                                "data source feature": "ct mean"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "delta ct mean",
+                    "calculated result": {
+                        "value": -2.969,
+                        "unit": "(unitless)"
+                    },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_38",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_22",
-                                "data source feature": "delta ct mean"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_29",
+                                "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_22",
-                                "data source feature": "delta ct mean"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_30",
+                                "data source feature": "ct mean"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "delta delta ct",
-                    "calculated datum": {
-                        "value": 0.0,
-                        "unit": "(unitless)"
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_41",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_39",
-                                "data source feature": "rq"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "rq max",
-                    "calculated datum": {
-                        "value": 1.267,
+                    "calculated data name": "rq min",
+                    "calculated result": {
+                        "value": 0.789,
                         "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_42",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_7",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
                     },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "amplification score",
-                    "calculated datum": {
-                        "value": 0.945,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_43",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_7",
-                                "data source feature": "cycle threshold result"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "cq confidence",
-                    "calculated datum": {
-                        "value": 0.947,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_44",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_8",
-                                "data source feature": "cycle threshold result"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_43",
+                                "data source feature": "rq"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "amplification score",
-                    "calculated datum": {
-                        "value": 0.947,
-                        "unit": "(unitless)"
                     }
                 },
                 {
+                    "calculated data name": "rq",
+                    "calculated result": {
+                        "value": 1.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_43",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_42",
+                                "data source feature": "delta delta ct"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "delta delta ct",
+                    "calculated result": {
+                        "value": 0.0,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_42",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_38",
+                                "data source feature": "delta ct mean"
+                            },
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_38",
+                                "data source feature": "delta ct mean"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "rq max",
+                    "calculated result": {
+                        "value": 1.002,
+                        "unit": "(unitless)"
+                    },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_45",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_8",
-                                "data source feature": "cycle threshold result"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_40",
+                                "data source feature": "rq"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "cq confidence",
-                    "calculated datum": {
-                        "value": 0.912,
-                        "unit": "(unitless)"
                     }
                 },
                 {
+                    "calculated data name": "rq max",
+                    "calculated result": {
+                        "value": 1.267,
+                        "unit": "(unitless)"
+                    },
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_46",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_7",
-                                "data source feature": "cycle threshold result"
-                            },
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_8",
-                                "data source feature": "cycle threshold result"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_43",
+                                "data source feature": "rq"
                             }
                         ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "ct sd",
-                    "calculated datum": {
-                        "value": 0.274,
-                        "unit": "(unitless)"
                     }
                 }
             ]
+        },
+        "data system document": {
+            "ASM file identifier": "appbio_quantstudio_example06.json",
+            "data system instance identifier": "localhost",
+            "file name": "appbio_quantstudio_example06.txt",
+            "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_example06.txt",
+            "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
+            "ASM converter version": "0.1.76",
+            "software name": "Thermo QuantStudio",
+            "software version": "1.0"
+        },
+        "device system document": {
+            "device identifier": "1",
+            "equipment serial number": "1",
+            "model number": "QuantStudio(TM) 7 Flex System"
         }
     }
 }

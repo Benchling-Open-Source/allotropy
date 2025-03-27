@@ -1,11 +1,14 @@
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.binding_affinity_analyzer.wd._2024._12.binding_affinity_analyzer import (
     BindingAffinityAnalyzerAggregateDocument,
     BindingAffinityAnalyzerDocumentItem,
+    CalculatedDataAggregateDocument,
+    CalculatedDataDocumentItem,
+    DataSourceAggregateDocument,
+    DataSourceDocumentItem,
     DataSystemDocument,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
@@ -16,44 +19,34 @@ from allotropy.allotrope.models.adm.binding_affinity_analyzer.wd._2024._12.bindi
     Model,
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
+    ReportPointAggregateDocument,
+    ReportPointDocumentItem,
     SampleDocument,
     SensorChipDocument,
+    TQuantityValueModel,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDegreeCelsius,
     TQuantityValueMicroliterPerMinute,
-    TQuantityValueMolar,
     TQuantityValueNanomolar,
     TQuantityValuePercent,
-    TQuantityValuePerSecond,
+    TQuantityValueResonanceUnits,
     TQuantityValueSecondTime,
-    TQuantityValueTODO,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
+from allotropy.allotrope.models.shared.definitions.definitions import TDatacube
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+)
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
+from allotropy.types import DictType
 
 
 class MeasurementType(Enum):
     SURFACE_PLASMON_RESONANCE = "SURFACE_PLASMON_RESONANCE"
-
-
-@dataclass(frozen=True)
-class DataSource:
-    identifier: str
-    feature: str
-
-
-@dataclass(frozen=True)
-class CalculatedDataItem:
-    identifier: str
-    name: str
-    value: float
-    unit: str
-    data_sources: list[DataSource]
-    description: str | None = None
 
 
 @dataclass(frozen=True)
@@ -81,21 +74,30 @@ class Metadata:
     compartment_temperature: float | None = None
     sensor_chip_type: str | None = None
     lot_number: str | None = None
-    sensor_chip_custom_info: dict[str, Any] | None = None
+    sensor_chip_custom_info: DictType | None = None
 
 
 @dataclass(frozen=True)
-class Measurements:
+class ReportPoint:
+    identifier: str
+    identifier_role: str
+    absolute_resonance: float
+    time_setting: float
+    relative_resonance: float | None = None
+    custom_info: DictType | None = None
+
+
+@dataclass(frozen=True)
+class Measurement:
     identifier: str
     sample_identifier: str
     device_type: str
     type_: MeasurementType
-    sensorgram_posix_path: str
     location_identifier: str | None = None
     batch_identifier: str | None = None
     well_plate_identifier: str | None = None
     sample_role_type: str | None = None
-    concentration: JsonFloat | None = None
+    concentration: float | None = None
     method_name: str | None = None
     ligand_identifier: str | None = None
     flow_cell_identifier: str | None = None
@@ -103,32 +105,31 @@ class Measurements:
     flow_rate: float | None = None
     contact_time: float | None = None
     dilution: float | None = None
-    device_control_custom_info: dict[str, Any] | None = None
-    binding_on_rate_measurement: JsonFloat | None = None
-    binding_off_rate_measurement: JsonFloat | None = None
-    equilibrium_dissociation_constant: JsonFloat | None = None
-    Rmax: JsonFloat | None = None
-    sensorgram_posix_path_identifier: str | None = None
-    rpoint_posix_path: str | None = None
-    rpoint_posix_path_identifier: str | None = None
-    sample_custom_info: dict[str, Any] | None = None
+    device_control_custom_info: DictType | None = None
+    sample_custom_info: DictType | None = None
+
+    # Sensorgram
+    sensorgram_data_cube: DataCube | None = None
+
+    # Report point
+    report_point_data: list[ReportPoint] | None = None
 
 
 @dataclass(frozen=True)
 class MeasurementGroup:
     measurement_time: str
-    measurements: list[Measurements]
+    measurements: list[Measurement]
     experiment_type: str | None = None
     analytical_method_identifier: str | None = None
     analyst: str | None = None
-    measurement_aggregate_custom_info: dict[str, Any] | None = None
+    measurement_aggregate_custom_info: DictType | None = None
 
 
 @dataclass(frozen=True)
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
-    calculated_data: list[CalculatedDataItem] | None = None
+    calculated_data: list[CalculatedDocument] | None = None
 
 
 class Mapper(SchemaMapper[Data, Model]):
@@ -160,7 +161,7 @@ class Mapper(SchemaMapper[Data, Model]):
                             )
                             for device_document_item in data.metadata.device_document
                         ]
-                        if data.metadata.device_document is not None
+                        if data.metadata.device_document
                         else None
                     ),
                 ),
@@ -168,6 +169,9 @@ class Mapper(SchemaMapper[Data, Model]):
                     self._get_technique_document(measurement_group, data.metadata)
                     for measurement_group in data.measurement_groups
                 ],
+                calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
+                    data.calculated_data
+                ),
             )
         )
 
@@ -196,7 +200,7 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_measurement_document_item(
-        self, measurement: Measurements, metadata: Metadata
+        self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocument:
         if measurement.type_ == MeasurementType.SURFACE_PLASMON_RESONANCE:
             return self._get_surface_plasmon_resonance_measurement_document(
@@ -207,26 +211,27 @@ class Mapper(SchemaMapper[Data, Model]):
             raise AllotropyParserError(msg)
 
     def _get_surface_plasmon_resonance_measurement_document(
-        self, measurements: Measurements, metadata: Metadata
+        self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocument:
         return MeasurementDocument(
-            measurement_identifier=measurements.identifier,
-            POSIX_path=measurements.sensorgram_posix_path,
-            identifier=measurements.sensorgram_posix_path_identifier,
+            measurement_identifier=measurement.identifier,
             sample_document=add_custom_information_document(
                 SampleDocument(
-                    sample_identifier=measurements.sample_identifier,
-                    sample_role_type=measurements.sample_role_type,
-                    location_identifier=measurements.location_identifier,
+                    sample_identifier=measurement.sample_identifier,
+                    sample_role_type=measurement.sample_role_type,
+                    location_identifier=measurement.location_identifier,
                     concentration=quantity_or_none(
-                        TQuantityValueNanomolar, measurements.concentration
+                        TQuantityValueNanomolar, measurement.concentration
                     ),
                 ),
-                custom_info_doc=measurements.sample_custom_info,
+                custom_info_doc=measurement.sample_custom_info,
             ),
             detection_type=metadata.detection_type,
-            method_name=measurements.method_name,
-            ligand_identifier=measurements.ligand_identifier,
+            method_name=measurement.method_name,
+            ligand_identifier=measurement.ligand_identifier,
+            sensorgram_data_cube=get_data_cube(
+                measurement.sensorgram_data_cube, TDatacube
+            ),
             sensor_chip_document=add_custom_information_document(
                 SensorChipDocument(
                     sensor_chip_identifier=metadata.sensor_chip_identifier,
@@ -240,45 +245,85 @@ class Mapper(SchemaMapper[Data, Model]):
                 device_control_document=[
                     add_custom_information_document(
                         DeviceControlDocumentItem(
-                            flow_cell_identifier=measurements.flow_cell_identifier,
-                            flow_path=measurements.flow_path,
+                            flow_cell_identifier=measurement.flow_cell_identifier,
+                            flow_path=measurement.flow_path,
                             flow_rate=quantity_or_none(
                                 TQuantityValueMicroliterPerMinute,
-                                measurements.flow_rate,
+                                measurement.flow_rate,
                             ),
                             contact_time=quantity_or_none(
-                                TQuantityValueSecondTime, measurements.contact_time
+                                TQuantityValueSecondTime, measurement.contact_time
                             ),
                             dilution_factor=quantity_or_none(
-                                TQuantityValuePercent, measurements.dilution
+                                TQuantityValuePercent, measurement.dilution
                             ),
-                            device_type=measurements.device_type,
+                            device_type=measurement.device_type,
                         ),
-                        custom_info_doc=measurements.device_control_custom_info,
+                        custom_info_doc=measurement.device_control_custom_info,
                     )
                 ]
             ),
-            processed_data_aggregate_document=ProcessedDataAggregateDocument(
-                processed_data_document=[
-                    ProcessedDataDocumentItem(
-                        POSIX_path=measurements.rpoint_posix_path,
-                        identifier=measurements.rpoint_posix_path_identifier,
-                        binding_on_rate_measurement_datum__kon_=quantity_or_none(
-                            TQuantityValueTODO, measurements.binding_on_rate_measurement
+            processed_data_aggregate_document=(
+                ProcessedDataAggregateDocument(
+                    processed_data_document=[
+                        ProcessedDataDocumentItem(
+                            report_point_aggregate_document=ReportPointAggregateDocument(
+                                report_point_document=[
+                                    add_custom_information_document(
+                                        ReportPointDocumentItem(
+                                            report_point_identifier=report_point.identifier,
+                                            identifier_role=report_point.identifier_role,
+                                            absolute_resonance=TQuantityValueResonanceUnits(
+                                                value=report_point.absolute_resonance
+                                            ),
+                                            relative_resonance=quantity_or_none(
+                                                TQuantityValueResonanceUnits,
+                                                report_point.relative_resonance,
+                                            ),
+                                            time_setting=TQuantityValueSecondTime(
+                                                value=report_point.time_setting
+                                            ),
+                                        ),
+                                        # TODO: probably this should be at the processed document level.
+                                        custom_info_doc=report_point.custom_info,
+                                    )
+                                    for report_point in measurement.report_point_data
+                                ]
+                            )
                         ),
-                        binding_off_rate_measurement_datum__koff_=quantity_or_none(
-                            TQuantityValuePerSecond,
-                            measurements.binding_off_rate_measurement,
-                        ),
-                        equilibrium_dissociation_constant__KD_=quantity_or_none(
-                            TQuantityValueMolar,
-                            measurements.equilibrium_dissociation_constant,
-                        ),
-                        maximum_binding_capacity__Rmax_=quantity_or_none(
-                            TQuantityValueTODO,
-                            measurements.Rmax,
-                        ),
-                    )
-                ]
+                    ]
+                )
+                if measurement.report_point_data
+                else None
             ),
+        )
+
+    def _get_calculated_data_aggregate_document(
+        self, calculated_data_items: list[CalculatedDocument] | None
+    ) -> CalculatedDataAggregateDocument | None:
+        if not calculated_data_items:
+            return None
+
+        return CalculatedDataAggregateDocument(
+            calculated_data_document=[
+                CalculatedDataDocumentItem(
+                    calculated_data_identifier=calculated_data_item.uuid,
+                    calculated_data_name=calculated_data_item.name,
+                    calculation_description=calculated_data_item.description,
+                    calculated_result=TQuantityValueModel(
+                        value=calculated_data_item.value,
+                        unit=assert_not_none(calculated_data_item.unit),
+                    ),
+                    data_source_aggregate_document=DataSourceAggregateDocument(
+                        data_source_document=[
+                            DataSourceDocumentItem(
+                                data_source_identifier=item.reference.uuid,
+                                data_source_feature=item.feature,
+                            )
+                            for item in calculated_data_item.data_sources
+                        ]
+                    ),
+                )
+                for calculated_data_item in calculated_data_items
+            ]
         )

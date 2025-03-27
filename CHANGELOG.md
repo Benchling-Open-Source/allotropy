@@ -5,6 +5,118 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.80] - 2025-03-19
+
+### Added
+
+- Cytiva Biacore T200 Control - Update release status to recommended (#933)
+- Cytiva Biacore T200 Control: add calculated data (#931)
+- MSD Methodical Mind - handle export formats with missing spots and spot legend (#909)
+- AppBio QuantStudio Design & Analysis - implement RT-PCR parsing (#928)
+- MSD Methodical Mind - handle oddly parsed whitespace characters in header with more robust header parsing (#929)
+- AppBio QuantStudio RT-PCR - improve logic handling splitting header and data in reader (#921)
+
+### Changed
+
+- BMG Labtech SMART Control - migrate calc data docs to use lib (#927)
+- MSD Discovery Workbench - migrate to calculated data lib (#919)
+
+## [0.1.79] - 2025-03-11
+
+### Fixed
+
+- ChemoMetec Nucleoview - add validation for cell viability field. (#918)
+
+### Changed
+
+- Benchling Thermo Fisher Scientific Chromeleon - update DeviceDocument to follow schema mapper pattern (#920)
+- AppBio QuantStudio RT-PCR - use calcdocs library (#917)
+- AppBio QuantStudio Design & Analysis - use calcdocs library (#883)
+
+## [0.1.78] - 2025-03-04
+
+### Fixed
+
+- Mabtech Apex - fix typo that prevents getting analyst field (#913)
+
+## [0.1.77] - 2025-03-04
+
+### Added
+
+- BMG Labtech SMART Control - add unread data to ASM (#881)
+- Thermo Fisher Scientific Chromeleon - initial implementation (#894)
+- Roche Cedex HiRes - add unread data to ASM (#872)
+- ChemoMetec Nucleoview - Add unread data to ASM. (#857)
+- MSD Methodical Mind - add unread data to ASM (#873)
+- Cytiva Biacore T200 Control - Add sensorgram and report point data to the ASM  (#899)
+- Benchling Waters Empower Adapter - add peak analyte amount and relative peak analyte amount (#898)
+
+### Fixed
+
+- MSD Methodical Mind - add type verification for luminescence (#900)
+- Benchling Empower - use SampleName for sample identifier (#897)
+
+## [0.1.76] - 2025-02-19
+
+### Added
+
+- Liquid Chromatography - move fraction events to measurement aggregate document (#893)
+- Liquid Chromatography - add new fields to the BENCHLING/2023/09 schema (#891)
+- Thermo Fisher Scientific SkanIt - add support for Luminescence measurement type (#887)
+- Cytiva Unicorn - add fraction events (#892)
+
+### Fixed
+
+- ChemoMetec Nucleoview - handle file with commas at the end of the line (#889)
+
+## [0.1.75] - 2025-02-11
+
+### Added
+
+- Cytiva Unicorn - add void volume and flow rate (#880)
+- Bio-Rad CFX Maestro - update release state to recommended (#879)
+- AppBio QuantStudio Design & Analysis - add back reference fields as custom data processing info (#878)
+- Internal - improve calcdoc library implementation (#874)
+- Agilent Gen5 - Add unread data to ASM (#870)
+- Bio-Rad CFX Maestro - Add unread data to ASM (#850)
+- Luminex xPONENT - add descriptive error for Minimum bead count setting (#865)
+
+### Fixed
+
+- Plate Reader REC 2024/06 - add custom data to fluorescence measurement type (#886)
+- Luminex xPONENT - map settings from different source, add error document for Nan values (#868)
+- Agilent TapeStation Analysis - add missing calculated data from RNA tag (#866)
+- Luminex xPONENT - do not throw an error if an optional value is missing in the input file (#867)
+- Unchained Labs Lunatic - handle different cases for column headers (#863)
+
+## [0.1.74] - 2025-01-28
+
+### Added
+
+- AppBio QuantStudio RT-PCR - add back reference fields as custom data processing info (#860)
+
+## [0.1.73] - 2025-01-28
+
+### Added
+
+- Internal - add initial json-to-csv library (#767)
+- Thermo Fisher Qubit Flex - Add unread data to asm (#855)
+- Internal - implement special views for Quantstudio design analysis in calcdoc (#858)
+- Internal - implement calculated data documents library (#838)
+- Bio-Rad CFX Maestro - Use qpcr rec/2024/09 schema mapper (#837)
+- AppBio QuantStudio Design & Analysis - Use qpcr rec/2024/09 schema mapper (#836)
+- Thermo fisher Nanodrop One - Add unread data to customer information document (#852)
+- AppBio QuantStudio RT-PCR - Use qpcr rec/2024/09 schema mapper (#856)
+- Thermo Fisher Qubit4 - Add unread data to asm. (#854)
+
+## [0.1.72] - 2025-01-21
+
+### Added
+
+- BMG Labtech SMART Control - initial implementation (#831)
+- Cytiva Unicorn - add start time to device control doc (#851)
+- Cytiva Unicorn - add peaks (#849)
+
 ## [0.1.71] - 2025-01-14
 
 ### Added

@@ -29,8 +29,6 @@ import pandas as pd
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
-    CalculatedDataItem,
-    DataSource,
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -41,6 +39,11 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.perkin_elmer_envision import constants
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+    DataSource,
+    Referenceable,
+)
 from allotropy.parsers.utils.pandas import (
     df_to_series_data,
     map_rows,
@@ -783,17 +786,17 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
 
 def create_calculated_data(
     plate_list: PlateList, read_type: ReadType
-) -> list[CalculatedDataItem]:
+) -> list[CalculatedDocument]:
     return [
-        CalculatedDataItem(
-            identifier=calculated_result.uuid,
+        CalculatedDocument(
+            uuid=calculated_result.uuid,
             name=calculated_plate.plate_info.name,
             description=calculated_plate.plate_info.formula,
             value=calculated_result.value,
             unit=UNITLESS,
             data_sources=[
                 DataSource(
-                    identifier=source_result.uuid,
+                    reference=Referenceable(source_result.uuid),
                     feature=read_type.value,
                 )
                 for source_result in source_results

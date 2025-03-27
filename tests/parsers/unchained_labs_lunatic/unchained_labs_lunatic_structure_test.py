@@ -4,9 +4,6 @@ import re
 import pandas as pd
 import pytest
 
-from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
-    CalculatedDataItem,
-)
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.unchained_labs_lunatic.constants import (
@@ -23,6 +20,9 @@ from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_structure i
     _create_measurement_group,
     create_measurement_groups,
     create_metadata,
+)
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
 )
 from allotropy.parsers.utils.pandas import SeriesData
 
@@ -45,9 +45,9 @@ def test__create_measurement(
     wavelength_column = f"A{wavelength}"
     well_plate_data = {
         wavelength_column: absorbance_value,
-        "Sample name": sample_identifier,
-        "Plate ID": well_plate_identifier,
-        "Plate Position": location_identifier,
+        "sample name": sample_identifier,
+        "plate id": well_plate_identifier,
+        "plate position": location_identifier,
     }
     header = SeriesData(pd.Series())
     measurement = _create_measurement(
@@ -65,14 +65,14 @@ def test__create_measurement_with_no_wavelength_column() -> None:
     well_plate_data = SeriesData(
         pd.Series(
             {
-                "Sample name": "dummy name",
-                "Plate ID": "some plate",
-                "Plate Position": "B3",
+                "sample name": "dummy name",
+                "plate id": "some plate",
+                "plate position": "B3",
             }
         )
     )
     header = SeriesData(pd.Series())
-    wavelength_column = "A250"
+    wavelength_column = "a250"
     msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelength_column)
     with pytest.raises(AllotropeConversionError, match=msg):
         _create_measurement(well_plate_data, header, wavelength_column, [])
@@ -80,45 +80,45 @@ def test__create_measurement_with_no_wavelength_column() -> None:
 
 def test__create_measurement_with_incorrect_wavelength_column_format() -> None:
     msg = INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG
-    well_plate_data = SeriesData(pd.Series({"Sample name": "dummy name"}))
+    well_plate_data = SeriesData(pd.Series({"sample name": "dummy name"}))
     header = SeriesData(pd.Series())
     with pytest.raises(AllotropeConversionError, match=re.escape(msg)):
-        _create_measurement(well_plate_data, header, "Sample name", [])
+        _create_measurement(well_plate_data, header, "sample name", [])
 
 
 def test__get_calculated_data_from_measurement_for_unknown_wavelength() -> None:
-    calculated_data: list[CalculatedDataItem] = []
+    calculated_data: list[CalculatedDocument] = []
     well_plate_data = {
-        "Sample name": "dummy name",
-        "Plate ID": "some plate",
-        "Plate Position": "B3",
-        "A240": 0.5,
-        "A260": 0,
-        "A260 Concentration (ng/ul)": 4.5,
-        "Background (A260)": 0.523,
+        "sample name": "dummy name",
+        "plate id": "some plate",
+        "plate position": "B3",
+        "a240": 0.5,
+        "a260": 0,
+        "a260 concentration (ng/ul)": 4.5,
+        "background (a260)": 0.523,
     }
     header = SeriesData(pd.Series())
     _create_measurement(
-        SeriesData(pd.Series(well_plate_data)), header, "A240", calculated_data
+        SeriesData(pd.Series(well_plate_data)), header, "a240", calculated_data
     )
 
     assert not calculated_data
 
 
 def test__get_calculated_data_from_measurement_for_A260() -> None:  # noqa: N802
-    calculated_data: list[CalculatedDataItem] = []
+    calculated_data: list[CalculatedDocument] = []
     well_plate_data = {
-        "Sample name": "dummy name",
-        "Plate ID": "some plate",
-        "Plate Position": "B3",
-        "A260": 34.5,
-        "A260 Concentration (ng/ul)": 4.5,
-        "Background (A260)": 0.523,
-        "A260/A230": 2.5,
-        "A260/A280": 24.9,
+        "sample name": "dummy name",
+        "plate id": "some plate",
+        "plate position": "B3",
+        "a260": 34.5,
+        "a260 concentration (ng/ul)": 4.5,
+        "background (a260)": 0.523,
+        "a260/a230": 2.5,
+        "a260/a280": 24.9,
     }
     header = SeriesData(pd.Series())
-    wavelength = "A260"
+    wavelength = "a260"
     _create_measurement(
         SeriesData(pd.Series(well_plate_data)), header, wavelength, calculated_data
     )
@@ -136,15 +136,15 @@ def test_create_well_plate() -> None:
     date = "17/10/2016"
     time = "7:19:18"
     plate_data = {
-        "A250": 23.45,
-        "Sample name": "dummy name",
-        "Plate Position": "some plate",
-        "Application": analytical_method_identifier,
-        "Date": date,
-        "Time": time,
+        "a250": 23.45,
+        "sample name": "dummy name",
+        "plate position": "some plate",
+        "application": analytical_method_identifier,
+        "date": date,
+        "time": time,
     }
     well_plate = _create_measurement_group(
-        SeriesData(pd.Series(plate_data)), ["A250"], [], SeriesData(pd.Series())
+        SeriesData(pd.Series(plate_data)), ["a250"], [], SeriesData(pd.Series())
     )
     assert well_plate.analytical_method_identifier == analytical_method_identifier
     assert well_plate.measurement_time == f"{date} {time}"
@@ -153,15 +153,15 @@ def test_create_well_plate() -> None:
 
 def test_create_well_plate_with_two_measurements() -> None:
     plate_data = {
-        "A452": 23.45,
-        "A280": 23.45,
-        "Sample name": "dummy name",
-        "Plate Position": "some plate",
-        "Date": "17/10/2016",
-        "Time": "7:19:18",
+        "a452": 23.45,
+        "a280": 23.45,
+        "sample name": "dummy name",
+        "plate position": "some plate",
+        "date": "17/10/2016",
+        "time": "7:19:18",
     }
     well_plate = _create_measurement_group(
-        SeriesData(pd.Series(plate_data)), ["A452", "A280"], [], SeriesData(pd.Series())
+        SeriesData(pd.Series(plate_data)), ["a452", "a280"], [], SeriesData(pd.Series())
     )
 
     assert len(well_plate.measurements) == 2
@@ -174,14 +174,14 @@ def test_create_well_plate_use_datetime_from_data_over_header() -> None:
     plate_data = SeriesData(
         pd.Series(
             {
-                "Sample name": "dummy name",
-                "Plate Position": "some plate",
-                "Date": date,
-                "Time": time,
+                "sample name": "dummy name",
+                "plate position": "some plate",
+                "date": date,
+                "time": time,
             }
         )
     )
-    header = SeriesData(pd.Series({"Date": header_datetime}))
+    header = SeriesData(pd.Series({"date": header_datetime}))
     well_plate = _create_measurement_group(plate_data, [], [], header)
 
     assert well_plate.measurement_time == f"{date} {time}"
@@ -191,14 +191,14 @@ def test_create_well_plate_with_date_from_header() -> None:
     plate_data = SeriesData(
         pd.Series(
             {
-                "Sample name": "dummy name",
-                "Plate Position": "some plate",
-                "Time": "7:19:18",
+                "sample name": "dummy name",
+                "plate position": "some plate",
+                "time": "7:19:18",
             }
         )
     )
     header_datetime = "01/08/2024 10:15:59"
-    header = SeriesData(pd.Series({"Date": header_datetime}))
+    header = SeriesData(pd.Series({"date": header_datetime}))
     well_plate = _create_measurement_group(plate_data, [], [], header)
 
     assert well_plate.measurement_time == "01/08/2024 10:15:59"
@@ -208,9 +208,9 @@ def test_create_well_plate_without_date_column_then_raise() -> None:
     plate_data = SeriesData(
         pd.Series(
             {
-                "Sample name": "dummy name",
-                "Plate Position": "some plate",
-                "Time": "7:19:18",
+                "sample name": "dummy name",
+                "plate position": "some plate",
+                "time": "7:19:18",
             }
         )
     )

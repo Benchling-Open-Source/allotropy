@@ -5,6 +5,7 @@ from collections.abc import Iterator, Mapping
 from contextlib import contextmanager
 import json
 from pathlib import Path, PurePosixPath, PureWindowsPath
+import re
 import shutil
 import tempfile
 from typing import Any
@@ -38,6 +39,7 @@ def _replace_asm_converter_version(allotrope_dict: DictType) -> DictType:
 # Currently, only "measurement identifier" and "calculated data document" identifier should be unique.
 # However, it is better to have positive exceptions, so we don't accidentally miss a newly added unique identifier.
 NON_UNIQUE_IDENTIFIERS = {
+    "acquisition method identifier",
     "analytical method identifier",
     "assay bead identifier",
     "batch identifier",
@@ -63,6 +65,14 @@ NON_UNIQUE_IDENTIFIERS = {
     "destination well plate identifier",
     "well identifier",
     "assay identifier",
+    "container identifier",
+    "identifier role",
+    "data region identifier",
+    "x coordinate dimension identifier",
+    "y coordinate dimension identifier",
+    "parent data region identifier",
+    "parent population identifier",
+    "dimension identifier",
 }
 
 
@@ -193,11 +203,22 @@ def from_file(
         return allotrope_from_file(str(test_file), vendor, encoding=encoding)
 
 
+def _oneline_number_lists(contents: str) -> str:
+    contents = re.sub(r"\[\s+(\d+\.?\d*)\s+\]", r"[\1]", contents)
+    contents = re.sub(r"\[\s+(\d+\.?\d*),", r"[\1,", contents)
+    contents = re.sub(r"\s+(\d+\.?\d*),", r" \1,", contents)
+    return re.sub(r"\s+(\d+\.?\d*)\s+\]", r" \1]", contents)
+
+
 def _write_actual_to_expected(
     allotrope_dict: DictType, expected_file: Path | str
 ) -> None:
     with tempfile.NamedTemporaryFile(mode="w+", encoding="UTF-8", delete=False) as tmp:
-        json.dump(allotrope_dict, tmp, indent=4, ensure_ascii=False)
+        tmp.write(
+            _oneline_number_lists(
+                json.dumps(allotrope_dict, indent=4, ensure_ascii=False)
+            )
+        )
         tmp.write("\n")
         tmp.seek(0)
         # Get path to temp file using Pathlib to ensure Windows symbolic link compatibility.

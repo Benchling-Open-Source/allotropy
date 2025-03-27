@@ -159,6 +159,26 @@
       }
     ]
   },
+  "tQuantityValueDalton": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/Dalton"
+      }
+    ]
+  },
+  "tNullableQuantityValueDalton": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/Dalton"
+      }
+    ]
+  },
   "tQuantityValueDegreeCelsius": {
     "allOf": [
       {
@@ -236,6 +256,26 @@
       },
       {
         "$ref": "#/$defs/KiloDalton"
+      }
+    ]
+  },
+  "tQuantityValueKiloPascal": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/KiloPascal"
+      }
+    ]
+  },
+  "tNullableQuantityValueKiloPascal": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/KiloPascal"
       }
     ]
   },
@@ -516,6 +556,26 @@
       },
       {
         "$ref": "#/$defs/MilliliterPerLiter"
+      }
+    ]
+  },
+  "tQuantityValueMilliliterPerMinute": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/MilliliterPerMinute"
+      }
+    ]
+  },
+  "tNullableQuantityValueMilliliterPerMinute": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/MilliliterPerMinute"
       }
     ]
   },
@@ -1116,6 +1176,26 @@
       },
       {
         "$ref": "#/$defs/RelativeLightUnitTimesSecond"
+      }
+    ]
+  },
+  "tQuantityValueResonanceUnits": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/ResonanceUnits"
+      }
+    ]
+  },
+  "tNullableQuantityValueResonanceUnits": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/ResonanceUnits"
       }
     ]
   },

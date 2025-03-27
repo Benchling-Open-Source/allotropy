@@ -74,6 +74,7 @@ class AbsorbanceMeasurement(UnicornMeasurement):
             device_control_docs=[
                 DeviceControlDoc(
                     device_type=DEVICE_TYPE,
+                    start_time=static_docs.start_time,
                 )
             ],
             peaks=cls.get_peaks(handler),
@@ -156,6 +157,7 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
                 end=peak.get_sub_float_or_none("EndPeakRetention"),
                 end_unit=PEAK_END_UNIT,
                 height=peak.get_sub_float_or_none("Height"),
+                height_unit="mAu",
                 written_name=peak.get_sub_text_or_none("Name"),
                 area=peak.get_sub_float_or_none("Area"),
                 area_unit=PEAK_AREA_UNIT,

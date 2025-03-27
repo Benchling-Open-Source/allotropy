@@ -3,12 +3,14 @@ from pathlib import Path
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
+    NaN,
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
-from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import (
+from allotropy.allotrope.schema_mappers.adm.pcr.rec._2024._09.qpcr import (
     CalculatedData,
     CalculatedDataItem,
     DataSource,
+    Error,
     Measurement,
     MeasurementGroup,
     Metadata,
@@ -26,11 +28,10 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Well,
     WellItem,
 )
-from allotropy.parsers.constants import get_well_count_by_well_ids
+from allotropy.parsers.constants import get_well_count_by_well_ids, NEGATIVE_ZERO
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
 )
-from allotropy.parsers.utils.values import try_int_or_nan
 
 
 def _create_processed_data_cubes(
@@ -38,7 +39,7 @@ def _create_processed_data_cubes(
 ) -> tuple[DataCube | None, DataCube | None]:
     if not amplification_data:
         return None, None
-    cycle_count = DataCubeComponent(FieldComponentDatatype.integer, "cycle count", "#")
+    cycle_count = DataCubeComponent(FieldComponentDatatype.double, "cycle count", "#")
     return (
         DataCube(
             label="normalized reporter",
@@ -46,7 +47,7 @@ def _create_processed_data_cubes(
             structure_measures=[
                 DataCubeComponent(
                     FieldComponentDatatype.double,
-                    "normalized report result",
+                    "normalized reporter result",
                     UNITLESS,
                 )
             ],
@@ -70,7 +71,9 @@ def _create_processed_data_cubes(
 
 
 def _create_processed_data(
-    amplification_data: AmplificationData | None, result: Result
+    amplification_data: AmplificationData | None,
+    result: Result,
+    result_metadata: ResultMetadata,
 ) -> ProcessedData:
     (
         normalized_reporter_data_cube,
@@ -89,6 +92,10 @@ def _create_processed_data(
         baseline_corrected_reporter_result=result.baseline_corrected_reporter_result,
         normalized_reporter_data_cube=normalized_reporter_data_cube,
         baseline_corrected_reporter_data_cube=baseline_corrected_reporter_data_cube,
+        data_processing_custom_info={
+            "reference dna description": result_metadata.reference_dna_description,
+            "reference sample description": result_metadata.reference_sample_description,
+        },
         custom_info=result.extra_data,
     )
 
@@ -101,7 +108,7 @@ def _create_multicomponent_data_cubes(
     if not multicomponent_data:
         return None, None
 
-    cycle_count = DataCubeComponent(FieldComponentDatatype.integer, "cycle count", "#")
+    cycle_count = DataCubeComponent(FieldComponentDatatype.double, "cycle count", "#")
     reporter_dye_data_cube = None
     if reporter_dye_setting is not None:
         reporter_dye_data_cube = DataCube(
@@ -110,7 +117,7 @@ def _create_multicomponent_data_cubes(
             structure_measures=[
                 DataCubeComponent(
                     FieldComponentDatatype.double,
-                    "reporter dye fluorescence",
+                    "fluorescence",
                     "RFU",
                 )
             ],
@@ -125,7 +132,7 @@ def _create_multicomponent_data_cubes(
             structure_measures=[
                 DataCubeComponent(
                     FieldComponentDatatype.double,
-                    "passive reference dye fluorescence",
+                    "fluorescence",
                     "RFU",
                 )
             ],
@@ -143,13 +150,13 @@ def _create_melt_curve_data_cube(
     return DataCube(
         label="melting curve",
         structure_dimensions=[
-            DataCubeComponent(FieldComponentDatatype.double, "temperature", "degrees C")
+            DataCubeComponent(FieldComponentDatatype.double, "temperature", "degC")
         ],
         structure_measures=[
             DataCubeComponent(
                 FieldComponentDatatype.double,
-                "reporter dye fluorescence",
-                UNITLESS,
+                "fluorescence",
+                "RFU",
             ),
             DataCubeComponent(FieldComponentDatatype.double, "slope", UNITLESS),
         ],
@@ -168,6 +175,7 @@ def _create_measurement(
     melt_curve_raw_data: MeltCurveRawData | None,
     amplification_data: AmplificationData | None,
     result: Result | None,
+    result_metadata: ResultMetadata,
 ) -> Measurement | None:
     if not result:
         return None
@@ -189,16 +197,21 @@ def _create_measurement(
         sample_identifier=well_item.sample_identifier,
         group_identifier=well_item.group_identifier,
         sample_role_type=well_item.sample_role_type,
+        location_identifier=well_item.location_identifier,
         well_location_identifier=well_item.well_location_identifier,
         well_plate_identifier=header.barcode,
-        total_cycle_number_setting=amplification_data.total_cycle_number_setting
-        if amplification_data
-        else None,
+        total_cycle_number_setting=(
+            amplification_data.total_cycle_number_setting
+            if amplification_data
+            else None
+        ),
         pcr_detection_chemistry=header.pcr_detection_chemistry,
         reporter_dye_setting=well_item.reporter_dye_setting,
         quencher_dye_setting=well_item.quencher_dye_setting,
         passive_reference_dye_setting=header.passive_reference_dye_setting,
-        processed_data=_create_processed_data(amplification_data, result),
+        processed_data=_create_processed_data(
+            amplification_data, result, result_metadata
+        ),
         sample_custom_info=well_item.extra_data,
         reporter_dye_data_cube=reporter_dye_data_cube,
         passive_reference_dye_data_cube=passive_reference_dye_data_cube,
@@ -207,7 +220,9 @@ def _create_measurement(
 
 
 def create_metadata(header: Header, file_path: str) -> Metadata:
+    path = Path(file_path)
     return Metadata(
+        asm_file_identifier=path.with_suffix(".json").name,
         device_identifier=header.device_identifier,
         device_type=constants.DEVICE_TYPE,
         device_serial_number=header.device_serial_number,
@@ -215,21 +230,18 @@ def create_metadata(header: Header, file_path: str) -> Metadata:
         software_name=constants.SOFTWARE_NAME,
         software_version=constants.SOFTWARE_VERSION,
         data_system_instance_identifier=constants.DATA_SYSTEM_INSTANCE_IDENTIFIER,
-        file_name=Path(file_path).name,
+        file_name=path.name,
         unc_path=file_path,
         measurement_method_identifier=header.measurement_method_identifier,
-        experiment_type=header.experiment_type,
+        experiment_type=header.experiment_type.value,
         container_type=constants.CONTAINER_TYPE,
     )
 
 
 def create_calculated_data(
     calculated_data_documents: Iterable[CalculatedDocument],
-    results_metadata: ResultMetadata,
 ) -> CalculatedData:
     return CalculatedData(
-        reference_sample_description=results_metadata.reference_sample_description,
-        reference_dna_description=results_metadata.reference_dna_description,
         items=[
             CalculatedDataItem(
                 identifier=cal_doc.uuid,
@@ -272,6 +284,7 @@ def _create_measurement_group(
     results_data: dict[int, dict[str, Result]],
     melt_data: dict[int, MeltCurveRawData],
     plate_well_count: int | None,
+    result_metadata: ResultMetadata,
 ) -> MeasurementGroup | None:
     measurements = [
         _create_measurement(
@@ -281,6 +294,7 @@ def _create_measurement_group(
             melt_data.get(well.identifier),
             get_well_item_amp_data(well_item, amp_data),
             get_well_item_results(well_item, results_data),
+            result_metadata,
         )
         for well_item in well.items
         if get_well_item_results(well_item, results_data)
@@ -288,7 +302,13 @@ def _create_measurement_group(
     group = MeasurementGroup(
         analyst=header.analyst,
         experimental_data_identifier=header.experimental_data_identifier,
-        plate_well_count=try_int_or_nan(plate_well_count),
+        plate_well_count=plate_well_count,
+        well_volume=header.well_volume,
+        error_document=(
+            [Error(error=NaN.value, feature="well volume")]
+            if header.well_volume == NEGATIVE_ZERO
+            else []
+        ),
         measurements=[m for m in measurements if m is not None],
     )
     return group if group.measurements else None
@@ -318,6 +338,7 @@ def create_measurement_groups(
     multi_data: dict[int, MulticomponentData],
     results_data: dict[int, dict[str, Result]],
     melt_data: dict[int, MeltCurveRawData],
+    result_metadata: ResultMetadata,
 ) -> list[MeasurementGroup]:
 
     plate_well_count = _get_plate_well_count(header, wells)
@@ -330,6 +351,7 @@ def create_measurement_groups(
             results_data,
             melt_data,
             plate_well_count,
+            result_metadata,
         )
         for well in wells
     ]

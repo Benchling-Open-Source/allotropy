@@ -50,6 +50,11 @@ class CubicMillimeter(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class Dalton(HasUnit):
+    unit: str = "Da"
+
+
+@dataclass(frozen=True, kw_only=True)
 class DegreeCelsius(HasUnit):
     unit: str = "degC"
 
@@ -67,6 +72,11 @@ class Hertz(HasUnit):
 @dataclass(frozen=True, kw_only=True)
 class KiloDalton(HasUnit):
     unit: str = "kDa"
+
+
+@dataclass(frozen=True, kw_only=True)
+class KiloPascal(HasUnit):
+    unit: str = "kPa"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -137,6 +147,11 @@ class Milliliter(HasUnit):
 @dataclass(frozen=True, kw_only=True)
 class MilliliterPerLiter(HasUnit):
     unit: str = "mL/L"
+
+
+@dataclass(frozen=True, kw_only=True)
+class MilliliterPerMinute(HasUnit):
+    unit: str = "mL/min"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -287,6 +302,11 @@ class RelativeLightUnitTimesMilliliter(HasUnit):
 @dataclass(frozen=True, kw_only=True)
 class RelativeLightUnitTimesSecond(HasUnit):
     unit: str = "RLU.s"
+
+
+@dataclass(frozen=True, kw_only=True)
+class ResonanceUnits(HasUnit):
+    unit: str = "RU"
 
 
 @dataclass(frozen=True, kw_only=True)

@@ -41,6 +41,9 @@ def test_create_header_data_no_well_plate_id_in_filename() -> None:
         file_name="dummy_filename.txt",
         unc_path="users/files/dummy_filename.txt",
         plate_well_count=96,
+        additional_data={
+            "Reading Type": "Manual",
+        },
     )
 
 

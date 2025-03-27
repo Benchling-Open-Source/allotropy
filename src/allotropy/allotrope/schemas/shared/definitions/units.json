@@ -95,6 +95,18 @@
       "unit"
     ]
   },
+  "Dalton": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "Da",
+        "$asm.unit-iri": "http://qudt.org/vocab/unit#Dalton"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "DegreeCelsius": {
     "properties": {
       "unit": {
@@ -137,6 +149,18 @@
         "type": "string",
         "const": "kDa",
         "$asm.unit-iri": "TODO"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
+  "KiloPascal": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "kPa",
+        "$asm.unit-iri": "http://qudt.org/vocab/unit#KiloPascal"
       }
     },
     "required": [
@@ -305,6 +329,18 @@
         "type": "string",
         "const": "mL/L",
         "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliliterPerLiter"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
+  "MilliliterPerMinute": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "mL/min",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliliterPerMinute"
       }
     },
     "required": [
@@ -665,6 +701,18 @@
         "type": "string",
         "const": "RLU.s",
         "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#RelativeLightUnitTimesSecond"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
+  "ResonanceUnits": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "RU",
+        "$asm.unit-iri": "http://qudt.org/vocab/unit#ResonanceUnits"
       }
     },
     "required": [

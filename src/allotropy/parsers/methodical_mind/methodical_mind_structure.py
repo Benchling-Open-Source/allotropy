@@ -3,6 +3,7 @@ from __future__ import annotations
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 import pandas as pd
 
@@ -44,6 +45,9 @@ class PlateData:
     analyst: str | None
     well_plate_id: str
     well_data: list[WellData]
+    measurement_custom_info: dict[str, Any]
+    sample_custom_info: dict[str, Any]
+    device_custom_info: dict[str, Any]
 
     @staticmethod
     def create(
@@ -54,10 +58,11 @@ class PlateData:
         unique_well_labels = [
             label for label in data.index.unique() if label in WELL_LABELS
         ]
+        spot_id = header.get(int, "SpotID")
         well_data = [
             WellData.create(
-                luminescence=value,
-                location_id=str(row_index + 1),
+                luminescence=float(value),
+                location_id=str(spot_id or row_index + 1),
                 well_plate_id=well_plate_id,
                 well_location_id=f"{row_name}{col_name}",
             )
@@ -66,6 +71,9 @@ class PlateData:
             for row_index, (_, row) in enumerate(data.loc[[row_name]].iterrows())
             for col_name, value in row.items()
             if row_name in WELL_LABELS
+            # Only include if the measurement is not an empty string, this skips blank entries for non-visible
+            # measurements.
+            if str(value).strip()
         ]
         return PlateData(
             measurement_time=header[str, "Read Time"],
@@ -74,19 +82,33 @@ class PlateData:
             # The well count is (# of unique row labels) * (# of columns)
             plate_well_count=len(unique_well_labels) * data.shape[1],
             well_data=well_data,
+            sample_custom_info=header.get_custom_keys(
+                {"Barcode2", "Barcode3", "Plate #", "Stack ID"}
+            ),
+            device_custom_info=header.get_custom_keys(
+                {"Orient", "Spots Per Well", "Det Param"}
+            ),
+            measurement_custom_info=header.get_unread(
+                # fields already mapped
+                skip={
+                    "Type",
+                    "Wells Per Col",
+                    "Wells Per Row",
+                }
+            ),
         )
 
 
 @dataclass(frozen=True)
 class WellData:
-    luminescence: int
+    luminescence: float
     location_identifier: str
     sample_identifier: str
     well_location_identifier: str
 
     @staticmethod
     def create(
-        luminescence: int, location_id: str, well_plate_id: str, well_location_id: str
+        luminescence: float, location_id: str, well_plate_id: str, well_location_id: str
     ) -> WellData:
         sample_id = well_plate_id + "_" + well_location_id
         return WellData(
@@ -114,10 +136,15 @@ def create_metadata(header: Header, file_name: str) -> Metadata:
 
 def create_measurement_groups(plates: list[PlateData]) -> list[MeasurementGroup]:
     plates_data = []
+    plates_by_id: defaultdict[str, list[PlateData]] = defaultdict(list)
     for plate in plates:
-        grouped_wells = defaultdict(list)
-        for well in plate.well_data:
-            grouped_wells[well.well_location_identifier].append(well)
+        plates_by_id[plate.well_plate_id].append(plate)
+
+    for plates in plates_by_id.values():
+        grouped_wells: defaultdict[str, list[WellData]] = defaultdict(list)
+        for plate in plates:
+            for well in plate.well_data:
+                grouped_wells[well.well_location_identifier].append(well)
         plates_data.extend(
             [
                 MeasurementGroup(
@@ -135,6 +162,9 @@ def create_measurement_groups(plates: list[PlateData]) -> list[MeasurementGroup]
                             well_plate_identifier=plate.well_plate_id,
                             device_type=constants.LUMINESCENCE_DETECTOR,
                             detection_type=constants.LUMINESCENCE,
+                            measurement_custom_info=plate.measurement_custom_info,
+                            sample_custom_info=plate.sample_custom_info,
+                            device_control_custom_info=plate.device_custom_info,
                         )
                         for well in well_group
                     ],

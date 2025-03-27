@@ -5,8 +5,6 @@ from pathlib import Path
 import pandas as pd
 
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
-    CalculatedDataItem,
-    DataSource,
     ErrorDocument,
     Measurement,
     MeasurementGroup,
@@ -30,6 +28,11 @@ from allotropy.parsers.unchained_labs_lunatic.constants import (
     SOFTWARE_NAME,
     WAVELENGTH_COLUMNS_RE,
 )
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+    DataSource,
+    Referenceable,
+)
 from allotropy.parsers.utils.pandas import (
     map_rows,
     SeriesData,
@@ -44,7 +47,7 @@ def _create_measurement(
     well_plate_data: SeriesData,
     header: SeriesData,
     wavelength_column: str,
-    calculated_data: list[CalculatedDataItem],
+    calculated_data: list[CalculatedDocument],
 ) -> Measurement:
     if wavelength_column not in well_plate_data.series:
         msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelength_column)
@@ -59,11 +62,11 @@ def _create_measurement(
         wavelength = wavelength_match.groups()[0]
         path_length = None
 
-    background_wavelength = well_plate_data.get(float, "Background Wvl. (nm)")
+    background_wavelength = well_plate_data.get(float, "background wvl. (nm)")
     background_absorbance = None
     if background_wavelength is not None:
         background_absorbance = well_plate_data.get(
-            float, f"Background (A{int(background_wavelength)})"
+            float, f"background (a{int(background_wavelength)})"
         )
 
     measurement_identifier = random_uuid_str()
@@ -83,7 +86,7 @@ def _create_measurement(
             )
         )
 
-    concentration_factor = well_plate_data.get(float, "Concentration factor (ng/ul)")
+    concentration_factor = well_plate_data.get(float, "concentration factor (ng/ul)")
     return Measurement(
         type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
         device_type=DEVICE_TYPE,
@@ -95,17 +98,17 @@ def _create_measurement(
             "electronic_absorbance_reference_absorbance": background_absorbance
         },
         absorbance=absorbance if absorbance is not None else NEGATIVE_ZERO,
-        sample_identifier=well_plate_data[str, "Sample name"],
-        location_identifier=well_plate_data[str, "Plate Position"],
-        well_plate_identifier=well_plate_data.get(str, "Plate ID"),
-        batch_identifier=well_plate_data.get(str, "Sample Group"),
-        firmware_version=header.get(str, "Client version"),
+        sample_identifier=well_plate_data[str, "sample name"],
+        location_identifier=well_plate_data[str, "plate position"],
+        well_plate_identifier=well_plate_data.get(str, "plate id"),
+        batch_identifier=well_plate_data.get(str, "sample group"),
+        firmware_version=header.get(str, "client version"),
         sample_custom_info={
             "path length": float(path_length) if path_length is not None else None,
         },
         device_control_custom_info={
-            "path length mode": well_plate_data.get(str, "Path length mode"),
-            "pump": well_plate_data.get(str, "Pump"),
+            "path length mode": well_plate_data.get(str, "path length mode"),
+            "pump": well_plate_data.get(str, "pump"),
         },
         error_document=error_documents,
         processed_data_document=ProcessedDataDocument(
@@ -121,7 +124,7 @@ def _get_calculated_data(
     wavelength_column: str,
     measurement_identifier: str,
     error_documents: list[ErrorDocument],
-) -> list[CalculatedDataItem]:
+) -> list[CalculatedDocument]:
     calculated_data = []
     for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
         value = well_plate_data.get(float, item["column"])
@@ -135,14 +138,14 @@ def _get_calculated_data(
             continue
 
         calculated_data.append(
-            CalculatedDataItem(
-                identifier=random_uuid_str(),
+            CalculatedDocument(
+                uuid=random_uuid_str(),
                 name=item["name"],
                 value=value,
                 unit=item["unit"],
                 data_sources=[
                     DataSource(
-                        identifier=measurement_identifier,
+                        reference=Referenceable(uuid=measurement_identifier),
                         feature=item["feature"],
                     )
                 ],
@@ -154,21 +157,21 @@ def _get_calculated_data(
 def _create_measurement_group(
     data: SeriesData,
     wavelength_columns: list[str],
-    calculated_data: list[CalculatedDataItem],
+    calculated_data: list[CalculatedDocument],
     header: SeriesData,
 ) -> MeasurementGroup:
-    timestamp = header.get(str, "Date")
+    timestamp = header.get(str, "date")
     # Support timestamp from metadata section, but overide with columns in data if specified.
-    date = data.get(str, "Date")
-    time = data.get(str, "Time")
+    date = data.get(str, "date")
+    time = data.get(str, "time")
     if date and time:
         timestamp = f"{date} {time}"
 
     return MeasurementGroup(
         measurement_time=assert_not_none(timestamp, msg=NO_DATE_OR_TIME_ERROR_MSG),
-        analyst=header.get(str, "Test performed by"),
-        analytical_method_identifier=data.get(str, "Application"),
-        experimental_data_identifier=header.get(str, "Experiment name"),
+        analyst=header.get(str, "test performed by"),
+        analytical_method_identifier=data.get(str, "application"),
+        experimental_data_identifier=header.get(str, "experiment name"),
         plate_well_count=96,
         measurements=[
             _create_measurement(data, header, wavelength_column, calculated_data)
@@ -179,8 +182,8 @@ def _create_measurement_group(
 
 def create_metadata(header: SeriesData, file_path: str) -> Metadata:
     asm_file_identifier = Path(file_path).with_suffix(".json")
-    device_identifier = header.get(str, "Instrument ID") or header.get(
-        str, "Instrument"
+    device_identifier = header.get(str, "instrument id") or header.get(
+        str, "instrument"
     )
     return Metadata(
         model_number=MODEL_NUMBER,
@@ -189,7 +192,7 @@ def create_metadata(header: SeriesData, file_path: str) -> Metadata:
             device_identifier, msg=NO_DEVICE_IDENTIFIER_ERROR_MSG
         ),
         software_name=SOFTWARE_NAME,
-        software_version=header.get(str, "Software version"),
+        software_version=header.get(str, "software version"),
         file_name=Path(file_path).name,
         unc_path=file_path,
         asm_file_identifier=asm_file_identifier.name,
@@ -199,7 +202,7 @@ def create_metadata(header: SeriesData, file_path: str) -> Metadata:
 
 def create_measurement_groups(
     header: SeriesData, data: pd.DataFrame
-) -> tuple[list[MeasurementGroup], list[CalculatedDataItem]]:
+) -> tuple[list[MeasurementGroup], list[CalculatedDocument]]:
     wavelength_columns = list(filter(WAVELENGTH_COLUMNS_RE.match, data.columns))
     if not wavelength_columns:
         raise AllotropeConversionError(NO_WAVELENGTH_COLUMN_ERROR_MSG)
@@ -207,7 +210,7 @@ def create_measurement_groups(
     # TODO: we are reporting calculated data for measurements globally instead of in the measurement doc,
     # which is why we have to pass this list to collect them. Why are we reporting globally when data is
     # pertains to the individual measurements?
-    calculated_data: list[CalculatedDataItem] = []
+    calculated_data: list[CalculatedDocument] = []
 
     def make_group(data: SeriesData) -> MeasurementGroup:
         return _create_measurement_group(

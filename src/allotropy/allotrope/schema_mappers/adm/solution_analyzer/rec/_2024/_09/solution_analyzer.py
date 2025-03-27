@@ -359,7 +359,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 msg = f"Invalid unit for {analyte.name}: {analyte.unit}"
                 raise AllotropeConversionError(msg)
 
-        msg = f"Invalid unit for analyte: {analyte.unit}, value values are: g/L, mL/L, mmol/L"
+        msg = f"Invalid unit for analyte: {analyte.unit}, possible values are: g/L, mL/L, mmol/L"
         raise AllotropeConversionError(msg)
 
     def _create_processed_data_document(

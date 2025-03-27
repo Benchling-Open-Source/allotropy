@@ -28,6 +28,9 @@ class StaticDocs:
     sample_identifier_2: str | None
     sample_identifier_3: str | None
     batch_identifier: str | None
+    start_time: str | None
+    void_volume: float | None
+    flow_rate: float | None
 
     @classmethod
     def create(
@@ -35,6 +38,7 @@ class StaticDocs:
         handler: UnicornZipHandler,
         curve: StrictXmlElement,
         results: StrictXmlElement,
+        analysis_settings: StrictXmlElement | None,
     ) -> StaticDocs:
         column_type_data = handler.get_column_type_data()
         autosampler_injection_volume_setting = NEGATIVE_ZERO
@@ -90,6 +94,15 @@ class StaticDocs:
         except AllotropeConversionError:
             pass
 
+        flow_rate = None
+        try:
+            flow_rate_result = cls.__filter_result_criteria(
+                results, keyword="Flow rate"
+            )
+            flow_rate = flow_rate_result.find("Keyword2").get_float("Flow rate")
+        except AllotropeConversionError:
+            pass
+
         article_number = column_type_data.recursive_find_or_none(
             ["ColumnType", "Hardware", "ArticleNumber"]
         )
@@ -107,6 +120,13 @@ class StaticDocs:
         )
 
         batch_id = results.find_or_none("BatchId")
+
+        void_volume = None
+        if analysis_settings:
+            if chromatogram_analysis_settings := analysis_settings.parse_text_or_none():
+                void_volume = chromatogram_analysis_settings.recursive_find_or_none(
+                    ["IntegrationSettings", "ColumnProperties", "ColumnVolume"]
+                )
 
         return StaticDocs(
             chromatography_serial_num=(
@@ -140,6 +160,11 @@ class StaticDocs:
             batch_identifier=(
                 batch_id.get_text_or_none() if batch_id is not None else None
             ),
+            start_time=curve.get_sub_text_or_none("MethodStartTime"),
+            void_volume=(
+                void_volume.get_float_or_none() if void_volume is not None else None
+            ),
+            flow_rate=flow_rate,
         )
 
     @classmethod

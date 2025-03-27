@@ -113,6 +113,8 @@ def split_header_and_data(
     df: pd.DataFrame, should_split_on_row: Callable[[pd.Series[Any]], bool]
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     header, data = split_dataframe(df, should_split_on_row)
+    if data is not None:
+        data = drop_df_rows_while(data, should_split_on_row)
     if data is None:
         msg = f"Unable to split header and data from dataframe: {df}"
         raise AllotropeConversionError(msg)
@@ -131,8 +133,19 @@ def split_dataframe(
             head_end = int(str(idx))
             tail_start = head_end if include_split_row else head_end + 1
             return df[:head_end], df[tail_start:]
-
     return df, None
+
+
+def drop_df_rows_while(
+    df: pd.DataFrame,
+    condition: Callable[[pd.Series[Any]], bool],
+) -> pd.DataFrame:
+    for idx, row in df.iterrows():
+        if not condition(row):
+            return df.loc[idx:]  # type: ignore[misc]
+
+    # if condition was never false return empty dataframe
+    return df.drop(df.index)
 
 
 def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
@@ -227,8 +240,8 @@ class SeriesData:
             return None if (v is None or pd.isna(v)) else v
         return v
 
-    def __init__(self, series: pd.Series[Any]) -> None:
-        self.series = series
+    def __init__(self, series: pd.Series[Any] | None = None) -> None:
+        self.series = pd.Series() if series is None else series
         self.read_keys: set[str] = set()
         self.errored = False
 
@@ -254,15 +267,25 @@ class SeriesData:
             for regex_key in (
                 key_or_keys if isinstance(key_or_keys, set) else {key_or_keys}
             )
-            for matched in [k for k in self.series.index if re.fullmatch(regex_key, k)]
+            for matched in [
+                k
+                for k in self.series.index
+                if k == regex_key or re.fullmatch(regex_key, k)
+            ]
         }
 
     def get_custom_keys(
         self, key_or_keys: str | set[str]
     ) -> dict[str, float | str | None]:
         return {
-            key: self._get_custom_key(key)
+            key: value
             for key in self._get_matching_keys(key_or_keys)
+            if (
+                value := self._validate_raw(
+                    self._get_custom_key(key), SeriesData.NOT_NAN
+                )
+            )
+            is not None
         }
 
     def mark_read(self, key_or_keys: str | set[str]) -> None:

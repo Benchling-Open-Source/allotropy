@@ -14,10 +14,12 @@ from allotropy.allotrope.models.shared.definitions.units import (
     CountsPerSecond,
     CountsTimesSecond,
     CubicMillimeter,
+    Dalton,
     DegreeCelsius,
     GramPerLiter,
     Hertz,
     KiloDalton,
+    KiloPascal,
     MicrogramPerMicroliter,
     MicrogramPerMilliliter,
     Microliter,
@@ -30,6 +32,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     MilligramPerMilliliter,
     Milliliter,
     MilliliterPerLiter,
+    MilliliterPerMinute,
     Millimeter,
     MillimeterOfMercury,
     MillimolePerLiter,
@@ -62,6 +65,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     RelativeLightUnit,
     RelativeLightUnitTimesMilliliter,
     RelativeLightUnitTimesSecond,
+    ResonanceUnits,
     SecondTime,
     SeimensPerMeter,
     SquareCentimetersPerGram,
@@ -159,6 +163,16 @@ class TNullableQuantityValueCubicMillimeter(CubicMillimeter, TNullableQuantityVa
 
 
 @dataclass(frozen=True, kw_only=True)
+class TQuantityValueDalton(Dalton, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueDalton(Dalton, TNullableQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
 class TQuantityValueDegreeCelsius(DegreeCelsius, TQuantityValue):
     pass
 
@@ -195,6 +209,16 @@ class TQuantityValueKiloDalton(KiloDalton, TQuantityValue):
 
 @dataclass(frozen=True, kw_only=True)
 class TNullableQuantityValueKiloDalton(KiloDalton, TNullableQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueKiloPascal(KiloPascal, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueKiloPascal(KiloPascal, TNullableQuantityValue):
     pass
 
 
@@ -358,6 +382,18 @@ class TQuantityValueMilliliterPerLiter(MilliliterPerLiter, TQuantityValue):
 @dataclass(frozen=True, kw_only=True)
 class TNullableQuantityValueMilliliterPerLiter(
     MilliliterPerLiter, TNullableQuantityValue
+):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueMilliliterPerMinute(MilliliterPerMinute, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueMilliliterPerMinute(
+    MilliliterPerMinute, TNullableQuantityValue
 ):
     pass
 
@@ -701,6 +737,16 @@ class TQuantityValueRelativeLightUnitTimesSecond(
 class TNullableQuantityValueRelativeLightUnitTimesSecond(
     RelativeLightUnitTimesSecond, TNullableQuantityValue
 ):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueResonanceUnits(ResonanceUnits, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueResonanceUnits(ResonanceUnits, TNullableQuantityValue):
     pass
 
 

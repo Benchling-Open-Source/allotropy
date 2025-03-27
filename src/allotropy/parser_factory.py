@@ -9,6 +9,9 @@ from allotropy.parsers.agilent_gen5.agilent_gen5_parser import AgilentGen5Parser
 from allotropy.parsers.agilent_gen5_image.agilent_gen5_image_parser import (
     AgilentGen5ImageParser,
 )
+from allotropy.parsers.agilent_openlab_cds.agilent_openlab_cds_parser import (
+    AgilentOpenLabCDSParser,
+)
 from allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_parser import (
     AgilentTapestationAnalysisParser,
 )
@@ -30,11 +33,17 @@ from allotropy.parsers.beckman_echo_plate_reformat.beckman_echo_plate_reformat_p
 from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_parser import PharmSpecParser
 from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_parser import ViCellBluParser
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_parser import ViCellXRParser
+from allotropy.parsers.benchling_chromeleon.benchling_chromeleon_parser import (
+    BenchlingChromeleonParser,
+)
 from allotropy.parsers.benchling_empower.benchling_empower_parser import (
     BenchlingEmpowerParser,
 )
 from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_parser import (
     BioradBioplexParser,
+)
+from allotropy.parsers.bmg_labtech_smart_control.bmg_labtech_smart_control_parser import (
+    BmgLabtechSmartControlParser,
 )
 from allotropy.parsers.bmg_mars.bmg_mars_parser import BmgMarsParser
 from allotropy.parsers.cfxmaestro.cfxmaestro_parser import CfxmaestroParser
@@ -52,6 +61,7 @@ from allotropy.parsers.cytiva_unicorn.cytiva_unicorn_parser import CytivaUnicorn
 from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_parser import (
     ExampleWeylandYutaniParser,
 )
+from allotropy.parsers.flowjo.flowjo_parser import FlowjoParser
 from allotropy.parsers.luminex_xponent.luminex_xponent_parser import (
     LuminexXponentParser,
 )
@@ -113,6 +123,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 class Vendor(Enum):
     AGILENT_GEN5 = "AGILENT_GEN5"
     AGILENT_GEN5_IMAGE = "AGILENT_GEN5_IMAGE"
+    AGILENT_OPENLAB_CDS = "AGILENT_OPENLAB_CDS"
     AGILENT_TAPESTATION_ANALYSIS = "AGILENT_TAPESTATION_ANALYSIS"
     APPBIO_ABSOLUTE_Q = "APPBIO_ABSOLUTE_Q"
     APPBIO_QUANTSTUDIO = "APPBIO_QUANTSTUDIO"
@@ -120,6 +131,7 @@ class Vendor(Enum):
     BENCHLING_EMPOWER = "BENCHLING_EMPOWER"
     BECKMAN_COULTER_BIOMEK = "BECKMAN_COULTER_BIOMEK"
     BECKMAN_ECHO_PLATE_REFORMAT = "BECKMAN_ECHO_PLATE_REFORMAT"
+    BMG_LABTECH_SMART_CONTROL = "BMG_LABTECH_SMART_CONTROL"
     BMG_MARS = "BMG_MARS"
     BECKMAN_PHARMSPEC = "BECKMAN_PHARMSPEC"
     BECKMAN_VI_CELL_BLU = "BECKMAN_VI_CELL_BLU"
@@ -132,6 +144,7 @@ class Vendor(Enum):
     CYTIVA_BIACORE_T200_CONTROL = "CYTIVA_BIACORE_T200_CONTROL"
     CYTIVA_UNICORN = "CYTIVA_UNICORN"
     EXAMPLE_WEYLAND_YUTANI = "EXAMPLE_WEYLAND_YUTANI"
+    FLOWJO = "FLOWJO"
     LUMINEX_XPONENT = "LUMINEX_XPONENT"
     MABTECH_APEX = "MABTECH_APEX"
     METHODICAL_MIND = "METHODICAL_MIND"
@@ -145,6 +158,7 @@ class Vendor(Enum):
     ROCHE_CEDEX_BIOHT = "ROCHE_CEDEX_BIOHT"
     ROCHE_CEDEX_HIRES = "ROCHE_CEDEX_HIRES"
     TECAN_MAGELLAN = "TECAN_MAGELLAN"
+    BENCHLING_CHROMELEON = "BENCHLING_CHROMELEON"
     THERMO_FISHER_GENESYS30 = "THERMO_FISHER_GENESYS30"
     THERMO_FISHER_GENESYS_ON_BOARD = "THERMO_FISHER_GENESYS_ON_BOARD"
     THERMO_FISHER_NANODROP_8000 = "THERMO_FISHER_NANODROP_8000"
@@ -203,6 +217,7 @@ class Vendor(Enum):
 _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.AGILENT_GEN5: AgilentGen5Parser,
     Vendor.AGILENT_GEN5_IMAGE: AgilentGen5ImageParser,
+    Vendor.AGILENT_OPENLAB_CDS: AgilentOpenLabCDSParser,
     Vendor.AGILENT_TAPESTATION_ANALYSIS: AgilentTapestationAnalysisParser,
     Vendor.APPBIO_ABSOLUTE_Q: AppbioAbsoluteQParser,
     Vendor.APPBIO_QUANTSTUDIO: AppBioQuantStudioParser,
@@ -214,6 +229,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.BECKMAN_VI_CELL_XR: ViCellXRParser,
     Vendor.BENCHLING_EMPOWER: BenchlingEmpowerParser,
     Vendor.BIORAD_BIOPLEX: BioradBioplexParser,
+    Vendor.BMG_LABTECH_SMART_CONTROL: BmgLabtechSmartControlParser,
     Vendor.BMG_MARS: BmgMarsParser,
     Vendor.CFXMAESTRO: CfxmaestroParser,
     Vendor.CHEMOMETEC_NC_VIEW: ChemometecNcViewParser,
@@ -222,6 +238,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.CYTIVA_BIACORE_T200_CONTROL: CytivaBiacoreT200ControlParser,
     Vendor.CYTIVA_UNICORN: CytivaUnicornParser,
     Vendor.EXAMPLE_WEYLAND_YUTANI: ExampleWeylandYutaniParser,
+    Vendor.FLOWJO: FlowjoParser,
     Vendor.LUMINEX_XPONENT: LuminexXponentParser,
     Vendor.MABTECH_APEX: MabtechApexParser,
     Vendor.METHODICAL_MIND: MethodicalMindParser,
@@ -235,6 +252,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.ROCHE_CEDEX_BIOHT: RocheCedexBiohtParser,
     Vendor.ROCHE_CEDEX_HIRES: RocheCedexHiResParser,
     Vendor.TECAN_MAGELLAN: TecanMagellanParser,
+    Vendor.BENCHLING_CHROMELEON: BenchlingChromeleonParser,
     Vendor.THERMO_FISHER_GENESYS30: ThermoFisherGenesys30Parser,
     Vendor.THERMO_FISHER_GENESYS_ON_BOARD: ThermoFisherGenesysOnBoardParser,
     Vendor.THERMO_FISHER_NANODROP_8000: Nanodrop8000Parser,

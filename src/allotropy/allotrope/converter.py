@@ -52,6 +52,9 @@ SPECIAL_KEYS = {
     "total_cell_diameter_distribution__cell_counter_": "total cell diameter distribution (cell counter)",
     "viable_cell_count__cell_counter_": "viable cell count (cell counter)",
     "total_cell_count__cell_counter_": "total cell count (cell counter)",
+    "cycle_threshold_value_setting__qPCR_": "cycle threshold value setting (qPCR)",
+    "genotyping_qPCR_method_setting__qPCR_": "genotyping qPCR method setting (qPCR)",
+    "cycle_threshold_result__qPCR_": "cycle threshold result (qPCR)",
     "autosampler_injection_volume_setting__chromatography_": "autosampler injection volume setting (chromatography)",
     "capacity_factor__chromatography_": "capacity factor (chromatography)",
     "peak_selectivity__chromatography_": "peak selectivity (chromatography)",
@@ -94,6 +97,9 @@ DICT_KEY_TO_MODEL_KEY_REPLACEMENTS = {
     ")": "_CPAREN_",
     "%": "_PERCENT_",
     ":": "_COLON_",
+    "#": "_NUMBER_",
+    "[": "_OBRACKET_",
+    "]": "_CBRACKET_",
     # NOTE: this MUST be at the end, or it will break other key replacements.
     " ": "_",
 }
@@ -151,6 +157,8 @@ def add_custom_information_document(
 
 def _convert_model_key_to_dict_key(key: str) -> str:
     key = SPECIAL_KEYS.get(key, key)
+    if key.startswith("___") and key[3].isdigit():
+        key = key[3:]
     for dict_val, model_val in DICT_KEY_TO_MODEL_KEY_REPLACEMENTS.items():
         key = key.replace(model_val, dict_val)
     return key
@@ -158,6 +166,8 @@ def _convert_model_key_to_dict_key(key: str) -> str:
 
 def _convert_dict_to_model_key(key: str) -> str:
     key = SPECIAL_KEYS_INVERSE.get(key, key)
+    if key[0].isdigit():
+        key = f"___{key}"
     for dict_val, model_val in DICT_KEY_TO_MODEL_KEY_REPLACEMENTS.items():
         key = key.replace(dict_val, model_val)
     return key

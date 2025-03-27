@@ -25,6 +25,7 @@ class FlowMeasurement(UnicornMeasurement):
     def create_device_control(
         cls,
         device_type: str,
+        start_time: str | None,
         sample_flow_data_cube: DataCube | None = None,
         system_flow_data_cube: DataCube | None = None,
     ) -> DeviceControlDoc | None:
@@ -32,6 +33,7 @@ class FlowMeasurement(UnicornMeasurement):
             return None
         return DeviceControlDoc(
             device_type=device_type,
+            start_time=start_time,
             sample_flow_data_cube=sample_flow_data_cube,
             system_flow_data_cube=system_flow_data_cube,
         )
@@ -46,6 +48,7 @@ class FlowMeasurement(UnicornMeasurement):
         device_controls = [
             cls.create_device_control(
                 device_type=DEVICE_TYPE,
+                start_time=static_docs.start_time,
                 sample_flow_data_cube=cls.get_data_cube_or_none(
                     handler,
                     cls.filter_curve_or_none(elements, r"^Sample flow \(CV/h\)$"),
@@ -67,6 +70,7 @@ class FlowMeasurement(UnicornMeasurement):
             ),
             cls.create_device_control(
                 device_type=DEVICE_TYPE,
+                start_time=static_docs.start_time,
                 sample_flow_data_cube=cls.get_data_cube_or_none(
                     handler,
                     cls.filter_curve_or_none(elements, r"^Sample flow$"),
@@ -88,6 +92,7 @@ class FlowMeasurement(UnicornMeasurement):
             ),
             cls.create_device_control(
                 device_type=DEVICE_TYPE,
+                start_time=static_docs.start_time,
                 sample_flow_data_cube=cls.get_data_cube_or_none(
                     handler,
                     cls.filter_curve_or_none(elements, r"^Sample linear flow$"),

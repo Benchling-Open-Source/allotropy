@@ -104,8 +104,11 @@ def _create_peak(peak: dict[str, Any]) -> Peak:
         width=try_float_or_none(peak.get("Width")),
         width_unit="s",
         height=height,
+        height_unit="mAU",
         relative_height=try_float_or_none(peak.get("PctHeight")),
         written_name=peak.get("Name"),
+        relative_peak_analyte_amount=try_float_or_none(peak.get("PctAmount")),
+        peak_analyte_amount=try_float_or_none(peak.get("Amount")),
     )
 
 
@@ -128,10 +131,12 @@ def _create_measurements(injection: dict[str, Any]) -> list[Measurement]:
     return [
         Measurement(
             measurement_identifier=random_uuid_str(),
-            sample_identifier=assert_not_none(injection.get("Label"), "Label"),
+            sample_identifier=assert_not_none(
+                injection.get("SampleName"), "SampleName"
+            ),
             batch_identifier=injection.get("SampleSetID"),
             sample_role_type=sample_role_type,
-            written_name=injection.get("SampleName"),
+            written_name=injection.get("Label"),
             chromatography_serial_num=injection.get("ColumnSerialNumber")
             or NOT_APPLICABLE,
             autosampler_injection_volume_setting=injection["InjectionVolume"],
@@ -149,9 +154,9 @@ def create_measurement_groups(
 ) -> list[MeasurementGroup]:
     sample_to_injection: defaultdict[str, list[dict[str, Any]]] = defaultdict(list)
     for injection in injections:
-        sample_to_injection[assert_not_none(injection.get("Label"), "Label")].append(
-            injection
-        )
+        sample_to_injection[
+            assert_not_none(injection.get("SampleName"), "SampleName")
+        ].append(injection)
     return [
         MeasurementGroup(
             measurements=[

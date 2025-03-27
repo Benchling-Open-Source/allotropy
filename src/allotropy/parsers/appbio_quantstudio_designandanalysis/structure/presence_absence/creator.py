@@ -1,15 +1,13 @@
 from typing import ClassVar
 
-from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_calculated_documents import (
     iter_presence_absence_calc_docs,
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
     DesignQuantstudioReader,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_views import (
-    SampleView,
-    TargetView,
+from allotropy.parsers.appbio_quantstudio_designandanalysis.constants import (
+    ExperimentType,
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.creator import (
     Creator,
@@ -37,12 +35,8 @@ class PresenceAbsenceCreator(Creator):
         return Data(
             header,
             wells,
-            experiment_type=ExperimentType.presence_absence_qPCR_experiment,
-            calculated_documents=list(
-                iter_presence_absence_calc_docs(
-                    view_data=SampleView(sub_view=TargetView()).apply(well_items),
-                )
-            ),
+            experiment_type=ExperimentType.presence_absence_qpcr_experiment,
+            calculated_documents=list(iter_presence_absence_calc_docs(well_items)),
             reference_target=None,
             reference_sample=None,
         )
