@@ -17,7 +17,11 @@ class AppbioQuantstudioDAExtractor(Extractor[WellItem]):
                 "reporter_dye_setting": well_item.reporter_dye_setting,
                 "well_location_identifier": well_item.well_location_identifier,
                 "quencher_dye_setting": well_item.quencher_dye_setting,
-                "sample_role_type": well_item.sample_role_type,
+                "sample_role_type": (
+                    well_item.sample_role_type.value
+                    if well_item.sample_role_type is not None
+                    else None
+                ),
                 "cycle_threshold_value_setting": well_item.result.cycle_threshold_value_setting,
                 "cycle_threshold_result": well_item.result.cycle_threshold_result,
                 "automatic_cycle_threshold_enabled_setting": well_item.result.automatic_cycle_threshold_enabled_setting,

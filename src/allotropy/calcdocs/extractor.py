@@ -2,9 +2,8 @@ from abc import abstractmethod
 from dataclasses import dataclass
 from typing import Generic, TypeVar
 
-from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.utils.calculated_data_documents.definition import Referenceable
-from allotropy.parsers.utils.values import assert_not_none
+from allotropy.parsers.utils.values import assert_not_none, try_float_or_none
 
 T = TypeVar("T")
 
@@ -18,17 +17,11 @@ class Element(Referenceable):
 
     def get_str_or_none(self, key: str) -> str | None:
         value = self.get_or_none(key)
-        if value is None or isinstance(value, str):
-            return value
-        msg = f"unable to parse '{value}' as string"
-        raise AllotropeConversionError(msg)
+        return value if value is None else str(value)
 
     def get_float_or_none(self, key: str) -> float | None:
         value = self.get_or_none(key)
-        if value is None or isinstance(value, float):
-            return value
-        msg = f"unable to parse '{value}' as float"
-        raise AllotropeConversionError(msg)
+        return try_float_or_none(value)
 
     def get_str(self, key: str) -> str:
         return assert_not_none(self.get_str_or_none(key), key)
