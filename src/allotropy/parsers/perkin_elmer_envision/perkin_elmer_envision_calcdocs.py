@@ -8,6 +8,7 @@ from allotropy.parsers.utils.calculated_data_documents.definition import (
     DataSource,
     Referenceable,
 )
+from allotropy.parsers.utils.uuids import random_uuid_str
 
 
 def create_calculated_data(
@@ -15,7 +16,7 @@ def create_calculated_data(
 ) -> list[CalculatedDocument]:
     return [
         CalculatedDocument(
-            uuid=calculated_result.uuid,
+            uuid=random_uuid_str(),
             name=calculated_plate.plate_info.name,
             description=calculated_plate.plate_info.formula,
             value=calculated_result.value,
