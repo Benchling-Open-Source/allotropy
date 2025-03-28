@@ -80,12 +80,15 @@ class CalculatedDataConfig:
             description=self.description,
         )
 
+    def get_cache_key(self, keys: Keys) -> str:
+        return f"{self.name} {self.value} {keys}"
+
     def get_calc_doc(
         self,
         keys: Keys,
         cache: dict[str, CalculatedDocument | None],
     ) -> CalculatedDocument | None:
-        key = f"{self.name} {self.value} {keys}"
+        key = self.get_cache_key(keys)
         if result := cache.get(key):
             return result
         result = self._get_calc_doc_inner(keys, cache)
