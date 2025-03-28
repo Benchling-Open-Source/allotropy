@@ -31,7 +31,7 @@ def create_metadata(header_footer_data: SeriesData, file_path: str) -> Metadata:
     )
 
 
-def _create_measurement(row_data: SeriesData) -> None:
+def _create_measurement(row_data: SeriesData) -> Measurement:
     def convert_echo_nl_to_ul(value: float | None) -> float:
         return (
             (value * constants.PLATE_REFORMAT_REPORT_VOLUME_CONVERSION_TO_UL)
