@@ -200,7 +200,6 @@ def create_background_infos(reader: CsvReader) -> list[BackgroundInfo]:
 
 @dataclass
 class CalculatedResult:
-    uuid: str
     col: str
     row: str
     value: float
@@ -229,7 +228,6 @@ def create_calculated_results(reader: CsvReader) -> list[CalculatedResult]:
 
     return [
         CalculatedResult(
-            uuid=random_uuid_str(),
             col=col,
             row=row,
             value=series.loc[col, row],
