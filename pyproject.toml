@@ -92,6 +92,9 @@ exclude_lines = [
 ]
 
 [tool.hatch.build.targets.sdist]
+include = [
+  "src/allotropy/py.typed",
+]
 exclude = [
   "/docs",
   "/tests",
