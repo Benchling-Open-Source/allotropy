@@ -651,6 +651,102 @@
                                                                         },
                                                                         "data region identifier": "ID1598409527",
                                                                         "parent population identifier": "FLOWJO_TEST_ID_2",
+                                                                        "statistics aggregate document": {
+                                                                            "statistics document": [
+                                                                                {
+                                                                                    "statistical feature": "fluorescence",
+                                                                                    "statistic dimension aggregate document": {
+                                                                                        "statistic dimension document": [
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 8.419329643,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "coefficient of variation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 44138.91015625,
+                                                                                                    "unit": "RFU",
+                                                                                                    "has statistic datum role": "geometric mean role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 22.878932953,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "median absolute deviation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-H",
+                                                                                                "statistical value": {
+                                                                                                    "value": 44480.0,
+                                                                                                    "unit": "RFU",
+                                                                                                    "has statistic datum role": "median role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 6677.83203125,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "median absolute deviation percentile role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 8.208954811,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "robust coefficient of variation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 7392.0,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "robust standard deviation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 7669.005859375,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "standard deviation role"
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "statistical feature": "count",
+                                                                                    "statistic dimension aggregate document": {
+                                                                                        "statistic dimension document": [
+                                                                                            {
+                                                                                                "statistical value": {
+                                                                                                    "value": 66.56400000000001,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "frequency of parent role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "statistical value": {
+                                                                                                    "value": 66.56400000000001,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "frequency of total role"
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        },
                                                                         "population aggregate document": [
                                                                             {
                                                                                 "population document": [
@@ -2564,6 +2660,102 @@
                                                                         },
                                                                         "data region identifier": "ID698393870",
                                                                         "parent population identifier": "FLOWJO_TEST_ID_15",
+                                                                        "statistics aggregate document": {
+                                                                            "statistics document": [
+                                                                                {
+                                                                                    "statistical feature": "fluorescence",
+                                                                                    "statistic dimension aggregate document": {
+                                                                                        "statistic dimension document": [
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 10.335035324,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "coefficient of variation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 49123.40234375,
+                                                                                                    "unit": "RFU",
+                                                                                                    "has statistic datum role": "geometric mean role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 24.124303818,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "median absolute deviation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-H",
+                                                                                                "statistical value": {
+                                                                                                    "value": 50816.0,
+                                                                                                    "unit": "RFU",
+                                                                                                    "has statistic datum role": "median role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 8125.103515625,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "median absolute deviation percentile role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 11.026991844,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "robust coefficient of variation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 10720.0,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "robust standard deviation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 9950.403320312,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "standard deviation role"
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "statistical feature": "count",
+                                                                                    "statistic dimension aggregate document": {
+                                                                                        "statistic dimension document": [
+                                                                                            {
+                                                                                                "statistical value": {
+                                                                                                    "value": 23.40271156,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "frequency of parent role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "statistical value": {
+                                                                                                    "value": 23.40271156,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "frequency of total role"
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        },
                                                                         "population aggregate document": [
                                                                             {
                                                                                 "population document": [
@@ -4477,6 +4669,102 @@
                                                                         },
                                                                         "data region identifier": "ID1564013323",
                                                                         "parent population identifier": "FLOWJO_TEST_ID_28",
+                                                                        "statistics aggregate document": {
+                                                                            "statistics document": [
+                                                                                {
+                                                                                    "statistical feature": "fluorescence",
+                                                                                    "statistic dimension aggregate document": {
+                                                                                        "statistic dimension document": [
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 7.705570221,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "coefficient of variation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 52545.5546875,
+                                                                                                    "unit": "RFU",
+                                                                                                    "has statistic datum role": "geometric mean role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 19.469377518,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "median absolute deviation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-H",
+                                                                                                "statistical value": {
+                                                                                                    "value": 54016.0,
+                                                                                                    "unit": "RFU",
+                                                                                                    "has statistic datum role": "median role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 6896.267578125,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "median absolute deviation percentile role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 7.419127941,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "robust coefficient of variation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 6752.0,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "robust standard deviation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 7072.113769531,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "standard deviation role"
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "statistical feature": "count",
+                                                                                    "statistic dimension aggregate document": {
+                                                                                        "statistic dimension document": [
+                                                                                            {
+                                                                                                "statistical value": {
+                                                                                                    "value": 52.86,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "frequency of parent role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "statistical value": {
+                                                                                                    "value": 52.86,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "frequency of total role"
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        },
                                                                         "population aggregate document": [
                                                                             {
                                                                                 "population document": [
@@ -6390,6 +6678,102 @@
                                                                         },
                                                                         "data region identifier": "ID1088243741",
                                                                         "parent population identifier": "FLOWJO_TEST_ID_41",
+                                                                        "statistics aggregate document": {
+                                                                            "statistics document": [
+                                                                                {
+                                                                                    "statistical feature": "fluorescence",
+                                                                                    "statistic dimension aggregate document": {
+                                                                                        "statistic dimension document": [
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 8.595601082,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "coefficient of variation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 42990.0078125,
+                                                                                                    "unit": "RFU",
+                                                                                                    "has statistic datum role": "geometric mean role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 23.919111252,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "median absolute deviation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-H",
+                                                                                                "statistical value": {
+                                                                                                    "value": 42944.0,
+                                                                                                    "unit": "RFU",
+                                                                                                    "has statistic datum role": "median role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 6772.857421875,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "median absolute deviation percentile role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 8.392857552,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "robust coefficient of variation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 7520.0,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "robust standard deviation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 7792.475097656,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "standard deviation role"
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "statistical feature": "count",
+                                                                                    "statistic dimension aggregate document": {
+                                                                                        "statistic dimension document": [
+                                                                                            {
+                                                                                                "statistical value": {
+                                                                                                    "value": 60.862854060000004,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "frequency of parent role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "statistical value": {
+                                                                                                    "value": 60.862854060000004,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "frequency of total role"
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        },
                                                                         "population aggregate document": [
                                                                             {
                                                                                 "population document": [
@@ -8303,6 +8687,102 @@
                                                                         },
                                                                         "data region identifier": "ID21452938",
                                                                         "parent population identifier": "FLOWJO_TEST_ID_54",
+                                                                        "statistics aggregate document": {
+                                                                            "statistics document": [
+                                                                                {
+                                                                                    "statistical feature": "fluorescence",
+                                                                                    "statistic dimension aggregate document": {
+                                                                                        "statistic dimension document": [
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 8.651230812,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "coefficient of variation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 43144.32421875,
+                                                                                                    "unit": "RFU",
+                                                                                                    "has statistic datum role": "geometric mean role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 24.54621315,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "median absolute deviation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-H",
+                                                                                                "statistical value": {
+                                                                                                    "value": 43072.0,
+                                                                                                    "unit": "RFU",
+                                                                                                    "has statistic datum role": "median role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 6966.62109375,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "median absolute deviation percentile role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 8.327350616,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "robust coefficient of variation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 7424.0,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "robust standard deviation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 7805.235839844,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "standard deviation role"
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "statistical feature": "count",
+                                                                                    "statistic dimension aggregate document": {
+                                                                                        "statistic dimension document": [
+                                                                                            {
+                                                                                                "statistical value": {
+                                                                                                    "value": 61.99712872999999,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "frequency of parent role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "statistical value": {
+                                                                                                    "value": 61.99712872999999,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "frequency of total role"
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        },
                                                                         "population aggregate document": [
                                                                             {
                                                                                 "population document": [
@@ -10216,6 +10696,102 @@
                                                                         },
                                                                         "data region identifier": "ID2007580094",
                                                                         "parent population identifier": "FLOWJO_TEST_ID_67",
+                                                                        "statistics aggregate document": {
+                                                                            "statistics document": [
+                                                                                {
+                                                                                    "statistical feature": "fluorescence",
+                                                                                    "statistic dimension aggregate document": {
+                                                                                        "statistic dimension document": [
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 8.267179489,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "coefficient of variation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 43086.19140625,
+                                                                                                    "unit": "RFU",
+                                                                                                    "has statistic datum role": "geometric mean role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 21.377843857,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "median absolute deviation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-H",
+                                                                                                "statistical value": {
+                                                                                                    "value": 43456.0,
+                                                                                                    "unit": "RFU",
+                                                                                                    "has statistic datum role": "median role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 6095.484375,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "median absolute deviation percentile role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 7.930298805,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "robust coefficient of variation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 7136.0,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "robust standard deviation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 7532.497070312,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "standard deviation role"
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "statistical feature": "count",
+                                                                                    "statistic dimension aggregate document": {
+                                                                                        "statistic dimension document": [
+                                                                                            {
+                                                                                                "statistical value": {
+                                                                                                    "value": 66.7942889,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "frequency of parent role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "statistical value": {
+                                                                                                    "value": 66.7942889,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "frequency of total role"
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        },
                                                                         "population aggregate document": [
                                                                             {
                                                                                 "population document": [
@@ -12129,6 +12705,102 @@
                                                                         },
                                                                         "data region identifier": "ID577849521",
                                                                         "parent population identifier": "FLOWJO_TEST_ID_80",
+                                                                        "statistics aggregate document": {
+                                                                            "statistics document": [
+                                                                                {
+                                                                                    "statistical feature": "fluorescence",
+                                                                                    "statistic dimension aggregate document": {
+                                                                                        "statistic dimension document": [
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 8.835648537,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "coefficient of variation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 45257.41015625,
+                                                                                                    "unit": "RFU",
+                                                                                                    "has statistic datum role": "geometric mean role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 23.688560486,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "median absolute deviation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-H",
+                                                                                                "statistical value": {
+                                                                                                    "value": 44416.0,
+                                                                                                    "unit": "RFU",
+                                                                                                    "has statistic datum role": "median role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 7118.623046875,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "median absolute deviation percentile role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 8.913648605,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "robust coefficient of variation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 8192.0,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "robust standard deviation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 8178.893554688,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "standard deviation role"
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "statistical feature": "count",
+                                                                                    "statistic dimension aggregate document": {
+                                                                                        "statistic dimension document": [
+                                                                                            {
+                                                                                                "statistical value": {
+                                                                                                    "value": 60.54268208,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "frequency of parent role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "statistical value": {
+                                                                                                    "value": 60.54268208,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "frequency of total role"
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        },
                                                                         "population aggregate document": [
                                                                             {
                                                                                 "population document": [
@@ -14042,6 +14714,102 @@
                                                                         },
                                                                         "data region identifier": "ID109672064",
                                                                         "parent population identifier": "FLOWJO_TEST_ID_93",
+                                                                        "statistics aggregate document": {
+                                                                            "statistics document": [
+                                                                                {
+                                                                                    "statistical feature": "fluorescence",
+                                                                                    "statistic dimension aggregate document": {
+                                                                                        "statistic dimension document": [
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 8.167829514,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "coefficient of variation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 44322.84765625,
+                                                                                                    "unit": "RFU",
+                                                                                                    "has statistic datum role": "geometric mean role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 23.086889267,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "median absolute deviation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-H",
+                                                                                                "statistical value": {
+                                                                                                    "value": 44480.0,
+                                                                                                    "unit": "RFU",
+                                                                                                    "has statistic datum role": "median role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "SSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 6796.69140625,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "median absolute deviation percentile role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 7.987332821,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "robust coefficient of variation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 7264.0,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "robust standard deviation role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "dimension identifier": "FSC-A",
+                                                                                                "statistical value": {
+                                                                                                    "value": 7511.067871094,
+                                                                                                    "unit": "(unitless)",
+                                                                                                    "has statistic datum role": "standard deviation role"
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "statistical feature": "count",
+                                                                                    "statistic dimension aggregate document": {
+                                                                                        "statistic dimension document": [
+                                                                                            {
+                                                                                                "statistical value": {
+                                                                                                    "value": 67.98269862000001,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "frequency of parent role"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "statistical value": {
+                                                                                                    "value": 67.98269862000001,
+                                                                                                    "unit": "%",
+                                                                                                    "has statistic datum role": "frequency of total role"
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        },
                                                                         "population aggregate document": [
                                                                             {
                                                                                 "population document": [

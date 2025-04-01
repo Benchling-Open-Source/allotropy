@@ -1,0 +1,201 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/liquid-handler/BENCHLING/2024/11/liquid-handler.manifest",
+    "liquid handler aggregate document": {
+        "liquid handler document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "liquid handler",
+                                        "injection volume setting": {
+                                            "value": 0.1,
+                                            "unit": "μL"
+                                        },
+                                        "custom information document": {
+                                            "intended transfer volume": 0.1,
+                                            "source labware name": "384PP_AQ_BP",
+                                            "destination labware name": "Eppendorf_PCR_384",
+                                            "fluid composition": "0",
+                                            "fluid type": "AQ",
+                                            "transfer status": "MM0202007: Problem calc. well fluid volume fc: 0 ft: 0"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "source location identifier": "Source[1]",
+                                "destination location identifier": "Destination[1]",
+                                "source well plate identifier": "SRC000001",
+                                "destination well plate identifier": "DST000001",
+                                "source well location identifier": "A2",
+                                "destination well location identifier": "A2"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "MM0202007: Problem calc. well fluid volume fc: 0 ft: 0",
+                                        "error feature": "MM0202007"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "BECKMAN_ECHO_PLATE_REFORMAT_TEST_ID_0",
+                            "measurement time": "2024-12-09T13:34:27.411000+00:00"
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "liquid handler",
+                                        "injection volume setting": {
+                                            "value": 0.1,
+                                            "unit": "μL"
+                                        },
+                                        "custom information document": {
+                                            "intended transfer volume": 0.1,
+                                            "source labware name": "384PP_AQ_BP",
+                                            "destination labware name": "Eppendorf_PCR_384",
+                                            "fluid composition": "0",
+                                            "fluid type": "AQ",
+                                            "transfer status": "MM0202007: Problem calc. well fluid volume fc: 0 ft: 0"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "source location identifier": "Source[1]",
+                                "destination location identifier": "Destination[1]",
+                                "source well plate identifier": "SRC000001",
+                                "destination well plate identifier": "DST000001",
+                                "source well location identifier": "A2",
+                                "destination well location identifier": "B2"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "MM0202007: Problem calc. well fluid volume fc: 0 ft: 0",
+                                        "error feature": "MM0202007"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "BECKMAN_ECHO_PLATE_REFORMAT_TEST_ID_1",
+                            "measurement time": "2024-12-09T13:34:27.411000+00:00"
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "liquid handler",
+                                        "injection volume setting": {
+                                            "value": 0.1,
+                                            "unit": "μL"
+                                        },
+                                        "custom information document": {
+                                            "survey fluid volume": 0.053678,
+                                            "current fluid volume": 0.053578,
+                                            "intended transfer volume": 0.1,
+                                            "source labware name": "384PP_AQ_BP",
+                                            "destination labware name": "Eppendorf_PCR_384",
+                                            "fluid composition": "100",
+                                            "fluid type": "AQ",
+                                            "transfer status": "N/A"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "source location identifier": "Source[1]",
+                                "destination location identifier": "Destination[1]",
+                                "source well plate identifier": "SRC000001",
+                                "destination well plate identifier": "DST000001",
+                                "source well location identifier": "A1",
+                                "destination well location identifier": "A1"
+                            },
+                            "measurement identifier": "BECKMAN_ECHO_PLATE_REFORMAT_TEST_ID_2",
+                            "measurement time": "2024-12-09T13:34:23+00:00",
+                            "aspiration volume": {
+                                "value": 0.1,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 0.1,
+                                "unit": "μL"
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "liquid handler",
+                                        "injection volume setting": {
+                                            "value": 0.1,
+                                            "unit": "μL"
+                                        },
+                                        "custom information document": {
+                                            "survey fluid volume": 0.053678,
+                                            "current fluid volume": 0.053478000000000005,
+                                            "intended transfer volume": 0.1,
+                                            "source labware name": "384PP_AQ_BP",
+                                            "destination labware name": "Eppendorf_PCR_384",
+                                            "fluid composition": "100",
+                                            "fluid type": "AQ",
+                                            "transfer status": "N/A"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "source location identifier": "Source[1]",
+                                "destination location identifier": "Destination[1]",
+                                "source well plate identifier": "SRC000001",
+                                "destination well plate identifier": "DST000001",
+                                "source well location identifier": "A1",
+                                "destination well location identifier": "B1"
+                            },
+                            "measurement identifier": "BECKMAN_ECHO_PLATE_REFORMAT_TEST_ID_3",
+                            "measurement time": "2024-12-09T13:34:23.946000+00:00",
+                            "aspiration volume": {
+                                "value": 0.1,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 0.1,
+                                "unit": "μL"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "connect_test_protocol.epr",
+                    "experimental data identifier": "1733769202",
+                    "custom information document": {
+                        "Run Date/Time": "2024-12-09 13:39:19"
+                    }
+                },
+                "analyst": "LabAutomation"
+            }
+        ],
+        "data system document": {
+            "ASM file identifier": "PartialTransfer.json",
+            "data system instance identifier": "N/A",
+            "file name": "PartialTransfer.csv",
+            "UNC path": "tests/parsers/beckman_echo_plate_reformat/testdata/PartialTransfer.csv",
+            "ASM converter name": "allotropy_beckman_echo_plate_reformat",
+            "ASM converter version": "0.1.80",
+            "software name": "Labcyte Echo Plate Reformat",
+            "software version": "1.7.2"
+        },
+        "device system document": {
+            "equipment serial number": "E5XX-19119",
+            "model number": "Echo 525",
+            "product manufacturer": "Beckman Coulter",
+            "custom information document": {
+                "Instrument Software Version": "2.6.3"
+            }
+        }
+    }
+}

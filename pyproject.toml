@@ -25,6 +25,7 @@ authors = [
   { name = "Joe Negri", email = "joe.negri@benchling.com" },
   { name = "Preston Olinger", email = "preston.olinger@benchling.com" },
   { name = "Alejando Salgado", email = "alejando.salgado@benchling.com" },
+  { name = "Erik Snow", email = "esnow@cellinobio.com" },
   { name = "Nathan Stender", email = "nathan.stender@benchling.com" },
   { name = "Eihab Syed", email = "eihabsyed@gmail.com" },
   { name = "Yukthi Wickramarachchi", email = "yukthi.wickramarachchi@deepgenomics.com" },
@@ -40,6 +41,7 @@ classifiers = [
   "Programming Language :: Python",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
+  "Typing :: Typed",
 ]
 dependencies = [
   "cattrs == 23.1.2",
