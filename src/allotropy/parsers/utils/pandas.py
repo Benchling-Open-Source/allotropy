@@ -2,15 +2,13 @@ from __future__ import annotations
 
 from collections.abc import Callable, Iterable
 from enum import Enum
-from io import BytesIO
 import os
 import re
-from typing import Any, Literal, overload, TypeVar
+from typing import Any, IO, Literal, overload, TypeVar
 import unicodedata
 import warnings
 
 import pandas as pd
-from pandas._typing import FilePath, ReadCsvBuffer
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
@@ -160,7 +158,7 @@ def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
 
 def read_csv(
     # types for filepath_or_buffer match those in pd.read_csv()
-    filepath_or_buffer: FilePath | BytesIO | ReadCsvBuffer[bytes] | ReadCsvBuffer[str],
+    filepath_or_buffer: str | bytes | IO[bytes] | IO[str],
     encoding: str | None = None,
     **kwargs: Any,
 ) -> pd.DataFrame:
@@ -168,17 +166,17 @@ def read_csv(
 
     pd.read_csv() can return a DataFrame or TextFileReader. The latter is intentionally not supported.
     """
-    encodings = [None]
+    possible_encodings: list[str | None] = [None]
     if encoding:
-        encodings = determine_encoding(filepath_or_buffer, encoding)
+        possible_encodings = determine_encoding(filepath_or_buffer, encoding)
 
-    for encoding in encodings:
+    for encoding in possible_encodings:
         if encoding is not None:
             kwargs["encoding"] = encoding
         try:
-            df_or_reader = pd.read_csv(filepath_or_buffer, **kwargs)
+            df_or_reader = pd.read_csv(filepath_or_buffer, **kwargs)  # type: ignore[arg-type]
         except Exception as e:
-            if encoding != encodings[-1]:
+            if encoding != possible_encodings[-1]:
                 continue
             msg = f"Error calling pd.read_csv(): {e}"
             raise AllotropeParsingError(msg) from e
@@ -189,6 +187,8 @@ def read_csv(
                 "pd.read_csv() returned a TextFileReader, which is not supported.",
             )
         )
+    msg = f"Unable to decode contents with possible encodings: {possible_encodings}"
+    raise AllotropeConversionError(msg)
 
 
 def read_excel(

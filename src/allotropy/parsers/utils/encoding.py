@@ -1,3 +1,4 @@
+from io import BytesIO, StringIO
 from typing import IO
 
 import chardet
@@ -6,7 +7,7 @@ from allotropy.constants import CHARDET_ENCODING, DEFAULT_ENCODING
 from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
 
 
-def _get_contents(contents: str | bytes | IO) -> str | bytes:
+def _get_contents(contents: str | bytes | IO[bytes] | IO[str]) -> str | bytes:
     if isinstance(contents, str | bytes):
         return contents
     actual_contents = contents.read()
@@ -14,7 +15,9 @@ def _get_contents(contents: str | bytes | IO) -> str | bytes:
     return actual_contents
 
 
-def determine_encoding(contents: str | bytes | IO, encoding: str | None) -> list[str]:
+def determine_encoding(
+    contents: str | bytes | IO[bytes] | IO[str], encoding: str | None
+) -> list[str | None]:
     if not encoding:
         return [DEFAULT_ENCODING]
     if encoding != CHARDET_ENCODING:
@@ -42,13 +45,17 @@ def determine_encoding(contents: str | bytes | IO, encoding: str | None) -> list
     return [detect_result["encoding"]]
 
 
-def decode(contents: str | bytes | IO, encoding: str | None) -> str:
+def decode(contents: str | bytes | StringIO | BytesIO, encoding: str | None) -> str:
     actual_contents = _get_contents(contents)
     if isinstance(actual_contents, str):
         return actual_contents
     possible_encodings = determine_encoding(actual_contents, encoding)
 
     for encoding in possible_encodings:
+        # NOTE: this should not be possible, we only return None if contents is str, which should have returned already.
+        if encoding is None:
+            msg = f"Could not determine encoding of contents: {actual_contents!r}"
+            raise AssertionError(msg)
         try:
             return actual_contents.decode(encoding)
         except UnicodeDecodeError as e:
@@ -59,3 +66,5 @@ def decode(contents: str | bytes | IO, encoding: str | None) -> str:
         except LookupError as e:
             msg = f"Invalid encoding: '{encoding}'."
             raise AllotropeConversionError(msg) from e
+    msg = f"Unable to decode contents with possible encodings: {possible_encodings}. Contents: {actual_contents!r}"
+    raise AllotropeConversionError(msg)
