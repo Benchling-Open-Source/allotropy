@@ -30,6 +30,7 @@ def ctr() -> MeasurementConfig:
     return MeasurementConfig(
         name="cycle threshold result",
         value="cycle_threshold_result",
+        required=True,
     )
 
 
