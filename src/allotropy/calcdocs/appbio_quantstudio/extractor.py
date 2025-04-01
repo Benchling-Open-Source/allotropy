@@ -25,7 +25,11 @@ class AppbioQuantstudioExtractor(Extractor[WellItem]):
                 "position": well_item.position,
                 "well_location_identifier": well_item.well_location_identifier,
                 "quencher_dye_setting": well_item.quencher_dye_setting,
-                "sample_role_type": well_item.sample_role_type,
+                "sample_role_type": (
+                    well_item.sample_role_type.value
+                    if well_item.sample_role_type
+                    else None
+                ),
                 "group_identifier": well_item.group_identifier,
                 "well_identifier": get_value(well_item.extra_data, "well identifier"),
                 "sample_color": get_value(well_item.extra_data, "sample color"),
