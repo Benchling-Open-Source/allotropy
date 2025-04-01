@@ -1,3 +1,5 @@
+from io import BytesIO
+
 from allotropy.constants import CHARDET_ENCODING
 from allotropy.parsers.utils.encoding import decode
 
@@ -13,3 +15,8 @@ def test_decode_actually_windows_1252() -> None:
         decode(test_bytes, encoding=CHARDET_ENCODING)
         == "Special byte –"  # noqa: RUF001
     )
+
+
+def test_decode_bytes_io() -> None:
+    test_bytes = "HeLa (😢)".encode("utf-8")  # noqa: UP012
+    assert decode(BytesIO(test_bytes), encoding=CHARDET_ENCODING) == "HeLa (😢)"

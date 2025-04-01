@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Callable, Iterable
 from enum import Enum
+from io import BytesIO
 import os
 import re
 from typing import Any, Literal, overload, TypeVar
@@ -159,7 +160,7 @@ def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
 
 def read_csv(
     # types for filepath_or_buffer match those in pd.read_csv()
-    filepath_or_buffer: FilePath | ReadCsvBuffer[bytes] | ReadCsvBuffer[str],
+    filepath_or_buffer: FilePath | BytesIO | ReadCsvBuffer[bytes] | ReadCsvBuffer[str],
     encoding: str | None = None,
     **kwargs: Any,
 ) -> pd.DataFrame:
@@ -169,13 +170,8 @@ def read_csv(
     """
     encodings = [None]
     if encoding:
-        contents = filepath_or_buffer.read()
-        encodings = (
-            determine_encoding(contents, encoding)
-            if isinstance(contents, bytes)
-            else None
-        )
-        filepath_or_buffer.seek(0)
+        encodings = determine_encoding(filepath_or_buffer, encoding)
+
     for encoding in encodings:
         if encoding is not None:
             kwargs["encoding"] = encoding
