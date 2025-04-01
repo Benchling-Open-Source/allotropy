@@ -177,13 +177,19 @@
             "file name": "ExceptionsOnly.csv",
             "UNC path": "tests/parsers/beckman_echo_plate_reformat/testdata/ExceptionsOnly.csv",
             "ASM converter name": "allotropy_beckman_echo_plate_reformat",
-            "ASM converter version": "0.1.68",
+            "ASM converter version": "0.1.80",
             "software name": "Labcyte Echo Plate Reformat",
             "software version": "2.6.3"
         },
         "device system document": {
             "equipment serial number": "E5XX-19119",
+            "model number": "Echo 525",
             "product manufacturer": "Beckman Coulter"
+        },
+        "custom information document": {
+            "Run ID": 1733768895,
+            "Run Date/Time": "2024-12-09 13:34:11",
+            "Application Version": "1.7.2"
         }
     }
 }

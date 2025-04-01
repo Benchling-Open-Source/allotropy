@@ -24,10 +24,13 @@ def create_metadata(header_footer_data: SeriesData, file_path: str) -> Metadata:
         device_type=constants.DEVICE_TYPE,
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
         software_version=header_footer_data[str, "Instrument Software Version"],
-        # description=header_footer_data[str, "Instrument Model"],
-        # identifier=header_footer_data[str, "Run ID"],
+        model_number=header_footer_data[str, "Instrument Model"],
         equipment_serial_number=header_footer_data[str, "Instrument Serial Number"],
         software_name=header_footer_data[str, "Application Name"],
+        custom_info={
+            **{"Run ID": header_footer_data.get(int, "Run ID")},
+            **header_footer_data.get_unread(),
+        },
     )
 
 
@@ -80,6 +83,7 @@ def _create_measurement(row_data: SeriesData) -> Measurement:
         ]
         if row_data.get(str, "Transfer Status")
         else [],
+        custom_info=row_data.get_unread(),
     )
 
 
