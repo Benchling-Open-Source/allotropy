@@ -20,13 +20,7 @@ EMPTY_STR_OR_CSV_LINE = r"^[\s,]*$"
 
 
 def read_to_lines(named_file_contents: NamedFileContents) -> list[str]:
-    stream_contents = named_file_contents.contents.read()
-    encoding = named_file_contents.encoding
-    raw_contents = (
-        decode(stream_contents, encoding)
-        if isinstance(stream_contents, bytes)
-        else stream_contents
-    )
+    raw_contents = decode(named_file_contents.contents, named_file_contents.encoding)
     contents = raw_contents.replace("\r\n", "\n")
     return contents.split("\n")
 

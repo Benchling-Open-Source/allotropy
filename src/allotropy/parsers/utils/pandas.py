@@ -158,7 +158,7 @@ def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
 
 def read_csv(
     # types for filepath_or_buffer match those in pd.read_csv()
-    filepath_or_buffer: str | bytes | IO[bytes] | IO[str],
+    filepath_or_buffer: IO[bytes] | IO[str],
     encoding: str | None = None,
     **kwargs: Any,
 ) -> pd.DataFrame:
@@ -174,7 +174,7 @@ def read_csv(
         if encoding is not None:
             kwargs["encoding"] = encoding
         try:
-            df_or_reader = pd.read_csv(filepath_or_buffer, **kwargs)  # type: ignore[arg-type]
+            df_or_reader = pd.read_csv(filepath_or_buffer, **kwargs)
         except Exception as e:
             if encoding != possible_encodings[-1]:
                 continue

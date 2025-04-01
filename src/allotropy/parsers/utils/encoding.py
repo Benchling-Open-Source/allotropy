@@ -1,4 +1,3 @@
-from io import BytesIO, StringIO
 from typing import IO
 
 import chardet
@@ -7,8 +6,8 @@ from allotropy.constants import CHARDET_ENCODING, DEFAULT_ENCODING
 from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
 
 
-def _get_contents(contents: str | bytes | IO[bytes] | IO[str]) -> str | bytes:
-    if isinstance(contents, str | bytes):
+def _get_contents(contents: bytes | IO[bytes] | IO[str]) -> str | bytes:
+    if isinstance(contents, bytes):
         return contents
     actual_contents = contents.read()
     contents.seek(0)
@@ -16,7 +15,7 @@ def _get_contents(contents: str | bytes | IO[bytes] | IO[str]) -> str | bytes:
 
 
 def determine_encoding(
-    contents: str | bytes | IO[bytes] | IO[str], encoding: str | None
+    contents: bytes | IO[bytes] | IO[str], encoding: str | None
 ) -> list[str | None]:
     if not encoding:
         return [DEFAULT_ENCODING]
@@ -45,7 +44,7 @@ def determine_encoding(
     return [detect_result["encoding"]]
 
 
-def decode(contents: str | bytes | StringIO | BytesIO, encoding: str | None) -> str:
+def decode(contents: IO[bytes] | IO[str], encoding: str | None) -> str:
     actual_contents = _get_contents(contents)
     if isinstance(actual_contents, str):
         return actual_contents
