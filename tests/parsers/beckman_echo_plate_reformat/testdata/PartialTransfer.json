@@ -170,7 +170,11 @@
                             }
                         }
                     ],
-                    "analytical method identifier": "connect_test_protocol.epr"
+                    "analytical method identifier": "connect_test_protocol.epr",
+                    "experimental data identifier": "1733769202",
+                    "custom information document": {
+                        "Run Date/Time": "2024-12-09 13:39:19"
+                    }
                 },
                 "analyst": "LabAutomation"
             }
@@ -183,17 +187,15 @@
             "ASM converter name": "allotropy_beckman_echo_plate_reformat",
             "ASM converter version": "0.1.80",
             "software name": "Labcyte Echo Plate Reformat",
-            "software version": "2.6.3"
+            "software version": "1.7.2"
         },
         "device system document": {
             "equipment serial number": "E5XX-19119",
             "model number": "Echo 525",
-            "product manufacturer": "Beckman Coulter"
-        },
-        "custom information document": {
-            "Run ID": 1733769202,
-            "Application Version": "1.7.2",
-            "Run Date/Time": "2024-12-09 13:39:19"
+            "product manufacturer": "Beckman Coulter",
+            "custom information document": {
+                "Instrument Software Version": "2.6.3"
+            }
         }
     }
 }

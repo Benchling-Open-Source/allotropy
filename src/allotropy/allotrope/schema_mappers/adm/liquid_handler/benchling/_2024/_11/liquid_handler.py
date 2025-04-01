@@ -73,6 +73,9 @@ class MeasurementGroup:
     analyst: str
     measurements: list[Measurement]
     analytical_method_identifier: str | None = None
+    experimental_data_identifier: str | None = None
+
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -90,6 +93,7 @@ class Metadata:
     devices: list[Device] | None = None
 
     custom_info: dict[str, Any] | None = None
+    device_system_custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -109,21 +113,24 @@ class Mapper(SchemaMapper[Data, Model]):
                         self._get_technique_document(group, data.metadata)
                         for group in data.measurement_groups
                     ],
-                    device_system_document=DeviceSystemDocument(
-                        equipment_serial_number=data.metadata.equipment_serial_number,
-                        product_manufacturer=data.metadata.product_manufacturer,
-                        model_number=data.metadata.model_number,
-                        device_document=[
-                            DeviceDocumentItem(
-                                device_type=device.device_type,
-                                device_identifier=device.identifier,
-                                equipment_serial_number=device.serial_number,
-                                product_manufacturer=device.product_manufacturer,
-                            )
-                            for device in data.metadata.devices
-                        ]
-                        if data.metadata.devices
-                        else None,
+                    device_system_document=add_custom_information_document(
+                        DeviceSystemDocument(
+                            equipment_serial_number=data.metadata.equipment_serial_number,
+                            product_manufacturer=data.metadata.product_manufacturer,
+                            model_number=data.metadata.model_number,
+                            device_document=[
+                                DeviceDocumentItem(
+                                    device_type=device.device_type,
+                                    device_identifier=device.identifier,
+                                    equipment_serial_number=device.serial_number,
+                                    product_manufacturer=device.product_manufacturer,
+                                )
+                                for device in data.metadata.devices
+                            ]
+                            if data.metadata.devices
+                            else None,
+                        ),
+                        data.metadata.device_system_custom_info,
                     ),
                     data_system_document=DataSystemDocument(
                         ASM_file_identifier=data.metadata.asm_file_identifier,
@@ -146,12 +153,16 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> LiquidHandlerDocumentItem:
         return LiquidHandlerDocumentItem(
             analyst=measurement_group.analyst,
-            measurement_aggregate_document=MeasurementAggregateDocument(
-                analytical_method_identifier=measurement_group.analytical_method_identifier,
-                measurement_document=[
-                    self._get_measurement_document_item(measurement, metadata)
-                    for measurement in measurement_group.measurements
-                ],
+            measurement_aggregate_document=add_custom_information_document(
+                MeasurementAggregateDocument(
+                    analytical_method_identifier=measurement_group.analytical_method_identifier,
+                    experimental_data_identifier=measurement_group.experimental_data_identifier,
+                    measurement_document=[
+                        self._get_measurement_document_item(measurement, metadata)
+                        for measurement in measurement_group.measurements
+                    ],
+                ),
+                measurement_group.custom_info,
             ),
         )
 
