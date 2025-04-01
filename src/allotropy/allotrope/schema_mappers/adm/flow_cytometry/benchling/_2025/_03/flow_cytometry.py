@@ -26,26 +26,33 @@ from allotropy.allotrope.models.adm.flow_cytometry.benchling._2025._03.flow_cyto
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
+    StatisticDimensionAggregateDocument,
+    StatisticDimensionDocumentItem,
     StatisticsAggregateDocument,
     StatisticsDocumentItem,
     VertexAggregateDocument,
     VertexDocumentItem,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueMilliAbsorbanceUnit,
-    TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueCounts,
     TQuantityValueUnitless,
+)
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    TQuantityValue,
+    TStatisticDatumRole,
 )
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.utils.values import quantity_or_none, quantity_or_none_from_unit
 
 
 @dataclass(frozen=True)
 class Vertex:
     x_coordinate: float
     y_coordinate: float
-    unit: TQuantityValueMilliAbsorbanceUnit | (TQuantityValueRelativeFluorescenceUnit)
+    x_unit: str
+    y_unit: str
+    vertex_role: str | None = None
 
 
 @dataclass(frozen=True)
@@ -71,8 +78,16 @@ class CompensationMatrixGroup:
 
 
 @dataclass(frozen=True)
+class StatisticDimension:
+    value: float
+    unit: str
+    has_statistic_datum_role: str | None = None
+    dimension_identifier: str | None = None
+
+
+@dataclass(frozen=True)
 class Statistic:
-    dimension_identifier: str
+    statistic_dimension: list[StatisticDimension]
     statistical_feature: str
 
 
@@ -81,9 +96,11 @@ class Population:
     population_identifier: str
     written_name: str | None = None
     data_region_identifier: str | None = None
+    count: int | None = None
     parent_population_identifier: str | None = None
     sub_populations: list[Population] | None = None
     statistics: list[Statistic] | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -133,7 +150,6 @@ class Metadata:
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
-    compensation_matrix_groups: list[CompensationMatrixGroup] | None = None
 
 
 class Mapper(SchemaMapper[Data, Model]):
@@ -178,7 +194,9 @@ class Mapper(SchemaMapper[Data, Model]):
                     for measurement in measurement_group.measurements
                 ],
                 analyst=measurement_group.analyst,
-                measurement_time=measurement_group.measurement_time,
+                measurement_time=self.get_date_time(measurement_group.measurement_time)
+                if measurement_group.measurement_time
+                else None,
                 experimental_data_identifier=measurement_group.experimental_data_identifier,
             ),
             compensation_matrix_aggregate_document=CompensationMatrixAggregateDocument(
@@ -251,54 +269,52 @@ class Mapper(SchemaMapper[Data, Model]):
             parent_data_region_identifier=data_region.parent_data_region_identifier,
             x_coordinate_dimension_identifier=data_region.x_coordinate_dimension_identifier,
             y_coordinate_dimension_identifier=data_region.y_coordinate_dimension_identifier,
-            vertex_aggregate_document=VertexAggregateDocument(
-                vertex_document=[
-                    self._get_vertex_document(vertex) for vertex in data_region.vertices
-                ]
-                if data_region.vertices
-                else None
+            vertex_aggregate_document=self._get_vertex_aggregate_document(
+                data_region.vertices
             ),
         )
 
-    def _get_vertex_document(self, vertex: Vertex) -> VertexDocumentItem:
-        unit_type = type(vertex.unit)
-        if unit_type not in (
-            TQuantityValueMilliAbsorbanceUnit,
-            TQuantityValueRelativeFluorescenceUnit,
-        ):
-            msg = f"Unsupported unit type: {unit_type}"
-            raise AllotropeConversionError(msg)
-        return VertexDocumentItem(
-            x_coordinate=unit_type(value=vertex.x_coordinate),
-            y_coordinate=unit_type(value=vertex.y_coordinate),
+    def _get_vertex_aggregate_document(
+        self, vertices: list[Vertex] | None
+    ) -> VertexAggregateDocument | None:
+        if not vertices:
+            return None
+        return VertexAggregateDocument(
+            vertex_document=[
+                VertexDocumentItem(
+                    x_coordinate=quantity_or_none_from_unit(vertex.x_unit, vertex.x_coordinate),  # type: ignore[arg-type]
+                    y_coordinate=quantity_or_none_from_unit(vertex.y_unit, vertex.y_coordinate),  # type: ignore[arg-type]
+                    vertex_role=vertex.vertex_role,
+                )
+                for vertex in vertices
+            ]
         )
 
     def _get_population_document(
         self, population: Population
     ) -> PopulationDocumentItem:
-        return PopulationDocumentItem(
-            population_identifier=population.population_identifier,
-            written_name=population.written_name,
-            data_region_identifier=population.data_region_identifier,
-            parent_population_identifier=population.parent_population_identifier,
-            population_aggregate_document=[
-                PopulationAggregateDocumentItem(
-                    population_document=[
-                        self._get_population_document(sub_population)
-                        for sub_population in population.sub_populations
-                    ]
-                )
-            ]
-            if population.sub_populations
-            else None,
-            statisticsAggregateDocument=StatisticsAggregateDocument(
-                statistics_document=[
-                    self._get_statistics_document(statistic)
-                    for statistic in population.statistics
+        return add_custom_information_document(
+            PopulationDocumentItem(
+                population_identifier=population.population_identifier,
+                written_name=population.written_name,
+                data_region_identifier=population.data_region_identifier,
+                count=quantity_or_none(TQuantityValueCounts, value=population.count),
+                parent_population_identifier=population.parent_population_identifier,
+                population_aggregate_document=[
+                    PopulationAggregateDocumentItem(
+                        population_document=[
+                            self._get_population_document(sub_population)
+                            for sub_population in population.sub_populations
+                        ]
+                    )
                 ]
-                if population.statistics
+                if population.sub_populations
                 else None,
+                statistics_aggregate_document=self._get_statistics_aggregate_document(
+                    population.statistics
+                ),
             ),
+            population.custom_info,
         )
 
     def _get_compensation_matrix_document(
@@ -310,11 +326,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 matrix_document=[
                     MatrixDocumentItem(
                         dimension_identifier=compensation.dimension_identifier,
-                        compensation_value=TQuantityValueUnitless(
-                            value=compensation.compensation_value
-                        )
-                        if compensation.compensation_value
-                        else None,
+                        compensation_value=quantity_or_none(
+                            TQuantityValueUnitless, compensation.compensation_value
+                        ),
                     )
                     for compensation in compensation_matrix_group.compensation_matrices
                 ]
@@ -323,10 +337,36 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
         )
 
-    def _get_statistics_document(self, statistic: Statistic) -> StatisticsDocumentItem:
-        return StatisticsDocumentItem(
-            dimension_identifier=statistic.dimension_identifier,
-            statistical_feature=statistic.statistical_feature,
+    def _get_statistics_aggregate_document(
+        self, statistics: list[Statistic] | None
+    ) -> StatisticsAggregateDocument | None:
+        if not statistics:
+            return None
+        return StatisticsAggregateDocument(
+            statistics_document=[
+                StatisticsDocumentItem(
+                    statistical_feature=statistic.statistical_feature,
+                    statistic_dimension_aggregate_document=StatisticDimensionAggregateDocument(
+                        statistic_dimension_document=[
+                            StatisticDimensionDocumentItem(
+                                dimension_identifier=statistic_dimension.dimension_identifier,
+                                statistical_value=TQuantityValue(
+                                    value=statistic_dimension.value,
+                                    unit=statistic_dimension.unit,
+                                    has_statistic_datum_role=TStatisticDatumRole(
+                                        statistic_dimension.has_statistic_datum_role
+                                    )
+                                    if statistic_dimension.has_statistic_datum_role
+                                    in {role.value for role in TStatisticDatumRole}
+                                    else None,
+                                ),
+                            )
+                            for statistic_dimension in statistic.statistic_dimension
+                        ]
+                    ),
+                )
+                for statistic in statistics
+            ]
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:

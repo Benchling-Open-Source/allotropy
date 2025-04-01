@@ -1,4 +1,6 @@
 from datetime import tzinfo
+from io import BytesIO
+import os
 from typing import Any
 
 from allotropy.allotrope.allotrope import serialize_and_validate_allotrope
@@ -60,14 +62,24 @@ def allotrope_model_from_file(
     encoding: str | None = None,
 ) -> Any:
     try:
-        with open(filepath, "rb") as f:
+        if not os.path.isdir(filepath):
+            with open(filepath, "rb") as f:
+                return allotrope_model_from_io(
+                    f,
+                    filepath,
+                    vendor_type,
+                    default_timezone=default_timezone,
+                    encoding=encoding,
+                )
+        else:
             return allotrope_model_from_io(
-                f,
+                BytesIO(b"Parsing Folder"),
                 filepath,
                 vendor_type,
                 default_timezone=default_timezone,
                 encoding=encoding,
             )
     except FileNotFoundError as e:
+
         msg = f"File not found: {filepath}."
         raise AllotropeConversionError(msg) from e

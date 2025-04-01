@@ -40,6 +40,7 @@ classifiers = [
   "Programming Language :: Python",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
+  "Typing :: Typed",
 ]
 dependencies = [
   "cattrs == 23.1.2",
@@ -121,6 +122,7 @@ dependencies = [
   "jsonschema-specifications == 2023.7.1",
   "olefile >= 0.47",
   "pydantic == 1.10.17",
+  "rainbow-api == 1.0.10",
   "ruff == 0.0.289",
   "semantic-version",
   "xmltodict >= 0.13.0",

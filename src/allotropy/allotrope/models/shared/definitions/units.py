@@ -75,6 +75,11 @@ class KiloDalton(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class KiloPascal(HasUnit):
+    unit: str = "kPa"
+
+
+@dataclass(frozen=True, kw_only=True)
 class MicrogramPerMicroliter(HasUnit):
     unit: str = "ug/µL"
 

@@ -56,6 +56,7 @@ def create_calculated_data_groups(
             if measurement.well_location_identifier != row_series.get(
                 str, "Well"
             ) or measurement.location_identifier != row_series.get(str, "Spot"):
+                row_series.get_unread()
                 continue
             calc_data_measurements.append(
                 CalculatedDataMeasurementStructure(
@@ -85,6 +86,8 @@ def create_calculated_data_groups(
                     ),
                 )
             )
+            # we do not need additional data for the calculated data documents
+            row_series.get_unread()
     elements = MsdWorkbenchExtractor.get_elements(calc_data_measurements)
     sample_assay_view = SampleIdentifierView(sub_view=AssayIdentifierView()).apply(
         elements
