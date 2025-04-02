@@ -20,7 +20,8 @@ EXCEL_FILE_TWO_SHEETS = f"{TESTDATA}/HelloWorldTwoSheets.xlsx"
 
 
 def test_read_csv() -> None:
-    pd.testing.assert_frame_equal(read_csv(CSV_FILE), EXPECTED_DATA_FRAME)
+    with open(CSV_FILE) as fin:
+        pd.testing.assert_frame_equal(read_csv(fin), EXPECTED_DATA_FRAME)
 
 
 def test_read_csv_fails_parsing() -> None:
@@ -28,7 +29,8 @@ def test_read_csv_fails_parsing() -> None:
         "Error calling pd.read_csv(): 'utf-8' codec can't decode bytes in position 15-16: invalid continuation byte"
     )
     with pytest.raises(AllotropeParsingError, match=expected_regex):
-        read_csv(EXCEL_FILE)
+        with open(EXCEL_FILE, "rb") as fin:
+            read_csv(fin)
 
 
 def test_read_csv_fails_invalid_output() -> None:
@@ -36,7 +38,8 @@ def test_read_csv_fails_invalid_output() -> None:
         "pd.read_csv() returned a TextFileReader, which is not supported."
     )
     with pytest.raises(AllotropeConversionError, match=expected_regex):
-        read_csv(CSV_FILE, iterator=True)
+        with open(CSV_FILE) as fin:
+            read_csv(fin, iterator=True)
 
 
 @pytest.mark.parametrize("filename", [EXCEL_FILE, EXCEL_FILE_TWO_SHEETS])

@@ -190,14 +190,14 @@ class ThermoSkanItMeasurementGroups:
             exec_time = session_info_data.get(str, "Execution time")
 
         if not exec_time:
-            exec_time = sheet_df.iloc[1][0]
+            exec_time = sheet_df.iloc[1].iloc[0]
 
         if not exec_time:
             msg = "Execution time not found"
             raise AllotropyParserError(msg)
 
         if not session_name:
-            experiment = sheet_df.iloc[0][0]
+            experiment = sheet_df.iloc[0].iloc[0]
             session_name = experiment.replace(".skax", "") if experiment else None
 
         meas_groups = []
