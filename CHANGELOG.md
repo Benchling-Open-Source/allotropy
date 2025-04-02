@@ -23,10 +23,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Global - handle cases where encoding detection detects the wrong encoding (#940)
 
-### Changed
-
-- Calcdocs - redefine extractor methods (#942)
-
 ## [0.1.80] - 2025-03-19
 
 ### Added
