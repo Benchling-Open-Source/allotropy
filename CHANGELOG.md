@@ -5,6 +5,24 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.81] - 2025-04-02
+
+### Added
+
+- Beckman Echo Plate Reformat - add unread keys and mark as REC (#944)
+- FlowJo - add support for Ellipsoid/CurlyQuad gates and Statistics documents (#939)
+- Beckman Echo Plate Reformat - initial implementation (#825)
+- Appbio Quantstudio design and analysis - store quantity as custom info when calcdata ignores value (#941)
+- Appbio Quantstudio design and analysis - redefine cycle threshold result as required data source (#934)
+- MSD Discovery Workbench - get unread data (#936)
+- Flowjo - initial implementation (#930)
+- Agilent OpenLab CDS - initial implementation (#864)
+- NovaBio Flex2 - add parsing for unit row (#932)
+
+### Fixed
+
+- Global - handle cases where encoding detection detects the wrong encoding (#940)
+
 ## [0.1.80] - 2025-03-19
 
 ### Added
