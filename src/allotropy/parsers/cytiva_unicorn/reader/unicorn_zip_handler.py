@@ -1,17 +1,34 @@
 from __future__ import annotations
 
 from io import BytesIO
+from zipfile import ZipFile
 
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.cytiva_unicorn.reader.zip_handler import (
-    ZipHandler,
-)
-from allotropy.parsers.utils.strict_xml_element import (
-    StrictXmlElement,
-)
+from allotropy.parsers.utils.strict_xml_element import StrictXmlElement
+from allotropy.parsers.utils.zip_handler import ZipHandler
+
+
+def fix_zip(data: BytesIO) -> BytesIO:
+    # ZipFile can fail if there are excess trailing bytes. This function detects the end of zip's central directory and,
+    # if found, truncates the data after the end of the zip file.
+    content = data.read()
+    pos = content.rfind(
+        b"\x50\x4b\x05\x06"
+    )  # reverse find: this string of bytes is the end of the zip's central directory.
+    if pos > 0:
+        data.seek(
+            pos + 22
+        )  # End bytes size is 22, see https://pkwaredownloads.blob.core.windows.net/pkware-general/Documentation/APPNOTE-6.3.0.TXT
+        data.truncate()
+        data.seek(0)
+
+    return data
 
 
 class UnicornZipHandler(ZipHandler):
+    def get_zip_file(self, data: BytesIO) -> ZipFile:
+        return ZipFile(fix_zip(data))
+
     def get_zip(self, inner_path: str) -> UnicornZipHandler:
         return UnicornZipHandler(self.get_file(inner_path))
 

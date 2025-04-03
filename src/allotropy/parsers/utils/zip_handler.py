@@ -7,27 +7,13 @@ from zipfile import ZipFile
 from allotropy.parsers.utils.values import assert_not_none
 
 
-def fix_zip(data: BytesIO) -> BytesIO:
-    # ZipFile can fail if there are excess trailing bytes. This function detects the end of zip's central directory and,
-    # if found, truncates the data after the end of the zip file.
-    content = data.read()
-    pos = content.rfind(
-        b"\x50\x4b\x05\x06"
-    )  # reverse find: this string of bytes is the end of the zip's central directory.
-    if pos > 0:
-        data.seek(
-            pos + 22
-        )  # End bytes size is 22, see https://pkwaredownloads.blob.core.windows.net/pkware-general/Documentation/APPNOTE-6.3.0.TXT
-        data.truncate()
-        data.seek(0)
-
-    return data
-
-
 class ZipHandler:
     def __init__(self, data: BytesIO):
-        self.zip_file = ZipFile(fix_zip(data))
+        self.zip_file = self.get_zip_file(data)
         self.name_list = self.zip_file.namelist()
+
+    def get_zip_file(self, data: BytesIO) -> ZipFile:
+        return ZipFile(data)
 
     def get_inner_path_or_none(self, pattern: str) -> str | None:
         for file_name in self.name_list:
