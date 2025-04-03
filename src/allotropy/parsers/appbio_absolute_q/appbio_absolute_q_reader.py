@@ -21,7 +21,7 @@ class AppbioAbsoluteQReader:
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
         csv_reader = CsvReader.create(named_file_contents)
-        df, self.common_columns = AppbioAbsoluteQReader.parse_dataframe(csv_reader)
+        df, self.common_columns = self.parse_dataframe(csv_reader)
 
         columns_to_rename = {}
         if "Name" in df and "Sample" not in df:
@@ -45,8 +45,7 @@ class AppbioAbsoluteQReader:
 
         self.data = df.replace(np.nan, None)
 
-    @staticmethod
-    def parse_dataframe(csv_reader: CsvReader) -> tuple[pd.DataFrame, list[str]]:
+    def parse_dataframe(self, csv_reader: CsvReader) -> tuple[pd.DataFrame, list[str]]:
         first_line = csv_reader.get()
         if not first_line:
             msg = "Can not parse empty file"
