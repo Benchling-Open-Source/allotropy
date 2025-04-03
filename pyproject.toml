@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling>=1.26.1"]
 build-backend = "hatchling.build"
 
 [project]
@@ -58,6 +58,7 @@ dependencies = [
   "openpyxl >= 3.1.0",
   "pandas >= 2.2.0",
   "python-calamine >= 0.2.3",
+  "rainbow-api == 1.0.10",
   "rfc3339-validator >= 0.1.4",
   "types-defusedxml >= 0.7.0.20240218",
   "xlrd >= 2.0.0",
@@ -121,12 +122,9 @@ dependencies = [
   "datamodel-code-generator == 0.25.2",
   # Without jsonschema-spec and pydantic, pydantic spews a bunch of errors when parsing schemas
   "jsonschema-specifications == 2023.7.1",
-  "olefile >= 0.47",
   "pydantic == 1.10.17",
-  "rainbow-api == 1.0.10",
   "ruff == 0.0.289",
   "semantic-version",
-  "xmltodict >= 0.13.0",
 ]
 
 [tool.hatch.envs.default.scripts]

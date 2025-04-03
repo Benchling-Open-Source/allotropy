@@ -1,7 +1,6 @@
 import pandas as pd
 
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.lines_reader import determine_encoding
 from allotropy.parsers.utils.pandas import (
     df_to_series_data,
     read_csv,
@@ -15,14 +14,9 @@ class RevvityMatrixReader:
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
         if named_file_contents.extension == "csv":
-            contents = named_file_contents.contents.read()
-            encoding = (
-                determine_encoding(contents, named_file_contents.encoding)
-                if isinstance(contents, bytes)
-                else None
+            df = read_csv(
+                named_file_contents.contents, encoding=named_file_contents.encoding
             )
-            named_file_contents.contents.seek(0)
-            df = read_csv(named_file_contents.contents, encoding=encoding)
         else:
             df = read_excel(named_file_contents.contents)
             # Reading a percent value (50%) in read_excel results in a decimal: 0.5
