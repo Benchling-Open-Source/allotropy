@@ -4,12 +4,8 @@ from io import BytesIO
 from zipfile import ZipFile
 
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.cytiva_unicorn.reader.zip_handler import (
-    ZipHandler,
-)
-from allotropy.parsers.utils.strict_xml_element import (
-    StrictXmlElement,
-)
+from allotropy.parsers.utils.strict_xml_element import StrictXmlElement
+from allotropy.parsers.utils.zip_handler import ZipHandler
 
 
 def fix_zip(data: BytesIO) -> BytesIO:
