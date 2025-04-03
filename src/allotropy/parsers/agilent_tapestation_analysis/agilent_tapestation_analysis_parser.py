@@ -7,7 +7,7 @@ from allotropy.allotrope.schema_mappers.adm.electrophoresis.benchling._2024._09.
     Data,
     Mapper,
 )
-from allotropy.exceptions import AllotropeParsingError
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_structure import (
     create_measurement_groups,
@@ -30,7 +30,7 @@ class AgilentTapestationAnalysisParser(VendorParser[Data, Model]):
             ).getroot()
         except ET.ParseError as e:
             msg = f"There was an error when trying to read the xml file: {e}"
-            raise AllotropeParsingError(msg) from e
+            raise AllotropeConversionError(msg) from e
 
         measurement_groups, calculated_data = create_measurement_groups(root_element)
         return Data(
