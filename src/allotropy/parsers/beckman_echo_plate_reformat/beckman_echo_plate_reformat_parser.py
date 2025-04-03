@@ -22,15 +22,16 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 class BeckmanEchoPlateReformatParser(VendorParser[Data, Model]):
     DISPLAY_NAME = DISPLAY_NAME
-    RELEASE_STATE = ReleaseState.WORKING_DRAFT
+    RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = BeckmanEchoPlateReformatReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = BeckmanEchoPlateReformatReader(named_file_contents)
+        measurement_groups = create_measurement_groups(
+            pd.concat(reader.sections.values(), ignore_index=True), reader.header
+        )
         return Data(
             create_metadata(reader.header, named_file_contents.original_file_path),
-            create_measurement_groups(
-                pd.concat(reader.sections.values(), ignore_index=True), reader.header
-            ),
+            measurement_groups,
         )

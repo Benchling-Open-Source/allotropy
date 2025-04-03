@@ -1,9 +1,13 @@
 from enum import Enum
+import math
 from pathlib import Path
 
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueSecondTime,
+)
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    TStatisticDatumRole,
 )
 from allotropy.allotrope.schema_mappers.adm.flow_cytometry.benchling._2025._03.flow_cytometry import (
     CompensationMatrix,
@@ -13,6 +17,8 @@ from allotropy.allotrope.schema_mappers.adm.flow_cytometry.benchling._2025._03.f
     MeasurementGroup,
     Metadata,
     Population,
+    Statistic,
+    StatisticDimension,
     Vertex,
 )
 from allotropy.exceptions import AllotropeParsingError
@@ -22,12 +28,86 @@ from allotropy.parsers.utils.strict_xml_element import StrictXmlElement
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import try_float_or_none
 
+# Map of FlowJo field names to statistic datum roles and units
+FLOWJO_STATISTIC_MAP = {
+    # Fluorescence statistics
+    "Median": {"role": TStatisticDatumRole.median_role.value, "unit": "RFU"},
+    "CV": {
+        "role": TStatisticDatumRole.coefficient_of_variation_role.value,
+        "unit": "%",
+    },
+    "Robust CV": {
+        "role": TStatisticDatumRole.robust_coefficient_of_variation_role.value,
+        "unit": "%",
+    },
+    "Mean": {"role": TStatisticDatumRole.arithmetic_mean_role.value, "unit": "RFU"},
+    "Geometric Mean": {
+        "role": TStatisticDatumRole.geometric_mean_role.value,
+        "unit": "RFU",
+    },
+    "Percentile": {"role": TStatisticDatumRole.percentile_role.value, "unit": "RFU"},
+    "SD": {
+        "role": TStatisticDatumRole.standard_deviation_role.value,
+        "unit": "(unitless)",
+    },
+    "MADExact": {
+        "role": TStatisticDatumRole.median_absolute_deviation_percentile_role.value,
+        "unit": "(unitless)",
+    },
+    "Robust SD": {
+        "role": TStatisticDatumRole.robust_standard_deviation_role.value,
+        "unit": "(unitless)",
+    },
+    "Median Abs Dev": {
+        "role": TStatisticDatumRole.median_absolute_deviation_role.value,
+        "unit": "(unitless)",
+    },
+    # Count statistics
+    "fj.stat.freqofparent": {
+        "role": TStatisticDatumRole.frequency_of_parent_role.value,
+        "unit": "%",
+    },
+    "fj.stat.freqofgrandparent": {
+        "role": TStatisticDatumRole.frequency_of_grandparent_role.value,
+        "unit": "%",
+    },
+    "fj.stat.freqoftotal": {
+        "role": TStatisticDatumRole.frequency_of_total_role.value,
+        "unit": "%",
+    },
+}
+
+# Identify statistics that belong to the "Count" feature
+COUNT_FIELDS = [
+    "fj.stat.freqofparent",
+    "fj.stat.freqofgrandparent",
+    "fj.stat.freqoftotal",
+    "fj.stat.freqof",
+]
+FLUORESCENCE_FIELDS = [
+    "Median",
+    "CV",
+    "Robust CV",
+    "Mean",
+    "Geometric Mean",
+    "Percentile",
+    "SD",
+    "MADExact",
+    "Robust SD",
+    "Median Abs Dev",
+]
+
 
 class RegionType(Enum):
     RECTANGLE = "Rectangle"
     POLYGON = "Polygon"
     ELLIPSOID = "Ellipsoid"
     CURLY_QUAD = "CurlyQuad"
+
+
+class VertexRole(Enum):
+    FOCI = "foci"
+    EDGE = "edge"
 
 
 def create_metadata(root_element: StrictXmlElement, file_path: str) -> Metadata:
@@ -118,6 +198,69 @@ def _create_compensation_matrix_groups(
     return result
 
 
+def _extract_statistics(population: StrictXmlElement) -> list[Statistic] | None:
+    """
+    Extract statistics from a population element.
+
+    Args:
+        population: The population element to extract statistics from
+
+    Returns:
+        list[Statistic] | None: List of statistics if found, None otherwise
+    """
+    fluorescence_dimensions = []
+    count_dimensions = []
+
+    statistic_elements = population.findall("Statistic")
+    if not statistic_elements:
+        return None
+
+    for statistic in statistic_elements:
+        name = statistic.get_attr_or_none("name")
+        dimension_id = statistic.get_attr_or_none("id")
+        value_str = statistic.get_attr_or_none("value")
+
+        if not (name and value_str):
+            continue
+
+        value = try_float_or_none(value_str)
+        if value is None or math.isnan(value):
+            continue
+
+        stat_info = FLOWJO_STATISTIC_MAP.get(name)
+        if stat_info is None:
+            continue
+
+        dimension = StatisticDimension(
+            dimension_identifier=dimension_id,
+            value=value * 100 if name in COUNT_FIELDS else value,
+            unit=stat_info["unit"],
+            has_statistic_datum_role=stat_info["role"],
+        )
+
+        if name in FLUORESCENCE_FIELDS:
+            fluorescence_dimensions.append(dimension)
+        elif name in COUNT_FIELDS:
+            count_dimensions.append(dimension)
+
+    statistics = []
+
+    if fluorescence_dimensions:
+        statistics.append(
+            Statistic(
+                statistical_feature="fluorescence",
+                statistic_dimension=fluorescence_dimensions,
+            )
+        )
+
+    if count_dimensions:
+        statistics.append(
+            Statistic(statistical_feature="count", statistic_dimension=count_dimensions)
+        )
+
+    return statistics if statistics else None
+
+
 def _create_populations(
     node: StrictXmlElement, parent_id: str | None = None
 ) -> list[Population]:
@@ -133,9 +276,10 @@ def _create_populations(
         if gate is not None:
             data_region_identifier = gate.get_namespaced_attr_or_none("gating", "id")
 
+        statistics = None
         subpops_element = population.find_or_none("Subpopulations")
         if subpops_element is not None:
-            # Recursively get subpopulations
+            statistics = _extract_statistics(subpops_element)
             sub_populations = _create_populations(subpops_element, current_id)
         else:
             sub_populations = []
@@ -148,7 +292,7 @@ def _create_populations(
             count=int(count) if count else None,
             sub_populations=sub_populations,
             custom_info={"group_identifier": group_identifier},
-            statistics=None,  # TODO add support for statistics documents
+            statistics=statistics,
         )
         populations.append(pop)
 
@@ -215,6 +359,10 @@ def _extract_dimension_identifiers(
 
 
 def _get_gate_type(gate_element: StrictXmlElement) -> str | None:
+    # Handle special case for CurlyQuad
+    if gate_element.find_or_none("gating:CurlyQuad") is not None:
+        return RegionType.CURLY_QUAD.value
+
     for region_type in RegionType:
         if gate_element.find_or_none(f"gating:{region_type.value}Gate") is not None:
             return region_type.value
@@ -234,7 +382,7 @@ def _extract_vertices(
     - Polygon: Extract vertices from gating:vertex elements
     - Rectangle: Extract min/max coordinates to create 4 vertices
     - CurlyQuad: Extract min/max coordinates to create a vertex
-    - Ellipsoid: Not supported yet (TODO)
+    - Ellipsoid: Extract foci (2 vertices) and edge (4 vertices) coordinates
 
     Returns:
         list[Vertex] | None: List of vertices if found, None otherwise
@@ -305,9 +453,46 @@ def _extract_vertices(
         for x, y in ((x_min, y_min), (x_min, y_max), (x_max, y_max), (x_max, y_min)):
             add_vertex(x, y, vertices)
 
-    # TODO: Add support for Ellipsoid gates
     elif gate_type == RegionType.ELLIPSOID.value:
-        return None
+        vertices = []
+
+        def _extract_coordinate_values(
+            coords: list[StrictXmlElement],
+        ) -> tuple[str | None, str | None]:
+            x_value = (
+                coords[0].get_namespaced_attr_or_none("data-type", "value")
+                if coords
+                else None
+            )
+            y_value = (
+                coords[1].get_namespaced_attr_or_none("data-type", "value")
+                if len(coords) > 1
+                else None
+            )
+            return x_value, y_value
+
+        def _add_vertex_with_role(vertex_element: StrictXmlElement, role: str) -> None:
+            coords = vertex_element.findall("gating:coordinate")
+            x_value, y_value = _extract_coordinate_values(coords)
+
+            if x_value is not None and y_value is not None:
+                vertices.append(
+                    Vertex(
+                        x_coordinate=float(x_value),
+                        y_coordinate=float(y_value),
+                        x_unit=x_unit,
+                        y_unit=y_unit,
+                        vertex_role=role,
+                    )
+                )
+
+        foci_vertices = gate_element.findall("gating:foci/gating:vertex")
+        for vertex in foci_vertices:
+            _add_vertex_with_role(vertex, VertexRole.FOCI.value)
+
+        edge_vertices = gate_element.findall("gating:edge/gating:vertex")
+        for vertex in edge_vertices:
+            _add_vertex_with_role(vertex, VertexRole.EDGE.value)
 
     return vertices if vertices else None
 
@@ -317,11 +502,16 @@ def _create_data_regions(sample: StrictXmlElement) -> list[DataRegion]:
     sample_node = sample.find_or_none("SampleNode")
 
     def _process_population(population: StrictXmlElement) -> None:
-        if (
-            not (gate := population.find_or_none("Gate"))
-            or not (gate_type := _get_gate_type(gate))
-            or not (gate_element := gate.find_or_none(f"gating:{gate_type}Gate"))
+        if not (gate := population.find_or_none("Gate")) or not (
+            gate_type := _get_gate_type(gate)
         ):
+            return
+        if gate_type == RegionType.CURLY_QUAD.value:
+            gate_element = gate.find_or_none("gating:CurlyQuad")
+        else:
+            gate_element = gate.find_or_none(f"gating:{gate_type}Gate")
+
+        if not gate_element:
             return
 
         x_dim, y_dim = _extract_dimension_identifiers(gate_element)

@@ -25,7 +25,7 @@ class BeckmanEchoPlateReformatReader:
     def __init__(self, named_file_contents: NamedFileContents) -> None:
         reader = LinesReader.create(named_file_contents)
 
-        # read header section, up to the '[Exceptions]' section delimiter
+        # read header section, up to a data section delimiter
         header_lines = [
             line.strip() for line in reader.pop_until(r"^\[.+\]") if line.strip()
         ]

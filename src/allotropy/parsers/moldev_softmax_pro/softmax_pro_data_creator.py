@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import datetime
 from itertools import chain
 from pathlib import Path
+
+from dateutil import parser
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
@@ -133,7 +136,7 @@ def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measure
 
 
 def _create_measurement_group(
-    plate_block: PlateBlock, position: str
+    plate_block: PlateBlock, position: str, date_last_saved: str | None
 ) -> MeasurementGroup | None:
 
     if not (measurements := _create_measurements(plate_block, position)):
@@ -145,10 +148,15 @@ def _create_measurement_group(
             plate_block.block_data.raw_data.maximum_wavelength_signal[position]
         )
 
+    measurement_time = DEFAULT_EPOCH_TIMESTAMP
+    if date_last_saved:
+        delta = datetime.timedelta(seconds=plate_block.header.read_time or 0)
+        measurement_time = (parser.parse(date_last_saved) + delta).isoformat()
+
     return MeasurementGroup(
         measurements=measurements,
         plate_well_count=plate_block.header.num_wells,
-        measurement_time=DEFAULT_EPOCH_TIMESTAMP,
+        measurement_time=measurement_time,
         maximum_wavelength_signal=maximum_wavelength_signal,
     )
 
@@ -158,7 +166,11 @@ def create_measurement_groups(data: StructureData) -> list[MeasurementGroup]:
         measurement_group
         for plate_block in data.block_list.plate_blocks.values()
         for position in plate_block.iter_wells()
-        if (measurement_group := _create_measurement_group(plate_block, position))
+        if (
+            measurement_group := _create_measurement_group(
+                plate_block, position, data.date_last_saved
+            )
+        )
     ]
     if not measurement_groups:
         msg = "Invalid data - the file contains invalid or missing measurement data. Unable to construct ASM."
