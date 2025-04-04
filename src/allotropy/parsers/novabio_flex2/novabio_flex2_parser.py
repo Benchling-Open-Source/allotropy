@@ -1,7 +1,4 @@
-import io
-
 import numpy as np
-import pandas as pd
 
 from allotropy.allotrope.models.adm.solution_analyzer.benchling._2024._09.solution_analyzer import (
     Model,
