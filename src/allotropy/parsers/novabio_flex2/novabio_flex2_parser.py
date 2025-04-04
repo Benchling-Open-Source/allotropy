@@ -1,4 +1,7 @@
+import io
+
 import numpy as np
+import pandas as pd
 
 from allotropy.allotrope.models.adm.solution_analyzer.benchling._2024._09.solution_analyzer import (
     Model,
@@ -27,14 +30,18 @@ class NovaBioFlexParser(VendorParser[Data, Model]):
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        # NOTE: calling parse_dates and removing NaN clears empty rows.
         try:
             data = read_csv(
                 named_file_contents.contents, parse_dates=["Date & Time"]
             ).replace(np.nan, None)
         except Exception as e:
-            msg = "NovaBio Flex2 parser requires 'Date & Time' column to be present in the CSV file."
-            raise AllotropeConversionError(msg) from e
+            # Check if error is about missing Date & Time column
+            if "Date & Time" in str(e):
+                msg = "Missing 'Date & Time' column in the CSV file. This is required for NovaBio Flex2 files."
+                raise AllotropeConversionError(msg) from e
+            else:
+                msg = f"Failed to parse CSV file: {e}"
+                raise AllotropeConversionError(msg) from e
 
         title = Title.create(named_file_contents.original_file_path)
         sample_data = SampleData.create(data)
