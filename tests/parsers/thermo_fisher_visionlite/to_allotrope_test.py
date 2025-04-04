@@ -22,3 +22,9 @@ def test_to_allotrope_unsupported_rate_file() -> None:
         AllotropeConversionError, match=UNSUPPORTED_KINETIC_MEASUREMENTS_ERROR
     ):
         from_file(filepath, VENDOR_TYPE)
+
+
+def test_to_allotrope_incomplete_headers_file() -> None:
+    filepath = f"{TESTDATA}/exclude/not_all_headers.csv"
+    with pytest.raises(AllotropeConversionError, match="Expected 4 columns, but got 3"):
+        from_file(filepath, VENDOR_TYPE)
