@@ -33,7 +33,7 @@ class ThermoFisherVisionliteReader:
         ):
             columns = first_line.split(",")[:4]
             if len(columns) != len(HEADER_COLS):
-                msg = f"Expected {len(HEADER_COLS)} columns, but got {len(columns)}."
+                msg = f"Expected {len(HEADER_COLS)} columns, but got {len(columns)}:columns"
                 raise AllotropeConversionError(msg)
             self.header = SeriesData(pd.Series(columns, index=HEADER_COLS))
             reader.pop()
