@@ -125,17 +125,21 @@ def create_measurements(
                 )
             },
             sensorgram_data_cube=_get_sensorgram_datacube(measurement.sensorgram_data),
-            report_point_data=[
-                ReportPoint(
-                    identifier=rp_data.identifier,
-                    identifier_role=rp_data.identifier_role,
-                    absolute_resonance=rp_data.absolute_resonance,
-                    relative_resonance=rp_data.relative_resonance,
-                    time_setting=rp_data.time_setting,
-                    custom_info=rp_data.custom_info,
-                )
-                for rp_data in measurement.report_point_data
-            ],
+            report_point_data=(
+                [
+                    ReportPoint(
+                        identifier=rp_data.identifier,
+                        identifier_role=rp_data.identifier_role,
+                        absolute_resonance=rp_data.absolute_resonance,
+                        relative_resonance=rp_data.relative_resonance,
+                        time_setting=rp_data.time_setting,
+                        custom_info=rp_data.custom_info,
+                    )
+                    for rp_data in measurement.report_point_data
+                ]
+                if measurement.report_point_data is not None
+                else None
+            ),
             # for Mobilization experiments
             method_name=measurement.method_name,
             ligand_identifier=measurement.ligand_identifier,

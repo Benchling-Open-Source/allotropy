@@ -145,7 +145,7 @@ def process_and_rearrange_xml_data(data: dict[str, Any]) -> dict[str, Any]:
 
 
 def get_detection_data(
-    detection_settings: dict[str, list[dict[str, Any]]]
+    detection_settings: dict[str, list[dict[str, Any]]],
 ) -> dict[str, Any]:
     """
     The function gets detection data
@@ -188,7 +188,7 @@ def get_data_item(data_item: dict[str, Any]) -> dict[str, Any]:
 
 
 def decode_application_data(
-    application_template_data: dict[str, Any]
+    application_template_data: dict[str, Any],
 ) -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
     """
     decodes app data template application stream data
@@ -258,22 +258,22 @@ def decode_application_data(
                                     "dataItems"
                                 ]
                             )
-                            application_template[
-                                "RackTemperature"
-                            ] = measurement_settings["RackTemperature"]
+                            application_template["RackTemperature"] = (
+                                measurement_settings["RackTemperature"]
+                            )
                             application_template["BaselineFlow"] = measurement_settings[
                                 "BaselineFlow"
                             ]
-                            application_template[
-                                "DataCollectionRate"
-                            ] = measurement_settings["DataCollectionRate"]
-                            application_template[
-                                "MoleculeWeightUnit"
-                            ] = measurement_settings["MoleculeWeightUnit"]
+                            application_template["DataCollectionRate"] = (
+                                measurement_settings["DataCollectionRate"]
+                            )
+                            application_template["MoleculeWeightUnit"] = (
+                                measurement_settings["MoleculeWeightUnit"]
+                            )
                 elif xml_name["@name"] == "_SystemPreparations":
-                    application_template[
-                        "system_preparations"
-                    ] = process_and_rearrange_xml_data(xml_name)
+                    application_template["system_preparations"] = (
+                        process_and_rearrange_xml_data(xml_name)
+                    )
                 elif xml_name["@name"] == "_PrepareRun":
                     application_template["prepare_run"] = {
                         key: value
@@ -403,8 +403,8 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
     content = ole.OleFileIO(named_file_contents.get_bytes_stream())
     streams = content.listdir()
     cycles: list[dict[str, Any]] = []
-    cycle_df_list = []
-    cycle_details = []
+    sensorgram_df_list = []
+    report_point_data = {}
     for stream in streams:
         stream_content = content.openstream(stream).read()
         if stream == ["Environment"]:
@@ -428,13 +428,10 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
         elif stream == ["RPoint Table"]:
             r_point_data = get_r_point_data(stream_content.decode("utf-8"))
             r_point_dataframe = pd.DataFrame(r_point_data)
-            report_point_data = r_point_dataframe.groupby("Cycle")
-            for _, group in report_point_data:
-                cycle_data = {}
-                cycle_number = group["Cycle"].iloc[0]
-                cycle_data["cycle_number"] = cycle_number
-                cycle_data["report_point_data"] = group
-                cycle_details.append(cycle_data)
+            report_point_data = {
+                group["Cycle"].iloc[0]: group
+                for _, group in r_point_dataframe.groupby("Cycle")
+            }
         cycle_match = cycle_pattern.search(stream[0])
         if not cycle_match:
             continue
@@ -446,6 +443,10 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
         if any("_Window" in part for part in stream) and any(
             "_Curve" in part for part in stream
         ):
+            # TODO: it seems like this chunk can be simplified:
+            # 1. no need to call get_cycle_data
+            # 2. no need to do the next(...) thing, with the regex searsh should be enough
+
             window_group = 1
             # gets the curve number
             curve_number = next(
@@ -494,7 +495,7 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                     }
                 )
 
-                cycle_df_list.append(xy_data_frame)
+                sensorgram_df_list.append(xy_data_frame)
 
             # gets the segment data
             elif "Segment" in str(stream):
@@ -511,12 +512,10 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                         "Sensorgram (RU)": segment_data_list[11:],
                     }
                 )
-                cycle_df_list.append(segment_data_frame)
-    combined_cycles_df = pd.concat(cycle_df_list, ignore_index=True)
-
-    sensorgram_data = combined_cycles_df.groupby("Cycle Number")
-    cycles_data = []
-    for _name, group in sensorgram_data:
+                sensorgram_df_list.append(segment_data_frame)
+    combined_sensorgram_df = pd.concat(sensorgram_df_list, ignore_index=True)
+    sensorgram_data = {}
+    for _name, group in combined_sensorgram_df.groupby("Cycle Number"):
         if "Time (s)" in group.columns:
             max_new = group["Flow Cell Number"].max()
             last_part = group[group["Flow Cell Number"] == max_new]
@@ -528,7 +527,8 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                         group.at[idx, "Time (s)"] = time_map[
                             list(time_map.keys())[i % len(time_map)]
                         ]
-        elif intermediate_json["application_template_details"].get(
+        # TODO: explain this!
+        elif intermediate_json.get("application_template_details", {}).get(
             "DataCollectionRate"
         ):
             group["Time (s)"] = group.groupby("Flow Cell Number").cumcount() * (
@@ -539,8 +539,10 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
             )
         else:
             group["Time (s)"] = group.groupby("Flow Cell Number").cumcount() + 1
+
         cycle_number = group["Cycle Number"].iloc[0]
-        group_data = group[
+        # cycles_data.append(group_data)
+        sensorgram_data[str(cycle_number)] = group[
             [
                 "Flow Cell Number",
                 "Cycle Number",
@@ -550,13 +552,17 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                 "Sensorgram (RU)",
             ]
         ]
-        cycles_data.append(group_data)
 
-    total_cycles = [
-        {**d, "sensorgram_data": cycle_sensorgram_data}
-        for d, cycle_sensorgram_data in zip(cycle_details, cycles_data, strict=True)
+    # In some cases the "RPoint Table" stream may not have data for the first cycle,
+    # but we get streams with sensorgram data (XYData or Segment streams) for all the cycles.
+    intermediate_json["cycle_data"] = [
+        {
+            "cycle_number": cycle,
+            "report_point_data": report_point_data.get(cycle),
+            "sensorgram_data": sensorgram_df,
+        }
+        for cycle, sensorgram_df in sensorgram_data.items()
     ]
-    intermediate_json["cycle_data"] = total_cycles
     intermediate_json["total_cycles"] = cycle_number
 
     return intermediate_json
