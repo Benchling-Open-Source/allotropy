@@ -244,19 +244,16 @@ def test_create_plates_with_calculated_data() -> None:
                 ],
                 results=[
                     CalculatedResult(
-                        uuid="TEST_ID_0",
                         col="A",
                         row="1",
                         value=3,
                     ),
                     CalculatedResult(
-                        uuid="TEST_ID_1",
                         col="A",
                         row="3",
                         value=3.5,
                     ),
                     CalculatedResult(
-                        uuid="TEST_ID_2",
                         col="C",
                         row="2",
                         value=4,
