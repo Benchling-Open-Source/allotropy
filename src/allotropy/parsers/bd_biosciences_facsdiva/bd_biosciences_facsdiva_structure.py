@@ -539,7 +539,7 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
                 analyst=analyst.get_text_or_none() if analyst else None,
                 compensation_matrix_groups=compensation_matrix_groups,
                 measurements=measurements,
-                experiment_identifier=experiment_identifier
+                experiment_identifier=experiment_identifier,
             )
 
             result.append(measurement_group)

@@ -200,7 +200,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 if measurement_group.measurement_time
                 else None,
                 experimental_data_identifier=measurement_group.experimental_data_identifier,
-                experiment_identifier=measurement_group.experiment_identifier
+                experiment_identifier=measurement_group.experiment_identifier,
             ),
             compensation_matrix_aggregate_document=CompensationMatrixAggregateDocument(
                 compensation_matrix_document=[

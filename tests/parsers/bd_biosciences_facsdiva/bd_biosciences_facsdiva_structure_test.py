@@ -110,6 +110,7 @@ SAMPLE_XML = """<?xml version="1.0" encoding="UTF-8"?>
 </bdfacs>
 """
 
+
 def load_sample_xml() -> StrictXmlElement:
     root_element_et = ET.parse(BytesIO(SAMPLE_XML.encode())).getroot()  # noqa: S314
     return StrictXmlElement(root_element_et)
@@ -141,28 +142,36 @@ def test_create_data_regions() -> None:
     assert data_regions is not None
     assert len(data_regions) == 4
 
-    p1_region = next((r for r in data_regions if r.region_data_identifier == "P1"), None)
+    p1_region = next(
+        (r for r in data_regions if r.region_data_identifier == "P1"), None
+    )
     assert p1_region is not None
     assert p1_region.region_data_type == RegionType.POLYGON.value
     assert p1_region.parent_data_region_identifier is None
     assert p1_region.x_coordinate_dimension_identifier == "FSC-A"
     assert p1_region.y_coordinate_dimension_identifier == "SSC-A"
 
-    p2_region = next((r for r in data_regions if r.region_data_identifier == "P2"), None)
+    p2_region = next(
+        (r for r in data_regions if r.region_data_identifier == "P2"), None
+    )
     assert p2_region is not None
     assert p2_region.region_data_type == RegionType.RECTANGLE.value
     assert p2_region.parent_data_region_identifier == "P1"
     assert p2_region.x_coordinate_dimension_identifier == "CD3"
     assert p2_region.y_coordinate_dimension_identifier == "CD4"
 
-    p3_region = next((r for r in data_regions if r.region_data_identifier == "P3"), None)
+    p3_region = next(
+        (r for r in data_regions if r.region_data_identifier == "P3"), None
+    )
     assert p3_region is not None
     assert p3_region.region_data_type == RegionType.POLYGON.value
     assert p3_region.parent_data_region_identifier == "P2"
     assert p3_region.x_coordinate_dimension_identifier == "PE-A"
     assert p3_region.y_coordinate_dimension_identifier == "APC-A"
 
-    p4_region = next((r for r in data_regions if r.region_data_identifier == "P4"), None)
+    p4_region = next(
+        (r for r in data_regions if r.region_data_identifier == "P4"), None
+    )
     assert p4_region is not None
     assert p4_region.region_data_type == RegionType.BINNER.value
     assert p4_region.parent_data_region_identifier is None
@@ -189,13 +198,21 @@ def test_create_populations() -> None:
     assert root_population.sub_populations is not None
     assert len(root_population.sub_populations) >= 1
 
-    p1_population = next((p for p in root_population.sub_populations
-                          if p.data_region_identifier == "P1"
-                          or (p.written_name == "P1" if p.written_name else False)),
-                         None)
+    p1_population = next(
+        (
+            p
+            for p in root_population.sub_populations
+            if p.data_region_identifier == "P1"
+            or (p.written_name == "P1" if p.written_name else False)
+        ),
+        None,
+    )
 
     if p1_population:
-        assert p1_population.parent_population_identifier == root_population.population_identifier
+        assert (
+            p1_population.parent_population_identifier
+            == root_population.population_identifier
+        )
 
 
 def test_create_compensation_matrix_groups() -> None:
@@ -210,13 +227,19 @@ def test_create_compensation_matrix_groups() -> None:
 
     assert len(comp_matrix_groups) == 2
 
-    pe_group = next((g for g in comp_matrix_groups if g.dimension_identifier == "PE-A"), None)
+    pe_group = next(
+        (g for g in comp_matrix_groups if g.dimension_identifier == "PE-A"), None
+    )
     assert pe_group is not None
     assert pe_group.compensation_matrices is not None
     assert len(pe_group.compensation_matrices) == 2
 
     fitc_matrix = next(
-        (m for m in pe_group.compensation_matrices if m.dimension_identifier == "FITC-A"),
+        (
+            m
+            for m in pe_group.compensation_matrices
+            if m.dimension_identifier == "FITC-A"
+        ),
         None,
     )
     assert fitc_matrix is not None
@@ -229,13 +252,19 @@ def test_create_compensation_matrix_groups() -> None:
     assert pe_matrix is not None
     assert pe_matrix.compensation_value == 1.0
 
-    apc_group = next((g for g in comp_matrix_groups if g.dimension_identifier == "APC-A"), None)
+    apc_group = next(
+        (g for g in comp_matrix_groups if g.dimension_identifier == "APC-A"), None
+    )
     assert apc_group is not None
     assert apc_group.compensation_matrices is not None
     assert len(apc_group.compensation_matrices) == 2
 
     pe_matrix_in_apc = next(
-        (m for m in apc_group.compensation_matrices if m.dimension_identifier == "PE-A"),
+        (
+            m
+            for m in apc_group.compensation_matrices
+            if m.dimension_identifier == "PE-A"
+        ),
         None,
     )
     assert pe_matrix_in_apc is not None
@@ -250,11 +279,17 @@ def test_extract_statistics_from_calculations() -> None:
     p2_stats = _extract_statistics_from_calculations(tube, "All Events\\P1\\P2")
     assert p2_stats is not None
 
-    fluorescence_stat = next((s for s in p2_stats if s.statistical_feature == "fluorescence"), None)
+    fluorescence_stat = next(
+        (s for s in p2_stats if s.statistical_feature == "fluorescence"), None
+    )
     assert fluorescence_stat is not None
 
     median_dim = next(
-        (d for d in fluorescence_stat.statistic_dimension if d.has_statistic_datum_role == "median role"),
+        (
+            d
+            for d in fluorescence_stat.statistic_dimension
+            if d.has_statistic_datum_role == "median role"
+        ),
         None,
     )
     if median_dim:
@@ -267,10 +302,16 @@ def test_extract_statistics_from_calculations() -> None:
 
     p4_stats = _extract_statistics_from_calculations(tube, "All Events\\P4")
     if p4_stats:
-        fluorescence_stat = next((s for s in p4_stats if s.statistical_feature == "fluorescence"), None)
+        fluorescence_stat = next(
+            (s for s in p4_stats if s.statistical_feature == "fluorescence"), None
+        )
         if fluorescence_stat:
             median_dim = next(
-                (d for d in fluorescence_stat.statistic_dimension if d.has_statistic_datum_role == "median role"),
+                (
+                    d
+                    for d in fluorescence_stat.statistic_dimension
+                    if d.has_statistic_datum_role == "median role"
+                ),
                 None,
             )
             if median_dim:
