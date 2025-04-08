@@ -23,11 +23,16 @@ def create_metadata(header_footer_data: SeriesData, file_path: str) -> Metadata:
         data_system_instance_identifier=NOT_APPLICABLE,
         device_type=constants.DEVICE_TYPE,
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
-        software_version=header_footer_data[str, "Instrument Software Version"],
-        # description=header_footer_data[str, "Instrument Model"],
-        # identifier=header_footer_data[str, "Run ID"],
+        software_version=header_footer_data[str, "Application Version"],
+        model_number=header_footer_data[str, "Instrument Model"],
         equipment_serial_number=header_footer_data[str, "Instrument Serial Number"],
         software_name=header_footer_data[str, "Application Name"],
+        device_system_custom_info={
+            "Instrument Software Version": header_footer_data.get(
+                str, "Instrument Software Version"
+            )
+        },
+        custom_info=header_footer_data.get_unread(),
     )
 
 
@@ -80,6 +85,7 @@ def _create_measurement(row_data: SeriesData) -> Measurement:
         ]
         if row_data.get(str, "Transfer Status")
         else [],
+        custom_info=row_data.get_unread(),
     )
 
 
@@ -91,6 +97,10 @@ def create_measurement_groups(
         MeasurementGroup(
             analyst=header[str, "User Name"],
             analytical_method_identifier=header.get(str, "Protocol Name"),
+            experimental_data_identifier=header.get(str, "Run ID"),
             measurements=map_rows(data, _create_measurement),
+            custom_info={
+                "Run Date/Time": header.get(str, "Run Date/Time"),
+            },
         )
     ]
