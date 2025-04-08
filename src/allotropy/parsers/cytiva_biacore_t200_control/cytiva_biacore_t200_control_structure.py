@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 import pandas as pd
 
@@ -71,18 +71,20 @@ class Device:
 
 @dataclass(frozen=True)
 class RunMetadata:
-    analyst: str | None
-    compartment_temperature: float | None
-    baseline_flow: float | None
-    data_collection_rate: float | None
-    detection_setting: DetectionSetting | None
-    buffer_volume: float | None
-    devices: list[Device]
+    analyst: str | None = None
+    compartment_temperature: float | None = None
+    baseline_flow: float | None = None
+    data_collection_rate: float | None = None
+    detection_setting: DetectionSetting | None = None
+    buffer_volume: float | None = None
+    devices: list[Device] = field(default_factory=list)
 
     @staticmethod
     def create(
-        application_template_details: dict[str, DictType],
+        application_template_details: dict[str, DictType] | None,
     ) -> RunMetadata:
+        if application_template_details is None:
+            return RunMetadata()
         return RunMetadata(
             analyst=application_template_details["properties"].get("User"),
             compartment_temperature=try_float_or_none(
@@ -218,9 +220,9 @@ class SampleData:
 
     @staticmethod
     def create(intermediate_structured_data: DictType) -> SampleData:
-        application_template_details: dict[str, DictType] = (
-            intermediate_structured_data["application_template_details"]
-        )
+        application_template_details: dict[
+            str, DictType
+        ] = intermediate_structured_data.get("application_template_details", {})
         measurements: dict[str, list[MeasurementData]] = defaultdict(list)
         for idx in range(intermediate_structured_data["total_cycles"]):
             flowcell_cycle_data: DictType = application_template_details.get(
@@ -294,9 +296,9 @@ class Data:
 
     @staticmethod
     def create(intermediate_structured_data: DictType) -> Data:
-        application_template_details: dict[str, DictType] = (
-            intermediate_structured_data["application_template_details"]
-        )
+        application_template_details: dict[
+            str, DictType
+        ] | None = intermediate_structured_data.get("application_template_details")
         chip_data: DictType = intermediate_structured_data["chip"]
         system_information: DictType = intermediate_structured_data[
             "system_information"
