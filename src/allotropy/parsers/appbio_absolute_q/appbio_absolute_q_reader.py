@@ -69,7 +69,7 @@ class AppbioAbsoluteQReader:
         n_files = len(summary_files)
 
         if n_files > 1:
-            msg = "Two summary files identified in zip folder -- connector currently only expects one summary file to be present."
+            msg = "Multiple summary files found in zip folder - the adapter requires exactly one summary file to be present. File list: {zip_handler.name_list}"
             raise AllotropeConversionError(msg)
         elif n_files == 0:
             msg = f"No summary file identified in zip folder. File list: {zip_handler.name_list}"
