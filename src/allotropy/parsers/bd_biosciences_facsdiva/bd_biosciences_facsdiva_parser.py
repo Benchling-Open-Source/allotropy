@@ -30,7 +30,7 @@ class BDFACSDivaParser(VendorParser[Data, Model]):
             root_element_et = ET.parse(  # noqa: S314
                 named_file_contents.contents
             ).getroot()
-            root_element = StrictXmlElement(root_element_et, {})
+            root_element = StrictXmlElement(root_element_et)
         except ET.ParseError as e:
             msg = f"There was an error when trying to read the xml file: {e}"
             raise AllotropeParsingError(msg) from e

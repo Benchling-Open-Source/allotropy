@@ -85,7 +85,6 @@ class RegionType(Enum):
 
 
 def create_metadata(root_element: StrictXmlElement, file_path: str) -> Metadata:
-    # Extract equipment info from first tube if available
     equipment_serial_number = None
     model_number = None
 
@@ -513,7 +512,7 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
         msg = "No experiment found in the XML file."
         raise AllotropeParsingError(msg)
     measurement_time = experiment.recursive_find_or_none(["specimen", "tube", "date"])
-    # experiment_identifier = experiment.find_or_none("name")
+    experiment_identifier = experiment.get_attr_or_none("name")
     analyst = experiment.recursive_find_or_none(["owner_name"])
     export_time = experiment.find_or_none("export_time")
     # Process specimens and tubes
@@ -540,6 +539,7 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
                 analyst=analyst.get_text_or_none() if analyst else None,
                 compensation_matrix_groups=compensation_matrix_groups,
                 measurements=measurements,
+                experiment_identifier=experiment_identifier
             )
 
             result.append(measurement_group)
