@@ -111,6 +111,7 @@ class Measurement:
 
     location_identifier: str | None = None
     well_plate_identifier: str | None = None
+    batch_identifier: str | None = None
     written_name: str | None = None
     method_version: str | None = None
     data_processing_time: str | None = None
@@ -376,6 +377,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 location_identifier=measurement.location_identifier,
                 well_plate_identifier=measurement.well_plate_identifier,
                 written_name=measurement.written_name,
+                batch_identifier=measurement.batch_identifier,
             ),
             measurement.sample_custom_info,
         )
