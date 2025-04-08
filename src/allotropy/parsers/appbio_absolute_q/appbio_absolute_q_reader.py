@@ -1,3 +1,5 @@
+from io import BytesIO
+
 import numpy as np
 import pandas as pd
 
@@ -9,19 +11,32 @@ from allotropy.parsers.lines_reader import (
     EMPTY_STR_OR_CSV_LINE,
 )
 from allotropy.parsers.utils.values import assert_not_none
+from allotropy.parsers.utils.zip_handler import ZipHandler
 
 # we don't do chained assignment, disable to prevent spurious warning.
 pd.options.mode.chained_assignment = None
 
 
 class AppbioAbsoluteQReader:
-    SUPPORTED_EXTENSIONS = "csv"
+    SUPPORTED_EXTENSIONS = "csv,zip"
     data: pd.DataFrame
     common_columns: list[str]
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
-        csv_reader = CsvReader.create(named_file_contents)
-        df, self.common_columns = AppbioAbsoluteQReader.parse_dataframe(csv_reader)
+        file_contents = (
+            NamedFileContents(
+                contents=self._parse_zip_contents(
+                    named_file_contents.get_bytes_stream()
+                ),
+                original_file_path=named_file_contents.original_file_path,
+                encoding=named_file_contents.encoding,
+            )
+            if named_file_contents.extension == "zip"
+            else named_file_contents
+        )
+
+        csv_reader = CsvReader.create(file_contents)
+        df, self.common_columns = self.parse_dataframe(csv_reader)
 
         columns_to_rename = {}
         if "Name" in df and "Sample" not in df:
@@ -45,8 +60,24 @@ class AppbioAbsoluteQReader:
 
         self.data = df.replace(np.nan, None)
 
-    @staticmethod
-    def parse_dataframe(csv_reader: CsvReader) -> tuple[pd.DataFrame, list[str]]:
+    def _parse_zip_contents(self, data: BytesIO) -> BytesIO:
+        zip_handler = ZipHandler(data)
+
+        summary_files = [
+            name for name in zip_handler.name_list if name.endswith("_summary.csv")
+        ]
+        n_files = len(summary_files)
+
+        if n_files > 1:
+            msg = f"Multiple summary files found in zip folder - the adapter requires exactly one summary file to be present. File list: {zip_handler.name_list}"
+            raise AllotropeConversionError(msg)
+        elif n_files == 0:
+            msg = f"No summary file identified in zip folder. File list: {zip_handler.name_list}"
+            raise AllotropeConversionError(msg)
+
+        return zip_handler.get_file(summary_files[0])
+
+    def parse_dataframe(self, csv_reader: CsvReader) -> tuple[pd.DataFrame, list[str]]:
         first_line = csv_reader.get()
         if not first_line:
             msg = "Can not parse empty file"
