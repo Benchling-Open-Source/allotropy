@@ -4,12 +4,11 @@ from collections.abc import Callable, Iterable
 from enum import Enum
 import os
 import re
-from typing import Any, Literal, overload, TypeVar
+from typing import Any, IO, Literal, overload, TypeVar
 import unicodedata
 import warnings
 
 import pandas as pd
-from pandas._typing import FilePath, ReadCsvBuffer
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
@@ -18,6 +17,7 @@ from allotropy.exceptions import (
     AllotropeConversionError,
     AllotropeParsingError,
 )
+from allotropy.parsers.utils.encoding import determine_encoding
 from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.values import (
     assert_is_type,
@@ -158,25 +158,37 @@ def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
 
 def read_csv(
     # types for filepath_or_buffer match those in pd.read_csv()
-    filepath_or_buffer: FilePath | ReadCsvBuffer[bytes] | ReadCsvBuffer[str],
+    filepath_or_buffer: IO[bytes] | IO[str],
+    encoding: str | None = None,
     **kwargs: Any,
 ) -> pd.DataFrame:
     """Wrap pd.read_csv() and raise AllotropeParsingError for failures.
 
     pd.read_csv() can return a DataFrame or TextFileReader. The latter is intentionally not supported.
     """
-    try:
-        df_or_reader = pd.read_csv(filepath_or_buffer, **kwargs)
-    except Exception as e:
-        msg = f"Error calling pd.read_csv(): {e}"
-        raise AllotropeParsingError(msg) from e
-    return _normalize_columns(
-        assert_is_type(
-            df_or_reader,
-            pd.DataFrame,
-            "pd.read_csv() returned a TextFileReader, which is not supported.",
+    possible_encodings: list[str | None] = [None]
+    if encoding:
+        possible_encodings = determine_encoding(filepath_or_buffer, encoding)
+
+    for encoding in possible_encodings:
+        if encoding is not None:
+            kwargs["encoding"] = encoding
+        try:
+            df_or_reader = pd.read_csv(filepath_or_buffer, **kwargs)
+        except Exception as e:
+            if encoding != possible_encodings[-1]:
+                continue
+            msg = f"Error calling pd.read_csv(): {e}"
+            raise AllotropeParsingError(msg) from e
+        return _normalize_columns(
+            assert_is_type(
+                df_or_reader,
+                pd.DataFrame,
+                "pd.read_csv() returned a TextFileReader, which is not supported.",
+            )
         )
-    )
+    msg = f"Unable to decode contents with possible encodings: {possible_encodings}"
+    raise AllotropeConversionError(msg)
 
 
 def read_excel(

@@ -154,14 +154,18 @@ class GroupSampleData:
                             entries=[
                                 GroupDataElementEntry(
                                     column,
-                                    column_result
-                                    if isinstance(column_result, float)
-                                    else NEGATIVE_ZERO,
+                                    (
+                                        column_result
+                                        if isinstance(column_result, float)
+                                        else NEGATIVE_ZERO
+                                    ),
                                 )
                             ],
-                            errors=[ErrorDocument(column_result, column)]
-                            if isinstance(column_result, str)
-                            else [],
+                            errors=(
+                                [ErrorDocument(column_result, column)]
+                                if isinstance(column_result, str)
+                                else []
+                            ),
                         )
                     )
                 else:
@@ -1190,6 +1194,7 @@ class BlockList:
 @dataclass(frozen=True)
 class StructureData:
     block_list: BlockList
+    date_last_saved: str | None
 
     @staticmethod
     def create(reader: CsvReader) -> StructureData:
@@ -1206,4 +1211,14 @@ class StructureData:
                         data_element.sample_id = group_data_element.sample
                         data_element.error_document += group_data_element.errors
 
-        return StructureData(block_list)
+        return StructureData(
+            block_list=block_list,
+            date_last_saved=StructureData._get_date_last_saved(reader),
+        )
+
+    @classmethod
+    def _get_date_last_saved(cls, reader: CsvReader) -> str | None:
+        last_line = reader.pop()
+        if last_line and (match := re.search(r"Date Last Saved: (.+)$", last_line)):
+            return match.groups()[0]
+        return None
