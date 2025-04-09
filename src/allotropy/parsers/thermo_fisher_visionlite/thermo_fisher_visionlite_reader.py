@@ -31,9 +31,11 @@ class ThermoFisherVisionliteReader:
         if all(
             col_name not in first_line.lower() for col_name in expected_required_columns
         ):
-            self.header = SeriesData(
-                pd.Series(first_line.split(",")[:4], index=HEADER_COLS)
-            )
+            columns = first_line.split(",")[:4]
+            if len(columns) != len(HEADER_COLS):
+                msg = f"Expected {len(HEADER_COLS)} columns, but got {len(columns)}:columns"
+                raise AllotropeConversionError(msg)
+            self.header = SeriesData(pd.Series(columns, index=HEADER_COLS))
             reader.pop()
 
         sep = "\t" if "\t" in first_line else ","
