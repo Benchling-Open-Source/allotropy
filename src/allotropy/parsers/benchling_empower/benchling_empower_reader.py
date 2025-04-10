@@ -1,3 +1,4 @@
+from collections import defaultdict
 import json
 from typing import Any
 
@@ -55,6 +56,7 @@ class BenchlingEmpowerReader:
 
         # Results contain peaks and calibration cureves
         results: list[dict[str, Any]] = values.get("results", [])
+        inj_id_to_results: defaultdict[str, list[dict[str, Any]]] = defaultdict(list)
         for result in results:
             fields = assert_not_none(result.get("fields"), "results/fields")
             if (inj_id := fields.get("InjectionId")) is None:
@@ -62,14 +64,11 @@ class BenchlingEmpowerReader:
                     f"Expected InjectionId in 'fields' for result: {fields['ResultId']}"
                 )
                 raise AssertionError(msg)
-            for key, value in fields.items():
-                if (
-                    key in id_to_injection[inj_id]
-                    and id_to_injection[inj_id][key] != value
-                ):
-                    msg = f"Mismatch between injection field and result field for key: {key}"
-                    raise AssertionError(msg)
-                id_to_injection[inj_id][key] = value
+            inj_id_to_results[inj_id].append(fields)
+
+            if "results" not in id_to_injection[inj_id]:
+                id_to_injection[inj_id]["results"] = []
+            id_to_injection[inj_id]["results"].append(fields)
             if "peaks" in result:
                 id_to_injection[inj_id]["peaks"] = [
                     peak["fields"] for peak in result["peaks"]
