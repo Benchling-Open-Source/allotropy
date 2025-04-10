@@ -41,6 +41,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacube,
     TQuantityValue,
 )
+from allotropy.allotrope.models.shared.definitions.units import Unitless
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
@@ -401,7 +402,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     calculated_data_name=calculated_data_item.name,
                     calculated_result=TQuantityValue(
                         value=calculated_data_item.value,
-                        unit=calculated_data_item.unit,
+                        unit=calculated_data_item.unit or Unitless.unit,
                     ),
                     data_source_aggregate_document=(
                         DataSourceAggregateDocument(

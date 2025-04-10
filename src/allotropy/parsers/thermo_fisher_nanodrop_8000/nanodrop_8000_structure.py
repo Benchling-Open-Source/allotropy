@@ -84,11 +84,13 @@ def create_calculated_data(
             absorbance_ratios[(numerator, denominator)] = ratio
 
     # Create a mapping of wavelengths to measurement IDs
-    wavelength_to_measurement = {
-        float(measurement.detector_wavelength_setting): Referenceable(uuid=measurement.identifier)
-        for measurement in measurements
-        if measurement.detector_wavelength_setting is not None
-    }
+    wavelength_to_measurement = {}
+    for measurement in measurements:
+        if measurement.detector_wavelength_setting is not None:
+            wavelength_key = str(measurement.detector_wavelength_setting)
+            wavelength_to_measurement[wavelength_key] = Referenceable(
+                uuid=measurement.identifier
+            )
 
     calculated_data = [
         CalculatedDocument(
@@ -99,10 +101,10 @@ def create_calculated_data(
             data_sources=[
                 DataSource(
                     feature="absorbance",
-                    reference=wavelength_to_measurement[float(wavelength)]
+                    reference=wavelength_to_measurement[str(wavelength)],
                 )
                 for wavelength in (numerator, denominator)
-                if float(wavelength) in wavelength_to_measurement
+                if str(wavelength) in wavelength_to_measurement
             ],
         )
         for (numerator, denominator), ratio in absorbance_ratios.items()
@@ -120,11 +122,10 @@ def create_calculated_data(
 
         formula_wavelengths = []
         formula_str = data[str, f"formula {i}"]
-        for wavelength, measurement_ref in wavelength_to_measurement.items():
+        for wavelength_key, measurement_ref in wavelength_to_measurement.items():
             # Check if the measurement wavelength is in the formula, remove ".0" from int floats
-            wavelength_str = str(wavelength).replace(".0", "")
-            if wavelength_str in formula_str:
-                formula_wavelengths.append((wavelength, measurement_ref))
+            if wavelength_key.replace(".0", "") in formula_str:
+                formula_wavelengths.append((wavelength_key, measurement_ref))
 
         calculated_data.append(
             CalculatedDocument(
@@ -133,10 +134,7 @@ def create_calculated_data(
                 value=value,
                 unit=UNITLESS,
                 data_sources=[
-                    DataSource(
-                        feature="absorbance",
-                        reference=measurement_ref
-                    )
+                    DataSource(feature="absorbance", reference=measurement_ref)
                     for _, measurement_ref in formula_wavelengths
                 ],
             )

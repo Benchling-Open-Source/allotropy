@@ -132,7 +132,7 @@ def create_calculated_data(
                 data_sources.append(
                     DataSource(
                         feature="absorbance",
-                        reference=Referenceable(uuid=measurement.identifier)
+                        reference=Referenceable(uuid=measurement.identifier),
                     )
                 )
 

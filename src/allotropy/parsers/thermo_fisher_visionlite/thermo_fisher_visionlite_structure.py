@@ -172,7 +172,7 @@ def _get_calculated_data_item(
         data_sources=[
             DataSource(
                 feature="Absorbance",
-                reference=Referenceable(uuid=measurement.identifier)
+                reference=Referenceable(uuid=measurement.identifier),
             )
             for measurement in measurements
         ],
