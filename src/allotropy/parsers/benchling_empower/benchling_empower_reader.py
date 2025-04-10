@@ -56,7 +56,6 @@ class BenchlingEmpowerReader:
 
         # Results contain peaks and calibration cureves
         results: list[dict[str, Any]] = values.get("results", [])
-        inj_id_to_results: defaultdict[str, list[dict[str, Any]]] = defaultdict(list)
         for result in results:
             fields = assert_not_none(result.get("fields"), "results/fields")
             if (inj_id := fields.get("InjectionId")) is None:
@@ -64,7 +63,6 @@ class BenchlingEmpowerReader:
                     f"Expected InjectionId in 'fields' for result: {fields['ResultId']}"
                 )
                 raise AssertionError(msg)
-            inj_id_to_results[inj_id].append(fields)
 
             if "results" not in id_to_injection[inj_id]:
                 id_to_injection[inj_id]["results"] = []
