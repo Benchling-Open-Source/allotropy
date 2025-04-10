@@ -22,7 +22,9 @@ class UnchainedLabsLunaticReader:
         if named_file_contents.extension == "csv":
             data = read_csv(named_file_contents.contents, header=None)
         else:
-            data = read_excel(named_file_contents.contents, header=None)
+            data = read_excel(
+                named_file_contents.contents, header=None, engine="calamine"
+            )
 
         assert_not_empty_df(data, "Unable to parse data from empty dataset.")
 
