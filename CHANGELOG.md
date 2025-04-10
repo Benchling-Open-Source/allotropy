@@ -5,6 +5,23 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.83] - 2025-04-10
+
+### Added
+
+- AppBio Absolute Q - add support for zip files (#953)
+- Molecular Devices SoftMax Pro - Use date last saved as measurement time  (#946)
+
+### Fixed
+
+- Benchling Empower - store result fields separately and ignore missing/group type peaks (#959)
+- Internal - improve error messaging for errors in various parsers (#952)
+- AppBio AbsoluteQ - allow single dye setting in summary file (#947)
+
+### Changed
+
+- Perkin Elmer Envision - use Calcdocs library (#945)
+
 ## [0.1.82] - 2025-04-02
 
 ## [0.1.81] - 2025-04-02
