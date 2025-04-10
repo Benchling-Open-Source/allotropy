@@ -62,14 +62,10 @@ class BenchlingEmpowerReader:
                     f"Expected InjectionId in 'fields' for result: {fields['ResultId']}"
                 )
                 raise AssertionError(msg)
-            for key, value in fields.items():
-                if (
-                    key in id_to_injection[inj_id]
-                    and id_to_injection[inj_id][key] != value
-                ):
-                    msg = f"Mismatch between injection field and result field for key: {key}"
-                    raise AssertionError(msg)
-                id_to_injection[inj_id][key] = value
+
+            if "results" not in id_to_injection[inj_id]:
+                id_to_injection[inj_id]["results"] = []
+            id_to_injection[inj_id]["results"].append(fields)
             if "peaks" in result:
                 id_to_injection[inj_id]["peaks"] = [
                     peak["fields"] for peak in result["peaks"]
