@@ -108,6 +108,7 @@ def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measure
             location_identifier=data_element.position,
             well_plate_identifier=plate_block.header.name,
             sample_identifier=data_element.sample_identifier,
+            sample_custom_info={"group_identifier": data_element.group_id},
             # Device Control document
             device_type=DEVICE_TYPE,
             detection_type=plate_block.header.read_mode,
