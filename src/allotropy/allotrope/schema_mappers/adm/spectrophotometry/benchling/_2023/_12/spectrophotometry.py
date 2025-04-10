@@ -41,10 +41,14 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacube,
     TQuantityValue,
 )
+from allotropy.allotrope.models.shared.definitions.units import Unitless
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropyParserError
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+)
 from allotropy.parsers.utils.units import get_quantity_class
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 
@@ -76,21 +80,6 @@ class ProcessedData:
     identifier: str | None = None
 
 
-@dataclass(frozen=True)
-class DataSource:
-    identifier: str
-    feature: str
-
-
-@dataclass(frozen=True)
-class CalculatedDataItem:
-    identifier: str
-    name: str
-    value: float
-    unit: str
-    data_sources: list[DataSource]
-
-
 @dataclass
 class Measurement:
     type_: MeasurementType
@@ -120,7 +109,7 @@ class Measurement:
     fluorescence: JsonFloat | None = None
 
     # Processed data
-    calculated_data: list[CalculatedDataItem] | None = None
+    calculated_data: list[CalculatedDocument] | None = None
     processed_data: ProcessedData | None = None
 
     # Custom metadata
@@ -166,7 +155,7 @@ class Metadata:
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
-    calculated_data: list[CalculatedDataItem] | None = None
+    calculated_data: list[CalculatedDocument] | None = None
 
 
 class Mapper(SchemaMapper[Data, Model]):
@@ -401,7 +390,7 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_calculated_data_aggregate_document(
-        self, calculated_data_items: list[CalculatedDataItem] | None
+        self, calculated_data_items: list[CalculatedDocument] | None
     ) -> CalculatedDataAggregateDocument | None:
         if not calculated_data_items:
             return None
@@ -409,17 +398,17 @@ class Mapper(SchemaMapper[Data, Model]):
         return CalculatedDataAggregateDocument(
             calculated_data_document=[
                 CalculatedDataDocumentItem(
-                    calculated_data_identifier=calculated_data_item.identifier,
+                    calculated_data_identifier=calculated_data_item.uuid,
                     calculated_data_name=calculated_data_item.name,
                     calculated_result=TQuantityValue(
                         value=calculated_data_item.value,
-                        unit=calculated_data_item.unit,
+                        unit=calculated_data_item.unit or Unitless.unit,
                     ),
                     data_source_aggregate_document=(
                         DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier=item.identifier,
+                                    data_source_identifier=item.reference.uuid,
                                     data_source_feature=item.feature,
                                 )
                                 for item in calculated_data_item.data_sources
