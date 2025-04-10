@@ -24,6 +24,9 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_parser import (
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_parser import (
     AppBioQuantStudioDesignandanalysisParser,
 )
+from allotropy.parsers.bd_biosciences_facsdiva.bd_biosciences_facsdiva_parser import (
+    BDFACSDivaParser,
+)
 from allotropy.parsers.beckman_coulter_biomek.beckman_coulter_biomek_parser import (
     BeckmanCoulterBiomekParser,
 )
@@ -136,6 +139,7 @@ class Vendor(Enum):
     BECKMAN_PHARMSPEC = "BECKMAN_PHARMSPEC"
     BECKMAN_VI_CELL_BLU = "BECKMAN_VI_CELL_BLU"
     BECKMAN_VI_CELL_XR = "BECKMAN_VI_CELL_XR"
+    BD_BIOSCIENCES_FACSDIVA = "BD_BIOSCIENCES_FACSDIVA"
     BIORAD_BIOPLEX = "BIORAD_BIOPLEX"
     CFXMAESTRO = "CFXMAESTRO"
     CHEMOMETEC_NC_VIEW = "CHEMOMETEC_NC_VIEW"
@@ -239,6 +243,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.CYTIVA_UNICORN: CytivaUnicornParser,
     Vendor.EXAMPLE_WEYLAND_YUTANI: ExampleWeylandYutaniParser,
     Vendor.FLOWJO: FlowjoParser,
+    Vendor.BD_BIOSCIENCES_FACSDIVA: BDFACSDivaParser,
     Vendor.LUMINEX_XPONENT: LuminexXponentParser,
     Vendor.MABTECH_APEX: MabtechApexParser,
     Vendor.METHODICAL_MIND: MethodicalMindParser,
