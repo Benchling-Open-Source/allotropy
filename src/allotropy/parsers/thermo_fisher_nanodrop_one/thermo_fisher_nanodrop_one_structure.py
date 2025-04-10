@@ -9,9 +9,7 @@ import pandas as pd
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
-    CalculatedDataItem,
     Data,
-    DataSource,
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -20,6 +18,11 @@ from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._1
     ProcessedDataFeature,
 )
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+    DataSource,
+    Referenceable,
+)
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import try_float
@@ -113,27 +116,33 @@ def create_calculated_data(
     row: SeriesData,
     metadata: MetadataNanodrop,
     measurement_group: MeasurementGroupNanodrop,
-) -> list[CalculatedDataItem]:
+) -> list[CalculatedDocument]:
     calculated_data = []
     for column in metadata.calculated_columns:
         value = row.get(float, column)
         if value is None:
             continue
 
+        wavelengths = column.split("/")
+        data_sources = []
+
+        for wavelength in wavelengths:
+            measurement = measurement_group.get_measurement(wavelength)
+            if measurement:
+                data_sources.append(
+                    DataSource(
+                        feature="absorbance",
+                        reference=Referenceable(uuid=measurement.identifier)
+                    )
+                )
+
         calculated_data.append(
-            CalculatedDataItem(
-                identifier=random_uuid_str(),
+            CalculatedDocument(
+                uuid=random_uuid_str(),
                 name=column,
                 value=value,
                 unit=UNITLESS,
-                data_sources=[
-                    DataSource(
-                        identifier=measurement.identifier,
-                        feature="absorbance",
-                    )
-                    for wavelength in column.split("/")
-                    if (measurement := measurement_group.get_measurement(wavelength))
-                ],
+                data_sources=data_sources,
             )
         )
     return calculated_data
@@ -143,7 +152,7 @@ def create_calculated_data(
 class RowElements:
     # is not a list to avoid invariance problem
     measurement_groups: tuple[MeasurementGroup, ...]
-    calculated_data: list[CalculatedDataItem]
+    calculated_data: list[CalculatedDocument]
 
     @staticmethod
     def filter_column_names(data: pd.DataFrame, regex: str) -> list[str]:
