@@ -108,11 +108,11 @@ class GroupDataElementEntry:
     value: float
 
 
-@dataclass(frozen=True)
+@dataclass
 class GroupDataElement:
     sample: str
     positions: list[str]
-    plate: str
+    plate: str | None
     entries: list[GroupDataElementEntry]
     errors: list[ErrorDocument]
 
@@ -143,7 +143,7 @@ class GroupSampleData:
         for row in row_data:
             row_results = cls._get_entries_and_errors(row, numeric_columns)
             position = row[str, ["Well", "Wells"]]
-            plate = row[str, "WellPlateName"]
+            plate = row.get(str, "WellPlateName", validate=SeriesData.NOT_NAN)
             for column in numeric_columns:
                 if (column_result := row_results.get(column)) is not None:
                     data_elements[column].append(
@@ -1141,11 +1141,7 @@ class BlockList:
 
         for sub_reader in BlockList._iter_blocks_reader(reader):
             if sub_reader.match("^Group"):
-                if "WellPlateName" in assert_not_none(
-                    sub_reader.get_line(sub_reader.current_line + 1),
-                    msg="Unable to get columns from group block",
-                ):
-                    group_blocks.append(GroupBlock.create(sub_reader))
+                group_blocks.append(GroupBlock.create(sub_reader))
             elif sub_reader.match("^Plate"):
                 header_series = PlateBlock.read_header(sub_reader)
                 plate_block_cls = PlateBlock.get_plate_block_cls(header_series)
@@ -1204,6 +1200,13 @@ class StructureData:
         for group_block in block_list.group_blocks:
             for group_sample_data in group_block.group_data.sample_data:
                 for group_data_element in group_sample_data.data_elements:
+                    # For experiments with only one plate, it is assumed that all group blocks belong to it.
+                    if len(block_list.plate_blocks) == 1:
+                        group_data_element.plate = next(iter(block_list.plate_blocks))
+                    elif group_data_element.plate is None:
+                        # if the group data does not include the `WellPlateName` colum, and this is a multiplate
+                        # experiment, there is no way at the moment to link the group data with a plate.
+                        continue
                     plate_block = block_list.plate_blocks[group_data_element.plate]
                     for data_element in plate_block.iter_data_elements(
                         group_data_element.positions

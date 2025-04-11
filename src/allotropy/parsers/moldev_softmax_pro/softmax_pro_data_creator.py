@@ -233,6 +233,10 @@ def _get_group_simple_calc_docs(
 ) -> list[CalculatedDocument]:
     calculated_documents = []
     for group_data_element in group_sample_data.data_elements:
+        if group_data_element.plate is None:
+            # if the group data element does not have a plate assigned, there is no way at
+            # the moment to get the data sources for the calculated data element.
+            continue
         data_sources = list(
             chain.from_iterable(
                 _get_calc_docs_data_sources(
