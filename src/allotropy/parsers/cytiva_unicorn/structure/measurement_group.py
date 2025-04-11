@@ -116,15 +116,18 @@ def create_logs(event_curves: StrictXmlElement) -> list[Log]:
         logs, method_id = [], None
 
         for idx, event in enumerate(events.findall("Event"), start=1):
-            if event.get_attr_or_none("EventType") not in ["System", "Method", "Manual"]:
-                continue
-
-            if event.get_sub_text_or_none("EventText") is None:
+            if event.get_attr_or_none("EventType") not in [
+                "System",
+                "Method",
+                "Manual",
+            ]:
                 continue
 
             event_text = event.get_sub_text_or_none("EventText")
-            event_subtype = event.get_attr_or_none("EventSubType")
+            if event_text is None:
+                continue
 
+            event_subtype = event.get_attr_or_none("EventSubType")
             if event_subtype == "BlockStart":
                 regex = r"Phase (.+) \(Issued\) \(Processing\) \(Completed\)"
                 if res := re.match(regex, event_text):
