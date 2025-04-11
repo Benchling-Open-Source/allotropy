@@ -1,5 +1,8 @@
+import re
+
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     Fraction,
+    Log,
     MeasurementGroup,
 )
 from allotropy.parsers.cytiva_unicorn.reader.unicorn_zip_handler import (
@@ -64,6 +67,7 @@ def create_measurement_groups(
         MeasurementGroup(
             measurements=[measurement for measurement in measurements if measurement],
             fractions=create_fractions(event_curves) if event_curves else None,
+            logs=create_logs(event_curves) if event_curves else None,
         )
     ]
 
@@ -96,3 +100,51 @@ def create_fractions(event_curves: StrictXmlElement) -> list[Fraction]:
         ]
 
     return []
+
+
+def create_logs(event_curves: StrictXmlElement) -> list[Log]:
+    event_curve_logs = None
+    for event_curve in event_curves.findall("EventCurve"):
+        if event_curve.get_attr_or_none("EventCurveType") == "Logbook":
+            event_curve_logs = event_curve
+            break
+
+    if event_curve_logs is None:
+        return []
+
+    if events := event_curve_logs.find_or_none("Events"):
+        logs, method_id = [], None
+
+        for idx, event in enumerate(events.findall("Event"), start=1):
+            if event.get_attr_or_none("EventType") not in ["System", "Method", "Manual"]:
+                continue
+
+            if event.get_sub_text_or_none("EventText") is None:
+                continue
+
+            event_text = event.get_sub_text_or_none("EventText")
+            event_subtype = event.get_attr_or_none("EventSubType")
+
+            if event_subtype == "BlockStart":
+                regex = r"Phase (.+) \(Issued\) \(Processing\) \(Completed\)"
+                if res := re.match(regex, event_text):
+                    method_id = res.group(1)
+
+            logs.append(
+                Log(
+                    index=f"Run Log Event {idx}",
+                    log_entry=event_text,
+                    method_identifier=method_id,
+                    retention_time=(
+                        None
+                        if (t_min := event.get_sub_float_or_none("EventTime")) is None
+                        else t_min * 60
+                    ),
+                    retention_volume=event.get_sub_float_or_none("EventVolume"),
+                )
+            )
+
+            if event_subtype == "BlockEnd" and event_text.startswith("End Phase"):
+                method_id = None
+
+    return logs
