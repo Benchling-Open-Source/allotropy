@@ -536,9 +536,11 @@ class Filter:
             ),
             bandwidth=float(
                 assert_not_none(
-                    search("BW=(\\d+)nm", description),
+                    search(r"BW=([\d ]+)nm", description),
                     msg=f"Unable to find bandwidth for filter {name}.",
-                ).group(1)
+                )
+                .group(1)
+                .replace(" ", "")
             ),
         )
 
