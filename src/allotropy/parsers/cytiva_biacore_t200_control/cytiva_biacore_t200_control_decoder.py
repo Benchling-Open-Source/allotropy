@@ -493,7 +493,6 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
             group["Time (s)"] = group.groupby("Flow Cell Number").cumcount() + 1
 
         cycle_number = group["Cycle Number"].iloc[0]
-        # cycles_data.append(group_data)
         sensorgram_data[str(cycle_number)] = group[
             [
                 "Flow Cell Number",
