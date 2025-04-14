@@ -265,7 +265,6 @@ class WellItem:
                     measurement_identifier=random_uuid_str(),
                     well_identifier=data[str, "Well"],
                     plate_identifier=data.get(str, "Plate"),
-                    # Group column may be missing if there is no calculated data to group with.
                     group_identifier=data.get(str, "Group", ""),
                     target_identifier=data[str, f"{dye_setting}_target"],
                     run_identifier=data[str, "Run"],
@@ -310,7 +309,29 @@ class WellItem:
                         ],
                     ),
                     errors=errors,
-                    extra_data=data.get_unread(),
+                    extra_data=data.get_unread(
+                        # Skip data cube fields
+                        skip={
+                            "FAM",
+                            "VIC",
+                            "ABY",
+                            "JUN",
+                            "ROX",
+                            "Index",
+                            "FAM_pos",
+                            "VIC_pos",
+                            "ABY_pos",
+                            "JUN_pos",
+                            "FAM_target",
+                            "VIC_target",
+                            "ABY_target",
+                            "JUN_target",
+                            "FAM_threshold",
+                            "VIC_threshold",
+                            "ABY_threshold",
+                            "JUN_threshold",
+                        }
+                    ),
                 )
             )
 
