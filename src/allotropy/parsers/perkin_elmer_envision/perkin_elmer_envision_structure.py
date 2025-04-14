@@ -718,11 +718,6 @@ def _create_measurement(
     labels: Labels,
     read_type: ReadType,
 ) -> Measurement:
-    try:
-        p_map = plate_maps[plate_info.number]
-    except KeyError as e:
-        msg = f"Unable to find plate map for Plate {plate_info.barcode}."
-        raise AllotropeConversionError(msg) from e
     plate_barcode = plate_info.barcode
     well_location = f"{result.col}{result.row}"
     ex_filter = labels.excitation_filter
@@ -734,7 +729,11 @@ def _create_measurement(
         sample_identifier=f"{plate_barcode} {well_location}",
         well_plate_identifier=plate_barcode,
         location_identifier=well_location,
-        sample_role_type=p_map.get_sample_role_type(result.col, result.row),
+        sample_role_type=(
+            p_map.get_sample_role_type(result.col, result.row)
+            if (p_map := plate_maps.get(plate_info.number))
+            else None
+        ),
         compartment_temperature=plate_info.chamber_temperature_at_start,
         absorbance=result.value if read_type is ReadType.ABSORBANCE else None,
         fluorescence=result.value if read_type is ReadType.FLUORESCENCE else None,
