@@ -110,7 +110,7 @@ class VertexRole(Enum):
     EDGE = "edge"
 
 
-class VertexStrategy:
+class VertexExtractor:
     """Base class for vertex extraction strategies."""
 
     def __init__(
@@ -134,8 +134,33 @@ class VertexStrategy:
         """Extract vertices from the gate element."""
         raise NotImplementedError
 
+    @staticmethod
+    def build(
+        gate_element: StrictXmlElement,
+        gate_type: str | None,
+        x_dim: str | None,
+        y_dim: str | None,
+    ) -> list[Vertex] | None:
+        if not gate_type:
+            return None
 
-class PolygonVertexStrategy(VertexStrategy):
+        strategies = {
+            RegionType.POLYGON.value: PolygonVertexExtractor,
+            RegionType.RECTANGLE.value: RectangleVertexExtractor,
+            RegionType.CURLY_QUAD.value: RectangleVertexExtractor,
+            RegionType.ELLIPSOID.value: EllipsoidVertexExtractor,
+        }
+
+        strategy_class = strategies.get(gate_type)
+        if not strategy_class:
+            msg = f"Gate type '{gate_type}' is not currently supported"
+            raise AllotropeParsingError(msg)
+
+        strategy = strategy_class(gate_element, x_dim, y_dim)
+        return strategy.extract()
+
+
+class PolygonVertexExtractor(VertexExtractor):
     """Strategy for extracting vertices from Polygon gates."""
 
     def extract(self) -> list[Vertex] | None:
@@ -166,7 +191,7 @@ class PolygonVertexStrategy(VertexStrategy):
         return result if result else None
 
 
-class RectangleVertexStrategy(VertexStrategy):
+class RectangleVertexExtractor(VertexExtractor):
     """Strategy for extracting vertices from Rectangle and CurlyQuad gates."""
 
     def extract(self) -> list[Vertex] | None:
@@ -205,7 +230,7 @@ class RectangleVertexStrategy(VertexStrategy):
         return result if result else None
 
 
-class EllipsoidVertexStrategy(VertexStrategy):
+class EllipsoidVertexExtractor(VertexExtractor):
     """Strategy for extracting vertices from Ellipsoid gates."""
 
     def extract(self) -> list[Vertex] | None:
@@ -241,12 +266,10 @@ class EllipsoidVertexStrategy(VertexStrategy):
                     )
                 )
 
-        # Extract foci vertices
         foci_vertices = self.gate_element.findall("gating:foci/gating:vertex")
         for vertex in foci_vertices:
             _add_vertex_with_role(vertex, VertexRole.FOCI.value)
 
-        # Extract edge vertices
         edge_vertices = self.gate_element.findall("gating:edge/gating:vertex")
         for vertex in edge_vertices:
             _add_vertex_with_role(vertex, VertexRole.EDGE.value)
@@ -531,23 +554,7 @@ def _extract_vertices(
     Returns:
         list[Vertex] | None: List of vertices if found, None otherwise
     """
-    if not gate_type:
-        return None
-
-    # Strategy mapping
-    strategies = {
-        RegionType.POLYGON.value: PolygonVertexStrategy,
-        RegionType.RECTANGLE.value: RectangleVertexStrategy,
-        RegionType.CURLY_QUAD.value: RectangleVertexStrategy,
-        RegionType.ELLIPSOID.value: EllipsoidVertexStrategy,
-    }
-
-    strategy_class = strategies.get(gate_type)
-    if strategy_class:
-        strategy = strategy_class(gate_element, x_dim, y_dim)
-        return strategy.extract()
-
-    return None
+    return VertexExtractor.build(gate_element, gate_type, x_dim, y_dim)
 
 
 def _create_data_regions(sample: StrictXmlElement) -> list[DataRegion]:
