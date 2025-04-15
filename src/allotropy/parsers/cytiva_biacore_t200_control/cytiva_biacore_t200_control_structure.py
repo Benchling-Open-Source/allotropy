@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 import pandas as pd
 
@@ -71,18 +71,20 @@ class Device:
 
 @dataclass(frozen=True)
 class RunMetadata:
-    analyst: str | None
-    compartment_temperature: float | None
-    baseline_flow: float | None
-    data_collection_rate: float | None
-    detection_setting: DetectionSetting | None
-    buffer_volume: float | None
-    devices: list[Device]
+    analyst: str | None = None
+    compartment_temperature: float | None = None
+    baseline_flow: float | None = None
+    data_collection_rate: float | None = None
+    detection_setting: DetectionSetting | None = None
+    buffer_volume: float | None = None
+    devices: list[Device] = field(default_factory=list)
 
     @staticmethod
     def create(
-        application_template_details: dict[str, DictType],
+        application_template_details: dict[str, DictType] | None,
     ) -> RunMetadata:
+        if application_template_details is None:
+            return RunMetadata()
         return RunMetadata(
             analyst=application_template_details["properties"].get("User"),
             compartment_temperature=try_float_or_none(
@@ -198,7 +200,7 @@ class MeasurementData:
     sample_identifier: str
     flow_cell_identifier: str
     sensorgram_data: pd.DataFrame
-    report_point_data: list[ReportPointData]
+    report_point_data: list[ReportPointData] | None
     location_identifier: str | None
     sample_role_type: str | None
     concentration: float | None
@@ -220,7 +222,7 @@ class SampleData:
     def create(intermediate_structured_data: DictType) -> SampleData:
         application_template_details: dict[
             str, DictType
-        ] = intermediate_structured_data["application_template_details"]
+        ] = intermediate_structured_data.get("application_template_details", {})
         measurements: dict[str, list[MeasurementData]] = defaultdict(list)
         for idx in range(intermediate_structured_data["total_cycles"]):
             flowcell_cycle_data: DictType = application_template_details.get(
@@ -233,7 +235,8 @@ class SampleData:
             )
             cycle_data: DictType = intermediate_structured_data["cycle_data"][idx]
             sensorgram_data: pd.DataFrame = cycle_data["sensorgram_data"]
-            report_point_data: pd.DataFrame = cycle_data["report_point_data"]
+            # some experiments don't have report point data for some cycles (apparently just the first one)
+            report_point_data: pd.DataFrame | None = cycle_data["report_point_data"]
 
             sample_identifier = sample_data.get("sample_name", NOT_APPLICABLE)
             location_identifier = sample_data.get("rack")
@@ -256,9 +259,13 @@ class SampleData:
                         sample_data.get("molecular_weight")
                     ),
                     sensorgram_data=sensorgram_df,
-                    report_point_data=map_rows(
-                        report_point_data[report_point_data["Fc"] == flow_cell],
-                        ReportPointData.create,
+                    report_point_data=(
+                        map_rows(
+                            report_point_data[report_point_data["Fc"] == flow_cell],
+                            ReportPointData.create,
+                        )
+                        if report_point_data is not None
+                        else None
                     ),
                     # for Mobilization experiments
                     method_name=flowcell_cycle_data.get("MethodName"),
@@ -291,7 +298,7 @@ class Data:
     def create(intermediate_structured_data: DictType) -> Data:
         application_template_details: dict[
             str, DictType
-        ] = intermediate_structured_data["application_template_details"]
+        ] | None = intermediate_structured_data.get("application_template_details")
         chip_data: DictType = intermediate_structured_data["chip"]
         system_information: DictType = intermediate_structured_data[
             "system_information"

@@ -7,7 +7,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
-    CalculatedDataItem,
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -23,6 +22,9 @@ from allotropy.parsers.thermo_fisher_nanodrop_8000.nanodrop_8000_structure impor
     read_mass_concentration_capture_wavelength,
 )
 from allotropy.parsers.thermo_fisher_nanodrop_eight import constants
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+)
 from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -34,7 +36,7 @@ class SpectroscopyRow:
     timestamp: str
     experiment_type: str | None
     measurements: list[Measurement]
-    calculated_data: list[CalculatedDataItem]
+    calculated_data: list[CalculatedDocument]
 
     @staticmethod
     def create(data: SeriesData, header: SeriesData) -> SpectroscopyRow:

@@ -11,6 +11,8 @@ class CytivaBiacoreExtractor(Extractor[ReportPointData]):
         elements = []
         for measurements_data in sample_data.measurements.values():
             for measurement in measurements_data:
+                if measurement.report_point_data is None:
+                    continue
                 elements.extend(cls.get_elements(measurement.report_point_data))
         return elements
 

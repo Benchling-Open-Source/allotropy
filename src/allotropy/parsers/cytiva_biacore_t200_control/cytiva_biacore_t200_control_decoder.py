@@ -15,38 +15,6 @@ window_pattern = re.compile(r"_Window (\d+)")
 curve_pattern = re.compile(r"_Curve (\d+)")
 
 
-def get_cycle_data(
-    cycles: list[dict[str, Any]],
-    cycle_number: int,
-    curve_number: int,
-    window_number: int,
-) -> Any:
-    """
-    Gets the cycle, window and curve number
-    :param cycles: cycle list
-    :param cycle_number: cycle number
-    :param curve_number: curve number
-    :param window_number: window number
-    :return: cycle dict
-    """
-    for cycle in cycles:
-        if (
-            cycle["cycle_number"] == cycle_number
-            and cycle["cycle_number"] == curve_number
-            and cycle["window_number"] == window_number
-        ):
-            return cycle
-
-    new_cycle = {
-        "cycle_number": cycle_number,
-        "curve_number": curve_number,
-        "window_number": curve_number,
-    }
-    cycles.append(new_cycle)
-
-    return new_cycle
-
-
 def get_sample_data(sample_dict: dict[str, Any]) -> list[dict[str, Any]]:
     """
     Gets Sample data from the dictionary
@@ -145,7 +113,7 @@ def process_and_rearrange_xml_data(data: dict[str, Any]) -> dict[str, Any]:
 
 
 def get_detection_data(
-    detection_settings: dict[str, list[dict[str, Any]]]
+    detection_settings: dict[str, list[dict[str, Any]]],
 ) -> dict[str, Any]:
     """
     The function gets detection data
@@ -188,7 +156,7 @@ def get_data_item(data_item: dict[str, Any]) -> dict[str, Any]:
 
 
 def decode_application_data(
-    application_template_data: dict[str, Any]
+    application_template_data: dict[str, Any],
 ) -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
     """
     decodes app data template application stream data
@@ -402,9 +370,8 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
     intermediate_json: dict[str, Any] = {}
     content = ole.OleFileIO(named_file_contents.get_bytes_stream())
     streams = content.listdir()
-    cycles: list[dict[str, Any]] = []
-    cycle_df_list = []
-    cycle_details = []
+    sensorgram_df_list = []
+    report_point_data = {}
     for stream in streams:
         stream_content = content.openstream(stream).read()
         if stream == ["Environment"]:
@@ -428,41 +395,22 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
         elif stream == ["RPoint Table"]:
             r_point_data = get_r_point_data(stream_content.decode("utf-8"))
             r_point_dataframe = pd.DataFrame(r_point_data)
-            report_point_data = r_point_dataframe.groupby("Cycle")
-            for _, group in report_point_data:
-                cycle_data = {}
-                cycle_number = group["Cycle"].iloc[0]
-                cycle_data["cycle_number"] = cycle_number
-                cycle_data["report_point_data"] = group
-                cycle_details.append(cycle_data)
-        cycle_match = cycle_pattern.search(stream[0])
-        if not cycle_match:
+            report_point_data = {
+                group["Cycle"].iloc[0]: group
+                for _, group in r_point_dataframe.groupby("Cycle")
+            }
+
+        if not (cycle_match := cycle_pattern.search(stream[0])):
             continue
         cycle_number = int(cycle_match.group(1))
 
-        for part in stream:
-            window_match = window_pattern.search(part)
-
-        if any("_Window" in part for part in stream) and any(
-            "_Curve" in part for part in stream
+        if (curve_match := curve_pattern.search(str(stream))) and (
+            window_match := window_pattern.search(str(stream))
         ):
-            window_group = 1
-            # gets the curve number
-            curve_number = next(
-                int(curve_match.group(1))
-                for part in stream
-                if (curve_match := curve_pattern.search(part))
-            )
-            # gets the window number
-            window_number = next(
-                int(window_match.group(window_group))
-                for part in stream
-                if (window_match := window_pattern.search(part))
-            )
-            # gets the cycle number
-            cycle = get_cycle_data(cycles, cycle_number, curve_number, window_number)
+            curve_number = curve_match.group(1)
+            window_number = window_match.group(1)
 
-            # gets the flow cell
+            # get the flow cell number
             if "Labels" in str(stream):
                 label_list = []
                 if len(stream_content) != 0:
@@ -486,15 +434,15 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                 xy_data_frame = pd.DataFrame(
                     {
                         "Flow Cell Number": [flow_cell] * length_of_xy,
-                        "Cycle Number": [cycle["cycle_number"]] * length_of_xy,
-                        "Curve Number": [cycle["curve_number"]] * length_of_xy,
-                        "Window Number": [cycle["window_number"]] * length_of_xy,
+                        "Cycle Number": [cycle_number] * length_of_xy,
+                        "Curve Number": [curve_number] * length_of_xy,
+                        "Window Number": [window_number] * length_of_xy,
                         "Sensorgram (RU)": xy_result_list,
                         "Time (s)": time,
                     }
                 )
 
-                cycle_df_list.append(xy_data_frame)
+                sensorgram_df_list.append(xy_data_frame)
 
             # gets the segment data
             elif "Segment" in str(stream):
@@ -505,30 +453,34 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                 segment_data_frame = pd.DataFrame(
                     {
                         "Flow Cell Number": [flow_cell] * length_of_segment,
-                        "Cycle Number": [cycle["cycle_number"]] * length_of_segment,
-                        "Curve Number": [cycle["curve_number"]] * length_of_segment,
-                        "Window Number": [cycle["window_number"]] * length_of_segment,
+                        "Cycle Number": [cycle_number] * length_of_segment,
+                        "Curve Number": [curve_number] * length_of_segment,
+                        "Window Number": [window_number] * length_of_segment,
                         "Sensorgram (RU)": segment_data_list[11:],
                     }
                 )
-                cycle_df_list.append(segment_data_frame)
-    combined_cycles_df = pd.concat(cycle_df_list, ignore_index=True)
-
-    sensorgram_data = combined_cycles_df.groupby("Cycle Number")
-    cycles_data = []
-    for _name, group in sensorgram_data:
+                sensorgram_df_list.append(segment_data_frame)
+    combined_sensorgram_df = pd.concat(sensorgram_df_list, ignore_index=True)
+    sensorgram_data = {}
+    for _name, group in combined_sensorgram_df.groupby("Cycle Number"):
         if "Time (s)" in group.columns:
             max_new = group["Flow Cell Number"].max()
             last_part = group[group["Flow Cell Number"] == max_new]
-            time_map = dict(zip(last_part.index, last_part["Time (s)"], strict=True))
-            for new_value in group["Flow Cell Number"].unique():
-                if new_value != max_new:
-                    indices = group[group["Flow Cell Number"] == new_value].index
-                    for i, idx in enumerate(indices):
-                        group.at[idx, "Time (s)"] = time_map[
-                            list(time_map.keys())[i % len(time_map)]
-                        ]
-        elif intermediate_json["application_template_details"].get(
+            if pd.isna(last_part["Time (s)"]).any():
+                group["Time (s)"] = group.groupby("Flow Cell Number").cumcount() + 1
+            else:
+                time_map = dict(
+                    zip(last_part.index, last_part["Time (s)"], strict=True)
+                )
+                for new_value in group["Flow Cell Number"].unique():
+                    if new_value != max_new:
+                        indices = group[group["Flow Cell Number"] == new_value].index
+                        for i, idx in enumerate(indices):
+                            group.at[idx, "Time (s)"] = time_map[
+                                list(time_map.keys())[i % len(time_map)]
+                            ]
+        # If the data collection rate is set, apply it to the time column
+        elif intermediate_json.get("application_template_details", {}).get(
             "DataCollectionRate"
         ):
             group["Time (s)"] = group.groupby("Flow Cell Number").cumcount() * (
@@ -539,8 +491,9 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
             )
         else:
             group["Time (s)"] = group.groupby("Flow Cell Number").cumcount() + 1
+
         cycle_number = group["Cycle Number"].iloc[0]
-        group_data = group[
+        sensorgram_data[str(cycle_number)] = group[
             [
                 "Flow Cell Number",
                 "Cycle Number",
@@ -550,13 +503,17 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                 "Sensorgram (RU)",
             ]
         ]
-        cycles_data.append(group_data)
 
-    total_cycles = [
-        {**d, "sensorgram_data": cycle_sensorgram_data}
-        for d, cycle_sensorgram_data in zip(cycle_details, cycles_data, strict=True)
+    # In some cases the "RPoint Table" stream may not have data for the first cycle,
+    # but we get streams with sensorgram data (XYData or Segment streams) for all the cycles.
+    intermediate_json["cycle_data"] = [
+        {
+            "cycle_number": cycle,
+            "report_point_data": report_point_data.get(cycle),
+            "sensorgram_data": sensorgram_df,
+        }
+        for cycle, sensorgram_df in sensorgram_data.items()
     ]
-    intermediate_json["cycle_data"] = total_cycles
     intermediate_json["total_cycles"] = cycle_number
 
     return intermediate_json
