@@ -104,11 +104,32 @@ def _map_dataset(
 
         if isinstance(value, dict):
             path_df = _map_dataset(value, config, path)
-        elif isinstance(value, list):
-            path_df = pd.concat(
-                [_map_dataset(item, config, path) for item in value],
-                ignore_index=True,
-            )
+        elif isinstance(value, list) and value:
+            # NOTE: this assumes all values are consistent type (e.g. all dicts, all lists, all single values)
+            if isinstance(value[0], dict):
+                path_df = pd.concat(
+                    [_map_dataset(item, config, path) for item in value],
+                    ignore_index=True,
+                )
+            elif isinstance(value[0], list):
+                column_config = config.get_column_config(str(path))
+                df_data = {}
+                if column_config:
+                    for idx, list_value in enumerate(value):
+                        df_data[f"{column_config.name}.{idx}"] = list_value
+                else:
+                    for idx, list_value in enumerate(value):
+                        sub_path = Path(path, f"[{idx}]")
+                        column_config = config.get_column_config(str(sub_path))
+                        if not column_config:
+                            continue
+                        df_data[column_config.name] = list_value
+                path_df = pd.DataFrame(df_data)
+            else:
+                column_config = config.get_column_config(str(path))
+                if not column_config:
+                    continue
+                path_df = pd.DataFrame({column_config.name: value})
 
         for transform in config.path_to_transform.get(str(path), []):
             if isinstance(transform, PivotTransformConfig):
@@ -177,6 +198,15 @@ def map_dataset(data: dict[str, Any], config: DatasetConfig) -> pd.DataFrame:
 
     # Put columns in the order of the config
     if config.columns:
+        for column in config.columns:
+            if column.name not in df and f"{column.name}.0" in df:
+                max_value = 0
+                while f"{column.name}.{max_value + 1}" in df:
+                    max_value += 1
+                config.replace_column_names(
+                    column.name,
+                    [f"{column.name}.{idx}" for idx in range(max_value + 1)],
+                )
         df = df[[column for column in config.column_names if column in df]]
 
     # Rename columns with substitution labels
