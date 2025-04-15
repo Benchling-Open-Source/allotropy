@@ -303,7 +303,20 @@ def create_results(
     data = read_csv(StringIO("\n".join(result_lines[1:])), sep="\t")
     data = data.set_index(data.index.to_series().ffill(axis="index").values)
 
-    image_features = defaultdict(list)
+    image_features: defaultdict[
+        str, defaultdict[str | None, list[ImageFeature]]
+    ] = defaultdict(lambda: defaultdict(list))
+    fluorescent_tags = [
+        instrument_settings.fluorescent_tag
+        for read_section in read_data.read_sections
+        for instrument_settings in read_section.instrument_settings_list
+        if instrument_settings.fluorescent_tag
+    ]
+
+    num_measurements = sum(
+        len(read_section.instrument_settings_list)
+        for read_section in read_data.read_sections
+    )
 
     for row_name, row in data.iterrows():
         feature_name = row.iloc[-1]
@@ -311,7 +324,16 @@ def create_results(
             well_pos = f"{row_name}{col_index + 1}"
             well_value = try_float_or_nan(value)
 
-            image_features[well_pos].append(
+            # If one of the fluorescence tags is in the image feature name, store it under that
+            # tag, so that it can be saved under the corresponding measurement.
+            tag = None
+            if num_measurements > 1:
+                tags = [tag for tag in fluorescent_tags if tag in feature_name]
+                if len(tags) == 1:
+                    tag = tags[0]
+
+            # If a tag is found, use it. None tags will be saved to measurement aggregate document.
+            image_features[well_pos][tag].append(
                 ImageFeature(
                     identifier=random_uuid_str(),
                     feature=feature_name,
@@ -320,14 +342,8 @@ def create_results(
             )
 
     groups = []
-    num_measurements = sum(
-        len(read_section.instrument_settings_list)
-        for read_section in read_data.read_sections
-    )
-    for well_position in image_features:
-        processed_data = ProcessedData(
-            identifier=random_uuid_str(), features=image_features[well_position]
-        )
+
+    for well_position, well_image_features in image_features.items():
         measurements = [
             _create_measurement(
                 well_position,
@@ -335,7 +351,13 @@ def create_results(
                 read_section,
                 instrument_settings,
                 sample_identifiers.get(well_position),
-                processed_data if num_measurements == 1 else None,
+                well_image_features[None]
+                if num_measurements == 1
+                else (
+                    well_image_features[instrument_settings.fluorescent_tag]
+                    if instrument_settings.fluorescent_tag
+                    else None
+                ),
             )
             for read_section in read_data.read_sections
             for instrument_settings in read_section.instrument_settings_list
@@ -348,7 +370,11 @@ def create_results(
                 analytical_method_identifier=header_data.protocol_file_path,
                 experimental_data_identifier=header_data.experiment_file_path,
                 measurements=measurements,
-                processed_data=processed_data if num_measurements > 1 else None,
+                processed_data=ProcessedData(
+                    identifier=random_uuid_str(), features=well_image_features[None]
+                )
+                if num_measurements > 1
+                else None,
             )
         )
 
@@ -373,7 +399,7 @@ def _create_measurement(
     read_section: ReadSection,
     instrument_settings: InstrumentSettings,
     sample_identifier: str | None,
-    processed_data: ProcessedData | None,
+    image_features: list[ImageFeature] | None,
 ) -> Measurement:
     return Measurement(
         type_=MeasurementType.OPTICAL_IMAGING,
@@ -398,5 +424,10 @@ def _create_measurement(
         image_count_setting=read_section.image_count_setting,
         fluorescent_tag_setting=instrument_settings.fluorescent_tag,
         exposure_duration_setting=instrument_settings.exposure_duration,
-        processed_data=processed_data,
+        processed_data=ProcessedData(
+            identifier=random_uuid_str(),
+            features=image_features,
+        )
+        if image_features
+        else None,
     )
