@@ -8,8 +8,14 @@
                     "path": "values/channels/fields/SampleSetName"
                 },
                 {
-                    "name": "chromatogram",
-                    "path": "values/channels/chrom"
+                    "name": "Chromatogram for $channel_id$",
+                    "path": "values/channels/chrom",
+                    "required": true
+                },
+                {
+                    "name": "channel_id",
+                    "path": "values/channels/fields/ChannelId",
+                    "include": false
                 }
             ]
         }
