@@ -1,0 +1,17 @@
+{
+    "datasets": [
+        {
+            "name": "dataset",
+            "columns": [
+                {
+                    "name": "sample_name",
+                    "path": "values/channels/fields/SampleSetName"
+                },
+                {
+                    "name": "chromatogram",
+                    "path": "values/channels/chrom"
+                }
+            ]
+        }
+    ]
+}
