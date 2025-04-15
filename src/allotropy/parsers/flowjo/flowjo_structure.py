@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from enum import Enum
 import math
 from pathlib import Path
@@ -140,24 +142,24 @@ class VertexExtractor:
         gate_type: str | None,
         x_dim: str | None,
         y_dim: str | None,
-    ) -> list[Vertex] | None:
+    ) -> VertexExtractor | None:
         if not gate_type:
             return None
 
-        strategies = {
+        extractors = {
             RegionType.POLYGON.value: PolygonVertexExtractor,
             RegionType.RECTANGLE.value: RectangleVertexExtractor,
             RegionType.CURLY_QUAD.value: RectangleVertexExtractor,
             RegionType.ELLIPSOID.value: EllipsoidVertexExtractor,
         }
 
-        strategy_class = strategies.get(gate_type)
-        if not strategy_class:
+        extractor = extractors.get(gate_type)
+        if not extractor:
             msg = f"Gate type '{gate_type}' is not currently supported"
             raise AllotropeParsingError(msg)
 
-        strategy = strategy_class(gate_element, x_dim, y_dim)
-        return strategy.extract()
+        strategy = extractor(gate_element, x_dim, y_dim)
+        return strategy
 
 
 class PolygonVertexExtractor(VertexExtractor):
@@ -554,7 +556,10 @@ def _extract_vertices(
     Returns:
         list[Vertex] | None: List of vertices if found, None otherwise
     """
-    return VertexExtractor.build(gate_element, gate_type, x_dim, y_dim)
+    extractor = VertexExtractor.build(gate_element, gate_type, x_dim, y_dim)
+    if extractor is None:
+        return None
+    return extractor.extract()
 
 
 def _create_data_regions(sample: StrictXmlElement) -> list[DataRegion]:
