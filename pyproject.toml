@@ -53,7 +53,7 @@ dependencies = [
   # Filed issue: https://github.com/python-jsonschema/referencing/issues/178
   # TODO(nstender): investigate removing all refs from schema before use to work around perf issues
   # while unblocking package upgrades.
-  "jsonschema >= 4.3.3, < 4.18.0",
+  "jsonschema >= 4.3.3",
   "numpy >= 1.25.0",
   "olefile >= 0.47",
   "openpyxl >= 3.1.0",
