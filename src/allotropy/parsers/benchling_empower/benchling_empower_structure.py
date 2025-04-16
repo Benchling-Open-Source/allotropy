@@ -79,7 +79,10 @@ def _get_chromatogram(injection: dict[str, Any]) -> DataCube | None:
     )
 
 
-def _create_peak(peak: dict[str, Any]) -> Peak:
+def _create_peak(peak: dict[str, Any]) -> Peak | None:
+    if peak["PeakType"] in ["Missing", "Group"]:
+        return None
+
     # Area and height are reported in μV, but are reported in ASM as mAU
     # For Empower software, 1V == 1AU, so we just need to convert μ to m
     if (area := try_float_or_none(peak.get("Area"))) is not None:
@@ -142,7 +145,7 @@ def _create_measurements(injection: dict[str, Any]) -> list[Measurement]:
             autosampler_injection_volume_setting=injection["InjectionVolume"],
             injection_identifier=str(injection["InjectionId"]),
             injection_time=injection["DateAcquired"],
-            peaks=[_create_peak(peak) for peak in peaks],
+            peaks=[peak for peak in [_create_peak(peak) for peak in peaks] if peak],
             chromatogram_data_cube=_get_chromatogram(injection),
             device_control_docs=[DeviceControlDoc(device_type=constants.DEVICE_TYPE)],
         )

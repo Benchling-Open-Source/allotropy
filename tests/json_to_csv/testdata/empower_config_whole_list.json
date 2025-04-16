@@ -1,0 +1,23 @@
+{
+    "datasets": [
+        {
+            "name": "dataset",
+            "columns": [
+                {
+                    "name": "sample_name",
+                    "path": "values/channels/fields/SampleSetName"
+                },
+                {
+                    "name": "Chromatogram for $channel_id$",
+                    "path": "values/channels/chrom",
+                    "required": true
+                },
+                {
+                    "name": "channel_id",
+                    "path": "values/channels/fields/ChannelId",
+                    "include": false
+                }
+            ]
+        }
+    ]
+}
