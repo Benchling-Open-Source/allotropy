@@ -1,0 +1,17 @@
+{
+    "datasets": [
+        {
+            "name": "dataset",
+            "columns": [
+                {
+                    "name": "Name",
+                    "path": "values/name"
+                },
+                {
+                    "name": "Values",
+                    "path": "values/values"
+                }
+            ]
+        }
+    ]
+}
