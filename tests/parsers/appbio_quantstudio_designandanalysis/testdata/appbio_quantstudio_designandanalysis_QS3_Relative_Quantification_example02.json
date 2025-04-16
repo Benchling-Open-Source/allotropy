@@ -27,7 +27,11 @@
                                 "sample identifier": "A1",
                                 "location identifier": "1",
                                 "sample role type": "control sample role",
-                                "well location identifier": "A1"
+                                "well location identifier": "A1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "NO_AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -226,7 +230,11 @@
                                 "sample identifier": "200.0",
                                 "location identifier": "2",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "A2"
+                                "well location identifier": "A2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -420,7 +428,11 @@
                                 "sample identifier": "400.0",
                                 "location identifier": "3",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "A3"
+                                "well location identifier": "A3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -612,7 +624,11 @@
                                 "sample identifier": "800.0",
                                 "location identifier": "4",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "A4"
+                                "well location identifier": "A4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -808,7 +824,11 @@
                                 "sample identifier": "3200.0",
                                 "location identifier": "5",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "A5"
+                                "well location identifier": "A5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -1000,7 +1020,11 @@
                                 "sample identifier": "6400.0",
                                 "location identifier": "6",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "A6"
+                                "well location identifier": "A6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -1191,7 +1215,11 @@
                                 "sample identifier": "A7",
                                 "location identifier": "7",
                                 "sample role type": "control sample role",
-                                "well location identifier": "A7"
+                                "well location identifier": "A7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "INCONCLUSIVE"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -1388,7 +1416,11 @@
                                 "sample identifier": "100.0",
                                 "location identifier": "8",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "A8"
+                                "well location identifier": "A8",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -1583,7 +1615,11 @@
                                 "sample identifier": "200.0",
                                 "location identifier": "9",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "A9"
+                                "well location identifier": "A9",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -1778,7 +1814,11 @@
                                 "sample identifier": "400.0",
                                 "location identifier": "10",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "A10"
+                                "well location identifier": "A10",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -1974,7 +2014,11 @@
                                 "sample identifier": "800.0",
                                 "location identifier": "11",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "A11"
+                                "well location identifier": "A11",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -2167,7 +2211,11 @@
                                 "sample identifier": "1000.0",
                                 "location identifier": "12",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "A12"
+                                "well location identifier": "A12",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -2359,7 +2407,11 @@
                                 "sample identifier": "B1",
                                 "location identifier": "13",
                                 "sample role type": "control sample role",
-                                "well location identifier": "B1"
+                                "well location identifier": "B1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "NO_AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -2559,7 +2611,11 @@
                                 "sample identifier": "200.0",
                                 "location identifier": "14",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "B2"
+                                "well location identifier": "B2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -2754,7 +2810,11 @@
                                 "sample identifier": "400.0",
                                 "location identifier": "15",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "B3"
+                                "well location identifier": "B3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -2946,7 +3006,11 @@
                                 "sample identifier": "800.0",
                                 "location identifier": "16",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "B4"
+                                "well location identifier": "B4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -3141,7 +3205,11 @@
                                 "sample identifier": "3200.0",
                                 "location identifier": "17",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "B5"
+                                "well location identifier": "B5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -3332,7 +3400,11 @@
                                 "sample identifier": "6400.0",
                                 "location identifier": "18",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "B6"
+                                "well location identifier": "B6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -3524,7 +3596,11 @@
                                 "sample identifier": "B7",
                                 "location identifier": "19",
                                 "sample role type": "control sample role",
-                                "well location identifier": "B7"
+                                "well location identifier": "B7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "NO_AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -3724,7 +3800,11 @@
                                 "sample identifier": "100.0",
                                 "location identifier": "20",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "B8"
+                                "well location identifier": "B8",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -3915,7 +3995,11 @@
                                 "sample identifier": "200.0",
                                 "location identifier": "21",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "B9"
+                                "well location identifier": "B9",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -4111,7 +4195,11 @@
                                 "sample identifier": "400.0",
                                 "location identifier": "22",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "B10"
+                                "well location identifier": "B10",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -4305,7 +4393,11 @@
                                 "sample identifier": "800.0",
                                 "location identifier": "23",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "B11"
+                                "well location identifier": "B11",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -4497,7 +4589,11 @@
                                 "sample identifier": "1000.0",
                                 "location identifier": "24",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "B12"
+                                "well location identifier": "B12",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -4689,7 +4785,11 @@
                                 "sample identifier": "C1",
                                 "location identifier": "25",
                                 "sample role type": "control sample role",
-                                "well location identifier": "C1"
+                                "well location identifier": "C1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -4889,7 +4989,11 @@
                                 "sample identifier": "200.0",
                                 "location identifier": "26",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "C2"
+                                "well location identifier": "C2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -5086,7 +5190,11 @@
                                 "sample identifier": "400.0",
                                 "location identifier": "27",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "C3"
+                                "well location identifier": "C3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -5281,7 +5389,11 @@
                                 "sample identifier": "800.0",
                                 "location identifier": "28",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "C4"
+                                "well location identifier": "C4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -5476,7 +5588,11 @@
                                 "sample identifier": "3200.0",
                                 "location identifier": "29",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "C5"
+                                "well location identifier": "C5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -5666,7 +5782,11 @@
                                 "sample identifier": "6400.0",
                                 "location identifier": "30",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "C6"
+                                "well location identifier": "C6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -5858,7 +5978,11 @@
                                 "sample identifier": "C7",
                                 "location identifier": "31",
                                 "sample role type": "control sample role",
-                                "well location identifier": "C7"
+                                "well location identifier": "C7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "NO_AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -6060,7 +6184,11 @@
                                 "sample identifier": "100.0",
                                 "location identifier": "32",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "C8"
+                                "well location identifier": "C8",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -6253,7 +6381,11 @@
                                 "sample identifier": "200.0",
                                 "location identifier": "33",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "C9"
+                                "well location identifier": "C9",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -6449,7 +6581,11 @@
                                 "sample identifier": "400.0",
                                 "location identifier": "34",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "C10"
+                                "well location identifier": "C10",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -6643,7 +6779,11 @@
                                 "sample identifier": "800.0",
                                 "location identifier": "35",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "C11"
+                                "well location identifier": "C11",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -6841,7 +6981,11 @@
                                 "sample identifier": "1000.0",
                                 "location identifier": "36",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "C12"
+                                "well location identifier": "C12",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -7034,7 +7178,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "37",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D1"
+                                "well location identifier": "D1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -7211,7 +7359,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "37",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D1"
+                                "well location identifier": "D1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -7401,7 +7553,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "38",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D2"
+                                "well location identifier": "D2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -7577,7 +7733,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "38",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D2"
+                                "well location identifier": "D2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -7772,7 +7932,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "39",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D3"
+                                "well location identifier": "D3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -7949,7 +8113,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "39",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D3"
+                                "well location identifier": "D3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -8142,7 +8310,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "40",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D4"
+                                "well location identifier": "D4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -8318,7 +8490,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "40",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D4"
+                                "well location identifier": "D4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -8511,7 +8687,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "41",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D5"
+                                "well location identifier": "D5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -8688,7 +8868,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "41",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D5"
+                                "well location identifier": "D5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -8881,7 +9065,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "42",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D6"
+                                "well location identifier": "D6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -9060,7 +9248,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "42",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D6"
+                                "well location identifier": "D6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -9253,7 +9445,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "43",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D7"
+                                "well location identifier": "D7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -9431,7 +9627,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "43",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D7"
+                                "well location identifier": "D7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -9625,7 +9825,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "44",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D8"
+                                "well location identifier": "D8",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -9801,7 +10005,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "44",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D8"
+                                "well location identifier": "D8",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -9996,7 +10204,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "45",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D9"
+                                "well location identifier": "D9",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -10173,7 +10385,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "45",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D9"
+                                "well location identifier": "D9",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -10366,7 +10582,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "46",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D10"
+                                "well location identifier": "D10",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -10542,7 +10762,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "46",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D10"
+                                "well location identifier": "D10",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -10734,7 +10958,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "47",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D11"
+                                "well location identifier": "D11",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -10910,7 +11138,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "47",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D11"
+                                "well location identifier": "D11",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -11104,7 +11336,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "48",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D12"
+                                "well location identifier": "D12",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -11282,7 +11518,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "48",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "D12"
+                                "well location identifier": "D12",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -11474,7 +11714,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "49",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E1"
+                                "well location identifier": "E1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -11654,7 +11898,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "49",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E1"
+                                "well location identifier": "E1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -11846,7 +12094,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "50",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E2"
+                                "well location identifier": "E2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -12021,7 +12273,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "50",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E2"
+                                "well location identifier": "E2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -12216,7 +12472,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "51",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E3"
+                                "well location identifier": "E3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -12392,7 +12652,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "51",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E3"
+                                "well location identifier": "E3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -12584,7 +12848,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "52",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E4"
+                                "well location identifier": "E4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -12762,7 +13030,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "52",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E4"
+                                "well location identifier": "E4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -12954,7 +13226,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "53",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E5"
+                                "well location identifier": "E5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -13131,7 +13407,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "53",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E5"
+                                "well location identifier": "E5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -13326,7 +13606,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "54",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E6"
+                                "well location identifier": "E6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -13503,7 +13787,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "54",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E6"
+                                "well location identifier": "E6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -13697,7 +13985,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "55",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E7"
+                                "well location identifier": "E7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -13873,7 +14165,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "55",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E7"
+                                "well location identifier": "E7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -14068,7 +14364,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "56",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E8"
+                                "well location identifier": "E8",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -14243,7 +14543,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "56",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E8"
+                                "well location identifier": "E8",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -14436,7 +14740,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "57",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E9"
+                                "well location identifier": "E9",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -14614,7 +14922,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "57",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E9"
+                                "well location identifier": "E9",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -14809,7 +15121,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "58",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E10"
+                                "well location identifier": "E10",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -14987,7 +15303,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "58",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E10"
+                                "well location identifier": "E10",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -15183,7 +15503,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "59",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E11"
+                                "well location identifier": "E11",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -15361,7 +15685,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "59",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E11"
+                                "well location identifier": "E11",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -15555,7 +15883,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "60",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E12"
+                                "well location identifier": "E12",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -15730,7 +16062,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "60",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E12"
+                                "well location identifier": "E12",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -15922,7 +16258,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "61",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F1"
+                                "well location identifier": "F1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -16100,7 +16440,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "61",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F1"
+                                "well location identifier": "F1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -16294,7 +16638,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "62",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F2"
+                                "well location identifier": "F2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -16469,7 +16817,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "62",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F2"
+                                "well location identifier": "F2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -16663,7 +17015,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "63",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F3"
+                                "well location identifier": "F3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -16837,7 +17193,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "63",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F3"
+                                "well location identifier": "F3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -17029,7 +17389,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "64",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F4"
+                                "well location identifier": "F4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -17206,7 +17570,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "64",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F4"
+                                "well location identifier": "F4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -17400,7 +17768,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "65",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F5"
+                                "well location identifier": "F5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -17577,7 +17949,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "65",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F5"
+                                "well location identifier": "F5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -17770,7 +18146,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "66",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F6"
+                                "well location identifier": "F6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -17945,7 +18325,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "66",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F6"
+                                "well location identifier": "F6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -18137,7 +18521,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "67",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F7"
+                                "well location identifier": "F7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -18313,7 +18701,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "67",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F7"
+                                "well location identifier": "F7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -18508,7 +18900,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "68",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F8"
+                                "well location identifier": "F8",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -18684,7 +19080,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "68",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F8"
+                                "well location identifier": "F8",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -18878,7 +19278,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "69",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F9"
+                                "well location identifier": "F9",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -19055,7 +19459,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "69",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F9"
+                                "well location identifier": "F9",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -19250,7 +19658,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "70",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F10"
+                                "well location identifier": "F10",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -19423,7 +19835,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "70",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F10"
+                                "well location identifier": "F10",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -19614,7 +20030,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "71",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F11"
+                                "well location identifier": "F11",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -19793,7 +20213,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "71",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F11"
+                                "well location identifier": "F11",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -19987,7 +20411,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "72",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F12"
+                                "well location identifier": "F12",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -20164,7 +20592,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "72",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F12"
+                                "well location identifier": "F12",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -20358,7 +20790,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "73",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G1"
+                                "well location identifier": "G1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -20535,7 +20971,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "73",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G1"
+                                "well location identifier": "G1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -20729,7 +21169,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "74",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G2"
+                                "well location identifier": "G2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -20903,7 +21347,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "74",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G2"
+                                "well location identifier": "G2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -21093,7 +21541,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "75",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G3"
+                                "well location identifier": "G3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -21269,7 +21721,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "75",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G3"
+                                "well location identifier": "G3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -21462,7 +21918,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "76",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G4"
+                                "well location identifier": "G4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -21638,7 +22098,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "76",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G4"
+                                "well location identifier": "G4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -21831,7 +22295,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "77",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G5"
+                                "well location identifier": "G5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -22007,7 +22475,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "77",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G5"
+                                "well location identifier": "G5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -22197,7 +22669,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "78",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G6"
+                                "well location identifier": "G6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -22375,7 +22851,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "78",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G6"
+                                "well location identifier": "G6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -22570,7 +23050,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "79",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G7"
+                                "well location identifier": "G7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -22745,7 +23229,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "79",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G7"
+                                "well location identifier": "G7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -22935,7 +23423,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "80",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G8"
+                                "well location identifier": "G8",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -23107,7 +23599,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "80",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G8"
+                                "well location identifier": "G8",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -23300,7 +23796,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "81",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G9"
+                                "well location identifier": "G9",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -23476,7 +23976,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "81",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G9"
+                                "well location identifier": "G9",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -23672,7 +24176,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "82",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G10"
+                                "well location identifier": "G10",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -23848,7 +24356,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "82",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G10"
+                                "well location identifier": "G10",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -24041,7 +24553,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "83",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G11"
+                                "well location identifier": "G11",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -24217,7 +24733,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "83",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G11"
+                                "well location identifier": "G11",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -24409,7 +24929,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "84",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G12"
+                                "well location identifier": "G12",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -24584,7 +25108,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "84",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G12"
+                                "well location identifier": "G12",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -24777,7 +25305,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "85",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H1"
+                                "well location identifier": "H1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -24954,7 +25486,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "85",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H1"
+                                "well location identifier": "H1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -25150,7 +25686,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "86",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H2"
+                                "well location identifier": "H2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -25329,7 +25869,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "86",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H2"
+                                "well location identifier": "H2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -25520,7 +26064,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "87",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H3"
+                                "well location identifier": "H3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -25695,7 +26243,11 @@
                                 "sample identifier": "Unk_3200",
                                 "location identifier": "87",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H3"
+                                "well location identifier": "H3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -25886,7 +26438,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "88",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H4"
+                                "well location identifier": "H4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -26064,7 +26620,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "88",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H4"
+                                "well location identifier": "H4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -26257,7 +26817,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "89",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H5"
+                                "well location identifier": "H5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -26432,7 +26996,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "89",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H5"
+                                "well location identifier": "H5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -26624,7 +27192,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "90",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H6"
+                                "well location identifier": "H6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -26800,7 +27372,11 @@
                                 "sample identifier": "Unk_1600",
                                 "location identifier": "90",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H6"
+                                "well location identifier": "H6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -26990,7 +27566,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "91",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H7"
+                                "well location identifier": "H7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -27170,7 +27750,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "91",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H7"
+                                "well location identifier": "H7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -27364,7 +27948,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "92",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H8"
+                                "well location identifier": "H8",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -27538,7 +28126,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "92",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H8"
+                                "well location identifier": "H8",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -27730,7 +28322,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "93",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H9"
+                                "well location identifier": "H9",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -27905,7 +28501,11 @@
                                 "sample identifier": "Unk_800",
                                 "location identifier": "93",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H9"
+                                "well location identifier": "H9",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -28103,7 +28703,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "94",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H10"
+                                "well location identifier": "H10",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -28278,7 +28882,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "94",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H10"
+                                "well location identifier": "H10",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -28472,7 +29080,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "95",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H11"
+                                "well location identifier": "H11",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -28650,7 +29262,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "95",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H11"
+                                "well location identifier": "H11",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -28844,7 +29460,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "96",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H12"
+                                "well location identifier": "H12",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -29020,7 +29640,11 @@
                                 "sample identifier": "Unk_400",
                                 "location identifier": "96",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H12"
+                                "well location identifier": "H12",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -36945,7 +37569,7 @@
             "file name": "appbio_quantstudio_designandanalysis_QS3_Relative_Quantification_example02.xlsx",
             "UNC path": "tests/parsers/appbio_quantstudio_designandanalysis/testdata/appbio_quantstudio_designandanalysis_QS3_Relative_Quantification_example02.xlsx",
             "ASM converter name": "allotropy_appbio_quantstudio_design_&_analysis",
-            "ASM converter version": "0.1.76",
+            "ASM converter version": "0.1.84",
             "software name": "Design & Analysis Software",
             "software version": "2.7.0"
         },
@@ -36954,6 +37578,16 @@
             "equipment serial number": "SVT001",
             "model number": "QuantStudio™ 3 System",
             "product manufacturer": "ThermoFisher Scientific"
+        },
+        "custom information document": {
+            "Run Duration": "39 minutes 20 seconds",
+            "Analysis Date/Time": "2023-12-19 03:54:57 PM EST",
+            "Run Start Date/Time": "2015-12-09 01:46:26 AM EST",
+            "Cover Temperature": 105.0,
+            "Sample Volume": 10.0,
+            "Reduce dye signal crosstalk by algorithm": "No (Default)",
+            "Exported On": "2023-12-19 03:55:48 PM EST",
+            "Block serial number": 41145912.0
         }
     }
 }

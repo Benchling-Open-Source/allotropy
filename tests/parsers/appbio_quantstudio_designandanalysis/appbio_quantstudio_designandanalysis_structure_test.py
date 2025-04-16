@@ -66,6 +66,7 @@ def test_header_builder() -> None:
         block_serial_number="1",
         heated_cover_serial_number="2",
         well_volume=200,
+        extra_data={}
     )
 
 

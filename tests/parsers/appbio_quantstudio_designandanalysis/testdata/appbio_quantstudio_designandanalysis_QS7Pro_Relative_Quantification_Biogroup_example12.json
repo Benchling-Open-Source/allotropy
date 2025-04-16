@@ -27,7 +27,11 @@
                                 "sample identifier": "RNase P NTC",
                                 "location identifier": "1",
                                 "sample role type": "control sample role",
-                                "well location identifier": "A1"
+                                "well location identifier": "A1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "NO_AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -225,7 +229,11 @@
                                 "sample identifier": "RNase P NTC",
                                 "location identifier": "2",
                                 "sample role type": "control sample role",
-                                "well location identifier": "A2"
+                                "well location identifier": "A2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "NO_AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -421,7 +429,11 @@
                                 "sample identifier": "RNase P NTC",
                                 "location identifier": "3",
                                 "sample role type": "control sample role",
-                                "well location identifier": "A3"
+                                "well location identifier": "A3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "NO_AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -621,7 +633,11 @@
                                 "sample identifier": "RNase P NTC",
                                 "location identifier": "4",
                                 "sample role type": "control sample role",
-                                "well location identifier": "A4"
+                                "well location identifier": "A4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "NO_AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -819,7 +835,11 @@
                                 "sample identifier": "RNase P NTC",
                                 "location identifier": "5",
                                 "sample role type": "control sample role",
-                                "well location identifier": "A5"
+                                "well location identifier": "A5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "NO_AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -1015,7 +1035,11 @@
                                 "sample identifier": "RNase P NTC",
                                 "location identifier": "6",
                                 "sample role type": "control sample role",
-                                "well location identifier": "A6"
+                                "well location identifier": "A6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "NO_AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -1216,7 +1240,11 @@
                                 "sample identifier": "RNase P NTC",
                                 "location identifier": "7",
                                 "sample role type": "control sample role",
-                                "well location identifier": "A7"
+                                "well location identifier": "A7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "NO_AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -1416,7 +1444,11 @@
                                 "sample identifier": "RNase P NTC",
                                 "location identifier": "8",
                                 "sample role type": "control sample role",
-                                "well location identifier": "A8"
+                                "well location identifier": "A8",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "NO_AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -1613,7 +1645,11 @@
                                 "sample identifier": "Lung1",
                                 "location identifier": "97",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E1"
+                                "well location identifier": "E1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -1807,7 +1843,11 @@
                                 "sample identifier": "Lung1",
                                 "location identifier": "98",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E2"
+                                "well location identifier": "E2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -1998,7 +2038,11 @@
                                 "sample identifier": "Lung1",
                                 "location identifier": "99",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E3"
+                                "well location identifier": "E3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -2190,7 +2234,11 @@
                                 "sample identifier": "Lung1",
                                 "location identifier": "100",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E4"
+                                "well location identifier": "E4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -2384,7 +2432,11 @@
                                 "sample identifier": "Lung2",
                                 "location identifier": "101",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E5"
+                                "well location identifier": "E5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -2578,7 +2630,11 @@
                                 "sample identifier": "Lung2",
                                 "location identifier": "102",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E6"
+                                "well location identifier": "E6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -2773,7 +2829,11 @@
                                 "sample identifier": "Lung2",
                                 "location identifier": "103",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E7"
+                                "well location identifier": "E7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -2968,7 +3028,11 @@
                                 "sample identifier": "Lung2",
                                 "location identifier": "104",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E8"
+                                "well location identifier": "E8",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -3159,7 +3223,11 @@
                                 "sample identifier": "Lung3",
                                 "location identifier": "105",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E9"
+                                "well location identifier": "E9",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -3349,7 +3417,11 @@
                                 "sample identifier": "Lung3",
                                 "location identifier": "106",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E10"
+                                "well location identifier": "E10",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -3541,7 +3613,11 @@
                                 "sample identifier": "Lung3",
                                 "location identifier": "107",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E11"
+                                "well location identifier": "E11",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -3728,7 +3804,11 @@
                                 "sample identifier": "Lung3",
                                 "location identifier": "108",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E12"
+                                "well location identifier": "E12",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -3920,7 +4000,11 @@
                                 "sample identifier": "Liver1",
                                 "location identifier": "109",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E13"
+                                "well location identifier": "E13",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -4113,7 +4197,11 @@
                                 "sample identifier": "Liver1",
                                 "location identifier": "110",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E14"
+                                "well location identifier": "E14",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -4307,7 +4395,11 @@
                                 "sample identifier": "Liver1",
                                 "location identifier": "111",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E15"
+                                "well location identifier": "E15",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -4499,7 +4591,11 @@
                                 "sample identifier": "Liver1",
                                 "location identifier": "112",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E16"
+                                "well location identifier": "E16",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -4692,7 +4788,11 @@
                                 "sample identifier": "Liver2",
                                 "location identifier": "113",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E17"
+                                "well location identifier": "E17",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -4884,7 +4984,11 @@
                                 "sample identifier": "Liver2",
                                 "location identifier": "114",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E18"
+                                "well location identifier": "E18",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -5076,7 +5180,11 @@
                                 "sample identifier": "Liver2",
                                 "location identifier": "115",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E19"
+                                "well location identifier": "E19",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -5268,7 +5376,11 @@
                                 "sample identifier": "Liver2",
                                 "location identifier": "116",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E20"
+                                "well location identifier": "E20",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -5460,7 +5572,11 @@
                                 "sample identifier": "Liver3",
                                 "location identifier": "117",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E21"
+                                "well location identifier": "E21",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -5653,7 +5769,11 @@
                                 "sample identifier": "Liver3",
                                 "location identifier": "118",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E22"
+                                "well location identifier": "E22",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -5850,7 +5970,11 @@
                                 "sample identifier": "Liver3",
                                 "location identifier": "119",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E23"
+                                "well location identifier": "E23",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -6046,7 +6170,11 @@
                                 "sample identifier": "Liver3",
                                 "location identifier": "120",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "E24"
+                                "well location identifier": "E24",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -6238,7 +6366,11 @@
                                 "sample identifier": "Lung1",
                                 "location identifier": "121",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F1"
+                                "well location identifier": "F1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -6431,7 +6563,11 @@
                                 "sample identifier": "Lung1",
                                 "location identifier": "122",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F2"
+                                "well location identifier": "F2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -6622,7 +6758,11 @@
                                 "sample identifier": "Lung1",
                                 "location identifier": "123",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F3"
+                                "well location identifier": "F3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -6813,7 +6953,11 @@
                                 "sample identifier": "Lung1",
                                 "location identifier": "124",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F4"
+                                "well location identifier": "F4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -7005,7 +7149,11 @@
                                 "sample identifier": "Lung2",
                                 "location identifier": "125",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F5"
+                                "well location identifier": "F5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -7198,7 +7346,11 @@
                                 "sample identifier": "Lung2",
                                 "location identifier": "126",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F6"
+                                "well location identifier": "F6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -7389,7 +7541,11 @@
                                 "sample identifier": "Lung2",
                                 "location identifier": "127",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F7"
+                                "well location identifier": "F7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -7584,7 +7740,11 @@
                                 "sample identifier": "Lung2",
                                 "location identifier": "128",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F8"
+                                "well location identifier": "F8",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -7776,7 +7936,11 @@
                                 "sample identifier": "Lung3",
                                 "location identifier": "129",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F9"
+                                "well location identifier": "F9",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -7968,7 +8132,11 @@
                                 "sample identifier": "Lung3",
                                 "location identifier": "130",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F10"
+                                "well location identifier": "F10",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -8161,7 +8329,11 @@
                                 "sample identifier": "Lung3",
                                 "location identifier": "131",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F11"
+                                "well location identifier": "F11",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -8352,7 +8524,11 @@
                                 "sample identifier": "Lung3",
                                 "location identifier": "132",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F12"
+                                "well location identifier": "F12",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -8544,7 +8720,11 @@
                                 "sample identifier": "Liver1",
                                 "location identifier": "133",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F13"
+                                "well location identifier": "F13",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -8739,7 +8919,11 @@
                                 "sample identifier": "Liver1",
                                 "location identifier": "134",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F14"
+                                "well location identifier": "F14",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -8931,7 +9115,11 @@
                                 "sample identifier": "Liver1",
                                 "location identifier": "135",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F15"
+                                "well location identifier": "F15",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -9124,7 +9312,11 @@
                                 "sample identifier": "Liver1",
                                 "location identifier": "136",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F16"
+                                "well location identifier": "F16",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -9318,7 +9510,11 @@
                                 "sample identifier": "Liver2",
                                 "location identifier": "137",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F17"
+                                "well location identifier": "F17",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -9512,7 +9708,11 @@
                                 "sample identifier": "Liver2",
                                 "location identifier": "138",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F18"
+                                "well location identifier": "F18",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -9708,7 +9908,11 @@
                                 "sample identifier": "Liver2",
                                 "location identifier": "139",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F19"
+                                "well location identifier": "F19",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -9901,7 +10105,11 @@
                                 "sample identifier": "Liver2",
                                 "location identifier": "140",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F20"
+                                "well location identifier": "F20",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -10096,7 +10304,11 @@
                                 "sample identifier": "Liver3",
                                 "location identifier": "141",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F21"
+                                "well location identifier": "F21",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -10291,7 +10503,11 @@
                                 "sample identifier": "Liver3",
                                 "location identifier": "142",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F22"
+                                "well location identifier": "F22",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -10487,7 +10703,11 @@
                                 "sample identifier": "Liver3",
                                 "location identifier": "143",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F23"
+                                "well location identifier": "F23",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -10679,7 +10899,11 @@
                                 "sample identifier": "Liver3",
                                 "location identifier": "144",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "F24"
+                                "well location identifier": "F24",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -10873,7 +11097,11 @@
                                 "sample identifier": "Lung1",
                                 "location identifier": "145",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G1"
+                                "well location identifier": "G1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -11065,7 +11293,11 @@
                                 "sample identifier": "Lung1",
                                 "location identifier": "146",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G2"
+                                "well location identifier": "G2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -11255,7 +11487,11 @@
                                 "sample identifier": "Lung1",
                                 "location identifier": "147",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G3"
+                                "well location identifier": "G3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -11444,7 +11680,11 @@
                                 "sample identifier": "Lung1",
                                 "location identifier": "148",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G4"
+                                "well location identifier": "G4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -11634,7 +11874,11 @@
                                 "sample identifier": "Lung2",
                                 "location identifier": "149",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G5"
+                                "well location identifier": "G5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -11827,7 +12071,11 @@
                                 "sample identifier": "Lung2",
                                 "location identifier": "150",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G6"
+                                "well location identifier": "G6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -12018,7 +12266,11 @@
                                 "sample identifier": "Lung2",
                                 "location identifier": "151",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G7"
+                                "well location identifier": "G7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -12213,7 +12465,11 @@
                                 "sample identifier": "Lung2",
                                 "location identifier": "152",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G8"
+                                "well location identifier": "G8",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -12405,7 +12661,11 @@
                                 "sample identifier": "Lung3",
                                 "location identifier": "153",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G9"
+                                "well location identifier": "G9",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -12595,7 +12855,11 @@
                                 "sample identifier": "Lung3",
                                 "location identifier": "154",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G10"
+                                "well location identifier": "G10",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -12789,7 +13053,11 @@
                                 "sample identifier": "Lung3",
                                 "location identifier": "155",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G11"
+                                "well location identifier": "G11",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -12981,7 +13249,11 @@
                                 "sample identifier": "Lung3",
                                 "location identifier": "156",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G12"
+                                "well location identifier": "G12",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -13173,7 +13445,11 @@
                                 "sample identifier": "Liver1",
                                 "location identifier": "157",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G13"
+                                "well location identifier": "G13",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -13368,7 +13644,11 @@
                                 "sample identifier": "Liver1",
                                 "location identifier": "158",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G14"
+                                "well location identifier": "G14",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -13560,7 +13840,11 @@
                                 "sample identifier": "Liver1",
                                 "location identifier": "159",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G15"
+                                "well location identifier": "G15",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -13752,7 +14036,11 @@
                                 "sample identifier": "Liver1",
                                 "location identifier": "160",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G16"
+                                "well location identifier": "G16",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -13941,7 +14229,11 @@
                                 "sample identifier": "Liver2",
                                 "location identifier": "161",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G17"
+                                "well location identifier": "G17",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -14134,7 +14426,11 @@
                                 "sample identifier": "Liver2",
                                 "location identifier": "162",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G18"
+                                "well location identifier": "G18",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -14325,7 +14621,11 @@
                                 "sample identifier": "Liver2",
                                 "location identifier": "163",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G19"
+                                "well location identifier": "G19",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -14516,7 +14816,11 @@
                                 "sample identifier": "Liver2",
                                 "location identifier": "164",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G20"
+                                "well location identifier": "G20",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -14711,7 +15015,11 @@
                                 "sample identifier": "Liver3",
                                 "location identifier": "165",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G21"
+                                "well location identifier": "G21",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -14903,7 +15211,11 @@
                                 "sample identifier": "Liver3",
                                 "location identifier": "166",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G22"
+                                "well location identifier": "G22",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -15099,7 +15411,11 @@
                                 "sample identifier": "Liver3",
                                 "location identifier": "167",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G23"
+                                "well location identifier": "G23",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -15290,7 +15606,11 @@
                                 "sample identifier": "Liver3",
                                 "location identifier": "168",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "G24"
+                                "well location identifier": "G24",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -15484,7 +15804,11 @@
                                 "sample identifier": "Brain1",
                                 "location identifier": "169",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H1"
+                                "well location identifier": "H1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -15680,7 +16004,11 @@
                                 "sample identifier": "Brain1",
                                 "location identifier": "170",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H2"
+                                "well location identifier": "H2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -15878,7 +16206,11 @@
                                 "sample identifier": "Brain2",
                                 "location identifier": "171",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H3"
+                                "well location identifier": "H3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -16071,7 +16403,11 @@
                                 "sample identifier": "Brain2",
                                 "location identifier": "172",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H4"
+                                "well location identifier": "H4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -16266,7 +16602,11 @@
                                 "sample identifier": "Brain3",
                                 "location identifier": "173",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H5"
+                                "well location identifier": "H5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -16467,7 +16807,11 @@
                                 "sample identifier": "Brain3",
                                 "location identifier": "174",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H6"
+                                "well location identifier": "H6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -16664,7 +17008,11 @@
                                 "sample identifier": "Heart1",
                                 "location identifier": "175",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H7"
+                                "well location identifier": "H7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -16863,7 +17211,11 @@
                                 "sample identifier": "Heart1",
                                 "location identifier": "176",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H8"
+                                "well location identifier": "H8",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -17062,7 +17414,11 @@
                                 "sample identifier": "Heart2",
                                 "location identifier": "177",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H9"
+                                "well location identifier": "H9",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -17259,7 +17615,11 @@
                                 "sample identifier": "Heart2",
                                 "location identifier": "178",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H10"
+                                "well location identifier": "H10",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -17456,7 +17816,11 @@
                                 "sample identifier": "Heart3",
                                 "location identifier": "179",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H11"
+                                "well location identifier": "H11",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -17652,7 +18016,11 @@
                                 "sample identifier": "Heart3",
                                 "location identifier": "180",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H12"
+                                "well location identifier": "H12",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -17851,7 +18219,11 @@
                                 "sample identifier": "Liver1",
                                 "location identifier": "181",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H13"
+                                "well location identifier": "H13",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -18051,7 +18423,11 @@
                                 "sample identifier": "Liver1",
                                 "location identifier": "182",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H14"
+                                "well location identifier": "H14",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -18248,7 +18624,11 @@
                                 "sample identifier": "Liver2",
                                 "location identifier": "183",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H15"
+                                "well location identifier": "H15",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -18445,7 +18825,11 @@
                                 "sample identifier": "Liver2",
                                 "location identifier": "184",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H16"
+                                "well location identifier": "H16",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -18642,7 +19026,11 @@
                                 "sample identifier": "Liver3",
                                 "location identifier": "185",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H17"
+                                "well location identifier": "H17",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -18840,7 +19228,11 @@
                                 "sample identifier": "Liver3",
                                 "location identifier": "186",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H18"
+                                "well location identifier": "H18",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -19036,7 +19428,11 @@
                                 "sample identifier": "Lung1",
                                 "location identifier": "187",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H19"
+                                "well location identifier": "H19",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -19231,7 +19627,11 @@
                                 "sample identifier": "Lung1",
                                 "location identifier": "188",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H20"
+                                "well location identifier": "H20",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -19427,7 +19827,11 @@
                                 "sample identifier": "Lung2",
                                 "location identifier": "189",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H21"
+                                "well location identifier": "H21",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -19623,7 +20027,11 @@
                                 "sample identifier": "Lung2",
                                 "location identifier": "190",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H22"
+                                "well location identifier": "H22",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -19820,7 +20228,11 @@
                                 "sample identifier": "Lung3",
                                 "location identifier": "191",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H23"
+                                "well location identifier": "H23",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -20016,7 +20428,11 @@
                                 "sample identifier": "Lung3",
                                 "location identifier": "192",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "H24"
+                                "well location identifier": "H24",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -20213,7 +20629,11 @@
                                 "sample identifier": "Brain1",
                                 "location identifier": "193",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I1"
+                                "well location identifier": "I1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -20408,7 +20828,11 @@
                                 "sample identifier": "Brain1",
                                 "location identifier": "194",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I2"
+                                "well location identifier": "I2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -20608,7 +21032,11 @@
                                 "sample identifier": "Brain2",
                                 "location identifier": "195",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I3"
+                                "well location identifier": "I3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -20806,7 +21234,11 @@
                                 "sample identifier": "Brain2",
                                 "location identifier": "196",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I4"
+                                "well location identifier": "I4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -21001,7 +21433,11 @@
                                 "sample identifier": "Brain3",
                                 "location identifier": "197",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I5"
+                                "well location identifier": "I5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -21199,7 +21635,11 @@
                                 "sample identifier": "Brain3",
                                 "location identifier": "198",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I6"
+                                "well location identifier": "I6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -21398,7 +21838,11 @@
                                 "sample identifier": "Heart1",
                                 "location identifier": "199",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I7"
+                                "well location identifier": "I7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -21598,7 +22042,11 @@
                                 "sample identifier": "Heart1",
                                 "location identifier": "200",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I8"
+                                "well location identifier": "I8",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -21798,7 +22246,11 @@
                                 "sample identifier": "Heart2",
                                 "location identifier": "201",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I9"
+                                "well location identifier": "I9",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -21996,7 +22448,11 @@
                                 "sample identifier": "Heart2",
                                 "location identifier": "202",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I10"
+                                "well location identifier": "I10",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -22194,7 +22650,11 @@
                                 "sample identifier": "Heart3",
                                 "location identifier": "203",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I11"
+                                "well location identifier": "I11",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -22391,7 +22851,11 @@
                                 "sample identifier": "Heart3",
                                 "location identifier": "204",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I12"
+                                "well location identifier": "I12",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -22587,7 +23051,11 @@
                                 "sample identifier": "Liver1",
                                 "location identifier": "205",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I13"
+                                "well location identifier": "I13",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -22784,7 +23252,11 @@
                                 "sample identifier": "Liver1",
                                 "location identifier": "206",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I14"
+                                "well location identifier": "I14",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -22982,7 +23454,11 @@
                                 "sample identifier": "Liver2",
                                 "location identifier": "207",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I15"
+                                "well location identifier": "I15",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -23180,7 +23656,11 @@
                                 "sample identifier": "Liver2",
                                 "location identifier": "208",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I16"
+                                "well location identifier": "I16",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -23377,7 +23857,11 @@
                                 "sample identifier": "Liver3",
                                 "location identifier": "209",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I17"
+                                "well location identifier": "I17",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -23574,7 +24058,11 @@
                                 "sample identifier": "Liver3",
                                 "location identifier": "210",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I18"
+                                "well location identifier": "I18",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -23769,7 +24257,11 @@
                                 "sample identifier": "Lung1",
                                 "location identifier": "211",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I19"
+                                "well location identifier": "I19",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -23968,7 +24460,11 @@
                                 "sample identifier": "Lung1",
                                 "location identifier": "212",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I20"
+                                "well location identifier": "I20",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -24164,7 +24660,11 @@
                                 "sample identifier": "Lung2",
                                 "location identifier": "213",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I21"
+                                "well location identifier": "I21",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -24362,7 +24862,11 @@
                                 "sample identifier": "Lung2",
                                 "location identifier": "214",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I22"
+                                "well location identifier": "I22",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -24558,7 +25062,11 @@
                                 "sample identifier": "Lung3",
                                 "location identifier": "215",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I23"
+                                "well location identifier": "I23",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -24756,7 +25264,11 @@
                                 "sample identifier": "Lung3",
                                 "location identifier": "216",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "I24"
+                                "well location identifier": "I24",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -24957,7 +25469,11 @@
                                 "sample identifier": "Heart1",
                                 "location identifier": "217",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J1"
+                                "well location identifier": "J1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -25152,7 +25668,11 @@
                                 "sample identifier": "Heart1",
                                 "location identifier": "218",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J2"
+                                "well location identifier": "J2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -25348,7 +25868,11 @@
                                 "sample identifier": "Heart1",
                                 "location identifier": "219",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J3"
+                                "well location identifier": "J3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -25540,7 +26064,11 @@
                                 "sample identifier": "Heart1",
                                 "location identifier": "220",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J4"
+                                "well location identifier": "J4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -25734,7 +26262,11 @@
                                 "sample identifier": "Heart2",
                                 "location identifier": "221",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J5"
+                                "well location identifier": "J5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -25930,7 +26462,11 @@
                                 "sample identifier": "Heart2",
                                 "location identifier": "222",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J6"
+                                "well location identifier": "J6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -26124,7 +26660,11 @@
                                 "sample identifier": "Heart2",
                                 "location identifier": "223",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J7"
+                                "well location identifier": "J7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -26319,7 +26859,11 @@
                                 "sample identifier": "Heart2",
                                 "location identifier": "224",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J8"
+                                "well location identifier": "J8",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -26513,7 +27057,11 @@
                                 "sample identifier": "Heart3",
                                 "location identifier": "225",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J9"
+                                "well location identifier": "J9",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -26707,7 +27255,11 @@
                                 "sample identifier": "Heart3",
                                 "location identifier": "226",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J10"
+                                "well location identifier": "J10",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -26902,7 +27454,11 @@
                                 "sample identifier": "Heart3",
                                 "location identifier": "227",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J11"
+                                "well location identifier": "J11",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -27098,7 +27654,11 @@
                                 "sample identifier": "Heart3",
                                 "location identifier": "228",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J12"
+                                "well location identifier": "J12",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -27295,7 +27855,11 @@
                                 "sample identifier": "Brain1",
                                 "location identifier": "229",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J13"
+                                "well location identifier": "J13",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -27489,7 +28053,11 @@
                                 "sample identifier": "Brain1",
                                 "location identifier": "230",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J14"
+                                "well location identifier": "J14",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -27683,7 +28251,11 @@
                                 "sample identifier": "Brain1",
                                 "location identifier": "231",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J15"
+                                "well location identifier": "J15",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -27877,7 +28449,11 @@
                                 "sample identifier": "Brain1",
                                 "location identifier": "232",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J16"
+                                "well location identifier": "J16",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -28070,7 +28646,11 @@
                                 "sample identifier": "Brain2",
                                 "location identifier": "233",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J17"
+                                "well location identifier": "J17",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -28263,7 +28843,11 @@
                                 "sample identifier": "Brain2",
                                 "location identifier": "234",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J18"
+                                "well location identifier": "J18",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -28455,7 +29039,11 @@
                                 "sample identifier": "Brain2",
                                 "location identifier": "235",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J19"
+                                "well location identifier": "J19",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -28651,7 +29239,11 @@
                                 "sample identifier": "Brain2",
                                 "location identifier": "236",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J20"
+                                "well location identifier": "J20",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -28843,7 +29435,11 @@
                                 "sample identifier": "Brain3",
                                 "location identifier": "237",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J21"
+                                "well location identifier": "J21",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -29036,7 +29632,11 @@
                                 "sample identifier": "Brain3",
                                 "location identifier": "238",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J22"
+                                "well location identifier": "J22",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -29229,7 +29829,11 @@
                                 "sample identifier": "Brain3",
                                 "location identifier": "239",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J23"
+                                "well location identifier": "J23",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -29422,7 +30026,11 @@
                                 "sample identifier": "Brain3",
                                 "location identifier": "240",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "J24"
+                                "well location identifier": "J24",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -29615,7 +30223,11 @@
                                 "sample identifier": "Heart1",
                                 "location identifier": "241",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K1"
+                                "well location identifier": "K1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -29809,7 +30421,11 @@
                                 "sample identifier": "Heart1",
                                 "location identifier": "242",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K2"
+                                "well location identifier": "K2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -30004,7 +30620,11 @@
                                 "sample identifier": "Heart1",
                                 "location identifier": "243",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K3"
+                                "well location identifier": "K3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -30196,7 +30816,11 @@
                                 "sample identifier": "Heart1",
                                 "location identifier": "244",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K4"
+                                "well location identifier": "K4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -30389,7 +31013,11 @@
                                 "sample identifier": "Heart2",
                                 "location identifier": "245",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K5"
+                                "well location identifier": "K5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -30580,7 +31208,11 @@
                                 "sample identifier": "Heart2",
                                 "location identifier": "246",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K6"
+                                "well location identifier": "K6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -30771,7 +31403,11 @@
                                 "sample identifier": "Heart2",
                                 "location identifier": "247",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K7"
+                                "well location identifier": "K7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -30966,7 +31602,11 @@
                                 "sample identifier": "Heart2",
                                 "location identifier": "248",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K8"
+                                "well location identifier": "K8",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -31156,7 +31796,11 @@
                                 "sample identifier": "Heart3",
                                 "location identifier": "249",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K9"
+                                "well location identifier": "K9",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -31350,7 +31994,11 @@
                                 "sample identifier": "Heart3",
                                 "location identifier": "250",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K10"
+                                "well location identifier": "K10",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -31545,7 +32193,11 @@
                                 "sample identifier": "Heart3",
                                 "location identifier": "251",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K11"
+                                "well location identifier": "K11",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -31740,7 +32392,11 @@
                                 "sample identifier": "Heart3",
                                 "location identifier": "252",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K12"
+                                "well location identifier": "K12",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -31935,7 +32591,11 @@
                                 "sample identifier": "Brain1",
                                 "location identifier": "253",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K13"
+                                "well location identifier": "K13",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -32128,7 +32788,11 @@
                                 "sample identifier": "Brain1",
                                 "location identifier": "254",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K14"
+                                "well location identifier": "K14",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -32321,7 +32985,11 @@
                                 "sample identifier": "Brain1",
                                 "location identifier": "255",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K15"
+                                "well location identifier": "K15",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -32514,7 +33182,11 @@
                                 "sample identifier": "Brain1",
                                 "location identifier": "256",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K16"
+                                "well location identifier": "K16",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -32710,7 +33382,11 @@
                                 "sample identifier": "Brain2",
                                 "location identifier": "257",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K17"
+                                "well location identifier": "K17",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -32903,7 +33579,11 @@
                                 "sample identifier": "Brain2",
                                 "location identifier": "258",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K18"
+                                "well location identifier": "K18",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -33099,7 +33779,11 @@
                                 "sample identifier": "Brain2",
                                 "location identifier": "259",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K19"
+                                "well location identifier": "K19",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -33293,7 +33977,11 @@
                                 "sample identifier": "Brain2",
                                 "location identifier": "260",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K20"
+                                "well location identifier": "K20",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -33486,7 +34174,11 @@
                                 "sample identifier": "Brain3",
                                 "location identifier": "261",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K21"
+                                "well location identifier": "K21",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -33681,7 +34373,11 @@
                                 "sample identifier": "Brain3",
                                 "location identifier": "262",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K22"
+                                "well location identifier": "K22",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -33874,7 +34570,11 @@
                                 "sample identifier": "Brain3",
                                 "location identifier": "263",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K23"
+                                "well location identifier": "K23",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -34072,7 +34772,11 @@
                                 "sample identifier": "Brain3",
                                 "location identifier": "264",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "K24"
+                                "well location identifier": "K24",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -34262,7 +34966,11 @@
                                 "sample identifier": "Heart1",
                                 "location identifier": "265",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L1"
+                                "well location identifier": "L1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -34456,7 +35164,11 @@
                                 "sample identifier": "Heart1",
                                 "location identifier": "266",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L2"
+                                "well location identifier": "L2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -34649,7 +35361,11 @@
                                 "sample identifier": "Heart1",
                                 "location identifier": "267",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L3"
+                                "well location identifier": "L3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -34843,7 +35559,11 @@
                                 "sample identifier": "Heart1",
                                 "location identifier": "268",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L4"
+                                "well location identifier": "L4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -35037,7 +35757,11 @@
                                 "sample identifier": "Heart2",
                                 "location identifier": "269",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L5"
+                                "well location identifier": "L5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -35231,7 +35955,11 @@
                                 "sample identifier": "Heart2",
                                 "location identifier": "270",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L6"
+                                "well location identifier": "L6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -35426,7 +36154,11 @@
                                 "sample identifier": "Heart2",
                                 "location identifier": "271",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L7"
+                                "well location identifier": "L7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -35617,7 +36349,11 @@
                                 "sample identifier": "Heart2",
                                 "location identifier": "272",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L8"
+                                "well location identifier": "L8",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -35811,7 +36547,11 @@
                                 "sample identifier": "Heart3",
                                 "location identifier": "273",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L9"
+                                "well location identifier": "L9",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -36008,7 +36748,11 @@
                                 "sample identifier": "Heart3",
                                 "location identifier": "274",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L10"
+                                "well location identifier": "L10",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -36199,7 +36943,11 @@
                                 "sample identifier": "Heart3",
                                 "location identifier": "275",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L11"
+                                "well location identifier": "L11",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -36392,7 +37140,11 @@
                                 "sample identifier": "Heart3",
                                 "location identifier": "276",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L12"
+                                "well location identifier": "L12",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -36584,7 +37336,11 @@
                                 "sample identifier": "Brain1",
                                 "location identifier": "277",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L13"
+                                "well location identifier": "L13",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -36778,7 +37534,11 @@
                                 "sample identifier": "Brain1",
                                 "location identifier": "278",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L14"
+                                "well location identifier": "L14",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -36970,7 +37730,11 @@
                                 "sample identifier": "Brain1",
                                 "location identifier": "279",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L15"
+                                "well location identifier": "L15",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -37166,7 +37930,11 @@
                                 "sample identifier": "Brain1",
                                 "location identifier": "280",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L16"
+                                "well location identifier": "L16",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -37361,7 +38129,11 @@
                                 "sample identifier": "Brain2",
                                 "location identifier": "281",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L17"
+                                "well location identifier": "L17",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -37559,7 +38331,11 @@
                                 "sample identifier": "Brain2",
                                 "location identifier": "282",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L18"
+                                "well location identifier": "L18",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -37753,7 +38529,11 @@
                                 "sample identifier": "Brain2",
                                 "location identifier": "283",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L19"
+                                "well location identifier": "L19",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -37946,7 +38726,11 @@
                                 "sample identifier": "Brain2",
                                 "location identifier": "284",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L20"
+                                "well location identifier": "L20",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -38140,7 +38924,11 @@
                                 "sample identifier": "Brain3",
                                 "location identifier": "285",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L21"
+                                "well location identifier": "L21",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -38334,7 +39122,11 @@
                                 "sample identifier": "Brain3",
                                 "location identifier": "286",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L22"
+                                "well location identifier": "L22",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -38525,7 +39317,11 @@
                                 "sample identifier": "Brain3",
                                 "location identifier": "287",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L23"
+                                "well location identifier": "L23",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -38718,7 +39514,11 @@
                                 "sample identifier": "Brain3",
                                 "location identifier": "288",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "L24"
+                                "well location identifier": "L24",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -38915,7 +39715,11 @@
                                 "sample identifier": "IPC NTC",
                                 "location identifier": "313",
                                 "sample role type": "control sample role",
-                                "well location identifier": "N1"
+                                "well location identifier": "N1",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "NO_AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -39115,7 +39919,11 @@
                                 "sample identifier": "IPC NTC",
                                 "location identifier": "314",
                                 "sample role type": "control sample role",
-                                "well location identifier": "N2"
+                                "well location identifier": "N2",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "NO_AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -39314,7 +40122,11 @@
                                 "sample identifier": "IPC NTC",
                                 "location identifier": "315",
                                 "sample role type": "control sample role",
-                                "well location identifier": "N3"
+                                "well location identifier": "N3",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "NO_AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -39513,7 +40325,11 @@
                                 "sample identifier": "IPC NTC",
                                 "location identifier": "316",
                                 "sample role type": "control sample role",
-                                "well location identifier": "N4"
+                                "well location identifier": "N4",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "NO_AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -39715,7 +40531,11 @@
                                 "sample identifier": "IPC NTC",
                                 "location identifier": "317",
                                 "sample role type": "control sample role",
-                                "well location identifier": "N5"
+                                "well location identifier": "N5",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "NO_AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -39914,7 +40734,11 @@
                                 "sample identifier": "IPC NTC",
                                 "location identifier": "318",
                                 "sample role type": "control sample role",
-                                "well location identifier": "N6"
+                                "well location identifier": "N6",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "NO_AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -40115,7 +40939,11 @@
                                 "sample identifier": "IPC NTC",
                                 "location identifier": "319",
                                 "sample role type": "control sample role",
-                                "well location identifier": "N7"
+                                "well location identifier": "N7",
+                                "custom information document": {
+                                    "Omit": "FALSE",
+                                    "Amp Status": "NO_AMP"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -51917,7 +52745,7 @@
             "file name": "appbio_quantstudio_designandanalysis_QS7Pro_Relative_Quantification_Biogroup_example12.xlsx",
             "UNC path": "tests/parsers/appbio_quantstudio_designandanalysis/testdata/appbio_quantstudio_designandanalysis_QS7Pro_Relative_Quantification_Biogroup_example12.xlsx",
             "ASM converter name": "allotropy_appbio_quantstudio_design_&_analysis",
-            "ASM converter version": "0.1.76",
+            "ASM converter version": "0.1.84",
             "software name": "Design & Analysis Software",
             "software version": "2.7.0"
         },
@@ -51926,6 +52754,16 @@
             "equipment serial number": "2778719060050",
             "model number": "QuantStudio™ 7 Pro System",
             "product manufacturer": "ThermoFisher Scientific"
+        },
+        "custom information document": {
+            "Reduce dye signal crosstalk by algorithm": "No (Default)",
+            "Cover Temperature": 105.0,
+            "Exported On": "2023-12-19 04:06:19 PM EST",
+            "Sample Volume": 10.0,
+            "Run Duration": "45 minutes 59 seconds",
+            "Block serial number": 2778319070006.0,
+            "Run Start Date/Time": "2019-09-03 03:39:36 AM EDT",
+            "Analysis Date/Time": "2023-12-19 04:06:11 PM EST"
         }
     }
 }

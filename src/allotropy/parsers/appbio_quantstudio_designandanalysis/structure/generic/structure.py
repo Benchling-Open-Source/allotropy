@@ -89,6 +89,7 @@ class Header:
     software_version: str | None
     block_serial_number: str | None
     heated_cover_serial_number: str | None
+    extra_data: dict[str, Any] | None = None
 
     @staticmethod
     def create(header: SeriesData) -> Header:
@@ -141,6 +142,7 @@ class Header:
             software_name=software_name,
             software_version=software_version,
             well_volume=get_well_volume(block_type),
+            extra_data=header.get_unread(),
         )
 
 
@@ -209,7 +211,7 @@ class WellItem(Referenceable):
         result_class = cls.get_result_class()
         result = result_class.create(data, identifier)
 
-        return WellItem(
+        well_item = WellItem(
             uuid=random_uuid_str(),
             identifier=identifier,
             target_dna_description=target_dna_description,
@@ -224,12 +226,18 @@ class WellItem(Referenceable):
             amplification_data=amplification_data,
             melt_curve_data=melt_curve_data,
             result=result,
-            sample_custom_info=(
-                {"quantity": result.quantity}
-                if result.cycle_threshold_result is None and result.quantity is not None
-                else None
-            ),
+            sample_custom_info=None,  # Will be set after get_unread() is called
         )
+        unread_data = data.get_unread()
+        quantity_info = (
+            {"quantity": result.quantity}
+            if result.cycle_threshold_result is None and result.quantity is not None
+            else {}
+        )
+
+        sample_custom_info = {**quantity_info, **unread_data} if unread_data or quantity_info else None
+        well_item.sample_custom_info = sample_custom_info
+        return well_item
 
 
 @dataclass
@@ -250,20 +258,20 @@ class Well:
 
     @classmethod
     def create(
-        cls,
-        reader: DesignQuantstudioReader,
-        header: Header,
-        well_data: pd.DataFrame,
-        identifier: int,
+            cls,
+            reader: DesignQuantstudioReader,
+            header: Header,
+            well_data: pd.DataFrame,
+            identifier: int,
     ) -> Well:
         well_item_class = cls.get_well_item_class()
-        well_items = {
-            SeriesData(item_data)[str, "Target"]: well_item_class.create(
-                reader,
-                SeriesData(item_data),
-            )
-            for _, item_data in well_data.iterrows()
-        }
+        well_items = {}
+
+        for _, item_data in well_data.iterrows():
+            item_series = SeriesData(item_data)
+            target = item_series[str, "Target"]
+            well_items[target] = well_item_class.create(reader, item_series)
+
         multi_data = reader.get_non_empty_sheet_or_none("Multicomponent")
         return Well(
             identifier=identifier,

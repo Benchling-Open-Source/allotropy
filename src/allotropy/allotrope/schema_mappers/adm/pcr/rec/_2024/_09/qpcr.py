@@ -194,6 +194,7 @@ class Metadata:
     software_name: str | None = None
     software_version: str | None = None
     product_manufacturer: str | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass
@@ -212,7 +213,7 @@ class Mapper(SchemaMapper[Data, Model]):
     def map_model(self, data: Data) -> Model:
         return Model(
             field_asm_manifest=self.MANIFEST,
-            qpcr_aggregate_document=QpcrAggregateDocument(
+            qpcr_aggregate_document=add_custom_information_document(QpcrAggregateDocument(
                 device_system_document=DeviceSystemDocument(
                     device_identifier=data.metadata.device_identifier,
                     model_number=data.metadata.model_number,
@@ -236,7 +237,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
                     data
                 ),
-            ),
+            ), data.metadata.custom_info),
         )
 
     def _get_technique_document(
