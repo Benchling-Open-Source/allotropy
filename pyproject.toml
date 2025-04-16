@@ -4,6 +4,10 @@ build-backend = "hatchling.build"
 
 [project]
 name = "allotropy"
+license = "MIT"
+license-files = [
+  "LICENSE.txt",
+]
 dynamic = ["version"]
 description = 'Converts to ASM (Allotrope Simple Model) from various file formats.'
 readme = "README.md"
