@@ -104,11 +104,32 @@ def _map_dataset(
 
         if isinstance(value, dict):
             path_df = _map_dataset(value, config, path)
-        elif isinstance(value, list):
-            path_df = pd.concat(
-                [_map_dataset(item, config, path) for item in value],
-                ignore_index=True,
-            )
+        elif isinstance(value, list) and value:
+            # NOTE: this assumes all values are consistent type (e.g. all dicts, all lists, all single values)
+            if isinstance(value[0], dict):
+                path_df = pd.concat(
+                    [_map_dataset(item, config, path) for item in value],
+                    ignore_index=True,
+                )
+            elif isinstance(value[0], list):
+                column_config = config.get_column_config(str(path))
+                df_data = {}
+                if column_config:
+                    for idx, list_value in enumerate(value):
+                        df_data[f"{column_config.name}.{idx}"] = list_value
+                else:
+                    for idx, list_value in enumerate(value):
+                        sub_path = Path(path, f"[{idx}]")
+                        column_config = config.get_column_config(str(sub_path))
+                        if not column_config:
+                            continue
+                        df_data[column_config.name] = list_value
+                path_df = pd.DataFrame(df_data)
+            else:
+                column_config = config.get_column_config(str(path))
+                if not column_config:
+                    continue
+                path_df = pd.DataFrame({column_config.name: value})
 
         for transform in config.path_to_transform.get(str(path), []):
             if isinstance(transform, PivotTransformConfig):
@@ -132,8 +153,17 @@ def _map_dataset(
 def _rename_column(
     df: pd.DataFrame, column_config: ColumnConfig
 ) -> tuple[pd.DataFrame, list[str]]:
-    if column_config.name not in df:
+    if column_config.name not in df and f"{column_config.name}.0" not in df:
         return df, []
+
+    all_column_names = [column_config.name]
+    if f"{column_config.name}.0" in df:
+        max_value = 0
+        while f"{column_config.name}.{max_value + 1}" in df:
+            max_value += 1
+        all_column_names = [
+            f"{column_config.name}.{idx}" for idx in range(max_value + 1)
+        ]
 
     # Get columns to be used for labels.
     label_values = df.loc[:, column_config.labels]
@@ -143,24 +173,26 @@ def _rename_column(
     new_column_values = {
         unique_value: [np.nan] * df.shape[0] for unique_value in unique_values
     }
-    # Map the unique labels to the corresponding column value.
-    for index, row in df.iterrows():
-        label_tuple = tuple(row.loc[column_config.labels])
-        new_column_values[label_tuple][int(str(index))] = row.loc[column_config.name]
 
-    # Drop the old column
-    insert_index = df.columns.get_loc(column_config.name)
-    df = df.drop(columns=[column_config.name])
+    for column_name in all_column_names:
+        # Map the unique labels to the corresponding column value.
+        for index, row in df.iterrows():
+            label_tuple = tuple(row.loc[column_config.labels])
+            new_column_values[label_tuple][int(str(index))] = row.loc[column_name]
 
-    # Inject the new columns
-    new_column_names: list[str] = []
-    for unique_tuple in unique_values:
-        new_column_name = column_config.name
-        for label, value in zip(column_config.labels, unique_tuple, strict=True):
-            new_column_name = new_column_name.replace(f"${label}$", value)
-        new_column_names.append(new_column_name)
-        df.insert(insert_index, new_column_name, new_column_values[unique_tuple])
-        insert_index += 1
+        # Drop the old column
+        insert_index = df.columns.get_loc(column_name)
+        df = df.drop(columns=[column_name])
+
+        # Inject the new columns
+        new_column_names: list[str] = []
+        for unique_tuple in unique_values:
+            new_column_name = column_name
+            for label, value in zip(column_config.labels, unique_tuple, strict=True):
+                new_column_name = new_column_name.replace(f"${label}$", str(value))
+            new_column_names.append(new_column_name)
+            df.insert(insert_index, new_column_name, new_column_values[unique_tuple])
+            insert_index += 1
 
     return df, new_column_names
 
@@ -172,11 +204,26 @@ def map_dataset(data: dict[str, Any], config: DatasetConfig) -> pd.DataFrame:
     # Check that required columns are populated.
     required_columns = {column.name for column in config.columns if column.required}
     if missing_columns := required_columns - set(df.columns):
-        msg = f"Mapped dataset is missing required columns: {missing_columns}"
-        raise ValueError(msg)
+        for missing in list(missing_columns):
+            # Handle potential list expansion.
+            if f"{missing}.0" in df:
+                missing_columns.remove(missing)
+        if missing_columns:
+            msg = f"Mapped dataset is missing required columns: {missing_columns}"
+            raise ValueError(msg)
 
     # Put columns in the order of the config
     if config.columns:
+        # Handle potential list expansion.
+        for column in config.columns:
+            if column.name not in df and f"{column.name}.0" in df:
+                max_value = 0
+                while f"{column.name}.{max_value + 1}" in df:
+                    max_value += 1
+                config.replace_column_names(
+                    column.name,
+                    [f"{column.name}.{idx}" for idx in range(max_value + 1)],
+                )
         df = df[[column for column in config.column_names if column in df]]
 
     # Rename columns with substitution labels
