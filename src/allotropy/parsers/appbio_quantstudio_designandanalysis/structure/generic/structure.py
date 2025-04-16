@@ -226,7 +226,7 @@ class WellItem(Referenceable):
             amplification_data=amplification_data,
             melt_curve_data=melt_curve_data,
             result=result,
-            sample_custom_info=None,  # Will be set after get_unread() is called
+            sample_custom_info=None,
         )
         unread_data = data.get_unread()
         quantity_info = (
