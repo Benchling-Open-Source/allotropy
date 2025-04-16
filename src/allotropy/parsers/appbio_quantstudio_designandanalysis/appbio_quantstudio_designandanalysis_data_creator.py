@@ -78,7 +78,7 @@ def create_metadata(
         device_type=constants.DEVICE_TYPE,
         experiment_type=experiment_type.value,
         measurement_method_identifier=header.measurement_method_identifier,
-        custom_info=header.extra_data
+        custom_info=header.extra_data,
     )
 
 

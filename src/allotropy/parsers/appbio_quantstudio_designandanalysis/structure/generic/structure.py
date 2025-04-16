@@ -235,7 +235,9 @@ class WellItem(Referenceable):
             else {}
         )
 
-        sample_custom_info = {**quantity_info, **unread_data} if unread_data or quantity_info else None
+        sample_custom_info = (
+            {**quantity_info, **unread_data} if unread_data or quantity_info else None
+        )
         well_item.sample_custom_info = sample_custom_info
         return well_item
 
@@ -258,11 +260,11 @@ class Well:
 
     @classmethod
     def create(
-            cls,
-            reader: DesignQuantstudioReader,
-            header: Header,
-            well_data: pd.DataFrame,
-            identifier: int,
+        cls,
+        reader: DesignQuantstudioReader,
+        header: Header,
+        well_data: pd.DataFrame,
+        identifier: int,
     ) -> Well:
         well_item_class = cls.get_well_item_class()
         well_items = {}

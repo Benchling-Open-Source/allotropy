@@ -213,31 +213,34 @@ class Mapper(SchemaMapper[Data, Model]):
     def map_model(self, data: Data) -> Model:
         return Model(
             field_asm_manifest=self.MANIFEST,
-            qpcr_aggregate_document=add_custom_information_document(QpcrAggregateDocument(
-                device_system_document=DeviceSystemDocument(
-                    device_identifier=data.metadata.device_identifier,
-                    model_number=data.metadata.model_number,
-                    equipment_serial_number=data.metadata.device_serial_number,
-                    product_manufacturer=data.metadata.product_manufacturer,
+            qpcr_aggregate_document=add_custom_information_document(
+                QpcrAggregateDocument(
+                    device_system_document=DeviceSystemDocument(
+                        device_identifier=data.metadata.device_identifier,
+                        model_number=data.metadata.model_number,
+                        equipment_serial_number=data.metadata.device_serial_number,
+                        product_manufacturer=data.metadata.product_manufacturer,
+                    ),
+                    data_system_document=DataSystemDocument(
+                        data_system_instance_identifier=data.metadata.data_system_instance_identifier,
+                        file_name=data.metadata.file_name,
+                        UNC_path=data.metadata.unc_path,
+                        software_name=data.metadata.software_name,
+                        software_version=data.metadata.software_version,
+                        ASM_converter_name=self.converter_name,
+                        ASM_converter_version=ASM_CONVERTER_VERSION,
+                        ASM_file_identifier=data.metadata.asm_file_identifier,
+                    ),
+                    qpcr_document=[
+                        self._get_technique_document(measurement_group, data.metadata)
+                        for measurement_group in data.measurement_groups
+                    ],
+                    calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
+                        data
+                    ),
                 ),
-                data_system_document=DataSystemDocument(
-                    data_system_instance_identifier=data.metadata.data_system_instance_identifier,
-                    file_name=data.metadata.file_name,
-                    UNC_path=data.metadata.unc_path,
-                    software_name=data.metadata.software_name,
-                    software_version=data.metadata.software_version,
-                    ASM_converter_name=self.converter_name,
-                    ASM_converter_version=ASM_CONVERTER_VERSION,
-                    ASM_file_identifier=data.metadata.asm_file_identifier,
-                ),
-                qpcr_document=[
-                    self._get_technique_document(measurement_group, data.metadata)
-                    for measurement_group in data.measurement_groups
-                ],
-                calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
-                    data
-                ),
-            ), data.metadata.custom_info),
+                data.metadata.custom_info,
+            ),
         )
 
     def _get_technique_document(

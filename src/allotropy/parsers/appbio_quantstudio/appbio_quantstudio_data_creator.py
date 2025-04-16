@@ -216,7 +216,7 @@ def _create_measurement(
         reporter_dye_data_cube=reporter_dye_data_cube,
         passive_reference_dye_data_cube=passive_reference_dye_data_cube,
         melting_curve_data_cube=_create_melt_curve_data_cube(melt_curve_raw_data),
-        custom_info=result_metadata.extra_data
+        custom_info=result_metadata.extra_data,
     )
 
 
