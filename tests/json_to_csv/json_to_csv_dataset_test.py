@@ -42,16 +42,16 @@ def _assert_dicts_equal(expected: dict[str, Any], actual: dict[str, Any]) -> Non
         ),
         (
             "tests/json_to_csv/testdata/plate_reader.json",
-            "tests/json_to_csv/testdata/plate_reader_measurement_joined_on_calc_data.json",
+            "tests/json_to_csv/testdata/plate_reader_extract_calculated_data_config_with_pivot.json",
             {
-                "measurements": "tests/json_to_csv/testdata/plate_reader_measurement_joined_on_calc_data.csv"
+                "dataset": "tests/json_to_csv/testdata/plate_reader_extract_calculated_data_with_pivot.csv"
             },
         ),
         (
             "tests/json_to_csv/testdata/plate_reader.json",
-            "tests/json_to_csv/testdata/plate_reader_extract_calculated_data_config_with_pivot.json",
+            "tests/json_to_csv/testdata/plate_reader_measurement_joined_on_calc_data.json",
             {
-                "dataset": "tests/json_to_csv/testdata/plate_reader_extract_calculated_data_with_pivot.csv"
+                "measurements": "tests/json_to_csv/testdata/plate_reader_measurement_joined_on_calc_data.csv"
             },
         ),
         (
