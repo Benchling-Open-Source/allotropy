@@ -1,0 +1,22 @@
+{
+    "datasets": [
+        {
+            "name": "dataset",
+            "columns": [
+                {
+                    "name": "$calc_data_label$",
+                    "path": "plate reader aggregate document/calculated data aggregate document/calculated data document/calculated result/value"
+                },
+                {
+                    "name": "calc_data_label",
+                    "path": "plate reader aggregate document/calculated data aggregate document/calculated data document/calculated data name",
+                    "include": false
+                },
+                {
+                    "name": "Data Source",
+                    "path": "plate reader aggregate document/calculated data aggregate document/calculated data document/data source aggregate document/data source document/data source identifier"
+                }
+            ]
+        }
+    ]
+}
