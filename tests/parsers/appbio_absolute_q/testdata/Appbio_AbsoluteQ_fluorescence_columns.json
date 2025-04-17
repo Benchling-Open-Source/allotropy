@@ -122,6 +122,9 @@
                                         [10824.202, 10615.582, 10740.165, 10756.291]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Reject": "False"
                             }
                         },
                         {
@@ -581,6 +584,9 @@
                                         [10965.138, 10337.842, 10381.944, 10615.781]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Reject": "False"
                             }
                         },
                         {
@@ -1039,6 +1045,9 @@
                                         [6713.7593, 6476.511, 6637.0693, 6625.0166]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Reject": "False"
                             }
                         },
                         {
@@ -1499,6 +1508,9 @@
                                         [6645.727, 6537.6846, 6622.712, 6498.451]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Reject": "False"
                             }
                         },
                         {
@@ -1954,6 +1966,9 @@
                                         [10874.67, 10206.923, 10505.793, 10617.798]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Reject": "False"
                             }
                         },
                         {
@@ -2411,6 +2426,9 @@
                                         [10111.382, 10163.303, 9854.347, 9798.52]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Reject": "False"
                             }
                         },
                         {
@@ -2873,6 +2891,9 @@
                                         [6545.263, 6631.1562, 6465.445, 6429.095]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Reject": "False"
                             }
                         },
                         {
@@ -3334,6 +3355,9 @@
                                         [6355.6465, 6302.9463, 6321.2954, 6356.1733]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Reject": "False"
                             }
                         },
                         {
@@ -3789,6 +3813,9 @@
                                         [9944.579, 9756.704, 9911.004, 9966.8125]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Reject": "False"
                             }
                         },
                         {
@@ -4246,6 +4273,9 @@
                                         [10411.259, 9714.318, 9982.126, 10013.395]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Reject": "False"
                             }
                         },
                         {
@@ -4708,6 +4738,9 @@
                                         [6238.8237, 6082.4707, 6268.373, 6162.3984]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Reject": "False"
                             }
                         },
                         {
@@ -5165,6 +5198,9 @@
                                         [6350.1353, 6426.948, 6468.9907, 6563.8203]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Reject": "False"
                             }
                         },
                         {
@@ -5617,6 +5653,9 @@
                                         [10392.546, 10415.613, 10860.229, 11081.873]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Reject": "False"
                             }
                         },
                         {
@@ -6074,6 +6113,9 @@
                                         [9888.263, 9563.808, 9897.37, 9897.103]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Reject": "False"
                             }
                         },
                         {
@@ -6533,6 +6575,9 @@
                                         [9652.321, 9992.927, 9449.198, 9799.909]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Reject": "False"
                             }
                         },
                         {
@@ -6987,6 +7032,9 @@
                                         [9810.747, 9694.356, 10051.245, 9965.197]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Reject": "False"
                             }
                         },
                         {
@@ -7330,7 +7378,7 @@
             "UNC path": "tests/parsers/appbio_absolute_q/testdata/Appbio_AbsoluteQ_fluorescence_columns.csv",
             "software name": "QuantStudio Absolute Q Digital PCR Software",
             "ASM converter name": "allotropy_appbio_absoluteq",
-            "ASM converter version": "0.1.76"
+            "ASM converter version": "0.1.82"
         }
     }
 }
