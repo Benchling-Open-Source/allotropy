@@ -16,7 +16,7 @@ class DataCubeReader:
         self,
         handler: UnicornZipHandler,
         name: str,
-        transformation: Transformation | None,
+        transformation: Transformation | None = None,
     ):
         self.transformation = transformation
 

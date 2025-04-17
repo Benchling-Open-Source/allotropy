@@ -403,8 +403,8 @@
                                     "dimensions": [
                                         {
                                             "@componentDatatype": "float",
-                                            "concept": "retention time",
-                                            "unit": "s"
+                                            "concept": "retention volume",
+                                            "unit": "mL"
                                         }
                                     ],
                                     "measures": [
@@ -417,7 +417,7 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [22.01019287109375, 22.02392578125, 22.03857421875]
+                                        [0.3668365478515625, 0.3670654296875, 0.3673095703125]
                                     ],
                                     "measures": [
                                         [0.19794297218322754, 0.19794535636901855, 0.19794775545597076]
@@ -473,8 +473,8 @@
                                     "dimensions": [
                                         {
                                             "@componentDatatype": "float",
-                                            "concept": "retention time",
-                                            "unit": "s"
+                                            "concept": "retention volume",
+                                            "unit": "mL"
                                         }
                                     ],
                                     "measures": [
@@ -487,7 +487,7 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [26.7938232421875, 27.1051025390625, 27.4163818359375]
+                                        [0.446563720703125, 0.451751708984375, 0.456939697265625]
                                     ],
                                     "measures": [
                                         [0.0, 0.0, 0.0]
@@ -543,8 +543,8 @@
                                     "dimensions": [
                                         {
                                             "@componentDatatype": "float",
-                                            "concept": "retention time",
-                                            "unit": "s"
+                                            "concept": "retention volume",
+                                            "unit": "mL"
                                         }
                                     ],
                                     "measures": [
@@ -557,7 +557,7 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [26.7938232421875, 27.1051025390625, 27.4163818359375]
+                                        [0.446563720703125, 0.451751708984375, 0.456939697265625]
                                     ],
                                     "measures": [
                                         [0.0, 0.0, 0.0]
@@ -608,8 +608,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -622,7 +622,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [32.54150390625, 33.3306884765625, 35.0408935546875]
+                                                    [0.5423583984375, 0.555511474609375, 0.584014892578125]
                                                 ],
                                                 "measures": [
                                                     [31.154701232910156, 31.13396453857422, 30.91810417175293]
@@ -646,8 +646,8 @@
                                     "dimensions": [
                                         {
                                             "@componentDatatype": "float",
-                                            "concept": "retention time",
-                                            "unit": "s"
+                                            "concept": "retention volume",
+                                            "unit": "mL"
                                         }
                                     ],
                                     "measures": [
@@ -660,7 +660,7 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [22.12738037109375, 22.17132568359375, 22.21527099609375]
+                                        [0.3687896728515625, 0.3695220947265625, 0.3702545166015625]
                                     ],
                                     "measures": [
                                         [3.1048166275024416, 3.104812431335449, 3.104808044433594]
@@ -716,8 +716,8 @@
                                     "dimensions": [
                                         {
                                             "@componentDatatype": "float",
-                                            "concept": "retention time",
-                                            "unit": "s"
+                                            "concept": "retention volume",
+                                            "unit": "mL"
                                         }
                                     ],
                                     "measures": [
@@ -730,7 +730,7 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [33.04046630859375, 33.3306884765625, 35.540771484375]
+                                        [0.5506744384765625, 0.555511474609375, 0.59234619140625]
                                     ],
                                     "measures": [
                                         [6.056291580200195, 0.0, 6.056750297546387]
@@ -750,8 +750,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -764,7 +764,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [33.3306884765625, 33.3306884765625, 37.540283203125]
+                                                    [0.555511474609375, 0.555511474609375, 0.62567138671875]
                                                 ],
                                                 "measures": [
                                                     [0.0, 0.0, 0.0]
@@ -820,8 +820,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -834,7 +834,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [31.04095458984375, 33.3306884765625, 33.54217529296875]
+                                                    [0.5173492431640625, 0.555511474609375, 0.5590362548828125]
                                                 ],
                                                 "measures": [
                                                     [0.03866715729236603, 0.19328080117702484, 0.20647241175174713]
@@ -847,8 +847,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -861,7 +861,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [33.3306884765625, 33.3306884765625, 38.2489013671875]
+                                                    [0.555511474609375, 0.555511474609375, 0.637481689453125]
                                                 ],
                                                 "measures": [
                                                     [0.13015341758728027, 0.14228571951389313, 0.06806576997041702]
@@ -874,8 +874,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -888,7 +888,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [22.66754150390625, 22.96051025390625, 23.25347900390625]
+                                                    [0.3777923583984375, 0.3826751708984375, 0.3875579833984375]
                                                 ],
                                                 "measures": [
                                                     [0.05315263196825981, 0.05314874276518822, 0.05314485356211662]
@@ -901,8 +901,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -915,7 +915,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [22.66754150390625, 22.96051025390625, 23.25347900390625]
+                                                    [0.3777923583984375, 0.3826751708984375, 0.3875579833984375]
                                                 ],
                                                 "measures": [
                                                     [0.1649095118045807, 0.13285210728645325, 0.10079468786716461]
@@ -959,8 +959,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -973,7 +973,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [33.3306884765625, 33.3306884765625, 38.2489013671875]
+                                                    [0.555511474609375, 0.555511474609375, 0.637481689453125]
                                                 ],
                                                 "measures": [
                                                     [0.06312736868858337, 0.06418673694133759, 0.03745259717106819]
@@ -1004,8 +1004,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -1018,7 +1018,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [37.540283203125, 47.24853515625, 57.24700927734375]
+                                                    [0.62567138671875, 0.7874755859375, 0.9541168212890625]
                                                 ],
                                                 "measures": [
                                                     [0.0, 7.460474014282227, 14.920948028564453]
@@ -1031,8 +1031,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -1045,7 +1045,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [50.2496337890625, 60.245361328125, 70.2410888671875]
+                                                    [0.837493896484375, 1.00408935546875, 1.170684814453125]
                                                 ],
                                                 "measures": [
                                                     [0.0, 0.0, 0.0]
@@ -1062,8 +1062,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -1076,7 +1076,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [33.3306884765625, 33.3306884765625, 37.540283203125]
+                                                    [0.555511474609375, 0.555511474609375, 0.62567138671875]
                                                 ],
                                                 "measures": [
                                                     [5.000010013580322, 2.3790595531463623, 0.0]
@@ -1089,8 +1089,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -1103,7 +1103,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [31.541748046875, 33.3306884765625, 34.0411376953125]
+                                                    [0.52569580078125, 0.555511474609375, 0.567352294921875]
                                                 ],
                                                 "measures": [
                                                     [0.0, 0.0, 0.0]
@@ -1120,8 +1120,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -1134,7 +1134,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [32.0416259765625, 33.3306884765625, 34.541015625]
+                                                    [0.534027099609375, 0.555511474609375, 0.57568359375]
                                                 ],
                                                 "measures": [
                                                     [0.0, 0.0, 0.0]
@@ -1190,8 +1190,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -1204,7 +1204,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [69.24041748046875, 89.2327880859375, 109.23065185546875]
+                                                    [1.1540069580078125, 1.487213134765625, 1.8205108642578125]
                                                 ],
                                                 "measures": [
                                                     [27.713348388671875, 27.648590087890625, 27.536712646484375]
@@ -2827,7 +2827,7 @@
         ],
         "data system document": {
             "ASM converter name": "allotropy_cytiva_unicorn",
-            "ASM converter version": "0.1.82",
+            "ASM converter version": "0.1.85",
             "file name": "unicorn_1.zip",
             "UNC path": "tests/parsers/cytiva_unicorn/testdata/unicorn_1.zip"
         },
