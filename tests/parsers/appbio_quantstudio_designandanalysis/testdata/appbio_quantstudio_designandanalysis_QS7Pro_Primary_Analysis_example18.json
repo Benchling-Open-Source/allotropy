@@ -6009,7 +6009,7 @@
             "file name": "appbio_quantstudio_designandanalysis_QS7Pro_Primary_Analysis_example18.xlsx",
             "UNC path": "tests/parsers/appbio_quantstudio_designandanalysis/testdata/appbio_quantstudio_designandanalysis_QS7Pro_Primary_Analysis_example18.xlsx",
             "ASM converter name": "allotropy_appbio_quantstudio_design_&_analysis",
-            "ASM converter version": "0.1.69",
+            "ASM converter version": "0.1.84",
             "software name": "Design & Analysis Software",
             "software version": "2.6.0"
         },
@@ -6018,6 +6018,15 @@
             "equipment serial number": "1",
             "model number": "QuantStudio™ 7 Pro System",
             "product manufacturer": "ThermoFisher Scientific"
+        },
+        "custom information document": {
+            "Run Duration": "92 minutes 24 seconds",
+            "Analysis Date/Time": "2024-02-13 07:47:55 AM EST",
+            "Exported On": "2024-02-20 12:57:42 PM EST",
+            "Sample Volume": 25.0,
+            "Exported By": "SMITMARQ",
+            "Cover Temperature": 105.0,
+            "Run Start Date/Time": "2024-02-12 04:03:59 PM EST"
         }
     }
 }
