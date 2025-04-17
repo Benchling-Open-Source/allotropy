@@ -12,9 +12,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
-    CalculatedDataItem,
     Data,
-    DataSource,
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -35,6 +33,11 @@ from allotropy.parsers.thermo_fisher_visionlite.constants import (
 )
 from allotropy.parsers.thermo_fisher_visionlite.thermo_fisher_visionlite_reader import (
     ThermoFisherVisionliteReader,
+)
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+    DataSource,
+    Referenceable,
 )
 from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.pandas import SeriesData
@@ -160,14 +163,17 @@ class VisionLiteData(Data):
 
 def _get_calculated_data_item(
     result: float, measurements: list[Measurement]
-) -> CalculatedDataItem:
-    return CalculatedDataItem(
-        identifier=random_uuid_str(),
+) -> CalculatedDocument:
+    return CalculatedDocument(
+        uuid=random_uuid_str(),
         name="Result",
         value=result,
         unit=UNITLESS,
         data_sources=[
-            DataSource(identifier=measurement.identifier, feature="Absorbance")
+            DataSource(
+                feature="Absorbance",
+                reference=Referenceable(uuid=measurement.identifier),
+            )
             for measurement in measurements
         ],
     )
