@@ -74,6 +74,7 @@ NON_UNIQUE_IDENTIFIERS = {
     "parent population identifier",
     "dimension identifier",
     "method identifier",
+    "experiment identifier",
 }
 
 
