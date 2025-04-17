@@ -73,6 +73,7 @@ NON_UNIQUE_IDENTIFIERS = {
     "parent data region identifier",
     "parent population identifier",
     "dimension identifier",
+    "method identifier",
     "experiment identifier",
 }
 
