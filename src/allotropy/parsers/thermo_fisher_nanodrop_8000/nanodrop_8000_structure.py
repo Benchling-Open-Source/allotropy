@@ -5,8 +5,6 @@ from pathlib import Path
 
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
-    CalculatedDataItem,
-    DataSource,
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -16,6 +14,11 @@ from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._1
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.thermo_fisher_nanodrop_8000 import constants
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+    DataSource,
+    Referenceable,
+)
 from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -70,7 +73,7 @@ def read_mass_concentration_capture_wavelength(
 
 def create_calculated_data(
     data: SeriesData, measurements: list[Measurement]
-) -> list[CalculatedDataItem]:
+) -> list[CalculatedDocument]:
     # Read absorbance ratios from pre-calculated columns.
     absorbance_ratios = {}
     for numerator, denominator in constants.ABSORBANCE_RATIOS:
@@ -80,16 +83,28 @@ def create_calculated_data(
         if ratio:
             absorbance_ratios[(numerator, denominator)] = ratio
 
+    # Create a mapping of wavelengths to measurement IDs
+    wavelength_to_measurement = {}
+    for measurement in measurements:
+        if measurement.detector_wavelength_setting is not None:
+            wavelength_key = str(measurement.detector_wavelength_setting)
+            wavelength_to_measurement[wavelength_key] = Referenceable(
+                uuid=measurement.identifier
+            )
+
     calculated_data = [
-        CalculatedDataItem(
-            identifier=random_uuid_str(),
+        CalculatedDocument(
+            uuid=random_uuid_str(),
             name=f"A{numerator}/{denominator}",
             value=ratio,
             unit=UNITLESS,
             data_sources=[
-                DataSource(identifier=measurement.identifier, feature="absorbance")
-                for measurement in measurements
-                if measurement.detector_wavelength_setting in (numerator, denominator)
+                DataSource(
+                    feature="absorbance",
+                    reference=wavelength_to_measurement[str(wavelength)],
+                )
+                for wavelength in (numerator, denominator)
+                if str(wavelength) in wavelength_to_measurement
             ],
         )
         for (numerator, denominator), ratio in absorbance_ratios.items()
@@ -105,18 +120,22 @@ def create_calculated_data(
         ) is None:
             continue
 
+        formula_wavelengths = []
+        formula_str = data[str, f"formula {i}"]
+        for wavelength_key, measurement_ref in wavelength_to_measurement.items():
+            # Check if the measurement wavelength is in the formula, remove ".0" from int floats
+            if wavelength_key.replace(".0", "") in formula_str:
+                formula_wavelengths.append((wavelength_key, measurement_ref))
+
         calculated_data.append(
-            CalculatedDataItem(
-                identifier=random_uuid_str(),
+            CalculatedDocument(
+                uuid=random_uuid_str(),
                 name=data[str, f"formula name {i}"],
                 value=value,
                 unit=UNITLESS,
                 data_sources=[
-                    DataSource(identifier=measurement.identifier, feature="absorbance")
-                    for measurement in measurements
-                    # Check if the measurement wavelengh is in the forumula, remove ".0" from int floats.
-                    if str(measurement.detector_wavelength_setting).replace(".0", "")
-                    in data[str, f"formula {i}"]
+                    DataSource(feature="absorbance", reference=measurement_ref)
+                    for _, measurement_ref in formula_wavelengths
                 ],
             )
         )
@@ -130,7 +149,7 @@ class SpectroscopyRow:
     timestamp: str
     experiment_type: str | None
     measurements: list[Measurement]
-    calculated_data: list[CalculatedDataItem]
+    calculated_data: list[CalculatedDocument]
 
     @staticmethod
     def create(data: SeriesData) -> SpectroscopyRow:
