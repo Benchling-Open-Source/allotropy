@@ -116,6 +116,7 @@ def _create_measurement(
         )
         if concentration_factor is not None
         else None,
+        wavelength_identifier=wavelength_column,
     )
 
 
