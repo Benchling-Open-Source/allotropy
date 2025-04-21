@@ -70,12 +70,12 @@ def _create_measurement(
         )
 
     measurement_identifier = random_uuid_str()
-    error_documents: list[ErrorDocument] = []
+
+    error_documents = _get_error_documents(well_plate_data, wavelength_column)
     calculated_data.extend(
-        _get_calculated_data(
-            well_plate_data, wavelength_column, measurement_identifier, error_documents
-        )
+        _get_calculated_data(well_plate_data, wavelength_column, measurement_identifier)
     )
+
     absorbance = well_plate_data.get(float, wavelength_column)
 
     if absorbance is None:
@@ -123,9 +123,33 @@ def _get_calculated_data(
     well_plate_data: SeriesData,
     wavelength_column: str,
     measurement_identifier: str,
-    error_documents: list[ErrorDocument],
 ) -> list[CalculatedDocument]:
     calculated_data = []
+    for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
+        value = well_plate_data.get(float, item["column"])
+        if value is not None:
+            calculated_data.append(
+                CalculatedDocument(
+                    uuid=random_uuid_str(),
+                    name=item["name"],
+                    value=value,
+                    unit=item["unit"],
+                    data_sources=[
+                        DataSource(
+                            reference=Referenceable(uuid=measurement_identifier),
+                            feature=item["feature"],
+                        )
+                    ],
+                )
+            )
+    return calculated_data
+
+
+def _get_error_documents(
+    well_plate_data: SeriesData,
+    wavelength_column: str,
+) -> list[ErrorDocument]:
+    error_documents = []
     for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
         value = well_plate_data.get(float, item["column"])
         if value is None:
@@ -135,23 +159,7 @@ def _get_calculated_data(
                     error_feature=item["name"],
                 )
             )
-            continue
-
-        calculated_data.append(
-            CalculatedDocument(
-                uuid=random_uuid_str(),
-                name=item["name"],
-                value=value,
-                unit=item["unit"],
-                data_sources=[
-                    DataSource(
-                        reference=Referenceable(uuid=measurement_identifier),
-                        feature=item["feature"],
-                    )
-                ],
-            )
-        )
-    return calculated_data
+    return error_documents
 
 
 def _create_measurement_group(
