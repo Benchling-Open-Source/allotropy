@@ -207,9 +207,6 @@ def create_measurement_groups(
     if not wavelength_columns:
         raise AllotropeConversionError(NO_WAVELENGTH_COLUMN_ERROR_MSG)
 
-    # TODO: we are reporting calculated data for measurements globally instead of in the measurement doc,
-    # which is why we have to pass this list to collect them. Why are we reporting globally when data is
-    # pertains to the individual measurements?
     calculated_data: list[CalculatedDocument] = []
 
     def make_group(data: SeriesData) -> MeasurementGroup:
