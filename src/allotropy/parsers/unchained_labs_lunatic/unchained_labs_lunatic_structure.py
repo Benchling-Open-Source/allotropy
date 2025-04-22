@@ -47,7 +47,6 @@ def _create_measurement(
     well_plate_data: SeriesData,
     header: SeriesData,
     wavelength_column: str,
-    calculated_data: list[CalculatedDocument],
 ) -> Measurement:
     if wavelength_column not in well_plate_data.series:
         msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelength_column)
@@ -72,10 +71,6 @@ def _create_measurement(
     measurement_identifier = random_uuid_str()
 
     error_documents = _get_error_documents(well_plate_data, wavelength_column)
-    calculated_data.extend(
-        _get_calculated_data(well_plate_data, wavelength_column, measurement_identifier)
-    )
-
     absorbance = well_plate_data.get(float, wavelength_column)
 
     if absorbance is None:
@@ -124,14 +119,10 @@ def _create_measurement(
     )
 
 
-def _get_calculated_data(
-    well_plate_data: SeriesData,
-    wavelength_column: str,
-    measurement_identifier: str,
-) -> list[CalculatedDocument]:
+def _get_calculated_data(measurement: Measurement) -> list[CalculatedDocument]:
     calculated_data = []
-    for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
-        value = well_plate_data.get(float, item["column"])
+    for item in CALCULATED_DATA_LOOKUP.get(measurement.wavelength_identifier or "", []):
+        value = (measurement.calc_docs_custom_info or {}).get(item["column"])
         if value is not None:
             calculated_data.append(
                 CalculatedDocument(
@@ -141,7 +132,7 @@ def _get_calculated_data(
                     unit=item["unit"],
                     data_sources=[
                         DataSource(
-                            reference=Referenceable(uuid=measurement_identifier),
+                            reference=Referenceable(uuid=measurement.identifier),
                             feature=item["feature"],
                         )
                     ],
@@ -170,7 +161,6 @@ def _get_error_documents(
 def _create_measurement_group(
     data: SeriesData,
     wavelength_columns: list[str],
-    calculated_data: list[CalculatedDocument],
     header: SeriesData,
 ) -> MeasurementGroup:
     timestamp = header.get(str, "date")
@@ -187,7 +177,7 @@ def _create_measurement_group(
         experimental_data_identifier=header.get(str, "experiment name"),
         plate_well_count=96,
         measurements=[
-            _create_measurement(data, header, wavelength_column, calculated_data)
+            _create_measurement(data, header, wavelength_column)
             for wavelength_column in wavelength_columns
         ],
     )
@@ -220,11 +210,14 @@ def create_measurement_groups(
     if not wavelength_columns:
         raise AllotropeConversionError(NO_WAVELENGTH_COLUMN_ERROR_MSG)
 
-    calculated_data: list[CalculatedDocument] = []
-
     def make_group(data: SeriesData) -> MeasurementGroup:
-        return _create_measurement_group(
-            data, wavelength_columns, calculated_data, header
-        )
+        return _create_measurement_group(data, wavelength_columns, header)
 
-    return map_rows(data, make_group), calculated_data
+    measurement_groups = map_rows(data, make_group)
+
+    calculated_data: list[CalculatedDocument] = []
+    for measurement_group in measurement_groups:
+        for measurement in measurement_group.measurements:
+            calculated_data.extend(_get_calculated_data(measurement))
+
+    return measurement_groups, calculated_data
