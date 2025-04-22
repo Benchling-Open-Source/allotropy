@@ -117,6 +117,10 @@ def _create_measurement(
         if concentration_factor is not None
         else None,
         wavelength_identifier=wavelength_column,
+        calc_docs_custom_info={
+            item["column"]: well_plate_data.get(float, item["column"])
+            for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, [])
+        },
     )
 
 
