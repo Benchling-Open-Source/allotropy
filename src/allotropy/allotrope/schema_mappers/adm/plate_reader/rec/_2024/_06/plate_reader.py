@@ -157,6 +157,8 @@ class Measurement:
     # processing data
     processed_data_document: ProcessedDataDocument | None = None
 
+    calc_docs_custom_info: dict[str, Any] | None = None
+
 
 @dataclass(frozen=True)
 class MeasurementGroup:
