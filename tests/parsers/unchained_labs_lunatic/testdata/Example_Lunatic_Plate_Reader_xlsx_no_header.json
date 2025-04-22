@@ -68,7 +68,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_4",
+                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_1",
                             "sample document": {
                                 "sample identifier": "SAMPLE_2",
                                 "location identifier": "B1",
@@ -111,7 +111,7 @@
                         "value": 182.6,
                         "unit": "ng/µL"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_1",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_2",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -127,7 +127,7 @@
                         "value": 2.55,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_2",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_3",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -143,7 +143,7 @@
                         "value": 1.94,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_3",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_4",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -163,7 +163,7 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_4",
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_1",
                                 "data source feature": "absorbance"
                             }
                         ]
@@ -179,7 +179,7 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_4",
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_1",
                                 "data source feature": "absorbance"
                             }
                         ]
@@ -195,7 +195,7 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_4",
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_1",
                                 "data source feature": "absorbance"
                             }
                         ]
@@ -209,7 +209,7 @@
             "file name": "Example_Lunatic_Plate_Reader_xlsx_no_header.xlsx",
             "UNC path": "tests/parsers/unchained_labs_lunatic/testdata/Example_Lunatic_Plate_Reader_xlsx_no_header.xlsx",
             "ASM converter name": "allotropy_unchained_labs_lunatic",
-            "ASM converter version": "0.1.74",
+            "ASM converter version": "0.1.82",
             "software name": "Lunatic and Stunner Analysis"
         },
         "device system document": {
