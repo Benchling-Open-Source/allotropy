@@ -10,12 +10,18 @@ class BenchlingEmpowerReader:
 
     metadata_fields: dict[str, Any]
     injections: list[dict[str, Any]]
+    instrument_methods: list[dict[str, Any]]
+    processing_methods: list[dict[str, Any]]
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
         contents: dict[str, Any] = json.load(named_file_contents.contents)
         values: dict[str, Any] = assert_not_none(contents.get("values"), "values")
 
         self.metadata_fields = assert_not_none(values.get("fields"), "values/fields")
+        self.metadata_fields.update(contents.get("metadata", {}))
+
+        self.instrument_methods = values.get("instrument_methods", [])
+        self.processing_methods = values.get("processing_methods", [])
 
         # Each injection corresponds to a measurement document
         injections: list[dict[str, Any]] = assert_not_none(
