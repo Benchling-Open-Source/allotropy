@@ -37,6 +37,7 @@ from allotropy.parsers.agilent_gen5.constants import (
     EXCITATION_KEY,
     FILENAME_REGEX,
     GAIN_KEY,
+    LIGHT_DIRECTIONS,
     MEASUREMENTS_DATA_POINT_KEY,
     MIRROR_KEY,
     NAN_EMISSION_EXCITATION,
@@ -124,6 +125,7 @@ class FilterSet:
     excitation: str | None = None
     mirror: str | None = None
     optics: str | None = None
+    light_direction: str | None = None
 
     @property
     def detector_wavelength_setting(self) -> float | None:
@@ -180,6 +182,7 @@ class DeviceControlData:
     step_label: str | None
     _list_data: dict[str, list[str]]
     _single_data: dict[str, str]
+    is_polarization: bool = False
 
     LIST_KEYS = frozenset(
         {
@@ -222,6 +225,10 @@ class DeviceControlData:
 
         for line in lines:
             strp_line = str(line.strip())
+            if strp_line == "Fluorescence Polarization":
+                device_control_data.is_polarization = True
+                continue
+
             if strp_line.startswith("Read\t"):
                 device_control_data.step_label = cls._get_step_label(line, read_mode)
                 continue
@@ -410,12 +417,25 @@ class ReadData:
                 f"{label_prefix}{excitation},{emission}"
                 for excitation, emission in zip(excitations, emissions, strict=True)
             ]
-            label_aliases = {
-                f"{label_prefix}{excitation},{emission}": {
-                    f"{label_prefix}{excitation.split('/')[0]},{emission.split('/')[0]}"
+            if device_control_data.is_polarization:
+                if len(measurement_labels) != 2:
+                    msg = "Expected the Fluorescence Polarization read mode to contain exactly 2 filter sets."
+                    raise AllotropeConversionError(msg)
+                measurement_labels = [
+                    f"{label} [{light_direction}]"
+                    for label, light_direction in zip(
+                        measurement_labels, LIGHT_DIRECTIONS, strict=True
+                    )
+                ]
+                label_aliases = {}
+            else:
+                label_aliases = {
+                    f"{label_prefix}{excitation},{emission}": {
+                        f"{label_prefix}{excitation.split('/')[0]},{emission.split('/')[0]}"
+                    }
+                    for excitation, emission in zip(excitations, emissions, strict=True)
                 }
-                for excitation, emission in zip(excitations, emissions, strict=True)
-            }
+
             if not measurement_labels:
                 measurement_labels = ["Alpha"]
 
@@ -478,6 +498,11 @@ class ReadData:
                 excitation=excitations[idx] if excitations else None,
                 mirror=mirror,
                 optics=optics[idx] if optics else None,
+                light_direction=(
+                    LIGHT_DIRECTIONS[idx]
+                    if device_control_data.is_polarization
+                    else None
+                ),
             )
         for measurement_label, aliases in label_aliases.items():
             for alias in aliases:
@@ -632,10 +657,10 @@ def create_results(
     )
     for row_name, row in data.iterrows():
         label = str(row.iloc[-1])
+        is_measurement = label in measurement_labels
         for col_index, value in enumerate(row.iloc[:-1]):
             well_pos = f"{row_name}{col_index + 1}"
             well_value = try_float_or_none(value)
-            is_measurement = label in measurement_labels
             # skip empty values
             if isinstance(well_value, float) and math.isnan(well_value):
                 continue
@@ -977,7 +1002,10 @@ def _create_measurement(
         ),
         error_document=error_documents,
         device_control_custom_info={
-            "Reading Type": header_data.additional_data.pop("Reading Type", None)
+            "Reading Type": header_data.additional_data.pop("Reading Type", None),
+            "Direction of emited light": (
+                filter_data.light_direction if filter_data else None
+            ),
         },
         sample_custom_info={
             "Plate Number": header_data.additional_data.pop("Plate Number", None)
