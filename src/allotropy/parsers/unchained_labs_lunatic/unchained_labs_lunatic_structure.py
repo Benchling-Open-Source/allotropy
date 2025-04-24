@@ -28,10 +28,11 @@ from allotropy.parsers.unchained_labs_lunatic.constants import (
     SOFTWARE_NAME,
     WAVELENGTH_COLUMNS_RE,
 )
+from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_calcdocs import (
+    create_calculated_data,
+)
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
-    DataSource,
-    Referenceable,
 )
 from allotropy.parsers.utils.pandas import (
     map_rows,
@@ -119,28 +120,6 @@ def _create_measurement(
     )
 
 
-def _get_calculated_data(measurement: Measurement) -> list[CalculatedDocument]:
-    calculated_data = []
-    for item in CALCULATED_DATA_LOOKUP.get(measurement.wavelength_identifier or "", []):
-        value = (measurement.calc_docs_custom_info or {}).get(item["column"])
-        if value is not None:
-            calculated_data.append(
-                CalculatedDocument(
-                    uuid=random_uuid_str(),
-                    name=item["name"],
-                    value=value,
-                    unit=item["unit"],
-                    data_sources=[
-                        DataSource(
-                            reference=Referenceable(uuid=measurement.identifier),
-                            feature=item["feature"],
-                        )
-                    ],
-                )
-            )
-    return calculated_data
-
-
 def _get_error_documents(
     well_plate_data: SeriesData,
     wavelength_column: str,
@@ -214,10 +193,4 @@ def create_measurement_groups(
         return _create_measurement_group(data, wavelength_columns, header)
 
     measurement_groups = map_rows(data, make_group)
-
-    calculated_data: list[CalculatedDocument] = []
-    for measurement_group in measurement_groups:
-        for measurement in measurement_group.measurements:
-            calculated_data.extend(_get_calculated_data(measurement))
-
-    return measurement_groups, calculated_data
+    return measurement_groups, create_calculated_data(measurement_groups)
