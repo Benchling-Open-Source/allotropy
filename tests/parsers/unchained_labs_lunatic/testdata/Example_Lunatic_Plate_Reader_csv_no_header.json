@@ -122,25 +122,25 @@
                     }
                 },
                 {
-                    "calculated data name": "A260/A230",
+                    "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 2.55,
-                        "unit": "(unitless)"
+                        "value": 182.8,
+                        "unit": "ng/µL"
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_3",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_0",
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_1",
                                 "data source feature": "absorbance"
                             }
                         ]
                     }
                 },
                 {
-                    "calculated data name": "A260/A280",
+                    "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 1.94,
+                        "value": 2.55,
                         "unit": "(unitless)"
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_4",
@@ -154,10 +154,10 @@
                     }
                 },
                 {
-                    "calculated data name": "Concentration",
+                    "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 182.8,
-                        "unit": "ng/µL"
+                        "value": 2.52,
+                        "unit": "(unitless)"
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_5",
                     "data source aggregate document": {
@@ -170,16 +170,16 @@
                     }
                 },
                 {
-                    "calculated data name": "A260/A230",
+                    "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 2.52,
+                        "value": 1.94,
                         "unit": "(unitless)"
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_6",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_1",
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_0",
                                 "data source feature": "absorbance"
                             }
                         ]
