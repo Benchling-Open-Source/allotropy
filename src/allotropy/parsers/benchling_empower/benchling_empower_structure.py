@@ -41,65 +41,38 @@ def create_metadata(
         "SampleSetType": metadata.get("SampleSetType"),
     }
 
-    # Prepare device system custom info for instrument methods
     device_system_custom_info = {}
 
-    # Process instrument methods if available
     if instrument_methods and len(instrument_methods) > 0:
-        # Extract only the first instrument method as per requirements
         method = instrument_methods[0]
-        id_value = method.get("id")
-        device_system_custom_info["instrument_methods_id"] = (
-            str(id_value) if id_value is not None else None
-        )
-        name_value = method.get("name")
-        device_system_custom_info["instrument_methods_name"] = (
-            str(name_value) if name_value is not None else None
-        )
-        comments_value = method.get("comments")
-        device_system_custom_info["instrument_methods_comments"] = (
-            str(comments_value) if comments_value is not None else None
-        )
-        date_value = method.get("date")
-        device_system_custom_info["instrument_methods_date"] = (
-            str(date_value) if date_value is not None else None
-        )
-        inst_on_status_value = method.get("InstOnStatus")
-        device_system_custom_info["instrument_methods_InstOnStatus"] = (
-            str(inst_on_status_value) if inst_on_status_value is not None else None
-        )
-        type_value = method.get("type")
-        device_system_custom_info["instrument_methods_type"] = (
-            str(type_value) if type_value is not None else None
+
+        device_system_custom_info.update(
+            {
+                "instrument_methods_id": method.get("id"),
+                "instrument_methods_name": method.get("name"),
+                "instrument_methods_comments": method.get("comments"),
+                "instrument_methods_date": method.get("date"),
+                "instrument_methods_InstOnStatus": method.get("InstOnStatus"),
+                "instrument_methods_type": method.get("type"),
+            }
         )
 
-    # Process processing methods if available
     if processing_methods and len(processing_methods) > 0:
-        # Extract only the first processing method
         proc_method = processing_methods[0]
-        locked_value = proc_method.get("locked")
-        device_system_custom_info["processing_methods_locked"] = (
-            str(locked_value) if locked_value is not None else None
-        )
-        modified_by_value = proc_method.get("modified_by")
-        device_system_custom_info["processing_methods_modified_by"] = (
-            str(modified_by_value) if modified_by_value is not None else None
-        )
-        name_value = proc_method.get("name")
-        device_system_custom_info["processing_methods_name"] = (
-            str(name_value) if name_value is not None else None
-        )
-        revision_comment_value = proc_method.get("revision comment")
-        device_system_custom_info["processing_methods_revision_comment"] = (
-            str(revision_comment_value) if revision_comment_value is not None else None
-        )
-        revision_history_value = proc_method.get("revision history")
-        device_system_custom_info["processing_methods_revision_history"] = (
-            str(revision_history_value) if revision_history_value is not None else None
-        )
-        version_value = proc_method.get("version")
-        device_system_custom_info["processing_methods_version"] = (
-            str(version_value) if version_value is not None else None
+
+        device_system_custom_info.update(
+            {
+                "processing_methods_locked": proc_method.get("locked"),
+                "processing_methods_modified_by": proc_method.get("modified_by"),
+                "processing_methods_name": proc_method.get("name"),
+                "processing_methods_revision_comment": proc_method.get(
+                    "revision comment"
+                ),
+                "processing_methods_revision_history": proc_method.get(
+                    "revision history"
+                ),
+                "processing_methods_version": proc_method.get("version"),
+            }
         )
 
     return Metadata(
