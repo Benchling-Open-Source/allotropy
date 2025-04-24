@@ -1,7 +1,8 @@
 import json
-from typing import Any
+from typing import Any, cast
 
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.utils.json import JsonData
 from allotropy.parsers.utils.values import assert_not_none
 
 
@@ -14,41 +15,65 @@ class BenchlingEmpowerReader:
     processing_methods: list[dict[str, Any]]
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
-        contents: dict[str, Any] = json.load(named_file_contents.contents)
-        values: dict[str, Any] = assert_not_none(contents.get("values"), "values")
+        contents_dict: dict[str, Any] = json.load(named_file_contents.contents)
+        contents = JsonData(contents_dict)
 
-        self.metadata_fields = assert_not_none(values.get("fields"), "values/fields")
-        self.metadata_fields.update(contents.get("metadata", {}))
+        # Get values dictionary
+        values_data: dict[str, Any] = assert_not_none(
+            contents.data.get("values"), "values"
+        )
+        values = JsonData(values_data)
 
-        self.instrument_methods = values.get("instrument_methods", [])
-        self.processing_methods = values.get("processing_methods", [])
+        # Get fields and metadata
+        fields: dict[str, Any] = assert_not_none(
+            values.data.get("fields"), "values/fields"
+        )
+        metadata: dict[str, Any] = contents.data.get("metadata", {})
+
+        self.metadata_fields = {**fields, **metadata}
+
+        # Get methods
+        self.instrument_methods = values.data.get("instrument_methods", [])
+        self.processing_methods = values.data.get("processing_methods", [])
 
         # Each injection corresponds to a measurement document
-        injections: list[dict[str, Any]] = assert_not_none(
-            values.get("injections"), "values/injections"
+        injections_list: list[dict[str, Any]] = assert_not_none(
+            values.data.get("injections"), "values/injections"
         )
-        for idx, injection in enumerate(injections):
-            if "fields" not in injection:
+
+        id_to_injection = {}
+        for idx, injection_dict in enumerate(injections_list):
+            injection = JsonData(injection_dict)
+            fields_dict = injection.data.get("fields")
+            if not fields_dict:
                 msg = f"Missing 'fields' for injection at index {idx}"
                 raise AssertionError(msg)
-            if "InjectionId" not in injection["fields"]:
+
+            fields_json = JsonData(fields_dict)
+            injection_id = fields_json.get(int, "InjectionId")
+            if injection_id is None:
                 msg = f"Missing 'InjectionId' for injection at index {idx}"
                 raise AssertionError(msg)
-        id_to_injection = {
-            injection["fields"]["InjectionId"]: injection["fields"]
-            for injection in injections
-        }
+
+            id_to_injection[injection_id] = fields_dict
 
         # Channels contain fields and chromatograms
-        channels: list[dict[str, Any]] = values.get("channels", [])
-        for channel in channels:
-            fields: dict[str, Any] = assert_not_none(
-                channel.get("fields"), "channels/fields"
+        channels: list[dict[str, Any]] = values.data.get("channels", [])
+        for channel_dict in channels:
+            channel = JsonData(channel_dict)
+            channel_fields_dict: dict[str, Any] = assert_not_none(
+                channel.data.get("fields"), "channels/fields"
             )
-            if (inj_id := fields.get("InjectionId")) is None:
-                msg = f"Expected InjectionId in 'fields' for channel: {fields['ChannelId']}"
+            channel_fields = JsonData(channel_fields_dict)
+
+            inj_id = channel_fields.get(int, "InjectionId")
+            if inj_id is None:
+                channel_id = channel_fields.get(str, "ChannelId", "Unknown")
+                msg = f"Expected InjectionId in 'fields' for channel: {channel_id}"
                 raise AssertionError(msg)
-            for key, value in fields.items():
+
+            # Update injection fields with channel fields
+            for key, value in channel_fields_dict.items():
                 if (
                     key in id_to_injection[inj_id]
                     and id_to_injection[inj_id][key] != value
@@ -56,27 +81,42 @@ class BenchlingEmpowerReader:
                     msg = f"Mismatch between injection field and channel field for key: {key}"
                     raise AssertionError(msg)
                 id_to_injection[inj_id][key] = value
-            if "chrom" in channel:
-                id_to_injection[inj_id]["chrom"] = channel["chrom"]
 
-        # Results contain peaks and calibration cureves
-        results: list[dict[str, Any]] = values.get("results", [])
-        for result in results:
-            fields = assert_not_none(result.get("fields"), "results/fields")
-            if (inj_id := fields.get("InjectionId")) is None:
-                msg = (
-                    f"Expected InjectionId in 'fields' for result: {fields['ResultId']}"
-                )
+            # Add chromatogram data if present
+            chrom: list[list[float]] | None = channel.data.get("chrom")
+            if chrom is not None:
+                id_to_injection[inj_id]["chrom"] = chrom
+
+        # Results contain peaks and calibration curves
+        results: list[dict[str, Any]] = values.data.get("results", [])
+        for result_dict in results:
+            result = JsonData(result_dict)
+            result_fields_dict: dict[str, Any] = assert_not_none(
+                result.data.get("fields"), "results/fields"
+            )
+            result_fields = JsonData(result_fields_dict)
+
+            inj_id = result_fields.get(int, "InjectionId")
+            if inj_id is None:
+                result_id = result_fields.get(str, "ResultId", "Unknown")
+                msg = f"Expected InjectionId in 'fields' for result: {result_id}"
                 raise AssertionError(msg)
 
             if "results" not in id_to_injection[inj_id]:
                 id_to_injection[inj_id]["results"] = []
-            id_to_injection[inj_id]["results"].append(fields)
-            if "peaks" in result:
+            id_to_injection[inj_id]["results"].append(result_fields_dict)
+
+            # Add peaks if present
+            peaks: list[dict[str, Any]] | None = result.data.get("peaks")
+            if peaks is not None:
                 id_to_injection[inj_id]["peaks"] = [
-                    peak["fields"] for peak in result["peaks"]
+                    cast(dict[str, Any], JsonData(peak).data.get("fields", {}))
+                    for peak in peaks
                 ]
-            if "curves" in result:
-                id_to_injection[inj_id]["curves"] = result["curves"]
+
+            # Add calibration curves if present
+            curves: list[Any] | None = result.data.get("curves")
+            if curves is not None:
+                id_to_injection[inj_id]["curves"] = curves
 
         self.injections = list(id_to_injection.values())

@@ -100,6 +100,7 @@ DICT_KEY_TO_MODEL_KEY_REPLACEMENTS = {
     "#": "_NUMBER_",
     "[": "_OBRACKET_",
     "]": "_CBRACKET_",
+    "~": "_TILDE_",
     # NOTE: this MUST be at the end, or it will break other key replacements.
     " ": "_",
 }

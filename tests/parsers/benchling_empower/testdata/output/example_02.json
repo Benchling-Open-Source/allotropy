@@ -43,13 +43,13 @@
                                     "PrepType": "",
                                     "SampleSetAcquiring": false,
                                     "SampleSetAltered": true,
-                                    "SampleSetCurrentId": 1002,
-                                    "OriginalSampleSetId": 1002,
-                                    "OriginalVialId": 1003,
+                                    "SampleSetCurrentId": "1002",
+                                    "OriginalSampleSetId": "1002",
+                                    "OriginalVialId": "1003",
                                     "Vial": "1",
                                     "lot number": "Blank",
                                     "sample weight": 1.0,
-                                    "VialId": 1713,
+                                    "VialId": "1713",
                                     "SampleType": "Unknown",
                                     "dilution factor setting": 1.0
                                 }
@@ -67,23 +67,19 @@
                                             "data_processing_method": "SEC LA510",
                                             "data_processing_time": "2020-03-16T08:49:17",
                                             "peak_width": 75.0,
-                                            "retention_time": null,
-                                            "retention_time_window_width": null,
-                                            "relative_response": null,
                                             "CalculationType": "Standards Used",
-                                            "CalibrationId": 1334,
+                                            "CalibrationId": "1334",
                                             "ProcessingLocked": false,
                                             "Manual": false,
                                             "ProcessedBy": "EB37166/PowerUser",
                                             "ProcessedAs": "Unknown",
-                                            "UseForPrecision": "No",
+                                            "UseForPrecision": false,
                                             "PrepType": "",
-                                            "AnalysisMethod": null,
                                             "IntegrationSystemPolicies": "",
-                                            "ProcessingMethodId": 1263,
+                                            "ProcessingMethodId": "1263",
                                             "ProcessedChannelType": "2D",
                                             "ProcessedChanDesc": "VWD: Signal A, 214 nm",
-                                            "PeakRatioReference": false,
+                                            "PeakRatioReference": "False",
                                             "Threshold": 5.0,
                                             "SourceSoftwareInfo": "Empower 3 Software Build 3471 SPs Installed: Feature Release 4 DB ID: 1609064383",
                                             "SampleValuesUsedinCalculations": "InjectionType = Blank CalculationType = Standards Used Factor1Operator = * ICH_AdjAreaPctCutoff =  Factor2Operator = * Factor3Operator = * SampleConcentration = 0.000000 Factor1 = 1.000000 Factor2 = 1.000000 Volume = 5.00 SampleWeight = 1.000000 1.000000Dilution = 1.000000  Factor3 = 1.000000",
@@ -95,10 +91,10 @@
                                             "Factor1Operator": "*",
                                             "Factor2Operator": "*",
                                             "Factor3Operator": "*",
-                                            "ResultSetId": 1333,
+                                            "ResultSetId": "1333",
                                             "ResultSetName": "eb37166_2019_0078_SEC",
                                             "ResultSetDate": "2020-03-16T08:49:05",
-                                            "ResultId": 1344,
+                                            "ResultId": "1344",
                                             "ResultType": "LC",
                                             "ResultComments": "1",
                                             "ResultCodes": "C15 C17 C26 C06 C21 C30 C31 ",
@@ -110,15 +106,15 @@
                                             "TotalAdjArea": 40727.6436035863,
                                             "AdjustedTotalArea": 40727.6436035863,
                                             "TotalRS_AdjAreaPct": 0.0,
-                                            "TotalRS_FinalResult": 0.0,
+                                            "TotalRS_FinalResult": "0.0",
                                             "Largest_NG_RS_AdjAreaPct": 0.0,
-                                            "LargestNamedRS_FinalResult": 0.0,
-                                            "LargestRS_FinalResult": 0.0,
-                                            "LargestUnnamedRS_FinalResult": 0.0,
+                                            "LargestNamedRS_FinalResult": "0.0",
+                                            "LargestRS_FinalResult": "0.0",
+                                            "LargestUnnamedRS_FinalResult": "0.0",
                                             "Total_ICH_AdjArea": 0.0,
                                             "PercentUnknowns": 42.9560102933161,
                                             "NumberofImpurityPeaks": 0,
-                                            "Faults": false
+                                            "Faults": "False"
                                         }
                                     }
                                 ]
@@ -6238,7 +6234,7 @@
                     "custom information document": {
                         "Altered": true,
                         "InstrumentMethodName": "BACH2_SEC_2018",
-                        "InstrumentMethodId": 1004,
+                        "InstrumentMethodId": "1004",
                         "Superseded": false,
                         "Node": "Ky1swempsnd1002",
                         "measurement method identifier": "eb37166_2019_0078_SEC",
@@ -6293,14 +6289,14 @@
                                     "PrepType": "",
                                     "SampleSetAcquiring": false,
                                     "SampleSetAltered": true,
-                                    "SampleSetCurrentId": 1002,
-                                    "OriginalSampleSetId": 1002,
-                                    "OriginalVialId": 1010,
+                                    "SampleSetCurrentId": "1002",
+                                    "OriginalSampleSetId": "1002",
+                                    "OriginalVialId": "1010",
                                     "Vial": "2",
                                     "lot number": "MRE-25Jan25-1",
                                     "sample weight": 5546.0,
                                     "Label": "U0101",
-                                    "VialId": 3108,
+                                    "VialId": "3108",
                                     "SampleType": "Unknown",
                                     "dilution factor setting": 1.0
                                 }
@@ -6318,23 +6314,20 @@
                                             "data_processing_method": "SEC",
                                             "data_processing_time": "2020-03-16T07:35:26",
                                             "peak_width": 180.0,
-                                            "retention_time": null,
-                                            "retention_time_window_width": null,
-                                            "relative_response": null,
                                             "CalculationType": "Standards Used",
-                                            "CalibrationId": 1320,
+                                            "CalibrationId": "1320",
                                             "ProcessingLocked": false,
                                             "Manual": false,
                                             "ProcessedBy": "EB37166/PowerUser",
                                             "ProcessedAs": "Unknown",
-                                            "UseForPrecision": "No",
+                                            "UseForPrecision": false,
                                             "PrepType": "",
                                             "AnalysisMethod": "Empower HPLC",
                                             "IntegrationSystemPolicies": "",
-                                            "ProcessingMethodId": 1261,
+                                            "ProcessingMethodId": "1261",
                                             "ProcessedChannelType": "2D",
                                             "ProcessedChanDesc": "VWD: Signal A, 214 nm",
-                                            "PeakRatioReference": false,
+                                            "PeakRatioReference": "False",
                                             "Threshold": 1.4000000000000001,
                                             "SourceSoftwareInfo": "Empower 3 Software Build 3471 SPs Installed: Feature Release 4 DB ID: 1609064383",
                                             "SampleValuesUsedinCalculations": "InjectionType = Unknown CalculationType = Standards Used Factor1Operator = * ICH_AdjAreaPctCutoff =  Factor2Operator = * Factor3Operator = * SampleConcentration = 5546.000000 Factor1 = 1.000000 Factor2 = 1.000000 Volume = 5.00 SampleWeight = 5546.000000 1.000000Dilution = 1.000000  Factor3 = 1.000000",
@@ -6346,30 +6339,26 @@
                                             "Factor1Operator": "*",
                                             "Factor2Operator": "*",
                                             "Factor3Operator": "*",
-                                            "ResultSetId": null,
-                                            "ResultSetName": null,
-                                            "ResultSetDate": null,
-                                            "ResultId": 1329,
+                                            "ResultId": "1329",
                                             "ResultType": "LC",
                                             "ResultComments": "1",
                                             "ResultCodes": "S36 C15 C17 C21 C06 C26 C30 C31 ",
                                             "ResultNum": 1,
-                                            "ResultSampleSetMethod": null,
                                             "ResultSource": "Processed a Channel using Processing Method with clear calibration",
                                             "ResultSuperseded": false,
                                             "TotalArea": 245507170.691243,
                                             "TotalAdjArea": 245507170.691243,
                                             "AdjustedTotalArea": 245507170.691243,
                                             "TotalRS_AdjAreaPct": 99.8634270378634,
-                                            "TotalRS_FinalResult": 0.0,
+                                            "TotalRS_FinalResult": "0.0",
                                             "Largest_NG_RS_AdjAreaPct": 95.9009645837309,
-                                            "LargestNamedRS_FinalResult": 0.0,
-                                            "LargestRS_FinalResult": 0.0,
-                                            "LargestUnnamedRS_FinalResult": 0.0,
+                                            "LargestNamedRS_FinalResult": "0.0",
+                                            "LargestRS_FinalResult": "0.0",
+                                            "LargestUnnamedRS_FinalResult": "0.0",
                                             "Total_ICH_AdjArea": 0.0,
                                             "PercentUnknowns": 99.8634270378634,
                                             "NumberofImpurityPeaks": 0,
-                                            "Faults": false
+                                            "Faults": "False"
                                         },
                                         "peak list": {
                                             "peak": [
@@ -6395,6 +6384,10 @@
                                                     "baseline value at end of peak": {
                                                         "value": 1754.4800913648,
                                                         "unit": "s"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 335296.415270787,
+                                                        "unit": "%"
                                                     },
                                                     "peak area": {
                                                         "value": 335.296415270787,
@@ -6428,13 +6421,13 @@
                                                         "PctAdjustedArea": 0.136572962136599,
                                                         "PeakCodes": "S05 S07 S08 S06 Q20 C30 C15 C17 C21 C31 C02 C06 C38 C13 ",
                                                         "ICH AdjArea": 0.0,
-                                                        "ICHThreshold": "",
                                                         "ImpurityType": "",
-                                                        "NG FinalResult": 0.0,
+                                                        "NG FinalResult": "0.0",
                                                         "NG RS AdjAreaPct": 0.0,
                                                         "AdjArea": 335296.415270787,
                                                         "AdjAreaPct": 0.136572962136599,
-                                                        "FinalResult": 0.0
+                                                        "FinalResult": "0.0",
+                                                        "CorrectedArea~": 335296.415270787
                                                     }
                                                 },
                                                 {
@@ -6459,6 +6452,10 @@
                                                     "baseline value at end of peak": {
                                                         "value": 1754.4800913648,
                                                         "unit": "s"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 7839072.33072656,
+                                                        "unit": "%"
                                                     },
                                                     "peak area": {
                                                         "value": 7839.07233072656,
@@ -6492,13 +6489,13 @@
                                                         "PctAdjustedArea": 3.19301155589675,
                                                         "PeakCodes": "S05 S06 Q20 C30 C15 C17 C21 C31 C02 C06 C38 C13 ",
                                                         "ICH AdjArea": 0.0,
-                                                        "ICHThreshold": "",
                                                         "ImpurityType": "",
-                                                        "NG FinalResult": 0.0,
+                                                        "NG FinalResult": "0.0",
                                                         "NG RS AdjAreaPct": 0.0,
                                                         "AdjArea": 7839072.33072656,
                                                         "AdjAreaPct": 3.19301155589675,
-                                                        "FinalResult": 0.0
+                                                        "FinalResult": "0.0",
+                                                        "CorrectedArea~": 7839072.33072656
                                                     }
                                                 },
                                                 {
@@ -6523,6 +6520,10 @@
                                                     "baseline value at end of peak": {
                                                         "value": 1754.4800913648,
                                                         "unit": "s"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 235443744.815129,
+                                                        "unit": "%"
                                                     },
                                                     "peak area": {
                                                         "value": 235443.744815129,
@@ -6556,13 +6557,13 @@
                                                         "PctAdjustedArea": 95.9009645837309,
                                                         "PeakCodes": "Q20 C30 C15 C17 C21 C31 C02 C06 C38 C13 ",
                                                         "ICH AdjArea": 0.0,
-                                                        "ICHThreshold": "",
                                                         "ImpurityType": "",
-                                                        "NG FinalResult": 0.0,
+                                                        "NG FinalResult": "0.0",
                                                         "NG RS AdjAreaPct": 0.0,
                                                         "AdjArea": 235443744.815129,
                                                         "AdjAreaPct": 95.9009645837309,
-                                                        "FinalResult": 0.0
+                                                        "FinalResult": "0.0",
+                                                        "CorrectedArea~": 235443744.815129
                                                     }
                                                 },
                                                 {
@@ -6587,6 +6588,10 @@
                                                     "baseline value at end of peak": {
                                                         "value": 1754.4800913648,
                                                         "unit": "s"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 1889057.13011703,
+                                                        "unit": "%"
                                                     },
                                                     "peak area": {
                                                         "value": 1889.05713011703,
@@ -6620,13 +6625,13 @@
                                                         "PctAdjustedArea": 0.7694508982357819,
                                                         "PeakCodes": "Q20 C30 C15 C17 C21 C31 C02 C06 C38 C13 ",
                                                         "ICH AdjArea": 0.0,
-                                                        "ICHThreshold": "",
                                                         "ImpurityType": "",
-                                                        "NG FinalResult": 0.0,
+                                                        "NG FinalResult": "0.0",
                                                         "NG RS AdjAreaPct": 0.0,
                                                         "AdjArea": 1889057.13011703,
                                                         "AdjAreaPct": 0.7694508982357819,
-                                                        "FinalResult": 0.0
+                                                        "FinalResult": "0.0",
+                                                        "CorrectedArea~": 1889057.13011703
                                                     }
                                                 }
                                             ]
@@ -9218,7 +9223,7 @@
                         "ELN DocumentID": "eb37166la-2025-0000",
                         "ELN SectionGUID": "470f0ddd-2801-f5e1-3bdf-82550343b53d",
                         "InstrumentMethodName": "BACH2_SEC_2018",
-                        "InstrumentMethodId": 1004,
+                        "InstrumentMethodId": "1004",
                         "SSM Pattern": "BACH2_SEC_2018",
                         "Superseded": false,
                         "Node": "Ky1swempsnd1002",
@@ -9274,14 +9279,14 @@
                                     "PrepType": "",
                                     "SampleSetAcquiring": false,
                                     "SampleSetAltered": true,
-                                    "SampleSetCurrentId": 1002,
-                                    "OriginalSampleSetId": 1002,
-                                    "OriginalVialId": 1013,
+                                    "SampleSetCurrentId": "1002",
+                                    "OriginalSampleSetId": "1002",
+                                    "OriginalVialId": "1013",
                                     "Vial": "2",
                                     "lot number": "MRE-25Jan25-2",
                                     "sample weight": 1.578,
                                     "Label": "U0102",
-                                    "VialId": 3109,
+                                    "VialId": "3109",
                                     "SampleType": "Unknown",
                                     "dilution factor setting": 1.0
                                 }
@@ -9299,23 +9304,20 @@
                                             "data_processing_method": "SEC LA510",
                                             "data_processing_time": "2020-03-16T08:49:48",
                                             "peak_width": 75.0,
-                                            "retention_time": null,
-                                            "retention_time_window_width": null,
-                                            "relative_response": null,
                                             "CalculationType": "Standards Used",
-                                            "CalibrationId": 1334,
+                                            "CalibrationId": "1334",
                                             "ProcessingLocked": false,
                                             "Manual": false,
                                             "ProcessedBy": "EB37166/PowerUser",
                                             "ProcessedAs": "Unknown",
-                                            "UseForPrecision": "No",
+                                            "UseForPrecision": false,
                                             "PrepType": "",
                                             "AnalysisMethod": "Empower HPLC",
                                             "IntegrationSystemPolicies": "",
-                                            "ProcessingMethodId": 1263,
+                                            "ProcessingMethodId": "1263",
                                             "ProcessedChannelType": "2D",
                                             "ProcessedChanDesc": "VWD: Signal A, 214 nm",
-                                            "PeakRatioReference": false,
+                                            "PeakRatioReference": "False",
                                             "Threshold": 5.0,
                                             "SourceSoftwareInfo": "Empower 3 Software Build 3471 SPs Installed: Feature Release 4 DB ID: 1609064383",
                                             "SampleValuesUsedinCalculations": "InjectionType = Unknown CalculationType = Standards Used Factor1Operator = * ICH_AdjAreaPctCutoff =  Factor2Operator = * Factor3Operator = * SampleConcentration = 1.578000 Factor1 = 1.000000 Factor2 = 1.000000 Volume = 5.00 SampleWeight = 1.578000 1.0000001.000000Dilution = 1.000000  Factor3 = 1.000000",
@@ -9327,10 +9329,10 @@
                                             "Factor1Operator": "*",
                                             "Factor2Operator": "*",
                                             "Factor3Operator": "*",
-                                            "ResultSetId": 1333,
+                                            "ResultSetId": "1333",
                                             "ResultSetName": "eb37166_2019_0078_SEC",
                                             "ResultSetDate": "2020-03-16T08:49:05",
-                                            "ResultId": 1346,
+                                            "ResultId": "1346",
                                             "ResultType": "LC",
                                             "ResultComments": "1",
                                             "ResultCodes": "I39 C15 C17 C26 C06 C21 C30 C31 ",
@@ -9342,15 +9344,15 @@
                                             "TotalAdjArea": 248486276.169362,
                                             "AdjustedTotalArea": 248486276.169362,
                                             "TotalRS_AdjAreaPct": 0.988461380842212,
-                                            "TotalRS_FinalResult": 0.0,
+                                            "TotalRS_FinalResult": "0.0",
                                             "Largest_NG_RS_AdjAreaPct": 0.768883003411911,
-                                            "LargestNamedRS_FinalResult": 0.0,
-                                            "LargestRS_FinalResult": 0.0,
-                                            "LargestUnnamedRS_FinalResult": 0.0,
+                                            "LargestNamedRS_FinalResult": "0.0",
+                                            "LargestRS_FinalResult": "0.0",
+                                            "LargestUnnamedRS_FinalResult": "0.0",
                                             "Total_ICH_AdjArea": 0.0,
                                             "PercentUnknowns": 0.988461380842212,
                                             "NumberofImpurityPeaks": 0,
-                                            "Faults": false
+                                            "Faults": "False"
                                         },
                                         "peak list": {
                                             "peak": [
@@ -9376,6 +9378,10 @@
                                                     "baseline value at end of peak": {
                                                         "value": 1720.700889605466,
                                                         "unit": "s"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 329862.841153501,
+                                                        "unit": "%"
                                                     },
                                                     "peak area": {
                                                         "value": 329.862841153501,
@@ -9409,13 +9415,13 @@
                                                         "PctAdjustedArea": 0.13277690382985902,
                                                         "PeakCodes": "S05 S07 S08 S06 Q20 C30 C15 C17 C21 C31 C02 C06 C38 C13 ",
                                                         "ICH AdjArea": 0.0,
-                                                        "ICHThreshold": "",
                                                         "ImpurityType": "",
-                                                        "NG FinalResult": 0.0,
+                                                        "NG FinalResult": "0.0",
                                                         "NG RS AdjAreaPct": 0.0,
                                                         "AdjArea": 329862.841153501,
                                                         "AdjAreaPct": 0.13277690382985902,
-                                                        "FinalResult": 0.0
+                                                        "FinalResult": "0.0",
+                                                        "CorrectedArea~": 329862.841153501
                                                     }
                                                 },
                                                 {
@@ -9440,6 +9446,10 @@
                                                     "baseline value at end of peak": {
                                                         "value": 1720.700889605466,
                                                         "unit": "s"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 7763731.11773928,
+                                                        "unit": "%"
                                                     },
                                                     "peak area": {
                                                         "value": 7763.731117739279,
@@ -9473,13 +9483,13 @@
                                                         "PctAdjustedArea": 3.12506912380971,
                                                         "PeakCodes": "S05 S06 Q20 C30 C15 C17 C21 C31 C02 C06 C38 C13 ",
                                                         "ICH AdjArea": 0.0,
-                                                        "ICHThreshold": "",
                                                         "ImpurityType": "",
-                                                        "NG FinalResult": 0.0,
+                                                        "NG FinalResult": "0.0",
                                                         "NG RS AdjAreaPct": 0.0,
                                                         "AdjArea": 7763731.11773928,
                                                         "AdjAreaPct": 3.12506912380971,
-                                                        "FinalResult": 0.0
+                                                        "FinalResult": "0.0",
+                                                        "CorrectedArea~": 7763731.11773928
                                                     }
                                                 },
                                                 {
@@ -9504,6 +9514,10 @@
                                                     "baseline value at end of peak": {
                                                         "value": 1720.700889605466,
                                                         "unit": "s"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 238438099.585639,
+                                                        "unit": "%"
                                                     },
                                                     "peak area": {
                                                         "value": 238438.099585639,
@@ -9537,13 +9551,13 @@
                                                         "PctAdjustedArea": 95.9764746685254,
                                                         "PeakCodes": "Q20 C30 C15 C17 C21 C31 C02 C06 C38 C13 ",
                                                         "ICH AdjArea": 0.0,
-                                                        "ICHThreshold": "",
                                                         "ImpurityType": "",
-                                                        "NG FinalResult": 0.0,
+                                                        "NG FinalResult": "0.0",
                                                         "NG RS AdjAreaPct": 0.0,
                                                         "AdjArea": 238438099.585639,
                                                         "AdjAreaPct": 95.9764746685254,
-                                                        "FinalResult": 0.0
+                                                        "FinalResult": "0.0",
+                                                        "CorrectedArea~": 238438099.585639
                                                     }
                                                 },
                                                 {
@@ -9568,6 +9582,10 @@
                                                     "baseline value at end of peak": {
                                                         "value": 1720.700889605466,
                                                         "unit": "s"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 1902206.95987227,
+                                                        "unit": "%"
                                                     },
                                                     "peak area": {
                                                         "value": 1902.20695987227,
@@ -9601,13 +9619,13 @@
                                                         "PctAdjustedArea": 0.765679303835005,
                                                         "PeakCodes": "Q20 C30 C15 C17 C21 C31 C02 C06 C38 C13 ",
                                                         "ICH AdjArea": 0.0,
-                                                        "ICHThreshold": "",
                                                         "ImpurityType": "",
-                                                        "NG FinalResult": 0.0,
+                                                        "NG FinalResult": "0.0",
                                                         "NG RS AdjAreaPct": 0.0,
                                                         "AdjArea": 1902206.95987227,
                                                         "AdjAreaPct": 0.765679303835005,
-                                                        "FinalResult": 0.0
+                                                        "FinalResult": "0.0",
+                                                        "CorrectedArea~": 1902206.95987227
                                                     }
                                                 }
                                             ]
@@ -12649,7 +12667,7 @@
                         "ELN DocumentID": "eb37166la-2025-0000",
                         "ELN SectionGUID": "470f0ddd-2801-f5e1-3bdf-82550343b53d",
                         "InstrumentMethodName": "BACH2_SEC_2018",
-                        "InstrumentMethodId": 1004,
+                        "InstrumentMethodId": "1004",
                         "SSM Pattern": "BACH2_SEC_2018",
                         "Superseded": false,
                         "Node": "Ky1swempsnd1002",
@@ -12705,14 +12723,14 @@
                                     "PrepType": "",
                                     "SampleSetAcquiring": false,
                                     "SampleSetAltered": true,
-                                    "SampleSetCurrentId": 1002,
-                                    "OriginalSampleSetId": 1002,
-                                    "OriginalVialId": 1016,
+                                    "SampleSetCurrentId": "1002",
+                                    "OriginalSampleSetId": "1002",
+                                    "OriginalVialId": "1016",
                                     "Vial": "2",
                                     "lot number": "MRE-5APR24-3",
                                     "sample weight": 1.582,
                                     "Label": "U0103",
-                                    "VialId": 2751,
+                                    "VialId": "2751",
                                     "SampleType": "Unknown",
                                     "dilution factor setting": 1.0
                                 }
@@ -12730,23 +12748,20 @@
                                             "data_processing_method": "SEC LA510",
                                             "data_processing_time": "2020-03-16T08:50:01",
                                             "peak_width": 75.0,
-                                            "retention_time": null,
-                                            "retention_time_window_width": null,
-                                            "relative_response": null,
                                             "CalculationType": "Standards Used",
-                                            "CalibrationId": 1334,
+                                            "CalibrationId": "1334",
                                             "ProcessingLocked": false,
                                             "Manual": false,
                                             "ProcessedBy": "EB37166/PowerUser",
                                             "ProcessedAs": "Unknown",
-                                            "UseForPrecision": "No",
+                                            "UseForPrecision": false,
                                             "PrepType": "",
                                             "AnalysisMethod": "Empower HPLC",
                                             "IntegrationSystemPolicies": "",
-                                            "ProcessingMethodId": 1263,
+                                            "ProcessingMethodId": "1263",
                                             "ProcessedChannelType": "2D",
                                             "ProcessedChanDesc": "VWD: Signal A, 214 nm",
-                                            "PeakRatioReference": false,
+                                            "PeakRatioReference": "False",
                                             "Threshold": 5.0,
                                             "SourceSoftwareInfo": "Empower 3 Software Build 3471 SPs Installed: Feature Release 4 DB ID: 1609064383",
                                             "SampleValuesUsedinCalculations": "InjectionType = Unknown CalculationType = Standards Used Factor1Operator = * ICH_AdjAreaPctCutoff =  Factor2Operator = * Factor3Operator = * SampleConcentration = 1.582000 Factor1 = 1.000000 Factor2 = 1.000000 Volume = 5.00 SampleWeight = 1.582000 1.000000Dilution = 1.000000  Factor3 = 1.000000",
@@ -12758,10 +12773,10 @@
                                             "Factor1Operator": "*",
                                             "Factor2Operator": "*",
                                             "Factor3Operator": "*",
-                                            "ResultSetId": 1333,
+                                            "ResultSetId": "1333",
                                             "ResultSetName": "eb37166_2019_0078_SEC",
                                             "ResultSetDate": "2020-03-16T08:49:05",
-                                            "ResultId": 1347,
+                                            "ResultId": "1347",
                                             "ResultType": "LC",
                                             "ResultComments": "1",
                                             "ResultCodes": "C15 C17 C26 C06 C21 C30 C31 ",
@@ -12773,15 +12788,15 @@
                                             "TotalAdjArea": 244238797.692485,
                                             "AdjustedTotalArea": 244238797.692485,
                                             "TotalRS_AdjAreaPct": 0.9803707594770931,
-                                            "TotalRS_FinalResult": 0.0,
+                                            "TotalRS_FinalResult": "0.0",
                                             "Largest_NG_RS_AdjAreaPct": 0.757780843573275,
-                                            "LargestNamedRS_FinalResult": 0.0,
-                                            "LargestRS_FinalResult": 0.0,
-                                            "LargestUnnamedRS_FinalResult": 0.0,
+                                            "LargestNamedRS_FinalResult": "0.0",
+                                            "LargestRS_FinalResult": "0.0",
+                                            "LargestUnnamedRS_FinalResult": "0.0",
                                             "Total_ICH_AdjArea": 0.0,
                                             "PercentUnknowns": 0.9803707594770941,
                                             "NumberofImpurityPeaks": 0,
-                                            "Faults": false
+                                            "Faults": "False"
                                         },
                                         "peak list": {
                                             "peak": [
@@ -12807,6 +12822,10 @@
                                                     "baseline value at end of peak": {
                                                         "value": 1719.827289559962,
                                                         "unit": "s"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 332348.649927337,
+                                                        "unit": "%"
                                                     },
                                                     "peak area": {
                                                         "value": 332.348649927337,
@@ -12840,13 +12859,13 @@
                                                         "PctAdjustedArea": 0.136071257145722,
                                                         "PeakCodes": "S05 S07 S08 S06 Q20 C30 C15 C17 C21 C31 C02 C06 C38 C13 ",
                                                         "ICH AdjArea": 0.0,
-                                                        "ICHThreshold": "",
                                                         "ImpurityType": "",
-                                                        "NG FinalResult": 0.0,
+                                                        "NG FinalResult": "0.0",
                                                         "NG RS AdjAreaPct": 0.0,
                                                         "AdjArea": 332348.649927337,
                                                         "AdjAreaPct": 0.136071257145722,
-                                                        "FinalResult": 0.0
+                                                        "FinalResult": "0.0",
+                                                        "CorrectedArea~": 332348.649927337
                                                     }
                                                 },
                                                 {
@@ -12871,6 +12890,10 @@
                                                     "baseline value at end of peak": {
                                                         "value": 1719.827289559962,
                                                         "unit": "s"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 7703979.83333235,
+                                                        "unit": "%"
                                                     },
                                                     "peak area": {
                                                         "value": 7703.97983333235,
@@ -12904,13 +12927,13 @@
                                                         "PctAdjustedArea": 3.15418829345632,
                                                         "PeakCodes": "S05 S06 Q20 C30 C15 C17 C21 C31 C02 C06 C38 C13 ",
                                                         "ICH AdjArea": 0.0,
-                                                        "ICHThreshold": "",
                                                         "ImpurityType": "",
-                                                        "NG FinalResult": 0.0,
+                                                        "NG FinalResult": "0.0",
                                                         "NG RS AdjAreaPct": 0.0,
                                                         "AdjArea": 7703979.83333235,
                                                         "AdjAreaPct": 3.15418829345632,
-                                                        "FinalResult": 0.0
+                                                        "FinalResult": "0.0",
+                                                        "CorrectedArea~": 7703979.83333235
                                                     }
                                                 },
                                                 {
@@ -12935,6 +12958,10 @@
                                                     "baseline value at end of peak": {
                                                         "value": 1719.827289559962,
                                                         "unit": "s"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 234350714.703667,
+                                                        "unit": "%"
                                                     },
                                                     "peak area": {
                                                         "value": 234350.714703667,
@@ -12968,13 +12995,13 @@
                                                         "PctAdjustedArea": 95.94862614816779,
                                                         "PeakCodes": "Q20 C30 C15 C17 C21 C31 C02 C06 C38 C13 ",
                                                         "ICH AdjArea": 0.0,
-                                                        "ICHThreshold": "",
                                                         "ImpurityType": "",
-                                                        "NG FinalResult": 0.0,
+                                                        "NG FinalResult": "0.0",
                                                         "NG RS AdjAreaPct": 0.0,
                                                         "AdjArea": 234350714.703667,
                                                         "AdjAreaPct": 95.94862614816779,
-                                                        "FinalResult": 0.0
+                                                        "FinalResult": "0.0",
+                                                        "CorrectedArea~": 234350714.703667
                                                     }
                                                 },
                                                 {
@@ -12999,6 +13026,10 @@
                                                     "baseline value at end of peak": {
                                                         "value": 1719.827289559962,
                                                         "unit": "s"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 1858991.5001912,
+                                                        "unit": "%"
                                                     },
                                                     "peak area": {
                                                         "value": 1858.9915001912,
@@ -13032,13 +13063,13 @@
                                                         "PctAdjustedArea": 0.761114301230147,
                                                         "PeakCodes": "Q20 C30 C15 C17 C21 C31 C02 C06 C38 C13 ",
                                                         "ICH AdjArea": 0.0,
-                                                        "ICHThreshold": "",
                                                         "ImpurityType": "",
-                                                        "NG FinalResult": 0.0,
+                                                        "NG FinalResult": "0.0",
                                                         "NG RS AdjAreaPct": 0.0,
                                                         "AdjArea": 1858991.5001912,
                                                         "AdjAreaPct": 0.761114301230147,
-                                                        "FinalResult": 0.0
+                                                        "FinalResult": "0.0",
+                                                        "CorrectedArea~": 1858991.5001912
                                                     }
                                                 }
                                             ]
@@ -16152,7 +16183,7 @@
                         "ELN DocumentID": "eb37166la-2024-0006",
                         "ELN SectionGUID": "ae61b7d0-2801-f5e1-787c-8e658b750a51",
                         "InstrumentMethodName": "BACH2_SEC_2018",
-                        "InstrumentMethodId": 1004,
+                        "InstrumentMethodId": "1004",
                         "SSM Pattern": "BACH2_SEC_2018",
                         "Superseded": false,
                         "Node": "Ky1swempsnd1002",
@@ -16208,14 +16239,14 @@
                                     "PrepType": "",
                                     "SampleSetAcquiring": false,
                                     "SampleSetAltered": true,
-                                    "SampleSetCurrentId": 1002,
-                                    "OriginalSampleSetId": 1002,
-                                    "OriginalVialId": 1019,
+                                    "SampleSetCurrentId": "1002",
+                                    "OriginalSampleSetId": "1002",
+                                    "OriginalVialId": "1019",
                                     "Vial": "2",
                                     "lot number": "MRE-26Jan22-1",
                                     "sample weight": 1.5,
                                     "Label": "U0104",
-                                    "VialId": 2132,
+                                    "VialId": "2132",
                                     "SampleType": "Unknown",
                                     "dilution factor setting": 1.0
                                 }
@@ -16233,23 +16264,20 @@
                                             "data_processing_method": "SEC LA510",
                                             "data_processing_time": "2020-03-16T08:50:14",
                                             "peak_width": 75.0,
-                                            "retention_time": null,
-                                            "retention_time_window_width": null,
-                                            "relative_response": null,
                                             "CalculationType": "Standards Used",
-                                            "CalibrationId": 1334,
+                                            "CalibrationId": "1334",
                                             "ProcessingLocked": false,
                                             "Manual": false,
                                             "ProcessedBy": "EB37166/PowerUser",
                                             "ProcessedAs": "Unknown",
-                                            "UseForPrecision": "No",
+                                            "UseForPrecision": false,
                                             "PrepType": "",
                                             "AnalysisMethod": "Empower HPLC",
                                             "IntegrationSystemPolicies": "",
-                                            "ProcessingMethodId": 1263,
+                                            "ProcessingMethodId": "1263",
                                             "ProcessedChannelType": "2D",
                                             "ProcessedChanDesc": "VWD: Signal A, 214 nm",
-                                            "PeakRatioReference": false,
+                                            "PeakRatioReference": "False",
                                             "Threshold": 5.0,
                                             "SourceSoftwareInfo": "Empower 3 Software Build 3471 SPs Installed: Feature Release 4 DB ID: 1609064383",
                                             "SampleValuesUsedinCalculations": "InjectionType = Unknown CalculationType = Standards Used Factor1Operator = * ICH_AdjAreaPctCutoff =  Factor2Operator = * Factor3Operator = * SampleConcentration = 1.500000 Factor1 = 1.000000 Factor2 = 1.000000 Volume = 5.00 SampleWeight = 1.500000 1.000000Dilution = 1.000000  Factor3 = 1.000000",
@@ -16261,10 +16289,10 @@
                                             "Factor1Operator": "*",
                                             "Factor2Operator": "*",
                                             "Factor3Operator": "*",
-                                            "ResultSetId": 1333,
+                                            "ResultSetId": "1333",
                                             "ResultSetName": "eb37166_2019_0078_SEC",
                                             "ResultSetDate": "2020-03-16T08:49:05",
-                                            "ResultId": 1348,
+                                            "ResultId": "1348",
                                             "ResultType": "LC",
                                             "ResultComments": "1",
                                             "ResultCodes": "C15 C17 C26 C06 C21 C30 C31 ",
@@ -16276,15 +16304,15 @@
                                             "TotalAdjArea": 248234941.414764,
                                             "AdjustedTotalArea": 248234941.414764,
                                             "TotalRS_AdjAreaPct": 0.955832559637585,
-                                            "TotalRS_FinalResult": 0.0,
+                                            "TotalRS_FinalResult": "0.0",
                                             "Largest_NG_RS_AdjAreaPct": 0.744482584322056,
-                                            "LargestNamedRS_FinalResult": 0.0,
-                                            "LargestRS_FinalResult": 0.0,
-                                            "LargestUnnamedRS_FinalResult": 0.0,
+                                            "LargestNamedRS_FinalResult": "0.0",
+                                            "LargestRS_FinalResult": "0.0",
+                                            "LargestUnnamedRS_FinalResult": "0.0",
                                             "Total_ICH_AdjArea": 0.0,
                                             "PercentUnknowns": 0.955832559637585,
                                             "NumberofImpurityPeaks": 0,
-                                            "Faults": false
+                                            "Faults": "False"
                                         },
                                         "peak list": {
                                             "peak": [
@@ -16310,6 +16338,10 @@
                                                     "baseline value at end of peak": {
                                                         "value": 1729.4368900604638,
                                                         "unit": "s"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 316666.10353219806,
+                                                        "unit": "%"
                                                     },
                                                     "peak area": {
                                                         "value": 316.66610353219806,
@@ -16343,13 +16375,13 @@
                                                         "PctAdjustedArea": 0.12754015292073298,
                                                         "PeakCodes": "S05 S07 S08 S06 Q20 C30 C15 C17 C21 C31 C02 C06 C38 C13 ",
                                                         "ICH AdjArea": 0.0,
-                                                        "ICHThreshold": "",
                                                         "ImpurityType": "",
-                                                        "NG FinalResult": 0.0,
+                                                        "NG FinalResult": "0.0",
                                                         "NG RS AdjAreaPct": 0.0,
                                                         "AdjArea": 316666.10353219806,
                                                         "AdjAreaPct": 0.12754015292073298,
-                                                        "FinalResult": 0.0
+                                                        "FinalResult": "0.0",
+                                                        "CorrectedArea~": 316666.10353219806
                                                     }
                                                 },
                                                 {
@@ -16374,6 +16406,10 @@
                                                     "baseline value at end of peak": {
                                                         "value": 1729.4368900604638,
                                                         "unit": "s"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 7586164.32706535,
+                                                        "unit": "%"
                                                     },
                                                     "peak area": {
                                                         "value": 7586.164327065349,
@@ -16407,13 +16443,13 @@
                                                         "PctAdjustedArea": 3.05539667038391,
                                                         "PeakCodes": "S05 S06 Q20 C30 C15 C17 C21 C31 C02 C06 C38 C13 ",
                                                         "ICH AdjArea": 0.0,
-                                                        "ICHThreshold": "",
                                                         "ImpurityType": "",
-                                                        "NG FinalResult": 0.0,
+                                                        "NG FinalResult": "0.0",
                                                         "NG RS AdjAreaPct": 0.0,
                                                         "AdjArea": 7586164.32706535,
                                                         "AdjAreaPct": 3.05539667038391,
-                                                        "FinalResult": 0.0
+                                                        "FinalResult": "0.0",
+                                                        "CorrectedArea~": 7586164.32706535
                                                     }
                                                 },
                                                 {
@@ -16438,6 +16474,10 @@
                                                     "baseline value at end of peak": {
                                                         "value": 1729.4368900604638,
                                                         "unit": "s"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 238507446.438233,
+                                                        "unit": "%"
                                                     },
                                                     "peak area": {
                                                         "value": 238507.446438233,
@@ -16471,13 +16511,13 @@
                                                         "PctAdjustedArea": 96.0610430107902,
                                                         "PeakCodes": "Q20 C30 C15 C17 C21 C31 C02 C06 C38 C13 ",
                                                         "ICH AdjArea": 0.0,
-                                                        "ICHThreshold": "",
                                                         "ImpurityType": "",
-                                                        "NG FinalResult": 0.0,
+                                                        "NG FinalResult": "0.0",
                                                         "NG RS AdjAreaPct": 0.0,
                                                         "AdjArea": 238507446.438233,
                                                         "AdjAreaPct": 96.0610430107902,
-                                                        "FinalResult": 0.0
+                                                        "FinalResult": "0.0",
+                                                        "CorrectedArea~": 238507446.438233
                                                     }
                                                 },
                                                 {
@@ -16502,6 +16542,10 @@
                                                     "baseline value at end of peak": {
                                                         "value": 1729.4368900604638,
                                                         "unit": "s"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 1877102.65862515,
+                                                        "unit": "%"
                                                     },
                                                     "peak area": {
                                                         "value": 1877.10265862515,
@@ -16535,13 +16579,13 @@
                                                         "PctAdjustedArea": 0.756020165905201,
                                                         "PeakCodes": "Q20 C30 C15 C17 C21 C31 C02 C06 C38 C13 ",
                                                         "ICH AdjArea": 0.0,
-                                                        "ICHThreshold": "",
                                                         "ImpurityType": "",
-                                                        "NG FinalResult": 0.0,
+                                                        "NG FinalResult": "0.0",
                                                         "NG RS AdjAreaPct": 0.0,
                                                         "AdjArea": 1877102.65862515,
                                                         "AdjAreaPct": 0.756020165905201,
-                                                        "FinalResult": 0.0
+                                                        "FinalResult": "0.0",
+                                                        "CorrectedArea~": 1877102.65862515
                                                     }
                                                 }
                                             ]
@@ -19599,7 +19643,7 @@
                         "ELN DocumentID": "eb37166la-2022-0013",
                         "ELN SectionGUID": "b0a0ddba-2801-f5e1-7c8b-53691b0479e0",
                         "InstrumentMethodName": "BACH2_SEC_2018",
-                        "InstrumentMethodId": 1004,
+                        "InstrumentMethodId": "1004",
                         "SSM Pattern": "P80378",
                         "Superseded": false,
                         "Node": "Ky1swempsnd1002",
@@ -19655,14 +19699,14 @@
                                     "PrepType": "",
                                     "SampleSetAcquiring": false,
                                     "SampleSetAltered": true,
-                                    "SampleSetCurrentId": 1002,
-                                    "OriginalSampleSetId": 1002,
-                                    "OriginalVialId": 1022,
+                                    "SampleSetCurrentId": "1002",
+                                    "OriginalSampleSetId": "1002",
+                                    "OriginalVialId": "1022",
                                     "Vial": "2",
                                     "lot number": "MRE-26Jan22-2",
                                     "sample weight": 1.477,
                                     "Label": "U0105",
-                                    "VialId": 2133,
+                                    "VialId": "2133",
                                     "SampleType": "Unknown",
                                     "dilution factor setting": 1.0
                                 }
@@ -19680,23 +19724,20 @@
                                             "data_processing_method": "SEC LA510",
                                             "data_processing_time": "2020-03-16T08:50:26",
                                             "peak_width": 75.0,
-                                            "retention_time": null,
-                                            "retention_time_window_width": null,
-                                            "relative_response": null,
                                             "CalculationType": "Standards Used",
-                                            "CalibrationId": 1334,
+                                            "CalibrationId": "1334",
                                             "ProcessingLocked": false,
                                             "Manual": false,
                                             "ProcessedBy": "EB37166/PowerUser",
                                             "ProcessedAs": "Unknown",
-                                            "UseForPrecision": "No",
+                                            "UseForPrecision": false,
                                             "PrepType": "",
                                             "AnalysisMethod": "Empower HPLC",
                                             "IntegrationSystemPolicies": "",
-                                            "ProcessingMethodId": 1263,
+                                            "ProcessingMethodId": "1263",
                                             "ProcessedChannelType": "2D",
                                             "ProcessedChanDesc": "VWD: Signal A, 214 nm",
-                                            "PeakRatioReference": false,
+                                            "PeakRatioReference": "False",
                                             "Threshold": 5.0,
                                             "SourceSoftwareInfo": "Empower 3 Software Build 3471 SPs Installed: Feature Release 4 DB ID: 1609064383",
                                             "SampleValuesUsedinCalculations": "InjectionType = Unknown CalculationType = Standards Used Factor1Operator = * ICH_AdjAreaPctCutoff =  Factor2Operator = * Factor3Operator = * SampleConcentration = 1.477000 Factor1 = 1.000000 Factor2 = 1.000000 Volume = 5.00 SampleWeight = 1.477000 1.000000Dilution = 1.000000  Factor3 = 1.000000",
@@ -19708,10 +19749,10 @@
                                             "Factor1Operator": "*",
                                             "Factor2Operator": "*",
                                             "Factor3Operator": "*",
-                                            "ResultSetId": 1333,
+                                            "ResultSetId": "1333",
                                             "ResultSetName": "eb37166_2019_0078_SEC",
                                             "ResultSetDate": "2020-03-16T08:49:05",
-                                            "ResultId": 1349,
+                                            "ResultId": "1349",
                                             "ResultType": "LC",
                                             "ResultComments": "1",
                                             "ResultCodes": "C15 C17 C26 C06 C21 C30 C31 ",
@@ -19723,15 +19764,15 @@
                                             "TotalAdjArea": 251002420.138995,
                                             "AdjustedTotalArea": 251002420.138995,
                                             "TotalRS_AdjAreaPct": 0.96364761040673,
-                                            "TotalRS_FinalResult": 0.0,
+                                            "TotalRS_FinalResult": "0.0",
                                             "Largest_NG_RS_AdjAreaPct": 0.755848136381389,
-                                            "LargestNamedRS_FinalResult": 0.0,
-                                            "LargestRS_FinalResult": 0.0,
-                                            "LargestUnnamedRS_FinalResult": 0.0,
+                                            "LargestNamedRS_FinalResult": "0.0",
+                                            "LargestRS_FinalResult": "0.0",
+                                            "LargestUnnamedRS_FinalResult": "0.0",
                                             "Total_ICH_AdjArea": 0.0,
                                             "PercentUnknowns": 0.96364761040673,
                                             "NumberofImpurityPeaks": 0,
-                                            "Faults": false
+                                            "Faults": "False"
                                         },
                                         "peak list": {
                                             "peak": [
@@ -19757,6 +19798,10 @@
                                                     "baseline value at end of peak": {
                                                         "value": 1725.360089848128,
                                                         "unit": "s"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 317782.17270594096,
+                                                        "unit": "%"
                                                     },
                                                     "peak area": {
                                                         "value": 317.782172705941,
@@ -19790,13 +19835,13 @@
                                                         "PctAdjustedArea": 0.126601832346249,
                                                         "PeakCodes": "S05 S07 S08 S06 Q20 C30 C15 C17 C21 C31 C02 C06 C38 C13 ",
                                                         "ICH AdjArea": 0.0,
-                                                        "ICHThreshold": "",
                                                         "ImpurityType": "",
-                                                        "NG FinalResult": 0.0,
+                                                        "NG FinalResult": "0.0",
                                                         "NG RS AdjAreaPct": 0.0,
                                                         "AdjArea": 317782.17270594096,
                                                         "AdjAreaPct": 0.126601832346249,
-                                                        "FinalResult": 0.0
+                                                        "FinalResult": "0.0",
+                                                        "CorrectedArea~": 317782.17270594096
                                                     }
                                                 },
                                                 {
@@ -19821,6 +19866,10 @@
                                                     "baseline value at end of peak": {
                                                         "value": 1725.360089848128,
                                                         "unit": "s"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 7508289.60388515,
+                                                        "unit": "%"
                                                     },
                                                     "peak area": {
                                                         "value": 7508.2896038851495,
@@ -19854,13 +19903,13 @@
                                                         "PctAdjustedArea": 2.99124149584613,
                                                         "PeakCodes": "S05 S06 Q20 C30 C15 C17 C21 C31 C02 C06 C38 C13 ",
                                                         "ICH AdjArea": 0.0,
-                                                        "ICHThreshold": "",
                                                         "ImpurityType": "",
-                                                        "NG FinalResult": 0.0,
+                                                        "NG FinalResult": "0.0",
                                                         "NG RS AdjAreaPct": 0.0,
                                                         "AdjArea": 7508289.60388515,
                                                         "AdjAreaPct": 2.99124149584613,
-                                                        "FinalResult": 0.0
+                                                        "FinalResult": "0.0",
+                                                        "CorrectedArea~": 7508289.60388515
                                                     }
                                                 },
                                                 {
@@ -19885,6 +19934,10 @@
                                                     "baseline value at end of peak": {
                                                         "value": 1725.360089848128,
                                                         "unit": "s"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 241273948.312981,
+                                                        "unit": "%"
                                                     },
                                                     "peak area": {
                                                         "value": 241273.948312981,
@@ -19918,13 +19971,13 @@
                                                         "PctAdjustedArea": 96.1215781670139,
                                                         "PeakCodes": "Q20 C30 C15 C17 C21 C31 C02 C06 C38 C13 ",
                                                         "ICH AdjArea": 0.0,
-                                                        "ICHThreshold": "",
                                                         "ImpurityType": "",
-                                                        "NG FinalResult": 0.0,
+                                                        "NG FinalResult": "0.0",
                                                         "NG RS AdjAreaPct": 0.0,
                                                         "AdjArea": 241273948.312981,
                                                         "AdjAreaPct": 96.1215781670139,
-                                                        "FinalResult": 0.0
+                                                        "FinalResult": "0.0",
+                                                        "CorrectedArea~": 241273948.312981
                                                     }
                                                 },
                                                 {
@@ -19949,6 +20002,10 @@
                                                     "baseline value at end of peak": {
                                                         "value": 1725.360089848128,
                                                         "unit": "s"
+                                                    },
+                                                    "relative corrected peak area": {
+                                                        "value": 1909121.57658003,
+                                                        "unit": "%"
                                                     },
                                                     "peak area": {
                                                         "value": 1909.12157658003,
@@ -19982,13 +20039,13 @@
                                                         "PctAdjustedArea": 0.760578504793745,
                                                         "PeakCodes": "Q20 C30 C15 C17 C21 C31 C02 C06 C38 C13 ",
                                                         "ICH AdjArea": 0.0,
-                                                        "ICHThreshold": "",
                                                         "ImpurityType": "",
-                                                        "NG FinalResult": 0.0,
+                                                        "NG FinalResult": "0.0",
                                                         "NG RS AdjAreaPct": 0.0,
                                                         "AdjArea": 1909121.57658003,
                                                         "AdjAreaPct": 0.760578504793745,
-                                                        "FinalResult": 0.0
+                                                        "FinalResult": "0.0",
+                                                        "CorrectedArea~": 1909121.57658003
                                                     }
                                                 }
                                             ]
@@ -22964,7 +23021,7 @@
                         "ELN DocumentID": "eb37166la-2022-0013",
                         "ELN SectionGUID": "b0a0ddba-2801-f5e1-7c8b-53691b0479e0",
                         "InstrumentMethodName": "BACH2_SEC_2018",
-                        "InstrumentMethodId": 1004,
+                        "InstrumentMethodId": "1004",
                         "SSM Pattern": "P80378",
                         "Superseded": false,
                         "Node": "Ky1swempsnd1002",
@@ -23020,14 +23077,14 @@
                                     "PrepType": "",
                                     "SampleSetAcquiring": false,
                                     "SampleSetAltered": true,
-                                    "SampleSetCurrentId": 1002,
-                                    "OriginalSampleSetId": 1002,
-                                    "OriginalVialId": 1025,
+                                    "SampleSetCurrentId": "1002",
+                                    "OriginalSampleSetId": "1002",
+                                    "OriginalVialId": "1025",
                                     "Vial": "2",
                                     "lot number": "MRE06MAY19-A6",
                                     "sample weight": 1.4220000000000002,
                                     "Label": "U0106",
-                                    "VialId": 1719,
+                                    "VialId": "1719",
                                     "SampleType": "Unknown",
                                     "dilution factor setting": 1.0
                                 }
@@ -23045,23 +23102,20 @@
                                             "data_processing_method": "SEC LA510",
                                             "data_processing_time": "2020-03-16T08:50:42",
                                             "peak_width": 75.0,
-                                            "retention_time": null,
-                                            "retention_time_window_width": null,
-                                            "relative_response": null,
                                             "CalculationType": "Standards Used",
-                                            "CalibrationId": 1334,
+                                            "CalibrationId": "1334",
                                             "ProcessingLocked": false,
                                             "Manual": false,
                                             "ProcessedBy": "EB37166/PowerUser",
                                             "ProcessedAs": "Unknown",
-                                            "UseForPrecision": "No",
+                                            "UseForPrecision": false,
                                             "PrepType": "",
                                             "AnalysisMethod": "Empower HPLC",
                                             "IntegrationSystemPolicies": "",
-                                            "ProcessingMethodId": 1263,
+                                            "ProcessingMethodId": "1263",
                                             "ProcessedChannelType": "2D",
                                             "ProcessedChanDesc": "VWD: Signal A, 214 nm",
-                                            "PeakRatioReference": false,
+                                            "PeakRatioReference": "False",
                                             "Threshold": 5.0,
                                             "SourceSoftwareInfo": "Empower 3 Software Build 3471 SPs Installed: Feature Release 4 DB ID: 1609064383",
                                             "SampleValuesUsedinCalculations": "InjectionType = Unknown CalculationType = Standards Used Factor1Operator = * ICH_AdjAreaPctCutoff =  Factor2Operator = * Factor3Operator = * SampleConcentration = 1.422000 Factor1 = 1.000000 Factor2 = 1.000000 Volume = 5.00 SampleWeight = 1.422000 1.0000001.000000Dilution = 1.000000  Factor3 = 1.000000",
@@ -23073,10 +23127,10 @@
                                             "Factor1Operator": "*",
                                             "Factor2Operator": "*",
                                             "Factor3Operator": "*",
-                                            "ResultSetId": 1333,
+                                            "ResultSetId": "1333",
                                             "ResultSetName": "eb37166_2019_0078_SEC",
                                             "ResultSetDate": "2020-03-16T08:49:05",
-                                            "ResultId": 1350,
+                                            "ResultId": "1350",
                                             "ResultType": "LC",
                                             "ResultComments": "1",
                                             "ResultCodes": "C15 C17 C26 C06 C21 C30 C31 ",
@@ -23088,15 +23142,15 @@
                                             "TotalAdjArea": 247854672.351618,
                                             "AdjustedTotalArea": 247854672.351618,
                                             "TotalRS_AdjAreaPct": 0.9860912475073199,
-                                            "TotalRS_FinalResult": 0.0,
+                                            "TotalRS_FinalResult": "0.0",
                                             "Largest_NG_RS_AdjAreaPct": 0.77591665674809,
-                                            "LargestNamedRS_FinalResult": 0.0,
-                                            "LargestRS_FinalResult": 0.0,
-                                            "LargestUnnamedRS_FinalResult": 0.0,
+                                            "LargestNamedRS_FinalResult": "0.0",
+                                            "LargestRS_FinalResult": "0.0",
+                                            "LargestUnnamedRS_FinalResult": "0.0",
                                             "Total_ICH_AdjArea": 0.0,
                                             "PercentUnknowns": 0.9860912475073199,
                                             "NumberofImpurityPeaks": 0,
-                                            "Faults": false
+                                            "Faults": "False"
                                         }
                                     }
                                 ]
@@ -26134,7 +26188,7 @@
                         "ELN DocumentID": "eb37166la-2019-0078",
                         "ELN SectionGUID": "8e2daa1f-2801-f5a4-39a2-f22479f67542",
                         "InstrumentMethodName": "BACH2_SEC_2018",
-                        "InstrumentMethodId": 1004,
+                        "InstrumentMethodId": "1004",
                         "SSM Pattern": "BACH2_SEC_2018",
                         "Superseded": false,
                         "Node": "Ky1swempsnd1002",
@@ -26178,7 +26232,7 @@
                 "processing methods locked": false,
                 "processing methods modified by": "System",
                 "processing methods name": "SEC LA510",
-                "processing methods version": 2
+                "processing methods version": "2"
             }
         }
     }
