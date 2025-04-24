@@ -4,6 +4,9 @@ import re
 import pandas as pd
 import pytest
 
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
+    MeasurementGroup,
+)
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.unchained_labs_lunatic.constants import (
@@ -12,13 +15,15 @@ from allotropy.parsers.unchained_labs_lunatic.constants import (
     NO_DATE_OR_TIME_ERROR_MSG,
     NO_MEASUREMENT_IN_PLATE_ERROR_MSG,
 )
+from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_calcdocs import (
+    create_calculated_data,
+)
 from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_reader import (
     UnchainedLabsLunaticReader,
 )
 from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_structure import (
     _create_measurement,
     _create_measurement_group,
-    _get_calculated_data,
     create_measurement_groups,
     create_metadata,
 )
@@ -99,7 +104,13 @@ def test__get_calculated_data_from_measurement_for_unknown_wavelength() -> None:
         SeriesData(pd.Series(well_plate_data)), header, "a240"
     )
 
-    assert not _get_calculated_data(measurement)
+    measurement_group = MeasurementGroup(
+        measurements=[measurement],
+        plate_well_count=1,
+        measurement_time="",
+    )
+
+    assert not create_calculated_data([measurement_group])
 
 
 def test__get_calculated_data_from_measurement_for_A260() -> None:  # noqa: N802
@@ -119,7 +130,13 @@ def test__get_calculated_data_from_measurement_for_A260() -> None:  # noqa: N802
         SeriesData(pd.Series(well_plate_data)), header, wavelength
     )
 
-    calculated_data = _get_calculated_data(measurement)
+    measurement_group = MeasurementGroup(
+        measurements=[measurement],
+        plate_well_count=1,
+        measurement_time="",
+    )
+
+    calculated_data = create_calculated_data([measurement_group])
     calculated_data_dict = {data.name: data for data in (calculated_data or [])}
 
     for item in CALCULATED_DATA_LOOKUP[wavelength]:
