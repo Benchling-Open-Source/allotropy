@@ -56,39 +56,6 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "data processing document": {
-                                            "integration_algorithm_type": "ApexTrack",
-                                            "data_processing_method": "LC PQ ApexTrack",
-                                            "data_processing_time": "2005-05-12T08:46:01",
-                                            "peak_width": 8.159155,
-                                            "CalibrationId": "2309",
-                                            "ProcessingLocked": false,
-                                            "Manual": false,
-                                            "ProcessedBy": "System/Administrator",
-                                            "ProcessedAs": "Standard",
-                                            "PrepType": "",
-                                            "IntegrationSystemPolicies": "",
-                                            "ProcessingMethodId": "2307",
-                                            "ProcessedChannelType": "2D",
-                                            "ProcessedChanDesc": "254nm",
-                                            "Threshold": 100.0,
-                                            "SourceSoftwareInfo": "Empower Software Build 2154  DB ID: 685048692",
-                                            "SampleValuesUsedinCalculations": " Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000    Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000     Injection Volume = 20.00 SampleWeight = 1.00000 Dilution = 1.00000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000    Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000     Acetone Value = 1875.000000 Acetophenone Value = 5.000000 Propiophenone Value = 5.000000 Butyrophenone Value = 5.000000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000    Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000     Injection Volume = 20.00 SampleWeight = 1.00000 Dilution = 1.00000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000    Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000     Acetone Value = 1875.000000 Acetophenone Value = 5.000000 Propiophenone Value = 5.000000 Butyrophenone Value = 5.000000   ",
-                                            "NumOfResultsStored": 23,
-                                            "NumOfProcessOnlySampleSets": 0,
-                                            "ResultSetId": "2308",
-                                            "ResultSetName": "PQ Sample Set",
-                                            "ResultSetDate": "2005-05-12T08:46:01",
-                                            "ResultId": "2315",
-                                            "ResultType": "LC",
-                                            "ResultNum": 23,
-                                            "ResultSampleSetMethod": "!QuickSet",
-                                            "ResultSource": "Processed a Sample Set using Processing Method with clear calibration",
-                                            "ResultSuperseded": false,
-                                            "TotalArea": 1410289.25,
-                                            "PercentUnknowns": 0.0,
-                                            "Faults": "False"
-                                        },
                                         "peak list": {
                                             "peak": [
                                                 {
@@ -348,6 +315,39 @@
                                                     }
                                                 }
                                             ]
+                                        },
+                                        "custom information document": {
+                                            "integration algorithm type": "ApexTrack",
+                                            "data processing method": "LC PQ ApexTrack",
+                                            "data processing time": "2005-05-12T08:46:01",
+                                            "peak width": 8.159155,
+                                            "CalibrationId": "2309",
+                                            "ProcessingLocked": false,
+                                            "Manual": false,
+                                            "ProcessedBy": "System/Administrator",
+                                            "ProcessedAs": "Standard",
+                                            "PrepType": "",
+                                            "IntegrationSystemPolicies": "",
+                                            "ProcessingMethodId": "2307",
+                                            "ProcessedChannelType": "2D",
+                                            "ProcessedChanDesc": "254nm",
+                                            "Threshold": 100.0,
+                                            "SourceSoftwareInfo": "Empower Software Build 2154  DB ID: 685048692",
+                                            "SampleValuesUsedinCalculations": " Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000    Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000     Injection Volume = 20.00 SampleWeight = 1.00000 Dilution = 1.00000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000    Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000     Acetone Value = 1875.000000 Acetophenone Value = 5.000000 Propiophenone Value = 5.000000 Butyrophenone Value = 5.000000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000    Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000     Injection Volume = 20.00 SampleWeight = 1.00000 Dilution = 1.00000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000    Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000     Acetone Value = 1875.000000 Acetophenone Value = 5.000000 Propiophenone Value = 5.000000 Butyrophenone Value = 5.000000   ",
+                                            "NumOfResultsStored": 23,
+                                            "NumOfProcessOnlySampleSets": 0,
+                                            "ResultSetId": "2308",
+                                            "ResultSetName": "PQ Sample Set",
+                                            "ResultSetDate": "2005-05-12T08:46:01",
+                                            "ResultId": "2315",
+                                            "ResultType": "LC",
+                                            "ResultNum": 23,
+                                            "ResultSampleSetMethod": "!QuickSet",
+                                            "ResultSource": "Processed a Sample Set using Processing Method with clear calibration",
+                                            "ResultSuperseded": false,
+                                            "TotalArea": 1410289.25,
+                                            "PercentUnknowns": 0.0,
+                                            "Faults": "False"
                                         }
                                     }
                                 ]
@@ -464,39 +464,6 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "data processing document": {
-                                            "integration_algorithm_type": "ApexTrack",
-                                            "data_processing_method": "LC PQ ApexTrack",
-                                            "data_processing_time": "2005-05-12T08:46:01",
-                                            "peak_width": 8.159155,
-                                            "CalibrationId": "2309",
-                                            "ProcessingLocked": false,
-                                            "Manual": false,
-                                            "ProcessedBy": "System/Administrator",
-                                            "ProcessedAs": "Standard",
-                                            "PrepType": "",
-                                            "IntegrationSystemPolicies": "",
-                                            "ProcessingMethodId": "2307",
-                                            "ProcessedChannelType": "2D",
-                                            "ProcessedChanDesc": "254nm",
-                                            "Threshold": 100.0,
-                                            "SourceSoftwareInfo": "Empower Software Build 2154  DB ID: 685048692",
-                                            "SampleValuesUsedinCalculations": "Injection Volume = 20.00 Acetone Value = 3750.000000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 10.000000 Propiophenone Value = 10.000000 Butyrophenone Value = 10.000000 ",
-                                            "NumOfResultsStored": 23,
-                                            "NumOfProcessOnlySampleSets": 0,
-                                            "ResultSetId": "2308",
-                                            "ResultSetName": "PQ Sample Set",
-                                            "ResultSetDate": "2005-05-12T08:46:01",
-                                            "ResultId": "2316",
-                                            "ResultType": "LC",
-                                            "ResultNum": 23,
-                                            "ResultSampleSetMethod": "!QuickSet",
-                                            "ResultSource": "Processed a Sample Set using Processing Method with clear calibration",
-                                            "ResultSuperseded": false,
-                                            "TotalArea": 2793884.25,
-                                            "PercentUnknowns": 0.0,
-                                            "Faults": "False"
-                                        },
                                         "peak list": {
                                             "peak": [
                                                 {
@@ -756,6 +723,39 @@
                                                     }
                                                 }
                                             ]
+                                        },
+                                        "custom information document": {
+                                            "integration algorithm type": "ApexTrack",
+                                            "data processing method": "LC PQ ApexTrack",
+                                            "data processing time": "2005-05-12T08:46:01",
+                                            "peak width": 8.159155,
+                                            "CalibrationId": "2309",
+                                            "ProcessingLocked": false,
+                                            "Manual": false,
+                                            "ProcessedBy": "System/Administrator",
+                                            "ProcessedAs": "Standard",
+                                            "PrepType": "",
+                                            "IntegrationSystemPolicies": "",
+                                            "ProcessingMethodId": "2307",
+                                            "ProcessedChannelType": "2D",
+                                            "ProcessedChanDesc": "254nm",
+                                            "Threshold": 100.0,
+                                            "SourceSoftwareInfo": "Empower Software Build 2154  DB ID: 685048692",
+                                            "SampleValuesUsedinCalculations": "Injection Volume = 20.00 Acetone Value = 3750.000000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 10.000000 Propiophenone Value = 10.000000 Butyrophenone Value = 10.000000 ",
+                                            "NumOfResultsStored": 23,
+                                            "NumOfProcessOnlySampleSets": 0,
+                                            "ResultSetId": "2308",
+                                            "ResultSetName": "PQ Sample Set",
+                                            "ResultSetDate": "2005-05-12T08:46:01",
+                                            "ResultId": "2316",
+                                            "ResultType": "LC",
+                                            "ResultNum": 23,
+                                            "ResultSampleSetMethod": "!QuickSet",
+                                            "ResultSource": "Processed a Sample Set using Processing Method with clear calibration",
+                                            "ResultSuperseded": false,
+                                            "TotalArea": 2793884.25,
+                                            "PercentUnknowns": 0.0,
+                                            "Faults": "False"
                                         }
                                     }
                                 ]

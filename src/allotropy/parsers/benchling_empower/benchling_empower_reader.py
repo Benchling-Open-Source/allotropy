@@ -32,7 +32,6 @@ class BenchlingEmpowerReader:
 
         self.metadata_fields = {**fields, **metadata}
 
-        # Get methods
         self.instrument_methods = values.data.get("instrument_methods", [])
         self.processing_methods = values.data.get("processing_methods", [])
 

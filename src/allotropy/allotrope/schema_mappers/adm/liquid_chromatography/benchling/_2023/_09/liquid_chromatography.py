@@ -5,6 +5,7 @@ from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     ChromatogramDataCube,
     ChromatographyColumnDocument,
+    DataProcessingAggregateDocument,
     DataSystemDocument,
     DerivedColumnPressureDataCube,
     DeviceControlAggregateDocument,
@@ -185,8 +186,18 @@ class DeviceControlDoc:
 
 
 @dataclass(frozen=True)
-class DataProcessing:
+class ProcessingItem:
     custom_info: dict[str, Any] | None = None
+
+
+@dataclass(frozen=True)
+class DataProcessing:
+    data: dict[str, Any] | None = None
+
+
+@dataclass(frozen=True)
+class ProcessedData:
+    processed_data: list[ProcessingItem] | None = None
 
 
 @dataclass(frozen=True)
@@ -228,7 +239,8 @@ class Measurement:
     derived_column_pressure_data_cube: DataCube | None = None
 
     peaks: list[Peak] | None = None
-    data_processing_doc: DataProcessing | None = None
+    processed_data: ProcessedData | None = None
+    data_processing: list[DataProcessing] | None = None
 
     sample_custom_info: dict[str, Any] | None = None
     injection_custom_info: dict[str, Any] | None = None
@@ -520,40 +532,54 @@ class Mapper(SchemaMapper[Data, Model]):
             measurement.processed_data_chromatogram_data_cube
             or measurement.derived_column_pressure_data_cube
             or measurement.peaks
-            or measurement.data_processing_doc
+            or measurement.processed_data
         ):
             return None
 
-        # Create a data processing document if processing info exists
-        data_processing_document = None
-        if (
-            measurement.data_processing_doc
-            and measurement.data_processing_doc.custom_info
-        ):
-            data_processing_document = measurement.data_processing_doc.custom_info
+        processed_data_documents = []
+
+        data_processing_aggregate_document = None
+        if measurement.data_processing:
+            processing_docs = []
+            for proc_doc in measurement.data_processing:
+                if proc_doc and proc_doc.data:
+                    processing_docs.append(proc_doc.data)
+
+            if processing_docs:
+                data_processing_aggregate_document = DataProcessingAggregateDocument(
+                    data_processing_document=processing_docs
+                )
+
+        base_document = ProcessedDataDocumentItem(
+            chromatogram_data_cube=get_data_cube(
+                measurement.processed_data_chromatogram_data_cube,
+                TDatacube,
+            ),
+            derived_column_pressure_data_cube=get_data_cube(
+                measurement.derived_column_pressure_data_cube,
+                DerivedColumnPressureDataCube,
+            ),
+            processed_data_identifier=measurement.processed_data_identifier,
+            peak_list=PeakList(
+                peak=[self._get_peak_document(peak) for peak in measurement.peaks]
+            )
+            if measurement.peaks
+            else None,
+            data_processing_aggregate_document=data_processing_aggregate_document,
+        )
+
+        if measurement.processed_data and measurement.processed_data.processed_data:
+            for proc_item in measurement.processed_data.processed_data:
+                if proc_item and proc_item.custom_info:
+                    doc_with_proc = add_custom_information_document(
+                        base_document, custom_info_doc=proc_item.custom_info
+                    )
+                    processed_data_documents.append(doc_with_proc)
+        else:
+            processed_data_documents.append(base_document)
 
         return ProcessedDataAggregateDocument(
-            processed_data_document=[
-                ProcessedDataDocumentItem(
-                    chromatogram_data_cube=get_data_cube(
-                        measurement.processed_data_chromatogram_data_cube,
-                        TDatacube,
-                    ),
-                    derived_column_pressure_data_cube=get_data_cube(
-                        measurement.derived_column_pressure_data_cube,
-                        DerivedColumnPressureDataCube,
-                    ),
-                    processed_data_identifier=measurement.processed_data_identifier,
-                    peak_list=PeakList(
-                        peak=[
-                            self._get_peak_document(peak) for peak in measurement.peaks
-                        ]
-                    )
-                    if measurement.peaks
-                    else None,
-                    data_processing_document=data_processing_document,
-                )
-            ]
+            processed_data_document=processed_data_documents
         )
 
     def _get_device_control_document(

@@ -75,6 +75,7 @@ NON_UNIQUE_IDENTIFIERS = {
     "dimension identifier",
     "method identifier",
     "experiment identifier",
+    "identifier",
 }
 
 

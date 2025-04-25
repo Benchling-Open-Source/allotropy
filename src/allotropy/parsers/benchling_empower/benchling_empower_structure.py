@@ -13,6 +13,8 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
     MeasurementGroup,
     Metadata,
     Peak,
+    ProcessedData,
+    ProcessingItem,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
 from allotropy.exceptions import AllotropeConversionError
@@ -35,7 +37,6 @@ def create_metadata(
     first_injection: dict[str, Any],
     file_path: str,
     instrument_methods: list[dict[str, Any]] | None = None,
-    processing_methods: list[dict[str, Any]] | None = None,
 ) -> Metadata:
     metadata_data = JsonData(metadata)
     first_injection_data = JsonData(first_injection)
@@ -68,28 +69,6 @@ def create_metadata(
                     "instrument_methods_date": method.get(str, "date"),
                     "instrument_methods_InstOnStatus": method.get(bool, "InstOnStatus"),
                     "instrument_methods_type": method.get(str, "type"),
-                }
-            )
-        )
-
-    if processing_methods and len(processing_methods) > 0:
-        proc_method = JsonData(processing_methods[0])
-
-        device_system_custom_info.update(
-            filter_nulls(
-                {
-                    "processing_methods_locked": proc_method.get(bool, "locked"),
-                    "processing_methods_modified_by": proc_method.get(
-                        str, "modified_by"
-                    ),
-                    "processing_methods_name": proc_method.get(str, "name"),
-                    "processing_methods_revision_comment": proc_method.get(
-                        str, "revision comment"
-                    ),
-                    "processing_methods_revision_history": proc_method.get(
-                        str, "revision history"
-                    ),
-                    "processing_methods_version": proc_method.get(str, "version"),
                 }
             )
         )
@@ -246,7 +225,9 @@ def _create_peak(peak: dict[str, Any]) -> Peak | None:
 
 
 def _create_measurements(
-    injection: dict[str, Any], metadata_fields: dict[str, Any]
+    injection: dict[str, Any],
+    metadata_fields: dict[str, Any],
+    processing_methods: list[dict[str, Any]] | None = None,
 ) -> list[Measurement]:
     injection_data = JsonData(injection)
     metadata_data = JsonData(metadata_fields)
@@ -310,90 +291,136 @@ def _create_measurements(
         )
     ]
 
-    data_processing_doc = None
-    if results and len(results) > 0:
-        result = JsonData(results[0])
+    processed_data = None
+    data_processing_list = []
 
-        processing_custom_info = filter_nulls(
-            {
-                "integration_algorithm_type": result.get(str, "IntegrationAlgorithm"),
-                "data_processing_method": result.get(str, "ProcessingMethod"),
-                "data_processing_time": result.get(str, "DateProcessed"),
-                "peak_width": try_float_or_none(result.get(str, "PeakWidth")),
-                "retention_time": try_float_or_none(result.get(str, "RetentionTime")),
-                "retention_time_window_width": try_float_or_none(
-                    result.get(str, "RTWindow")
-                ),
-                "relative_response": try_float_or_none(
-                    result.get(str, "RelativeResponse")
-                ),
-                "CalculationType": result.get(str, "CalculationType"),
-                "CalibrationId": result.get(str, "CalibrationId"),
-                "ProcessingLocked": result.get(bool, "ProcessingLocked"),
-                "Manual": result.get(bool, "Manual"),
-                "ProcessedBy": result.get(str, "ProcessedBy"),
-                "ProcessedAs": result.get(str, "ProcessedAs"),
-                "UseForPrecision": result.get(bool, "UseForPrecision"),
-                "PrepType": result.get(str, "PrepType"),
-                "AnalysisMethod": result.get(str, "AnalysisMethod"),
-                "IntegrationSystemPolicies": result.get(
-                    str, "IntegrationSystemPolicies"
-                ),
-                "ProcessingMethodId": result.get(str, "ProcessingMethodId"),
-                "ProcessedChannelType": result.get(str, "ProcessedChannelType"),
-                "ProcessedChanDesc": result.get(str, "ProcessedChanDesc"),
-                "PeakRatioReference": result.get(str, "PeakRatioReference"),
-                "Threshold": result.get(float, "Threshold"),
-                "SourceSoftwareInfo": result.get(str, "SourceSoftwareInfo"),
-                "SampleValuesUsedinCalculations": result.get(
-                    str, "SampleValuesUsedinCalculations"
-                ),
-                "NumOfResultsStored": result.get(int, "NumOfResultsStored"),
-                "NumOfProcessOnlySampleSets": result.get(
-                    int, "NumOfProcessOnlySampleSets"
-                ),
-                "Factor1": result.get(float, "Factor1"),
-                "Factor2": result.get(float, "Factor2"),
-                "Factor3": result.get(float, "Factor3"),
-                "Factor1Operator": result.get(str, "Factor1Operator"),
-                "Factor2Operator": result.get(str, "Factor2Operator"),
-                "Factor3Operator": result.get(str, "Factor3Operator"),
-                "ResultSetId": result.get(str, "ResultSetId"),
-                "ResultSetName": result.get(str, "ResultSetName"),
-                "ResultSetDate": result.get(str, "ResultSetDate"),
-                "ResultId": result.get(str, "ResultId"),
-                "ResultType": result.get(str, "ResultType"),
-                "ResultComments": result.get(str, "ResultComments"),
-                "ResultCodes": result.get(str, "ResultCodes"),
-                "ResultNum": result.get(int, "ResultNum"),
-                "ResultSampleSetMethod": result.get(str, "ResultSampleSetMethod"),
-                "ResultSource": result.get(str, "ResultSource"),
-                "ResultSuperseded": result.get(bool, "ResultSuperseded"),
-                "TotalArea": result.get(float, "TotalArea"),
-                "TotalAdjArea": result.get(float, "TotalAdjArea"),
-                "AdjustedTotalArea": result.get(float, "AdjustedTotalArea"),
-                "TotalRS_AdjAreaPct": result.get(float, "TotalRS_AdjAreaPct"),
-                "TotalRS_FinalResult": result.get(str, "TotalRS_FinalResult"),
-                "Largest_NG_RS_AdjAreaPct": result.get(
-                    float, "Largest_NG_RS_AdjAreaPct"
-                ),
-                "LargestNamedRS_FinalResult": result.get(
-                    str, "LargestNamedRS_FinalResult"
-                ),
-                "LargestRS_FinalResult": result.get(str, "LargestRS_FinalResult"),
-                "LargestUnnamedRS_FinalResult": result.get(
-                    str, "LargestUnnamedRS_FinalResult"
-                ),
-                "Total_ICH_AdjArea": result.get(float, "Total_ICH_AdjArea"),
-                "PercentUnknowns": result.get(float, "PercentUnknowns"),
-                "NumberofImpurityPeaks": result.get(int, "NumberofImpurityPeaks"),
-                "Faults": result.get(str, "Faults"),
-            }
-        )
+    processing_method_ids = set()
+    if results:
+        for result_data in results:
+            result = JsonData(result_data)
+            method_id = result.get(str, "ProcessingMethodId")
+            if method_id:
+                processing_method_ids.add(method_id)
 
-        data_processing_doc = DataProcessing(
-            custom_info=processing_custom_info,
-        )
+    if processing_methods and processing_method_ids:
+        for proc_method in processing_methods:
+            proc_method_data = JsonData(proc_method)
+            method_id = proc_method_data.get(str, "id")
+
+            if method_id and method_id in processing_method_ids:
+                proc_method_info = filter_nulls(
+                    {
+                        "name": proc_method_data.get(str, "name"),
+                        "version": proc_method_data.get(str, "version"),
+                        "locked": proc_method_data.get(bool, "locked"),
+                        "modified_by": proc_method_data.get(str, "modified_by"),
+                        "revision_comment": proc_method_data.get(
+                            str, "revision comment"
+                        ),
+                        "revision_history": proc_method_data.get(
+                            str, "revision history"
+                        ),
+                        "component_nodes": proc_method_data.data.get("component_nodes"),
+                        "default_result_set": proc_method_data.data.get(
+                            "default_result_set"
+                        ),
+                        "method_id": method_id,
+                    }
+                )
+
+                data_processing_list.append(DataProcessing(data=proc_method_info))
+
+    if results:
+        processing_items = []
+
+        for result_data in results:
+            result = JsonData(result_data)
+
+            processing_custom_info = filter_nulls(
+                {
+                    "integration_algorithm_type": result.get(
+                        str, "IntegrationAlgorithm"
+                    ),
+                    "data_processing_method": result.get(str, "ProcessingMethod"),
+                    "data_processing_time": result.get(str, "DateProcessed"),
+                    "peak_width": try_float_or_none(result.get(str, "PeakWidth")),
+                    "retention_time": try_float_or_none(
+                        result.get(str, "RetentionTime")
+                    ),
+                    "retention_time_window_width": try_float_or_none(
+                        result.get(str, "RTWindow")
+                    ),
+                    "relative_response": try_float_or_none(
+                        result.get(str, "RelativeResponse")
+                    ),
+                    "CalculationType": result.get(str, "CalculationType"),
+                    "CalibrationId": result.get(str, "CalibrationId"),
+                    "ProcessingLocked": result.get(bool, "ProcessingLocked"),
+                    "Manual": result.get(bool, "Manual"),
+                    "ProcessedBy": result.get(str, "ProcessedBy"),
+                    "ProcessedAs": result.get(str, "ProcessedAs"),
+                    "UseForPrecision": result.get(bool, "UseForPrecision"),
+                    "PrepType": result.get(str, "PrepType"),
+                    "AnalysisMethod": result.get(str, "AnalysisMethod"),
+                    "IntegrationSystemPolicies": result.get(
+                        str, "IntegrationSystemPolicies"
+                    ),
+                    "ProcessingMethodId": result.get(str, "ProcessingMethodId"),
+                    "ProcessedChannelType": result.get(str, "ProcessedChannelType"),
+                    "ProcessedChanDesc": result.get(str, "ProcessedChanDesc"),
+                    "PeakRatioReference": result.get(str, "PeakRatioReference"),
+                    "Threshold": result.get(float, "Threshold"),
+                    "SourceSoftwareInfo": result.get(str, "SourceSoftwareInfo"),
+                    "SampleValuesUsedinCalculations": result.get(
+                        str, "SampleValuesUsedinCalculations"
+                    ),
+                    "NumOfResultsStored": result.get(int, "NumOfResultsStored"),
+                    "NumOfProcessOnlySampleSets": result.get(
+                        int, "NumOfProcessOnlySampleSets"
+                    ),
+                    "Factor1": result.get(float, "Factor1"),
+                    "Factor2": result.get(float, "Factor2"),
+                    "Factor3": result.get(float, "Factor3"),
+                    "Factor1Operator": result.get(str, "Factor1Operator"),
+                    "Factor2Operator": result.get(str, "Factor2Operator"),
+                    "Factor3Operator": result.get(str, "Factor3Operator"),
+                    "ResultSetId": result.get(str, "ResultSetId"),
+                    "ResultSetName": result.get(str, "ResultSetName"),
+                    "ResultSetDate": result.get(str, "ResultSetDate"),
+                    "ResultId": result.get(str, "ResultId"),
+                    "ResultType": result.get(str, "ResultType"),
+                    "ResultComments": result.get(str, "ResultComments"),
+                    "ResultCodes": result.get(str, "ResultCodes"),
+                    "ResultNum": result.get(int, "ResultNum"),
+                    "ResultSampleSetMethod": result.get(str, "ResultSampleSetMethod"),
+                    "ResultSource": result.get(str, "ResultSource"),
+                    "ResultSuperseded": result.get(bool, "ResultSuperseded"),
+                    "TotalArea": result.get(float, "TotalArea"),
+                    "TotalAdjArea": result.get(float, "TotalAdjArea"),
+                    "AdjustedTotalArea": result.get(float, "AdjustedTotalArea"),
+                    "TotalRS_AdjAreaPct": result.get(float, "TotalRS_AdjAreaPct"),
+                    "TotalRS_FinalResult": result.get(str, "TotalRS_FinalResult"),
+                    "Largest_NG_RS_AdjAreaPct": result.get(
+                        float, "Largest_NG_RS_AdjAreaPct"
+                    ),
+                    "LargestNamedRS_FinalResult": result.get(
+                        str, "LargestNamedRS_FinalResult"
+                    ),
+                    "LargestRS_FinalResult": result.get(str, "LargestRS_FinalResult"),
+                    "LargestUnnamedRS_FinalResult": result.get(
+                        str, "LargestUnnamedRS_FinalResult"
+                    ),
+                    "Total_ICH_AdjArea": result.get(float, "Total_ICH_AdjArea"),
+                    "PercentUnknowns": result.get(float, "PercentUnknowns"),
+                    "NumberofImpurityPeaks": result.get(int, "NumberofImpurityPeaks"),
+                    "Faults": result.get(str, "Faults"),
+                }
+            )
+
+            processing_items.append(ProcessingItem(custom_info=processing_custom_info))
+
+        if processing_items:
+            processed_data = ProcessedData(processed_data=processing_items)
 
     sample_custom_info = filter_nulls(
         {
@@ -428,11 +455,6 @@ def _create_measurements(
         }
     )
 
-    # Ensure we have a valid injection_time (required field)
-    injection_time = injection_data.get(str, "DateAcquired")
-    if injection_time is None:
-        injection_time = "unknown"
-
     return [
         Measurement(
             measurement_identifier=random_uuid_str(),
@@ -448,7 +470,7 @@ def _create_measurements(
                 float, "InjectionVolume"
             ),
             injection_identifier=str(injection_data.get(int, "InjectionId")),
-            injection_time=injection_time,
+            injection_time=injection_data[str, "DateAcquired"],
             peaks=[peak for peak in [_create_peak(peak) for peak in peaks] if peak],
             chromatogram_data_cube=_get_chromatogram(injection),
             device_control_docs=device_control_docs,
@@ -458,7 +480,8 @@ def _create_measurements(
             else None,
             flow_rate=try_float_or_none(injection_data.get(str, "FlowRate")),
             measurement_custom_info=measurement_custom_info,
-            data_processing_doc=data_processing_doc,
+            processed_data=processed_data,
+            data_processing=data_processing_list if data_processing_list else None,
             sample_custom_info=sample_custom_info,
             injection_custom_info=injection_custom_info,
         )
@@ -466,7 +489,9 @@ def _create_measurements(
 
 
 def create_measurement_groups(
-    injections: list[dict[str, Any]], metadata_fields: dict[str, Any]
+    injections: list[dict[str, Any]],
+    metadata_fields: dict[str, Any],
+    processing_methods: list[dict[str, Any]] | None = None,
 ) -> list[MeasurementGroup]:
     metadata_data = JsonData(metadata_fields)
     sample_to_injection: defaultdict[str, list[dict[str, Any]]] = defaultdict(list)
@@ -515,7 +540,9 @@ def create_measurement_groups(
         measurements = [
             measurement
             for injection in sample_injections
-            for measurement in _create_measurements(injection, metadata_fields)
+            for measurement in _create_measurements(
+                injection, metadata_fields, processing_methods
+            )
         ]
 
         measurement_groups.append(
