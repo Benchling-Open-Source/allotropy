@@ -13,16 +13,14 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
     MeasurementGroup,
     Metadata,
     Peak,
-    ProcessedData,
     ProcessingItem,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
 from allotropy.parsers.benchling_empower import constants
 from allotropy.parsers.constants import NOT_APPLICABLE
-from allotropy.parsers.utils.json import JsonData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import assert_not_none, try_float, try_float_or_none
+from allotropy.parsers.utils.values import try_float_or_none
 
 T = TypeVar("T")
 
@@ -38,51 +36,44 @@ def create_metadata(
     file_path: str,
     instrument_methods: list[dict[str, Any]] | None = None,
 ) -> Metadata:
-    metadata_data = JsonData(metadata)
-    first_injection_data = JsonData(first_injection)
-
     data_system_custom_info = filter_nulls(
         {
-            "account_identifier": metadata_data.get(str, "username"),
-            "database": metadata_data.get(str, "db"),
-            "project": metadata_data.get(str, "project"),
-            "password": metadata_data.get(str, "password"),
-            "SystemCreateDate": metadata_data.get(str, "SystemCreateDate"),
-            "SystemComments": metadata_data.get(str, "SystemComments"),
-            "Node": metadata_data.get(str, "Node"),
-            "SampleSetName": metadata_data.get(str, "SampleSetName"),
-            "SampleSetType": metadata_data.get(str, "SampleSetType"),
+            "account_identifier": metadata.get("username"),
+            "database": metadata.get("db"),
+            "project": metadata.get("project"),
+            "password": metadata.get("password"),
+            "SystemCreateDate": metadata.get("SystemCreateDate"),
+            "SystemComments": metadata.get("SystemComments"),
+            "Node": metadata.get("Node"),
+            "SampleSetName": metadata.get("SampleSetName"),
+            "SampleSetType": metadata.get("SampleSetType"),
         }
     )
 
     device_system_custom_info = {}
 
     if instrument_methods and len(instrument_methods) > 0:
-        method = JsonData(instrument_methods[0])
+        method = instrument_methods[0]
 
         device_system_custom_info.update(
             filter_nulls(
                 {
-                    "instrument_methods_id": method.get(str, "id"),
-                    "instrument_methods_name": method.get(str, "name"),
-                    "instrument_methods_comments": method.get(str, "comments"),
-                    "instrument_methods_date": method.get(str, "date"),
-                    "instrument_methods_InstOnStatus": method.get(bool, "InstOnStatus"),
-                    "instrument_methods_type": method.get(str, "type"),
+                    "instrument_methods_id": method.get("id"),
+                    "instrument_methods_name": method.get("name"),
+                    "instrument_methods_comments": method.get("comments"),
+                    "instrument_methods_date": method.get("date"),
+                    "instrument_methods_InstOnStatus": method.get("InstOnStatus"),
+                    "instrument_methods_type": method.get("type"),
                 }
             )
         )
 
     return Metadata(
-        asset_management_identifier=metadata_data.get(
-            str, "SystemName", NOT_APPLICABLE
-        ),
-        analyst=metadata_data.get(str, "SampleSetAcquiredBy", NOT_APPLICABLE),
-        data_system_instance_identifier=metadata_data.get(
-            str, "SystemName", NOT_APPLICABLE
-        ),
+        asset_management_identifier=metadata.get("SystemName", NOT_APPLICABLE),
+        analyst=metadata.get("SampleSetAcquiredBy", NOT_APPLICABLE),
+        data_system_instance_identifier=metadata.get("SystemName", NOT_APPLICABLE),
         software_name=constants.SOFTWARE_NAME,
-        software_version=first_injection_data.get(str, "AcqSWVersion"),
+        software_version=first_injection.get("AcqSWVersion"),
         file_name=Path(file_path).name,
         unc_path=file_path,
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
@@ -92,9 +83,7 @@ def create_metadata(
 
 
 def _get_chromatogram(injection: dict[str, Any]) -> DataCube | None:
-    injection_data = JsonData(injection)
-
-    chrom: list[list[float]] | None = injection_data.data.get("chrom")
+    chrom: list[list[float]] | None = injection.get("chrom")
     if not chrom:
         return None
     if len(chrom) != 2:
@@ -104,7 +93,7 @@ def _get_chromatogram(injection: dict[str, Any]) -> DataCube | None:
     dimensions, measures = chrom
 
     # ASM expects chromatogram absorbance in mAU, convert units if different.
-    detection_unit = injection_data.get(str, "DetUnits")
+    detection_unit = injection.get("DetUnits")
     if detection_unit == "AU":
         measures = [m * 1000 for m in measures]
     elif detection_unit != "mAU":
@@ -137,55 +126,57 @@ def _get_chromatogram(injection: dict[str, Any]) -> DataCube | None:
 
 
 def _create_peak(peak: dict[str, Any]) -> Peak | None:
-    peak_data = JsonData(peak)
-
-    if peak_data.get(str, "PeakType") in ["Missing", "Group"]:
+    peak_type = peak.get("PeakType")
+    if peak_type in ["Missing", "Group"]:
         return None
 
     # Area and height are reported in μV, but are reported in ASM as mAU
     # For Empower software, 1V == 1AU, so we just need to convert μ to m
-    if (area := try_float_or_none(peak_data.get(float, "Area"))) is not None:
+    area = try_float_or_none(peak.get("Area"))
+    if area is not None:
         area /= 1000
-    if (height := try_float_or_none(peak_data.get(float, "Height"))) is not None:
+
+    height = try_float_or_none(peak.get("Height"))
+    if height is not None:
         height /= 1000
+
     # Times are reported in minutes by Empower - convert to seconds
-    if (
-        retention_time := try_float_or_none(peak_data.get(float, "RetentionTime"))
-    ) is not None:
+    retention_time = try_float_or_none(peak.get("RetentionTime"))
+    if retention_time is not None:
         retention_time *= 60
 
     custom_info = filter_nulls(
         {
-            "IntType": peak_data.get(str, "IntType"),
-            "PeakType": peak_data.get(str, "PeakType"),
-            "Slope": peak_data.get(float, "Slope"),
-            "StartHeight": peak_data.get(float, "StartHeight"),
-            "EndHeight": peak_data.get(float, "EndHeight"),
-            "InflectionWidth": peak_data.get(float, "InflectionWidth"),
-            "PointsAcrossPeak": peak_data.get(int, "PointsAcrossPeak"),
-            "Offset": peak_data.get(float, "Offset"),
-            "PctAdjustedArea": peak_data.get(float, "PctAdjustedArea"),
-            "PeakCodes": peak_data.get(str, "PeakCodes"),
-            "ICH_AdjArea": peak_data.get(float, "ICH_AdjArea"),
-            "ICHThreshold": peak_data.get(float, "ICHThreshold"),
-            "ImpurityType": peak_data.get(str, "ImpurityType"),
-            "NG_FinalResult": peak_data.get(str, "NG_FinalResult"),
-            "NG_RS_AdjAreaPct": peak_data.get(float, "NG_RS_AdjAreaPct"),
-            "RS_AdjAreaPct": peak_data.get(float, "RS_AdjAreaPct"),
-            "RS_FinalResult": peak_data.get(str, "RS_FinalResult"),
-            "UnnamedRS_AdjAreaPct": peak_data.get(float, "UnnamedRS_AdjAreaPct"),
-            "UnnamedRS_FinalResult": peak_data.get(str, "UnnamedRS_FinalResult"),
-            "AdjArea": peak_data.get(float, "AdjArea"),
-            "AdjAreaPct": peak_data.get(float, "AdjAreaPct"),
-            "FinalResult": peak_data.get(str, "FinalResult"),
-            "2ndDerivativeApex": peak_data.get(float, "2ndDerivativeApex"),
-            "CorrectedArea~": peak_data.get(float, "CorrectedArea~"),
+            "IntType": peak.get("IntType"),
+            "PeakType": peak_type,
+            "Slope": peak.get("Slope"),
+            "StartHeight": peak.get("StartHeight"),
+            "EndHeight": peak.get("EndHeight"),
+            "InflectionWidth": peak.get("InflectionWidth"),
+            "PointsAcrossPeak": peak.get("PointsAcrossPeak"),
+            "Offset": peak.get("Offset"),
+            "PctAdjustedArea": peak.get("PctAdjustedArea"),
+            "PeakCodes": peak.get("PeakCodes"),
+            "ICH_AdjArea": peak.get("ICH_AdjArea"),
+            "ICHThreshold": peak.get("ICHThreshold"),
+            "ImpurityType": peak.get("ImpurityType"),
+            "NG_FinalResult": peak.get("NG_FinalResult"),
+            "NG_RS_AdjAreaPct": peak.get("NG_RS_AdjAreaPct"),
+            "RS_AdjAreaPct": peak.get("RS_AdjAreaPct"),
+            "RS_FinalResult": peak.get("RS_FinalResult"),
+            "UnnamedRS_AdjAreaPct": peak.get("UnnamedRS_AdjAreaPct"),
+            "UnnamedRS_FinalResult": peak.get("UnnamedRS_FinalResult"),
+            "AdjArea": peak.get("AdjArea"),
+            "AdjAreaPct": peak.get("AdjAreaPct"),
+            "FinalResult": peak.get("FinalResult"),
+            "2ndDerivativeApex": peak.get("2ndDerivativeApex"),
+            "CorrectedArea~": peak.get("CorrectedArea~"),
         }
     )
 
     # Extract baseline values and convert from minutes to seconds
-    baseline_start = try_float_or_none(peak_data.get(float, "BaselineStart"))
-    baseline_end = try_float_or_none(peak_data.get(float, "BaselineEnd"))
+    baseline_start = try_float_or_none(peak.get("BaselineStart"))
+    baseline_end = try_float_or_none(peak.get("BaselineEnd"))
 
     if baseline_start is not None:
         baseline_start *= 60  # Convert from minutes to seconds
@@ -193,33 +184,38 @@ def _create_peak(peak: dict[str, Any]) -> Peak | None:
     if baseline_end is not None:
         baseline_end *= 60  # Convert from minutes to seconds
 
+    start_time = try_float_or_none(peak.get("StartTime"))
+    end_time = try_float_or_none(peak.get("EndTime"))
+
+    if start_time is not None:
+        start_time *= 60  # Convert from minutes to seconds
+
+    if end_time is not None:
+        end_time *= 60  # Convert from minutes to seconds
+
     return Peak(
         identifier=random_uuid_str(),
         # Times are reported in minutes by Empower - convert to seconds
-        start=try_float(peak_data.get(float, "StartTime"), "StartTime") * 60,
+        start=start_time,
         start_unit="s",
-        end=try_float(peak_data.get(float, "EndTime"), "EndTime") * 60,
+        end=end_time,
         end_unit="s",
         retention_time=retention_time,
         area=area,
         area_unit="mAU.s",
-        relative_area=try_float_or_none(peak_data.get(float, "PctArea")),
-        width=try_float_or_none(peak_data.get(float, "Width")),
+        relative_area=try_float_or_none(peak.get("PctArea")),
+        width=try_float_or_none(peak.get("Width")),
         width_unit="s",
         height=height,
         height_unit="mAU",
-        relative_height=try_float_or_none(peak_data.get(float, "PctHeight")),
-        written_name=peak_data.get(str, "Name"),
-        relative_peak_analyte_amount=try_float_or_none(
-            peak_data.get(float, "PctAmount")
-        ),
-        peak_analyte_amount=try_float_or_none(peak_data.get(float, "Amount")),
-        index=str(try_float_or_none(peak_data.get(float, "PeakCounter"))),
+        relative_height=try_float_or_none(peak.get("PctHeight")),
+        written_name=peak.get("Name"),
+        relative_peak_analyte_amount=try_float_or_none(peak.get("PctAmount")),
+        peak_analyte_amount=try_float_or_none(peak.get("Amount")),
+        index=str(try_float_or_none(peak.get("PeakCounter"))),
         baseline_value_at_start_of_peak=baseline_start,
         baseline_value_at_end_of_peak=baseline_end,
-        relative_corrected_peak_area=try_float_or_none(
-            peak_data.get(float, "CorrectedArea~")
-        ),
+        relative_corrected_peak_area=try_float_or_none(peak.get("CorrectedArea~")),
         custom_info=custom_info,
     )
 
@@ -229,13 +225,10 @@ def _create_measurements(
     metadata_fields: dict[str, Any],
     processing_methods: list[dict[str, Any]] | None = None,
 ) -> list[Measurement]:
-    injection_data = JsonData(injection)
-    metadata_data = JsonData(metadata_fields)
-
     # Access raw data for complex types
-    peaks: list[dict[str, Any]] = injection_data.data.get("peaks", [])
-    results: list[dict[str, Any]] = injection_data.data.get("results", [])
-    sample_type = injection_data.get(str, "SampleType")
+    peaks: list[dict[str, Any]] = injection.get("peaks", [])
+    results: list[dict[str, Any]] = injection.get("results", [])
+    sample_type = injection.get("SampleType")
     sample_role_type = None
     if sample_type:
         sample_role_types = [
@@ -247,241 +240,251 @@ def _create_measurements(
             else SampleRoleType.unknown_sample_role.value
         )
 
-    measurement_time = metadata_data.get(str, "SampleSetStartDate")
+    measurement_time = metadata_fields.get("SampleSetStartDate")
 
     measurement_custom_info = filter_nulls(
         {
-            "Comments": injection_data.get(str, "Comments"),
-            "measurement_end_time": metadata_data.get(str, "SampleSetFinishDate"),
-            "DateAcquired": injection_data.get(str, "DateAcquired"),
-            "RunTime": injection_data.get(float, "RunTime"),
+            "Comments": injection.get("Comments"),
+            "measurement_end_time": metadata_fields.get("SampleSetFinishDate"),
+            "DateAcquired": injection.get("DateAcquired"),
+            "RunTime": injection.get("RunTime"),
         }
     )
 
     device_control_custom_info = filter_nulls(
         {
-            "SolventA": injection_data.get(str, "SolventA"),
-            "SolventB": injection_data.get(str, "SolventB"),
-            "SolventC": injection_data.get(str, "SolventC"),
-            "SolventD": injection_data.get(str, "SolventD"),
-            "ChannelDescription": injection_data.get(str, "ChannelDescription"),
-            "ChannelType": injection_data.get(str, "ChannelType"),
-            "ChannelStatus": injection_data.get(str, "ChannelStatus"),
-            "DataStart": injection_data.get(float, "DataStart"),
-            "DataEnd": injection_data.get(float, "DataEnd"),
-            "CirculationNo": injection_data.get(int, "CirculationNo"),
-            "device acquisition method": injection_data.get(str, "AcqMethodSet"),
+            "SolventA": injection.get("SolventA"),
+            "SolventB": injection.get("SolventB"),
+            "SolventC": injection.get("SolventC"),
+            "SolventD": injection.get("SolventD"),
+            "ChannelDescription": injection.get("ChannelDescription"),
+            "ChannelType": injection.get("ChannelType"),
+            "ChannelStatus": injection.get("ChannelStatus"),
+            "DataStart": injection.get("DataStart"),
+            "DataEnd": injection.get("DataEnd"),
+            "CirculationNo": injection.get("CirculationNo"),
+            "device acquisition method": injection.get("AcqMethodSet"),
             "total measurement duration setting": try_float_or_none(
-                injection_data.get(str, "RunTime")
+                injection.get("RunTime")
             ),
-            "Channel": injection_data.get(str, "Channel"),
-            "ScaletouV": injection_data.get(float, "ScaletouV"),
-            "SecondChannelId": injection_data.get(str, "SecondChannelId"),
+            "Channel": injection.get("Channel"),
+            "ScaletouV": injection.get("ScaletouV"),
+            "SecondChannelId": injection.get("SecondChannelId"),
         }
     )
 
     device_control_docs = [
         DeviceControlDoc(
             device_type=constants.DEVICE_TYPE,
-            device_identifier=str(injection_data.get(str, "ChannelId")),
+            device_identifier=str(injection.get("ChannelId") or ""),
             detector_sampling_rate_setting=try_float_or_none(
-                injection_data.get(str, "SamplingRate")
+                injection.get("SamplingRate")
             ),
             device_control_custom_info=device_control_custom_info,
         )
     ]
 
-    processed_data = None
-    data_processing_list = []
-
+    processing_items = []
+    data_processing_by_processing_method_id = defaultdict(list)
     processing_method_ids = set()
+
     if results:
         for result_data in results:
-            result = JsonData(result_data)
-            method_id = result.get(str, "ProcessingMethodId")
+            method_id = result_data.get("ProcessingMethodId")
             if method_id:
                 processing_method_ids.add(method_id)
 
     if processing_methods and processing_method_ids:
         for proc_method in processing_methods:
-            proc_method_data = JsonData(proc_method)
-            method_id = proc_method_data.get(str, "id")
+            method_id = proc_method.get("id")
 
             if method_id and method_id in processing_method_ids:
                 proc_method_info = filter_nulls(
                     {
-                        "name": proc_method_data.get(str, "name"),
-                        "version": proc_method_data.get(str, "version"),
-                        "locked": proc_method_data.get(bool, "locked"),
-                        "modified_by": proc_method_data.get(str, "modified_by"),
-                        "revision_comment": proc_method_data.get(
-                            str, "revision comment"
-                        ),
-                        "revision_history": proc_method_data.get(
-                            str, "revision history"
-                        ),
-                        "component_nodes": proc_method_data.data.get("component_nodes"),
-                        "default_result_set": proc_method_data.data.get(
-                            "default_result_set"
-                        ),
-                        "method_id": method_id,
+                        "name": proc_method.get("name"),
+                        "version": proc_method.get("version"),
+                        "locked": proc_method.get("locked"),
+                        "modified_by": proc_method.get("modified_by"),
+                        "revision_comment": proc_method.get("revision comment"),
+                        "revision_history": proc_method.get("revision history"),
+                        "component_nodes": proc_method.get("component_nodes"),
+                        "default_result_set": proc_method.get("default_result_set"),
                     }
                 )
 
-                data_processing_list.append(DataProcessing(data=proc_method_info))
+                components = proc_method.get("components")
+                if components:
+                    for component in components:
+                        fields = component.get("fields")
+                        if fields:
+                            fields_copy = fields.copy()
+                            fields_copy.update(proc_method_info)
+                            data_processing_by_processing_method_id[method_id].append(
+                                DataProcessing(data=filter_nulls(fields_copy))
+                            )
 
     if results:
-        processing_items = []
-
         for result_data in results:
-            result = JsonData(result_data)
-
             processing_custom_info = filter_nulls(
                 {
-                    "integration_algorithm_type": result.get(
-                        str, "IntegrationAlgorithm"
+                    "integration_algorithm_type": result_data.get(
+                        "IntegrationAlgorithm"
                     ),
-                    "data_processing_method": result.get(str, "ProcessingMethod"),
-                    "data_processing_time": result.get(str, "DateProcessed"),
-                    "peak_width": try_float_or_none(result.get(str, "PeakWidth")),
+                    "data_processing_method": result_data.get("ProcessingMethod"),
+                    "data_processing_time": result_data.get("DateProcessed"),
+                    "peak_width": try_float_or_none(result_data.get("PeakWidth")),
                     "retention_time": try_float_or_none(
-                        result.get(str, "RetentionTime")
+                        result_data.get("RetentionTime")
                     ),
                     "retention_time_window_width": try_float_or_none(
-                        result.get(str, "RTWindow")
+                        result_data.get("RTWindow")
                     ),
                     "relative_response": try_float_or_none(
-                        result.get(str, "RelativeResponse")
+                        result_data.get("RelativeResponse")
                     ),
-                    "CalculationType": result.get(str, "CalculationType"),
-                    "CalibrationId": result.get(str, "CalibrationId"),
-                    "ProcessingLocked": result.get(bool, "ProcessingLocked"),
-                    "Manual": result.get(bool, "Manual"),
-                    "ProcessedBy": result.get(str, "ProcessedBy"),
-                    "ProcessedAs": result.get(str, "ProcessedAs"),
-                    "UseForPrecision": result.get(bool, "UseForPrecision"),
-                    "PrepType": result.get(str, "PrepType"),
-                    "AnalysisMethod": result.get(str, "AnalysisMethod"),
-                    "IntegrationSystemPolicies": result.get(
-                        str, "IntegrationSystemPolicies"
+                    "CalculationType": result_data.get("CalculationType"),
+                    "CalibrationId": result_data.get("CalibrationId"),
+                    "ProcessingLocked": result_data.get("ProcessingLocked"),
+                    "Manual": result_data.get("Manual"),
+                    "ProcessedBy": result_data.get("ProcessedBy"),
+                    "ProcessedAs": result_data.get("ProcessedAs"),
+                    "UseForPrecision": result_data.get("UseForPrecision"),
+                    "PrepType": result_data.get("PrepType"),
+                    "AnalysisMethod": result_data.get("AnalysisMethod"),
+                    "IntegrationSystemPolicies": result_data.get(
+                        "IntegrationSystemPolicies"
                     ),
-                    "ProcessingMethodId": result.get(str, "ProcessingMethodId"),
-                    "ProcessedChannelType": result.get(str, "ProcessedChannelType"),
-                    "ProcessedChanDesc": result.get(str, "ProcessedChanDesc"),
-                    "PeakRatioReference": result.get(str, "PeakRatioReference"),
-                    "Threshold": result.get(float, "Threshold"),
-                    "SourceSoftwareInfo": result.get(str, "SourceSoftwareInfo"),
-                    "SampleValuesUsedinCalculations": result.get(
-                        str, "SampleValuesUsedinCalculations"
+                    "ProcessingMethodId": result_data.get("ProcessingMethodId"),
+                    "ProcessedChannelType": result_data.get("ProcessedChannelType"),
+                    "ProcessedChanDesc": result_data.get("ProcessedChanDesc"),
+                    "PeakRatioReference": result_data.get("PeakRatioReference"),
+                    "Threshold": result_data.get("Threshold"),
+                    "SourceSoftwareInfo": result_data.get("SourceSoftwareInfo"),
+                    "SampleValuesUsedinCalculations": result_data.get(
+                        "SampleValuesUsedinCalculations"
                     ),
-                    "NumOfResultsStored": result.get(int, "NumOfResultsStored"),
-                    "NumOfProcessOnlySampleSets": result.get(
-                        int, "NumOfProcessOnlySampleSets"
+                    "NumOfResultsStored": result_data.get("NumOfResultsStored"),
+                    "NumOfProcessOnlySampleSets": result_data.get(
+                        "NumOfProcessOnlySampleSets"
                     ),
-                    "Factor1": result.get(float, "Factor1"),
-                    "Factor2": result.get(float, "Factor2"),
-                    "Factor3": result.get(float, "Factor3"),
-                    "Factor1Operator": result.get(str, "Factor1Operator"),
-                    "Factor2Operator": result.get(str, "Factor2Operator"),
-                    "Factor3Operator": result.get(str, "Factor3Operator"),
-                    "ResultSetId": result.get(str, "ResultSetId"),
-                    "ResultSetName": result.get(str, "ResultSetName"),
-                    "ResultSetDate": result.get(str, "ResultSetDate"),
-                    "ResultId": result.get(str, "ResultId"),
-                    "ResultType": result.get(str, "ResultType"),
-                    "ResultComments": result.get(str, "ResultComments"),
-                    "ResultCodes": result.get(str, "ResultCodes"),
-                    "ResultNum": result.get(int, "ResultNum"),
-                    "ResultSampleSetMethod": result.get(str, "ResultSampleSetMethod"),
-                    "ResultSource": result.get(str, "ResultSource"),
-                    "ResultSuperseded": result.get(bool, "ResultSuperseded"),
-                    "TotalArea": result.get(float, "TotalArea"),
-                    "TotalAdjArea": result.get(float, "TotalAdjArea"),
-                    "AdjustedTotalArea": result.get(float, "AdjustedTotalArea"),
-                    "TotalRS_AdjAreaPct": result.get(float, "TotalRS_AdjAreaPct"),
-                    "TotalRS_FinalResult": result.get(str, "TotalRS_FinalResult"),
-                    "Largest_NG_RS_AdjAreaPct": result.get(
-                        float, "Largest_NG_RS_AdjAreaPct"
+                    "Factor1": result_data.get("Factor1"),
+                    "Factor2": result_data.get("Factor2"),
+                    "Factor3": result_data.get("Factor3"),
+                    "Factor1Operator": result_data.get("Factor1Operator"),
+                    "Factor2Operator": result_data.get("Factor2Operator"),
+                    "Factor3Operator": result_data.get("Factor3Operator"),
+                    "ResultSetId": result_data.get("ResultSetId"),
+                    "ResultSetName": result_data.get("ResultSetName"),
+                    "ResultSetDate": result_data.get("ResultSetDate"),
+                    "ResultId": result_data.get("ResultId"),
+                    "ResultType": result_data.get("ResultType"),
+                    "ResultComments": result_data.get("ResultComments"),
+                    "ResultCodes": result_data.get("ResultCodes"),
+                    "ResultNum": result_data.get("ResultNum"),
+                    "ResultSampleSetMethod": result_data.get("ResultSampleSetMethod"),
+                    "ResultSource": result_data.get("ResultSource"),
+                    "ResultSuperseded": result_data.get("ResultSuperseded"),
+                    "TotalArea": result_data.get("TotalArea"),
+                    "TotalAdjArea": result_data.get("TotalAdjArea"),
+                    "AdjustedTotalArea": result_data.get("AdjustedTotalArea"),
+                    "TotalRS_AdjAreaPct": result_data.get("TotalRS_AdjAreaPct"),
+                    "TotalRS_FinalResult": result_data.get("TotalRS_FinalResult"),
+                    "Largest_NG_RS_AdjAreaPct": result_data.get(
+                        "Largest_NG_RS_AdjAreaPct"
                     ),
-                    "LargestNamedRS_FinalResult": result.get(
-                        str, "LargestNamedRS_FinalResult"
+                    "LargestNamedRS_FinalResult": result_data.get(
+                        "LargestNamedRS_FinalResult"
                     ),
-                    "LargestRS_FinalResult": result.get(str, "LargestRS_FinalResult"),
-                    "LargestUnnamedRS_FinalResult": result.get(
-                        str, "LargestUnnamedRS_FinalResult"
+                    "LargestRS_FinalResult": result_data.get("LargestRS_FinalResult"),
+                    "LargestUnnamedRS_FinalResult": result_data.get(
+                        "LargestUnnamedRS_FinalResult"
                     ),
-                    "Total_ICH_AdjArea": result.get(float, "Total_ICH_AdjArea"),
-                    "PercentUnknowns": result.get(float, "PercentUnknowns"),
-                    "NumberofImpurityPeaks": result.get(int, "NumberofImpurityPeaks"),
-                    "Faults": result.get(str, "Faults"),
+                    "Total_ICH_AdjArea": result_data.get("Total_ICH_AdjArea"),
+                    "PercentUnknowns": result_data.get("PercentUnknowns"),
+                    "NumberofImpurityPeaks": result_data.get("NumberofImpurityPeaks"),
+                    "Faults": result_data.get("Faults"),
                 }
             )
 
-            processing_items.append(ProcessingItem(custom_info=processing_custom_info))
-
-        if processing_items:
-            processed_data = ProcessedData(processed_data=processing_items)
+            processing_method_id = result_data.get("ProcessingMethodId")
+            processing_items.append(
+                ProcessingItem(
+                    custom_info=processing_custom_info,
+                    data_processing=data_processing_by_processing_method_id.get(
+                        processing_method_id
+                    ),
+                )
+            )
 
     sample_custom_info = filter_nulls(
         {
-            "SampleConcentration": injection_data.get(float, "SampleConcentration"),
-            "ELN_SampleID": injection_data.get(str, "ELN_SampleID"),
-            "PrepType": injection_data.get(str, "PrepType"),
-            "SampleSetAcquiring": injection_data.get(bool, "SampleSetAcquiring"),
-            "SampleSetAltered": injection_data.get(bool, "SampleSetAltered"),
-            "SampleSetCurrentId": injection_data.get(str, "SampleSetCurrentId"),
-            "OriginalSampleSetId": injection_data.get(str, "OriginalSampleSetId"),
-            "OriginalVialId": injection_data.get(str, "OriginalVialId"),
-            "Vial": injection_data.get(str, "Vial"),
-            "lot_number": injection_data.get(str, "Lot"),
-            "sample_weight": try_float_or_none(injection_data.get(str, "SampleWeight")),
-            "Label": injection_data.get(str, "Label"),
-            "VialId": injection_data.get(str, "VialId"),
-            "VialIdResult": injection_data.get(str, "VialIdResult"),
-            "SampleType": injection_data.get(str, "SampleType"),
-            "dilution_factor_setting": try_float_or_none(
-                injection_data.get(str, "Dilution")
-            ),
+            "SampleConcentration": injection.get("SampleConcentration"),
+            "ELN_SampleID": injection.get("ELN_SampleID"),
+            "PrepType": injection.get("PrepType"),
+            "SampleSetAcquiring": injection.get("SampleSetAcquiring"),
+            "SampleSetAltered": injection.get("SampleSetAltered"),
+            "SampleSetCurrentId": injection.get("SampleSetCurrentId"),
+            "OriginalSampleSetId": injection.get("OriginalSampleSetId"),
+            "OriginalVialId": injection.get("OriginalVialId"),
+            "Vial": injection.get("Vial"),
+            "lot_number": injection.get("Lot"),
+            "sample_weight": try_float_or_none(injection.get("SampleWeight")),
+            "Label": injection.get("Label"),
+            "VialId": injection.get("VialId"),
+            "VialIdResult": injection.get("VialIdResult"),
+            "SampleType": injection.get("SampleType"),
+            "dilution_factor_setting": try_float_or_none(injection.get("Dilution")),
         }
     )
 
     # Prepare injection custom info
     injection_custom_info = filter_nulls(
         {
-            "InjectionStatus": injection_data.get(str, "InjectionStatus"),
-            "InjectionType": injection_data.get(str, "InjectionType"),
-            "Injection": injection_data.get(int, "Injection"),
-            "Volume": injection_data.get(float, "Volume"),
+            "InjectionStatus": injection.get("InjectionStatus"),
+            "InjectionType": injection.get("InjectionType"),
+            "Injection": injection.get("Injection"),
+            "Volume": injection.get("Volume"),
         }
     )
+
+    sample_name = injection.get("SampleName")
+    if not sample_name:
+        msg = "SampleName is required"
+        raise AllotropeParsingError(msg)
+
+    vial_id = injection.get("VialId")
+    vial_id_str = str(vial_id) if vial_id is not None else None
+
+    injection_id = injection.get("InjectionId")
+    if injection_id is None:
+        msg = "InjectionId is required"
+        raise AllotropeParsingError(msg)
+
+    date_acquired = injection.get("DateAcquired")
+    if not date_acquired:
+        msg = "DateAcquired is required"
+        raise AllotropeParsingError(msg)
 
     return [
         Measurement(
             measurement_identifier=random_uuid_str(),
-            sample_identifier=assert_not_none(
-                injection_data.get(str, "SampleName"), "SampleName"
-            ),
-            batch_identifier=str(metadata_data.get(str, "sample_set_id")),
+            sample_identifier=sample_name,
+            batch_identifier=str(metadata_fields.get("sample_set_id") or ""),
             sample_role_type=sample_role_type,
-            written_name=injection_data.get(str, "Label"),
-            chromatography_serial_num=injection_data.get(str, "ColumnSerialNumber")
+            written_name=injection.get("Label"),
+            chromatography_serial_num=injection.get("ColumnSerialNumber")
             or NOT_APPLICABLE,
-            autosampler_injection_volume_setting=injection_data.get(
-                float, "InjectionVolume"
-            ),
-            injection_identifier=str(injection_data.get(int, "InjectionId")),
-            injection_time=injection_data[str, "DateAcquired"],
+            autosampler_injection_volume_setting=injection.get("InjectionVolume"),
+            injection_identifier=str(injection_id),
+            injection_time=date_acquired,
             peaks=[peak for peak in [_create_peak(peak) for peak in peaks] if peak],
             chromatogram_data_cube=_get_chromatogram(injection),
             device_control_docs=device_control_docs,
             measurement_time=measurement_time,
-            location_identifier=str(injection_data.get(str, "VialId"))
-            if injection_data.get(str, "VialId") is not None
-            else None,
-            flow_rate=try_float_or_none(injection_data.get(str, "FlowRate")),
+            location_identifier=vial_id_str,
+            flow_rate=try_float_or_none(injection.get("FlowRate")),
             measurement_custom_info=measurement_custom_info,
-            processed_data=processed_data,
-            data_processing=data_processing_list if data_processing_list else None,
+            processed_data=processing_items,
             sample_custom_info=sample_custom_info,
             injection_custom_info=injection_custom_info,
         )
@@ -493,22 +496,22 @@ def create_measurement_groups(
     metadata_fields: dict[str, Any],
     processing_methods: list[dict[str, Any]] | None = None,
 ) -> list[MeasurementGroup]:
-    metadata_data = JsonData(metadata_fields)
     sample_to_injection: defaultdict[str, list[dict[str, Any]]] = defaultdict(list)
 
     for injection in injections:
-        injection_data = JsonData(injection)
-        sample_to_injection[
-            assert_not_none(injection_data.get(str, "SampleName"), "SampleName")
-        ].append(injection)
+        sample_name = injection.get("SampleName")
+        if not sample_name:
+            msg = "SampleName is required"
+            raise AllotropeParsingError(msg)
+        sample_to_injection[sample_name].append(injection)
 
     measurement_aggregate_custom_info = filter_nulls(
         {
-            "Node": metadata_data.get(str, "Node"),
-            "measurement_method_identifier": metadata_data.get(str, "SampleSetMethod"),
-            "SampleSetName": metadata_data.get(str, "SampleSetName"),
-            "SampleSetType": metadata_data.get(str, "SampleSetType"),
-            "SampleSetComments": metadata_data.get(str, "SampleSetComments"),
+            "Node": metadata_fields.get("Node"),
+            "measurement_method_identifier": metadata_fields.get("SampleSetMethod"),
+            "SampleSetName": metadata_fields.get("SampleSetName"),
+            "SampleSetType": metadata_fields.get("SampleSetType"),
+            "SampleSetComments": metadata_fields.get("SampleSetComments"),
         }
     )
 
@@ -517,22 +520,18 @@ def create_measurement_groups(
         if not sample_injections:
             continue
 
-        first_injection_data = JsonData(sample_injections[0])
+        first_injection = sample_injections[0]
 
         group_custom_info = filter_nulls(
             {
-                "Altered": first_injection_data.get(bool, "Altered"),
-                "ELN_DocumentID": first_injection_data.get(str, "ELN_DocumentID"),
-                "ELN_SectionGUID": first_injection_data.get(str, "ELN_SectionGUID"),
-                "InstrumentMethodName": first_injection_data.get(
-                    str, "InstrumentMethodName"
-                ),
-                "InstrumentMethodId": first_injection_data.get(
-                    str, "InstrumentMethodId"
-                ),
-                "SSM_Pattern": first_injection_data.get(str, "SSM_Pattern"),
-                "Superseded": first_injection_data.get(bool, "Superseded"),
-                "SummaryFaults": first_injection_data.get(str, "SummaryFaults"),
+                "Altered": first_injection.get("Altered"),
+                "ELN_DocumentID": first_injection.get("ELN_DocumentID"),
+                "ELN_SectionGUID": first_injection.get("ELN_SectionGUID"),
+                "InstrumentMethodName": first_injection.get("InstrumentMethodName"),
+                "InstrumentMethodId": first_injection.get("InstrumentMethodId"),
+                "SSM_Pattern": first_injection.get("SSM_Pattern"),
+                "Superseded": first_injection.get("Superseded"),
+                "SummaryFaults": first_injection.get("SummaryFaults"),
                 **measurement_aggregate_custom_info,
             }
         )
