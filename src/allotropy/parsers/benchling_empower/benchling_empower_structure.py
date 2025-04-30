@@ -68,23 +68,25 @@ def create_metadata(
                 }
             )
         )
-
+    software_version = first_injection.get(str, "AcqSWVersion")
     return Metadata(
         asset_management_identifier=metadata.get(str, "SystemName", NOT_APPLICABLE),
         analyst=metadata.get(str, "SampleSetAcquiredBy", NOT_APPLICABLE),
         data_system_instance_identifier=metadata.get(str, "SystemName", NOT_APPLICABLE),
         software_name=constants.SOFTWARE_NAME,
-        software_version=first_injection.get(str, "AcqSWVersion"),
+        software_version=software_version,
         file_name=Path(file_path).name,
         unc_path=file_path,
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
         device_system_custom_info=device_system_custom_info,
-        data_system_custom_info=data_system_custom_info,
+        data_system_custom_info = {
+            **data_system_custom_info,
+        }
     )
 
 
-def _get_chromatogram(injection: dict[str, Any]) -> DataCube | None:
-    chrom: list[list[float]] | None = injection.get("chrom")
+def _get_chromatogram(injection: JsonData) -> DataCube | None:
+    chrom: list[list[float]] | None = injection.data.get("chrom")
     if not chrom:
         return None
     if len(chrom) != 2:
@@ -94,7 +96,7 @@ def _get_chromatogram(injection: dict[str, Any]) -> DataCube | None:
     dimensions, measures = chrom
 
     # ASM expects chromatogram absorbance in mAU, convert units if different.
-    detection_unit = injection.get("DetUnits")
+    detection_unit = injection.get(str, "DetUnits")
     if detection_unit == "AU":
         measures = [m * 1000 for m in measures]
     elif detection_unit != "mAU":
@@ -126,58 +128,58 @@ def _get_chromatogram(injection: dict[str, Any]) -> DataCube | None:
     )
 
 
-def _create_peak(peak: dict[str, Any]) -> Peak | None:
-    peak_type = peak.get("PeakType")
+def _create_peak(peak: JsonData) -> Peak | None:
+    peak_type = peak.get(str, "PeakType")
     if peak_type in ["Missing", "Group"]:
         return None
 
     # Area and height are reported in μV, but are reported in ASM as mAU
     # For Empower software, 1V == 1AU, so we just need to convert μ to m
-    area = try_float_or_none(peak.get("Area"))
+    area = try_float_or_none(peak.get(str, "Area"))
     if area is not None:
         area /= 1000
 
-    height = try_float_or_none(peak.get("Height"))
+    height = try_float_or_none(peak.get(str, "Height"))
     if height is not None:
         height /= 1000
 
     # Times are reported in minutes by Empower - convert to seconds
-    retention_time = try_float_or_none(peak.get("RetentionTime"))
+    retention_time = try_float_or_none(peak.get(str, "RetentionTime"))
     if retention_time is not None:
         retention_time *= 60
 
     custom_info = filter_nulls(
         {
-            "IntType": peak.get("IntType"),
+            "IntType": peak.get(str, "IntType"),
             "PeakType": peak_type,
-            "Slope": peak.get("Slope"),
-            "StartHeight": peak.get("StartHeight"),
-            "EndHeight": peak.get("EndHeight"),
-            "InflectionWidth": peak.get("InflectionWidth"),
-            "PointsAcrossPeak": peak.get("PointsAcrossPeak"),
-            "Offset": peak.get("Offset"),
-            "PctAdjustedArea": peak.get("PctAdjustedArea"),
-            "PeakCodes": peak.get("PeakCodes"),
-            "ICH_AdjArea": peak.get("ICH_AdjArea"),
-            "ICHThreshold": peak.get("ICHThreshold"),
-            "ImpurityType": peak.get("ImpurityType"),
-            "NG_FinalResult": peak.get("NG_FinalResult"),
-            "NG_RS_AdjAreaPct": peak.get("NG_RS_AdjAreaPct"),
-            "RS_AdjAreaPct": peak.get("RS_AdjAreaPct"),
-            "RS_FinalResult": peak.get("RS_FinalResult"),
-            "UnnamedRS_AdjAreaPct": peak.get("UnnamedRS_AdjAreaPct"),
-            "UnnamedRS_FinalResult": peak.get("UnnamedRS_FinalResult"),
-            "AdjArea": peak.get("AdjArea"),
-            "AdjAreaPct": peak.get("AdjAreaPct"),
-            "FinalResult": peak.get("FinalResult"),
-            "2ndDerivativeApex": peak.get("2ndDerivativeApex"),
-            "CorrectedArea~": peak.get("CorrectedArea~"),
+            "Slope": peak.get(str, "Slope"),
+            "StartHeight": peak.get(str, "StartHeight"),
+            "EndHeight": peak.get(str, "EndHeight"),
+            "InflectionWidth": peak.get(str, "InflectionWidth"),
+            "PointsAcrossPeak": peak.get(str, "PointsAcrossPeak"),
+            "Offset": peak.get(str, "Offset"),
+            "PctAdjustedArea": peak.get(str, "PctAdjustedArea"),
+            "PeakCodes": peak.get(str, "PeakCodes"),
+            "ICH_AdjArea": peak.get(str, "ICH_AdjArea"),
+            "ICHThreshold": peak.get(str, "ICHThreshold"),
+            "ImpurityType": peak.get(str, "ImpurityType"),
+            "NG_FinalResult": peak.get(str, "NG_FinalResult"),
+            "NG_RS_AdjAreaPct": peak.get(str, "NG_RS_AdjAreaPct"),
+            "RS_AdjAreaPct": peak.get(str, "RS_AdjAreaPct"),
+            "RS_FinalResult": peak.get(str, "RS_FinalResult"),
+            "UnnamedRS_AdjAreaPct": peak.get(str, "UnnamedRS_AdjAreaPct"),
+            "UnnamedRS_FinalResult": peak.get(str, "UnnamedRS_FinalResult"),
+            "AdjArea": peak.get(str, "AdjArea"),
+            "AdjAreaPct": peak.get(str, "AdjAreaPct"),
+            "FinalResult": peak.get(str, "FinalResult"),
+            "2ndDerivativeApex": peak.get(str, "2ndDerivativeApex"),
+            "CorrectedArea~": peak.get(str, "CorrectedArea~"),
         }
     )
 
     # Extract baseline values and convert from minutes to seconds
-    baseline_start = try_float_or_none(peak.get("BaselineStart"))
-    baseline_end = try_float_or_none(peak.get("BaselineEnd"))
+    baseline_start = try_float_or_none(peak.get(str, "BaselineStart"))
+    baseline_end = try_float_or_none(peak.get(str, "BaselineEnd"))
 
     if baseline_start is not None:
         baseline_start *= 60  # Convert from minutes to seconds
@@ -185,8 +187,8 @@ def _create_peak(peak: dict[str, Any]) -> Peak | None:
     if baseline_end is not None:
         baseline_end *= 60  # Convert from minutes to seconds
 
-    start_time = try_float_or_none(peak.get("StartTime"))
-    end_time = try_float_or_none(peak.get("EndTime"))
+    start_time = try_float_or_none(peak.get(str, "StartTime"))
+    end_time = try_float_or_none(peak.get(str, "EndTime"))
 
     if start_time is not None:
         start_time *= 60  # Convert from minutes to seconds
@@ -204,19 +206,19 @@ def _create_peak(peak: dict[str, Any]) -> Peak | None:
         retention_time=retention_time,
         area=area,
         area_unit="mAU.s",
-        relative_area=try_float_or_none(peak.get("PctArea")),
-        width=try_float_or_none(peak.get("Width")),
+        relative_area=try_float_or_none(peak.get(str, "PctArea")),
+        width=try_float_or_none(peak.get(str, "Width")),
         width_unit="s",
         height=height,
         height_unit="mAU",
-        relative_height=try_float_or_none(peak.get("PctHeight")),
-        written_name=peak.get("Name"),
-        relative_peak_analyte_amount=try_float_or_none(peak.get("PctAmount")),
-        peak_analyte_amount=try_float_or_none(peak.get("Amount")),
-        index=str(try_float_or_none(peak.get("PeakCounter"))),
+        relative_height=try_float_or_none(peak.get(str, "PctHeight")),
+        written_name=peak.get(str, "Name"),
+        relative_peak_analyte_amount=try_float_or_none(peak.get(str, "PctAmount")),
+        peak_analyte_amount=try_float_or_none(peak.get(str, "Amount")),
+        index=str(try_float_or_none(peak.get(str, "PeakCounter"))),
         baseline_value_at_start_of_peak=baseline_start,
         baseline_value_at_end_of_peak=baseline_end,
-        relative_corrected_peak_area=try_float_or_none(peak.get("CorrectedArea~")),
+        relative_corrected_peak_area=try_float_or_none(peak.get(str, "CorrectedArea~")),
         custom_info=custom_info,
     )
 
@@ -481,8 +483,8 @@ def _create_measurements(
             ),
             injection_identifier=str(injection_id),
             injection_time=date_acquired,
-            peaks=[peak for peak in [_create_peak(peak) for peak in peaks] if peak],
-            chromatogram_data_cube=_get_chromatogram(injection.data),
+            peaks=[peak for peak in [_create_peak(JsonData(peak_dict)) for peak_dict in peaks] if peak],
+            chromatogram_data_cube=_get_chromatogram(injection),
             device_control_docs=device_control_docs,
             measurement_time=measurement_time,
             location_identifier=vial_id_str,
