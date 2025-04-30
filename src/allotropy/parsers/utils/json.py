@@ -7,6 +7,7 @@ import re
 from typing import Any, Literal, overload, TypeVar
 import warnings
 
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.values import (
     assert_not_none,
@@ -126,16 +127,32 @@ class JsonData:
         Raises
         AllotropeConversionError: If the lookup or conversion to type fails.
         """
+        if isinstance(type_and_key, str):
+            key = type_and_key
+            value = self.data.get(key)
+            if value is None:
+                msg = f"Required field '{key}' not found in data"
+                raise AllotropeConversionError(msg)
+            return value
+
+        # Handle the case where type, key (and optionally message) are provided
         if len(type_and_key) == 2:
             type_, key = type_and_key
             msg = None
         elif len(type_and_key) == 3:
             type_, key, msg = type_and_key
+        else:
+            msg = f"Invalid arguments to __getitem__: {type_and_key}"
+            raise AllotropeConversionError(msg)
+
         try:
-            return assert_not_none(self.get(type_, key), str(key), msg=msg)
-        except Exception:
+            result = assert_not_none(self.get(type_, key), str(key), msg=msg)
+            return result
+        except Exception as e:
             self.errored = True
-            raise
+            # Wrap any exception with AllotropeConversionError
+            msg = msg or f"Error accessing field '{key}': {e!s}"
+            raise AllotropeConversionError(msg) from e
 
     # This overload tells typing that if default is "None" then get might return None
     @overload

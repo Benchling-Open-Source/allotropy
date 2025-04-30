@@ -23,12 +23,12 @@
                                             "ChannelDescription": "VWD: Signal A, 214 nm",
                                             "ChannelType": "2D",
                                             "ChannelStatus": "",
-                                            "DataStart": 0.0,
-                                            "DataEnd": 30.0,
+                                            "DataStart": "0.0",
+                                            "DataEnd": "30.0",
                                             "device acquisition method": "my_system_SEC_2018",
                                             "total measurement duration setting": 30.0,
                                             "Channel": "VWD.0.0",
-                                            "ScaletouV": 9.99999997475243e-07
+                                            "ScaletouV": "9.99999997475243e-07"
                                         }
                                     }
                                 ]
@@ -39,17 +39,17 @@
                                 "location identifier": "1003",
                                 "sample role type": "unknown sample role",
                                 "custom information document": {
-                                    "SampleConcentration": 0.0,
+                                    "SampleConcentration": "0.0",
                                     "PrepType": "",
-                                    "SampleSetAcquiring": false,
-                                    "SampleSetAltered": true,
-                                    "SampleSetCurrentId": 1002,
-                                    "OriginalSampleSetId": 1002,
-                                    "OriginalVialId": 1003,
+                                    "SampleSetAcquiring": "False",
+                                    "SampleSetAltered": "True",
+                                    "SampleSetCurrentId": "1002",
+                                    "OriginalSampleSetId": "1002",
+                                    "OriginalVialId": "1003",
                                     "Vial": "1",
                                     "lot number": "Blank",
                                     "sample weight": 1.0,
-                                    "VialId": 1003,
+                                    "VialId": "1003",
                                     "SampleType": "Unknown",
                                     "dilution factor setting": 1.0
                                 }
@@ -845,7 +845,7 @@
                                 "custom information document": {
                                     "InjectionStatus": "injection",
                                     "InjectionType": "Blank",
-                                    "Injection": 1
+                                    "Injection": "1"
                                 }
                             },
                             "chromatogram data cube": {
@@ -6943,15 +6943,15 @@
                                 "Comments": "1`",
                                 "measurement end time": "2025-05-06T17:46:35",
                                 "DateAcquired": "2025-05-06T14:08:48",
-                                "RunTime": 30.0
+                                "RunTime": "30.0"
                             }
                         }
                     ],
                     "custom information document": {
-                        "Altered": true,
+                        "Altered": "True",
                         "InstrumentMethodName": "my_system_SEC_2018",
-                        "InstrumentMethodId": 1004,
-                        "Superseded": false,
+                        "InstrumentMethodId": "1004",
+                        "Superseded": "False",
                         "Node": "node",
                         "measurement method identifier": "sample_set1",
                         "SampleSetName": "sample_set1",

@@ -19,12 +19,12 @@
                                             "ChannelDescription": "VWD: Signal A, 220 nm",
                                             "ChannelType": "2D",
                                             "ChannelStatus": "",
-                                            "DataStart": 0.0,
-                                            "DataEnd": 30.0,
+                                            "DataStart": "0.0",
+                                            "DataEnd": "30.0",
                                             "device acquisition method": "InstrumentMethod1",
                                             "total measurement duration setting": 30.0,
                                             "Channel": "VWD.0.0",
-                                            "ScaletouV": 9.99999997475243e-07
+                                            "ScaletouV": "9.99999997475243e-07"
                                         }
                                     }
                                 ]
@@ -35,17 +35,17 @@
                                 "location identifier": "1149",
                                 "sample role type": "unknown sample role",
                                 "custom information document": {
-                                    "SampleConcentration": 0.0,
+                                    "SampleConcentration": "0.0",
                                     "PrepType": "",
-                                    "SampleSetAcquiring": false,
-                                    "SampleSetAltered": true,
-                                    "SampleSetCurrentId": 1148,
-                                    "OriginalSampleSetId": 1148,
-                                    "OriginalVialId": 1149,
+                                    "SampleSetAcquiring": "False",
+                                    "SampleSetAltered": "True",
+                                    "SampleSetCurrentId": "1148",
+                                    "OriginalSampleSetId": "1148",
+                                    "OriginalVialId": "1149",
                                     "Vial": "1",
                                     "lot number": "Blank",
                                     "sample weight": 1.0,
-                                    "VialId": 1149,
+                                    "VialId": "1149",
                                     "SampleType": "Unknown",
                                     "dilution factor setting": 1.0
                                 }
@@ -65,7 +65,7 @@
                                 "custom information document": {
                                     "InjectionStatus": "Pre-Empower 3 SR3",
                                     "InjectionType": "Blank",
-                                    "Injection": 1
+                                    "Injection": "1"
                                 }
                             },
                             "chromatogram data cube": {
@@ -99,15 +99,15 @@
                                 "Comments": "1",
                                 "measurement end time": "2017-01-04T11:51:45",
                                 "DateAcquired": "2017-01-04T08:13:41",
-                                "RunTime": 30.0
+                                "RunTime": "30.0"
                             }
                         }
                     ],
                     "custom information document": {
-                        "Altered": true,
+                        "Altered": "True",
                         "InstrumentMethodName": "InstrumentMethod1",
-                        "InstrumentMethodId": 1150,
-                        "Superseded": false,
+                        "InstrumentMethodId": "1150",
+                        "Superseded": "False",
                         "Node": "Node1",
                         "measurement method identifier": "example_set_2",
                         "SampleSetName": "example_set_2",
@@ -134,13 +134,13 @@
                                             "ChannelDescription": "VWD: Signal A, 220 nm",
                                             "ChannelType": "2D",
                                             "ChannelStatus": "",
-                                            "DataStart": 0.0,
-                                            "DataEnd": 30.0,
-                                            "CirculationNo": 0,
+                                            "DataStart": "0.0",
+                                            "DataEnd": "30.0",
+                                            "CirculationNo": "0",
                                             "device acquisition method": "InstrumentMethod1",
                                             "total measurement duration setting": 30.0,
                                             "Channel": "VWD.0.0",
-                                            "ScaletouV": 9.99999997475243e-07
+                                            "ScaletouV": "9.99999997475243e-07"
                                         }
                                     }
                                 ]
@@ -152,14 +152,14 @@
                                 "sample role type": "standard sample role",
                                 "custom information document": {
                                     "PrepType": "",
-                                    "SampleSetAcquiring": false,
-                                    "SampleSetAltered": true,
-                                    "SampleSetCurrentId": 1148,
-                                    "OriginalSampleSetId": 1148,
-                                    "OriginalVialId": 1175,
+                                    "SampleSetAcquiring": "False",
+                                    "SampleSetAltered": "True",
+                                    "SampleSetCurrentId": "1148",
+                                    "OriginalSampleSetId": "1148",
+                                    "OriginalVialId": "1175",
                                     "Vial": "2",
                                     "sample weight": 1.0,
-                                    "VialId": 1175,
+                                    "VialId": "1175",
                                     "SampleType": "Standard",
                                     "dilution factor setting": 1.0
                                 }
@@ -179,7 +179,7 @@
                                 "custom information document": {
                                     "InjectionStatus": "Pre-Empower 3 SR3",
                                     "InjectionType": "Standard",
-                                    "Injection": 1
+                                    "Injection": "1"
                                 }
                             },
                             "chromatogram data cube": {
@@ -213,15 +213,15 @@
                                 "Comments": "1",
                                 "measurement end time": "2017-01-04T11:51:45",
                                 "DateAcquired": "2017-01-04T08:44:56",
-                                "RunTime": 30.0
+                                "RunTime": "30.0"
                             }
                         }
                     ],
                     "custom information document": {
-                        "Altered": true,
+                        "Altered": "True",
                         "InstrumentMethodName": "InstrumentMethod1",
-                        "InstrumentMethodId": 1150,
-                        "Superseded": false,
+                        "InstrumentMethodId": "1150",
+                        "Superseded": "False",
                         "Node": "Node1",
                         "measurement method identifier": "example_set_2",
                         "SampleSetName": "example_set_2",
@@ -248,13 +248,13 @@
                                             "ChannelDescription": "VWD: Signal A, 220 nm",
                                             "ChannelType": "2D",
                                             "ChannelStatus": "",
-                                            "DataStart": 0.0,
-                                            "DataEnd": 30.0,
-                                            "CirculationNo": 0,
+                                            "DataStart": "0.0",
+                                            "DataEnd": "30.0",
+                                            "CirculationNo": "0",
                                             "device acquisition method": "InstrumentMethod1",
                                             "total measurement duration setting": 30.0,
                                             "Channel": "VWD.0.0",
-                                            "ScaletouV": 9.99999997475243e-07
+                                            "ScaletouV": "9.99999997475243e-07"
                                         }
                                     }
                                 ]
@@ -266,14 +266,14 @@
                                 "sample role type": "standard sample role",
                                 "custom information document": {
                                     "PrepType": "",
-                                    "SampleSetAcquiring": false,
-                                    "SampleSetAltered": true,
-                                    "SampleSetCurrentId": 1148,
-                                    "OriginalSampleSetId": 1148,
-                                    "OriginalVialId": 1178,
+                                    "SampleSetAcquiring": "False",
+                                    "SampleSetAltered": "True",
+                                    "SampleSetCurrentId": "1148",
+                                    "OriginalSampleSetId": "1148",
+                                    "OriginalVialId": "1178",
                                     "Vial": "3",
                                     "sample weight": 1.0,
-                                    "VialId": 1178,
+                                    "VialId": "1178",
                                     "SampleType": "Standard",
                                     "dilution factor setting": 1.0
                                 }
@@ -293,7 +293,7 @@
                                 "custom information document": {
                                     "InjectionStatus": "Pre-Empower 3 SR3",
                                     "InjectionType": "Standard",
-                                    "Injection": 1
+                                    "Injection": "1"
                                 }
                             },
                             "chromatogram data cube": {
@@ -332,15 +332,15 @@
                                 "Comments": "1",
                                 "measurement end time": "2017-01-04T11:51:45",
                                 "DateAcquired": "2017-01-04T09:16:10",
-                                "RunTime": 30.0
+                                "RunTime": "30.0"
                             }
                         }
                     ],
                     "custom information document": {
-                        "Altered": true,
+                        "Altered": "True",
                         "InstrumentMethodName": "InstrumentMethod1",
-                        "InstrumentMethodId": 1150,
-                        "Superseded": false,
+                        "InstrumentMethodId": "1150",
+                        "Superseded": "False",
                         "Node": "Node1",
                         "measurement method identifier": "example_set_2",
                         "SampleSetName": "example_set_2",
@@ -367,13 +367,13 @@
                                             "ChannelDescription": "VWD: Signal A, 220 nm",
                                             "ChannelType": "2D",
                                             "ChannelStatus": "",
-                                            "DataStart": 0.0,
-                                            "DataEnd": 30.0,
-                                            "CirculationNo": 1,
+                                            "DataStart": "0.0",
+                                            "DataEnd": "30.0",
+                                            "CirculationNo": "1",
                                             "device acquisition method": "InstrumentMethod1",
                                             "total measurement duration setting": 30.0,
                                             "Channel": "VWD.0.0",
-                                            "ScaletouV": 9.99999997475243e-07
+                                            "ScaletouV": "9.99999997475243e-07"
                                         }
                                     }
                                 ]
@@ -385,19 +385,19 @@
                                 "sample role type": "unknown sample role",
                                 "written name": "U0101",
                                 "custom information document": {
-                                    "SampleConcentration": 1.0,
+                                    "SampleConcentration": "1.0",
                                     "ELN SampleID": "S240506-0008#1",
                                     "PrepType": "",
-                                    "SampleSetAcquiring": false,
-                                    "SampleSetAltered": true,
-                                    "SampleSetCurrentId": 1148,
-                                    "OriginalSampleSetId": 1148,
-                                    "OriginalVialId": 1181,
+                                    "SampleSetAcquiring": "False",
+                                    "SampleSetAltered": "True",
+                                    "SampleSetCurrentId": "1148",
+                                    "OriginalSampleSetId": "1148",
+                                    "OriginalVialId": "1181",
                                     "Vial": "4",
                                     "lot number": "MRE-06MAY24-4",
                                     "sample weight": 1.0,
                                     "Label": "U0101",
-                                    "VialId": 1181,
+                                    "VialId": "1181",
                                     "SampleType": "Unknown",
                                     "dilution factor setting": 1.0
                                 }
@@ -417,7 +417,7 @@
                                 "custom information document": {
                                     "InjectionStatus": "Pre-Empower 3 SR3",
                                     "InjectionType": "Unknown",
-                                    "Injection": 1
+                                    "Injection": "1"
                                 }
                             },
                             "chromatogram data cube": {
@@ -451,18 +451,18 @@
                                 "Comments": "1",
                                 "measurement end time": "2017-01-04T11:51:45",
                                 "DateAcquired": "2017-01-04T09:47:28",
-                                "RunTime": 30.0
+                                "RunTime": "30.0"
                             }
                         }
                     ],
                     "custom information document": {
-                        "Altered": true,
+                        "Altered": "True",
                         "ELN DocumentID": "USER_1la-2024-0025",
                         "ELN SectionGUID": "e84bb893-2801-f5e1-3797-c67cc94c002f",
                         "InstrumentMethodName": "InstrumentMethod1",
-                        "InstrumentMethodId": 1150,
+                        "InstrumentMethodId": "1150",
                         "SSM Pattern": "NG_3Rep_Vials",
-                        "Superseded": false,
+                        "Superseded": "False",
                         "Node": "Node1",
                         "measurement method identifier": "example_set_2",
                         "SampleSetName": "example_set_2",
@@ -489,13 +489,13 @@
                                             "ChannelDescription": "VWD: Signal A, 220 nm",
                                             "ChannelType": "2D",
                                             "ChannelStatus": "",
-                                            "DataStart": 0.0,
-                                            "DataEnd": 30.0,
-                                            "CirculationNo": 1,
+                                            "DataStart": "0.0",
+                                            "DataEnd": "30.0",
+                                            "CirculationNo": "1",
                                             "device acquisition method": "InstrumentMethod1",
                                             "total measurement duration setting": 30.0,
                                             "Channel": "VWD.0.0",
-                                            "ScaletouV": 9.99999997475243e-07
+                                            "ScaletouV": "9.99999997475243e-07"
                                         }
                                     }
                                 ]
@@ -507,19 +507,19 @@
                                 "sample role type": "unknown sample role",
                                 "written name": "U0101",
                                 "custom information document": {
-                                    "SampleConcentration": 1.0,
+                                    "SampleConcentration": "1.0",
                                     "ELN SampleID": "S240506-0008#2",
                                     "PrepType": "",
-                                    "SampleSetAcquiring": false,
-                                    "SampleSetAltered": true,
-                                    "SampleSetCurrentId": 1148,
-                                    "OriginalSampleSetId": 1148,
-                                    "OriginalVialId": 1184,
+                                    "SampleSetAcquiring": "False",
+                                    "SampleSetAltered": "True",
+                                    "SampleSetCurrentId": "1148",
+                                    "OriginalSampleSetId": "1148",
+                                    "OriginalVialId": "1184",
                                     "Vial": "5",
                                     "lot number": "MRE-06MAY24-4",
                                     "sample weight": 1.0,
                                     "Label": "U0101",
-                                    "VialId": 1184,
+                                    "VialId": "1184",
                                     "SampleType": "Unknown",
                                     "dilution factor setting": 1.0
                                 }
@@ -539,7 +539,7 @@
                                 "custom information document": {
                                     "InjectionStatus": "Pre-Empower 3 SR3",
                                     "InjectionType": "Unknown",
-                                    "Injection": 1
+                                    "Injection": "1"
                                 }
                             },
                             "chromatogram data cube": {
@@ -573,18 +573,18 @@
                                 "Comments": "1",
                                 "measurement end time": "2017-01-04T11:51:45",
                                 "DateAcquired": "2017-01-04T10:18:46",
-                                "RunTime": 30.0
+                                "RunTime": "30.0"
                             }
                         }
                     ],
                     "custom information document": {
-                        "Altered": true,
+                        "Altered": "True",
                         "ELN DocumentID": "USER_1la-2024-0025",
                         "ELN SectionGUID": "e84bb893-2801-f5e1-3797-c67cc94c002f",
                         "InstrumentMethodName": "InstrumentMethod1",
-                        "InstrumentMethodId": 1150,
+                        "InstrumentMethodId": "1150",
                         "SSM Pattern": "NG_3Rep_Vials",
-                        "Superseded": false,
+                        "Superseded": "False",
                         "Node": "Node1",
                         "measurement method identifier": "example_set_2",
                         "SampleSetName": "example_set_2",
@@ -611,13 +611,13 @@
                                             "ChannelDescription": "VWD: Signal A, 220 nm",
                                             "ChannelType": "2D",
                                             "ChannelStatus": "",
-                                            "DataStart": 0.0,
-                                            "DataEnd": 30.0,
-                                            "CirculationNo": 1,
+                                            "DataStart": "0.0",
+                                            "DataEnd": "30.0",
+                                            "CirculationNo": "1",
                                             "device acquisition method": "InstrumentMethod1",
                                             "total measurement duration setting": 30.0,
                                             "Channel": "VWD.0.0",
-                                            "ScaletouV": 9.99999997475243e-07
+                                            "ScaletouV": "9.99999997475243e-07"
                                         }
                                     }
                                 ]
@@ -629,19 +629,19 @@
                                 "sample role type": "unknown sample role",
                                 "written name": "U0101",
                                 "custom information document": {
-                                    "SampleConcentration": 1.0,
+                                    "SampleConcentration": "1.0",
                                     "ELN SampleID": "S240506-0008#3",
                                     "PrepType": "",
-                                    "SampleSetAcquiring": false,
-                                    "SampleSetAltered": true,
-                                    "SampleSetCurrentId": 1148,
-                                    "OriginalSampleSetId": 1148,
-                                    "OriginalVialId": 1187,
+                                    "SampleSetAcquiring": "False",
+                                    "SampleSetAltered": "True",
+                                    "SampleSetCurrentId": "1148",
+                                    "OriginalSampleSetId": "1148",
+                                    "OriginalVialId": "1187",
                                     "Vial": "6",
                                     "lot number": "MRE-06MAY24-4",
                                     "sample weight": 1.0,
                                     "Label": "U0101",
-                                    "VialId": 1187,
+                                    "VialId": "1187",
                                     "SampleType": "Unknown",
                                     "dilution factor setting": 1.0
                                 }
@@ -661,7 +661,7 @@
                                 "custom information document": {
                                     "InjectionStatus": "Pre-Empower 3 SR3",
                                     "InjectionType": "Unknown",
-                                    "Injection": 1
+                                    "Injection": "1"
                                 }
                             },
                             "chromatogram data cube": {
@@ -695,18 +695,18 @@
                                 "Comments": "1",
                                 "measurement end time": "2017-01-04T11:51:45",
                                 "DateAcquired": "2017-01-04T10:50:07",
-                                "RunTime": 30.0
+                                "RunTime": "30.0"
                             }
                         }
                     ],
                     "custom information document": {
-                        "Altered": true,
+                        "Altered": "True",
                         "ELN DocumentID": "USER_1la-2024-0025",
                         "ELN SectionGUID": "e84bb893-2801-f5e1-3797-c67cc94c002f",
                         "InstrumentMethodName": "InstrumentMethod1",
-                        "InstrumentMethodId": 1150,
+                        "InstrumentMethodId": "1150",
                         "SSM Pattern": "NG_3Rep_Vials",
-                        "Superseded": false,
+                        "Superseded": "False",
                         "Node": "Node1",
                         "measurement method identifier": "example_set_2",
                         "SampleSetName": "example_set_2",
@@ -733,13 +733,13 @@
                                             "ChannelDescription": "VWD: Signal A, 220 nm",
                                             "ChannelType": "2D",
                                             "ChannelStatus": "",
-                                            "DataStart": 0.0,
-                                            "DataEnd": 30.0,
-                                            "CirculationNo": 1,
+                                            "DataStart": "0.0",
+                                            "DataEnd": "30.0",
+                                            "CirculationNo": "1",
                                             "device acquisition method": "InstrumentMethod1",
                                             "total measurement duration setting": 30.0,
                                             "Channel": "VWD.0.0",
-                                            "ScaletouV": 9.99999997475243e-07
+                                            "ScaletouV": "9.99999997475243e-07"
                                         }
                                     }
                                 ]
@@ -751,19 +751,19 @@
                                 "sample role type": "unknown sample role",
                                 "written name": "U0102",
                                 "custom information document": {
-                                    "SampleConcentration": 1.0,
+                                    "SampleConcentration": "1.0",
                                     "ELN SampleID": "S170103-0003#2",
                                     "PrepType": "",
-                                    "SampleSetAcquiring": false,
-                                    "SampleSetAltered": true,
-                                    "SampleSetCurrentId": 1148,
-                                    "OriginalSampleSetId": 1148,
-                                    "OriginalVialId": 1190,
+                                    "SampleSetAcquiring": "False",
+                                    "SampleSetAltered": "True",
+                                    "SampleSetCurrentId": "1148",
+                                    "OriginalSampleSetId": "1148",
+                                    "OriginalVialId": "1190",
                                     "Vial": "7",
                                     "lot number": "MRE-3Jan17-2b",
                                     "sample weight": 1.0,
                                     "Label": "U0102",
-                                    "VialId": 1190,
+                                    "VialId": "1190",
                                     "SampleType": "Unknown",
                                     "dilution factor setting": 1.0
                                 }
@@ -783,7 +783,7 @@
                                 "custom information document": {
                                     "InjectionStatus": "Pre-Empower 3 SR3",
                                     "InjectionType": "Unknown",
-                                    "Injection": 1
+                                    "Injection": "1"
                                 }
                             },
                             "chromatogram data cube": {
@@ -817,18 +817,18 @@
                                 "Comments": "1",
                                 "measurement end time": "2017-01-04T11:51:45",
                                 "DateAcquired": "2017-01-04T11:21:26",
-                                "RunTime": 30.0
+                                "RunTime": "30.0"
                             }
                         }
                     ],
                     "custom information document": {
-                        "Altered": true,
+                        "Altered": "True",
                         "ELN DocumentID": "USER_1la-2017-0009",
                         "ELN SectionGUID": "6ed20e99-2801-f5a4-4e21-23f8d2fa9d59",
                         "InstrumentMethodName": "InstrumentMethod1",
-                        "InstrumentMethodId": 1150,
+                        "InstrumentMethodId": "1150",
                         "SSM Pattern": "LSN30305077_Combined_Assay_Imp",
-                        "Superseded": false,
+                        "Superseded": "False",
                         "Node": "Node1",
                         "measurement method identifier": "example_set_2",
                         "SampleSetName": "example_set_2",

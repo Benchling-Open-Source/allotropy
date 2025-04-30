@@ -16,9 +16,10 @@ from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._202
     ProcessingItem,
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
-from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.benchling_empower import constants
 from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.utils.json import JsonData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import try_float_or_none
 
@@ -31,26 +32,26 @@ def filter_nulls(d: dict[str, Any]) -> dict[str, Any]:
 
 
 def create_metadata(
-    metadata: dict[str, Any],
-    first_injection: dict[str, Any],
+    metadata: JsonData,
+    first_injection: JsonData,
     file_path: str,
-    instrument_methods: list[dict[str, Any]] | None = None,
 ) -> Metadata:
     data_system_custom_info = filter_nulls(
         {
-            "account_identifier": metadata.get("username"),
-            "database": metadata.get("db"),
-            "project": metadata.get("project"),
-            "password": metadata.get("password"),
-            "SystemCreateDate": metadata.get("SystemCreateDate"),
-            "SystemComments": metadata.get("SystemComments"),
-            "Node": metadata.get("Node"),
-            "SampleSetName": metadata.get("SampleSetName"),
-            "SampleSetType": metadata.get("SampleSetType"),
+            "account_identifier": metadata.get(str, "username"),
+            "database": metadata.get(str, "db"),
+            "project": metadata.get(str, "project"),
+            "password": metadata.get(str, "password"),
+            "SystemCreateDate": metadata.get(str, "SystemCreateDate"),
+            "SystemComments": metadata.get(str, "SystemComments"),
+            "Node": metadata.get(str, "Node"),
+            "SampleSetName": metadata.get(str, "SampleSetName"),
+            "SampleSetType": metadata.get(str, "SampleSetType"),
         }
     )
 
     device_system_custom_info = {}
+    instrument_methods = metadata.data.get("instrument_methods", [])
 
     if instrument_methods and len(instrument_methods) > 0:
         method = instrument_methods[0]
@@ -69,11 +70,11 @@ def create_metadata(
         )
 
     return Metadata(
-        asset_management_identifier=metadata.get("SystemName", NOT_APPLICABLE),
-        analyst=metadata.get("SampleSetAcquiredBy", NOT_APPLICABLE),
-        data_system_instance_identifier=metadata.get("SystemName", NOT_APPLICABLE),
+        asset_management_identifier=metadata.get(str, "SystemName", NOT_APPLICABLE),
+        analyst=metadata.get(str, "SampleSetAcquiredBy", NOT_APPLICABLE),
+        data_system_instance_identifier=metadata.get(str, "SystemName", NOT_APPLICABLE),
         software_name=constants.SOFTWARE_NAME,
-        software_version=first_injection.get("AcqSWVersion"),
+        software_version=first_injection.get(str, "AcqSWVersion"),
         file_name=Path(file_path).name,
         unc_path=file_path,
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
@@ -221,14 +222,12 @@ def _create_peak(peak: dict[str, Any]) -> Peak | None:
 
 
 def _create_measurements(
-    injection: dict[str, Any],
-    metadata_fields: dict[str, Any],
-    processing_methods: list[dict[str, Any]] | None = None,
+    injection: JsonData,
+    metadata_fields: JsonData,
 ) -> list[Measurement]:
-    # Access raw data for complex types
-    peaks: list[dict[str, Any]] = injection.get("peaks", [])
-    results: list[dict[str, Any]] = injection.get("results", [])
-    sample_type = injection.get("SampleType")
+    peaks: list[dict[str, Any]] = injection.data.get("peaks", [])
+    results: list[dict[str, Any]] = injection.data.get("results", [])
+    sample_type = injection.get(str, "SampleType")
     sample_role_type = None
     if sample_type:
         sample_role_types = [
@@ -240,45 +239,45 @@ def _create_measurements(
             else SampleRoleType.unknown_sample_role.value
         )
 
-    measurement_time = metadata_fields.get("SampleSetStartDate")
+    measurement_time = metadata_fields.get(str, "SampleSetStartDate")
 
     measurement_custom_info = filter_nulls(
         {
-            "Comments": injection.get("Comments"),
-            "measurement_end_time": metadata_fields.get("SampleSetFinishDate"),
-            "DateAcquired": injection.get("DateAcquired"),
-            "RunTime": injection.get("RunTime"),
+            "Comments": injection.get(str, "Comments"),
+            "measurement_end_time": metadata_fields.get(str, "SampleSetFinishDate"),
+            "DateAcquired": injection.get(str, "DateAcquired"),
+            "RunTime": injection.get(str, "RunTime"),
         }
     )
 
     device_control_custom_info = filter_nulls(
         {
-            "SolventA": injection.get("SolventA"),
-            "SolventB": injection.get("SolventB"),
-            "SolventC": injection.get("SolventC"),
-            "SolventD": injection.get("SolventD"),
-            "ChannelDescription": injection.get("ChannelDescription"),
-            "ChannelType": injection.get("ChannelType"),
-            "ChannelStatus": injection.get("ChannelStatus"),
-            "DataStart": injection.get("DataStart"),
-            "DataEnd": injection.get("DataEnd"),
-            "CirculationNo": injection.get("CirculationNo"),
-            "device acquisition method": injection.get("AcqMethodSet"),
+            "SolventA": injection.get(str, "SolventA"),
+            "SolventB": injection.get(str, "SolventB"),
+            "SolventC": injection.get(str, "SolventC"),
+            "SolventD": injection.get(str, "SolventD"),
+            "ChannelDescription": injection.get(str, "ChannelDescription"),
+            "ChannelType": injection.get(str, "ChannelType"),
+            "ChannelStatus": injection.get(str, "ChannelStatus"),
+            "DataStart": injection.get(str, "DataStart"),
+            "DataEnd": injection.get(str, "DataEnd"),
+            "CirculationNo": injection.get(str, "CirculationNo"),
+            "device acquisition method": injection.get(str, "AcqMethodSet"),
             "total measurement duration setting": try_float_or_none(
-                injection.get("RunTime")
+                injection.get(str, "RunTime")
             ),
-            "Channel": injection.get("Channel"),
-            "ScaletouV": injection.get("ScaletouV"),
-            "SecondChannelId": injection.get("SecondChannelId"),
+            "Channel": injection.get(str, "Channel"),
+            "ScaletouV": injection.get(str, "ScaletouV"),
+            "SecondChannelId": injection.get(str, "SecondChannelId"),
         }
     )
 
     device_control_docs = [
         DeviceControlDoc(
             device_type=constants.DEVICE_TYPE,
-            device_identifier=str(injection.get("ChannelId") or ""),
+            device_identifier=str(injection.get(str, "ChannelId") or ""),
             detector_sampling_rate_setting=try_float_or_none(
-                injection.get("SamplingRate")
+                injection.get(str, "SamplingRate")
             ),
             device_control_custom_info=device_control_custom_info,
         )
@@ -287,6 +286,7 @@ def _create_measurements(
     processing_items = []
     data_processing_by_processing_method_id = defaultdict(list)
     processing_method_ids = set()
+    processing_methods = metadata_fields.data.get("processing_methods", [])
 
     if results:
         for result_data in results:
@@ -429,71 +429,64 @@ def _create_measurements(
 
     sample_custom_info = filter_nulls(
         {
-            "SampleConcentration": injection.get("SampleConcentration"),
-            "ELN_SampleID": injection.get("ELN_SampleID"),
-            "PrepType": injection.get("PrepType"),
-            "SampleSetAcquiring": injection.get("SampleSetAcquiring"),
-            "SampleSetAltered": injection.get("SampleSetAltered"),
-            "SampleSetCurrentId": injection.get("SampleSetCurrentId"),
-            "OriginalSampleSetId": injection.get("OriginalSampleSetId"),
-            "OriginalVialId": injection.get("OriginalVialId"),
-            "Vial": injection.get("Vial"),
-            "lot_number": injection.get("Lot"),
-            "sample_weight": try_float_or_none(injection.get("SampleWeight")),
-            "Label": injection.get("Label"),
-            "VialId": injection.get("VialId"),
-            "VialIdResult": injection.get("VialIdResult"),
-            "SampleType": injection.get("SampleType"),
-            "dilution_factor_setting": try_float_or_none(injection.get("Dilution")),
+            "SampleConcentration": injection.get(str, "SampleConcentration"),
+            "ELN_SampleID": injection.get(str, "ELN_SampleID"),
+            "PrepType": injection.get(str, "PrepType"),
+            "SampleSetAcquiring": injection.get(str, "SampleSetAcquiring"),
+            "SampleSetAltered": injection.get(str, "SampleSetAltered"),
+            "SampleSetCurrentId": injection.get(str, "SampleSetCurrentId"),
+            "OriginalSampleSetId": injection.get(str, "OriginalSampleSetId"),
+            "OriginalVialId": injection.get(str, "OriginalVialId"),
+            "Vial": injection.get(str, "Vial"),
+            "lot_number": injection.get(str, "Lot"),
+            "sample_weight": try_float_or_none(injection.get(str, "SampleWeight")),
+            "Label": injection.get(str, "Label"),
+            "VialId": injection.get(str, "VialId"),
+            "VialIdResult": injection.get(str, "VialIdResult"),
+            "SampleType": injection.get(str, "SampleType"),
+            "dilution_factor_setting": try_float_or_none(
+                injection.get(str, "Dilution")
+            ),
         }
     )
 
     # Prepare injection custom info
     injection_custom_info = filter_nulls(
         {
-            "InjectionStatus": injection.get("InjectionStatus"),
-            "InjectionType": injection.get("InjectionType"),
-            "Injection": injection.get("Injection"),
-            "Volume": injection.get("Volume"),
+            "InjectionStatus": injection.get(str, "InjectionStatus"),
+            "InjectionType": injection.get(str, "InjectionType"),
+            "Injection": injection.get(str, "Injection"),
+            "Volume": injection.get(str, "Volume"),
         }
     )
 
-    sample_name = injection.get("SampleName")
-    if not sample_name:
-        msg = "SampleName is required"
-        raise AllotropeParsingError(msg)
+    sample_name = injection[str, "SampleName"]
+    injection_id = injection[str, "InjectionId"]
+    date_acquired = injection[str, "DateAcquired"]
 
-    vial_id = injection.get("VialId")
+    vial_id = injection.get(str, "VialId")
     vial_id_str = str(vial_id) if vial_id is not None else None
-
-    injection_id = injection.get("InjectionId")
-    if injection_id is None:
-        msg = "InjectionId is required"
-        raise AllotropeParsingError(msg)
-
-    date_acquired = injection.get("DateAcquired")
-    if not date_acquired:
-        msg = "DateAcquired is required"
-        raise AllotropeParsingError(msg)
 
     return [
         Measurement(
             measurement_identifier=random_uuid_str(),
             sample_identifier=sample_name,
-            batch_identifier=str(metadata_fields.get("sample_set_id") or ""),
+            batch_identifier=str(metadata_fields.get(str, "sample_set_id") or ""),
             sample_role_type=sample_role_type,
-            written_name=injection.get("Label"),
-            chromatography_serial_num=injection.get("ColumnSerialNumber")
+            written_name=injection.get(str, "Label"),
+            chromatography_serial_num=injection.get(str, "ColumnSerialNumber")
             or NOT_APPLICABLE,
-            autosampler_injection_volume_setting=injection.get("InjectionVolume"),
+            autosampler_injection_volume_setting=injection.get(
+                float, "InjectionVolume"
+            ),
             injection_identifier=str(injection_id),
             injection_time=date_acquired,
             peaks=[peak for peak in [_create_peak(peak) for peak in peaks] if peak],
-            chromatogram_data_cube=_get_chromatogram(injection),
+            chromatogram_data_cube=_get_chromatogram(injection.data),
             device_control_docs=device_control_docs,
             measurement_time=measurement_time,
             location_identifier=vial_id_str,
-            flow_rate=try_float_or_none(injection.get("FlowRate")),
+            flow_rate=try_float_or_none(injection.get(str, "FlowRate")),
             measurement_custom_info=measurement_custom_info,
             processed_data=processing_items,
             sample_custom_info=sample_custom_info,
@@ -503,26 +496,24 @@ def _create_measurements(
 
 
 def create_measurement_groups(
-    injections: list[dict[str, Any]],
-    metadata_fields: dict[str, Any],
-    processing_methods: list[dict[str, Any]] | None = None,
+    injections: list[JsonData],
+    metadata_fields: JsonData,
 ) -> list[MeasurementGroup]:
-    sample_to_injection: defaultdict[str, list[dict[str, Any]]] = defaultdict(list)
+    sample_to_injection: defaultdict[str, list[JsonData]] = defaultdict(list)
 
     for injection in injections:
-        sample_name = injection.get("SampleName")
-        if not sample_name:
-            msg = "SampleName is required"
-            raise AllotropeParsingError(msg)
+        sample_name = injection[str, "SampleName"]
         sample_to_injection[sample_name].append(injection)
 
     measurement_aggregate_custom_info = filter_nulls(
         {
-            "Node": metadata_fields.get("Node"),
-            "measurement_method_identifier": metadata_fields.get("SampleSetMethod"),
-            "SampleSetName": metadata_fields.get("SampleSetName"),
-            "SampleSetType": metadata_fields.get("SampleSetType"),
-            "SampleSetComments": metadata_fields.get("SampleSetComments"),
+            "Node": metadata_fields.get(str, "Node"),
+            "measurement_method_identifier": metadata_fields.get(
+                str, "SampleSetMethod"
+            ),
+            "SampleSetName": metadata_fields.get(str, "SampleSetName"),
+            "SampleSetType": metadata_fields.get(str, "SampleSetType"),
+            "SampleSetComments": metadata_fields.get(str, "SampleSetComments"),
         }
     )
 
@@ -535,14 +526,16 @@ def create_measurement_groups(
 
         group_custom_info = filter_nulls(
             {
-                "Altered": first_injection.get("Altered"),
-                "ELN_DocumentID": first_injection.get("ELN_DocumentID"),
-                "ELN_SectionGUID": first_injection.get("ELN_SectionGUID"),
-                "InstrumentMethodName": first_injection.get("InstrumentMethodName"),
-                "InstrumentMethodId": first_injection.get("InstrumentMethodId"),
-                "SSM_Pattern": first_injection.get("SSM_Pattern"),
-                "Superseded": first_injection.get("Superseded"),
-                "SummaryFaults": first_injection.get("SummaryFaults"),
+                "Altered": first_injection.get(str, "Altered"),
+                "ELN_DocumentID": first_injection.get(str, "ELN_DocumentID"),
+                "ELN_SectionGUID": first_injection.get(str, "ELN_SectionGUID"),
+                "InstrumentMethodName": first_injection.get(
+                    str, "InstrumentMethodName"
+                ),
+                "InstrumentMethodId": first_injection.get(str, "InstrumentMethodId"),
+                "SSM_Pattern": first_injection.get(str, "SSM_Pattern"),
+                "Superseded": first_injection.get(str, "Superseded"),
+                "SummaryFaults": first_injection.get(str, "SummaryFaults"),
                 **measurement_aggregate_custom_info,
             }
         )
@@ -550,9 +543,7 @@ def create_measurement_groups(
         measurements = [
             measurement
             for injection in sample_injections
-            for measurement in _create_measurements(
-                injection, metadata_fields, processing_methods
-            )
+            for measurement in _create_measurements(injection, metadata_fields)
         ]
 
         measurement_groups.append(

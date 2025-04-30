@@ -19,12 +19,12 @@
                                             "ChannelDescription": "254nm",
                                             "ChannelType": "2D",
                                             "ChannelStatus": "",
-                                            "DataStart": 0.0,
-                                            "DataEnd": 6.0,
+                                            "DataStart": "0.0",
+                                            "DataEnd": "6.0",
                                             "device acquisition method": "LC Demo Method Set",
                                             "total measurement duration setting": 6.0,
                                             "Channel": "486 ",
-                                            "ScaletouV": 9.99999997475243e-07
+                                            "ScaletouV": "9.99999997475243e-07"
                                         }
                                     }
                                 ]
@@ -37,13 +37,13 @@
                                 "written name": "S0102",
                                 "custom information document": {
                                     "PrepType": "",
-                                    "SampleSetAcquiring": false,
-                                    "SampleSetAltered": false,
-                                    "SampleSetCurrentId": 1169,
+                                    "SampleSetAcquiring": "False",
+                                    "SampleSetAltered": "False",
+                                    "SampleSetCurrentId": "1169",
                                     "Vial": "2",
                                     "sample weight": 1.0,
                                     "Label": "S0102",
-                                    "VialId": 1175,
+                                    "VialId": "1175",
                                     "SampleType": "Standard",
                                     "dilution factor setting": 1.0
                                 }
@@ -361,7 +361,7 @@
                                 "injection time": "1997-09-17T17:03:14+00:00",
                                 "custom information document": {
                                     "InjectionStatus": "Pre-Empower 3 SR3",
-                                    "Injection": 1
+                                    "Injection": "1"
                                 }
                             },
                             "chromatogram data cube": {
@@ -394,20 +394,21 @@
                             "custom information document": {
                                 "measurement end time": "1997-09-17T17:44:53",
                                 "DateAcquired": "1997-09-17T17:03:14",
-                                "RunTime": 6.0
+                                "RunTime": "6.0"
                             }
                         }
                     ],
                     "custom information document": {
-                        "Altered": true,
-                        "InstrumentMethodId": 1171,
-                        "Superseded": false,
+                        "Altered": "True",
+                        "InstrumentMethodId": "1171",
+                        "Superseded": "False",
                         "Node": "Pplab6",
                         "measurement method identifier": "!QuickSet",
                         "SampleSetName": "PQ Sample Set",
                         "SampleSetType": "Acquired"
                     }
-                }
+                },
+                "analyst": "N/A"
             },
             {
                 "measurement aggregate document": {
@@ -426,12 +427,12 @@
                                             "ChannelDescription": "254nm",
                                             "ChannelType": "2D",
                                             "ChannelStatus": "",
-                                            "DataStart": 0.0,
-                                            "DataEnd": 6.0,
+                                            "DataStart": "0.0",
+                                            "DataEnd": "6.0",
                                             "device acquisition method": "LC Demo Method Set",
                                             "total measurement duration setting": 6.0,
                                             "Channel": "486 ",
-                                            "ScaletouV": 9.99999997475243e-07
+                                            "ScaletouV": "9.99999997475243e-07"
                                         }
                                     }
                                 ]
@@ -444,13 +445,13 @@
                                 "written name": "S0103",
                                 "custom information document": {
                                     "PrepType": "",
-                                    "SampleSetAcquiring": false,
-                                    "SampleSetAltered": false,
-                                    "SampleSetCurrentId": 1169,
+                                    "SampleSetAcquiring": "False",
+                                    "SampleSetAltered": "False",
+                                    "SampleSetCurrentId": "1169",
                                     "Vial": "3",
                                     "sample weight": 1.0,
                                     "Label": "S0103",
-                                    "VialId": 1178,
+                                    "VialId": "1178",
                                     "SampleType": "Standard",
                                     "dilution factor setting": 1.0
                                 }
@@ -768,7 +769,7 @@
                                 "injection time": "1997-09-17T17:10:10+00:00",
                                 "custom information document": {
                                     "InjectionStatus": "Pre-Empower 3 SR3",
-                                    "Injection": 1
+                                    "Injection": "1"
                                 }
                             },
                             "chromatogram data cube": {
@@ -807,20 +808,21 @@
                             "custom information document": {
                                 "measurement end time": "1997-09-17T17:44:53",
                                 "DateAcquired": "1997-09-17T17:10:10",
-                                "RunTime": 6.0
+                                "RunTime": "6.0"
                             }
                         }
                     ],
                     "custom information document": {
-                        "Altered": true,
-                        "InstrumentMethodId": 1171,
-                        "Superseded": false,
+                        "Altered": "True",
+                        "InstrumentMethodId": "1171",
+                        "Superseded": "False",
                         "Node": "Pplab6",
                         "measurement method identifier": "!QuickSet",
                         "SampleSetName": "PQ Sample Set",
                         "SampleSetType": "Acquired"
                     }
-                }
+                },
+                "analyst": "N/A"
             }
         ],
         "data system document": {
