@@ -309,18 +309,29 @@ def _create_measurements(
                         "revision_history": proc_method.get("revision history"),
                         "component_nodes": proc_method.get("component_nodes"),
                         "default_result_set": proc_method.get("default_result_set"),
+                        "id": method_id,
+                        "average_by": proc_method.get("average_by"),
+                        "ccal_ref1": proc_method.get("ccal_ref1"),
+                        "comments": proc_method.get("comments"),
+                        "date": proc_method.get("date"),
+                        "include_int_std_amounts": proc_method.get(
+                            "include_int_std_amounts"
+                        ),
                     }
                 )
-
+                integration_parameters = proc_method.get("integration_parameters")
+                if integration_parameters:
+                    integration_param_fields = integration_parameters.get("fields")
+                    if integration_param_fields:
+                        proc_method_info.update(integration_param_fields)
                 components = proc_method.get("components")
                 if components:
                     for component in components:
                         fields = component.get("fields")
                         if fields:
-                            fields_copy = fields.copy()
-                            fields_copy.update(proc_method_info)
+                            fields.update(proc_method_info)
                             data_processing_by_processing_method_id[method_id].append(
-                                DataProcessing(data=filter_nulls(fields_copy))
+                                DataProcessing(data=filter_nulls(fields))
                             )
 
     if results:

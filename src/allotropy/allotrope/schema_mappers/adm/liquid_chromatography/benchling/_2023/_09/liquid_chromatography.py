@@ -530,48 +530,50 @@ class Mapper(SchemaMapper[Data, Model]):
         ):
             return None
 
-        processed_data_documents = []
+        def get_data_processing_documents(pdd: ProcessingItem) -> list[dict[str, Any]]:
+            if not pdd.data_processing:
+                return []
+            return [doc.data for doc in pdd.data_processing if doc and doc.data]
+
+        def build_peak_list() -> PeakList | None:
+            if not measurement.peaks:
+                return None
+            return PeakList(
+                peak=[self._get_peak_document(p) for p in measurement.peaks]
+            )
+
+        def build_data_document_item(
+            pdd: ProcessingItem | None = None,
+        ) -> ProcessedDataDocumentItem:
+            data_processing = (
+                DataProcessingAggregateDocument(
+                    data_processing_document=get_data_processing_documents(pdd)
+                )
+                if pdd and get_data_processing_documents(pdd)
+                else None
+            )
+            item = ProcessedDataDocumentItem(
+                chromatogram_data_cube=get_data_cube(
+                    measurement.processed_data_chromatogram_data_cube, TDatacube
+                ),
+                derived_column_pressure_data_cube=get_data_cube(
+                    measurement.derived_column_pressure_data_cube,
+                    DerivedColumnPressureDataCube,
+                ),
+                processed_data_identifier=measurement.processed_data_identifier,
+                peak_list=build_peak_list(),
+                data_processing_aggregate_document=data_processing,
+            )
+            return (
+                add_custom_information_document(item, pdd.custom_info) if pdd else item
+            )
 
         if measurement.processed_data:
-            for processed_data_document in measurement.processed_data:
-                data_processing_documents = (
-                    [
-                        proc_doc.data
-                        for proc_doc in processed_data_document.data_processing
-                        if proc_doc and proc_doc.data
-                    ]
-                    if processed_data_document.data_processing
-                    else []
-                )
-
-                pdd = add_custom_information_document(
-                    ProcessedDataDocumentItem(
-                        chromatogram_data_cube=get_data_cube(
-                            measurement.processed_data_chromatogram_data_cube,
-                            TDatacube,
-                        ),
-                        derived_column_pressure_data_cube=get_data_cube(
-                            measurement.derived_column_pressure_data_cube,
-                            DerivedColumnPressureDataCube,
-                        ),
-                        processed_data_identifier=measurement.processed_data_identifier,
-                        peak_list=PeakList(
-                            peak=[
-                                self._get_peak_document(peak)
-                                for peak in measurement.peaks
-                            ]
-                        )
-                        if measurement.peaks
-                        else None,
-                        data_processing_aggregate_document=DataProcessingAggregateDocument(
-                            data_processing_document=data_processing_documents
-                        )
-                        if data_processing_documents
-                        else None,
-                    ),
-                    processed_data_document.custom_info,
-                )
-                processed_data_documents.append(pdd)
+            processed_data_documents = [
+                build_data_document_item(pdd) for pdd in measurement.processed_data
+            ]
+        else:
+            processed_data_documents = [build_data_document_item()]
 
         return ProcessedDataAggregateDocument(
             processed_data_document=processed_data_documents
