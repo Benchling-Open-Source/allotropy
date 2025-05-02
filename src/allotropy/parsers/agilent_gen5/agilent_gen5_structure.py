@@ -1003,7 +1003,7 @@ def _create_measurement(
         error_document=error_documents,
         device_control_custom_info={
             "Reading Type": header_data.additional_data.pop("Reading Type", None),
-            "Direction of emited light": (
+            "Direction of emitted light": (
                 filter_data.light_direction if filter_data else None
             ),
         },
