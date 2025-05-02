@@ -1157,6 +1157,9 @@ class BlockList:
                 )
                 block_data = data_format.create(sub_reader, header)
 
+                if header.name in plate_blocks:
+                    msg = f"Plate IDs between Plate Blocks must be unique. '{header.name}' block name is duplicated. See connector configuration guide for handling multiple Plate Blocks."
+                    raise AllotropeConversionError(msg)
                 plate_blocks[header.name] = plate_block_cls(
                     block_type="Plate",
                     header=header,

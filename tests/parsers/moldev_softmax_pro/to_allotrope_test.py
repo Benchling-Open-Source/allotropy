@@ -55,6 +55,16 @@ def test_invalid_measurement_table_dimensions() -> None:
         from_file(f"{TESTDATA}/errors/missing_measurement_table_row.txt", VENDOR_TYPE)
 
 
+def test_duplicate_plate_id() -> None:
+    with pytest.raises(
+        AllotropeConversionError,
+        match="Plate IDs between Plate Blocks must be unique. 'Plate01' block name is duplicated. See connector configuration guide for handling multiple Plate Blocks.",
+    ):
+        from_file(
+            f"{TESTDATA}/errors/multi-plate-block_non-unique_plate_ID.txt", VENDOR_TYPE
+        )
+
+
 @pytest.mark.parametrize(
     "test_file",
     [
