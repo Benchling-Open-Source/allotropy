@@ -32,26 +32,26 @@ def filter_nulls(d: dict[str, Any]) -> dict[str, Any]:
 
 
 def create_metadata(
-    metadata: JsonData,
+    metadata_json: JsonData,
     first_injection: JsonData,
     file_path: str,
 ) -> Metadata:
     data_system_custom_info = filter_nulls(
         {
-            "account_identifier": metadata.get(str, "username"),
-            "database": metadata.get(str, "db"),
-            "project": metadata.get(str, "project"),
-            "password": metadata.get(str, "password"),
-            "SystemCreateDate": metadata.get(str, "SystemCreateDate"),
-            "SystemComments": metadata.get(str, "SystemComments"),
-            "Node": metadata.get(str, "Node"),
-            "SampleSetName": metadata.get(str, "SampleSetName"),
-            "SampleSetType": metadata.get(str, "SampleSetType"),
+            "account_identifier": metadata_json.get(str, "username"),
+            "database": metadata_json.get(str, "db"),
+            "project": metadata_json.get(str, "project"),
+            "password": metadata_json.get(str, "password"),
+            "SystemCreateDate": metadata_json.get(str, "SystemCreateDate"),
+            "SystemComments": metadata_json.get(str, "SystemComments"),
+            "Node": metadata_json.get(str, "Node"),
+            "SampleSetName": metadata_json.get(str, "SampleSetName"),
+            "SampleSetType": metadata_json.get(str, "SampleSetType"),
         }
     )
 
     device_system_custom_info = {}
-    instrument_methods = metadata.data.get("instrument_methods", [])
+    instrument_methods = metadata_json.data.get("instrument_methods", [])
 
     if instrument_methods and len(instrument_methods) > 0:
         method = instrument_methods[0]
@@ -69,20 +69,30 @@ def create_metadata(
             )
         )
     software_version = first_injection.get(str, "AcqSWVersion")
-    return Metadata(
-        asset_management_identifier=metadata.get(str, "SystemName", NOT_APPLICABLE),
-        analyst=metadata.get(str, "SampleSetAcquiredBy", NOT_APPLICABLE),
-        data_system_instance_identifier=metadata.get(str, "SystemName", NOT_APPLICABLE),
+    metadata_json.mark_read({
+        "OriginalSampleSetId",
+        "SampleSetAcquiring",
+        "SampleSetAltered",
+        "SampleSetCurrentId",
+        "instrument_methods",
+        "processing_methods"
+    })
+    metadata = Metadata(
+        asset_management_identifier=metadata_json.get(str, "SystemName", NOT_APPLICABLE),
+        analyst=metadata_json.get(str, "SampleSetAcquiredBy", NOT_APPLICABLE),
+        data_system_instance_identifier=metadata_json.get(str, "SystemName", NOT_APPLICABLE),
         software_name=constants.SOFTWARE_NAME,
         software_version=software_version,
         file_name=Path(file_path).name,
         unc_path=file_path,
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
         device_system_custom_info=device_system_custom_info,
-        data_system_custom_info = {
+        data_system_custom_info={
             **data_system_custom_info,
-        }
+            **metadata_json.get_unread()
+        },
     )
+    return metadata
 
 
 def _get_chromatogram(injection: JsonData) -> DataCube | None:
@@ -196,7 +206,7 @@ def _create_peak(peak: JsonData) -> Peak | None:
     if end_time is not None:
         end_time *= 60  # Convert from minutes to seconds
 
-    return Peak(
+    peak_item = Peak(
         identifier=random_uuid_str(),
         # Times are reported in minutes by Empower - convert to seconds
         start=start_time,
@@ -219,8 +229,13 @@ def _create_peak(peak: JsonData) -> Peak | None:
         baseline_value_at_start_of_peak=baseline_start,
         baseline_value_at_end_of_peak=baseline_end,
         relative_corrected_peak_area=try_float_or_none(peak.get(str, "CorrectedArea~")),
-        custom_info=custom_info,
+        custom_info={
+            **custom_info,
+            **peak.get_unread()
+        },
     )
+
+    return peak_item
 
 
 def _create_measurements(
@@ -292,7 +307,7 @@ def _create_measurements(
 
     if results:
         for result_data in results:
-            method_id = result_data.get("ProcessingMethodId")
+            method_id = result_data.get(str, "ProcessingMethodId")
             if method_id:
                 processing_method_ids.add(method_id)
 
@@ -337,89 +352,94 @@ def _create_measurements(
                             )
 
     if results:
-        for result_data in results:
+        for data in results:
+            result_data = JsonData(data)
             processing_custom_info = filter_nulls(
                 {
                     "integration_algorithm_type": result_data.get(
-                        "IntegrationAlgorithm"
+                        str, "IntegrationAlgorithm"
                     ),
-                    "data_processing_method": result_data.get("ProcessingMethod"),
-                    "data_processing_time": result_data.get("DateProcessed"),
-                    "peak_width": try_float_or_none(result_data.get("PeakWidth")),
+                    "data_processing_method": result_data.get(str, "ProcessingMethod"),
+                    "data_processing_time": result_data.get(str, "DateProcessed"),
+                    "peak_width": try_float_or_none(result_data.get(str, "PeakWidth")),
                     "retention_time": try_float_or_none(
-                        result_data.get("RetentionTime")
+                        result_data.get(str, "RetentionTime")
                     ),
                     "retention_time_window_width": try_float_or_none(
-                        result_data.get("RTWindow")
+                        result_data.get(str, "RTWindow")
                     ),
                     "relative_response": try_float_or_none(
-                        result_data.get("RelativeResponse")
+                        result_data.get(str, "RelativeResponse")
                     ),
-                    "CalculationType": result_data.get("CalculationType"),
-                    "CalibrationId": result_data.get("CalibrationId"),
-                    "ProcessingLocked": result_data.get("ProcessingLocked"),
-                    "Manual": result_data.get("Manual"),
-                    "ProcessedBy": result_data.get("ProcessedBy"),
-                    "ProcessedAs": result_data.get("ProcessedAs"),
-                    "UseForPrecision": result_data.get("UseForPrecision"),
-                    "PrepType": result_data.get("PrepType"),
-                    "AnalysisMethod": result_data.get("AnalysisMethod"),
+                    "CalculationType": result_data.get(str, "CalculationType"),
+                    "CalibrationId": result_data.get(str, "CalibrationId"),
+                    "ProcessingLocked": result_data.get(str, "ProcessingLocked"),
+                    "Manual": result_data.get(str, "Manual"),
+                    "ProcessedBy": result_data.get(str, "ProcessedBy"),
+                    "ProcessedAs": result_data.get(str, "ProcessedAs"),
+                    "UseForPrecision": result_data.get(str, "UseForPrecision"),
+                    "PrepType": result_data.get(str, "PrepType"),
+                    "AnalysisMethod": result_data.get(str, "AnalysisMethod"),
                     "IntegrationSystemPolicies": result_data.get(
-                        "IntegrationSystemPolicies"
+                        str, "IntegrationSystemPolicies"
                     ),
-                    "ProcessingMethodId": result_data.get("ProcessingMethodId"),
-                    "ProcessedChannelType": result_data.get("ProcessedChannelType"),
-                    "ProcessedChanDesc": result_data.get("ProcessedChanDesc"),
-                    "PeakRatioReference": result_data.get("PeakRatioReference"),
-                    "Threshold": result_data.get("Threshold"),
-                    "SourceSoftwareInfo": result_data.get("SourceSoftwareInfo"),
+                    "ProcessingMethodId": result_data.get(str, "ProcessingMethodId"),
+                    "ProcessedChannelType": result_data.get(str, "ProcessedChannelType"),
+                    "ProcessedChanDesc": result_data.get(str, "ProcessedChanDesc"),
+                    "PeakRatioReference": result_data.get(str, "PeakRatioReference"),
+                    "Threshold": result_data.get(str, "Threshold"),
+                    "SourceSoftwareInfo": result_data.get(str, "SourceSoftwareInfo"),
                     "SampleValuesUsedinCalculations": result_data.get(
-                        "SampleValuesUsedinCalculations"
+                        str, "SampleValuesUsedinCalculations"
                     ),
-                    "NumOfResultsStored": result_data.get("NumOfResultsStored"),
+                    "NumOfResultsStored": result_data.get(str, "NumOfResultsStored"),
                     "NumOfProcessOnlySampleSets": result_data.get(
-                        "NumOfProcessOnlySampleSets"
+                        str, "NumOfProcessOnlySampleSets"
                     ),
-                    "Factor1": result_data.get("Factor1"),
-                    "Factor2": result_data.get("Factor2"),
-                    "Factor3": result_data.get("Factor3"),
-                    "Factor1Operator": result_data.get("Factor1Operator"),
-                    "Factor2Operator": result_data.get("Factor2Operator"),
-                    "Factor3Operator": result_data.get("Factor3Operator"),
-                    "ResultSetId": result_data.get("ResultSetId"),
-                    "ResultSetName": result_data.get("ResultSetName"),
-                    "ResultSetDate": result_data.get("ResultSetDate"),
-                    "ResultId": result_data.get("ResultId"),
-                    "ResultType": result_data.get("ResultType"),
-                    "ResultComments": result_data.get("ResultComments"),
-                    "ResultCodes": result_data.get("ResultCodes"),
-                    "ResultNum": result_data.get("ResultNum"),
-                    "ResultSampleSetMethod": result_data.get("ResultSampleSetMethod"),
-                    "ResultSource": result_data.get("ResultSource"),
-                    "ResultSuperseded": result_data.get("ResultSuperseded"),
-                    "TotalArea": result_data.get("TotalArea"),
-                    "TotalAdjArea": result_data.get("TotalAdjArea"),
-                    "AdjustedTotalArea": result_data.get("AdjustedTotalArea"),
-                    "TotalRS_AdjAreaPct": result_data.get("TotalRS_AdjAreaPct"),
-                    "TotalRS_FinalResult": result_data.get("TotalRS_FinalResult"),
+                    "Factor1": result_data.get(str, "Factor1"),
+                    "Factor2": result_data.get(str, "Factor2"),
+                    "Factor3": result_data.get(str, "Factor3"),
+                    "Factor1Operator": result_data.get(str, "Factor1Operator"),
+                    "Factor2Operator": result_data.get(str, "Factor2Operator"),
+                    "Factor3Operator": result_data.get(str, "Factor3Operator"),
+                    "ResultSetId": result_data.get(str, "ResultSetId"),
+                    "ResultSetName": result_data.get(str, "ResultSetName"),
+                    "ResultSetDate": result_data.get(str, "ResultSetDate"),
+                    "ResultId": result_data.get(str, "ResultId"),
+                    "ResultType": result_data.get(str, "ResultType"),
+                    "ResultComments": result_data.get(str, "ResultComments"),
+                    "ResultCodes": result_data.get(str, "ResultCodes"),
+                    "ResultNum": result_data.get(str, "ResultNum"),
+                    "ResultSampleSetMethod": result_data.get(str, "ResultSampleSetMethod"),
+                    "ResultSource": result_data.get(str, "ResultSource"),
+                    "ResultSuperseded": result_data.get(str, "ResultSuperseded"),
+                    "TotalArea": result_data.get(str, "TotalArea"),
+                    "TotalAdjArea": result_data.get(str, "TotalAdjArea"),
+                    "AdjustedTotalArea": result_data.get(str, "AdjustedTotalArea"),
+                    "TotalRS_AdjAreaPct": result_data.get(str, "TotalRS_AdjAreaPct"),
+                    "TotalRS_FinalResult": result_data.get(str, "TotalRS_FinalResult"),
                     "Largest_NG_RS_AdjAreaPct": result_data.get(
-                        "Largest_NG_RS_AdjAreaPct"
+                        str, "Largest_NG_RS_AdjAreaPct"
                     ),
                     "LargestNamedRS_FinalResult": result_data.get(
-                        "LargestNamedRS_FinalResult"
+                        str, "LargestNamedRS_FinalResult"
                     ),
-                    "LargestRS_FinalResult": result_data.get("LargestRS_FinalResult"),
+                    "LargestRS_FinalResult": result_data.get(str, "LargestRS_FinalResult"),
                     "LargestUnnamedRS_FinalResult": result_data.get(
-                        "LargestUnnamedRS_FinalResult"
+                        str, "LargestUnnamedRS_FinalResult"
                     ),
-                    "Total_ICH_AdjArea": result_data.get("Total_ICH_AdjArea"),
-                    "PercentUnknowns": result_data.get("PercentUnknowns"),
-                    "NumberofImpurityPeaks": result_data.get("NumberofImpurityPeaks"),
-                    "Faults": result_data.get("Faults"),
+                    "Total_ICH_AdjArea": result_data.get(str, "Total_ICH_AdjArea"),
+                    "PercentUnknowns": result_data.get(str, "PercentUnknowns"),
+                    "NumberofImpurityPeaks": result_data.get(str, "NumberofImpurityPeaks"),
+                    "Faults": result_data.get(str, "Faults"),
                 }
             )
 
-            processing_method_id = result_data.get("ProcessingMethodId")
+            processing_method_id = result_data.get(str, "ProcessingMethodId")
+            processing_custom_info = {
+                **processing_custom_info,
+                **result_data.get_unread()
+            }
             processing_items.append(
                 ProcessingItem(
                     custom_info=processing_custom_info,
@@ -483,13 +503,18 @@ def _create_measurements(
             ),
             injection_identifier=str(injection_id),
             injection_time=date_acquired,
-            peaks=[peak for peak in [_create_peak(JsonData(peak_dict)) for peak_dict in peaks] if peak],
+            peaks=[
+                peak
+                for peak in [_create_peak(JsonData(peak_dict)) for peak_dict in peaks]
+                if peak
+            ],
             chromatogram_data_cube=_get_chromatogram(injection),
             device_control_docs=device_control_docs,
             measurement_time=measurement_time,
             location_identifier=vial_id_str,
             flow_rate=try_float_or_none(injection.get(str, "FlowRate")),
-            measurement_custom_info=measurement_custom_info,
+            measurement_custom_info={**measurement_custom_info,
+                **injection.get_unread()},
             processed_data=processing_items,
             sample_custom_info=sample_custom_info,
             injection_custom_info=injection_custom_info,

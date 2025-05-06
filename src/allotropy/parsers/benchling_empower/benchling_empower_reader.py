@@ -38,7 +38,16 @@ class BenchlingEmpowerReader:
             }
         )
 
-        values.mark_read({"fields", "instrument_methods", "processing_methods", "injections", "channels", "results"})
+        values.mark_read(
+            {
+                "fields",
+                "instrument_methods",
+                "processing_methods",
+                "injections",
+                "channels",
+                "results",
+            }
+        )
 
         # Each injection corresponds to a measurement document
         injections_list: list[dict[str, Any]] = assert_not_none(
@@ -54,8 +63,7 @@ class BenchlingEmpowerReader:
                 msg = f"Missing 'fields' for injection at index {idx}"
                 raise AssertionError(msg)
 
-            fields_json = JsonData(fields_dict)
-            injection_id = fields_json.get(int, "InjectionId")
+            injection_id = fields_dict.get("InjectionId")
             if injection_id is None:
                 msg = f"Missing 'InjectionId' for injection at index {idx}"
                 raise AssertionError(msg)
@@ -69,11 +77,10 @@ class BenchlingEmpowerReader:
             channel_fields_dict: dict[str, Any] = assert_not_none(
                 channel.data.get("fields"), "channels/fields"
             )
-            channel_fields = JsonData(channel_fields_dict)
 
-            inj_id = channel_fields.get(int, "InjectionId")
+            inj_id = channel_fields_dict.get("InjectionId")
             if inj_id is None:
-                channel_id = channel_fields.get(str, "ChannelId", "Unknown")
+                channel_id = channel_fields_dict.get("ChannelId", "Unknown")
                 msg = f"Expected InjectionId in 'fields' for channel: {channel_id}"
                 raise AssertionError(msg)
 
@@ -101,11 +108,10 @@ class BenchlingEmpowerReader:
             result_fields_dict: dict[str, Any] = assert_not_none(
                 result.data.get("fields"), "results/fields"
             )
-            result_fields = JsonData(result_fields_dict)
 
-            inj_id = result_fields.get(int, "InjectionId")
+            inj_id = result_fields_dict.get("InjectionId")
             if inj_id is None:
-                result_id = result_fields.get(str, "ResultId", "Unknown")
+                result_id = result_fields_dict.get("ResultId", "Unknown")
                 msg = f"Expected InjectionId in 'fields' for result: {result_id}"
                 raise AssertionError(msg)
 
@@ -117,8 +123,7 @@ class BenchlingEmpowerReader:
             peaks: list[dict[str, Any]] | None = result.data.get("peaks")
             if peaks is not None:
                 id_to_injection_data[inj_id]["peaks"] = [
-                    self._process_peak(peak)
-                    for peak in peaks
+                    self._process_peak(peak) for peak in peaks
                 ]
 
             # Add calibration curves if present

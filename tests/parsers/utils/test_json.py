@@ -117,16 +117,17 @@ class TestJsonData(unittest.TestCase):
 
     def test_get_unread(self) -> None:
         # Test getting unread keys
-        self.json_data.get(str, "string_value")  # Mark as read
+        self.json_data.get(str, "string_value")
 
         unread = self.json_data.get_unread()
         self.assertNotIn("string_value", unread)
         self.assertIn("integer_value", unread)
 
         # Test with regex
-        self.json_data.get(int, "integer_value")  # Mark as read
+        self.json_data.get(int, "integer_value")
+        self.json_data.get(float, "float_value")
         float_unread = self.json_data.get_unread("float.*")
-        self.assertEqual(list(float_unread.keys()), ["float_value"])
+        self.assertEqual(list(float_unread.keys()), [])
 
         # Test with skip
         all_except_boolean = self.json_data.get_unread(skip={"boolean_value"})

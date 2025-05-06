@@ -4,6 +4,7 @@ from collections.abc import Callable, Iterable
 from enum import Enum
 import os
 import re
+import traceback
 from typing import Any, Literal, overload, TypeVar
 import warnings
 
@@ -41,6 +42,7 @@ class JsonData:
         self.data = {} if data is None else data
         self.read_keys: set[str] = set()
         self.errored = False
+        self.creation_stack = traceback.extract_stack()
 
     def __del__(self) -> None:
         if self.errored:
@@ -48,8 +50,17 @@ class JsonData:
         # NOTE: this will be turned on by default when all callers have been updated to pass the warning.
         if unread_keys := set(self.data.keys()) - self.read_keys:
             if os.getenv("WARN_UNUSED_KEYS"):
+                # Find the creation point in the stack (skip the JsonData.__init__ frame)
+                creation_point = None
+                for frame in reversed(self.creation_stack):
+                    if frame.name != "__init__" or "json.py" not in frame.filename:
+                        creation_point = f"{frame.filename}:{frame.lineno} in {frame.name}"
+                        break
+
+                creation_info = f" (created at {creation_point})" if creation_point else ""
+
                 warnings.warn(
-                    f"JsonData went out of scope without reading all keys, unread: {sorted(unread_keys)}.",
+                    f"JsonData went out of scope without reading all keys{creation_info}, unread: {sorted(unread_keys)}.",
                     stacklevel=2,
                 )
 
@@ -98,11 +109,17 @@ class JsonData:
         matching_keys = (
             self._get_matching_keys(regex) if regex else set(self.data.keys())
         )
-        return {
+        unread_keys = {
             key: self.data[key]
             for key in (matching_keys - self.read_keys)
             if key in self.data
         }
+
+        # Always mark keys we're returning as read to avoid unread key warnings
+        if unread_keys:
+            self.read_keys |= set(unread_keys.keys())
+
+        return unread_keys
 
     def has_key(self, key: str) -> bool:
         return key in self.data

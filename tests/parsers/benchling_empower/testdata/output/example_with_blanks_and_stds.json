@@ -99,7 +99,54 @@
                                 "Comments": "1",
                                 "measurement end time": "2017-01-04T11:51:45",
                                 "DateAcquired": "2017-01-04T08:13:41",
-                                "RunTime": "30.0"
+                                "RunTime": "30.0",
+                                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                                "SampleSetType": "Acquired",
+                                "SampleSetComments": "1",
+                                "SampleSetMethod": "example_set_2",
+                                "SystemComments": "Example comment",
+                                "Factor2": 1.0,
+                                "Factor3": 1.0,
+                                "SampleSetAcquiredBy": "USER_1",
+                                "SampleSetName": "example_set_2",
+                                "CalculationType": "NG MP Curve RS AdjAreaPct",
+                                "Node": "Node1",
+                                "NumOfResultsStored": 0,
+                                "DilutionUnits": "mL",
+                                "ICH AdjAreaPctCutoff": 0.0,
+                                "NumOfProcessOnlySampleSets": 0,
+                                "Factor1": 1.0,
+                                "SampleSetId": 1148,
+                                "PeakRatioReference": false,
+                                "UseForPrecision": "No",
+                                "SystemCreateDate": "2014-06-19T10:20:59",
+                                "Factor1Operator": "*",
+                                "Factor2Operator": "*",
+                                "Factor3Operator": "*",
+                                "chrom": [
+                                    [
+                                        [0.00485333335, 0.009706667, 0.014560001, 0.0194133334],
+                                        [
+                                            2.32458115e-06,
+                                            5.781651e-06,
+                                            9.953977e-06,
+                                            1.43051157e-05
+                                        ]
+                                    ],
+                                    [
+                                        [0.00485333335, 0.009706667, 0.014560001, 0.0194133334],
+                                        [
+                                            2.32458115e-06,
+                                            5.781651e-06,
+                                            9.953977e-06,
+                                            1.43051157e-05
+                                        ]
+                                    ]
+                                ],
+                                "SystemName": "237",
+                                "AcquiredBy": "USER_1",
+                                "SampleSetStartDate": "2017-01-04T08:12:47",
+                                "ProcessingLocked": false
                             }
                         }
                     ],
@@ -213,7 +260,45 @@
                                 "Comments": "1",
                                 "measurement end time": "2017-01-04T11:51:45",
                                 "DateAcquired": "2017-01-04T08:44:56",
-                                "RunTime": "30.0"
+                                "RunTime": "30.0",
+                                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                                "SampleSetType": "Acquired",
+                                "SampleSetComments": "1",
+                                "SampleSetMethod": "example_set_2",
+                                "SystemComments": "Example comment",
+                                "Factor2": 1.0,
+                                "Factor3": 1.0,
+                                "SampleSetAcquiredBy": "USER_1",
+                                "SampleSetName": "example_set_2",
+                                "CalculationType": "NG MP Curve RS AdjAreaPct",
+                                "Node": "Node1",
+                                "NumOfResultsStored": 0,
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "DilutionUnits": "mL",
+                                "ICH AdjAreaPctCutoff": 0.0,
+                                "NumOfProcessOnlySampleSets": 0,
+                                "Factor1": 1.0,
+                                "SampleSetId": 1148,
+                                "PeakRatioReference": false,
+                                "UseForPrecision": "No",
+                                "SystemCreateDate": "2014-06-19T10:20:59",
+                                "Factor1Operator": "*",
+                                "Factor2Operator": "*",
+                                "Factor3Operator": "*",
+                                "chrom": [
+                                    [
+                                        [0.00485333335, 0.009706667, 0.014560001, 0.0194133334],
+                                        [0.000136494637, 0.000136375427, 0.00013589859, 0.000135421753]
+                                    ],
+                                    [
+                                        [0.00485333335, 0.009706667, 0.014560001, 0.0194133334],
+                                        [0.000136494637, 0.000136375427, 0.00013589859, 0.000135421753]
+                                    ]
+                                ],
+                                "SystemName": "237",
+                                "AcquiredBy": "USER_1",
+                                "SampleSetStartDate": "2017-01-04T08:12:47",
+                                "ProcessingLocked": false
                             }
                         }
                     ],
@@ -332,7 +417,55 @@
                                 "Comments": "1",
                                 "measurement end time": "2017-01-04T11:51:45",
                                 "DateAcquired": "2017-01-04T09:16:10",
-                                "RunTime": "30.0"
+                                "RunTime": "30.0",
+                                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                                "SampleSetType": "Acquired",
+                                "SampleSetComments": "1",
+                                "SampleSetMethod": "example_set_2",
+                                "SystemComments": "Example comment",
+                                "Factor2": 1.0,
+                                "Factor3": 1.0,
+                                "SampleSetAcquiredBy": "USER_1",
+                                "SampleSetName": "example_set_2",
+                                "CalculationType": "NG MP Curve RS AdjAreaPct",
+                                "Node": "Node1",
+                                "NumOfResultsStored": 0,
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "DilutionUnits": "mL",
+                                "ICH AdjAreaPctCutoff": 0.0,
+                                "NumOfProcessOnlySampleSets": 0,
+                                "Factor1": 1.0,
+                                "SampleSetId": 1148,
+                                "PeakRatioReference": false,
+                                "UseForPrecision": "No",
+                                "SystemCreateDate": "2014-06-19T10:20:59",
+                                "Factor1Operator": "*",
+                                "Factor2Operator": "*",
+                                "Factor3Operator": "*",
+                                "chrom": [
+                                    [
+                                        [0.00485333335, 0.009706667, 0.014560001, 0.0194133334],
+                                        [
+                                            -7.688999e-06,
+                                            -6.437302e-06,
+                                            -5.304814e-06,
+                                            -3.81469727e-06
+                                        ]
+                                    ],
+                                    [
+                                        [0.00485333335, 0.009706667, 0.014560001, 0.0194133334],
+                                        [
+                                            -7.688999e-06,
+                                            -6.437302e-06,
+                                            -5.304814e-06,
+                                            -3.81469727e-06
+                                        ]
+                                    ]
+                                ],
+                                "SystemName": "237",
+                                "AcquiredBy": "USER_1",
+                                "SampleSetStartDate": "2017-01-04T08:12:47",
+                                "ProcessingLocked": false
                             }
                         }
                     ],
@@ -451,7 +584,56 @@
                                 "Comments": "1",
                                 "measurement end time": "2017-01-04T11:51:45",
                                 "DateAcquired": "2017-01-04T09:47:28",
-                                "RunTime": "30.0"
+                                "RunTime": "30.0",
+                                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                                "SampleSetType": "Acquired",
+                                "SampleSetComments": "1",
+                                "SampleSetMethod": "example_set_2",
+                                "SystemComments": "Example comment",
+                                "Factor2": 1.0,
+                                "Factor3": 1.0,
+                                "SampleSetAcquiredBy": "USER_1",
+                                "SampleSetName": "example_set_2",
+                                "CalculationType": "NG MP Curve RS AdjAreaPct",
+                                "Node": "Node1",
+                                "NumOfResultsStored": 0,
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "DilutionUnits": "mL",
+                                "ICH AdjAreaPctCutoff": 0.0,
+                                "NumOfProcessOnlySampleSets": 0,
+                                "AnalysisMethod": "Empower HPLC",
+                                "Factor1": 1.0,
+                                "SampleSetId": 1148,
+                                "PeakRatioReference": false,
+                                "UseForPrecision": "No",
+                                "SystemCreateDate": "2014-06-19T10:20:59",
+                                "Factor1Operator": "*",
+                                "Factor2Operator": "*",
+                                "Factor3Operator": "*",
+                                "chrom": [
+                                    [
+                                        [0.00485333335, 0.009706667, 0.014560001, 0.0194133334],
+                                        [
+                                            5.38826025e-05,
+                                            5.38229979e-05,
+                                            5.334616e-05,
+                                            5.23924864e-05
+                                        ]
+                                    ],
+                                    [
+                                        [0.00485333335, 0.009706667, 0.014560001, 0.0194133334],
+                                        [
+                                            5.38826025e-05,
+                                            5.38229979e-05,
+                                            5.334616e-05,
+                                            5.23924864e-05
+                                        ]
+                                    ]
+                                ],
+                                "SystemName": "237",
+                                "AcquiredBy": "USER_1",
+                                "SampleSetStartDate": "2017-01-04T08:12:47",
+                                "ProcessingLocked": false
                             }
                         }
                     ],
@@ -573,7 +755,56 @@
                                 "Comments": "1",
                                 "measurement end time": "2017-01-04T11:51:45",
                                 "DateAcquired": "2017-01-04T10:18:46",
-                                "RunTime": "30.0"
+                                "RunTime": "30.0",
+                                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                                "SampleSetType": "Acquired",
+                                "SampleSetComments": "1",
+                                "SampleSetMethod": "example_set_2",
+                                "SystemComments": "Example comment",
+                                "Factor2": 1.0,
+                                "Factor3": 1.0,
+                                "SampleSetAcquiredBy": "USER_1",
+                                "SampleSetName": "example_set_2",
+                                "CalculationType": "NG MP Curve RS AdjAreaPct",
+                                "Node": "Node1",
+                                "NumOfResultsStored": 0,
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "DilutionUnits": "mL",
+                                "ICH AdjAreaPctCutoff": 0.0,
+                                "NumOfProcessOnlySampleSets": 0,
+                                "AnalysisMethod": "Empower HPLC",
+                                "Factor1": 1.0,
+                                "SampleSetId": 1148,
+                                "PeakRatioReference": false,
+                                "UseForPrecision": "No",
+                                "SystemCreateDate": "2014-06-19T10:20:59",
+                                "Factor1Operator": "*",
+                                "Factor2Operator": "*",
+                                "Factor3Operator": "*",
+                                "chrom": [
+                                    [
+                                        [0.00485333335, 0.009706667, 0.014560001, 0.0194133334],
+                                        [
+                                            2.67624873e-05,
+                                            2.98619289e-05,
+                                            3.3557415e-05,
+                                            3.73721123e-05
+                                        ]
+                                    ],
+                                    [
+                                        [0.00485333335, 0.009706667, 0.014560001, 0.0194133334],
+                                        [
+                                            2.67624873e-05,
+                                            2.98619289e-05,
+                                            3.3557415e-05,
+                                            3.73721123e-05
+                                        ]
+                                    ]
+                                ],
+                                "SystemName": "237",
+                                "AcquiredBy": "USER_1",
+                                "SampleSetStartDate": "2017-01-04T08:12:47",
+                                "ProcessingLocked": false
                             }
                         }
                     ],
@@ -695,7 +926,56 @@
                                 "Comments": "1",
                                 "measurement end time": "2017-01-04T11:51:45",
                                 "DateAcquired": "2017-01-04T10:50:07",
-                                "RunTime": "30.0"
+                                "RunTime": "30.0",
+                                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                                "SampleSetType": "Acquired",
+                                "SampleSetComments": "1",
+                                "SampleSetMethod": "example_set_2",
+                                "SystemComments": "Example comment",
+                                "Factor2": 1.0,
+                                "Factor3": 1.0,
+                                "SampleSetAcquiredBy": "USER_1",
+                                "SampleSetName": "example_set_2",
+                                "CalculationType": "NG MP Curve RS AdjAreaPct",
+                                "Node": "Node1",
+                                "NumOfResultsStored": 0,
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "DilutionUnits": "mL",
+                                "ICH AdjAreaPctCutoff": 0.0,
+                                "NumOfProcessOnlySampleSets": 0,
+                                "AnalysisMethod": "Empower HPLC",
+                                "Factor1": 1.0,
+                                "SampleSetId": 1148,
+                                "PeakRatioReference": false,
+                                "UseForPrecision": "No",
+                                "SystemCreateDate": "2014-06-19T10:20:59",
+                                "Factor1Operator": "*",
+                                "Factor2Operator": "*",
+                                "Factor3Operator": "*",
+                                "chrom": [
+                                    [
+                                        [0.00485333335, 0.009706667, 0.014560001, 0.0194133334],
+                                        [
+                                            2.65836734e-05,
+                                            2.56896037e-05,
+                                            2.43186969e-05,
+                                            2.24709529e-05
+                                        ]
+                                    ],
+                                    [
+                                        [0.00485333335, 0.009706667, 0.014560001, 0.0194133334],
+                                        [
+                                            2.65836734e-05,
+                                            2.56896037e-05,
+                                            2.43186969e-05,
+                                            2.24709529e-05
+                                        ]
+                                    ]
+                                ],
+                                "SystemName": "237",
+                                "AcquiredBy": "USER_1",
+                                "SampleSetStartDate": "2017-01-04T08:12:47",
+                                "ProcessingLocked": false
                             }
                         }
                     ],
@@ -817,7 +1097,56 @@
                                 "Comments": "1",
                                 "measurement end time": "2017-01-04T11:51:45",
                                 "DateAcquired": "2017-01-04T11:21:26",
-                                "RunTime": "30.0"
+                                "RunTime": "30.0",
+                                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                                "SampleSetType": "Acquired",
+                                "SampleSetComments": "1",
+                                "SampleSetMethod": "example_set_2",
+                                "SystemComments": "Example comment",
+                                "Factor2": 1.0,
+                                "Factor3": 1.0,
+                                "SampleSetAcquiredBy": "USER_1",
+                                "SampleSetName": "example_set_2",
+                                "CalculationType": "NG MP Curve RS AdjAreaPct",
+                                "Node": "Node1",
+                                "NumOfResultsStored": 0,
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "DilutionUnits": "mL",
+                                "ICH AdjAreaPctCutoff": 0.0,
+                                "NumOfProcessOnlySampleSets": 0,
+                                "AnalysisMethod": "Empower HPLC",
+                                "Factor1": 1.0,
+                                "SampleSetId": 1148,
+                                "PeakRatioReference": false,
+                                "UseForPrecision": "No",
+                                "SystemCreateDate": "2014-06-19T10:20:59",
+                                "Factor1Operator": "*",
+                                "Factor2Operator": "*",
+                                "Factor3Operator": "*",
+                                "chrom": [
+                                    [
+                                        [0.00485333335, 0.009706667, 0.014560001, 0.0194133334],
+                                        [
+                                            2.67624873e-05,
+                                            2.461672e-05,
+                                            2.19941157e-05,
+                                            1.9133091e-05
+                                        ]
+                                    ],
+                                    [
+                                        [0.00485333335, 0.009706667, 0.014560001, 0.0194133334],
+                                        [
+                                            2.67624873e-05,
+                                            2.461672e-05,
+                                            2.19941157e-05,
+                                            1.9133091e-05
+                                        ]
+                                    ]
+                                ],
+                                "SystemName": "237",
+                                "AcquiredBy": "USER_1",
+                                "SampleSetStartDate": "2017-01-04T08:12:47",
+                                "ProcessingLocked": false
                             }
                         }
                     ],
@@ -856,7 +1185,13 @@
                 "SystemComments": "Example comment",
                 "Node": "Node1",
                 "SampleSetName": "example_set_2",
-                "SampleSetType": "Acquired"
+                "SampleSetType": "Acquired",
+                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                "SampleSetComments": "1",
+                "SampleSetMethod": "example_set_2",
+                "SampleSetStartDate": "2017-01-04T08:12:47",
+                "sample set name": "example_set_2",
+                "SampleSetId": 1148
             }
         },
         "device system document": {
