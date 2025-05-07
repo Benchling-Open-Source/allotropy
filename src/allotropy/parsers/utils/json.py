@@ -54,10 +54,14 @@ class JsonData:
                 creation_point = None
                 for frame in reversed(self.creation_stack):
                     if frame.name != "__init__" or "json.py" not in frame.filename:
-                        creation_point = f"{frame.filename}:{frame.lineno} in {frame.name}"
+                        creation_point = (
+                            f"{frame.filename}:{frame.lineno} in {frame.name}"
+                        )
                         break
 
-                creation_info = f" (created at {creation_point})" if creation_point else ""
+                creation_info = (
+                    f" (created at {creation_point})" if creation_point else ""
+                )
 
                 warnings.warn(
                     f"JsonData went out of scope without reading all keys{creation_info}, unread: {sorted(unread_keys)}.",
@@ -115,7 +119,6 @@ class JsonData:
             if key in self.data
         }
 
-        # Always mark keys we're returning as read to avoid unread key warnings
         if unread_keys:
             self.read_keys |= set(unread_keys.keys())
 

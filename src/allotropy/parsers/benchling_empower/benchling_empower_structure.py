@@ -69,18 +69,24 @@ def create_metadata(
             )
         )
     software_version = first_injection.get(str, "AcqSWVersion")
-    metadata_json.mark_read({
-        "OriginalSampleSetId",
-        "SampleSetAcquiring",
-        "SampleSetAltered",
-        "SampleSetCurrentId",
-        "instrument_methods",
-        "processing_methods"
-    })
+    metadata_json.mark_read(
+        {
+            "OriginalSampleSetId",
+            "SampleSetAcquiring",
+            "SampleSetAltered",
+            "SampleSetCurrentId",
+            "instrument_methods",
+            "processing_methods",
+        }
+    )
     metadata = Metadata(
-        asset_management_identifier=metadata_json.get(str, "SystemName", NOT_APPLICABLE),
+        asset_management_identifier=metadata_json.get(
+            str, "SystemName", NOT_APPLICABLE
+        ),
         analyst=metadata_json.get(str, "SampleSetAcquiredBy", NOT_APPLICABLE),
-        data_system_instance_identifier=metadata_json.get(str, "SystemName", NOT_APPLICABLE),
+        data_system_instance_identifier=metadata_json.get(
+            str, "SystemName", NOT_APPLICABLE
+        ),
         software_name=constants.SOFTWARE_NAME,
         software_version=software_version,
         file_name=Path(file_path).name,
@@ -89,7 +95,7 @@ def create_metadata(
         device_system_custom_info=device_system_custom_info,
         data_system_custom_info={
             **data_system_custom_info,
-            **metadata_json.get_unread()
+            **metadata_json.get_unread(),
         },
     )
     return metadata
@@ -229,10 +235,7 @@ def _create_peak(peak: JsonData) -> Peak | None:
         baseline_value_at_start_of_peak=baseline_start,
         baseline_value_at_end_of_peak=baseline_end,
         relative_corrected_peak_area=try_float_or_none(peak.get(str, "CorrectedArea~")),
-        custom_info={
-            **custom_info,
-            **peak.get_unread()
-        },
+        custom_info={**custom_info, **peak.get_unread()},
     )
 
     return peak_item
@@ -306,9 +309,8 @@ def _create_measurements(
     processing_methods = metadata_fields.data.get("processing_methods", [])
 
     if results:
-        for result_data in results:
-            method_id = result_data.get(str, "ProcessingMethodId")
-            if method_id:
+        for result in results:
+            if method_id := result.get("ProcessingMethodId"):
                 processing_method_ids.add(method_id)
 
     if processing_methods and processing_method_ids:
@@ -353,7 +355,7 @@ def _create_measurements(
 
     if results:
         for data in results:
-            result_data = JsonData(data)
+            result_data: JsonData = JsonData(data)
             processing_custom_info = filter_nulls(
                 {
                     "integration_algorithm_type": result_data.get(
@@ -384,7 +386,9 @@ def _create_measurements(
                         str, "IntegrationSystemPolicies"
                     ),
                     "ProcessingMethodId": result_data.get(str, "ProcessingMethodId"),
-                    "ProcessedChannelType": result_data.get(str, "ProcessedChannelType"),
+                    "ProcessedChannelType": result_data.get(
+                        str, "ProcessedChannelType"
+                    ),
                     "ProcessedChanDesc": result_data.get(str, "ProcessedChanDesc"),
                     "PeakRatioReference": result_data.get(str, "PeakRatioReference"),
                     "Threshold": result_data.get(str, "Threshold"),
@@ -410,7 +414,9 @@ def _create_measurements(
                     "ResultComments": result_data.get(str, "ResultComments"),
                     "ResultCodes": result_data.get(str, "ResultCodes"),
                     "ResultNum": result_data.get(str, "ResultNum"),
-                    "ResultSampleSetMethod": result_data.get(str, "ResultSampleSetMethod"),
+                    "ResultSampleSetMethod": result_data.get(
+                        str, "ResultSampleSetMethod"
+                    ),
                     "ResultSource": result_data.get(str, "ResultSource"),
                     "ResultSuperseded": result_data.get(str, "ResultSuperseded"),
                     "TotalArea": result_data.get(str, "TotalArea"),
@@ -424,21 +430,24 @@ def _create_measurements(
                     "LargestNamedRS_FinalResult": result_data.get(
                         str, "LargestNamedRS_FinalResult"
                     ),
-                    "LargestRS_FinalResult": result_data.get(str, "LargestRS_FinalResult"),
+                    "LargestRS_FinalResult": result_data.get(
+                        str, "LargestRS_FinalResult"
+                    ),
                     "LargestUnnamedRS_FinalResult": result_data.get(
                         str, "LargestUnnamedRS_FinalResult"
                     ),
                     "Total_ICH_AdjArea": result_data.get(str, "Total_ICH_AdjArea"),
                     "PercentUnknowns": result_data.get(str, "PercentUnknowns"),
-                    "NumberofImpurityPeaks": result_data.get(str, "NumberofImpurityPeaks"),
+                    "NumberofImpurityPeaks": result_data.get(
+                        str, "NumberofImpurityPeaks"
+                    ),
                     "Faults": result_data.get(str, "Faults"),
                 }
             )
-
             processing_method_id = result_data.get(str, "ProcessingMethodId")
             processing_custom_info = {
                 **processing_custom_info,
-                **result_data.get_unread()
+                **result_data.get_unread(),
             }
             processing_items.append(
                 ProcessingItem(
@@ -489,6 +498,7 @@ def _create_measurements(
     vial_id = injection.get(str, "VialId")
     vial_id_str = str(vial_id) if vial_id is not None else None
 
+    injection.mark_read({"chrom", "peaks", "results", "curves"})
     return [
         Measurement(
             measurement_identifier=random_uuid_str(),
@@ -513,8 +523,10 @@ def _create_measurements(
             measurement_time=measurement_time,
             location_identifier=vial_id_str,
             flow_rate=try_float_or_none(injection.get(str, "FlowRate")),
-            measurement_custom_info={**measurement_custom_info,
-                **injection.get_unread()},
+            measurement_custom_info={
+                **measurement_custom_info,
+                **injection.get_unread(),
+            },
             processed_data=processing_items,
             sample_custom_info=sample_custom_info,
             injection_custom_info=injection_custom_info,
