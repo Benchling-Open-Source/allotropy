@@ -85,7 +85,6 @@ def _create_measurement(
                 error_feature=DETECTION_TYPE.lower(),
             )
         )
-
     concentration_factor = well_plate_data.get(float, "concentration factor (ng/ul)")
     return Measurement(
         type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
@@ -105,10 +104,16 @@ def _create_measurement(
         firmware_version=header.get(str, "client version"),
         sample_custom_info={
             "path length": float(path_length) if path_length is not None else None,
+            "plate type": header.get(str, "plate type")
+            or well_plate_data.get(str, "plate type"),
+            "nr of plates": header.get(str, "nr of plates"),
+            "blanks": header.get(str, "blanks"),
+            "plate description": header.get(str, "nan"),
         },
         device_control_custom_info={
             "path length mode": well_plate_data.get(str, "path length mode"),
             "pump": well_plate_data.get(str, "pump"),
+            "column": header.get(str, "column") or well_plate_data.get(str, "column"),
         },
         error_document=error_documents,
         processed_data_document=ProcessedDataDocument(
@@ -116,6 +121,7 @@ def _create_measurement(
         )
         if concentration_factor is not None
         else None,
+        custom_info=well_plate_data.get_unread(),
     )
 
 
@@ -170,7 +176,8 @@ def _create_measurement_group(
     return MeasurementGroup(
         measurement_time=assert_not_none(timestamp, msg=NO_DATE_OR_TIME_ERROR_MSG),
         analyst=header.get(str, "test performed by"),
-        analytical_method_identifier=data.get(str, "application"),
+        analytical_method_identifier=data.get(str, "application")
+        or header.get(str, "application"),
         experimental_data_identifier=header.get(str, "experiment name"),
         plate_well_count=96,
         measurements=[
@@ -197,6 +204,29 @@ def create_metadata(header: SeriesData, file_path: str) -> Metadata:
         unc_path=file_path,
         asm_file_identifier=asm_file_identifier.name,
         data_system_instance_id=NOT_APPLICABLE,
+        custom_info_doc=header.get_unread(
+            # Skip already mapped columns from well plate data (repeated in CSV no header cases)
+            skip={
+                "time",
+                "row",
+                "a260 concentration (ng/ul)",
+                "background (a260)",
+                "plate id",
+                "a260",
+                "a280",
+                "background (a280)",
+                "plate position",
+                "path length mode",
+                "sample group",
+                "pump",
+                "concentration factor (ng/ul)",
+                "sample name",
+                "application",
+                "a260/a280",
+                "a260/a230",
+                "concentration (ng/ul)",
+            }
+        ),
     )
 
 

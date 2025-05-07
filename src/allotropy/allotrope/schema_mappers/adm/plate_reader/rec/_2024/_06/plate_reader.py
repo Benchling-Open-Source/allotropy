@@ -119,6 +119,7 @@ class Measurement:
     detection_type: str | None = None
     sample_role_type: SampleRoleType | None = None
     mass_concentration: float | None = None
+    custom_info: dict[str, Any] | None = None
 
     # Measurements
     absorbance: float | None = None
