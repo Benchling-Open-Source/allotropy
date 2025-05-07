@@ -181,7 +181,3 @@ class TestJsonData(unittest.TestCase):
         self.assertIsInstance(object_array, list)
         self.assertEqual(len(object_array), 2)
         self.assertEqual(object_array[0]["id"], 1)
-
-
-if __name__ == "__main__":
-    unittest.main()
