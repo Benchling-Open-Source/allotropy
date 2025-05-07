@@ -61,12 +61,12 @@ def _create_measurement(row_data: SeriesData) -> Measurement:
         ),
         device_control_custom_info={
             "sample name": row_data.get(str, "Sample Name"),
-            "survey fluid volume":
-                row_data.get(float, "Survey Fluid Volume") # This is already in uL, so don't convert to nL
-            ,
-            "current fluid volume":
-                row_data.get(float, "Current Fluid Volume") # This is already in uL, so don't convert to nL
-            ,
+            "survey fluid volume": row_data.get(
+                float, "Survey Fluid Volume"
+            ),  # This is already in uL, so don't convert to nL
+            "current fluid volume": row_data.get(
+                float, "Current Fluid Volume"
+            ),  # This is already in uL, so don't convert to nL
             "intended transfer volume": convert_echo_nl_to_ul(
                 row_data.get(float, "Transfer Volume")
             ),
