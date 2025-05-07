@@ -123,7 +123,7 @@ class BenchlingEmpowerReader:
             peaks: list[dict[str, Any]] | None = result.data.get("peaks")
             if peaks is not None:
                 id_to_injection_data[inj_id]["peaks"] = [
-                    self._process_peak(peak) for peak in peaks
+                    cast(dict[str, Any], peak.get("fields", {})) for peak in peaks
                 ]
 
             # Add calibration curves if present
@@ -134,10 +134,3 @@ class BenchlingEmpowerReader:
             result.mark_read({"fields", "peaks", "curves"})
 
         self.injections = [JsonData(data) for data in id_to_injection_data.values()]
-
-    def _process_peak(self, peak: dict[str, Any]) -> dict[str, Any]:
-        """Process a peak dictionary, ensuring JsonData fields are marked as read."""
-        json_data = JsonData(peak)
-        result = cast(dict[str, Any], json_data.data.get("fields", {}))
-        json_data.mark_read("fields")
-        return result
