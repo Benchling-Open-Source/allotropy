@@ -431,13 +431,13 @@ def _process_components(
     components: list[dict[str, Any]],
     proc_method_info: dict[str, Any],
     data_processing_by_method_id: defaultdict[str, list[DataProcessing]],
-    method_id: str,
+    method_id: int,
 ) -> None:
     for component in components:
         fields = component.get("fields")
         if fields:
             fields.update(proc_method_info)
-            data_processing_by_method_id[method_id].append(
+            data_processing_by_method_id[str(method_id)].append(
                 DataProcessing(data=filter_nulls(fields))
             )
 
