@@ -44,7 +44,7 @@ classifiers = [
   "Typing :: Typed",
 ]
 dependencies = [
-  "cattrs == 23.1.2",
+  "cattrs >= 23.2.0",
   "chardet >= 5.2.0",
   "defusedxml >= 0.7.1",
   # NOTE: jsonschema 4.18.0 introduces a serious performance regression, seemingly due to use of new
