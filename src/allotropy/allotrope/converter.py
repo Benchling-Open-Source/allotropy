@@ -383,8 +383,7 @@ def register_dataclass_hooks(converter: Converter) -> None:
         structure_fn = make_dict_structure_fn(
             cls,
             converter,
-                                # mypy does not recognize that unpacking a dictionary is specifying kwargs
-
+            # mypy does not recognize that unpacking a dictionary is specifying kwargs
             **field_name_overrides,  # type: ignore[arg-type]
         )
 
