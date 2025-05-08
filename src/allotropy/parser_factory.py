@@ -185,7 +185,8 @@ class Vendor(Enum):
     @property
     def supported_extensions(self) -> list[str]:
         return [
-            ext.strip() for ext in self.get_parser().SUPPORTED_EXTENSIONS.split(",")
+            ext.strip().lower()
+            for ext in self.get_parser().SUPPORTED_EXTENSIONS.split(",")
         ]
 
     @property
