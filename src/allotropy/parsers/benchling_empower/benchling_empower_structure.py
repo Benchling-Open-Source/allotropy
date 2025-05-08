@@ -28,7 +28,7 @@ T = TypeVar("T")
 
 def filter_nulls(d: dict[str, Any]) -> dict[str, Any]:
     """Filter out any keys with None values from a dictionary."""
-    return {k: v for k, v in d.items() if v is not None}
+    return {k: v for k, v in d.items() if v is not None and v != ""}
 
 
 def _extract_data_system_custom_info(metadata_json: JsonData) -> dict[str, Any]:
