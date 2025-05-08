@@ -165,7 +165,7 @@ run = "scripts/visualization.py {args:}"
 [tool.hatch.envs.lint]
 extra-dependencies = [
   # mypy sometimes can't find cattrs even though it's a project dependency, so add explicitly here.
-  "cattrs == 23.1.2",
+  "cattrs >= 23.2.0",
   "more-itertools >= 10.1.0",
   "mypy == 1.8.0",
   "pandas-stubs == 2.1.4.231227",
