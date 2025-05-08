@@ -27,7 +27,7 @@ class NamedFileContents:
 
     @cached_property
     def extension(self) -> str:
-        return PureWindowsPath(self.original_file_path).suffix[1:]
+        return PureWindowsPath(self.original_file_path).suffix[1:].lower()
 
     def get_bytes_stream(self, encoding: str = "utf-8") -> BytesIO:
         raw_content = self.contents.read()
