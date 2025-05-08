@@ -20,7 +20,7 @@ class TecanMagellanReader:
             include_split_row=True,
         )
         if "Well positions" not in data:
-            msg = "Missing well positions column from the file."
+            msg = "File is missing required 'Well positions' column."
             raise AllotropeConversionError(msg)
         # Files might contain rows with metadata that we will not use, we identify
         # those by checking that the Well positions have the right format
