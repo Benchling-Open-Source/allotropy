@@ -15,6 +15,7 @@ class TestParser(ParserTest):
 
 def test_missing_well_positions_column() -> None:
     with pytest.raises(
-        AllotropeConversionError, match="Missing well positions column from the file."
+        AllotropeConversionError,
+        match="File is missing required 'Well positions' column.",
     ):
         from_file(f"{TESTDATA}/errors/no_well_positions.xlsx", VENDOR_TYPE)
