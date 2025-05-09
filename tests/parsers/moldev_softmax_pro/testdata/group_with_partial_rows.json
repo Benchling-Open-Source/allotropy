@@ -36,6 +36,10 @@
                                     {
                                         "error": "Range?",
                                         "error feature": "Result"
+                                    },
+                                    {
+                                        "error": "inf",
+                                        "error feature": "Rec.%"
                                     }
                                 ]
                             }
@@ -71,6 +75,10 @@
                                     {
                                         "error": "Range?",
                                         "error feature": "Result"
+                                    },
+                                    {
+                                        "error": "inf",
+                                        "error feature": "Rec.%"
                                     }
                                 ]
                             }
@@ -112,6 +120,14 @@
                             "absorbance": {
                                 "value": 0.1138,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "inf",
+                                        "error feature": "Rec.%"
+                                    }
+                                ]
                             }
                         },
                         {
@@ -139,6 +155,14 @@
                             "absorbance": {
                                 "value": 0.0322,
                                 "unit": "mAU"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "inf",
+                                        "error feature": "Rec.%"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -8895,7 +8919,7 @@
                 {
                     "calculated data name": "Rec.%",
                     "calculated result": {
-                        "value": Infinity,
+                        "value": -0.0,
                         "unit": "(unitless)"
                     },
                     "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_298",
@@ -23238,7 +23262,7 @@
             "file name": "group_with_partial_rows.txt",
             "UNC path": "tests/parsers/moldev_softmax_pro/testdata/group_with_partial_rows.txt",
             "ASM converter name": "allotropy_molecular_devices_softmax_pro",
-            "ASM converter version": "0.1.86",
+            "ASM converter version": "0.1.87",
             "software name": "SoftMax Pro"
         },
         "device system document": {
