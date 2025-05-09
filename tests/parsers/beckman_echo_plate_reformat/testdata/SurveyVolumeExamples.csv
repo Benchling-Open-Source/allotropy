@@ -1,0 +1,159 @@
+Run ID,1741720420
+Run Date/Time,3/11/2025 15:14
+Application Name,Labcyte Echo Plate Reformat
+Application Version,1.7.2
+Protocol Name,SeV_r2_exc1.epr
+Order ID,1
+Reference ID,1
+User Name,LabAutomation
+
+[EXCEPTIONS]
+Date Time Point,Source Plate Name,Source Plate Barcode,Source Plate Type,Source Well,Destination Plate Name,Destination Plate Barcode,Destination Plate Type,Destination Well,Transfer Volume,Actual Volume,Sample ID,Sample Name,Survey Fluid Volume,Current Fluid Volume,Fluid Composition,Fluid Units,Fluid Type,Transfer Status
+15:54.8,Source[1],EchoSource001,384PP_AQ_BP,C21,Destination[1],EchoDestination001,Eppendorf_PCR_384,J15,1000,0,,,13.251,9.251,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:55.0,Source[1],EchoSource001,384PP_AQ_BP,B21,Destination[1],EchoDestination001,Eppendorf_PCR_384,K15,1000,0,,,13.182,9.182,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:55.1,Source[1],EchoSource001,384PP_AQ_BP,B23,Destination[1],EchoDestination001,Eppendorf_PCR_384,L15,1000,0,,,13.01,9.01,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:55.3,Source[1],EchoSource001,384PP_AQ_BP,D22,Destination[1],EchoDestination001,Eppendorf_PCR_384,L16,1000,0,,,13.872,8.872,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:55.5,Source[1],EchoSource001,384PP_AQ_BP,A21,Destination[1],EchoDestination001,Eppendorf_PCR_384,K16,1000,0,,,12.837,8.837,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:55.7,Source[1],EchoSource001,384PP_AQ_BP,C23,Destination[1],EchoDestination001,Eppendorf_PCR_384,J16,1000,0,,,11.75,8.75,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:56.0,Source[1],EchoSource001,384PP_AQ_BP,D24,Destination[1],EchoDestination001,Eppendorf_PCR_384,I16,1000,0,,,11.733,8.733,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:56.2,Source[1],EchoSource001,384PP_AQ_BP,D21,Destination[1],EchoDestination001,Eppendorf_PCR_384,H16,1000,0,,,14.683,8.683,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:56.4,Source[1],EchoSource001,384PP_AQ_BP,A24,Destination[1],EchoDestination001,Eppendorf_PCR_384,G16,1000,0,,,17.677,8.677,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:56.6,Source[1],EchoSource001,384PP_AQ_BP,B24,Destination[1],EchoDestination001,Eppendorf_PCR_384,F16,1000,0,,,11.629,8.629,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:56.8,Source[1],EchoSource001,384PP_AQ_BP,C24,Destination[1],EchoDestination001,Eppendorf_PCR_384,E16,1000,0,,,13.579,8.579,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:57.0,Source[1],EchoSource001,384PP_AQ_BP,A22,Destination[1],EchoDestination001,Eppendorf_PCR_384,D16,1000,0,,,17.573,8.573,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:57.1,Source[1],EchoSource001,384PP_AQ_BP,D23,Destination[1],EchoDestination001,Eppendorf_PCR_384,D17,1000,0,,,13.562,8.562,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:57.4,Source[1],EchoSource001,384PP_AQ_BP,A23,Destination[1],EchoDestination001,Eppendorf_PCR_384,E17,1000,0,,,17.553,8.553,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:57.7,Source[1],EchoSource001,384PP_AQ_BP,C22,Destination[1],EchoDestination001,Eppendorf_PCR_384,F17,1000,0,,,14.304,8.304,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:57.8,Source[1],EchoSource001,384PP_AQ_BP,B22,Destination[1],EchoDestination001,Eppendorf_PCR_384,G17,1000,0,,,12.302,8.302,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:58.0,Source[1],EchoSource001,384PP_AQ_BP,C21,Destination[1],EchoDestination001,Eppendorf_PCR_384,H17,1000,0,,,13.251,9.251,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:58.2,Source[1],EchoSource001,384PP_AQ_BP,B21,Destination[1],EchoDestination001,Eppendorf_PCR_384,I17,1000,0,,,13.182,9.182,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:58.3,Source[1],EchoSource001,384PP_AQ_BP,B23,Destination[1],EchoDestination001,Eppendorf_PCR_384,J17,1000,0,,,13.01,9.01,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:58.5,Source[1],EchoSource001,384PP_AQ_BP,D22,Destination[1],EchoDestination001,Eppendorf_PCR_384,K17,1000,0,,,13.872,8.872,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:58.7,Source[1],EchoSource001,384PP_AQ_BP,A21,Destination[1],EchoDestination001,Eppendorf_PCR_384,L17,1000,0,,,12.837,8.837,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:59.0,Source[1],EchoSource001,384PP_AQ_BP,C23,Destination[1],EchoDestination001,Eppendorf_PCR_384,L18,1000,0,,,11.75,8.75,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:59.2,Source[1],EchoSource001,384PP_AQ_BP,D24,Destination[1],EchoDestination001,Eppendorf_PCR_384,K18,1000,0,,,11.733,8.733,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:59.4,Source[1],EchoSource001,384PP_AQ_BP,D21,Destination[1],EchoDestination001,Eppendorf_PCR_384,J18,1000,0,,,14.683,8.683,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:59.6,Source[1],EchoSource001,384PP_AQ_BP,A24,Destination[1],EchoDestination001,Eppendorf_PCR_384,I18,1000,0,,,17.677,8.677,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+15:59.8,Source[1],EchoSource001,384PP_AQ_BP,B24,Destination[1],EchoDestination001,Eppendorf_PCR_384,H18,1000,0,,,11.629,8.629,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:00.0,Source[1],EchoSource001,384PP_AQ_BP,C24,Destination[1],EchoDestination001,Eppendorf_PCR_384,G18,1000,0,,,13.579,8.579,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:00.2,Source[1],EchoSource001,384PP_AQ_BP,A22,Destination[1],EchoDestination001,Eppendorf_PCR_384,F18,1000,0,,,17.573,8.573,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:00.4,Source[1],EchoSource001,384PP_AQ_BP,D23,Destination[1],EchoDestination001,Eppendorf_PCR_384,E18,1000,0,,,13.562,8.562,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:00.7,Source[1],EchoSource001,384PP_AQ_BP,A23,Destination[1],EchoDestination001,Eppendorf_PCR_384,D18,1000,0,,,17.553,8.553,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:00.9,Source[1],EchoSource001,384PP_AQ_BP,C22,Destination[1],EchoDestination001,Eppendorf_PCR_384,D19,1000,0,,,14.304,8.304,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:01.1,Source[1],EchoSource001,384PP_AQ_BP,B22,Destination[1],EchoDestination001,Eppendorf_PCR_384,E19,1000,0,,,12.302,8.302,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:01.2,Source[1],EchoSource001,384PP_AQ_BP,C21,Destination[1],EchoDestination001,Eppendorf_PCR_384,F19,1000,0,,,13.251,9.251,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:01.4,Source[1],EchoSource001,384PP_AQ_BP,B21,Destination[1],EchoDestination001,Eppendorf_PCR_384,G19,1000,0,,,13.182,9.182,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:01.6,Source[1],EchoSource001,384PP_AQ_BP,B23,Destination[1],EchoDestination001,Eppendorf_PCR_384,H19,1000,0,,,13.01,9.01,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:01.8,Source[1],EchoSource001,384PP_AQ_BP,D22,Destination[1],EchoDestination001,Eppendorf_PCR_384,I19,1000,0,,,13.872,8.872,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:01.9,Source[1],EchoSource001,384PP_AQ_BP,A21,Destination[1],EchoDestination001,Eppendorf_PCR_384,J19,1000,0,,,12.837,8.837,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:02.2,Source[1],EchoSource001,384PP_AQ_BP,C23,Destination[1],EchoDestination001,Eppendorf_PCR_384,K19,1000,0,,,11.75,8.75,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:02.4,Source[1],EchoSource001,384PP_AQ_BP,D24,Destination[1],EchoDestination001,Eppendorf_PCR_384,L19,1000,0,,,11.733,8.733,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:02.5,Source[1],EchoSource001,384PP_AQ_BP,D21,Destination[1],EchoDestination001,Eppendorf_PCR_384,L20,1000,0,,,14.683,8.683,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:02.7,Source[1],EchoSource001,384PP_AQ_BP,A24,Destination[1],EchoDestination001,Eppendorf_PCR_384,K20,1000,0,,,17.677,8.677,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:03.0,Source[1],EchoSource001,384PP_AQ_BP,B24,Destination[1],EchoDestination001,Eppendorf_PCR_384,J20,1000,0,,,11.629,8.629,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:03.2,Source[1],EchoSource001,384PP_AQ_BP,C24,Destination[1],EchoDestination001,Eppendorf_PCR_384,I20,1000,0,,,13.579,8.579,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:03.3,Source[1],EchoSource001,384PP_AQ_BP,A22,Destination[1],EchoDestination001,Eppendorf_PCR_384,H20,1000,0,,,17.573,8.573,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:03.5,Source[1],EchoSource001,384PP_AQ_BP,D23,Destination[1],EchoDestination001,Eppendorf_PCR_384,G20,1000,0,,,13.562,8.562,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:03.8,Source[1],EchoSource001,384PP_AQ_BP,A23,Destination[1],EchoDestination001,Eppendorf_PCR_384,F20,1000,0,,,17.553,8.553,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:04.0,Source[1],EchoSource001,384PP_AQ_BP,C22,Destination[1],EchoDestination001,Eppendorf_PCR_384,E20,1000,0,,,14.304,8.304,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:04.3,Source[1],EchoSource001,384PP_AQ_BP,B22,Destination[1],EchoDestination001,Eppendorf_PCR_384,D20,1000,0,,,12.302,8.302,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:07.6,Source[1],EchoSource001,384PP_AQ_BP,C21,Destination[1],EchoDestination001,Eppendorf_PCR_384,D22,1000,0,,,13.251,9.251,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:07.8,Source[1],EchoSource001,384PP_AQ_BP,B21,Destination[1],EchoDestination001,Eppendorf_PCR_384,E22,1000,0,,,13.182,9.182,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:08.0,Source[1],EchoSource001,384PP_AQ_BP,B23,Destination[1],EchoDestination001,Eppendorf_PCR_384,F22,1000,0,,,13.01,9.01,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:08.2,Source[1],EchoSource001,384PP_AQ_BP,D22,Destination[1],EchoDestination001,Eppendorf_PCR_384,G22,1000,0,,,13.872,8.872,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:08.4,Source[1],EchoSource001,384PP_AQ_BP,A21,Destination[1],EchoDestination001,Eppendorf_PCR_384,H22,1000,0,,,12.837,8.837,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:08.6,Source[1],EchoSource001,384PP_AQ_BP,C23,Destination[1],EchoDestination001,Eppendorf_PCR_384,I22,1000,0,,,11.75,8.75,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:08.8,Source[1],EchoSource001,384PP_AQ_BP,D24,Destination[1],EchoDestination001,Eppendorf_PCR_384,J22,1000,0,,,11.733,8.733,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:09.0,Source[1],EchoSource001,384PP_AQ_BP,D21,Destination[1],EchoDestination001,Eppendorf_PCR_384,K22,1000,0,,,14.683,8.683,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+16:09.2,Source[1],EchoSource001,384PP_AQ_BP,A24,Destination[1],EchoDestination001,Eppendorf_PCR_384,L22,1000,0,,,17.677,8.677,100,,AQ,MM0202001: Current fluid height below minimum transfer level
+
+[DETAILS]
+Date Time Point,Source Plate Name,Source Plate Barcode,Source Plate Type,Source Well,Destination Plate Name,Destination Plate Barcode,Destination Plate Type,Destination Well,Transfer Volume,Actual Volume,Sample ID,Sample Name,Survey Fluid Volume,Current Fluid Volume,Fluid Composition,Fluid Units,Fluid Type,Transfer Status
+14:58.0,Source[1],EchoSource001,384PP_AQ_BP,A24,Destination[1],EchoDestination001,Eppendorf_PCR_384,D4,1000,1000,,,17.677,16.677,100,,AQ,
+14:58.6,Source[1],EchoSource001,384PP_AQ_BP,A22,Destination[1],EchoDestination001,Eppendorf_PCR_384,E4,1000,1000,,,17.573,16.573,100,,AQ,
+14:58.9,Source[1],EchoSource001,384PP_AQ_BP,A23,Destination[1],EchoDestination001,Eppendorf_PCR_384,F4,1000,1000,,,17.553,16.553,100,,AQ,
+14:59.2,Source[1],EchoSource001,384PP_AQ_BP,A24,Destination[1],EchoDestination001,Eppendorf_PCR_384,G4,1000,1000,,,17.677,15.677,100,,AQ,
+14:59.5,Source[1],EchoSource001,384PP_AQ_BP,A22,Destination[1],EchoDestination001,Eppendorf_PCR_384,H4,1000,1000,,,17.573,15.573,100,,AQ,
+15:03.2,Source[1],EchoSource001,384PP_AQ_BP,A23,Destination[1],EchoDestination001,Eppendorf_PCR_384,D5,1000,1000,,,17.553,15.553,100,,AQ,
+15:03.6,Source[1],EchoSource001,384PP_AQ_BP,A24,Destination[1],EchoDestination001,Eppendorf_PCR_384,E5,1000,1000,,,17.677,14.677,100,,AQ,
+15:03.9,Source[1],EchoSource001,384PP_AQ_BP,A22,Destination[1],EchoDestination001,Eppendorf_PCR_384,F5,1000,1000,,,17.573,14.573,100,,AQ,
+15:04.3,Source[1],EchoSource001,384PP_AQ_BP,A23,Destination[1],EchoDestination001,Eppendorf_PCR_384,G5,1000,1000,,,17.553,14.553,100,,AQ,
+15:04.5,Source[1],EchoSource001,384PP_AQ_BP,D21,Destination[1],EchoDestination001,Eppendorf_PCR_384,H5,1000,1000,,,14.683,13.683,100,,AQ,
+15:04.9,Source[1],EchoSource001,384PP_AQ_BP,A24,Destination[1],EchoDestination001,Eppendorf_PCR_384,I5,1000,1000,,,17.677,13.677,100,,AQ,
+15:05.3,Source[1],EchoSource001,384PP_AQ_BP,A22,Destination[1],EchoDestination001,Eppendorf_PCR_384,J5,1000,1000,,,17.573,13.573,100,,AQ,
+15:05.7,Source[1],EchoSource001,384PP_AQ_BP,A23,Destination[1],EchoDestination001,Eppendorf_PCR_384,K5,1000,1000,,,17.553,13.553,100,,AQ,
+15:06.0,Source[1],EchoSource001,384PP_AQ_BP,C22,Destination[1],EchoDestination001,Eppendorf_PCR_384,L5,1000,1000,,,14.304,13.304,100,,AQ,
+15:09.5,Source[1],EchoSource001,384PP_AQ_BP,D22,Destination[1],EchoDestination001,Eppendorf_PCR_384,D6,1000,1000,,,13.872,12.872,100,,AQ,
+15:10.2,Source[1],EchoSource001,384PP_AQ_BP,D21,Destination[1],EchoDestination001,Eppendorf_PCR_384,E6,1000,1000,,,14.683,12.683,100,,AQ,
+15:10.4,Source[1],EchoSource001,384PP_AQ_BP,A24,Destination[1],EchoDestination001,Eppendorf_PCR_384,F6,1000,1000,,,17.677,12.677,100,,AQ,
+15:10.9,Source[1],EchoSource001,384PP_AQ_BP,C24,Destination[1],EchoDestination001,Eppendorf_PCR_384,G6,1000,1000,,,13.579,12.579,100,,AQ,
+15:11.2,Source[1],EchoSource001,384PP_AQ_BP,A22,Destination[1],EchoDestination001,Eppendorf_PCR_384,H6,1000,1000,,,17.573,12.573,100,,AQ,
+15:11.6,Source[1],EchoSource001,384PP_AQ_BP,D23,Destination[1],EchoDestination001,Eppendorf_PCR_384,I6,1000,1000,,,13.562,12.562,100,,AQ,
+15:12.0,Source[1],EchoSource001,384PP_AQ_BP,A23,Destination[1],EchoDestination001,Eppendorf_PCR_384,J6,1000,1000,,,17.553,12.553,100,,AQ,
+15:12.4,Source[1],EchoSource001,384PP_AQ_BP,C22,Destination[1],EchoDestination001,Eppendorf_PCR_384,K6,1000,1000,,,14.304,12.304,100,,AQ,
+15:12.7,Source[1],EchoSource001,384PP_AQ_BP,C21,Destination[1],EchoDestination001,Eppendorf_PCR_384,L6,1000,1000,,,13.251,12.251,100,,AQ,
+15:16.2,Source[1],EchoSource001,384PP_AQ_BP,B21,Destination[1],EchoDestination001,Eppendorf_PCR_384,D8,1000,1000,,,13.182,12.182,100,,AQ,
+15:16.8,Source[1],EchoSource001,384PP_AQ_BP,B23,Destination[1],EchoDestination001,Eppendorf_PCR_384,E8,1000,1000,,,13.01,12.01,100,,AQ,
+15:17.1,Source[1],EchoSource001,384PP_AQ_BP,D22,Destination[1],EchoDestination001,Eppendorf_PCR_384,F8,1000,1000,,,13.872,11.872,100,,AQ,
+15:17.5,Source[1],EchoSource001,384PP_AQ_BP,A21,Destination[1],EchoDestination001,Eppendorf_PCR_384,G8,1000,1000,,,12.837,11.837,100,,AQ,
+15:17.9,Source[1],EchoSource001,384PP_AQ_BP,D21,Destination[1],EchoDestination001,Eppendorf_PCR_384,H8,1000,1000,,,14.683,11.683,100,,AQ,
+15:18.2,Source[1],EchoSource001,384PP_AQ_BP,A24,Destination[1],EchoDestination001,Eppendorf_PCR_384,I8,1000,1000,,,17.677,11.677,100,,AQ,
+15:18.7,Source[1],EchoSource001,384PP_AQ_BP,C24,Destination[1],EchoDestination001,Eppendorf_PCR_384,J8,1000,1000,,,13.579,11.579,100,,AQ,
+15:19.0,Source[1],EchoSource001,384PP_AQ_BP,A22,Destination[1],EchoDestination001,Eppendorf_PCR_384,K8,1000,1000,,,17.573,11.573,100,,AQ,
+15:19.4,Source[1],EchoSource001,384PP_AQ_BP,D23,Destination[1],EchoDestination001,Eppendorf_PCR_384,L8,1000,1000,,,13.562,11.562,100,,AQ,
+15:23.0,Source[1],EchoSource001,384PP_AQ_BP,A23,Destination[1],EchoDestination001,Eppendorf_PCR_384,D9,1000,1000,,,17.553,11.553,100,,AQ,
+15:23.5,Source[1],EchoSource001,384PP_AQ_BP,C22,Destination[1],EchoDestination001,Eppendorf_PCR_384,E9,1000,1000,,,14.304,11.304,100,,AQ,
+15:23.8,Source[1],EchoSource001,384PP_AQ_BP,B22,Destination[1],EchoDestination001,Eppendorf_PCR_384,F9,1000,1000,,,12.302,11.302,100,,AQ,
+15:24.2,Source[1],EchoSource001,384PP_AQ_BP,C21,Destination[1],EchoDestination001,Eppendorf_PCR_384,G9,1000,1000,,,13.251,11.251,100,,AQ,
+15:24.5,Source[1],EchoSource001,384PP_AQ_BP,B21,Destination[1],EchoDestination001,Eppendorf_PCR_384,H9,1000,1000,,,13.182,11.182,100,,AQ,
+15:24.8,Source[1],EchoSource001,384PP_AQ_BP,B23,Destination[1],EchoDestination001,Eppendorf_PCR_384,I9,1000,1000,,,13.01,11.01,100,,AQ,
+15:25.1,Source[1],EchoSource001,384PP_AQ_BP,D22,Destination[1],EchoDestination001,Eppendorf_PCR_384,J9,1000,1000,,,13.872,10.872,100,,AQ,
+15:25.5,Source[1],EchoSource001,384PP_AQ_BP,A21,Destination[1],EchoDestination001,Eppendorf_PCR_384,K9,1000,1000,,,12.837,10.837,100,,AQ,
+15:25.9,Source[1],EchoSource001,384PP_AQ_BP,C23,Destination[1],EchoDestination001,Eppendorf_PCR_384,L9,1000,1000,,,11.75,10.75,100,,AQ,
+15:29.5,Source[1],EchoSource001,384PP_AQ_BP,D24,Destination[1],EchoDestination001,Eppendorf_PCR_384,D10,1000,1000,,,11.733,10.733,100,,AQ,
+15:30.2,Source[1],EchoSource001,384PP_AQ_BP,D21,Destination[1],EchoDestination001,Eppendorf_PCR_384,E10,1000,1000,,,14.683,10.683,100,,AQ,
+15:30.5,Source[1],EchoSource001,384PP_AQ_BP,A24,Destination[1],EchoDestination001,Eppendorf_PCR_384,F10,1000,1000,,,17.677,10.677,100,,AQ,
+15:31.0,Source[1],EchoSource001,384PP_AQ_BP,B24,Destination[1],EchoDestination001,Eppendorf_PCR_384,G10,1000,1000,,,11.629,10.629,100,,AQ,
+15:31.3,Source[1],EchoSource001,384PP_AQ_BP,C24,Destination[1],EchoDestination001,Eppendorf_PCR_384,H10,1000,1000,,,13.579,10.579,100,,AQ,
+15:31.6,Source[1],EchoSource001,384PP_AQ_BP,A22,Destination[1],EchoDestination001,Eppendorf_PCR_384,I10,1000,1000,,,17.573,10.573,100,,AQ,
+15:32.0,Source[1],EchoSource001,384PP_AQ_BP,D23,Destination[1],EchoDestination001,Eppendorf_PCR_384,J10,1000,1000,,,13.562,10.562,100,,AQ,
+15:32.3,Source[1],EchoSource001,384PP_AQ_BP,A23,Destination[1],EchoDestination001,Eppendorf_PCR_384,K10,1000,1000,,,17.553,10.553,100,,AQ,
+15:32.7,Source[1],EchoSource001,384PP_AQ_BP,C22,Destination[1],EchoDestination001,Eppendorf_PCR_384,L10,1000,1000,,,14.304,10.304,100,,AQ,
+15:36.4,Source[1],EchoSource001,384PP_AQ_BP,B22,Destination[1],EchoDestination001,Eppendorf_PCR_384,D11,1000,1000,,,12.302,10.302,100,,AQ,
+15:36.9,Source[1],EchoSource001,384PP_AQ_BP,C21,Destination[1],EchoDestination001,Eppendorf_PCR_384,E11,1000,1000,,,13.251,10.251,100,,AQ,
+15:37.2,Source[1],EchoSource001,384PP_AQ_BP,B21,Destination[1],EchoDestination001,Eppendorf_PCR_384,F11,1000,1000,,,13.182,10.182,100,,AQ,
+15:37.5,Source[1],EchoSource001,384PP_AQ_BP,B23,Destination[1],EchoDestination001,Eppendorf_PCR_384,G11,1000,1000,,,13.01,10.01,100,,AQ,
+15:37.9,Source[1],EchoSource001,384PP_AQ_BP,D22,Destination[1],EchoDestination001,Eppendorf_PCR_384,H11,1000,1000,,,13.872,9.872,100,,AQ,
+15:38.2,Source[1],EchoSource001,384PP_AQ_BP,A21,Destination[1],EchoDestination001,Eppendorf_PCR_384,I11,1000,1000,,,12.837,9.837,100,,AQ,
+15:38.6,Source[1],EchoSource001,384PP_AQ_BP,C23,Destination[1],EchoDestination001,Eppendorf_PCR_384,J11,1000,1000,,,11.75,9.75,100,,AQ,
+15:39.0,Source[1],EchoSource001,384PP_AQ_BP,D24,Destination[1],EchoDestination001,Eppendorf_PCR_384,K11,1000,1000,,,11.733,9.733,100,,AQ,
+15:39.3,Source[1],EchoSource001,384PP_AQ_BP,D21,Destination[1],EchoDestination001,Eppendorf_PCR_384,L11,1000,1000,,,14.683,9.683,100,,AQ,
+15:42.9,Source[1],EchoSource001,384PP_AQ_BP,A24,Destination[1],EchoDestination001,Eppendorf_PCR_384,D12,1000,1000,,,17.677,9.677,100,,AQ,
+15:43.3,Source[1],EchoSource001,384PP_AQ_BP,B24,Destination[1],EchoDestination001,Eppendorf_PCR_384,E12,1000,1000,,,11.629,9.629,100,,AQ,
+15:43.6,Source[1],EchoSource001,384PP_AQ_BP,C24,Destination[1],EchoDestination001,Eppendorf_PCR_384,F12,1000,1000,,,13.579,9.579,100,,AQ,
+15:43.9,Source[1],EchoSource001,384PP_AQ_BP,A22,Destination[1],EchoDestination001,Eppendorf_PCR_384,G12,1000,1000,,,17.573,9.573,100,,AQ,
+15:44.3,Source[1],EchoSource001,384PP_AQ_BP,D23,Destination[1],EchoDestination001,Eppendorf_PCR_384,H12,1000,1000,,,13.562,9.562,100,,AQ,
+15:44.7,Source[1],EchoSource001,384PP_AQ_BP,A23,Destination[1],EchoDestination001,Eppendorf_PCR_384,I12,1000,1000,,,17.553,9.553,100,,AQ,
+15:45.1,Source[1],EchoSource001,384PP_AQ_BP,C22,Destination[1],EchoDestination001,Eppendorf_PCR_384,J12,1000,1000,,,14.304,9.304,100,,AQ,
+15:45.4,Source[1],EchoSource001,384PP_AQ_BP,B22,Destination[1],EchoDestination001,Eppendorf_PCR_384,K12,1000,1000,,,12.302,9.302,100,,AQ,
+15:45.8,Source[1],EchoSource001,384PP_AQ_BP,C21,Destination[1],EchoDestination001,Eppendorf_PCR_384,L12,1000,1000,,,13.251,9.251,100,,AQ,
+15:46.0,Source[1],EchoSource001,384PP_AQ_BP,B21,Destination[1],EchoDestination001,Eppendorf_PCR_384,L13,1000,1000,,,13.182,9.182,100,,AQ,
+15:46.3,Source[1],EchoSource001,384PP_AQ_BP,B23,Destination[1],EchoDestination001,Eppendorf_PCR_384,K13,1000,1000,,,13.01,9.01,100,,AQ,
+15:46.7,Source[1],EchoSource001,384PP_AQ_BP,D22,Destination[1],EchoDestination001,Eppendorf_PCR_384,J13,1000,1000,,,13.872,8.872,100,,AQ,
+15:47.1,Source[1],EchoSource001,384PP_AQ_BP,A21,Destination[1],EchoDestination001,Eppendorf_PCR_384,I13,1000,1000,,,12.837,8.837,100,,AQ,
+15:47.4,Source[1],EchoSource001,384PP_AQ_BP,C23,Destination[1],EchoDestination001,Eppendorf_PCR_384,H13,1000,1000,,,11.75,8.75,100,,AQ,
+15:47.8,Source[1],EchoSource001,384PP_AQ_BP,D24,Destination[1],EchoDestination001,Eppendorf_PCR_384,G13,1000,1000,,,11.733,8.733,100,,AQ,
+15:48.2,Source[1],EchoSource001,384PP_AQ_BP,D21,Destination[1],EchoDestination001,Eppendorf_PCR_384,F13,1000,1000,,,14.683,8.683,100,,AQ,
+15:48.5,Source[1],EchoSource001,384PP_AQ_BP,A24,Destination[1],EchoDestination001,Eppendorf_PCR_384,E13,1000,1000,,,17.677,8.677,100,,AQ,
+15:48.9,Source[1],EchoSource001,384PP_AQ_BP,B24,Destination[1],EchoDestination001,Eppendorf_PCR_384,D13,1000,1000,,,11.629,8.629,100,,AQ,
+15:52.7,Source[1],EchoSource001,384PP_AQ_BP,C24,Destination[1],EchoDestination001,Eppendorf_PCR_384,D15,1000,1000,,,13.579,8.579,100,,AQ,
+15:53.0,Source[1],EchoSource001,384PP_AQ_BP,A22,Destination[1],EchoDestination001,Eppendorf_PCR_384,E15,1000,1000,,,17.573,8.573,100,,AQ,
+15:53.4,Source[1],EchoSource001,384PP_AQ_BP,D23,Destination[1],EchoDestination001,Eppendorf_PCR_384,F15,1000,1000,,,13.562,8.562,100,,AQ,
+15:53.7,Source[1],EchoSource001,384PP_AQ_BP,A23,Destination[1],EchoDestination001,Eppendorf_PCR_384,G15,1000,1000,,,17.553,8.553,100,,AQ,
+15:54.2,Source[1],EchoSource001,384PP_AQ_BP,C22,Destination[1],EchoDestination001,Eppendorf_PCR_384,H15,1000,1000,,,14.304,8.304,100,,AQ,
+15:54.5,Source[1],EchoSource001,384PP_AQ_BP,B22,Destination[1],EchoDestination001,Eppendorf_PCR_384,I15,1000,1000,,,12.302,8.302,100,,AQ,
+
+Instrument Name,E5XX-19119
+Instrument Model,Echo 525
+Instrument Serial Number,E5XX-19119
+Instrument Software Version,2.6.3
