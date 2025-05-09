@@ -575,6 +575,18 @@
       "unit"
     ]
   },
+  "PerMolarPerSecond": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "M-1s-1",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#PerMolarPerSecond"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "PerSecond": {
     "properties": {
       "unit": {
