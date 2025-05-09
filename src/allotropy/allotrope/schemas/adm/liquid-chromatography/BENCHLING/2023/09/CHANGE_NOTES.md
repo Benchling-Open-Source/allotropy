@@ -62,3 +62,7 @@ Changes:
 * Added relative peak analyte amount to BENCHLING/2023/09
  * Reasoning: Added for handling of peak analyte amount data
  * Proposal: Add relative peak analyte amount to peak document
+
+* Added "data processing aggregate document" to processed data document
+ * Reasoning: The data processing aggregate document is required to properly organize multiple data processing methods and handle the various processing method components in a structured way
+ * Proposal: Add "data processing aggregate document" as a wrapper for "data processing document" to comply with the Allotrope data model where id=AFR_0002654
