@@ -128,7 +128,7 @@ class GroupSampleData:
         row_data = [SeriesData(row) for _, row in data.iterrows()]
         top_row = row_data[0]
         identifier = top_row[str, "Sample"]
-        data = rm_df_columns(data, r"^Sample$|^Standard Value|^R$|^Unnamed: \d+$")
+        data = rm_df_columns(data, r"^Sample$|^R$|^Unnamed: \d+$")
         # Columns are considered "numeric" if the value of the first row is a float
         # Non-numeric values such as "Mask" and "Range?" will be reported as errors.
         numeric_columns = [
@@ -255,21 +255,17 @@ class GroupColumns:
 
 
 @dataclass(frozen=True)
-class GroupSummaries:
-    data: list[str]
-
-    @staticmethod
-    def create(reader: CsvReader) -> GroupSummaries:
-        data = list(reader.pop_until_empty())
-        reader.drop_empty()
-        return GroupSummaries(data)
+class SummaryDataElement:
+    name: str
+    value: float
+    description: str | None
 
 
 @dataclass(frozen=True)
 class GroupBlock(Block):
     group_data: GroupData
     group_columns: GroupColumns
-    group_summaries: GroupSummaries
+    group_summaries_data: list[SummaryDataElement]
 
     @staticmethod
     def create(reader: CsvReader) -> GroupBlock:
@@ -277,8 +273,22 @@ class GroupBlock(Block):
             block_type="Group",
             group_data=GroupData.create(reader),
             group_columns=GroupColumns.create(reader),
-            group_summaries=GroupSummaries.create(reader),
+            group_summaries_data=GroupBlock.create_summary_data(reader),
         )
+
+    @staticmethod
+    def create_summary_data(reader: CsvReader) -> list[SummaryDataElement]:
+        data_elements = []
+        for line in reader.pop_until_empty():
+            if match := re.match(r"^([^\t]+)\t([^\t]*)\t([\d.]+)\t([^\t]+)", line):
+                data_elements.append(
+                    SummaryDataElement(
+                        name=match.groups()[0],
+                        value=try_float(match.groups()[2], "summary result"),
+                        description=match.groups()[3],
+                    )
+                )
+        return data_elements
 
 
 # TODO do we need to do anything with these?
