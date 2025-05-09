@@ -141,6 +141,7 @@ class Measurement:
     sample_custom_info: dict[str, Any] | None = None
     device_control_custom_info: dict[str, Any] | None = None
     electronic_absorbance_reference_wavelength_setting: float | None = None
+    wavelength_identifier: str | None = None
 
     # Kinetic settings
     total_measurement_time_setting: float | None = None
@@ -155,6 +156,8 @@ class Measurement:
 
     # processing data
     processed_data_document: ProcessedDataDocument | None = None
+
+    calc_docs_custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
