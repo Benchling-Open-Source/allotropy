@@ -45,7 +45,15 @@
                                 ]
                             },
                             "measurement identifier": "BECKMAN_ECHO_PLATE_REFORMAT_TEST_ID_0",
-                            "measurement time": "2024-12-09T13:34:27.411000+00:00"
+                            "measurement time": "2024-12-09T13:34:27.411000+00:00",
+                            "aspiration volume": {
+                                "value": 0.0,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 0.0,
+                                "unit": "μL"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -87,7 +95,15 @@
                                 ]
                             },
                             "measurement identifier": "BECKMAN_ECHO_PLATE_REFORMAT_TEST_ID_1",
-                            "measurement time": "2024-12-09T13:34:27.411000+00:00"
+                            "measurement time": "2024-12-09T13:34:27.411000+00:00",
+                            "aspiration volume": {
+                                "value": 0.0,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 0.0,
+                                "unit": "μL"
+                            }
                         },
                         {
                             "device control aggregate document": {

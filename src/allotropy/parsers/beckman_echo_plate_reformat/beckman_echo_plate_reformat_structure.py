@@ -40,7 +40,7 @@ def _create_measurement(row_data: SeriesData) -> Measurement:
     def convert_echo_nl_to_ul(value: float | None) -> float | None:
         return (
             (value * constants.PLATE_REFORMAT_REPORT_VOLUME_CONVERSION_TO_UL)
-            if value
+            if value is not None
             else None
         )
 
