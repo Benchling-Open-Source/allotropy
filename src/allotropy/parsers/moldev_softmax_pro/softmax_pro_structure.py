@@ -5,6 +5,7 @@ from collections.abc import Iterator
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
+import math
 import re
 
 import pandas as pd
@@ -157,13 +158,15 @@ class GroupSampleData:
                                     (
                                         column_result
                                         if isinstance(column_result, float)
+                                        and abs(column_result) != math.inf
                                         else NEGATIVE_ZERO
                                     ),
                                 )
                             ],
                             errors=(
-                                [ErrorDocument(column_result, column)]
+                                [ErrorDocument(str(column_result), column)]
                                 if isinstance(column_result, str)
+                                or abs(column_result) == math.inf
                                 else []
                             ),
                         )
