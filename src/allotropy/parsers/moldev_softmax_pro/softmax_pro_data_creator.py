@@ -108,6 +108,7 @@ def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measure
             location_identifier=data_element.position,
             well_plate_identifier=plate_block.header.name,
             sample_identifier=data_element.sample_identifier,
+            sample_custom_info={"group_identifier": data_element.group_id},
             # Device Control document
             device_type=DEVICE_TYPE,
             detection_type=plate_block.header.read_mode,
@@ -233,6 +234,10 @@ def _get_group_simple_calc_docs(
 ) -> list[CalculatedDocument]:
     calculated_documents = []
     for group_data_element in group_sample_data.data_elements:
+        if group_data_element.plate is None:
+            # if the group data element does not have a plate assigned, there is no way at
+            # the moment to get the data sources for the calculated data element.
+            continue
         data_sources = list(
             chain.from_iterable(
                 _get_calc_docs_data_sources(

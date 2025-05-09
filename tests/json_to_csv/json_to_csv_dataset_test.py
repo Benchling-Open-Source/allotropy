@@ -35,9 +35,16 @@ def _assert_dicts_equal(expected: dict[str, Any], actual: dict[str, Any]) -> Non
         ),
         (
             "tests/json_to_csv/testdata/plate_reader.json",
-            "tests/json_to_csv/testdata/plate_reader_extract_calculated_data_config.json",
+            "tests/json_to_csv/testdata/plate_reader_extract_calculated_data_config_no_pivot.json",
             {
-                "dataset": "tests/json_to_csv/testdata/plate_reader_extract_calculated_data.csv"
+                "dataset": "tests/json_to_csv/testdata/plate_reader_extract_calculated_data_no_pivot.csv"
+            },
+        ),
+        (
+            "tests/json_to_csv/testdata/plate_reader.json",
+            "tests/json_to_csv/testdata/plate_reader_extract_calculated_data_config_with_pivot.json",
+            {
+                "dataset": "tests/json_to_csv/testdata/plate_reader_extract_calculated_data_with_pivot.csv"
             },
         ),
         (
@@ -46,6 +53,21 @@ def _assert_dicts_equal(expected: dict[str, Any], actual: dict[str, Any]) -> Non
             {
                 "measurements": "tests/json_to_csv/testdata/plate_reader_measurement_joined_on_calc_data.csv"
             },
+        ),
+        (
+            "tests/json_to_csv/testdata/empower_raw.json",
+            "tests/json_to_csv/testdata/empower_config_pick_list.json",
+            {"dataset": "tests/json_to_csv/testdata/empower_raw_pick_list.csv"},
+        ),
+        (
+            "tests/json_to_csv/testdata/empower_raw.json",
+            "tests/json_to_csv/testdata/empower_config_whole_list.json",
+            {"dataset": "tests/json_to_csv/testdata/empower_raw_whole_list.csv"},
+        ),
+        (
+            "tests/json_to_csv/testdata/simple_list_test.json",
+            "tests/json_to_csv/testdata/simple_list_config.json",
+            {"dataset": "tests/json_to_csv/testdata/simple_list_test.csv"},
         ),
     ],
 )

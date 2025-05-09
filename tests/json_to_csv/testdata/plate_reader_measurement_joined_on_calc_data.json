@@ -49,7 +49,7 @@
     "transforms": [
         {
             "type": "PIVOT",
-            "dataset": "dataset",
+            "dataset": "calc_data",
             "path": "plate reader aggregate document/calculated data aggregate document/calculated data document",
             "value_path": "plate reader aggregate document/calculated data aggregate document/calculated data document/calculated result/value",
             "label_path": "plate reader aggregate document/calculated data aggregate document/calculated data document/calculated data name"

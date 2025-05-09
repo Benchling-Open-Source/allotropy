@@ -111,6 +111,7 @@ class Measurement:
 
     location_identifier: str | None = None
     well_plate_identifier: str | None = None
+    batch_identifier: str | None = None
     written_name: str | None = None
     method_version: str | None = None
     data_processing_time: str | None = None
@@ -129,6 +130,7 @@ class MeasurementGroup:
     analyst: str | None = None
     measurement_time: str | None = None
     experimental_data_identifier: str | None = None
+    experiment_identifier: str | None = None
 
 
 @dataclass
@@ -198,6 +200,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 if measurement_group.measurement_time
                 else None,
                 experimental_data_identifier=measurement_group.experimental_data_identifier,
+                experiment_identifier=measurement_group.experiment_identifier,
             ),
             compensation_matrix_aggregate_document=CompensationMatrixAggregateDocument(
                 compensation_matrix_document=[
@@ -376,6 +379,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 location_identifier=measurement.location_identifier,
                 well_plate_identifier=measurement.well_plate_identifier,
                 written_name=measurement.written_name,
+                batch_identifier=measurement.batch_identifier,
             ),
             measurement.sample_custom_info,
         )
