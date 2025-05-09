@@ -16,7 +16,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -26,7 +27,10 @@
                                 "sample identifier": "H2O",
                                 "location identifier": "A1",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": -0.0,
@@ -69,7 +73,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -79,7 +84,10 @@
                                 "sample identifier": "Sample 4",
                                 "location identifier": "B1",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 0.84,
@@ -110,7 +118,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -120,7 +129,10 @@
                                 "sample identifier": "Sample 3",
                                 "location identifier": "C1",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 1.04,
@@ -151,7 +163,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -161,7 +174,10 @@
                                 "sample identifier": "Sample 7",
                                 "location identifier": "D1",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 0.18,
@@ -192,7 +208,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -202,7 +219,10 @@
                                 "sample identifier": "Sample 2",
                                 "location identifier": "E1",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 2.07,
@@ -233,7 +253,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -243,7 +264,10 @@
                                 "sample identifier": "Sample 6",
                                 "location identifier": "F1",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 0.39,
@@ -274,7 +298,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -284,7 +309,10 @@
                                 "sample identifier": "Sample 1",
                                 "location identifier": "G1",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 4.22,
@@ -315,7 +343,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -325,7 +354,10 @@
                                 "sample identifier": "Sample 5",
                                 "location identifier": "H1",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 0.61,
@@ -356,7 +388,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -366,7 +399,10 @@
                                 "sample identifier": "Sample 1",
                                 "location identifier": "A2",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 4.22,
@@ -397,7 +433,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -407,7 +444,10 @@
                                 "sample identifier": "Sample 5",
                                 "location identifier": "B2",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 0.61,
@@ -438,7 +478,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -448,7 +489,10 @@
                                 "sample identifier": "H2O",
                                 "location identifier": "C2",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 0.0,
@@ -491,7 +535,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -501,7 +546,10 @@
                                 "sample identifier": "Sample 4",
                                 "location identifier": "D2",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 0.82,
@@ -532,7 +580,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -542,7 +591,10 @@
                                 "sample identifier": "Sample 3",
                                 "location identifier": "E2",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 1.03,
@@ -573,7 +625,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -583,7 +636,10 @@
                                 "sample identifier": "Sample 7",
                                 "location identifier": "F2",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 0.18,
@@ -614,7 +670,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -624,7 +681,10 @@
                                 "sample identifier": "Sample 2",
                                 "location identifier": "G2",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 2.05,
@@ -655,7 +715,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -665,7 +726,10 @@
                                 "sample identifier": "Sample 6",
                                 "location identifier": "H2",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 0.4,
@@ -696,7 +760,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -706,7 +771,10 @@
                                 "sample identifier": "Sample 2",
                                 "location identifier": "A3",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 2.08,
@@ -737,7 +805,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -747,7 +816,10 @@
                                 "sample identifier": "Sample 6",
                                 "location identifier": "B3",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 0.4,
@@ -778,7 +850,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -788,7 +861,10 @@
                                 "sample identifier": "Sample 1",
                                 "location identifier": "C3",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 4.23,
@@ -819,7 +895,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -829,7 +906,10 @@
                                 "sample identifier": "Sample 5",
                                 "location identifier": "D3",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 0.6,
@@ -860,7 +940,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -870,7 +951,10 @@
                                 "sample identifier": "H2O",
                                 "location identifier": "E3",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": -0.0,
@@ -913,7 +997,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -923,7 +1008,10 @@
                                 "sample identifier": "Sample 4",
                                 "location identifier": "F3",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 0.83,
@@ -954,7 +1042,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -964,7 +1053,10 @@
                                 "sample identifier": "Sample 3",
                                 "location identifier": "G3",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 1.03,
@@ -995,7 +1087,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -1005,7 +1098,10 @@
                                 "sample identifier": "Sample 7",
                                 "location identifier": "H3",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 0.19,
@@ -1036,7 +1132,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -1046,7 +1143,10 @@
                                 "sample identifier": "Sample 3",
                                 "location identifier": "A4",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 1.04,
@@ -1077,7 +1177,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -1087,7 +1188,10 @@
                                 "sample identifier": "Sample 7",
                                 "location identifier": "B4",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 0.18,
@@ -1118,7 +1222,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -1128,7 +1233,10 @@
                                 "sample identifier": "Sample 2",
                                 "location identifier": "C4",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 2.07,
@@ -1159,7 +1267,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -1169,7 +1278,10 @@
                                 "sample identifier": "Sample 6",
                                 "location identifier": "D4",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 0.38,
@@ -1200,7 +1312,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -1210,7 +1323,10 @@
                                 "sample identifier": "Sample 1",
                                 "location identifier": "E4",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 4.22,
@@ -1241,7 +1357,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -1251,7 +1368,10 @@
                                 "sample identifier": "Sample 5",
                                 "location identifier": "F4",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 0.62,
@@ -1282,7 +1402,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -1292,7 +1413,10 @@
                                 "sample identifier": "H2O",
                                 "location identifier": "G4",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": -0.01,
@@ -1335,7 +1459,8 @@
                                             "unit": "nm"
                                         },
                                         "custom information document": {
-                                            "pump": "0"
+                                            "pump": "0",
+                                            "column": "1"
                                         }
                                     }
                                 ]
@@ -1345,7 +1470,10 @@
                                 "sample identifier": "Sample 4",
                                 "location identifier": "H4",
                                 "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
                             },
                             "absorbance": {
                                 "value": 0.83,
@@ -2781,7 +2909,7 @@
             "file name": "Demo_A280_Protein.csv",
             "UNC path": "tests/parsers/unchained_labs_lunatic/testdata/Demo_A280_Protein.csv",
             "ASM converter name": "allotropy_unchained_labs_lunatic",
-            "ASM converter version": "0.1.74",
+            "ASM converter version": "0.1.87",
             "software name": "Lunatic and Stunner Analysis"
         },
         "device system document": {

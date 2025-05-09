@@ -24,7 +24,13 @@
                                 "sample identifier": "SAMPLE_1",
                                 "location identifier": "A1",
                                 "batch identifier": "GROUP_1",
-                                "well plate identifier": "PLATE_1"
+                                "well plate identifier": "PLATE_1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate",
+                                    "nr of plates": "1",
+                                    "blanks": "Sample group 'GROUP_1': On Plate/Chip:  (2x)",
+                                    "plate description": "- Lunatic_test_BE_31JUL2024"
+                                }
                             },
                             "absorbance": {
                                 "value": 3.65,
@@ -77,7 +83,13 @@
                                 "sample identifier": "SAMPLE_2",
                                 "location identifier": "B1",
                                 "batch identifier": "GROUP_1",
-                                "well plate identifier": "PLATE_1"
+                                "well plate identifier": "PLATE_1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate",
+                                    "nr of plates": "1",
+                                    "blanks": "Sample group 'GROUP_1': On Plate/Chip:  (2x)",
+                                    "plate description": "- Lunatic_test_BE_31JUL2024"
+                                }
                             },
                             "absorbance": {
                                 "value": 3.66,
@@ -215,7 +227,7 @@
             "file name": "Example_Lunatic_Plate_Reader_xlsx_with_header.xlsx",
             "UNC path": "tests/parsers/unchained_labs_lunatic/testdata/Example_Lunatic_Plate_Reader_xlsx_with_header.xlsx",
             "ASM converter name": "allotropy_unchained_labs_lunatic",
-            "ASM converter version": "0.1.74",
+            "ASM converter version": "0.1.87",
             "software name": "Lunatic and Stunner Analysis",
             "software version": "8.2.0.259"
         },
