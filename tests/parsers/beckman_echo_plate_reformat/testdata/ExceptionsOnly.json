@@ -15,6 +15,8 @@
                                             "unit": "μL"
                                         },
                                         "custom information document": {
+                                            "survey fluid volume": 0.0,
+                                            "current fluid volume": 0.0,
                                             "intended transfer volume": 0.1,
                                             "source labware name": "384PP_AQ_BP",
                                             "destination labware name": "Eppendorf_PCR_384",
@@ -43,7 +45,15 @@
                                 ]
                             },
                             "measurement identifier": "BECKMAN_ECHO_PLATE_REFORMAT_TEST_ID_0",
-                            "measurement time": "2024-12-09T13:29:31.401000+00:00"
+                            "measurement time": "2024-12-09T13:29:31.401000+00:00",
+                            "aspiration volume": {
+                                "value": 0.0,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 0.0,
+                                "unit": "μL"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -55,6 +65,8 @@
                                             "unit": "μL"
                                         },
                                         "custom information document": {
+                                            "survey fluid volume": 0.0,
+                                            "current fluid volume": 0.0,
                                             "intended transfer volume": 0.1,
                                             "source labware name": "384PP_AQ_BP",
                                             "destination labware name": "Eppendorf_PCR_384",
@@ -83,7 +95,15 @@
                                 ]
                             },
                             "measurement identifier": "BECKMAN_ECHO_PLATE_REFORMAT_TEST_ID_1",
-                            "measurement time": "2024-12-09T13:29:31.426000+00:00"
+                            "measurement time": "2024-12-09T13:29:31.426000+00:00",
+                            "aspiration volume": {
+                                "value": 0.0,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 0.0,
+                                "unit": "μL"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -95,6 +115,8 @@
                                             "unit": "μL"
                                         },
                                         "custom information document": {
+                                            "survey fluid volume": 0.0,
+                                            "current fluid volume": 0.0,
                                             "intended transfer volume": 0.1,
                                             "source labware name": "384PP_AQ_BP",
                                             "destination labware name": "Eppendorf_PCR_384",
@@ -123,7 +145,15 @@
                                 ]
                             },
                             "measurement identifier": "BECKMAN_ECHO_PLATE_REFORMAT_TEST_ID_2",
-                            "measurement time": "2024-12-09T13:29:34.520000+00:00"
+                            "measurement time": "2024-12-09T13:29:34.520000+00:00",
+                            "aspiration volume": {
+                                "value": 0.0,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 0.0,
+                                "unit": "μL"
+                            }
                         },
                         {
                             "device control aggregate document": {
@@ -135,6 +165,8 @@
                                             "unit": "μL"
                                         },
                                         "custom information document": {
+                                            "survey fluid volume": 0.0,
+                                            "current fluid volume": 0.0,
                                             "intended transfer volume": 0.1,
                                             "source labware name": "384PP_AQ_BP",
                                             "destination labware name": "Eppendorf_PCR_384",
@@ -163,7 +195,15 @@
                                 ]
                             },
                             "measurement identifier": "BECKMAN_ECHO_PLATE_REFORMAT_TEST_ID_3",
-                            "measurement time": "2024-12-09T13:29:34.520000+00:00"
+                            "measurement time": "2024-12-09T13:29:34.520000+00:00",
+                            "aspiration volume": {
+                                "value": 0.0,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 0.0,
+                                "unit": "μL"
+                            }
                         }
                     ],
                     "analytical method identifier": "connect_test_protocol.epr",
@@ -181,7 +221,7 @@
             "file name": "ExceptionsOnly.csv",
             "UNC path": "tests/parsers/beckman_echo_plate_reformat/testdata/ExceptionsOnly.csv",
             "ASM converter name": "allotropy_beckman_echo_plate_reformat",
-            "ASM converter version": "0.1.80",
+            "ASM converter version": "0.1.87",
             "software name": "Labcyte Echo Plate Reformat",
             "software version": "1.7.2"
         },

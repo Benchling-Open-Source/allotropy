@@ -5,6 +5,7 @@ from collections.abc import Iterator
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
+import math
 import re
 
 import pandas as pd
@@ -108,11 +109,11 @@ class GroupDataElementEntry:
     value: float
 
 
-@dataclass(frozen=True)
+@dataclass
 class GroupDataElement:
     sample: str
     positions: list[str]
-    plate: str
+    plate: str | None
     entries: list[GroupDataElementEntry]
     errors: list[ErrorDocument]
 
@@ -127,7 +128,7 @@ class GroupSampleData:
         row_data = [SeriesData(row) for _, row in data.iterrows()]
         top_row = row_data[0]
         identifier = top_row[str, "Sample"]
-        data = rm_df_columns(data, r"^Sample$|^Standard Value|^R$|^Unnamed: \d+$")
+        data = rm_df_columns(data, r"^Sample$|^R$|^Unnamed: \d+$")
         # Columns are considered "numeric" if the value of the first row is a float
         # Non-numeric values such as "Mask" and "Range?" will be reported as errors.
         numeric_columns = [
@@ -143,7 +144,7 @@ class GroupSampleData:
         for row in row_data:
             row_results = cls._get_entries_and_errors(row, numeric_columns)
             position = row[str, ["Well", "Wells"]]
-            plate = row[str, "WellPlateName"]
+            plate = row.get(str, "WellPlateName", validate=SeriesData.NOT_NAN)
             for column in numeric_columns:
                 if (column_result := row_results.get(column)) is not None:
                     data_elements[column].append(
@@ -157,13 +158,15 @@ class GroupSampleData:
                                     (
                                         column_result
                                         if isinstance(column_result, float)
+                                        and abs(column_result) != math.inf
                                         else NEGATIVE_ZERO
                                     ),
                                 )
                             ],
                             errors=(
-                                [ErrorDocument(column_result, column)]
+                                [ErrorDocument(str(column_result), column)]
                                 if isinstance(column_result, str)
+                                or abs(column_result) == math.inf
                                 else []
                             ),
                         )
@@ -252,21 +255,17 @@ class GroupColumns:
 
 
 @dataclass(frozen=True)
-class GroupSummaries:
-    data: list[str]
-
-    @staticmethod
-    def create(reader: CsvReader) -> GroupSummaries:
-        data = list(reader.pop_until_empty())
-        reader.drop_empty()
-        return GroupSummaries(data)
+class SummaryDataElement:
+    name: str
+    value: float
+    description: str | None
 
 
 @dataclass(frozen=True)
 class GroupBlock(Block):
     group_data: GroupData
     group_columns: GroupColumns
-    group_summaries: GroupSummaries
+    group_summaries_data: list[SummaryDataElement]
 
     @staticmethod
     def create(reader: CsvReader) -> GroupBlock:
@@ -274,8 +273,22 @@ class GroupBlock(Block):
             block_type="Group",
             group_data=GroupData.create(reader),
             group_columns=GroupColumns.create(reader),
-            group_summaries=GroupSummaries.create(reader),
+            group_summaries_data=GroupBlock.create_summary_data(reader),
         )
+
+    @staticmethod
+    def create_summary_data(reader: CsvReader) -> list[SummaryDataElement]:
+        data_elements = []
+        for line in reader.pop_until_empty():
+            if match := re.match(r"^([^\t]+)\t([^\t]*)\t([\d.]+)\t([^\t]+)", line):
+                data_elements.append(
+                    SummaryDataElement(
+                        name=match.groups()[0],
+                        value=try_float(match.groups()[2], "summary result"),
+                        description=match.groups()[3],
+                    )
+                )
+        return data_elements
 
 
 # TODO do we need to do anything with these?
@@ -321,6 +334,7 @@ class DataElement:
     elapsed_time: list[float] = field(default_factory=list)
     kinetic_measures: list[float | None] = field(default_factory=list)
     sample_id: str | None = None
+    group_id: str | None = None
 
     @property
     def sample_identifier(self) -> str:
@@ -1141,11 +1155,7 @@ class BlockList:
 
         for sub_reader in BlockList._iter_blocks_reader(reader):
             if sub_reader.match("^Group"):
-                if "WellPlateName" in assert_not_none(
-                    sub_reader.get_line(sub_reader.current_line + 1),
-                    msg="Unable to get columns from group block",
-                ):
-                    group_blocks.append(GroupBlock.create(sub_reader))
+                group_blocks.append(GroupBlock.create(sub_reader))
             elif sub_reader.match("^Plate"):
                 header_series = PlateBlock.read_header(sub_reader)
                 plate_block_cls = PlateBlock.get_plate_block_cls(header_series)
@@ -1160,6 +1170,9 @@ class BlockList:
                 )
                 block_data = data_format.create(sub_reader, header)
 
+                if header.name in plate_blocks:
+                    msg = f"Plate IDs between Plate Blocks must be unique. '{header.name}' block name is duplicated. See connector configuration guide for handling multiple Plate Blocks."
+                    raise AllotropeConversionError(msg)
                 plate_blocks[header.name] = plate_block_cls(
                     block_type="Plate",
                     header=header,
@@ -1204,10 +1217,18 @@ class StructureData:
         for group_block in block_list.group_blocks:
             for group_sample_data in group_block.group_data.sample_data:
                 for group_data_element in group_sample_data.data_elements:
+                    # For experiments with only one plate, it is assumed that all group blocks belong to it.
+                    if len(block_list.plate_blocks) == 1:
+                        group_data_element.plate = next(iter(block_list.plate_blocks))
+                    elif group_data_element.plate is None:
+                        # if the group data does not include the `WellPlateName` colum, and this is a multiplate
+                        # experiment, there is no way at the moment to link the group data with a plate.
+                        continue
                     plate_block = block_list.plate_blocks[group_data_element.plate]
                     for data_element in plate_block.iter_data_elements(
                         group_data_element.positions
                     ):
+                        data_element.group_id = group_block.group_data.name
                         data_element.sample_id = group_data_element.sample
                         data_element.error_document += group_data_element.errors
 

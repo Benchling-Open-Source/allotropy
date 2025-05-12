@@ -28,10 +28,11 @@ from allotropy.parsers.unchained_labs_lunatic.constants import (
     SOFTWARE_NAME,
     WAVELENGTH_COLUMNS_RE,
 )
+from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_calcdocs import (
+    create_calculated_data,
+)
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
-    DataSource,
-    Referenceable,
 )
 from allotropy.parsers.utils.pandas import (
     map_rows,
@@ -47,7 +48,6 @@ def _create_measurement(
     well_plate_data: SeriesData,
     header: SeriesData,
     wavelength_column: str,
-    calculated_data: list[CalculatedDocument],
 ) -> Measurement:
     if wavelength_column not in well_plate_data.series:
         msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelength_column)
@@ -70,12 +70,8 @@ def _create_measurement(
         )
 
     measurement_identifier = random_uuid_str()
-    error_documents: list[ErrorDocument] = []
-    calculated_data.extend(
-        _get_calculated_data(
-            well_plate_data, wavelength_column, measurement_identifier, error_documents
-        )
-    )
+
+    error_documents = _get_error_documents(well_plate_data, wavelength_column)
     absorbance = well_plate_data.get(float, wavelength_column)
 
     if absorbance is None:
@@ -116,16 +112,19 @@ def _create_measurement(
         )
         if concentration_factor is not None
         else None,
+        wavelength_identifier=wavelength_column,
+        calc_docs_custom_info={
+            item["column"]: well_plate_data.get(float, item["column"])
+            for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, [])
+        },
     )
 
 
-def _get_calculated_data(
+def _get_error_documents(
     well_plate_data: SeriesData,
     wavelength_column: str,
-    measurement_identifier: str,
-    error_documents: list[ErrorDocument],
-) -> list[CalculatedDocument]:
-    calculated_data = []
+) -> list[ErrorDocument]:
+    error_documents = []
     for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
         value = well_plate_data.get(float, item["column"])
         if value is None:
@@ -135,29 +134,12 @@ def _get_calculated_data(
                     error_feature=item["name"],
                 )
             )
-            continue
-
-        calculated_data.append(
-            CalculatedDocument(
-                uuid=random_uuid_str(),
-                name=item["name"],
-                value=value,
-                unit=item["unit"],
-                data_sources=[
-                    DataSource(
-                        reference=Referenceable(uuid=measurement_identifier),
-                        feature=item["feature"],
-                    )
-                ],
-            )
-        )
-    return calculated_data
+    return error_documents
 
 
 def _create_measurement_group(
     data: SeriesData,
     wavelength_columns: list[str],
-    calculated_data: list[CalculatedDocument],
     header: SeriesData,
 ) -> MeasurementGroup:
     timestamp = header.get(str, "date")
@@ -174,7 +156,7 @@ def _create_measurement_group(
         experimental_data_identifier=header.get(str, "experiment name"),
         plate_well_count=96,
         measurements=[
-            _create_measurement(data, header, wavelength_column, calculated_data)
+            _create_measurement(data, header, wavelength_column)
             for wavelength_column in wavelength_columns
         ],
     )
@@ -207,14 +189,8 @@ def create_measurement_groups(
     if not wavelength_columns:
         raise AllotropeConversionError(NO_WAVELENGTH_COLUMN_ERROR_MSG)
 
-    # TODO: we are reporting calculated data for measurements globally instead of in the measurement doc,
-    # which is why we have to pass this list to collect them. Why are we reporting globally when data is
-    # pertains to the individual measurements?
-    calculated_data: list[CalculatedDocument] = []
-
     def make_group(data: SeriesData) -> MeasurementGroup:
-        return _create_measurement_group(
-            data, wavelength_columns, calculated_data, header
-        )
+        return _create_measurement_group(data, wavelength_columns, header)
 
-    return map_rows(data, make_group), calculated_data
+    measurement_groups = map_rows(data, make_group)
+    return measurement_groups, create_calculated_data(measurement_groups)

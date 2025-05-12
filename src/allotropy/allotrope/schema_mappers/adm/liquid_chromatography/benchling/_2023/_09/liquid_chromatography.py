@@ -16,6 +16,8 @@ from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.li
     InjectionDocument,
     LiquidChromatographyAggregateDocument,
     LiquidChromatographyDocumentItem,
+    LogAggregateDocument,
+    LogDocumentItem,
     MeasurementAggregateDocument,
     MeasurementDocument,
     Model,
@@ -144,6 +146,15 @@ class Fraction:
 
 
 @dataclass(frozen=True)
+class Log:
+    index: str
+    method_identifier: str | None = None
+    log_entry: str | None = None
+    retention_time: float | None = None
+    retention_volume: float | None = None
+
+
+@dataclass(frozen=True)
 class DeviceControlDoc:
     device_type: str
     start_time: str | None = None
@@ -220,6 +231,7 @@ class Measurement:
 class MeasurementGroup:
     measurements: list[Measurement]
     fractions: list[Fraction] | None = None
+    logs: list[Log] | None = None
     measurement_aggregate_custom_info: dict[str, Any] | None = None
 
 
@@ -295,6 +307,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     fraction_aggregate_document=self._get_fraction_aggregate_document(
                         group.fractions
                     ),
+                    log_aggregate_document=self._get_log_aggregate_document(group.logs),
                 ),
                 custom_info_doc=group.measurement_aggregate_custom_info,
             ),
@@ -616,5 +629,28 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
             retention_volume=quantity_or_none(
                 TQuantityValueMilliliter, fraction_doc.retention_volume
+            ),
+        )
+
+    def _get_log_aggregate_document(
+        self, logs: list[Log] | None
+    ) -> LogAggregateDocument | None:
+        if logs is None:
+            return None
+
+        return LogAggregateDocument(
+            log_document=[self._get_log_document(log_doc) for log_doc in logs or []]
+        )
+
+    def _get_log_document(self, log_doc: Log) -> LogDocumentItem:
+        return LogDocumentItem(
+            index=log_doc.index,
+            method_identifier=log_doc.method_identifier,
+            log_entry=log_doc.log_entry,
+            retention_time=quantity_or_none(
+                TQuantityValueSecondTime, log_doc.retention_time
+            ),
+            retention_volume=quantity_or_none(
+                TQuantityValueMilliliter, log_doc.retention_volume
             ),
         )

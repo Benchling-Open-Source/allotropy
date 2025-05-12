@@ -1,0 +1,292 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
+    "plate reader aggregate document": {
+        "plate reader document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "luminescence",
+                                        "custom information document": {
+                                            "Spots Per Well": 1.0,
+                                            "Det Param": "Standard",
+                                            "Orient": "Normal"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "METHODICAL_MIND_TEST_ID_0",
+                            "sample document": {
+                                "sample identifier": "*22M0TALA85N*_A1",
+                                "location identifier": "1",
+                                "well location identifier": "A1",
+                                "well plate identifier": "*22M0TALA85N*",
+                                "custom information document": {
+                                    "Stack ID": 0.1,
+                                    "Barcode2": "<>",
+                                    "Barcode3": "<>",
+                                    "Plate #": 1.0
+                                }
+                            },
+                            "luminescence": {
+                                "value": 12895.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:39:33-04:00",
+                    "plate well count": {
+                        "value": 8,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "dmc"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "luminescence",
+                                        "custom information document": {
+                                            "Spots Per Well": 1.0,
+                                            "Det Param": "Standard",
+                                            "Orient": "Normal"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "METHODICAL_MIND_TEST_ID_1",
+                            "sample document": {
+                                "sample identifier": "*22M0TALA85N*_A2",
+                                "location identifier": "1",
+                                "well location identifier": "A2",
+                                "well plate identifier": "*22M0TALA85N*",
+                                "custom information document": {
+                                    "Stack ID": 0.1,
+                                    "Barcode2": "<>",
+                                    "Barcode3": "<>",
+                                    "Plate #": 1.0
+                                }
+                            },
+                            "luminescence": {
+                                "value": 10144.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:39:33-04:00",
+                    "plate well count": {
+                        "value": 8,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "dmc"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "luminescence",
+                                        "custom information document": {
+                                            "Spots Per Well": 1.0,
+                                            "Det Param": "Standard",
+                                            "Orient": "Normal"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "METHODICAL_MIND_TEST_ID_2",
+                            "sample document": {
+                                "sample identifier": "*22M0TALA85N*_A3",
+                                "location identifier": "1",
+                                "well location identifier": "A3",
+                                "well plate identifier": "*22M0TALA85N*",
+                                "custom information document": {
+                                    "Stack ID": 0.1,
+                                    "Barcode2": "<>",
+                                    "Barcode3": "<>",
+                                    "Plate #": 1.0
+                                }
+                            },
+                            "luminescence": {
+                                "value": 7436.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:39:33-04:00",
+                    "plate well count": {
+                        "value": 8,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "dmc"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "luminescence",
+                                        "custom information document": {
+                                            "Spots Per Well": 1.0,
+                                            "Det Param": "Standard",
+                                            "Orient": "Normal"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "METHODICAL_MIND_TEST_ID_3",
+                            "sample document": {
+                                "sample identifier": "*22M0TALA85N*_B1",
+                                "location identifier": "1",
+                                "well location identifier": "B1",
+                                "well plate identifier": "*22M0TALA85N*",
+                                "custom information document": {
+                                    "Stack ID": 0.1,
+                                    "Barcode2": "<>",
+                                    "Barcode3": "<>",
+                                    "Plate #": 1.0
+                                }
+                            },
+                            "luminescence": {
+                                "value": 13346.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:39:33-04:00",
+                    "plate well count": {
+                        "value": 8,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "dmc"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "luminescence",
+                                        "custom information document": {
+                                            "Spots Per Well": 1.0,
+                                            "Det Param": "Standard",
+                                            "Orient": "Normal"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "METHODICAL_MIND_TEST_ID_4",
+                            "sample document": {
+                                "sample identifier": "*22M0TALA85N*_B2",
+                                "location identifier": "1",
+                                "well location identifier": "B2",
+                                "well plate identifier": "*22M0TALA85N*",
+                                "custom information document": {
+                                    "Stack ID": 0.1,
+                                    "Barcode2": "<>",
+                                    "Barcode3": "<>",
+                                    "Plate #": 1.0
+                                }
+                            },
+                            "luminescence": {
+                                "value": 10408.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:39:33-04:00",
+                    "plate well count": {
+                        "value": 8,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "dmc"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "luminescence detector",
+                                        "detection type": "luminescence",
+                                        "custom information document": {
+                                            "Spots Per Well": 1.0,
+                                            "Det Param": "Standard",
+                                            "Orient": "Normal"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "METHODICAL_MIND_TEST_ID_5",
+                            "sample document": {
+                                "sample identifier": "*22M0TALA85N*_B3",
+                                "location identifier": "1",
+                                "well location identifier": "B3",
+                                "well plate identifier": "*22M0TALA85N*",
+                                "custom information document": {
+                                    "Stack ID": 0.1,
+                                    "Barcode2": "<>",
+                                    "Barcode3": "<>",
+                                    "Plate #": 1.0
+                                }
+                            },
+                            "luminescence": {
+                                "value": 7433.0,
+                                "unit": "RLU"
+                            }
+                        }
+                    ],
+                    "measurement time": "2023-09-08T13:39:33-04:00",
+                    "plate well count": {
+                        "value": 8,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "dmc"
+            }
+        ],
+        "data system document": {
+            "ASM file identifier": "methodical_test_data_in_filename.json",
+            "data system instance identifier": "N/A",
+            "file name": "22M0TALA85_2023-09-08-1=Data=33933.txt",
+            "UNC path": "Z:\\MSD-WP\\Export\\Data\\22M0TALA85_2023-09-08-1=Data=33933.txt",
+            "ASM converter name": "allotropy_msd_methodical_mind",
+            "ASM converter version": "0.1.87",
+            "software name": "MMPR 1.0.38",
+            "software version": "MMPR 1.0.38"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "HTS",
+            "equipment serial number": "1298873245"
+        }
+    }
+}

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from enum import Enum
 import math
 from pathlib import Path
@@ -108,6 +110,173 @@ class RegionType(Enum):
 class VertexRole(Enum):
     FOCI = "foci"
     EDGE = "edge"
+
+
+class VertexExtractor:
+    """Base class for vertex extraction strategies."""
+
+    def __init__(
+        self, gate_element: StrictXmlElement, x_dim: str | None, y_dim: str | None
+    ):
+        self.gate_element = gate_element
+        self.x_dim = x_dim
+        self.y_dim = y_dim
+        self.x_unit = (
+            TQuantityValueSecondTime.unit
+            if x_dim is not None and x_dim.lower() == "time"
+            else TQuantityValueRelativeFluorescenceUnit.unit
+        )
+        self.y_unit = (
+            TQuantityValueSecondTime.unit
+            if y_dim is not None and y_dim.lower() == "time"
+            else TQuantityValueRelativeFluorescenceUnit.unit
+        )
+
+    def extract(self) -> list[Vertex] | None:
+        """Extract vertices from the gate element."""
+        raise NotImplementedError
+
+    @staticmethod
+    def build(
+        gate_element: StrictXmlElement,
+        gate_type: str | None,
+        x_dim: str | None,
+        y_dim: str | None,
+    ) -> VertexExtractor | None:
+        if not gate_type:
+            return None
+
+        extractors = {
+            RegionType.POLYGON.value: PolygonVertexExtractor,
+            RegionType.RECTANGLE.value: RectangleVertexExtractor,
+            RegionType.CURLY_QUAD.value: RectangleVertexExtractor,
+            RegionType.ELLIPSOID.value: EllipsoidVertexExtractor,
+        }
+
+        extractor = extractors.get(gate_type)
+        if not extractor:
+            msg = f"Gate type '{gate_type}' is not currently supported"
+            raise AllotropeParsingError(msg)
+
+        strategy = extractor(gate_element, x_dim, y_dim)
+        return strategy
+
+
+class PolygonVertexExtractor(VertexExtractor):
+    """Strategy for extracting vertices from Polygon gates."""
+
+    def extract(self) -> list[Vertex] | None:
+        result = []
+        vertex_elements = self.gate_element.findall("gating:vertex")
+
+        if not vertex_elements:
+            return None
+
+        for vertex in vertex_elements:
+            coordinates = vertex.findall("gating:coordinate")
+            if len(coordinates) < 2:
+                return None
+
+            x = coordinates[0].get_namespaced_attr_or_none("data-type", "value")
+            y = coordinates[1].get_namespaced_attr_or_none("data-type", "value")
+
+            if x is not None and y is not None:
+                result.append(
+                    Vertex(
+                        x_coordinate=float(x),
+                        y_coordinate=float(y),
+                        x_unit=self.x_unit,
+                        y_unit=self.y_unit,
+                    )
+                )
+
+        return result if result else None
+
+
+class RectangleVertexExtractor(VertexExtractor):
+    """Strategy for extracting vertices from Rectangle and CurlyQuad gates."""
+
+    def extract(self) -> list[Vertex] | None:
+        result = []
+        dimension_elements = self.gate_element.findall("gating:dimension")
+
+        if len(dimension_elements) < 2:
+            return None
+
+        def _get_gate_value_from_dimension(
+            dimension: StrictXmlElement, gate_type: str
+        ) -> str | None:
+            element = dimension.find_or_none(f"gating:{gate_type}")
+            return (
+                element.get_namespaced_attr_or_none("data-type", "value")
+                if element
+                else dimension.get_namespaced_attr_or_none("gating", gate_type)
+            )
+
+        x_min = _get_gate_value_from_dimension(dimension_elements[0], "min")
+        x_max = _get_gate_value_from_dimension(dimension_elements[0], "max")
+        y_min = _get_gate_value_from_dimension(dimension_elements[1], "min")
+        y_max = _get_gate_value_from_dimension(dimension_elements[1], "max")
+
+        for x, y in ((x_min, y_min), (x_min, y_max), (x_max, y_max), (x_max, y_min)):
+            if x is not None and y is not None:
+                result.append(
+                    Vertex(
+                        x_coordinate=float(x),
+                        y_coordinate=float(y),
+                        x_unit=self.x_unit,
+                        y_unit=self.y_unit,
+                    )
+                )
+
+        return result if result else None
+
+
+class EllipsoidVertexExtractor(VertexExtractor):
+    """Strategy for extracting vertices from Ellipsoid gates."""
+
+    def extract(self) -> list[Vertex] | None:
+        result = []
+
+        def _extract_coordinate_values(
+            coords: list[StrictXmlElement],
+        ) -> tuple[str | None, str | None]:
+            x_value = (
+                coords[0].get_namespaced_attr_or_none("data-type", "value")
+                if coords
+                else None
+            )
+            y_value = (
+                coords[1].get_namespaced_attr_or_none("data-type", "value")
+                if len(coords) > 1
+                else None
+            )
+            return x_value, y_value
+
+        def _add_vertex_with_role(vertex_element: StrictXmlElement, role: str) -> None:
+            coords = vertex_element.findall("gating:coordinate")
+            x_value, y_value = _extract_coordinate_values(coords)
+
+            if x_value is not None and y_value is not None:
+                result.append(
+                    Vertex(
+                        x_coordinate=float(x_value),
+                        y_coordinate=float(y_value),
+                        x_unit=self.x_unit,
+                        y_unit=self.y_unit,
+                        vertex_role=role,
+                    )
+                )
+
+        foci_vertices = self.gate_element.findall("gating:foci/gating:vertex")
+        for vertex in foci_vertices:
+            _add_vertex_with_role(vertex, VertexRole.FOCI.value)
+
+        edge_vertices = self.gate_element.findall("gating:edge/gating:vertex")
+        for vertex in edge_vertices:
+            _add_vertex_with_role(vertex, VertexRole.EDGE.value)
+
+        return result if result else None
 
 
 def create_metadata(root_element: StrictXmlElement, file_path: str) -> Metadata:
@@ -387,114 +556,10 @@ def _extract_vertices(
     Returns:
         list[Vertex] | None: List of vertices if found, None otherwise
     """
-    vertices: list[Vertex] = []
-
-    # Determine units based on dimension identifiers
-    x_unit = (
-        TQuantityValueSecondTime.unit
-        if x_dim is not None and x_dim.lower() == "time"
-        else TQuantityValueRelativeFluorescenceUnit.unit
-    )
-    y_unit = (
-        TQuantityValueSecondTime.unit
-        if y_dim is not None and y_dim.lower() == "time"
-        else TQuantityValueRelativeFluorescenceUnit.unit
-    )
-
-    def add_vertex(x: str | None, y: str | None, vertices: list[Vertex]) -> None:
-        if x is not None and y is not None:
-            vertices.append(
-                Vertex(
-                    x_coordinate=float(x),
-                    y_coordinate=float(y),
-                    x_unit=x_unit,
-                    y_unit=y_unit,
-                )
-            )
-
-    # For Polygon gates, extract vertices from vertex elements
-    if gate_type == RegionType.POLYGON.value:
-        vertex_elements = gate_element.findall("gating:vertex")
-
-        if not vertex_elements:
-            return None
-
-        for vertex in vertex_elements:
-            coordinates = vertex.findall("gating:coordinate")
-            if len(coordinates) < 2:
-                return None
-            add_vertex(
-                coordinates[0].get_namespaced_attr_or_none("data-type", "value"),
-                coordinates[1].get_namespaced_attr_or_none("data-type", "value"),
-                vertices,
-            )
-
-    # For Rectangle and CurlyQuad gates, extract min/max coordinates
-    elif gate_type in [RegionType.RECTANGLE.value, RegionType.CURLY_QUAD.value]:
-        dimension_elements = gate_element.findall("gating:dimension")
-        if len(dimension_elements) < 2:
-            return None
-
-        def _get_gate_value_from_dimension(
-            dimension: StrictXmlElement, gate_type: str
-        ) -> str | None:
-            element = dimension.find_or_none(f"gating:{gate_type}")
-            return (
-                element.get_namespaced_attr_or_none("data-type", "value")
-                if element
-                else dimension.get_namespaced_attr_or_none("gating", gate_type)
-            )
-
-        x_min = _get_gate_value_from_dimension(dimension_elements[0], "min")
-        x_max = _get_gate_value_from_dimension(dimension_elements[0], "max")
-        y_min = _get_gate_value_from_dimension(dimension_elements[1], "min")
-        y_max = _get_gate_value_from_dimension(dimension_elements[1], "max")
-
-        for x, y in ((x_min, y_min), (x_min, y_max), (x_max, y_max), (x_max, y_min)):
-            add_vertex(x, y, vertices)
-
-    elif gate_type == RegionType.ELLIPSOID.value:
-        vertices = []
-
-        def _extract_coordinate_values(
-            coords: list[StrictXmlElement],
-        ) -> tuple[str | None, str | None]:
-            x_value = (
-                coords[0].get_namespaced_attr_or_none("data-type", "value")
-                if coords
-                else None
-            )
-            y_value = (
-                coords[1].get_namespaced_attr_or_none("data-type", "value")
-                if len(coords) > 1
-                else None
-            )
-            return x_value, y_value
-
-        def _add_vertex_with_role(vertex_element: StrictXmlElement, role: str) -> None:
-            coords = vertex_element.findall("gating:coordinate")
-            x_value, y_value = _extract_coordinate_values(coords)
-
-            if x_value is not None and y_value is not None:
-                vertices.append(
-                    Vertex(
-                        x_coordinate=float(x_value),
-                        y_coordinate=float(y_value),
-                        x_unit=x_unit,
-                        y_unit=y_unit,
-                        vertex_role=role,
-                    )
-                )
-
-        foci_vertices = gate_element.findall("gating:foci/gating:vertex")
-        for vertex in foci_vertices:
-            _add_vertex_with_role(vertex, VertexRole.FOCI.value)
-
-        edge_vertices = gate_element.findall("gating:edge/gating:vertex")
-        for vertex in edge_vertices:
-            _add_vertex_with_role(vertex, VertexRole.EDGE.value)
-
-    return vertices if vertices else None
+    extractor = VertexExtractor.build(gate_element, gate_type, x_dim, y_dim)
+    if extractor is None:
+        return None
+    return extractor.extract()
 
 
 def _create_data_regions(sample: StrictXmlElement) -> list[DataRegion]:
