@@ -466,7 +466,7 @@ def _create_measurements(
                 method_id = method.get("id")
                 if method_id and str(method_id) == str(instrument_method_id):
                     instrument_method_field_mapping = {
-                        "id": (str, "id", None),
+                        "device method identifier": (str, "id", None),
                         "name": (str, "name", None),
                         "comments": (str, "comments", None),
                         "methods_date": (str, "date", None),
