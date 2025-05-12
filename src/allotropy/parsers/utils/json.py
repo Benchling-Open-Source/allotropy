@@ -252,10 +252,9 @@ class JsonData:
 
     def get_keys_as_dict(
         self,
-        field_mappings: dict[str, tuple[Type_[Any], str, Any | None]],
+        field_mappings: dict[str, tuple[Any, str, Any | None]],
         skip: set[str] | None = None,
-        *,  # Force remaining arguments to be keyword-only
-        include_unread: bool = False,
+        include_unread: bool | None = None,
     ) -> dict[str, Any]:
         """
         Extract multiple fields from JsonData into a dictionary, with type conversion.
