@@ -186,14 +186,9 @@ class DeviceControlDoc:
 
 
 @dataclass(frozen=True)
-class DataProcessing:
-    data: dict[str, Any] | None = None
-
-
-@dataclass(frozen=True)
-class ProcessingItem:
+class ProcessedData:
     custom_info: dict[str, Any] | None = None
-    data_processing: list[DataProcessing] | None = None
+    data: list[dict[str, Any]] | None = None
 
 
 @dataclass(frozen=True)
@@ -235,7 +230,7 @@ class Measurement:
     derived_column_pressure_data_cube: DataCube | None = None
 
     peaks: list[Peak] | None = None
-    processed_data: list[ProcessingItem] | None = None
+    processed_data: list[ProcessedData] | None = None
 
     sample_custom_info: dict[str, Any] | None = None
     injection_custom_info: dict[str, Any] | None = None
@@ -530,10 +525,10 @@ class Mapper(SchemaMapper[Data, Model]):
         ):
             return None
 
-        def get_data_processing_documents(pdd: ProcessingItem) -> list[dict[str, Any]]:
-            if not pdd.data_processing:
+        def get_data_processing_documents(pdd: ProcessedData) -> list[dict[str, Any]]:
+            if not pdd.data:
                 return []
-            return [doc.data for doc in pdd.data_processing if doc and doc.data]
+            return pdd.data
 
         def build_peak_list() -> PeakList | None:
             if not measurement.peaks:
@@ -543,7 +538,7 @@ class Mapper(SchemaMapper[Data, Model]):
             )
 
         def build_data_document_item(
-            pdd: ProcessingItem | None = None,
+            pdd: ProcessedData | None = None,
         ) -> ProcessedDataDocumentItem:
             data_processing = (
                 DataProcessingAggregateDocument(

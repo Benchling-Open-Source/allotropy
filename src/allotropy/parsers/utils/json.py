@@ -113,14 +113,22 @@ class JsonData:
         matching_keys = (
             self._get_matching_keys(regex) if regex else set(self.data.keys())
         )
-        unread_keys = {
-            key: self.data[key]
-            for key in (matching_keys - self.read_keys)
-            if key in self.data
+
+        # Get all unread keys
+        all_unread_keys = {
+            key for key in (matching_keys - self.read_keys) if key in self.data
         }
 
-        if unread_keys:
-            self.read_keys |= set(unread_keys.keys())
+        # Filter to only include keys with non-dict, non-list values
+        unread_keys = {}
+        for key in all_unread_keys:
+            value = self.data[key]
+            # Ignore nested dictionaries and lists - these should be handled explicitly
+            if not isinstance(value, dict | list):
+                unread_keys[key] = value
+
+        if all_unread_keys:
+            self.read_keys |= all_unread_keys
 
         return unread_keys
 
@@ -239,7 +247,50 @@ class JsonData:
             value = None if raw_value is None else convert(raw_value)  # type: ignore[operator]
         except ValueError:
             value = None
+
         return default if value is None else value
+
+    def get_keys_as_dict(
+        self,
+        field_mappings: dict[str, tuple[Type_[Any], str, Any | None]],
+        skip: set[str] | None = None,
+        *,  # Force remaining arguments to be keyword-only
+        include_unread: bool = False,
+    ) -> dict[str, Any]:
+        """
+        Extract multiple fields from JsonData into a dictionary, with type conversion.
+
+        Example:
+            field_mappings = {
+                "output_field1": (str, "input_field1", None),  # type, field name, default value
+                "output_field2": (float, "input_field2", 0.0),
+                "renamed_field": (int, "original_name", None),
+            }
+            result = json_data.get_keys_as_dict(field_mappings)
+
+        Parameters:
+        field_mappings: Mapping of output field names to tuples of (type, input field name, default)
+                        If default value is None, the field will be omitted if not found
+        skip: Set of field names to skip when including unread data
+        include_unread: Whether to include unread fields in the result (keyword-only)
+
+        Returns:
+        Dictionary with extracted fields, filtered to remove None values
+        """
+        result = {}
+
+        # Process explicit field mappings
+        for output_field, (field_type, input_field, default) in field_mappings.items():
+            value = self.get(field_type, input_field, default)
+            if value is not None or (default is not None and field_type is not float):
+                result[output_field] = value
+
+        # Include unread fields if requested
+        if include_unread:
+            result.update(self.get_unread(skip=skip))
+
+        # Filter out None values and empty strings
+        return {k: v for k, v in result.items() if v is not None and v != ""}
 
     def get_nested(
         self,
