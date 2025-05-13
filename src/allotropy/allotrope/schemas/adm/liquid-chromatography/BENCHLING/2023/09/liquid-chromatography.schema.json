@@ -1813,10 +1813,25 @@
                     "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002659",
                     "$asm.pattern": "aggregate datum",
                     "properties": {
-                      "data processing document": {
+                      "data processing aggregate document": {
                         "type": "object",
-                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002655",
-                        "$asm.pattern": "aggregate datum"
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002654",
+                        "$asm.pattern": "aggregate datum",
+                        "required": ["data processing document"],
+                        "properties": {
+                          "data processing document": {
+                            "type": "array",
+                            "$asm.array-ordered": true,
+                            "$asm.array-mixed": false,
+                            "$asm.pattern": "indexed datum",
+                            "items": {
+                              "type": "object",
+                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002655",
+                              "$asm.pattern": "aggregate datum"
+                            },
+                            "minItems": 1
+                          }
+                        }
                       },
                       "data source aggregate document": {
                         "allOf": [

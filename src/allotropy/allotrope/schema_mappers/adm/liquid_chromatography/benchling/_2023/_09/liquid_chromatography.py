@@ -5,6 +5,7 @@ from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     ChromatogramDataCube,
     ChromatographyColumnDocument,
+    DataProcessingAggregateDocument,
     DataSystemDocument,
     DerivedColumnPressureDataCube,
     DeviceControlAggregateDocument,
@@ -92,6 +93,8 @@ class Metadata:
     description: str | None = None
     device_documents: list[DeviceDocument] | None = None
     lc_agg_custom_info: dict[str, Any] | None = None
+    data_system_custom_info: dict[str, Any] | None = None
+    device_system_custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -183,6 +186,12 @@ class DeviceControlDoc:
 
 
 @dataclass(frozen=True)
+class ProcessedData:
+    custom_info: dict[str, Any] | None = None
+    data: list[dict[str, Any]] | None = None
+
+
+@dataclass(frozen=True)
 class Measurement:
     measurement_identifier: str
     sample_identifier: str
@@ -221,10 +230,12 @@ class Measurement:
     derived_column_pressure_data_cube: DataCube | None = None
 
     peaks: list[Peak] | None = None
+    processed_data: list[ProcessedData] | None = None
 
     sample_custom_info: dict[str, Any] | None = None
     injection_custom_info: dict[str, Any] | None = None
     column_custom_info: dict[str, Any] | None = None
+    measurement_custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -252,40 +263,46 @@ class Mapper(SchemaMapper[Data, Model]):
                         self._get_technique_document(group, data.metadata)
                         for group in data.measurement_groups
                     ],
-                    device_system_document=DeviceSystemDocument(
-                        asset_management_identifier=data.metadata.asset_management_identifier,
-                        product_manufacturer=data.metadata.product_manufacturer,
-                        device_identifier=data.metadata.device_identifier,
-                        firmware_version=data.metadata.firmware_version,
-                        brand_name=data.metadata.brand_name,
-                        model_number=data.metadata.model_number,
-                        device_document=(
-                            [
-                                add_custom_information_document(
-                                    DeviceDocumentItem(
-                                        device_type=doc.device_type,
-                                        device_identifier=doc.device_identifier,
-                                        product_manufacturer=doc.product_manufacturer,
-                                        model_number=doc.model_number,
-                                        equipment_serial_number=doc.equipment_serial_number,
-                                        firmware_version=doc.firmware_version,
-                                    ),
-                                    custom_info_doc=doc.device_custom_info,
-                                )
-                                for doc in data.metadata.device_documents
-                            ]
-                            if data.metadata.device_documents
-                            else None
+                    device_system_document=add_custom_information_document(
+                        DeviceSystemDocument(
+                            asset_management_identifier=data.metadata.asset_management_identifier,
+                            product_manufacturer=data.metadata.product_manufacturer,
+                            device_identifier=data.metadata.device_identifier,
+                            firmware_version=data.metadata.firmware_version,
+                            brand_name=data.metadata.brand_name,
+                            model_number=data.metadata.model_number,
+                            device_document=(
+                                [
+                                    add_custom_information_document(
+                                        DeviceDocumentItem(
+                                            device_type=doc.device_type,
+                                            device_identifier=doc.device_identifier,
+                                            product_manufacturer=doc.product_manufacturer,
+                                            model_number=doc.model_number,
+                                            equipment_serial_number=doc.equipment_serial_number,
+                                            firmware_version=doc.firmware_version,
+                                        ),
+                                        custom_info_doc=doc.device_custom_info,
+                                    )
+                                    for doc in data.metadata.device_documents
+                                ]
+                                if data.metadata.device_documents
+                                else None
+                            ),
                         ),
+                        data.metadata.device_system_custom_info,
                     ),
-                    data_system_document=DataSystemDocument(
-                        file_name=data.metadata.file_name,
-                        data_system_instance_identifier=data.metadata.data_system_instance_identifier,
-                        UNC_path=data.metadata.unc_path,
-                        software_name=data.metadata.software_name,
-                        software_version=data.metadata.software_version,
-                        ASM_converter_name=self.converter_name,
-                        ASM_converter_version=ASM_CONVERTER_VERSION,
+                    data_system_document=add_custom_information_document(
+                        DataSystemDocument(
+                            file_name=data.metadata.file_name,
+                            data_system_instance_identifier=data.metadata.data_system_instance_identifier,
+                            UNC_path=data.metadata.unc_path,
+                            software_name=data.metadata.software_name,
+                            software_version=data.metadata.software_version,
+                            ASM_converter_name=self.converter_name,
+                            ASM_converter_version=ASM_CONVERTER_VERSION,
+                        ),
+                        data.metadata.data_system_custom_info,
                     ),
                 ),
                 data.metadata.lc_agg_custom_info,
@@ -320,35 +337,38 @@ class Mapper(SchemaMapper[Data, Model]):
             msg = "Expected at least one device control document in measurement."
             raise AllotropeConversionError(msg)
 
-        return MeasurementDocument(
-            measurement_identifier=measurement.measurement_identifier,
-            measurement_time=self.get_date_time(measurement.measurement_time)
-            if measurement.measurement_time is not None
-            else None,
-            chromatography_column_document=self._get_chromatography_column_document(
-                measurement
+        return add_custom_information_document(
+            MeasurementDocument(
+                measurement_identifier=measurement.measurement_identifier,
+                measurement_time=self.get_date_time(measurement.measurement_time)
+                if measurement.measurement_time is not None
+                else None,
+                chromatography_column_document=self._get_chromatography_column_document(
+                    measurement
+                ),
+                sample_document=self._get_sample_document(measurement),
+                injection_document=(
+                    self._get_injection_document(measurement)
+                    if measurement.injection_identifier
+                    else None
+                ),
+                processed_data_aggregate_document=self._get_processed_data_aggregate_document(
+                    measurement
+                ),
+                device_control_aggregate_document=DeviceControlAggregateDocument(
+                    device_control_document=[
+                        self._get_device_control_document(device_control_doc)
+                        for device_control_doc in measurement.device_control_docs
+                    ]
+                ),
+                chromatogram_data_cube=(
+                    get_data_cube(
+                        measurement.chromatogram_data_cube,
+                        ChromatogramDataCube,
+                    )
+                ),
             ),
-            sample_document=self._get_sample_document(measurement),
-            injection_document=(
-                self._get_injection_document(measurement)
-                if measurement.injection_identifier
-                else None
-            ),
-            processed_data_aggregate_document=self._get_processed_data_aggregate_document(
-                measurement
-            ),
-            device_control_aggregate_document=DeviceControlAggregateDocument(
-                device_control_document=[
-                    self._get_device_control_document(device_control_doc)
-                    for device_control_doc in measurement.device_control_docs
-                ]
-            ),
-            chromatogram_data_cube=(
-                get_data_cube(
-                    measurement.chromatogram_data_cube,
-                    ChromatogramDataCube,
-                )
-            ),
+            measurement.measurement_custom_info,
         )
 
     def _get_chromatography_column_document(
@@ -394,6 +414,7 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
+
         return add_custom_information_document(
             SampleDocument(
                 sample_identifier=measurement.sample_identifier,
@@ -503,32 +524,61 @@ class Mapper(SchemaMapper[Data, Model]):
             or measurement.peaks
         ):
             return None
-        return ProcessedDataAggregateDocument(
-            processed_data_document=[
-                ProcessedDataDocumentItem(
-                    chromatogram_data_cube=get_data_cube(
-                        measurement.processed_data_chromatogram_data_cube,
-                        TDatacube,
-                    ),
-                    derived_column_pressure_data_cube=get_data_cube(
-                        measurement.derived_column_pressure_data_cube,
-                        DerivedColumnPressureDataCube,
-                    ),
-                    processed_data_identifier=measurement.processed_data_identifier,
-                    peak_list=PeakList(
-                        peak=[
-                            self._get_peak_document(peak) for peak in measurement.peaks
-                        ]
-                    )
-                    if measurement.peaks
-                    else None,
+
+        def get_data_processing_documents(pdd: ProcessedData) -> list[dict[str, Any]]:
+            if not pdd.data:
+                return []
+            return pdd.data
+
+        def build_peak_list() -> PeakList | None:
+            if not measurement.peaks:
+                return None
+            return PeakList(
+                peak=[self._get_peak_document(p) for p in measurement.peaks]
+            )
+
+        def build_data_document_item(
+            pdd: ProcessedData | None = None,
+        ) -> ProcessedDataDocumentItem:
+            data_processing = (
+                DataProcessingAggregateDocument(
+                    data_processing_document=get_data_processing_documents(pdd)
                 )
+                if pdd and get_data_processing_documents(pdd)
+                else None
+            )
+            item = ProcessedDataDocumentItem(
+                chromatogram_data_cube=get_data_cube(
+                    measurement.processed_data_chromatogram_data_cube, TDatacube
+                ),
+                derived_column_pressure_data_cube=get_data_cube(
+                    measurement.derived_column_pressure_data_cube,
+                    DerivedColumnPressureDataCube,
+                ),
+                processed_data_identifier=measurement.processed_data_identifier,
+                peak_list=build_peak_list(),
+                data_processing_aggregate_document=data_processing,
+            )
+            return (
+                add_custom_information_document(item, pdd.custom_info) if pdd else item
+            )
+
+        if measurement.processed_data:
+            processed_data_documents = [
+                build_data_document_item(pdd) for pdd in measurement.processed_data
             ]
+        else:
+            processed_data_documents = [build_data_document_item()]
+
+        return ProcessedDataAggregateDocument(
+            processed_data_document=processed_data_documents
         )
 
     def _get_device_control_document(
         self, device_control_doc: DeviceControlDoc
     ) -> DeviceControlDocumentItem:
+        custom_info = device_control_doc.device_control_custom_info or {}
+
         return add_custom_information_document(
             DeviceControlDocumentItem(
                 device_type=device_control_doc.device_type,
@@ -603,7 +653,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     device_control_doc.electronic_absorbance_reference_wavelength_setting,
                 ),
             ),
-            custom_info_doc=device_control_doc.device_control_custom_info,
+            custom_info_doc=custom_info,
         )
 
     def _get_fraction_aggregate_document(
