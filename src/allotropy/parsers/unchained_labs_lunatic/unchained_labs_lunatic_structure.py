@@ -124,7 +124,7 @@ def _create_measurement(
                     "plate position",
                     "plate type",
                     "instrument id",
-                    "column"
+                    "column",
                 },
                 skip_regex={
                     # Strings to skip since these are already captured as measurements/calculated data
@@ -239,8 +239,7 @@ def create_metadata(header: SeriesData, file_path: str) -> Metadata:
                 r"^background \(a\d{3}\)$",
                 # a### concentration (ng/uL)
                 r"^a\d{3} concentration \(ng/ul\)$",
-
-            }
+            },
         ),
     )
 

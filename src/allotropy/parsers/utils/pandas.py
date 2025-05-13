@@ -304,7 +304,10 @@ class SeriesData:
         self.read_keys |= self._get_matching_keys(key_or_keys)
 
     def get_unread(
-        self, regex: str | None = None, skip: set[str] | None = None, skip_regex: set[str] | None = None,
+        self,
+        regex: str | None = None,
+        skip: set[str] | None = None,
+        skip_regex: set[str] | None = None,
     ) -> dict[str, float | str | None]:
         skipped_by_set = self._get_matching_keys(skip) if skip else set()
         skipped_by_regex = set()
@@ -315,7 +318,9 @@ class SeriesData:
             for pattern in skip_regex:
                 compiled_regex = re.compile(pattern)
                 for key in all_keys:
-                    if compiled_regex.search(key):  # Check if the key matches the skip_regex pattern
+                    if compiled_regex.search(
+                        key
+                    ):  # Check if the key matches the skip_regex pattern
                         skipped_by_regex.add(key)
         total_skip_keys = skipped_by_set | skipped_by_regex
         # Mark explicitly skipped keys as "read". This not only covers the check below, but removes
