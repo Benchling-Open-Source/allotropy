@@ -377,13 +377,15 @@ def unstructure_custom_information_document(model: Any) -> dict[str, Any]:
 
 def register_dataclass_hooks(converter: Converter) -> None:
     def dataclass_structure_fn(cls: Any) -> Callable[[Any, Any], Any | None]:
+        field_name_overrides = {
+            a.name: override(rename=_convert_model_key_to_dict_key(a.name))
+            for a in fields(cls)
+        }
         structure_fn = make_dict_structure_fn(
             cls,
             converter,
-            **{
-                a.name: override(rename=_convert_model_key_to_dict_key(a.name))
-                for a in fields(cls)
-            },
+            # mypy does not recognize that unpacking a dictionary is specifying kwargs
+            **field_name_overrides,  # type: ignore[arg-type]
         )
 
         def structure_item(val: Any, _: Any) -> Any | None:
@@ -454,15 +456,17 @@ def register_unstructure_hooks(converter: Converter) -> None:
         # should_omit function.
         def make_unstructure_fn(subcls: Any) -> Callable[[Any], dict[str, Any]]:
             if (cls, subcls) not in unstructure_fn_cache:
+                field_name_overrides = {
+                    a.name: override(
+                        unstruct_hook=unstructure_dataclass_fn(subcls, cls, a.name)
+                    )
+                    for a in fields(cls)
+                }
                 unstructure_fn_cache[(cls, subcls)] = make_dict_unstructure_fn(
                     subcls,
                     converter,
-                    **{
-                        a.name: override(
-                            unstruct_hook=unstructure_dataclass_fn(subcls, cls, a.name)
-                        )
-                        for a in fields(cls)
-                    },
+                    # mypy does not recognize that unpacking a dictionary is specifying kwargs
+                    **field_name_overrides,  # type: ignore[arg-type]
                 )
             return unstructure_fn_cache[(cls, subcls)]
 

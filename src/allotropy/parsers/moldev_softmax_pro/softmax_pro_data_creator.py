@@ -266,4 +266,38 @@ def _get_group_calc_docs(data: StructureData) -> list[CalculatedDocument]:
             calculated_documents += _get_group_simple_calc_docs(
                 data, group_block, group_sample_data
             )
+        calculated_documents += _get_group_summaries_calc_docs(data, group_block)
+    return calculated_documents
+
+
+def _get_group_summaries_calc_docs(
+    data: StructureData, group_block: GroupBlock
+) -> list[CalculatedDocument]:
+    if not group_block.group_summaries_data:
+        return []
+    # The data sources for the summary elements are all the wells present in the group
+    plates_and_positions = {
+        # use a dictionary instead of a set to keep the order of the calculated data documents
+        (plate, position): 1
+        for group_sample_data in group_block.group_data.sample_data
+        for group_data_element in group_sample_data.data_elements
+        for position in group_data_element.positions
+        if (plate := group_data_element.plate) is not None
+    }
+    data_sources = list(
+        chain.from_iterable(
+            _get_calc_docs_data_sources(data.block_list.plate_blocks[plate], position)
+            for plate, position in plates_and_positions
+        )
+    )
+    calculated_documents = []
+    for summary_element in group_block.group_summaries_data:
+        calculated_documents.append(
+            _build_calc_doc(
+                name=summary_element.name,
+                value=summary_element.value,
+                data_sources=data_sources,
+                description=summary_element.description,
+            )
+        )
     return calculated_documents

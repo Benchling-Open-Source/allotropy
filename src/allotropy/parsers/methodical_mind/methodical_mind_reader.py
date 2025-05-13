@@ -44,7 +44,7 @@ class MethodicalMindReader:
         self.plate_data = []
         self.spots = []
         while reader.current_line_exists():
-            lines = list(reader.pop_until("Data"))
+            lines = list(reader.pop_until(r"^=+Data=+$"))
             lines, self.spots = _extract_spot_legend_spots(lines)
             lines = [
                 line.replace("\\t", "\t")

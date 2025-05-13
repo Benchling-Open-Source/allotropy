@@ -13862,12 +13862,614 @@
                     }
                 },
                 {
+                    "calculated data name": "MinStd",
+                    "calculated result": {
+                        "value": 1.464,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_448",
+                    "calculation description": "Min(MeanValue)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_97",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_193",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_2",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_98",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_194",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_3",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_99",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_195",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_13",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_109",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_205",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_14",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_110",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_206",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_15",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_111",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_207",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_25",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_121",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_217",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_26",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_122",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_218",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_27",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_123",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_219",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_37",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_133",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_229",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_38",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_134",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_230",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_39",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_135",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_231",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_49",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_145",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_241",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_50",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_146",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_242",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_51",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_147",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_243",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_61",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_157",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_253",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_62",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_158",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_254",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_63",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_159",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_255",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_73",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_169",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_265",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_74",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_170",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_266",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_75",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_171",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_267",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_85",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_181",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_277",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_86",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_182",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_278",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_87",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_183",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_279",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "MaxStd",
+                    "calculated result": {
+                        "value": 3.411,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_449",
+                    "calculation description": "Max(MeanValue)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_97",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_193",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_2",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_98",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_194",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_3",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_99",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_195",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_13",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_109",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_205",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_14",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_110",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_206",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_15",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_111",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_207",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_25",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_121",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_217",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_26",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_122",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_218",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_27",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_123",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_219",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_37",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_133",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_229",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_38",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_134",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_230",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_39",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_135",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_231",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_49",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_145",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_241",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_50",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_146",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_242",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_51",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_147",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_243",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_61",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_157",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_253",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_62",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_158",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_254",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_63",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_159",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_255",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_73",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_169",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_265",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_74",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_170",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_266",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_75",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_171",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_267",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_85",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_181",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_277",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_86",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_182",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_278",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_87",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_183",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_279",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
                     "calculated data name": "Value",
                     "calculated result": {
                         "value": 0.044,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_448",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_450",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -13892,7 +14494,7 @@
                         "value": 0.372,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_449",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_451",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -13917,7 +14519,7 @@
                         "value": 2.129,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_450",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_452",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -13942,7 +14544,7 @@
                         "value": 0.705,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_451",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_453",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -13967,7 +14569,7 @@
                         "value": -2.213,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_452",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_454",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -13992,7 +14594,7 @@
                         "value": -1.884,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_453",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_455",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -14017,7 +14619,7 @@
                         "value": -0.122,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_454",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_456",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -14042,7 +14644,7 @@
                         "value": -1.55,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_455",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_457",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -14067,7 +14669,7 @@
                         "value": -1.442,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_456",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_458",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -14128,7 +14730,7 @@
                         "value": 0.921,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_457",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_459",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -14189,7 +14791,7 @@
                         "value": 63.9,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_458",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_460",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -14250,7 +14852,7 @@
                         "value": 0.03,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_459",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_461",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -14275,7 +14877,7 @@
                         "value": 1.053,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_460",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_462",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -14300,7 +14902,7 @@
                         "value": 2.198,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_461",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_463",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -14325,7 +14927,7 @@
                         "value": 1.278,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_462",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_464",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -14350,7 +14952,7 @@
                         "value": -2.227,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_463",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_465",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -14375,7 +14977,7 @@
                         "value": -1.201,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_464",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_466",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -14400,7 +15002,7 @@
                         "value": -0.053,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_465",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_467",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -14425,7 +15027,7 @@
                         "value": -0.975,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_466",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_468",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -14450,7 +15052,7 @@
                         "value": -1.114,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_467",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_469",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -14511,7 +15113,7 @@
                         "value": 0.893,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_468",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_470",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -14572,7 +15174,7 @@
                         "value": 80.2,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_469",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_471",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -14633,7 +15235,7 @@
                         "value": 1.117,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_470",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_472",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -14658,7 +15260,7 @@
                         "value": 2.224,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_471",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_473",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -14683,7 +15285,7 @@
                         "value": 3.244,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_472",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_474",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -14708,7 +15310,7 @@
                         "value": 2.733,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_473",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_475",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -14733,7 +15335,7 @@
                         "value": -1.137,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_474",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_476",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -14758,7 +15360,7 @@
                         "value": -0.027,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_475",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_477",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -14783,7 +15385,7 @@
                         "value": 0.997,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_476",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_478",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -14808,7 +15410,7 @@
                         "value": 0.484,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_477",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_479",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -14833,7 +15435,7 @@
                         "value": 0.079,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_478",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_480",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -14894,7 +15496,7 @@
                         "value": 0.912,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_479",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_481",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -14955,7 +15557,7 @@
                         "value": 1150.4,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_480",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_482",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15016,7 +15618,7 @@
                         "value": 2.925,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_481",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_483",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -15041,7 +15643,7 @@
                         "value": 1.368,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_482",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_484",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -15066,7 +15668,7 @@
                         "value": 3.078,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_483",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_485",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -15091,7 +15693,7 @@
                         "value": 3.387,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_484",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_486",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -15116,7 +15718,7 @@
                         "value": 0.677,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_485",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_487",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15141,7 +15743,7 @@
                         "value": -0.885,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_486",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_488",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15166,7 +15768,7 @@
                         "value": 0.83,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_487",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_489",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15191,7 +15793,7 @@
                         "value": 1.14,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_488",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_490",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15216,7 +15818,7 @@
                         "value": 0.44,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_489",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_491",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15277,7 +15879,7 @@
                         "value": 0.905,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_490",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_492",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15338,7 +15940,7 @@
                         "value": 205.4,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_491",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_493",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15399,7 +16001,7 @@
                         "value": 1.354,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_492",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_494",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -15424,7 +16026,7 @@
                         "value": 2.48,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_493",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_495",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -15449,7 +16051,7 @@
                         "value": 0.66,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_494",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_496",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -15474,7 +16076,7 @@
                         "value": 0.976,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_495",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_497",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -15499,7 +16101,7 @@
                         "value": -0.899,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_496",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_498",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15524,7 +16126,7 @@
                         "value": 0.23,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_497",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_499",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15549,7 +16151,7 @@
                         "value": -1.595,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_498",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_500",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15574,7 +16176,7 @@
                         "value": -1.278,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_499",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_501",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15599,7 +16201,7 @@
                         "value": -0.886,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_500",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_502",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15660,7 +16262,7 @@
                         "value": 0.797,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_501",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_503",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15721,7 +16323,7 @@
                         "value": 89.9,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_502",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_504",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15782,7 +16384,7 @@
                         "value": 3.583,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_503",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_505",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -15807,7 +16409,7 @@
                         "value": 2.381,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_504",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_506",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -15832,7 +16434,7 @@
                         "value": 0.197,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_505",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_507",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -15857,7 +16459,7 @@
                         "value": 2.005,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_506",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_508",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -15882,7 +16484,7 @@
                         "value": 1.337,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_507",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_509",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15907,7 +16509,7 @@
                         "value": 0.131,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_508",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_510",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15932,7 +16534,7 @@
                         "value": -2.06,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_509",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_511",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15957,7 +16559,7 @@
                         "value": -0.246,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_510",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_512",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15982,7 +16584,7 @@
                         "value": -0.21,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_511",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_513",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16043,7 +16645,7 @@
                         "value": 1.406,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_512",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_514",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16104,7 +16706,7 @@
                         "value": 670.8,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_513",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_515",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16165,7 +16767,7 @@
                         "value": 3.707,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_514",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_516",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16190,7 +16792,7 @@
                         "value": 1.738,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_515",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_517",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16215,7 +16817,7 @@
                         "value": 0.823,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_516",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_518",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16240,7 +16842,7 @@
                         "value": 2.93,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_517",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_519",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16265,7 +16867,7 @@
                         "value": 1.461,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_518",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_520",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16290,7 +16892,7 @@
                         "value": -0.514,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_519",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_521",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16315,7 +16917,7 @@
                         "value": -1.432,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_520",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_522",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16340,7 +16942,7 @@
                         "value": 0.682,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_521",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_523",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16365,7 +16967,7 @@
                         "value": 0.049,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_522",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_524",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16426,7 +17028,7 @@
                         "value": 1.279,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_523",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_525",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16487,7 +17089,7 @@
                         "value": 2599.0,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_524",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_526",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16548,7 +17150,7 @@
                         "value": 3.533,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_525",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_527",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16573,7 +17175,7 @@
                         "value": 2.213,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_526",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_528",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16598,7 +17200,7 @@
                         "value": 3.215,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_527",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_529",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16623,7 +17225,7 @@
                         "value": 0.822,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_528",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_530",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16648,7 +17250,7 @@
                         "value": 1.287,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_529",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_531",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16673,7 +17275,7 @@
                         "value": -0.038,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_530",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_532",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16698,7 +17300,7 @@
                         "value": 0.968,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_531",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_533",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16723,7 +17325,7 @@
                         "value": -1.433,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_532",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_534",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16748,7 +17350,7 @@
                         "value": 0.196,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_533",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_535",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16809,7 +17411,7 @@
                         "value": 1.224,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_534",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_536",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16870,7 +17472,7 @@
                         "value": 624.7,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_535",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_537",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16931,7 +17533,7 @@
                         "value": 1.664,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_536",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_538",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16956,7 +17558,7 @@
                         "value": 0.947,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_537",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_539",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16981,7 +17583,7 @@
                         "value": 2.888,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_538",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_540",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17006,7 +17608,7 @@
                         "value": 3.104,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_539",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_541",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17031,7 +17633,7 @@
                         "value": -0.588,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_540",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_542",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17056,7 +17658,7 @@
                         "value": -1.308,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_541",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_543",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17081,7 +17683,7 @@
                         "value": 0.64,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_542",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_544",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17106,7 +17708,7 @@
                         "value": 0.856,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_543",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_545",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17131,7 +17733,7 @@
                         "value": -0.1,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_544",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_546",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17192,7 +17794,7 @@
                         "value": 1.026,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_545",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_547",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17253,7 +17855,7 @@
                         "value": 1025.8,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_546",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_548",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17314,7 +17916,7 @@
                         "value": 2.985,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_547",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_549",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17339,7 +17941,7 @@
                         "value": 0.046,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_548",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_550",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17364,7 +17966,7 @@
                         "value": 1.299,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_549",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_551",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17389,7 +17991,7 @@
                         "value": 3.426,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_550",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_552",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17414,7 +18016,7 @@
                         "value": 0.737,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_551",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_553",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17439,7 +18041,7 @@
                         "value": -2.211,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_552",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_554",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17464,7 +18066,7 @@
                         "value": -0.954,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_553",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_555",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17489,7 +18091,7 @@
                         "value": 1.179,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_554",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_556",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17514,7 +18116,7 @@
                         "value": -0.312,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_555",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_557",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17575,7 +18177,7 @@
                         "value": 1.565,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_556",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_558",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17636,7 +18238,7 @@
                         "value": 500.8,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_557",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_559",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17697,7 +18299,7 @@
                         "value": 2.881,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_558",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_560",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17722,7 +18324,7 @@
                         "value": 0.151,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_559",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_561",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17747,7 +18349,7 @@
                         "value": 3.041,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_560",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_562",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17772,7 +18374,7 @@
                         "value": 0.523,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_561",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_563",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17797,7 +18399,7 @@
                         "value": 0.633,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_562",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_564",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17822,7 +18424,7 @@
                         "value": -2.106,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_563",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_565",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17847,7 +18449,7 @@
                         "value": 0.793,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_564",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_566",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17872,7 +18474,7 @@
                         "value": -1.733,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_565",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_567",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17897,7 +18499,7 @@
                         "value": -0.603,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_566",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_568",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17958,7 +18560,7 @@
                         "value": 1.529,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_567",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_569",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18019,7 +18621,7 @@
                         "value": 253.4,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_568",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_570",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18080,7 +18682,7 @@
                         "value": 1.886,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_569",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_571",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -18105,7 +18707,7 @@
                         "value": 2.063,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_570",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_572",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -18130,7 +18732,7 @@
                         "value": 2.063,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_571",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_573",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -18155,7 +18757,7 @@
                         "value": 3.867,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_572",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_574",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -18180,7 +18782,7 @@
                         "value": -0.366,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_573",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_575",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18205,7 +18807,7 @@
                         "value": -0.188,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_574",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_576",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18230,7 +18832,7 @@
                         "value": -0.188,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_575",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_577",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18255,7 +18857,7 @@
                         "value": 1.622,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_576",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_578",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18280,7 +18882,7 @@
                         "value": 0.22,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_577",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_579",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18341,7 +18943,7 @@
                         "value": 0.938,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_578",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_580",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18402,7 +19004,7 @@
                         "value": 426.5,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_579",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_581",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18463,7 +19065,7 @@
                         "value": 2.207,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_580",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_582",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -18488,7 +19090,7 @@
                         "value": 2.181,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_581",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_583",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -18513,7 +19115,7 @@
                         "value": 1.236,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_582",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_584",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -18538,7 +19140,7 @@
                         "value": 2.09,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_583",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_585",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -18563,7 +19165,7 @@
                         "value": -0.044,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_584",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_586",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18588,7 +19190,7 @@
                         "value": -0.07,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_585",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_587",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18613,7 +19215,7 @@
                         "value": -1.018,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_586",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_588",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18638,7 +19240,7 @@
                         "value": -0.161,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_587",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_589",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18663,7 +19265,7 @@
                         "value": -0.323,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_588",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_590",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18724,7 +19326,7 @@
                         "value": 0.466,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_589",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_591",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18785,7 +19387,7 @@
                         "value": 144.2,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_590",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_592",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18846,7 +19448,7 @@
                         "value": 3.622,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_591",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_593",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -18871,7 +19473,7 @@
                         "value": 3.466,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_592",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_594",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -18896,7 +19498,7 @@
                         "value": 0.514,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_593",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_595",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -18921,7 +19523,7 @@
                         "value": 0.557,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_594",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_596",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -18946,7 +19548,7 @@
                         "value": 1.376,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_595",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_597",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18971,7 +19573,7 @@
                         "value": 1.219,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_596",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_598",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18996,7 +19598,7 @@
                         "value": -1.742,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_597",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_599",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -19021,7 +19623,7 @@
                         "value": -1.699,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_598",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_600",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -19046,7 +19648,7 @@
                         "value": -0.211,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_599",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_601",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -19107,7 +19709,7 @@
                         "value": 1.744,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_600",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_602",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -19168,7 +19770,7 @@
                         "value": 824.9,
                         "unit": "(unitless)"
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_601",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_603",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -19231,7 +19833,7 @@
             "file name": "MD_SMP_absorbance_endpoint_partial_plate_example02.txt",
             "UNC path": "tests/parsers/moldev_softmax_pro/testdata/MD_SMP_absorbance_endpoint_partial_plate_example02.txt",
             "ASM converter name": "allotropy_molecular_devices_softmax_pro",
-            "ASM converter version": "0.1.82",
+            "ASM converter version": "0.1.86",
             "software name": "SoftMax Pro"
         },
         "device system document": {

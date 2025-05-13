@@ -40,7 +40,7 @@ def _create_measurement(row_data: SeriesData) -> Measurement:
     def convert_echo_nl_to_ul(value: float | None) -> float | None:
         return (
             (value * constants.PLATE_REFORMAT_REPORT_VOLUME_CONVERSION_TO_UL)
-            if value
+            if value is not None
             else None
         )
 
@@ -61,12 +61,12 @@ def _create_measurement(row_data: SeriesData) -> Measurement:
         ),
         device_control_custom_info={
             "sample name": row_data.get(str, "Sample Name"),
-            "survey fluid volume": convert_echo_nl_to_ul(
-                row_data.get(float, "Survey Fluid Volume")
-            ),
-            "current fluid volume": convert_echo_nl_to_ul(
-                row_data.get(float, "Current Fluid Volume")
-            ),
+            "survey fluid volume": row_data.get(
+                float, "Survey Fluid Volume"
+            ),  # This is already in uL, so don't convert to nL
+            "current fluid volume": row_data.get(
+                float, "Current Fluid Volume"
+            ),  # This is already in uL, so don't convert to nL
             "intended transfer volume": convert_echo_nl_to_ul(
                 row_data.get(float, "Transfer Volume")
             ),
