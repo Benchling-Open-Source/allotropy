@@ -125,8 +125,6 @@ def _create_measurement(
                     "plate type",
                     "instrument id",
                     "column",
-                },
-                skip_regex={
                     # Strings to skip since these are already captured as measurements/calculated data
                     # Skip absorbance measurements with a### (10mm) -- spectral scans
                     r"^a\d{3} \(10mm\)$",
@@ -226,8 +224,6 @@ def create_metadata(header: SeriesData, file_path: str) -> Metadata:
                 "background wvl. (nm)",
                 "plate id",
                 "plate position",
-            },
-            skip_regex={
                 # Strings to skip since these are already captured as measurements/calculated data
                 # Skip absorbance spectrum measurements with a### (10mm)
                 r"^a\d{3} \(10mm\)$",
