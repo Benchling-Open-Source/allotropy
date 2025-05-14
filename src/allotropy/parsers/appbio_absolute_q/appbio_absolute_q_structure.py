@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from pathlib import Path
 import re
 from typing import Any
+import warnings
 
 import pandas as pd
 
@@ -127,13 +128,17 @@ class Group:
             calculated_data.name: calculated_data.identifier
             for calculated_data in calculated_data_items
         }
-        return Group(
+        group = Group(
             well_identifier=well_identifier,
             group_identifier=data[str, "Group"],
             target_identifier=data[str, "Target"],
             calculated_data=calculated_data_items,
             calculated_data_ids=calculated_data_ids,
         )
+        # discard unread data since it is added to the wells
+        data.get_unread()
+
+        return group
 
     @staticmethod
     def create_rows(data: pd.DataFrame) -> list[Group]:
@@ -243,8 +248,11 @@ class WellItem:
             if (
                 positive_partition_count + negative_partition_count
             ) != total_partition_count:
-                msg = f"positive partition count ({positive_partition_count}) + negative partition count ({negative_partition_count}) != total partition count ({total_partition_count}). This probaby means the values in '{positives_column}' are not bools as expected."
-
+                msg = f"positive partition count ({positive_partition_count}) + negative partition count ({negative_partition_count}) != total partition count ({total_partition_count}). This probably means the values in '{positives_column}' are not bools as expected."
+                warnings.warn(
+                    msg,
+                    stacklevel=2,
+                )
             concentration = data.get(float, CONCENTRATION_COLUMNS)
             errors = []
             if concentration is None:
@@ -257,7 +265,6 @@ class WellItem:
                     measurement_identifier=random_uuid_str(),
                     well_identifier=data[str, "Well"],
                     plate_identifier=data.get(str, "Plate"),
-                    # Group column may be missing if there is no calculated data to group with.
                     group_identifier=data.get(str, "Group", ""),
                     target_identifier=data[str, f"{dye_setting}_target"],
                     run_identifier=data[str, "Run"],
@@ -302,6 +309,29 @@ class WellItem:
                         ],
                     ),
                     errors=errors,
+                    extra_data=data.get_unread(
+                        # Skip data cube fields
+                        skip={
+                            "FAM",
+                            "VIC",
+                            "ABY",
+                            "JUN",
+                            "ROX",
+                            "Index",
+                            "FAM_pos",
+                            "VIC_pos",
+                            "ABY_pos",
+                            "JUN_pos",
+                            "FAM_target",
+                            "VIC_target",
+                            "ABY_target",
+                            "JUN_target",
+                            "FAM_threshold",
+                            "VIC_threshold",
+                            "ABY_threshold",
+                            "JUN_threshold",
+                        }
+                    ),
                 )
             )
 

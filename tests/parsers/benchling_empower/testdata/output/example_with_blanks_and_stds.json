@@ -9,17 +9,48 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC"
+                                        "device type": "HPLC",
+                                        "device identifier": "1152",
+                                        "detector sampling rate setting": {
+                                            "value": 3.4340658187866198,
+                                            "unit": "Hz"
+                                        },
+                                        "custom information document": {
+                                            "ChannelDescription": "VWD: Signal A, 220 nm",
+                                            "ChannelType": "2D",
+                                            "DataStart": "0.0",
+                                            "DataEnd": "30.0",
+                                            "device acquisition method": "InstrumentMethod1",
+                                            "total measurement duration setting": 30.0,
+                                            "Channel": "VWD.0.0",
+                                            "ScaletouV": "9.99999997475243e-07"
+                                        }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "Blank",
-                                "sample role type": "unknown sample role"
+                                "location identifier": "1149",
+                                "sample role type": "unknown sample role",
+                                "custom information document": {
+                                    "SampleConcentration": "0.0",
+                                    "SampleSetAcquiring": "False",
+                                    "SampleSetAltered": "True",
+                                    "SampleSetCurrentId": "1148",
+                                    "OriginalSampleSetId": "1148",
+                                    "OriginalVialId": "1149",
+                                    "Vial": "1",
+                                    "lot number": "Blank",
+                                    "sample weight": 1.0,
+                                    "VialId": "1149",
+                                    "SampleType": "Unknown",
+                                    "dilution factor setting": 1.0
+                                }
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
                             },
+                            "measurement time": "2017-01-04T08:12:47+00:00",
                             "measurement identifier": "BENCHLING_EMPOWER_TEST_ID_0",
                             "injection document": {
                                 "autosampler injection volume setting (chromatography)": {
@@ -27,7 +58,12 @@
                                     "unit": "mm^3"
                                 },
                                 "injection identifier": "1151",
-                                "injection time": "2017-01-04T08:13:41+00:00"
+                                "injection time": "2017-01-04T08:13:41+00:00",
+                                "custom information document": {
+                                    "InjectionStatus": "Pre-Empower 3 SR3",
+                                    "InjectionType": "Blank",
+                                    "Injection": "1"
+                                }
                             },
                             "chromatogram data cube": {
                                 "label": "absorbance",
@@ -55,9 +91,53 @@
                                         [0.0023245811500000003, 0.0057816510000000005, 0.009953977000000001, 0.0143051157]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Comments": "1",
+                                "DateAcquired": "2017-01-04T08:13:41",
+                                "RunTime": "30.0",
+                                "measurement end time": "2017-01-04T11:51:45",
+                                "SystemComments": "Example comment",
+                                "Node": "Node1",
+                                "SampleSetAcquiredBy": "USER_1",
+                                "SampleSetType": "Acquired",
+                                "AcquiredBy": "USER_1",
+                                "Factor2Operator": "*",
+                                "Factor3": 1.0,
+                                "UseForPrecision": "No",
+                                "ICH AdjAreaPctCutoff": 0.0,
+                                "NumOfResultsStored": 0,
+                                "CalculationType": "NG MP Curve RS AdjAreaPct",
+                                "SampleSetId": 1148,
+                                "SampleSetComments": "1",
+                                "Factor1Operator": "*",
+                                "Factor2": 1.0,
+                                "NumOfProcessOnlySampleSets": 0,
+                                "SampleSetStartDate": "2017-01-04T08:12:47",
+                                "Factor3Operator": "*",
+                                "Factor1": 1.0,
+                                "SystemName": "237",
+                                "ProcessingLocked": false,
+                                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                                "DilutionUnits": "mL",
+                                "SystemCreateDate": "2014-06-19T10:20:59",
+                                "PeakRatioReference": false,
+                                "SampleSetName": "example_set_2",
+                                "SampleSetMethod": "example_set_2"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "Altered": "True",
+                        "InstrumentMethodName": "InstrumentMethod1",
+                        "InstrumentMethodId": "1150",
+                        "Superseded": "False",
+                        "Node": "Node1",
+                        "measurement method identifier": "example_set_2",
+                        "SampleSetName": "example_set_2",
+                        "SampleSetType": "Acquired",
+                        "SampleSetComments": "1"
+                    }
                 },
                 "analyst": "USER_1"
             },
@@ -68,17 +148,47 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC"
+                                        "device type": "HPLC",
+                                        "device identifier": "1177",
+                                        "detector sampling rate setting": {
+                                            "value": 3.4340658187866198,
+                                            "unit": "Hz"
+                                        },
+                                        "custom information document": {
+                                            "ChannelDescription": "VWD: Signal A, 220 nm",
+                                            "ChannelType": "2D",
+                                            "DataStart": "0.0",
+                                            "DataEnd": "30.0",
+                                            "CirculationNo": "0",
+                                            "device acquisition method": "InstrumentMethod1",
+                                            "total measurement duration setting": 30.0,
+                                            "Channel": "VWD.0.0",
+                                            "ScaletouV": "9.99999997475243e-07"
+                                        }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "Std 1",
-                                "sample role type": "standard sample role"
+                                "location identifier": "1175",
+                                "sample role type": "standard sample role",
+                                "custom information document": {
+                                    "SampleSetAcquiring": "False",
+                                    "SampleSetAltered": "True",
+                                    "SampleSetCurrentId": "1148",
+                                    "OriginalSampleSetId": "1148",
+                                    "OriginalVialId": "1175",
+                                    "Vial": "2",
+                                    "sample weight": 1.0,
+                                    "VialId": "1175",
+                                    "SampleType": "Standard",
+                                    "dilution factor setting": 1.0
+                                }
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
                             },
+                            "measurement time": "2017-01-04T08:12:47+00:00",
                             "measurement identifier": "BENCHLING_EMPOWER_TEST_ID_1",
                             "injection document": {
                                 "autosampler injection volume setting (chromatography)": {
@@ -86,7 +196,12 @@
                                     "unit": "mm^3"
                                 },
                                 "injection identifier": "1176",
-                                "injection time": "2017-01-04T08:44:56+00:00"
+                                "injection time": "2017-01-04T08:44:56+00:00",
+                                "custom information document": {
+                                    "InjectionStatus": "Pre-Empower 3 SR3",
+                                    "InjectionType": "Standard",
+                                    "Injection": "1"
+                                }
                             },
                             "chromatogram data cube": {
                                 "label": "absorbance",
@@ -114,9 +229,54 @@
                                         [0.136494637, 0.136375427, 0.13589858999999999, 0.13542175299999998]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Comments": "1",
+                                "DateAcquired": "2017-01-04T08:44:56",
+                                "RunTime": "30.0",
+                                "measurement end time": "2017-01-04T11:51:45",
+                                "SystemComments": "Example comment",
+                                "Node": "Node1",
+                                "SampleSetAcquiredBy": "USER_1",
+                                "SampleSetType": "Acquired",
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "AcquiredBy": "USER_1",
+                                "Factor2Operator": "*",
+                                "Factor3": 1.0,
+                                "UseForPrecision": "No",
+                                "ICH AdjAreaPctCutoff": 0.0,
+                                "NumOfResultsStored": 0,
+                                "CalculationType": "NG MP Curve RS AdjAreaPct",
+                                "SampleSetId": 1148,
+                                "SampleSetComments": "1",
+                                "Factor1Operator": "*",
+                                "Factor2": 1.0,
+                                "NumOfProcessOnlySampleSets": 0,
+                                "SampleSetStartDate": "2017-01-04T08:12:47",
+                                "Factor3Operator": "*",
+                                "Factor1": 1.0,
+                                "SystemName": "237",
+                                "ProcessingLocked": false,
+                                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                                "DilutionUnits": "mL",
+                                "SystemCreateDate": "2014-06-19T10:20:59",
+                                "PeakRatioReference": false,
+                                "SampleSetName": "example_set_2",
+                                "SampleSetMethod": "example_set_2"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "Altered": "True",
+                        "InstrumentMethodName": "InstrumentMethod1",
+                        "InstrumentMethodId": "1150",
+                        "Superseded": "False",
+                        "Node": "Node1",
+                        "measurement method identifier": "example_set_2",
+                        "SampleSetName": "example_set_2",
+                        "SampleSetType": "Acquired",
+                        "SampleSetComments": "1"
+                    }
                 },
                 "analyst": "USER_1"
             },
@@ -127,17 +287,47 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC"
+                                        "device type": "HPLC",
+                                        "device identifier": "1180",
+                                        "detector sampling rate setting": {
+                                            "value": 3.4340658187866198,
+                                            "unit": "Hz"
+                                        },
+                                        "custom information document": {
+                                            "ChannelDescription": "VWD: Signal A, 220 nm",
+                                            "ChannelType": "2D",
+                                            "DataStart": "0.0",
+                                            "DataEnd": "30.0",
+                                            "CirculationNo": "0",
+                                            "device acquisition method": "InstrumentMethod1",
+                                            "total measurement duration setting": 30.0,
+                                            "Channel": "VWD.0.0",
+                                            "ScaletouV": "9.99999997475243e-07"
+                                        }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "Std 2",
-                                "sample role type": "standard sample role"
+                                "location identifier": "1178",
+                                "sample role type": "standard sample role",
+                                "custom information document": {
+                                    "SampleSetAcquiring": "False",
+                                    "SampleSetAltered": "True",
+                                    "SampleSetCurrentId": "1148",
+                                    "OriginalSampleSetId": "1148",
+                                    "OriginalVialId": "1178",
+                                    "Vial": "3",
+                                    "sample weight": 1.0,
+                                    "VialId": "1178",
+                                    "SampleType": "Standard",
+                                    "dilution factor setting": 1.0
+                                }
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
                             },
+                            "measurement time": "2017-01-04T08:12:47+00:00",
                             "measurement identifier": "BENCHLING_EMPOWER_TEST_ID_2",
                             "injection document": {
                                 "autosampler injection volume setting (chromatography)": {
@@ -145,7 +335,12 @@
                                     "unit": "mm^3"
                                 },
                                 "injection identifier": "1179",
-                                "injection time": "2017-01-04T09:16:10+00:00"
+                                "injection time": "2017-01-04T09:16:10+00:00",
+                                "custom information document": {
+                                    "InjectionStatus": "Pre-Empower 3 SR3",
+                                    "InjectionType": "Standard",
+                                    "Injection": "1"
+                                }
                             },
                             "chromatogram data cube": {
                                 "label": "absorbance",
@@ -178,9 +373,54 @@
                                         ]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Comments": "1",
+                                "DateAcquired": "2017-01-04T09:16:10",
+                                "RunTime": "30.0",
+                                "measurement end time": "2017-01-04T11:51:45",
+                                "SystemComments": "Example comment",
+                                "Node": "Node1",
+                                "SampleSetAcquiredBy": "USER_1",
+                                "SampleSetType": "Acquired",
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "AcquiredBy": "USER_1",
+                                "Factor2Operator": "*",
+                                "Factor3": 1.0,
+                                "UseForPrecision": "No",
+                                "ICH AdjAreaPctCutoff": 0.0,
+                                "NumOfResultsStored": 0,
+                                "CalculationType": "NG MP Curve RS AdjAreaPct",
+                                "SampleSetId": 1148,
+                                "SampleSetComments": "1",
+                                "Factor1Operator": "*",
+                                "Factor2": 1.0,
+                                "NumOfProcessOnlySampleSets": 0,
+                                "SampleSetStartDate": "2017-01-04T08:12:47",
+                                "Factor3Operator": "*",
+                                "Factor1": 1.0,
+                                "SystemName": "237",
+                                "ProcessingLocked": false,
+                                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                                "DilutionUnits": "mL",
+                                "SystemCreateDate": "2014-06-19T10:20:59",
+                                "PeakRatioReference": false,
+                                "SampleSetName": "example_set_2",
+                                "SampleSetMethod": "example_set_2"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "Altered": "True",
+                        "InstrumentMethodName": "InstrumentMethod1",
+                        "InstrumentMethodId": "1150",
+                        "Superseded": "False",
+                        "Node": "Node1",
+                        "measurement method identifier": "example_set_2",
+                        "SampleSetName": "example_set_2",
+                        "SampleSetType": "Acquired",
+                        "SampleSetComments": "1"
+                    }
                 },
                 "analyst": "USER_1"
             },
@@ -191,18 +431,52 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC"
+                                        "device type": "HPLC",
+                                        "device identifier": "1183",
+                                        "detector sampling rate setting": {
+                                            "value": 3.4340658187866198,
+                                            "unit": "Hz"
+                                        },
+                                        "custom information document": {
+                                            "ChannelDescription": "VWD: Signal A, 220 nm",
+                                            "ChannelType": "2D",
+                                            "DataStart": "0.0",
+                                            "DataEnd": "30.0",
+                                            "CirculationNo": "1",
+                                            "device acquisition method": "InstrumentMethod1",
+                                            "total measurement duration setting": 30.0,
+                                            "Channel": "VWD.0.0",
+                                            "ScaletouV": "9.99999997475243e-07"
+                                        }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "S240506-0008#1",
+                                "location identifier": "1181",
                                 "sample role type": "unknown sample role",
-                                "written name": "U0101"
+                                "written name": "U0101",
+                                "custom information document": {
+                                    "SampleConcentration": "1.0",
+                                    "ELN SampleID": "S240506-0008#1",
+                                    "SampleSetAcquiring": "False",
+                                    "SampleSetAltered": "True",
+                                    "SampleSetCurrentId": "1148",
+                                    "OriginalSampleSetId": "1148",
+                                    "OriginalVialId": "1181",
+                                    "Vial": "4",
+                                    "lot number": "MRE-06MAY24-4",
+                                    "sample weight": 1.0,
+                                    "Label": "U0101",
+                                    "VialId": "1181",
+                                    "SampleType": "Unknown",
+                                    "dilution factor setting": 1.0
+                                }
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
                             },
+                            "measurement time": "2017-01-04T08:12:47+00:00",
                             "measurement identifier": "BENCHLING_EMPOWER_TEST_ID_3",
                             "injection document": {
                                 "autosampler injection volume setting (chromatography)": {
@@ -210,7 +484,12 @@
                                     "unit": "mm^3"
                                 },
                                 "injection identifier": "1182",
-                                "injection time": "2017-01-04T09:47:28+00:00"
+                                "injection time": "2017-01-04T09:47:28+00:00",
+                                "custom information document": {
+                                    "InjectionStatus": "Pre-Empower 3 SR3",
+                                    "InjectionType": "Unknown",
+                                    "Injection": "1"
+                                }
                             },
                             "chromatogram data cube": {
                                 "label": "absorbance",
@@ -238,9 +517,58 @@
                                         [0.0538826025, 0.0538229979, 0.05334616, 0.0523924864]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Comments": "1",
+                                "DateAcquired": "2017-01-04T09:47:28",
+                                "RunTime": "30.0",
+                                "measurement end time": "2017-01-04T11:51:45",
+                                "SystemComments": "Example comment",
+                                "Node": "Node1",
+                                "SampleSetAcquiredBy": "USER_1",
+                                "SampleSetType": "Acquired",
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "AcquiredBy": "USER_1",
+                                "Factor2Operator": "*",
+                                "Factor3": 1.0,
+                                "UseForPrecision": "No",
+                                "ICH AdjAreaPctCutoff": 0.0,
+                                "NumOfResultsStored": 0,
+                                "CalculationType": "NG MP Curve RS AdjAreaPct",
+                                "SampleSetId": 1148,
+                                "AnalysisMethod": "Empower HPLC",
+                                "SampleSetComments": "1",
+                                "Factor1Operator": "*",
+                                "Factor2": 1.0,
+                                "NumOfProcessOnlySampleSets": 0,
+                                "SampleSetStartDate": "2017-01-04T08:12:47",
+                                "Factor3Operator": "*",
+                                "Factor1": 1.0,
+                                "SystemName": "237",
+                                "ProcessingLocked": false,
+                                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                                "DilutionUnits": "mL",
+                                "SystemCreateDate": "2014-06-19T10:20:59",
+                                "PeakRatioReference": false,
+                                "SampleSetName": "example_set_2",
+                                "SampleSetMethod": "example_set_2"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "Altered": "True",
+                        "ELN DocumentID": "USER_1la-2024-0025",
+                        "ELN SectionGUID": "e84bb893-2801-f5e1-3797-c67cc94c002f",
+                        "InstrumentMethodName": "InstrumentMethod1",
+                        "InstrumentMethodId": "1150",
+                        "SSM Pattern": "NG_3Rep_Vials",
+                        "Superseded": "False",
+                        "Node": "Node1",
+                        "measurement method identifier": "example_set_2",
+                        "SampleSetName": "example_set_2",
+                        "SampleSetType": "Acquired",
+                        "SampleSetComments": "1"
+                    }
                 },
                 "analyst": "USER_1"
             },
@@ -251,18 +579,52 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC"
+                                        "device type": "HPLC",
+                                        "device identifier": "1186",
+                                        "detector sampling rate setting": {
+                                            "value": 3.4340658187866198,
+                                            "unit": "Hz"
+                                        },
+                                        "custom information document": {
+                                            "ChannelDescription": "VWD: Signal A, 220 nm",
+                                            "ChannelType": "2D",
+                                            "DataStart": "0.0",
+                                            "DataEnd": "30.0",
+                                            "CirculationNo": "1",
+                                            "device acquisition method": "InstrumentMethod1",
+                                            "total measurement duration setting": 30.0,
+                                            "Channel": "VWD.0.0",
+                                            "ScaletouV": "9.99999997475243e-07"
+                                        }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "S240506-0008#2",
+                                "location identifier": "1184",
                                 "sample role type": "unknown sample role",
-                                "written name": "U0101"
+                                "written name": "U0101",
+                                "custom information document": {
+                                    "SampleConcentration": "1.0",
+                                    "ELN SampleID": "S240506-0008#2",
+                                    "SampleSetAcquiring": "False",
+                                    "SampleSetAltered": "True",
+                                    "SampleSetCurrentId": "1148",
+                                    "OriginalSampleSetId": "1148",
+                                    "OriginalVialId": "1184",
+                                    "Vial": "5",
+                                    "lot number": "MRE-06MAY24-4",
+                                    "sample weight": 1.0,
+                                    "Label": "U0101",
+                                    "VialId": "1184",
+                                    "SampleType": "Unknown",
+                                    "dilution factor setting": 1.0
+                                }
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
                             },
+                            "measurement time": "2017-01-04T08:12:47+00:00",
                             "measurement identifier": "BENCHLING_EMPOWER_TEST_ID_4",
                             "injection document": {
                                 "autosampler injection volume setting (chromatography)": {
@@ -270,7 +632,12 @@
                                     "unit": "mm^3"
                                 },
                                 "injection identifier": "1185",
-                                "injection time": "2017-01-04T10:18:46+00:00"
+                                "injection time": "2017-01-04T10:18:46+00:00",
+                                "custom information document": {
+                                    "InjectionStatus": "Pre-Empower 3 SR3",
+                                    "InjectionType": "Unknown",
+                                    "Injection": "1"
+                                }
                             },
                             "chromatogram data cube": {
                                 "label": "absorbance",
@@ -298,9 +665,58 @@
                                         [0.0267624873, 0.0298619289, 0.033557415, 0.0373721123]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Comments": "1",
+                                "DateAcquired": "2017-01-04T10:18:46",
+                                "RunTime": "30.0",
+                                "measurement end time": "2017-01-04T11:51:45",
+                                "SystemComments": "Example comment",
+                                "Node": "Node1",
+                                "SampleSetAcquiredBy": "USER_1",
+                                "SampleSetType": "Acquired",
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "AcquiredBy": "USER_1",
+                                "Factor2Operator": "*",
+                                "Factor3": 1.0,
+                                "UseForPrecision": "No",
+                                "ICH AdjAreaPctCutoff": 0.0,
+                                "NumOfResultsStored": 0,
+                                "CalculationType": "NG MP Curve RS AdjAreaPct",
+                                "SampleSetId": 1148,
+                                "AnalysisMethod": "Empower HPLC",
+                                "SampleSetComments": "1",
+                                "Factor1Operator": "*",
+                                "Factor2": 1.0,
+                                "NumOfProcessOnlySampleSets": 0,
+                                "SampleSetStartDate": "2017-01-04T08:12:47",
+                                "Factor3Operator": "*",
+                                "Factor1": 1.0,
+                                "SystemName": "237",
+                                "ProcessingLocked": false,
+                                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                                "DilutionUnits": "mL",
+                                "SystemCreateDate": "2014-06-19T10:20:59",
+                                "PeakRatioReference": false,
+                                "SampleSetName": "example_set_2",
+                                "SampleSetMethod": "example_set_2"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "Altered": "True",
+                        "ELN DocumentID": "USER_1la-2024-0025",
+                        "ELN SectionGUID": "e84bb893-2801-f5e1-3797-c67cc94c002f",
+                        "InstrumentMethodName": "InstrumentMethod1",
+                        "InstrumentMethodId": "1150",
+                        "SSM Pattern": "NG_3Rep_Vials",
+                        "Superseded": "False",
+                        "Node": "Node1",
+                        "measurement method identifier": "example_set_2",
+                        "SampleSetName": "example_set_2",
+                        "SampleSetType": "Acquired",
+                        "SampleSetComments": "1"
+                    }
                 },
                 "analyst": "USER_1"
             },
@@ -311,18 +727,52 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC"
+                                        "device type": "HPLC",
+                                        "device identifier": "1189",
+                                        "detector sampling rate setting": {
+                                            "value": 3.4340658187866198,
+                                            "unit": "Hz"
+                                        },
+                                        "custom information document": {
+                                            "ChannelDescription": "VWD: Signal A, 220 nm",
+                                            "ChannelType": "2D",
+                                            "DataStart": "0.0",
+                                            "DataEnd": "30.0",
+                                            "CirculationNo": "1",
+                                            "device acquisition method": "InstrumentMethod1",
+                                            "total measurement duration setting": 30.0,
+                                            "Channel": "VWD.0.0",
+                                            "ScaletouV": "9.99999997475243e-07"
+                                        }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "S240506-0008#3",
+                                "location identifier": "1187",
                                 "sample role type": "unknown sample role",
-                                "written name": "U0101"
+                                "written name": "U0101",
+                                "custom information document": {
+                                    "SampleConcentration": "1.0",
+                                    "ELN SampleID": "S240506-0008#3",
+                                    "SampleSetAcquiring": "False",
+                                    "SampleSetAltered": "True",
+                                    "SampleSetCurrentId": "1148",
+                                    "OriginalSampleSetId": "1148",
+                                    "OriginalVialId": "1187",
+                                    "Vial": "6",
+                                    "lot number": "MRE-06MAY24-4",
+                                    "sample weight": 1.0,
+                                    "Label": "U0101",
+                                    "VialId": "1187",
+                                    "SampleType": "Unknown",
+                                    "dilution factor setting": 1.0
+                                }
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
                             },
+                            "measurement time": "2017-01-04T08:12:47+00:00",
                             "measurement identifier": "BENCHLING_EMPOWER_TEST_ID_5",
                             "injection document": {
                                 "autosampler injection volume setting (chromatography)": {
@@ -330,7 +780,12 @@
                                     "unit": "mm^3"
                                 },
                                 "injection identifier": "1188",
-                                "injection time": "2017-01-04T10:50:07+00:00"
+                                "injection time": "2017-01-04T10:50:07+00:00",
+                                "custom information document": {
+                                    "InjectionStatus": "Pre-Empower 3 SR3",
+                                    "InjectionType": "Unknown",
+                                    "Injection": "1"
+                                }
                             },
                             "chromatogram data cube": {
                                 "label": "absorbance",
@@ -358,9 +813,58 @@
                                         [0.0265836734, 0.0256896037, 0.024318696900000002, 0.022470952899999997]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Comments": "1",
+                                "DateAcquired": "2017-01-04T10:50:07",
+                                "RunTime": "30.0",
+                                "measurement end time": "2017-01-04T11:51:45",
+                                "SystemComments": "Example comment",
+                                "Node": "Node1",
+                                "SampleSetAcquiredBy": "USER_1",
+                                "SampleSetType": "Acquired",
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "AcquiredBy": "USER_1",
+                                "Factor2Operator": "*",
+                                "Factor3": 1.0,
+                                "UseForPrecision": "No",
+                                "ICH AdjAreaPctCutoff": 0.0,
+                                "NumOfResultsStored": 0,
+                                "CalculationType": "NG MP Curve RS AdjAreaPct",
+                                "SampleSetId": 1148,
+                                "AnalysisMethod": "Empower HPLC",
+                                "SampleSetComments": "1",
+                                "Factor1Operator": "*",
+                                "Factor2": 1.0,
+                                "NumOfProcessOnlySampleSets": 0,
+                                "SampleSetStartDate": "2017-01-04T08:12:47",
+                                "Factor3Operator": "*",
+                                "Factor1": 1.0,
+                                "SystemName": "237",
+                                "ProcessingLocked": false,
+                                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                                "DilutionUnits": "mL",
+                                "SystemCreateDate": "2014-06-19T10:20:59",
+                                "PeakRatioReference": false,
+                                "SampleSetName": "example_set_2",
+                                "SampleSetMethod": "example_set_2"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "Altered": "True",
+                        "ELN DocumentID": "USER_1la-2024-0025",
+                        "ELN SectionGUID": "e84bb893-2801-f5e1-3797-c67cc94c002f",
+                        "InstrumentMethodName": "InstrumentMethod1",
+                        "InstrumentMethodId": "1150",
+                        "SSM Pattern": "NG_3Rep_Vials",
+                        "Superseded": "False",
+                        "Node": "Node1",
+                        "measurement method identifier": "example_set_2",
+                        "SampleSetName": "example_set_2",
+                        "SampleSetType": "Acquired",
+                        "SampleSetComments": "1"
+                    }
                 },
                 "analyst": "USER_1"
             },
@@ -371,18 +875,52 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "HPLC"
+                                        "device type": "HPLC",
+                                        "device identifier": "1192",
+                                        "detector sampling rate setting": {
+                                            "value": 3.4340658187866198,
+                                            "unit": "Hz"
+                                        },
+                                        "custom information document": {
+                                            "ChannelDescription": "VWD: Signal A, 220 nm",
+                                            "ChannelType": "2D",
+                                            "DataStart": "0.0",
+                                            "DataEnd": "30.0",
+                                            "CirculationNo": "1",
+                                            "device acquisition method": "InstrumentMethod1",
+                                            "total measurement duration setting": 30.0,
+                                            "Channel": "VWD.0.0",
+                                            "ScaletouV": "9.99999997475243e-07"
+                                        }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "S170103-0003#2",
+                                "location identifier": "1190",
                                 "sample role type": "unknown sample role",
-                                "written name": "U0102"
+                                "written name": "U0102",
+                                "custom information document": {
+                                    "SampleConcentration": "1.0",
+                                    "ELN SampleID": "S170103-0003#2",
+                                    "SampleSetAcquiring": "False",
+                                    "SampleSetAltered": "True",
+                                    "SampleSetCurrentId": "1148",
+                                    "OriginalSampleSetId": "1148",
+                                    "OriginalVialId": "1190",
+                                    "Vial": "7",
+                                    "lot number": "MRE-3Jan17-2b",
+                                    "sample weight": 1.0,
+                                    "Label": "U0102",
+                                    "VialId": "1190",
+                                    "SampleType": "Unknown",
+                                    "dilution factor setting": 1.0
+                                }
                             },
                             "chromatography column document": {
                                 "chromatography column serial number": "N/A"
                             },
+                            "measurement time": "2017-01-04T08:12:47+00:00",
                             "measurement identifier": "BENCHLING_EMPOWER_TEST_ID_6",
                             "injection document": {
                                 "autosampler injection volume setting (chromatography)": {
@@ -390,7 +928,12 @@
                                     "unit": "mm^3"
                                 },
                                 "injection identifier": "1191",
-                                "injection time": "2017-01-04T11:21:26+00:00"
+                                "injection time": "2017-01-04T11:21:26+00:00",
+                                "custom information document": {
+                                    "InjectionStatus": "Pre-Empower 3 SR3",
+                                    "InjectionType": "Unknown",
+                                    "Injection": "1"
+                                }
                             },
                             "chromatogram data cube": {
                                 "label": "absorbance",
@@ -418,20 +961,86 @@
                                         [0.0267624873, 0.024616719999999998, 0.0219941157, 0.019133091]
                                     ]
                                 }
+                            },
+                            "custom information document": {
+                                "Comments": "1",
+                                "DateAcquired": "2017-01-04T11:21:26",
+                                "RunTime": "30.0",
+                                "measurement end time": "2017-01-04T11:51:45",
+                                "SystemComments": "Example comment",
+                                "Node": "Node1",
+                                "SampleSetAcquiredBy": "USER_1",
+                                "SampleSetType": "Acquired",
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "AcquiredBy": "USER_1",
+                                "Factor2Operator": "*",
+                                "Factor3": 1.0,
+                                "UseForPrecision": "No",
+                                "ICH AdjAreaPctCutoff": 0.0,
+                                "NumOfResultsStored": 0,
+                                "CalculationType": "NG MP Curve RS AdjAreaPct",
+                                "SampleSetId": 1148,
+                                "AnalysisMethod": "Empower HPLC",
+                                "SampleSetComments": "1",
+                                "Factor1Operator": "*",
+                                "Factor2": 1.0,
+                                "NumOfProcessOnlySampleSets": 0,
+                                "SampleSetStartDate": "2017-01-04T08:12:47",
+                                "Factor3Operator": "*",
+                                "Factor1": 1.0,
+                                "SystemName": "237",
+                                "ProcessingLocked": false,
+                                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                                "DilutionUnits": "mL",
+                                "SystemCreateDate": "2014-06-19T10:20:59",
+                                "PeakRatioReference": false,
+                                "SampleSetName": "example_set_2",
+                                "SampleSetMethod": "example_set_2"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "Altered": "True",
+                        "ELN DocumentID": "USER_1la-2017-0009",
+                        "ELN SectionGUID": "6ed20e99-2801-f5a4-4e21-23f8d2fa9d59",
+                        "InstrumentMethodName": "InstrumentMethod1",
+                        "InstrumentMethodId": "1150",
+                        "SSM Pattern": "LSN30305077_Combined_Assay_Imp",
+                        "Superseded": "False",
+                        "Node": "Node1",
+                        "measurement method identifier": "example_set_2",
+                        "SampleSetName": "example_set_2",
+                        "SampleSetType": "Acquired",
+                        "SampleSetComments": "1"
+                    }
                 },
                 "analyst": "USER_1"
             }
         ],
         "data system document": {
             "ASM converter name": "allotropy_benchling_waters_empower_adapter",
-            "ASM converter version": "0.1.76",
+            "ASM converter version": "0.1.86",
+            "data system instance identifier": "237",
             "file name": "example_with_blanks_and_stds.json",
             "software name": "Waters Empower",
             "software version": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
-            "UNC path": "tests/parsers/benchling_empower/testdata/input/example_with_blanks_and_stds.json"
+            "UNC path": "tests/parsers/benchling_empower/testdata/input/example_with_blanks_and_stds.json",
+            "custom information document": {
+                "account identifier": "system",
+                "project": "PROJECT_2",
+                "password": "manager",
+                "SystemCreateDate": "2014-06-19T10:20:59",
+                "SystemComments": "Example comment",
+                "Node": "Node1",
+                "SampleSetName": "example_set_2",
+                "SampleSetType": "Acquired",
+                "SampleSetFinishDate": "2017-01-04T11:51:45",
+                "sample set name": "example_set_2",
+                "SampleSetId": 1148,
+                "SampleSetComments": "1",
+                "SampleSetStartDate": "2017-01-04T08:12:47",
+                "SampleSetMethod": "example_set_2"
+            }
         },
         "device system document": {
             "asset management identifier": "237",
