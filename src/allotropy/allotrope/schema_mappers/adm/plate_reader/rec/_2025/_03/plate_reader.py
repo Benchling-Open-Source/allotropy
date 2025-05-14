@@ -93,9 +93,7 @@ class MeasurementType(Enum):
     ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR = "ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR"
     FLUORESCENCE_CUBE_DETECTOR = "FLUORESCENCE_CUBE_DETECTOR"
     LUMINESCENCE_CUBE_DETECTOR = "LUMINESCENCE_CUBE_DETECTOR"
-    ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM = (
-        "ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM"
-    )
+    ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM = "ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM"
     FLUORESCENCE_CUBE_SPECTRUM = "FLUORESCENCE_CUBE_SPECTRUM"
     LUMINESCENCE_CUBE_SPECTRUM = "LUMINESCENCE_CUBE_SPECTRUM"
 
@@ -726,11 +724,15 @@ class Mapper(SchemaMapper[Data, Model]):
         if measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM:
             measurement_doc.absorption_spectrum_data_cube = spectrum_data_cube
         elif measurement.type_ == MeasurementType.FLUORESCENCE_CUBE_SPECTRUM:
-            measurement_doc.fluorescence_emission_spectrum_data_cube = spectrum_data_cube
+            measurement_doc.fluorescence_emission_spectrum_data_cube = (
+                spectrum_data_cube
+            )
         elif measurement.type_ == MeasurementType.LUMINESCENCE_CUBE_SPECTRUM:
             # Luminescence spectrum also uses fluorescence emission spectrum data
             # (spectrum of wavelengths for emission with a set excitation wavelength)
-            measurement_doc.fluorescence_emission_spectrum_data_cube = spectrum_data_cube
+            measurement_doc.fluorescence_emission_spectrum_data_cube = (
+                spectrum_data_cube
+            )
 
         return measurement_doc
 
