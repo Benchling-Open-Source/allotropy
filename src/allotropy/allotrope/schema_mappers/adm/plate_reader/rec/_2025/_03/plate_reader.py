@@ -93,6 +93,11 @@ class MeasurementType(Enum):
     ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR = "ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR"
     FLUORESCENCE_CUBE_DETECTOR = "FLUORESCENCE_CUBE_DETECTOR"
     LUMINESCENCE_CUBE_DETECTOR = "LUMINESCENCE_CUBE_DETECTOR"
+    ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM = (
+        "ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM"
+    )
+    FLUORESCENCE_CUBE_SPECTRUM = "FLUORESCENCE_CUBE_SPECTRUM"
+    LUMINESCENCE_CUBE_SPECTRUM = "LUMINESCENCE_CUBE_SPECTRUM"
 
 
 @dataclass(frozen=True)
@@ -162,6 +167,9 @@ class Measurement:
 
     # Kinetic measurements
     profile_data_cube: DataCube | None = None
+
+    # Spectrum measurements
+    spectrum_data_cube: DataCube | None = None
 
     # error documents
     error_document: list[ErrorDocument] | None = None
@@ -285,6 +293,12 @@ class Mapper(SchemaMapper[Data, Model]):
             MeasurementType.FLUORESCENCE_CUBE_DETECTOR,
         ]:
             return self._get_profile_data_cube_measurement_document(measurement)
+        elif measurement.type_ in [
+            MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM,
+            MeasurementType.FLUORESCENCE_CUBE_SPECTRUM,
+            MeasurementType.LUMINESCENCE_CUBE_SPECTRUM,
+        ]:
+            return self._get_spectrum_data_cube_measurement_document(measurement)
         else:
             msg = f"Unexpected measurement type: {measurement.type_}"
             raise AllotropyParserError(msg)
@@ -624,6 +638,101 @@ class Mapper(SchemaMapper[Data, Model]):
                 else None
             ),
         )
+
+    def _get_spectrum_data_cube_measurement_document(
+        self, measurement: Measurement
+    ) -> MeasurementDocument:
+        if not measurement.spectrum_data_cube:
+            msg = "Spectrum data cube is required for spectrum data cube measurements"
+            raise AllotropyParserError(msg)
+
+        spectrum_data_cube = get_data_cube(measurement.spectrum_data_cube, TDatacube)
+
+        device_control_document = DeviceControlDocumentItem(
+            device_type=measurement.device_type,
+            detection_type=measurement.detection_type,
+            detector_wavelength_setting=quantity_or_none(
+                TQuantityValueNanometer,
+                measurement.detector_wavelength_setting,
+            ),
+            detector_bandwidth_setting=quantity_or_none(
+                TQuantityValueNanometer,
+                measurement.detector_bandwidth_setting,
+            ),
+            excitation_wavelength_setting=quantity_or_none(
+                TQuantityValueNanometer,
+                measurement.excitation_wavelength_setting,
+            ),
+            excitation_bandwidth_setting=quantity_or_none(
+                TQuantityValueNanometer,
+                measurement.excitation_bandwidth_setting,
+            ),
+            wavelength_filter_cutoff_setting=quantity_or_none(
+                TQuantityValueNanometer,
+                measurement.wavelength_filter_cutoff_setting,
+            ),
+            detector_distance_setting__plate_reader_=quantity_or_none(
+                TQuantityValueMillimeter,
+                measurement.detector_distance_setting,
+            ),
+            scan_position_setting__plate_reader_=(
+                measurement.scan_position_setting.value
+                if measurement.scan_position_setting
+                else None
+            ),
+            number_of_averages=quantity_or_none(
+                TQuantityValueNumber, measurement.number_of_averages
+            ),
+            detector_carriage_speed_setting=measurement.detector_carriage_speed,
+            detector_gain_setting=measurement.detector_gain_setting,
+            auto_focus_enabled_setting=measurement.auto_focus_enabled_setting,
+            exposure_duration_setting=quantity_or_none(
+                TQuantityValueMilliSecond,
+                measurement.exposure_duration_setting,
+            ),
+            illumination_setting=quantity_or_none(
+                TQuantityValuePercent,
+                measurement.illumination_setting,
+            ),
+            image_count_setting=quantity_or_none(
+                TQuantityValueUnitless,
+                measurement.image_count_setting,
+            ),
+            magnification_setting=quantity_or_none(
+                TQuantityValueUnitless,
+                measurement.magnification_setting,
+            ),
+            illumination_mode_setting=measurement.illumination_mode_setting,
+        )
+
+        measurement_doc = MeasurementDocument(
+            measurement_identifier=measurement.identifier,
+            sample_document=self._get_sample_document(measurement),
+            device_control_aggregate_document=DeviceControlAggregateDocument(
+                device_control_document=[
+                    add_custom_information_document(
+                        device_control_document, measurement.device_control_custom_info
+                    )
+                ]
+            ),
+            compartment_temperature=quantity_or_none(
+                TQuantityValueDegreeCelsius, measurement.compartment_temperature
+            ),
+            error_aggregate_document=self._get_error_aggregate_document(
+                measurement.error_document
+            ),
+        )
+
+        if measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM:
+            measurement_doc.absorption_spectrum_data_cube = spectrum_data_cube
+        elif measurement.type_ == MeasurementType.FLUORESCENCE_CUBE_SPECTRUM:
+            measurement_doc.fluorescence_emission_spectrum_data_cube = spectrum_data_cube
+        elif measurement.type_ == MeasurementType.LUMINESCENCE_CUBE_SPECTRUM:
+            # Luminescence spectrum also uses fluorescence emission spectrum data
+            # (spectrum of wavelengths for emission with a set excitation wavelength)
+            measurement_doc.fluorescence_emission_spectrum_data_cube = spectrum_data_cube
+
+        return measurement_doc
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
         sample_doc = SampleDocument(
