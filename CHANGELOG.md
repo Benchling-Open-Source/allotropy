@@ -5,6 +5,25 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.88] - 2025-05-14
+
+### Added
+
+- Appbio Absolute Q - add unread data (#958)
+- Benchling Empower - add custom fields (#975)
+- Molecular Devices SoftMax Pro - add calculated data from group summaries (#977)
+- Unchained Labs Lunatic - use calcdocs library (#978)
+- Tecan Magellan - check for well positions column in reader (#983)
+- Molecular Devices SoftMax Pro - add infinite values in group data to error document (#987)
+- Agilent Gen5 - add support for fluorescence polarization (#976)
+
+### Fixed
+
+- Beckman Echo Plate Reformat - update measurement time to fill missing date with file date if needed (#990)
+- Beckman Echo Plate Reformat -  remove accidental volume conversion of survey volume results (#982)
+- Global - make extension check case insensitive  (#985)
+- MSD Methodical Mind - change regex too permissive for data section in reader (#981)
+
 ## [0.1.87] - 2025-05-02
 
 ### Added
