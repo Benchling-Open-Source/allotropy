@@ -27,7 +27,14 @@
                                 "sample identifier": "Std 9",
                                 "location identifier": "243",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "K3"
+                                "well location identifier": "K3",
+                                "custom information document": {
+                                    "Amp Status": "Amp",
+                                    "Standard Deviation": 2.015234474408053,
+                                    "Standard Error": 0.15158309805899972,
+                                    "Dye": "FAM",
+                                    "Omit": "False"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -201,7 +208,14 @@
                                 "sample identifier": "Std 9",
                                 "location identifier": "243",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "K3"
+                                "well location identifier": "K3",
+                                "custom information document": {
+                                    "Amp Status": "Amp",
+                                    "Standard Deviation": 0.44366910386407277,
+                                    "Standard Error": 0.02995508185430743,
+                                    "Dye": "CY5",
+                                    "Omit": "False"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -393,7 +407,14 @@
                                 "sample identifier": "Std 9",
                                 "location identifier": "244",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "K4"
+                                "well location identifier": "K4",
+                                "custom information document": {
+                                    "Amp Status": "Amp",
+                                    "Standard Deviation": 2.015234474408053,
+                                    "Standard Error": 0.15158309805899972,
+                                    "Dye": "FAM",
+                                    "Omit": "False"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -566,7 +587,14 @@
                                 "sample identifier": "Std 9",
                                 "location identifier": "244",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "K4"
+                                "well location identifier": "K4",
+                                "custom information document": {
+                                    "Amp Status": "Amp",
+                                    "Standard Deviation": 0.44366910386407277,
+                                    "Standard Error": 0.02995508185430743,
+                                    "Dye": "CY5",
+                                    "Omit": "False"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -755,7 +783,14 @@
                                 "sample identifier": "Std 9",
                                 "location identifier": "267",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "L3"
+                                "well location identifier": "L3",
+                                "custom information document": {
+                                    "Amp Status": "Amp",
+                                    "Standard Deviation": 2.015234474408053,
+                                    "Standard Error": 0.15158309805899972,
+                                    "Dye": "FAM",
+                                    "Omit": "False"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -930,7 +965,14 @@
                                 "sample identifier": "Std 9",
                                 "location identifier": "267",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "L3"
+                                "well location identifier": "L3",
+                                "custom information document": {
+                                    "Amp Status": "Amp",
+                                    "Standard Deviation": 0.44366910386407277,
+                                    "Standard Error": 0.02995508185430743,
+                                    "Dye": "CY5",
+                                    "Omit": "False"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -1122,7 +1164,14 @@
                                 "sample identifier": "Std 9",
                                 "location identifier": "268",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "L4"
+                                "well location identifier": "L4",
+                                "custom information document": {
+                                    "Amp Status": "Amp",
+                                    "Standard Deviation": 2.015234474408053,
+                                    "Standard Error": 0.15158309805899972,
+                                    "Dye": "FAM",
+                                    "Omit": "False"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -1296,7 +1345,14 @@
                                 "sample identifier": "Std 9",
                                 "location identifier": "268",
                                 "sample role type": "standard sample role",
-                                "well location identifier": "L4"
+                                "well location identifier": "L4",
+                                "custom information document": {
+                                    "Amp Status": "Amp",
+                                    "Standard Deviation": 0.44366910386407277,
+                                    "Standard Error": 0.02995508185430743,
+                                    "Dye": "CY5",
+                                    "Omit": "False"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -1489,7 +1545,12 @@
                                 "sample role type": "standard sample role",
                                 "well location identifier": "M3",
                                 "custom information document": {
-                                    "quantity": 2.5
+                                    "quantity": 2.5,
+                                    "Amp Status": "No Amp",
+                                    "Standard Deviation": 2.015234474408053,
+                                    "Standard Error": 0.15158309805899972,
+                                    "Dye": "FAM",
+                                    "Omit": "False"
                                 }
                             },
                             "processed data aggregate document": {
@@ -1672,7 +1733,12 @@
                                 "sample role type": "standard sample role",
                                 "well location identifier": "M3",
                                 "custom information document": {
-                                    "quantity": 2.5
+                                    "quantity": 2.5,
+                                    "Amp Status": "No Amp",
+                                    "Standard Deviation": 0.44366910386407277,
+                                    "Standard Error": 0.02995508185430743,
+                                    "Dye": "CY5",
+                                    "Omit": "False"
                                 }
                             },
                             "processed data aggregate document": {
@@ -1870,7 +1936,12 @@
                                 "sample role type": "standard sample role",
                                 "well location identifier": "M4",
                                 "custom information document": {
-                                    "quantity": 2.5
+                                    "quantity": 2.5,
+                                    "Amp Status": "No Amp",
+                                    "Standard Deviation": 2.015234474408053,
+                                    "Standard Error": 0.15158309805899972,
+                                    "Dye": "FAM",
+                                    "Omit": "False"
                                 }
                             },
                             "processed data aggregate document": {
@@ -2046,7 +2117,12 @@
                                 "sample role type": "standard sample role",
                                 "well location identifier": "M4",
                                 "custom information document": {
-                                    "quantity": 2.5
+                                    "quantity": 2.5,
+                                    "Amp Status": "No Amp",
+                                    "Standard Deviation": 0.44366910386407277,
+                                    "Standard Error": 0.02995508185430743,
+                                    "Dye": "CY5",
+                                    "Omit": "False"
                                 }
                             },
                             "processed data aggregate document": {
@@ -2244,7 +2320,12 @@
                                 "sample role type": "standard sample role",
                                 "well location identifier": "N3",
                                 "custom information document": {
-                                    "quantity": 2.5
+                                    "quantity": 2.5,
+                                    "Amp Status": "No Amp",
+                                    "Standard Deviation": 2.015234474408053,
+                                    "Standard Error": 0.15158309805899972,
+                                    "Dye": "FAM",
+                                    "Omit": "False"
                                 }
                             },
                             "processed data aggregate document": {
@@ -2428,7 +2509,12 @@
                                 "sample role type": "standard sample role",
                                 "well location identifier": "N3",
                                 "custom information document": {
-                                    "quantity": 2.5
+                                    "quantity": 2.5,
+                                    "Amp Status": "No Amp",
+                                    "Standard Deviation": 0.44366910386407277,
+                                    "Standard Error": 0.02995508185430743,
+                                    "Dye": "CY5",
+                                    "Omit": "False"
                                 }
                             },
                             "processed data aggregate document": {
@@ -2629,7 +2715,12 @@
                                 "sample role type": "standard sample role",
                                 "well location identifier": "N4",
                                 "custom information document": {
-                                    "quantity": 2.5
+                                    "quantity": 2.5,
+                                    "Amp Status": "No Amp",
+                                    "Standard Deviation": 2.015234474408053,
+                                    "Standard Error": 0.15158309805899972,
+                                    "Dye": "FAM",
+                                    "Omit": "False"
                                 }
                             },
                             "processed data aggregate document": {
@@ -2811,7 +2902,12 @@
                                 "sample role type": "standard sample role",
                                 "well location identifier": "N4",
                                 "custom information document": {
-                                    "quantity": 2.5
+                                    "quantity": 2.5,
+                                    "Amp Status": "No Amp",
+                                    "Standard Deviation": 0.44366910386407277,
+                                    "Standard Error": 0.02995508185430743,
+                                    "Dye": "CY5",
+                                    "Omit": "False"
                                 }
                             },
                             "processed data aggregate document": {
@@ -3008,7 +3104,14 @@
                                 "sample identifier": "NTC",
                                 "location identifier": "339",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "O3"
+                                "well location identifier": "O3",
+                                "custom information document": {
+                                    "Amp Status": "No Amp",
+                                    "Standard Deviation": 2.015234474408053,
+                                    "Standard Error": 0.15158309805899972,
+                                    "Dye": "FAM",
+                                    "Omit": "False"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -3185,7 +3288,14 @@
                                 "sample identifier": "NTC",
                                 "location identifier": "339",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "O3"
+                                "well location identifier": "O3",
+                                "custom information document": {
+                                    "Amp Status": "No Amp",
+                                    "Standard Deviation": 0.44366910386407277,
+                                    "Standard Error": 0.02995508185430743,
+                                    "Dye": "CY5",
+                                    "Omit": "False"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -3382,7 +3492,14 @@
                                 "sample identifier": "NTC",
                                 "location identifier": "340",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "O4"
+                                "well location identifier": "O4",
+                                "custom information document": {
+                                    "Amp Status": "No Amp",
+                                    "Standard Deviation": 2.015234474408053,
+                                    "Standard Error": 0.15158309805899972,
+                                    "Dye": "FAM",
+                                    "Omit": "False"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -3556,7 +3673,14 @@
                                 "sample identifier": "NTC",
                                 "location identifier": "340",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "O4"
+                                "well location identifier": "O4",
+                                "custom information document": {
+                                    "Amp Status": "No Amp",
+                                    "Standard Deviation": 0.44366910386407277,
+                                    "Standard Error": 0.02995508185430743,
+                                    "Dye": "CY5",
+                                    "Omit": "False"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -3755,7 +3879,14 @@
                                 "sample identifier": "NTC",
                                 "location identifier": "363",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "P3"
+                                "well location identifier": "P3",
+                                "custom information document": {
+                                    "Amp Status": "No Amp",
+                                    "Standard Deviation": 2.015234474408053,
+                                    "Standard Error": 0.15158309805899972,
+                                    "Dye": "FAM",
+                                    "Omit": "False"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -3930,7 +4061,14 @@
                                 "sample identifier": "NTC",
                                 "location identifier": "363",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "P3"
+                                "well location identifier": "P3",
+                                "custom information document": {
+                                    "Amp Status": "No Amp",
+                                    "Standard Deviation": 0.44366910386407277,
+                                    "Standard Error": 0.02995508185430743,
+                                    "Dye": "CY5",
+                                    "Omit": "False"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -4126,7 +4264,14 @@
                                 "sample identifier": "NTC",
                                 "location identifier": "364",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "P4"
+                                "well location identifier": "P4",
+                                "custom information document": {
+                                    "Amp Status": "No Amp",
+                                    "Standard Deviation": 2.015234474408053,
+                                    "Standard Error": 0.15158309805899972,
+                                    "Dye": "FAM",
+                                    "Omit": "False"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -4300,7 +4445,14 @@
                                 "sample identifier": "NTC",
                                 "location identifier": "364",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "P4"
+                                "well location identifier": "P4",
+                                "custom information document": {
+                                    "Amp Status": "No Amp",
+                                    "Standard Deviation": 0.44366910386407277,
+                                    "Standard Error": 0.02995508185430743,
+                                    "Dye": "CY5",
+                                    "Omit": "False"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -5138,7 +5290,7 @@
             "file name": "appbio_quantstudio_design_quantity_test.xlsx",
             "UNC path": "tests/parsers/appbio_quantstudio_designandanalysis/testdata/appbio_quantstudio_design_quantity_test.xlsx",
             "ASM converter name": "allotropy_appbio_quantstudio_design_&_analysis",
-            "ASM converter version": "0.1.79",
+            "ASM converter version": "0.1.84",
             "software name": "Design & Analysis Software",
             "software version": "2.6.0"
         },
@@ -5147,6 +5299,15 @@
             "equipment serial number": "123456789",
             "model number": "QuantStudio™ 7 Pro System",
             "product manufacturer": "ThermoFisher Scientific"
+        },
+        "custom information document": {
+            "Run Duration": "69 minutes 15 seconds",
+            "Analysis Date/Time": "2024-12-07 04:56:35 PM EST",
+            "Exported On": "2024-12-07 04:59:25 PM EST",
+            "Sample Volume": 20.0,
+            "Exported By": "user",
+            "Cover Temperature": 105.0,
+            "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
         }
     }
 }
