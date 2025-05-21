@@ -131,6 +131,8 @@ def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measure
             number_of_scans_setting=plate_block.header.kinetic_points,
             # Error documents
             error_document=data_element.error_document,
+            # custom information
+            measurement_custom_info=data_element.custom_info,
         )
         for idx, data_element in enumerate(plate_block.iter_data_elements(position))
     ]
