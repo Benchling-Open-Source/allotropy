@@ -81,7 +81,6 @@ def _create_measurement(
                 error_feature=DETECTION_TYPE.lower(),
             )
         )
-
     concentration_factor = well_plate_data.get(float, "concentration factor (ng/ul)")
     return Measurement(
         type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
@@ -90,9 +89,6 @@ def _create_measurement(
         identifier=measurement_identifier,
         detector_wavelength_setting=float(wavelength),
         electronic_absorbance_reference_wavelength_setting=background_wavelength,
-        measurement_custom_info={
-            "electronic_absorbance_reference_absorbance": background_absorbance
-        },
         absorbance=absorbance if absorbance is not None else NEGATIVE_ZERO,
         sample_identifier=well_plate_data[str, "sample name"],
         location_identifier=well_plate_data[str, "plate position"],
@@ -101,10 +97,43 @@ def _create_measurement(
         firmware_version=header.get(str, "client version"),
         sample_custom_info={
             "path length": float(path_length) if path_length is not None else None,
+            "plate type": header.get(str, "plate type")
+            or well_plate_data.get(str, "plate type"),
+            "nr of plates": header.get(str, "nr of plates"),
+            "blanks": header.get(str, "blanks"),
+            "plate description": header.get(str, "nan"),
+            "molar attenuation coefficient setting": well_plate_data.get(float, "e1%"),
         },
         device_control_custom_info={
             "path length mode": well_plate_data.get(str, "path length mode"),
             "pump": well_plate_data.get(str, "pump"),
+            "column": header.get(str, "column") or well_plate_data.get(str, "column"),
+        },
+        measurement_custom_info={
+            "electronic_absorbance_reference_absorbance": background_absorbance,
+            **well_plate_data.get_unread(
+                # Skip already mapped columns from well plate data (repeated in CSV no header cases)
+                skip={
+                    "time",
+                    "row",
+                    "concentration factor (ng/ul)",
+                    "application",
+                    "concentration (ng/ul)",
+                    "background wvl. (nm)",
+                    "plate id",
+                    "plate position",
+                    "plate type",
+                    "instrument id",
+                    "column",
+                    # Strings to skip since these are already captured as measurements/calculated data
+                    # Skip absorbance measurements with a### (10mm) -- spectral scans
+                    r"^a\d{3} \(10mm\)$",
+                    # a###/a### -- calculated purity values
+                    r"^a\d{3}/a\d{3}$",
+                    # a### -- raw absorbance measurement
+                    r"^a\d{3}$",
+                },
+            ),
         },
         error_document=error_documents,
         processed_data_document=ProcessedDataDocument(
@@ -152,7 +181,8 @@ def _create_measurement_group(
     return MeasurementGroup(
         measurement_time=assert_not_none(timestamp, msg=NO_DATE_OR_TIME_ERROR_MSG),
         analyst=header.get(str, "test performed by"),
-        analytical_method_identifier=data.get(str, "application"),
+        analytical_method_identifier=data.get(str, "application")
+        or header.get(str, "application"),
         experimental_data_identifier=header.get(str, "experiment name"),
         plate_well_count=96,
         measurements=[
@@ -179,6 +209,34 @@ def create_metadata(header: SeriesData, file_path: str) -> Metadata:
         unc_path=file_path,
         asm_file_identifier=asm_file_identifier.name,
         data_system_instance_id=NOT_APPLICABLE,
+        custom_info_doc=header.get_unread(
+            # Skip already mapped columns from well plate data (repeated in CSV no header cases)
+            skip={
+                "time",
+                "row",
+                "path length mode",
+                "sample group",
+                "pump",
+                "concentration factor (ng/ul)",
+                "sample name",
+                "application",
+                "concentration (ng/ul)",
+                "background wvl. (nm)",
+                "plate id",
+                "plate position",
+                # Strings to skip since these are already captured as measurements/calculated data
+                # Skip absorbance spectrum measurements with a### (10mm)
+                r"^a\d{3} \(10mm\)$",
+                # a###/a###
+                r"^a\d{3}/a\d{3}$",
+                # a###
+                r"^a\d{3}$",
+                # background a###
+                r"^background \(a\d{3}\)$",
+                # a### concentration (ng/uL)
+                r"^a\d{3} concentration \(ng/ul\)$",
+            },
+        ),
     )
 
 
