@@ -5,6 +5,8 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.88] - 2025-05-14
 
 ### Added
@@ -24,11 +26,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global - make extension check case insensitive  (#985)
 - MSD Methodical Mind - change regex too permissive for data section in reader (#981)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.87] - 2025-05-02
 
 ### Added
 
 - Molecular Devices SoftMax Pro - add check for duplicated plate block names (#979)
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.86] - 2025-04-17
 
@@ -46,6 +52,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - FlowJo - Add strategy pattern for getting region vertices (#957)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.85] - 2025-04-16
 
 ### Added
@@ -57,6 +65,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Spectrophotometry - Standardize calculated data definition (#961)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.84] - 2025-04-15
 
 ### Added
@@ -66,6 +76,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Perkin Elmer Envision - update filter bandwidth regex and optional plate maps (#964)
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.83] - 2025-04-10
 
@@ -84,7 +96,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Perkin Elmer Envision - use Calcdocs library (#945)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.81] - 2025-04-02
 
@@ -104,7 +120,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Global - handle cases where encoding detection detects the wrong encoding (#940)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.80] - 2025-03-19
 
@@ -122,7 +142,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - BMG Labtech SMART Control - migrate calc data docs to use lib (#927)
 - MSD Discovery Workbench - migrate to calculated data lib (#919)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.79] - 2025-03-11
 
@@ -136,7 +160,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - AppBio QuantStudio RT-PCR - use calcdocs library (#917)
 - AppBio QuantStudio Design & Analysis - use calcdocs library (#883)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.78] - 2025-03-04
 
@@ -144,7 +172,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Mabtech Apex - fix typo that prevents getting analyst field (#913)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.77] - 2025-03-04
 
@@ -163,7 +195,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - MSD Methodical Mind - add type verification for luminescence (#900)
 - Benchling Empower - use SampleName for sample identifier (#897)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.76] - 2025-02-19
 
@@ -178,7 +214,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - ChemoMetec Nucleoview - handle file with commas at the end of the line (#889)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.75] - 2025-02-11
 
@@ -200,7 +240,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Luminex xPONENT - do not throw an error if an optional value is missing in the input file (#867)
 - Unchained Labs Lunatic - handle different cases for column headers (#863)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.74] - 2025-01-28
 
@@ -208,7 +252,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - AppBio QuantStudio RT-PCR - add back reference fields as custom data processing info (#860)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.73] - 2025-01-28
 
@@ -224,7 +272,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - AppBio QuantStudio RT-PCR - Use qpcr rec/2024/09 schema mapper (#856)
 - Thermo Fisher Qubit4 - Add unread data to asm. (#854)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.72] - 2025-01-21
 
@@ -234,7 +286,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Cytiva Unicorn - add start time to device control doc (#851)
 - Cytiva Unicorn - add peaks (#849)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.71] - 2025-01-14
 
@@ -242,7 +298,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Internal: add missing package dependencies
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.70] - 2025-01-14
 
@@ -259,7 +319,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Cytiva Biacore T200 Control - initial implementation (#765)
 -  AppBio QuantStudio RT-PCR - Use qpcr rec/2024/09 schema mapper (#833)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.69] - 2024-12-16
 
@@ -271,7 +335,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Plate Reader - add custom data cube to BENCHLING/2023/09 schema (#815)
 - CTL ImmunoSpot - support v7.0.38 software version export format (#809)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.68] - 2024-12-12
 
@@ -279,7 +347,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Benchling Waters Empower Adapter, Cytiva Unicorn, Thermo Fisher Scientific Genesys On-Board, Beckman Coulter Biomek - mark parsers as RECOMMENDED (#820)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.67] - 2024-12-11
 
@@ -302,7 +374,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Liquid Chromatography - Added fluorescence-cube-detector measurementDocumentItems to liquid-chromatography measurement schemas (#811)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.66] - 2024-12-05
 
@@ -321,7 +397,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Liquid Chromatography - nest all device control document definitions under aggregate document in schema (#801)
 - MSD Methodical Mind - handle case were there are empty identifiers, and handle digital signature at the top of the file (#795)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.65] - 2024-11-23
 
@@ -341,7 +421,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Molecular Devices Softmax Pro - add check for expected rows in plate data table (#776)
 - Qiacuity DPCR - add encoding detection/artifacts and handle different column names for concentration (#775)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.64] - 2024-11-13
 
@@ -361,7 +445,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Binding Affinity Analyzer - sensor chip document hierarchy level change (#752)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.63] - 2024-11-01
 
@@ -376,7 +464,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Agilent Gen5 Image - include transmission light setting when it is inside the channel setting (#745)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.62] - 2024-10-30
 
@@ -394,7 +486,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Thermo Fisher Scientific NanoDrop Eight - handle alternative column names (#731)
 - Revvity Kaleido - update v3/3.5 parser to handle a pure CSV export file where empty lines are populated with commas (#742)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.61] - 2024-10-16
 
@@ -406,7 +502,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Molecular Devices SoftMax Pro - report non numeric values in error document (#725)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.60] - 2024-10-15
 
@@ -417,7 +517,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Solution Analyzer - add solution-analyzer/rec/2024/09 schema mapper (#714)
 - Molecular Devices SoftMax Pro - report non numeric values in error document (#713)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.59] - 2024-10-11
 
@@ -429,7 +533,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - AppBio QuantStudio RT-PCR - remove omitted wells from calculated data document data sources (#717)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.58] - 2024-10-09
 
@@ -437,7 +545,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Thermo Fisher Scientific Qubit Flex - add fields that were accidentally removed/renamed in refactor (#711)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.57] - 2024-10-09
 
@@ -473,7 +585,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global - change the way custom information is organized in schema mappers and ASM outputs to be consistent with future expectations of ASM (#673)
 - Thermo Fisher Scientific NanoDrop 8000 & Nanodrop Eight - rebrand NanoDrop Eight parser to NanoDrop 8000 (#652)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.56] - 2024-09-26
 
@@ -487,7 +603,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - AppBio Quantstuido Design & Analysis - fix Y-intercept and Slope references as data sources for quantity calculated data document (#670)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.55] - 2024-09-26
 
@@ -501,7 +621,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - qPRC & AppBio QuantStudio Design & Analysis - make "PCR Detection Chemistry" optional and omit when missing instead of using N/A (#668)
 - Perkin Elmer Envision - remove leading '0' from well identifier numbers (#671)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.54] - 2024-09-23
 
@@ -519,7 +643,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Appbio QuantStudio Design & Analysis - simplify sheets needed to infer presence/absence experiment type inference (#659)
 - Appbio QuantStudio Design & Analysis - allow software name and version to be None (#659)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.53] - 2024-09-17
 
@@ -544,7 +672,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Agilent Gen5 - update to use plate-reader/REC/2024/06 schema (#633)
 - Thermo Fisher Scientific Genesys30 - update release state to RECOMMENDED (#654)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.52] - 2024-09-12
 
@@ -556,7 +688,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Global - use dateutil timezone instead of pytz, because pytz can create incorrect timezones when not localized (#644)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.51] - 2024-09-09
 
@@ -576,7 +712,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Unchained Labs Lunatic - change reader so that it supports both formats (with/without header) for both file types (#631)
 - Molecular Devices SoftMax Pro - disregard compartment temperature when is reported as 0 (#635)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.50] - 2024-08-30
 
@@ -590,7 +730,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Mabtech Apex - update regex to handle scenarios where first word in the machine ID section has all letter uppercase
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.49] - 2024-08-21
 
@@ -609,7 +753,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Spectrophotometry - updated the schema mapper to accommodate absorbance spectrum data cubes
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.48] - 2024-08-15
 
@@ -618,7 +766,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - BMG MARS - updated release state to RECOMMENDED
 - Roche NovaBio Flex2 - update to use solution-analyzer/REC/2024/03 schema
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.47] - 2024-08-13
 
@@ -626,7 +778,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Roche Cedex Bioht - fix mis-reporting some analyte units
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.46] - 2024-08-13
 
@@ -651,7 +807,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global - only return AllotropeConversionError when there is an anticipated error with input data, add other errors for unexpected problems
 - AppBio Quantstudio Design & Analysis - split structure by experiment type
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.45] - 2024-08-01
 
@@ -660,7 +820,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Internal - pandas version updated to 2.2.0 to have calamine engine
 - Roche Cedex Bioht - to use solution-analyzer/rec/2024/09 schema
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.44] - 2024-07-30
 
@@ -669,7 +833,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Agilent TapeStation Analysis - remove `devide identifier` from `device control document`
 - Add column normalization to vicell blu reader to fix unrecognized columns due to mismatching characters
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.43] - 2024-07-22
 
@@ -681,7 +849,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - MabTech Apex - update release status to RECOMMENDED
 - Qiacuity dPCR - update release status to RECOMMENDED
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.42] - 2024-07-19
 
@@ -690,7 +862,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Internal - use "calamine" engine for reading excel where possible.
 - Internal - relaxed conditions for schema model generator combining classes to handle cases where required key sets created a large number of class versions
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.41] - 2024-07-18
 
@@ -699,7 +875,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Thermo Fisher Scientific Qubit 4 - initial implementation
 - Documentation - add dPCR and solution analyzer parser requirement templates
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.40] - 2024-07-15
 
@@ -707,7 +887,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - AppBio QuantStudio Design & Analysis - redefine stage number as optional
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.39] - 2024-07-15
 
@@ -726,7 +910,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Internal - update NON_UNIQUE_IDENTIFIERS to have "group identifier" field
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.38] - 2024-07-11
 
@@ -749,7 +937,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Internal - upgrade pydantic to pull in fix for ForwardRef._evaluate() issue (https://github.com/pydantic/pydantic/issues/9637)
 - Agilent Gen5 - update non-numeric emission related values to NaN instead of removing them from ASM
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.37] - 2024-06-26
 
@@ -767,7 +959,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global - handle dashes and slashes in custom information document key names
 - Mabtech Apex - updated fields to support LED Filter
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.36] - 2024-06-24
 
@@ -784,7 +980,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - AppBio QuantStudio RT-PCR - redefine plate well count as optional
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.35] - 2024-06-07
 
@@ -800,7 +1000,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Deprecated
 - Roche Cedex Bioht - remove sample role type
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.34] - 2024-06-04
 
@@ -817,7 +1021,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Internal - use modular paths for schema models
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.33] - 2024-05-29
 
@@ -825,7 +1033,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Internal - fix path_util to work outside of allotropy correctly
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.32] - 2024-05-29
 
@@ -833,7 +1045,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Internal - add schema_parser/path_util.py to remove dependency: converter.py -> generate_schemas.py, which pulled script dependencies into allotropy
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.31] - 2024-05-24
 
@@ -854,7 +1070,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - AppBio QuantStudio RT-PCR - implement default value for sample role names
 - Internal - add kw_only=True for generated schema models
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.30] - 2024-05-10
 
@@ -876,7 +1096,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - AppBio QuantStudio RT-PCR - remove inner calculated data documents
 - AppBio Quantstudio & AppBio QuantStudio Design & Analysis - use global definition of calculated data documents
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.29] - 2024-04-30
 
@@ -893,7 +1117,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Internal - remove assert in validate_contents
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.28] - 2024-04-29
 
@@ -917,7 +1145,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Agilent Gen5 - use plate-reader/BENCHLING/2023/09 schema
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.27] - 2024-04-10
 
@@ -929,7 +1161,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Internal - exclude tests from sdist
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.26] - 2024-04-08
 
@@ -937,7 +1173,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Beckman Vi-Cell BLU - reverted add encoding inference, it is causing unexpected behavior in other environments
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.25] - 2024-04-05
 
@@ -946,7 +1186,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Beckman Vi-Cell BLU - add encoding inference
 - Luminex xPONENT - fix to account for the correct instrument file formatting
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.24] - 2024-04-03
 
@@ -960,7 +1204,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Plate Reader - change lightfield with brightfield in transmitted light setting enum in plate-reader/BENCHLING/2023/09
 - Unchained Labs Lunatic - fix missing case for concentration column without A260 prefix
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.23] - 2024-03-12
 
@@ -973,7 +1221,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global - add ability to specify encoding in top-level functions. Not passing an encoding defaults to UTF-8. To auto-detect encoding with chardet, pass in CHARDET_ENCODING
 - Internal - loosen requirement for jsonschema package to increase package compatibility
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.22] - 2024-03-07
 
@@ -985,7 +1237,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Internal - moved VendorType to to_allotrope
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.21] - 2024-03-05
 
@@ -997,7 +1253,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Molecular Devices Softmax Pro - infer size of plate to read all data available
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.20] - 2024-02-23
 
@@ -1010,7 +1270,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Unchained Labs Lunatic - allow n/a absorbance values
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.19] - 2024-02-19
 
@@ -1018,7 +1282,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Global - fix try_float_or_none bug with evaluating 0 as NaN
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.18] - 2024-02-19
 
@@ -1032,7 +1300,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Molecular Devices Softmax Pro - cast sample identifier to string
 - Beckman Vi-Cell XR - handle style bug in xlsx files produced by VI-Cell XR instrument
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.17] - 2024-02-15
 
@@ -1044,7 +1316,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Molecular Devices Softmax Pro - handle invalid values in well measurements, filling with "NaN"
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.16] - 2024-02-08
 
@@ -1052,7 +1328,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Unchained Labs Lunatic - fix mixup of Plate ID and Plate Position
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.15] - 2024-02-02
 
@@ -1072,7 +1352,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Spectrophotometry - correct the spectrophotometry/BENCHLING/2023/12 schema to account for feedback from Allotrope Modeling Working Group
 - Molecular Devices Softmax Pro - replace null values with N/A
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.14] - 2024-01-31
 
@@ -1085,7 +1369,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Molecular Devices Softmax Pro - ignore calculated data documents entry in output when there are no calculated data documents
 - Molecular Devices Softmax Pro - check for raw data indicator in plate header
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.13] - 2024-01-19
 
@@ -1111,7 +1399,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global - Standardized on UNITLESS constant ("(unitless)") for unitless values. Changed Perkin Elmer Envision, which formerly used "unitless"
 - Perkin Elmer Envision - increase test coverage of calculated data documents
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.12] - 2023-12-12
 
@@ -1128,7 +1420,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - AppBio QuantStudio RT-PCR - refactor builders as create methods
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.11] - 2023-12-04
 
@@ -1144,7 +1440,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - PerkinElmer EnVision - update use the plate-reader/BENCHLING/2023/09 schema
 - Global - standardize and clarify exception messages
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.10] - 2023-11-14
 
@@ -1157,7 +1457,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - AppBio QuantStudio RT-PCR - redefine reporter dye setting for genotyping experiments (#102)
 - Global - update TimeStampParser.parse() to raise for invalid input
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.9] - 2023-11-03
 
@@ -1170,7 +1474,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Plate Reader - fix plate-reader schema to be compatible with current supported adapters and change REC -> BENCHLING
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.8] - 2023-10-30
 
@@ -1182,7 +1490,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Global - use fuzzy=True for timestamp parsing to handle non-standard cases (e.g. mixing 24h time and AM/PM)
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.7] - 2023-10-26
 
@@ -1199,7 +1511,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Roche Cedex HiRes - rename to PerkinElmerEnvisionParser and RocheCedexBiohtParser for consistency
 - Global - generic Exceptions to AllotropyErrors
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.6] - 2023-10-16
 
@@ -1217,7 +1533,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Internal - replace datetime.timezone with ZoneInfo in TimestampParser
 - Internal - implement CsvReader as child of LinesReader
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.5] - 2023-10-04
 
@@ -1235,7 +1555,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - dPCR - make "fluorescence intensity threshold setting" optional in the dPCR schema
 - Internal - update the "calculated datum" property on the calculated data documents to allow different units
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.4] - 2023-10-03
 
@@ -1245,7 +1569,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - qPCR - rename "qPCR detection chemistry" to "PRC detection chemistry" in PCR schemas
 - dPCR - add missing @dataclass annotation to TQuantityValueNumberPerMicroliter
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.3] - 2023-10-03
 
@@ -1255,7 +1583,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - dPCR - fix some issues in dPCR schema and corresponding model updates
 - AppBio QuantStudio RT-PCR - accept comma as thousand indicator in all sections
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.2] - 2023-09-27
 
@@ -1271,7 +1603,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - AppBio QuantStudio RT-PCR - ignore unexpected sections in input file
 - AppBio QuantStudio RT-PCR - accept comma as thousand indicator in results section
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.1] - 2023-09-22
 
@@ -1279,7 +1615,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Internal - loosen requirement for jsonschema package to make allotropy compatible with datamodel-code-generator
 
+## [0.1.89] - 2025-05-20
+
 ## [0.1.82] - 2025-04-02
+
+## [0.1.89] - 2025-05-20
 
 ## [0.1.0] - 2023-09-18
 
