@@ -7,6 +7,7 @@ from datetime import datetime
 from enum import Enum
 import math
 import re
+from typing import Any
 
 import pandas as pd
 
@@ -21,7 +22,7 @@ from allotropy.exceptions import (
 )
 from allotropy.parsers.constants import NEGATIVE_ZERO
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.utils.pandas import rm_df_columns, SeriesData, set_columns
+from allotropy.parsers.utils.pandas import SeriesData, set_columns
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
@@ -36,7 +37,7 @@ from allotropy.parsers.utils.values import (
 BLOCKS_LINE_REGEX = r"^##BLOCKS=\s*(\d+)$"
 END_LINE_REGEX = "~End"
 EXPORT_VERSION = "1.3"
-VALID_NAN_VALUES = ("Masked", "Range?")
+VALID_NAN_VALUES = ("Masked", "Range?", "Error")
 
 
 NUM_WELLS_TO_PLATE_DIMENSIONS: dict[int, tuple[int, int]] = {
@@ -116,6 +117,7 @@ class GroupDataElement:
     plate: str | None
     entries: list[GroupDataElementEntry]
     errors: list[ErrorDocument]
+    custom_info: dict[str, str] = field(default_factory=dict)
 
 
 @dataclass(frozen=True)
@@ -124,50 +126,41 @@ class GroupSampleData:
     data_elements: list[GroupDataElement]
 
     @classmethod
-    def create(cls, data: pd.DataFrame) -> GroupSampleData:
+    def create(cls, data: pd.DataFrame, calc_data_cols: list[str]) -> GroupSampleData:
         row_data = [SeriesData(row) for _, row in data.iterrows()]
-        top_row = row_data[0]
-        identifier = top_row[str, "Sample"]
-        data = rm_df_columns(data, r"^Sample$|^R$|^Unnamed: \d+$")
-        # Columns are considered "numeric" if the value of the first row is a float
-        # Non-numeric values such as "Mask" and "Range?" will be reported as errors.
-        numeric_columns = [
-            column
-            for column in data.columns
-            if top_row.get(float, column, validate=SeriesData.NOT_NAN) is not None
-            or top_row.get(str, column) in VALID_NAN_VALUES
-        ]
+        identifier = row_data[0][str, "Sample"]
+
+        data_columns = list(
+            data.columns.difference(["Sample", "Well", "Wells", "WellPlateName"])
+        )
 
         data_elements: dict[str, list[GroupDataElement]] = {
-            column: [] for column in numeric_columns
+            column: [] for column in data_columns
         }
         for row in row_data:
-            row_results = cls._get_entries_and_errors(row, numeric_columns)
+            row_results = cls._get_row_results(row, data_columns)
             position = row[str, ["Well", "Wells"]]
             plate = row.get(str, "WellPlateName", validate=SeriesData.NOT_NAN)
-            for column in numeric_columns:
+            for column in data_columns:
                 if (column_result := row_results.get(column)) is not None:
+                    # A GroupDataElement can either contain a calculated data (entry), or a
+                    # custom_information element, if it is calculated data, it might also report an error
                     data_elements[column].append(
                         GroupDataElement(
                             sample=identifier,
                             positions=[position],
                             plate=plate,
-                            entries=[
-                                GroupDataElementEntry(
-                                    column,
-                                    (
-                                        column_result
-                                        if isinstance(column_result, float)
-                                        and abs(column_result) != math.inf
-                                        else NEGATIVE_ZERO
-                                    ),
-                                )
-                            ],
+                            # Entries are calculated data
+                            entries=cls._get_entries(
+                                column, column_result, calc_data_cols
+                            ),
+                            custom_info=(
+                                {column: str(column_result)}
+                                if column not in calc_data_cols
+                                else {}
+                            ),
                             errors=(
-                                [ErrorDocument(str(column_result), column)]
-                                if isinstance(column_result, str)
-                                or abs(column_result) == math.inf
-                                else []
+                                cls._get_errors(column, column_result, calc_data_cols)
                             ),
                         )
                     )
@@ -182,16 +175,44 @@ class GroupSampleData:
         )
 
     @classmethod
-    def _get_entries_and_errors(
+    def _get_errors(
+        cls, column: str, result: float | str, calc_data_cols: list[str]
+    ) -> list[ErrorDocument]:
+        return (
+            [ErrorDocument(str(result), column)]
+            if column in calc_data_cols
+            and (isinstance(result, str) or abs(result) == math.inf)
+            else []
+        )
+
+    @classmethod
+    def _get_entries(
+        cls, column: str, result: float | str, calc_data_cols: list[str]
+    ) -> list[GroupDataElementEntry]:
+        if column not in calc_data_cols:
+            return []
+        return [
+            GroupDataElementEntry(
+                column,
+                (
+                    result
+                    if isinstance(result, float) and abs(result) != math.inf
+                    else NEGATIVE_ZERO
+                ),
+            )
+        ]
+
+    @classmethod
+    def _get_row_results(
         cls, data_row: SeriesData, column_names: list[str]
     ) -> dict[str, float | str]:
         result: dict[str, float | str] = {}
         for column in column_names:
-            value = data_row.get(float, column)
+            value = data_row.get(float, column, validate=SeriesData.NOT_NAN)
             if value is not None:
                 result[column] = value
-            elif (error := data_row.get(str, column)) is not None:
-                result[column] = error
+            elif (str_val := data_row.get(str, column)) is not None:
+                result[column] = str_val
         return result
 
 
@@ -212,22 +233,45 @@ class GroupData:
                 reader.pop_csv_block_as_df(sep="\t", header=0),
                 msg="Unable to find group block data.",
             ).replace(r"^\s+$", None, regex=True)
+            # TODO: what to do with columns full of NaN values?
+            # 1. Ignore them
+            # 2. Add them to the list of calculated data columns
+            # 3. Add them to the list of custom data columns
+            # We are doing 1 for now, but we should check
+            data = data.dropna(axis=1, how="all")
 
         assert_not_none(
             data.get("Sample"),
             msg=f"Unable to find sample identifier column in group data {name}",
         )
 
+        calc_data_cols = GroupData.get_calculated_data_columns(data)
+
         samples = data["Sample"].ffill()
         try:
             sample_data = [
-                GroupSampleData.create(data.iloc[sample_entries.index])
+                GroupSampleData.create(data.iloc[sample_entries.index], calc_data_cols)
                 for _, sample_entries in samples.groupby(samples)
             ]
         except ValueError as e:
             msg = f"Unable to read Group data format for group {name}."
             raise AllotropeConversionError(msg) from e
         return GroupData(name=name, sample_data=sample_data)
+
+    @staticmethod
+    def get_calculated_data_columns(data: pd.DataFrame) -> list[str]:
+        # If the column has at least on numeric value, it is considered a numeric column (calculated data)
+        # The VALID_NAN_VALUES are considered as valid values for the numeric columns.
+        def is_numeric(scalar: Any) -> bool:
+            return (
+                try_non_nan_float_or_none(scalar) is not None
+                or scalar in VALID_NAN_VALUES
+            )
+
+        calculated_data_columns = [
+            column for column in data.columns if data[column].apply(is_numeric).any()
+        ]
+        return calculated_data_columns
 
 
 @dataclass(frozen=True)
@@ -331,6 +375,7 @@ class DataElement:
     position: str
     value: float
     error_document: list[ErrorDocument]
+    custom_info: dict[str, str] = field(default_factory=dict)
     elapsed_time: list[float] = field(default_factory=list)
     kinetic_measures: list[float | None] = field(default_factory=list)
     sample_id: str | None = None
@@ -1231,6 +1276,7 @@ class StructureData:
                         data_element.group_id = group_block.group_data.name
                         data_element.sample_id = group_data_element.sample
                         data_element.error_document += group_data_element.errors
+                        data_element.custom_info.update(group_data_element.custom_info)
 
         return StructureData(
             block_list=block_list,
