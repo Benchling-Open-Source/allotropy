@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2025/03/plate-reader.manifest",
     "plate reader aggregate document": {
         "plate reader document": [
             {
@@ -24,14 +24,15 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_0",
                             "sample document": {
-                                "sample identifier": "STD1",
                                 "location identifier": "A1",
+                                "sample identifier": "STD1",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.044,
                                 "unit": "mAU"
                             },
+                            "analytical method identifier": "",
                             "error aggregate document": {
                                 "error document": [
                                     {
@@ -39,7 +40,8 @@
                                         "error feature": "Conc"
                                     }
                                 ]
-                            }
+                            },
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -47,8 +49,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -71,14 +71,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_1",
                             "sample document": {
-                                "sample identifier": "STD2",
                                 "location identifier": "A2",
+                                "sample identifier": "STD2",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.069,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -86,8 +88,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -110,14 +110,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_2",
                             "sample document": {
-                                "sample identifier": "STD3",
                                 "location identifier": "A3",
+                                "sample identifier": "STD3",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.114,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -125,8 +127,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -149,14 +149,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_3",
                             "sample document": {
-                                "sample identifier": "STD4",
                                 "location identifier": "A4",
+                                "sample identifier": "STD4",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.225,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -164,8 +166,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -188,14 +188,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_4",
                             "sample document": {
-                                "sample identifier": "STD5",
                                 "location identifier": "A5",
+                                "sample identifier": "STD5",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.36,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -203,8 +205,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -227,14 +227,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_5",
                             "sample document": {
-                                "sample identifier": "STD6",
                                 "location identifier": "A6",
+                                "sample identifier": "STD6",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.632,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -242,8 +244,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -266,14 +266,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_6",
                             "sample document": {
-                                "sample identifier": "SPL1",
                                 "location identifier": "A7",
+                                "sample identifier": "SPL1",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.056,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -281,8 +283,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -305,14 +305,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_7",
                             "sample document": {
-                                "sample identifier": "SPL2",
                                 "location identifier": "A8",
+                                "sample identifier": "SPL2",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.114,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -320,8 +322,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -344,14 +344,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_8",
                             "sample document": {
-                                "sample identifier": "SPL3",
                                 "location identifier": "A9",
+                                "sample identifier": "SPL3",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.234,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -359,8 +361,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -383,14 +383,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_9",
                             "sample document": {
-                                "sample identifier": "SPL4",
                                 "location identifier": "A10",
+                                "sample identifier": "SPL4",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.559,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -398,8 +400,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -422,14 +422,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_10",
                             "sample document": {
-                                "sample identifier": "SPL5",
                                 "location identifier": "A11",
+                                "sample identifier": "SPL5",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.574,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -437,8 +439,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -461,14 +461,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_11",
                             "sample document": {
-                                "sample identifier": "SPL6",
                                 "location identifier": "A12",
+                                "sample identifier": "SPL6",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.601,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -476,8 +478,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -500,14 +500,15 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_12",
                             "sample document": {
-                                "sample identifier": "STD1",
                                 "location identifier": "B1",
+                                "sample identifier": "STD1",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.046,
                                 "unit": "mAU"
                             },
+                            "analytical method identifier": "",
                             "error aggregate document": {
                                 "error document": [
                                     {
@@ -515,7 +516,8 @@
                                         "error feature": "Conc"
                                     }
                                 ]
-                            }
+                            },
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -523,8 +525,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -547,14 +547,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_13",
                             "sample document": {
-                                "sample identifier": "STD2",
                                 "location identifier": "B2",
+                                "sample identifier": "STD2",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.072,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -562,8 +564,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -586,14 +586,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_14",
                             "sample document": {
-                                "sample identifier": "STD3",
                                 "location identifier": "B3",
+                                "sample identifier": "STD3",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.118,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -601,8 +603,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -625,14 +625,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_15",
                             "sample document": {
-                                "sample identifier": "STD4",
                                 "location identifier": "B4",
+                                "sample identifier": "STD4",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.198,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -640,8 +642,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -664,14 +664,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_16",
                             "sample document": {
-                                "sample identifier": "STD5",
                                 "location identifier": "B5",
+                                "sample identifier": "STD5",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.364,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -679,8 +681,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -703,14 +703,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_17",
                             "sample document": {
-                                "sample identifier": "STD6",
                                 "location identifier": "B6",
+                                "sample identifier": "STD6",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.635,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -718,8 +720,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -742,14 +742,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_18",
                             "sample document": {
-                                "sample identifier": "SPL1",
                                 "location identifier": "B7",
+                                "sample identifier": "SPL1",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.058,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -757,8 +759,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -781,14 +781,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_19",
                             "sample document": {
-                                "sample identifier": "SPL2",
                                 "location identifier": "B8",
+                                "sample identifier": "SPL2",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.116,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -796,8 +798,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -820,14 +820,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_20",
                             "sample document": {
-                                "sample identifier": "SPL3",
                                 "location identifier": "B9",
+                                "sample identifier": "SPL3",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.236,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -835,8 +837,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -859,14 +859,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_21",
                             "sample document": {
-                                "sample identifier": "SPL4",
                                 "location identifier": "B10",
+                                "sample identifier": "SPL4",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.547,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -874,8 +876,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -898,14 +898,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_22",
                             "sample document": {
-                                "sample identifier": "SPL5",
                                 "location identifier": "B11",
+                                "sample identifier": "SPL5",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.588,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -913,8 +915,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -937,14 +937,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_23",
                             "sample document": {
-                                "sample identifier": "SPL6",
                                 "location identifier": "B12",
+                                "sample identifier": "SPL6",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.623,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -952,8 +954,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -976,14 +976,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_24",
                             "sample document": {
-                                "sample identifier": "SPL7",
                                 "location identifier": "C1",
+                                "sample identifier": "SPL7",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.075,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -991,8 +993,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1015,14 +1015,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_25",
                             "sample document": {
-                                "sample identifier": "SPL10",
                                 "location identifier": "C2",
+                                "sample identifier": "SPL10",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.119,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1030,8 +1032,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1054,14 +1054,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_26",
                             "sample document": {
-                                "sample identifier": "SPL13",
                                 "location identifier": "C3",
+                                "sample identifier": "SPL13",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.269,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1069,8 +1071,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1093,14 +1093,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_27",
                             "sample document": {
-                                "sample identifier": "SPL16",
                                 "location identifier": "C4",
+                                "sample identifier": "SPL16",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.225,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1108,8 +1110,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1132,14 +1132,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_28",
                             "sample document": {
-                                "sample identifier": "SPL19",
                                 "location identifier": "C5",
+                                "sample identifier": "SPL19",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.356,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1147,8 +1149,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1171,14 +1171,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_29",
                             "sample document": {
-                                "sample identifier": "SPL22",
                                 "location identifier": "C6",
+                                "sample identifier": "SPL22",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.225,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1186,8 +1188,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1210,14 +1210,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_30",
                             "sample document": {
-                                "sample identifier": "SPL25",
                                 "location identifier": "C7",
+                                "sample identifier": "SPL25",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.456,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1225,8 +1227,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1249,14 +1249,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_31",
                             "sample document": {
-                                "sample identifier": "SPL28",
                                 "location identifier": "C8",
+                                "sample identifier": "SPL28",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.569,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1264,8 +1266,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1288,14 +1288,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_32",
                             "sample document": {
-                                "sample identifier": "SPL31",
                                 "location identifier": "C9",
+                                "sample identifier": "SPL31",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.114,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1303,8 +1305,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1327,14 +1327,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_33",
                             "sample document": {
-                                "sample identifier": "SPL34",
                                 "location identifier": "C10",
+                                "sample identifier": "SPL34",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.065,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1342,8 +1344,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1366,14 +1366,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_34",
                             "sample document": {
-                                "sample identifier": "SPL37",
                                 "location identifier": "C11",
+                                "sample identifier": "SPL37",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.125,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1381,8 +1383,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1405,14 +1405,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_35",
                             "sample document": {
-                                "sample identifier": "SPL40",
                                 "location identifier": "C12",
+                                "sample identifier": "SPL40",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.099,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1420,8 +1422,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1444,14 +1444,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_36",
                             "sample document": {
-                                "sample identifier": "SPL7",
                                 "location identifier": "D1",
+                                "sample identifier": "SPL7",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.078,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1459,8 +1461,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1483,14 +1483,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_37",
                             "sample document": {
-                                "sample identifier": "SPL10",
                                 "location identifier": "D2",
+                                "sample identifier": "SPL10",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.125,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1498,8 +1500,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1522,14 +1522,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_38",
                             "sample document": {
-                                "sample identifier": "SPL13",
                                 "location identifier": "D3",
+                                "sample identifier": "SPL13",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.259,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1537,8 +1539,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1561,14 +1561,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_39",
                             "sample document": {
-                                "sample identifier": "SPL16",
                                 "location identifier": "D4",
+                                "sample identifier": "SPL16",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.236,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1576,8 +1578,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1600,14 +1600,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_40",
                             "sample document": {
-                                "sample identifier": "SPL19",
                                 "location identifier": "D5",
+                                "sample identifier": "SPL19",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.355,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1615,8 +1617,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1639,14 +1639,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_41",
                             "sample document": {
-                                "sample identifier": "SPL22",
                                 "location identifier": "D6",
+                                "sample identifier": "SPL22",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.265,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1654,8 +1656,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1678,14 +1678,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_42",
                             "sample document": {
-                                "sample identifier": "SPL25",
                                 "location identifier": "D7",
+                                "sample identifier": "SPL25",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.458,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1693,8 +1695,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1717,14 +1717,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_43",
                             "sample document": {
-                                "sample identifier": "SPL28",
                                 "location identifier": "D8",
+                                "sample identifier": "SPL28",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.578,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1732,8 +1734,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1756,14 +1756,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_44",
                             "sample document": {
-                                "sample identifier": "SPL31",
                                 "location identifier": "D9",
+                                "sample identifier": "SPL31",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.125,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1771,8 +1773,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1795,14 +1795,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_45",
                             "sample document": {
-                                "sample identifier": "SPL34",
                                 "location identifier": "D10",
+                                "sample identifier": "SPL34",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.066,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1810,8 +1812,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1834,14 +1834,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_46",
                             "sample document": {
-                                "sample identifier": "SPL37",
                                 "location identifier": "D11",
+                                "sample identifier": "SPL37",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.123,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1849,8 +1851,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1873,14 +1873,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_47",
                             "sample document": {
-                                "sample identifier": "SPL40",
                                 "location identifier": "D12",
+                                "sample identifier": "SPL40",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.095,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1888,8 +1890,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1912,14 +1912,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_48",
                             "sample document": {
-                                "sample identifier": "SPL8",
                                 "location identifier": "E1",
+                                "sample identifier": "SPL8",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.254,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1927,8 +1929,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1951,14 +1951,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_49",
                             "sample document": {
-                                "sample identifier": "SPL11",
                                 "location identifier": "E2",
+                                "sample identifier": "SPL11",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.569,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -1966,8 +1968,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -1990,14 +1990,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_50",
                             "sample document": {
-                                "sample identifier": "SPL14",
                                 "location identifier": "E3",
+                                "sample identifier": "SPL14",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.449,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2005,8 +2007,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2029,14 +2029,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_51",
                             "sample document": {
-                                "sample identifier": "SPL17",
                                 "location identifier": "E4",
+                                "sample identifier": "SPL17",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.568,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2044,8 +2046,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2068,14 +2068,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_52",
                             "sample document": {
-                                "sample identifier": "SPL20",
                                 "location identifier": "E5",
+                                "sample identifier": "SPL20",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.552,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2083,8 +2085,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2107,14 +2107,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_53",
                             "sample document": {
-                                "sample identifier": "SPL23",
                                 "location identifier": "E6",
+                                "sample identifier": "SPL23",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.335,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2122,8 +2124,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2146,14 +2146,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_54",
                             "sample document": {
-                                "sample identifier": "SPL26",
                                 "location identifier": "E7",
+                                "sample identifier": "SPL26",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.255,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2161,8 +2163,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2185,14 +2185,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_55",
                             "sample document": {
-                                "sample identifier": "SPL29",
                                 "location identifier": "E8",
+                                "sample identifier": "SPL29",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.455,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2200,8 +2202,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2224,14 +2224,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_56",
                             "sample document": {
-                                "sample identifier": "SPL32",
                                 "location identifier": "E9",
+                                "sample identifier": "SPL32",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.224,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2239,8 +2241,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2263,14 +2263,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_57",
                             "sample document": {
-                                "sample identifier": "SPL35",
                                 "location identifier": "E10",
+                                "sample identifier": "SPL35",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.075,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2278,8 +2280,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2302,14 +2302,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_58",
                             "sample document": {
-                                "sample identifier": "SPL38",
                                 "location identifier": "E11",
+                                "sample identifier": "SPL38",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.088,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2317,8 +2319,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2341,14 +2341,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_59",
                             "sample document": {
-                                "sample identifier": "SPL41",
                                 "location identifier": "E12",
+                                "sample identifier": "SPL41",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.365,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2356,8 +2358,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2380,14 +2380,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_60",
                             "sample document": {
-                                "sample identifier": "SPL8",
                                 "location identifier": "F1",
+                                "sample identifier": "SPL8",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.259,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2395,8 +2397,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2419,14 +2419,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_61",
                             "sample document": {
-                                "sample identifier": "SPL11",
                                 "location identifier": "F2",
+                                "sample identifier": "SPL11",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.578,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2434,8 +2436,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2458,14 +2458,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_62",
                             "sample document": {
-                                "sample identifier": "SPL14",
                                 "location identifier": "F3",
+                                "sample identifier": "SPL14",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.458,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2473,8 +2475,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2497,14 +2497,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_63",
                             "sample document": {
-                                "sample identifier": "SPL17",
                                 "location identifier": "F4",
+                                "sample identifier": "SPL17",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.559,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2512,8 +2514,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2536,14 +2536,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_64",
                             "sample document": {
-                                "sample identifier": "SPL20",
                                 "location identifier": "F5",
+                                "sample identifier": "SPL20",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.549,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2551,8 +2553,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2575,14 +2575,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_65",
                             "sample document": {
-                                "sample identifier": "SPL23",
                                 "location identifier": "F6",
+                                "sample identifier": "SPL23",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.339,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2590,8 +2592,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2614,14 +2614,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_66",
                             "sample document": {
-                                "sample identifier": "SPL26",
                                 "location identifier": "F7",
+                                "sample identifier": "SPL26",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.236,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2629,8 +2631,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2653,14 +2653,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_67",
                             "sample document": {
-                                "sample identifier": "SPL29",
                                 "location identifier": "F8",
+                                "sample identifier": "SPL29",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.425,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2668,8 +2670,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2692,14 +2692,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_68",
                             "sample document": {
-                                "sample identifier": "SPL32",
                                 "location identifier": "F9",
+                                "sample identifier": "SPL32",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.226,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2707,8 +2709,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2731,14 +2731,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_69",
                             "sample document": {
-                                "sample identifier": "SPL35",
                                 "location identifier": "F10",
+                                "sample identifier": "SPL35",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.077,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2746,8 +2748,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2770,14 +2770,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_70",
                             "sample document": {
-                                "sample identifier": "SPL38",
                                 "location identifier": "F11",
+                                "sample identifier": "SPL38",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.086,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2785,8 +2787,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2809,14 +2809,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_71",
                             "sample document": {
-                                "sample identifier": "SPL41",
                                 "location identifier": "F12",
+                                "sample identifier": "SPL41",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.361,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2824,8 +2826,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2848,14 +2848,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_72",
                             "sample document": {
-                                "sample identifier": "SPL9",
                                 "location identifier": "G1",
+                                "sample identifier": "SPL9",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.335,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2863,8 +2865,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2887,14 +2887,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_73",
                             "sample document": {
-                                "sample identifier": "SPL12",
                                 "location identifier": "G2",
+                                "sample identifier": "SPL12",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.541,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2902,8 +2904,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2926,14 +2926,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_74",
                             "sample document": {
-                                "sample identifier": "SPL15",
                                 "location identifier": "G3",
+                                "sample identifier": "SPL15",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.365,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2941,8 +2943,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -2965,14 +2965,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_75",
                             "sample document": {
-                                "sample identifier": "SPL18",
                                 "location identifier": "G4",
+                                "sample identifier": "SPL18",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.446,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -2980,8 +2982,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -3004,14 +3004,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_76",
                             "sample document": {
-                                "sample identifier": "SPL21",
                                 "location identifier": "G5",
+                                "sample identifier": "SPL21",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.095,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -3019,8 +3021,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -3043,14 +3043,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_77",
                             "sample document": {
-                                "sample identifier": "SPL24",
                                 "location identifier": "G6",
+                                "sample identifier": "SPL24",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.445,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -3058,8 +3060,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -3082,14 +3082,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_78",
                             "sample document": {
-                                "sample identifier": "SPL27",
                                 "location identifier": "G7",
+                                "sample identifier": "SPL27",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.369,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -3097,8 +3099,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -3121,14 +3121,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_79",
                             "sample document": {
-                                "sample identifier": "SPL30",
                                 "location identifier": "G8",
+                                "sample identifier": "SPL30",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.364,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -3136,8 +3138,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -3160,14 +3160,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_80",
                             "sample document": {
-                                "sample identifier": "SPL33",
                                 "location identifier": "G9",
+                                "sample identifier": "SPL33",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.345,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -3175,8 +3177,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -3199,14 +3199,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_81",
                             "sample document": {
-                                "sample identifier": "SPL36",
                                 "location identifier": "G10",
+                                "sample identifier": "SPL36",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.102,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -3214,8 +3216,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -3238,14 +3238,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_82",
                             "sample document": {
-                                "sample identifier": "SPL39",
                                 "location identifier": "G11",
+                                "sample identifier": "SPL39",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.245,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -3253,8 +3255,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -3277,14 +3277,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_83",
                             "sample document": {
-                                "sample identifier": "SPL42",
                                 "location identifier": "G12",
+                                "sample identifier": "SPL42",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.555,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -3292,8 +3294,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -3316,14 +3316,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_84",
                             "sample document": {
-                                "sample identifier": "SPL9",
                                 "location identifier": "H1",
+                                "sample identifier": "SPL9",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.365,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -3331,8 +3333,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -3355,14 +3355,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_85",
                             "sample document": {
-                                "sample identifier": "SPL12",
                                 "location identifier": "H2",
+                                "sample identifier": "SPL12",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.539,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -3370,8 +3372,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -3394,14 +3394,15 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_86",
                             "sample document": {
-                                "sample identifier": "SPL15",
                                 "location identifier": "H3",
+                                "sample identifier": "SPL15",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": -0.0,
                                 "unit": "mAU"
                             },
+                            "analytical method identifier": "",
                             "error aggregate document": {
                                 "error document": [
                                     {
@@ -3413,7 +3414,8 @@
                                         "error feature": "Conc"
                                     }
                                 ]
-                            }
+                            },
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -3421,8 +3423,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -3445,14 +3445,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_87",
                             "sample document": {
-                                "sample identifier": "SPL18",
                                 "location identifier": "H4",
+                                "sample identifier": "SPL18",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.459,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -3460,8 +3462,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -3484,14 +3484,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_88",
                             "sample document": {
-                                "sample identifier": "SPL21",
                                 "location identifier": "H5",
+                                "sample identifier": "SPL21",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.098,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -3499,8 +3501,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -3523,14 +3523,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_89",
                             "sample document": {
-                                "sample identifier": "SPL24",
                                 "location identifier": "H6",
+                                "sample identifier": "SPL24",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.465,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -3538,8 +3540,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -3562,14 +3562,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_90",
                             "sample document": {
-                                "sample identifier": "SPL27",
                                 "location identifier": "H7",
+                                "sample identifier": "SPL27",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.378,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -3577,8 +3579,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -3601,14 +3601,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_91",
                             "sample document": {
-                                "sample identifier": "SPL30",
                                 "location identifier": "H8",
+                                "sample identifier": "SPL30",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.378,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -3616,8 +3618,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -3640,14 +3640,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_92",
                             "sample document": {
-                                "sample identifier": "SPL33",
                                 "location identifier": "H9",
+                                "sample identifier": "SPL33",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.355,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -3655,8 +3657,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -3679,14 +3679,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_93",
                             "sample document": {
-                                "sample identifier": "SPL36",
                                 "location identifier": "H10",
+                                "sample identifier": "SPL36",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.105,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -3694,8 +3696,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -3718,14 +3718,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_94",
                             "sample document": {
-                                "sample identifier": "SPL39",
                                 "location identifier": "H11",
+                                "sample identifier": "SPL39",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.255,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -3733,8 +3735,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             },
@@ -3757,14 +3757,16 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_95",
                             "sample document": {
-                                "sample identifier": "SPL42",
                                 "location identifier": "H12",
+                                "sample identifier": "SPL42",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.526,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "",
+                            "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt"
                         }
                     ],
                     "measurement time": "2006-02-08T05:27:40+00:00",
@@ -3772,8 +3774,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "",
-                    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\Lowry Protein Assay with data.xpt",
                     "container type": "well plate"
                 }
             }
@@ -3783,8 +3783,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 6.722,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 6.722
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_96",
                     "data source aggregate document": {
@@ -3799,8 +3799,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 21.861,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 21.861
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_97",
                     "data source aggregate document": {
@@ -3815,8 +3815,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 59.204,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 59.204
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_98",
                     "data source aggregate document": {
@@ -3831,8 +3831,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 104.622,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 104.622
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_99",
                     "data source aggregate document": {
@@ -3847,8 +3847,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 196.129,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 196.129
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_100",
                     "data source aggregate document": {
@@ -3863,8 +3863,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 2.349,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.349
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_101",
                     "data source aggregate document": {
@@ -3879,8 +3879,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 21.861,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 21.861
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_102",
                     "data source aggregate document": {
@@ -3895,8 +3895,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 62.232,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 62.232
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_103",
                     "data source aggregate document": {
@@ -3911,8 +3911,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 171.57,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 171.57
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_104",
                     "data source aggregate document": {
@@ -3927,8 +3927,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 176.617,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 176.617
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_105",
                     "data source aggregate document": {
@@ -3943,8 +3943,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 185.7,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 185.7
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_106",
                     "data source aggregate document": {
@@ -3959,8 +3959,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 7.731,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 7.731
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_107",
                     "data source aggregate document": {
@@ -3975,8 +3975,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 23.207,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 23.207
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_108",
                     "data source aggregate document": {
@@ -3991,8 +3991,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 50.121,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 50.121
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_109",
                     "data source aggregate document": {
@@ -4007,8 +4007,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 105.967,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 105.967
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_110",
                     "data source aggregate document": {
@@ -4023,8 +4023,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 197.139,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 197.139
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_111",
                     "data source aggregate document": {
@@ -4039,8 +4039,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 3.021,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 3.021
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_112",
                     "data source aggregate document": {
@@ -4055,8 +4055,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 22.534,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 22.534
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_113",
                     "data source aggregate document": {
@@ -4071,8 +4071,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 62.905,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 62.905
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_114",
                     "data source aggregate document": {
@@ -4087,8 +4087,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 167.533,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 167.533
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_115",
                     "data source aggregate document": {
@@ -4103,8 +4103,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 181.327,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 181.327
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_116",
                     "data source aggregate document": {
@@ -4119,8 +4119,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 193.101,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 193.101
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_117",
                     "data source aggregate document": {
@@ -4135,8 +4135,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 8.741,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 8.741
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_118",
                     "data source aggregate document": {
@@ -4151,8 +4151,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 23.543,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 23.543
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_119",
                     "data source aggregate document": {
@@ -4167,8 +4167,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 74.007,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 74.007
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_120",
                     "data source aggregate document": {
@@ -4183,8 +4183,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 59.204,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 59.204
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_121",
                     "data source aggregate document": {
@@ -4199,8 +4199,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 103.276,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 103.276
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_122",
                     "data source aggregate document": {
@@ -4215,8 +4215,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 59.204,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 59.204
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_123",
                     "data source aggregate document": {
@@ -4231,8 +4231,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 136.919,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 136.919
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_124",
                     "data source aggregate document": {
@@ -4247,8 +4247,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 174.935,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 174.935
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_125",
                     "data source aggregate document": {
@@ -4263,8 +4263,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 21.861,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 21.861
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_126",
                     "data source aggregate document": {
@@ -4279,8 +4279,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 5.376,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 5.376
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_127",
                     "data source aggregate document": {
@@ -4295,8 +4295,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 25.562,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 25.562
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_128",
                     "data source aggregate document": {
@@ -4311,8 +4311,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 16.815,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 16.815
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_129",
                     "data source aggregate document": {
@@ -4327,8 +4327,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 9.75,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 9.75
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_130",
                     "data source aggregate document": {
@@ -4343,8 +4343,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 25.562,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 25.562
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_131",
                     "data source aggregate document": {
@@ -4359,8 +4359,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 70.643,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 70.643
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_132",
                     "data source aggregate document": {
@@ -4375,8 +4375,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 62.905,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 62.905
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_133",
                     "data source aggregate document": {
@@ -4391,8 +4391,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 102.94,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 102.94
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_134",
                     "data source aggregate document": {
@@ -4407,8 +4407,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 72.661,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 72.661
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_135",
                     "data source aggregate document": {
@@ -4423,8 +4423,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 137.591,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 137.591
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_136",
                     "data source aggregate document": {
@@ -4439,8 +4439,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 177.962,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 177.962
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_137",
                     "data source aggregate document": {
@@ -4455,8 +4455,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 25.562,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 25.562
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_138",
                     "data source aggregate document": {
@@ -4471,8 +4471,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 5.713,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 5.713
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_139",
                     "data source aggregate document": {
@@ -4487,8 +4487,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 24.889,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 24.889
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_140",
                     "data source aggregate document": {
@@ -4503,8 +4503,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 15.469,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 15.469
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_141",
                     "data source aggregate document": {
@@ -4519,8 +4519,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 68.961,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 68.961
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_142",
                     "data source aggregate document": {
@@ -4535,8 +4535,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 174.935,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 174.935
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_143",
                     "data source aggregate document": {
@@ -4551,8 +4551,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 134.564,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 134.564
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_144",
                     "data source aggregate document": {
@@ -4567,8 +4567,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 174.598,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 174.598
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_145",
                     "data source aggregate document": {
@@ -4583,8 +4583,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 169.215,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 169.215
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_146",
                     "data source aggregate document": {
@@ -4599,8 +4599,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 96.211,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 96.211
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_147",
                     "data source aggregate document": {
@@ -4615,8 +4615,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 69.297,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 69.297
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_148",
                     "data source aggregate document": {
@@ -4631,8 +4631,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 136.582,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 136.582
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_149",
                     "data source aggregate document": {
@@ -4647,8 +4647,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 58.868,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 58.868
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_150",
                     "data source aggregate document": {
@@ -4663,8 +4663,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 8.741,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 8.741
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_151",
                     "data source aggregate document": {
@@ -4679,8 +4679,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 13.114,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 13.114
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_152",
                     "data source aggregate document": {
@@ -4695,8 +4695,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 106.304,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 106.304
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_153",
                     "data source aggregate document": {
@@ -4711,8 +4711,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 70.643,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 70.643
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_154",
                     "data source aggregate document": {
@@ -4727,8 +4727,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 177.962,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 177.962
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_155",
                     "data source aggregate document": {
@@ -4743,8 +4743,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 137.591,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 137.591
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_156",
                     "data source aggregate document": {
@@ -4759,8 +4759,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 171.57,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 171.57
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_157",
                     "data source aggregate document": {
@@ -4775,8 +4775,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 168.206,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 168.206
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_158",
                     "data source aggregate document": {
@@ -4791,8 +4791,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 97.557,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 97.557
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_159",
                     "data source aggregate document": {
@@ -4807,8 +4807,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 62.905,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 62.905
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_160",
                     "data source aggregate document": {
@@ -4823,8 +4823,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 126.489,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 126.489
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_161",
                     "data source aggregate document": {
@@ -4839,8 +4839,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 59.541,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 59.541
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_162",
                     "data source aggregate document": {
@@ -4855,8 +4855,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 9.414,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 9.414
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_163",
                     "data source aggregate document": {
@@ -4871,8 +4871,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 12.441,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 12.441
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_164",
                     "data source aggregate document": {
@@ -4887,8 +4887,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 104.958,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 104.958
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_165",
                     "data source aggregate document": {
@@ -4903,8 +4903,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 96.211,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 96.211
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_166",
                     "data source aggregate document": {
@@ -4919,8 +4919,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 165.515,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 165.515
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_167",
                     "data source aggregate document": {
@@ -4935,8 +4935,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 106.304,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 106.304
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_168",
                     "data source aggregate document": {
@@ -4951,8 +4951,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 133.554,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 133.554
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_169",
                     "data source aggregate document": {
@@ -4967,8 +4967,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 15.469,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 15.469
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_170",
                     "data source aggregate document": {
@@ -4983,8 +4983,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 133.218,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 133.218
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_171",
                     "data source aggregate document": {
@@ -4999,8 +4999,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 107.65,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 107.65
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_172",
                     "data source aggregate document": {
@@ -5015,8 +5015,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 105.967,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 105.967
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_173",
                     "data source aggregate document": {
@@ -5031,8 +5031,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 99.575,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 99.575
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_174",
                     "data source aggregate document": {
@@ -5047,8 +5047,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 17.824,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 17.824
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_175",
                     "data source aggregate document": {
@@ -5063,8 +5063,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 65.933,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 65.933
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_176",
                     "data source aggregate document": {
@@ -5079,8 +5079,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 170.225,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 170.225
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_177",
                     "data source aggregate document": {
@@ -5095,8 +5095,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 106.304,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 106.304
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_178",
                     "data source aggregate document": {
@@ -5111,8 +5111,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 164.842,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 164.842
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_179",
                     "data source aggregate document": {
@@ -5127,8 +5127,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 137.928,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 137.928
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_180",
                     "data source aggregate document": {
@@ -5143,8 +5143,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 16.478,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 16.478
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_181",
                     "data source aggregate document": {
@@ -5159,8 +5159,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 139.946,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 139.946
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_182",
                     "data source aggregate document": {
@@ -5175,8 +5175,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 110.677,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 110.677
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_183",
                     "data source aggregate document": {
@@ -5191,8 +5191,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 110.677,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 110.677
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_184",
                     "data source aggregate document": {
@@ -5207,8 +5207,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 102.94,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 102.94
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_185",
                     "data source aggregate document": {
@@ -5223,8 +5223,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 18.833,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 18.833
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_186",
                     "data source aggregate document": {
@@ -5239,8 +5239,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 69.297,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 69.297
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_187",
                     "data source aggregate document": {
@@ -5255,8 +5255,8 @@
                 {
                     "calculated data name": "Conc",
                     "calculated result": {
-                        "value": 160.468,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 160.468
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_188",
                     "data source aggregate document": {
@@ -5273,10 +5273,10 @@
         "data system document": {
             "ASM file identifier": "Lowry_Protein_Assay_no_results_matrix.json",
             "data system instance identifier": "N/A",
-            "file name": "Lowry_Protein_Assay_no_results_matrix.txt",
             "UNC path": "tests/parsers/agilent_gen5/testdata/absorbance/Lowry_Protein_Assay_no_results_matrix.txt",
+            "file name": "Lowry_Protein_Assay_no_results_matrix.txt",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.74",
+            "ASM converter version": "0.1.87",
             "software name": "Gen5",
             "software version": "3.12.08"
         },

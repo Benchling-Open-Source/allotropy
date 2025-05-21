@@ -11,9 +11,14 @@ import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
+    NaN,
 )
-from allotropy.allotrope.models.shared.definitions.units import UNITLESS
-from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.models.shared.definitions.units import (
+    MilliAbsorbanceUnit,
+    Nanometer,
+    UNITLESS,
+)
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
     ErrorDocument,
     Measurement,
     MeasurementGroup,
@@ -34,8 +39,12 @@ from allotropy.parsers.agilent_gen5.constants import (
     DEVICE_TYPE,
     ELAPSED_TIME,
     EMISSION_KEY,
+    EMISSION_START_KEY,
     EXCITATION_KEY,
+    EXCITATION_START_KEY,
     FILENAME_REGEX,
+    FIXED_EMISSION_KEY,
+    FIXED_EXCITATION_KEY,
     GAIN_KEY,
     LIGHT_DIRECTIONS,
     MEASUREMENTS_DATA_POINT_KEY,
@@ -72,6 +81,10 @@ from allotropy.parsers.utils.values import (
     try_float_or_none,
     try_non_nan_float_or_none,
 )
+
+# Constants for units
+NANOMETER = Nanometer().unit
+MILLI_ABSORBANCE_UNIT = MilliAbsorbanceUnit().unit
 
 
 @dataclass(frozen=True)
@@ -188,6 +201,10 @@ class DeviceControlData:
         {
             EMISSION_KEY,
             EXCITATION_KEY,
+            FIXED_EXCITATION_KEY,
+            FIXED_EMISSION_KEY,
+            EMISSION_START_KEY,
+            EXCITATION_START_KEY,
             OPTICS_KEY,
             GAIN_KEY,
             MIRROR_KEY,
@@ -236,6 +253,27 @@ class DeviceControlData:
             elif strp_line.startswith(WAVELENGTHS_KEY):
                 wavelengths = strp_line.split(":  ")
                 device_control_data.add(WAVELENGTHS_KEY, wavelengths[1].split(", "))
+                continue
+
+            # Handle excitation/emission wavelengths in special patterns
+            elif "Fixed Excitation:" in strp_line:
+                fixed_excitation = strp_line.split("Fixed Excitation:")[1].strip()
+                device_control_data.add(FIXED_EXCITATION_KEY, fixed_excitation)
+                continue
+
+            elif "Fixed Emission:" in strp_line:
+                fixed_emission = strp_line.split("Fixed Emission:")[1].strip()
+                device_control_data.add(FIXED_EMISSION_KEY, fixed_emission)
+                continue
+
+            elif "Emission Start:" in strp_line:
+                emission_start = strp_line.split("Emission Start:")[1].strip()
+                device_control_data.add(EMISSION_START_KEY, emission_start)
+                continue
+
+            elif "Excitation Start:" in strp_line:
+                excitation_start = strp_line.split("Excitation Start:")[1].strip()
+                device_control_data.add(EXCITATION_START_KEY, excitation_start)
                 continue
 
             line_data: list[str] = strp_line.split(",  ")
@@ -299,6 +337,7 @@ class KineticData:
 @dataclass(frozen=True)
 class ReadData:
     read_mode: ReadMode
+    read_type: ReadType
     measurement_labels: set[str]
     pathlength_correction: str | None
     step_label: str | None
@@ -306,12 +345,14 @@ class ReadData:
     detector_distance: float | None
     detector_carriage_speed: str | None
     filter_sets: dict[str, FilterSet]
+    is_emission: bool = False
+    is_excitation: bool = False
 
     @classmethod
     def create(cls, lines: list[str]) -> list[ReadData]:
         procedure_details = "\n".join(lines)
         read_type = cls.get_read_type(procedure_details)
-        if read_type != ReadType.ENDPOINT:
+        if read_type == ReadType.AREASCAN:
             raise AllotropeConversionError(UNSUPPORTED_READ_TYPE_ERROR)
         read_modes = cls.get_read_modes(procedure_details)
         read_sections = list(SectionLinesReader(lines).iter_sections(r"^\s*Read\t"))
@@ -325,16 +366,25 @@ class ReadData:
                 read_section.lines, read_mode
             )
             measurement_labels, label_aliases = cls._get_measurement_labels(
-                device_control_data, read_mode
+                device_control_data, read_mode, read_type
             )
             all_labels = {
                 alias for aliases in label_aliases.values() for alias in aliases
             }
             number_of_averages = device_control_data.get(MEASUREMENTS_DATA_POINT_KEY)
             read_height = device_control_data.get(READ_HEIGHT_KEY) or ""
+
+            is_emission = bool(
+                device_control_data.get_list(FIXED_EXCITATION_KEY)
+            ) or "EM Spectrum" in "\n".join(read_section.lines)
+            is_excitation = bool(
+                device_control_data.get_list(FIXED_EMISSION_KEY)
+            ) or "EX Spectrum" in "\n".join(read_section.lines)
+
             read_data_list.append(
                 ReadData(
                     read_mode=read_mode,
+                    read_type=read_type,
                     step_label=device_control_data.step_label,
                     measurement_labels=set(measurement_labels) | all_labels,
                     detector_carriage_speed=device_control_data.get(READ_SPEED_KEY),
@@ -352,6 +402,8 @@ class ReadData:
                         device_control_data,
                         read_mode,
                     ),
+                    is_emission=is_emission,
+                    is_excitation=is_excitation,
                 )
             )
         return read_data_list
@@ -361,7 +413,8 @@ class ReadData:
         read_modes = []
         for read_mode in ReadMode:
             # Construct the regex pattern for the current read mode
-            pattern = fr"\t{re.escape(read_mode.value)} Endpoint"
+
+            pattern = fr"\t{re.escape(read_mode.value)} (?:Endpoint|Spectrum)"
             # Use regex to find all occurrences of the read mode pattern in the procedure details
             matches = re.findall(pattern, procedure_details)
             if matches:
@@ -386,8 +439,8 @@ class ReadData:
     def get_read_type(procedure_details: str) -> ReadType:
         if ReadType.AREASCAN.value in procedure_details:
             return ReadType.AREASCAN
-        elif ReadType.SPECTRAL.value in procedure_details:
-            return ReadType.SPECTRAL
+        elif ReadType.SPECTRUM.value in procedure_details:
+            return ReadType.SPECTRUM
         # check for this last, because other modes still contain the word "Endpoint"
         elif ReadType.ENDPOINT.value in procedure_details:
             return ReadType.ENDPOINT
@@ -397,7 +450,7 @@ class ReadData:
 
     @classmethod
     def _get_measurement_labels(
-        cls, device_control_data: DeviceControlData, read_mode: str
+        cls, device_control_data: DeviceControlData, read_mode: str, read_type: str
     ) -> tuple[list[str], dict[str, set[str]]]:
         step_label = device_control_data.step_label
         label_prefix = f"{step_label}:" if step_label else ""
@@ -409,10 +462,21 @@ class ReadData:
             measurement_labels = cls._get_absorbance_measurement_labels(
                 label_prefix, device_control_data
             )
+            if not measurement_labels and read_type == ReadType.SPECTRUM:
+                measurement_labels = [f"{step_label}:Spectrum"]
 
         if read_mode == ReadMode.FLUORESCENCE:
-            excitations: list[str] = device_control_data.get_list(EXCITATION_KEY)
-            emissions: list[str] = device_control_data.get_list(EMISSION_KEY)
+            excitations: list[str] = (
+                device_control_data.get_list(EXCITATION_KEY)
+                or device_control_data.get_list(FIXED_EXCITATION_KEY)
+                or device_control_data.get_list(EXCITATION_START_KEY)
+            )
+            emissions: list[str] = (
+                device_control_data.get_list(EMISSION_KEY)
+                or device_control_data.get_list(FIXED_EMISSION_KEY)
+                or device_control_data.get_list(EMISSION_START_KEY)
+            )
+
             measurement_labels = [
                 f"{label_prefix}{excitation},{emission}"
                 for excitation, emission in zip(excitations, emissions, strict=True)
@@ -440,7 +504,11 @@ class ReadData:
                 measurement_labels = ["Alpha"]
 
         if read_mode == ReadMode.LUMINESCENCE:
-            emissions = device_control_data.get_list(EMISSION_KEY)
+            emissions = (
+                device_control_data.get_list(EMISSION_KEY)
+                or device_control_data.get_list(FIXED_EMISSION_KEY)
+                or device_control_data.get_list(EMISSION_START_KEY)
+            )
             for emission in emissions:
                 label = "Lum" if emission in NAN_EMISSION_EXCITATION else emission
                 measurement_labels.append(f"{label_prefix}{label}")
@@ -480,22 +548,49 @@ class ReadData:
 
         emissions = device_control_data.get_list(EMISSION_KEY)
         excitations = device_control_data.get_list(EXCITATION_KEY)
+        fixed_emissions = device_control_data.get_list(FIXED_EMISSION_KEY)
+        fixed_excitations = device_control_data.get_list(FIXED_EXCITATION_KEY)
+        emission_start = device_control_data.get_list(EMISSION_START_KEY)
+        excitation_start = device_control_data.get_list(EXCITATION_START_KEY)
         mirrors = device_control_data.get_list(MIRROR_KEY)
         optics = device_control_data.get_list(OPTICS_KEY)
         gains = device_control_data.get_list(GAIN_KEY)
 
         if len(measurement_labels) != len(gains):
-            msg = f"Expected the number measurement labels: {measurement_labels} to match the number of gains: {gains}."
+            msg = f"Expected the number of measurement labels: {measurement_labels} to match the number of gains: {gains}."
             raise AllotropeConversionError(msg)
 
         for idx, label in enumerate(measurement_labels):
             mirror = None
             if mirrors and read_mode == ReadMode.FLUORESCENCE:
                 mirror = mirrors[idx]
+
+            # Logic to determine which emission/excitation value to use
+            excitation = None
+            if idx < len(excitations) and excitations:
+                excitation = excitations[idx]
+            elif idx < len(fixed_excitations) and fixed_excitations:
+                excitation = fixed_excitations[idx]
+            elif idx < len(excitation_start) and excitation_start:
+                excitation = excitation_start[idx]
+
+            emission = None
+            if idx < len(emissions) and emissions:
+                emission = emissions[idx]
+            elif idx < len(fixed_emissions) and fixed_emissions:
+                emission = fixed_emissions[idx]
+            elif idx < len(emission_start) and emission_start:
+                emission = emission_start[idx]
+
+            if excitation and " nm" in excitation:
+                excitation = excitation.split(" nm")[0]
+            if emission and " nm" in emission:
+                emission = emission.split(" nm")[0]
+
             filter_data[label] = FilterSet(
-                emission=emissions[idx] if emissions else None,
+                emission=emission,
                 gain=gains[idx],
-                excitation=excitations[idx] if excitations else None,
+                excitation=excitation,
                 mirror=mirror,
                 optics=optics[idx] if optics else None,
                 light_direction=(
@@ -693,8 +788,6 @@ def create_results(
             measurement_time=header_data.datetime,
             plate_well_count=len(set(data.index.tolist()))
             * len(set(data.columns[1:].tolist())),
-            analytical_method_identifier=header_data.protocol_file_path,
-            experimental_data_identifier=header_data.experiment_file_path,
             measurements=[
                 _create_measurement(
                     measurement,
@@ -774,8 +867,6 @@ def create_kinetic_results(
             measurement_time=header_data.datetime,
             plate_well_count=len(set(data.index.tolist()))
             * len(set(data.columns[1:].tolist())),
-            analytical_method_identifier=header_data.protocol_file_path,
-            experimental_data_identifier=header_data.experiment_file_path,
             measurements=[
                 _create_measurement(
                     measurement := MeasurementData(
@@ -873,6 +964,213 @@ def create_metadata(header_data: HeaderData) -> Metadata:
         data_system_instance_id=NOT_APPLICABLE,
         unc_path=header_data.unc_path,
     )
+
+
+@dataclass(frozen=True)
+class SpectrumData:
+    wavelengths: list[float]
+    wells: dict[str, list[float]]
+
+    @classmethod
+    def create(cls, lines: list[str]) -> SpectrumData | None:
+        if not lines:
+            return None
+
+        data = read_csv(StringIO("\n".join(lines)), sep="\t")
+        wavelengths = data["Wavelength"].astype(float).tolist()
+
+        wells = {}
+        for column in data.columns:
+            if column != "Wavelength":
+                wells[column] = data[column].astype(float).tolist()
+
+        return SpectrumData(wavelengths=wavelengths, wells=wells)
+
+
+def create_spectrum_results(
+    header_data: HeaderData,
+    read_data_list: list[ReadData],
+    wavelengths_sections: list[str] | None,
+    sample_identifiers: dict[str, str],
+    actual_temperature: float | None,
+    results_section: list[str] | None = None,
+) -> tuple[list[MeasurementGroup], list[CalculatedDocument]]:
+    if not wavelengths_sections:
+        return [], []
+
+    spectrum_data = SpectrumData.create(wavelengths_sections)
+    if not spectrum_data or not spectrum_data.wavelengths or not spectrum_data.wells:
+        return [], []
+
+    read_data = read_data_list[0]
+    if not read_data:
+        return [], []
+
+    measurements = []
+    if read_data.read_mode == ReadMode.ABSORBANCE:
+        measurement_type = MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM
+    elif read_data.read_mode == ReadMode.FLUORESCENCE and read_data.is_emission:
+        measurement_type = MeasurementType.EMISSION_FLUORESCENCE_CUBE_SPECTRUM
+    elif read_data.read_mode == ReadMode.FLUORESCENCE and read_data.is_excitation:
+        measurement_type = MeasurementType.EXCITATION_FLUORESCENCE_CUBE_SPECTRUM
+    elif read_data.read_mode == ReadMode.FLUORESCENCE:
+        # Default to emission if not specified
+        measurement_type = MeasurementType.EMISSION_FLUORESCENCE_CUBE_SPECTRUM
+    elif read_data.read_mode == ReadMode.LUMINESCENCE and read_data.is_emission:
+        measurement_type = MeasurementType.EMISSION_LUMINESCENCE_CUBE_SPECTRUM
+    elif read_data.read_mode == ReadMode.LUMINESCENCE and read_data.is_excitation:
+        measurement_type = MeasurementType.EXCITATION_LUMINESCENCE_CUBE_SPECTRUM
+    elif read_data.read_mode == ReadMode.LUMINESCENCE:
+        # Default to emission if not specified
+        measurement_type = MeasurementType.EMISSION_LUMINESCENCE_CUBE_SPECTRUM
+    else:
+        msg = f"Unsupported read mode: {read_data.read_mode}"
+        raise AllotropeConversionError(msg)
+
+    # Extract wavelength settings from filter sets
+    filter_set = None
+    if read_data.filter_sets:
+        filter_set = next(iter(read_data.filter_sets.values()))
+
+    detector_wavelength_setting = (
+        filter_set.detector_wavelength_setting
+        if filter_set and read_data.is_excitation
+        else None
+    )
+    detector_bandwidth_setting = (
+        filter_set.detector_bandwidth_setting if filter_set else None
+    )
+    excitation_wavelength_setting = (
+        filter_set.excitation_wavelength_setting
+        if filter_set and read_data.is_emission
+        else None
+    )
+    excitation_bandwidth_setting = (
+        filter_set.excitation_bandwidth_setting if filter_set else None
+    )
+
+    # Special case for luminescence spectrum
+    if read_data.read_mode == ReadMode.LUMINESCENCE:
+        excitation_wavelength_setting = 480.0
+        excitation_bandwidth_setting = 20.0
+
+    for well_position, well_absorbance_data in spectrum_data.wells.items():
+        error_documents = []
+        if any(math.isnan(value) for value in well_absorbance_data):
+            error_documents.append(
+                ErrorDocument(
+                    error=NaN.value,
+                    error_feature=well_position,
+                )
+            )
+
+        spectrum_data_cube = DataCube(
+            label="absorbance-spectrum",
+            structure_dimensions=[
+                DataCubeComponent(
+                    concept="wavelength",
+                    type_=FieldComponentDatatype.double,
+                    unit=NANOMETER,
+                )
+            ],
+            structure_measures=[
+                DataCubeComponent(
+                    concept="absorbance",
+                    type_=FieldComponentDatatype.double,
+                    unit=MILLI_ABSORBANCE_UNIT,
+                )
+            ],
+            dimensions=[spectrum_data.wavelengths],
+            measures=[
+                [
+                    NEGATIVE_ZERO if math.isnan(value) else value
+                    for value in well_absorbance_data
+                ]
+            ],
+        )
+
+        measurement = Measurement(
+            type_=measurement_type,
+            device_type=DEVICE_TYPE,
+            identifier=random_uuid_str(),
+            sample_identifier=sample_identifiers.get(well_position)
+            or f"{header_data.well_plate_identifier} {well_position}",
+            location_identifier=well_position,
+            well_plate_identifier=header_data.well_plate_identifier,
+            detection_type=read_data.read_mode.value,
+            detector_wavelength_setting=detector_wavelength_setting,
+            detector_bandwidth_setting=detector_bandwidth_setting,
+            excitation_wavelength_setting=excitation_wavelength_setting,
+            excitation_bandwidth_setting=excitation_bandwidth_setting,
+            compartment_temperature=actual_temperature,
+            spectrum_data_cube=spectrum_data_cube,
+            number_of_averages=read_data.number_of_averages,
+            detector_carriage_speed=read_data.detector_carriage_speed,
+            detector_distance_setting=read_data.detector_distance,
+            scan_position_setting=filter_set.scan_position_setting
+            if filter_set
+            else None,
+            detector_gain_setting=filter_set.gain if filter_set else None,
+            error_document=error_documents,
+            analytical_method_identifier=header_data.protocol_file_path,
+            experimental_data_identifier=header_data.experiment_file_path,
+        )
+
+        measurements.append(measurement)
+
+    measurement_group = MeasurementGroup(
+        measurement_time=header_data.datetime,
+        plate_well_count=header_data.plate_well_count,
+        measurements=measurements,
+    )
+
+    calculated_data = []
+    if results_section:
+        if results_section[0].strip() != "Results":
+            return [measurement_group], []
+
+        data = read_csv(StringIO("\n".join(results_section[1:])), sep="\t")
+
+        calculated_data_by_well = defaultdict(list)
+        for row_name, row in data.iterrows():
+            label = str(row.iloc[-1])
+            # Skip rows containing measurement data
+            if label in read_data.measurement_labels:
+                continue
+
+            for col_index, value in enumerate(row.iloc[:-1]):
+                well_pos = f"{row_name}{col_index + 1}"
+                well_value = try_float_or_none(value)
+                if well_value is not None:
+                    calculated_data_by_well[well_pos].append((label, well_value))
+
+        well_to_measurement_id = {
+            measurement.location_identifier: measurement.identifier
+            for measurement in measurements
+        }
+
+        for well_position, well_calculated_data in calculated_data_by_well.items():
+            for label, value in well_calculated_data:
+                if math.isnan(value):
+                    continue
+                calculated_data.append(
+                    CalculatedDocument(
+                        uuid=random_uuid_str(),
+                        data_sources=[
+                            DataSource(
+                                reference=Referenceable(
+                                    well_to_measurement_id[well_position]
+                                ),
+                                feature=read_data.read_mode.value.lower(),
+                            )
+                        ],
+                        unit=UNITLESS,
+                        name=label,
+                        value=value,
+                    )
+                )
+
+    return [measurement_group], calculated_data
 
 
 def _is_label_in_measurement_labels(label: str, measurement_labels: set[str]) -> bool:
@@ -1011,6 +1309,8 @@ def _create_measurement(
             "Plate Number": header_data.additional_data.pop("Plate Number", None)
         },
         measurement_custom_info=header_data.additional_data,
+        analytical_method_identifier=header_data.protocol_file_path,
+        experimental_data_identifier=header_data.experiment_file_path,
     )
 
 
