@@ -82,10 +82,6 @@ from allotropy.parsers.utils.values import (
     try_non_nan_float_or_none,
 )
 
-# Constants for units
-NANOMETER = Nanometer().unit
-MILLI_ABSORBANCE_UNIT = MilliAbsorbanceUnit().unit
-
 
 @dataclass(frozen=True)
 class HeaderData:
@@ -1070,14 +1066,14 @@ def create_spectrum_results(
                 DataCubeComponent(
                     concept="wavelength",
                     type_=FieldComponentDatatype.double,
-                    unit=NANOMETER,
+                    unit=Nanometer.unit,
                 )
             ],
             structure_measures=[
                 DataCubeComponent(
                     concept="absorbance",
                     type_=FieldComponentDatatype.double,
-                    unit=MILLI_ABSORBANCE_UNIT,
+                    unit=MilliAbsorbanceUnit.unit,
                 )
             ],
             dimensions=[spectrum_data.wavelengths],
