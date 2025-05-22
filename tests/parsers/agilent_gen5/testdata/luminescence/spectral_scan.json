@@ -63,18 +63,11 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [
-                                            300.0,
-                                            310.0,
-                                            320.0
-                                        ]
+                                        [300.0, 310.0, 320.0]
                                     ],
                                     "measures": [
-                                        [
-                                            0.123,
-                                            -0.0,
-                                            0.125
-                                        ]
+                                        [0.123,
+                                            -0.0, 0.125]
                                     ]
                                 }
                             }
@@ -92,7 +85,7 @@
         "data system document": {
             "ASM file identifier": "spectral_scan.json",
             "data system instance identifier": "N/A",
-            "UNC path": "../tests/parsers/agilent_gen5/testdata/luminescence/spectral_scan.txt",
+            "UNC path": "tests/parsers/agilent_gen5/testdata/luminescence/spectral_scan.txt",
             "file name": "spectral_scan.txt",
             "ASM converter name": "allotropy_agilent_gen5",
             "ASM converter version": "0.1.90",
