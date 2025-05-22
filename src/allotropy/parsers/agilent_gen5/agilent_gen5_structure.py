@@ -11,7 +11,6 @@ import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
-    NaN,
 )
 from allotropy.allotrope.models.shared.definitions.units import (
     MilliAbsorbanceUnit,
@@ -685,7 +684,9 @@ def get_temperature(actual_temperature_lines: list[str] | None) -> float | None:
 
 def get_kinetic_measurements(
     kinetic_lines: list[str] | None,
-) -> tuple[dict[str, list[float | None]], list[float]] | None:
+) -> tuple[
+    dict[str, list[float | None]], list[float], dict[str, list[ErrorDocument]]
+] | None:
     if not kinetic_lines:
         return None
     data = (
@@ -700,16 +701,49 @@ def get_kinetic_measurements(
     kinetic_elapsed_time: list[float] = data.index.map(
         lambda val: _convert_time_to_seconds(str(val))
     ).to_list()
+
+    error_documents: dict[str, list[ErrorDocument]] = {}
+
     for col_name, column in data.items():
-        if col_name == "Time":
-            continue
-        if column.isnull().any():
-            msg = f"Unable to process null value in column: {col_name} of Kinetic section."
-            raise AllotropeConversionError(msg)
-        kinetic_measurements[str(col_name)] = [
-            float(value) if not pd.isna(value) else None for value in column
-        ]
-    return dict(kinetic_measurements.items()), kinetic_elapsed_time
+        well_values: list[float | None] = []
+        for idx, value in enumerate(column):
+            # Handle empty values
+            if pd.isna(value):
+                well_values.append(None)
+                continue
+
+            try:
+                float_value = float(value)
+                well_values.append(float_value)
+            except (ValueError, TypeError):
+                if value is not None:
+                    str_value = (
+                        str(value).strip()
+                        if not isinstance(value, str)
+                        else value.strip()
+                    )
+                    if str_value:  # Only create error for non-empty values
+                        time_point = (
+                            kinetic_elapsed_time[idx]
+                            if idx < len(kinetic_elapsed_time)
+                            else None
+                        )
+
+                        if str(col_name) not in error_documents:
+                            error_documents[str(col_name)] = []
+
+                        error_documents[str(col_name)].append(
+                            ErrorDocument(
+                                error=str_value,
+                                error_feature=f"{col_name}-{time_point}s",
+                            )
+                        )
+                # Use NEGATIVE_ZERO for non-numeric values
+                well_values.append(NEGATIVE_ZERO)
+
+        kinetic_measurements[str(col_name)] = well_values
+
+    return dict(kinetic_measurements.items()), kinetic_elapsed_time, error_documents
 
 
 @dataclass(frozen=True)
@@ -833,6 +867,7 @@ def create_kinetic_results(
     kinetic_data: KineticData,
     kinetic_measurements: dict[str, list[float | None]],
     kinetic_elapsed_time: list[float],
+    kinetic_errors: dict[str, list[ErrorDocument]] | None = None,
 ) -> tuple[list[MeasurementGroup], list[CalculatedDocument]]:
     if result_lines[0].strip() != "Results":
         msg = f"Expected the first line of the results section '{result_lines[0]}' to be 'Results'."
@@ -848,6 +883,13 @@ def create_kinetic_results(
     measurement_labels = [
         label for r_data in read_data for label in r_data.measurement_labels
     ]
+
+    error_documents_per_well: defaultdict[str, list[ErrorDocument]] = defaultdict(list)
+
+    if kinetic_errors:
+        for well, errors in kinetic_errors.items():
+            error_documents_per_well[well].extend(errors)
+
     for row_name, row in data.iterrows():
         label = row.iloc[-1]
         for col_index, value in enumerate(row.iloc[:-1]):
@@ -876,6 +918,7 @@ def create_kinetic_results(
                     kinetic_data,
                     kinetic_measurements[well_position],
                     kinetic_elapsed_time,
+                    error_documents_per_well.get(well_position, []),
                 )
             ],
         )
@@ -962,27 +1005,6 @@ def create_metadata(header_data: HeaderData) -> Metadata:
     )
 
 
-@dataclass(frozen=True)
-class SpectrumData:
-    wavelengths: list[float]
-    wells: dict[str, list[float]]
-
-    @classmethod
-    def create(cls, lines: list[str]) -> SpectrumData | None:
-        if not lines:
-            return None
-
-        data = read_csv(StringIO("\n".join(lines)), sep="\t")
-        wavelengths = data["Wavelength"].astype(float).tolist()
-
-        wells = {}
-        for column in data.columns:
-            if column != "Wavelength":
-                wells[column] = data[column].astype(float).tolist()
-
-        return SpectrumData(wavelengths=wavelengths, wells=wells)
-
-
 def create_spectrum_results(
     header_data: HeaderData,
     read_data_list: list[ReadData],
@@ -994,8 +1016,49 @@ def create_spectrum_results(
     if not wavelengths_sections:
         return [], []
 
-    spectrum_data = SpectrumData.create(wavelengths_sections)
-    if not spectrum_data or not spectrum_data.wavelengths or not spectrum_data.wells:
+    data = read_csv(StringIO("\n".join(wavelengths_sections)), sep="\t")
+
+    try:
+        wavelengths = data["Wavelength"].astype(float).tolist()
+    except (ValueError, KeyError):
+        return [], []
+
+    wells_data = {}
+    error_documents_by_well = {}
+
+    for column in data.columns:
+        if column == "Wavelength":
+            continue
+
+        well_values = []
+        errors = []
+        for idx, value in enumerate(data[column]):
+            try:
+                float_value = float(value)
+                if math.isnan(float_value):
+                    continue
+                well_values.append(float_value)
+            except (ValueError, TypeError):
+                original_value = str(value).strip()
+                if original_value:
+                    wavelength = wavelengths[idx] if idx < len(wavelengths) else None
+                    errors.append(
+                        ErrorDocument(
+                            error=original_value,
+                            error_feature=f"{column}-{wavelength}nm",
+                        )
+                    )
+                well_values.append(NEGATIVE_ZERO)
+
+        # Skip empty wells
+        if not well_values:
+            continue
+
+        wells_data[column] = well_values
+        if errors:
+            error_documents_by_well[column] = errors
+
+    if not wells_data:
         return [], []
 
     read_data = read_data_list[0]
@@ -1050,16 +1113,7 @@ def create_spectrum_results(
         excitation_wavelength_setting = 480.0
         excitation_bandwidth_setting = 20.0
 
-    for well_position, well_absorbance_data in spectrum_data.wells.items():
-        error_documents = []
-        if any(math.isnan(value) for value in well_absorbance_data):
-            error_documents.append(
-                ErrorDocument(
-                    error=NaN.value,
-                    error_feature=well_position,
-                )
-            )
-
+    for well_position, well_absorbance_data in wells_data.items():
         spectrum_data_cube = DataCube(
             label="absorbance-spectrum",
             structure_dimensions=[
@@ -1076,13 +1130,8 @@ def create_spectrum_results(
                     unit=MilliAbsorbanceUnit.unit,
                 )
             ],
-            dimensions=[spectrum_data.wavelengths],
-            measures=[
-                [
-                    NEGATIVE_ZERO if math.isnan(value) else value
-                    for value in well_absorbance_data
-                ]
-            ],
+            dimensions=[wavelengths],
+            measures=[well_absorbance_data],
         )
 
         measurement = Measurement(
@@ -1107,7 +1156,7 @@ def create_spectrum_results(
             if filter_set
             else None,
             detector_gain_setting=filter_set.gain if filter_set else None,
-            error_document=error_documents,
+            error_document=error_documents_by_well.get(well_position),
             analytical_method_identifier=header_data.protocol_file_path,
             experimental_data_identifier=header_data.experiment_file_path,
         )

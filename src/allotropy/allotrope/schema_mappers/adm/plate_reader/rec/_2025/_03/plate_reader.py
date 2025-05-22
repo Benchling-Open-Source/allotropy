@@ -647,6 +647,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 if measurement.type_ == MeasurementType.FLUORESCENCE_CUBE_DETECTOR
                 else None
             ),
+            error_aggregate_document=self._get_error_aggregate_document(
+                measurement.error_document
+            ),
         )
 
     def _get_spectrum_data_cube_measurement_document(

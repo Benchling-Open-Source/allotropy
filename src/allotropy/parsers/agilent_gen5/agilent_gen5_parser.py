@@ -50,9 +50,12 @@ class AgilentGen5Parser(VendorParser[Data, Model]):
 
         sample_identifiers = get_identifiers(reader.sections.get("Layout"))
         actual_temperature = get_temperature(reader.sections.get("Actual Temperature"))
-        kinetic_measurements, kinetic_elapsed_time = get_kinetic_measurements(
-            reader.sections.get("Time")
-        ) or ({}, [])
+        kinetic_result = get_kinetic_measurements(reader.sections.get("Time"))
+        kinetic_measurements, kinetic_elapsed_time, kinetic_errors = kinetic_result or (
+            {},
+            [],
+            {},
+        )
 
         if kinetic_data and not (kinetic_measurements and kinetic_elapsed_time):
             msg = "Kinetic data is present in the file but no kinetic measurements data is found."
@@ -91,6 +94,7 @@ class AgilentGen5Parser(VendorParser[Data, Model]):
                 kinetic_data,
                 kinetic_measurements,
                 kinetic_elapsed_time,
+                kinetic_errors,
             )
         else:
             measurement_groups, calculated_data = create_results(
