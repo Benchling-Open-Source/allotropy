@@ -742,7 +742,7 @@ class Mapper(SchemaMapper[Data, Model]):
             measurement_doc.absorption_spectrum_data_cube = spectrum_data_cube
         elif measurement.type_ in [
             MeasurementType.EMISSION_FLUORESCENCE_CUBE_SPECTRUM,
-            measurement.type_ == MeasurementType.EMISSION_LUMINESCENCE_CUBE_SPECTRUM,
+            MeasurementType.EMISSION_LUMINESCENCE_CUBE_SPECTRUM,
         ]:
             measurement_doc.fluorescence_emission_spectrum_data_cube = (
                 spectrum_data_cube

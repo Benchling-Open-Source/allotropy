@@ -43,8 +43,14 @@
                                 "sample identifier": "Plate 1 A1",
                                 "well plate identifier": "Plate 1"
                             },
-                            "analytical method identifier": "",
-                            "experimental data identifier": "",
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "OVRFLW",
+                                        "error feature": "A1-480.0nm"
+                                    }
+                                ]
+                            },
                             "fluorescence excitation spectrum data cube": {
                                 "label": "absorbance-spectrum",
                                 "cube-structure": {
@@ -68,7 +74,8 @@
                                         [480.0, 490.0, 500.0]
                                     ],
                                     "measures": [
-                                        [0.1, 0.2, 0.3]
+                                        [
+                                            -0.0, 0.2, 0.3]
                                     ]
                                 }
                             }

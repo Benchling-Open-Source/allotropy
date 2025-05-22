@@ -76,6 +76,14 @@
                                 "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240307_abs_SpectralScan_withStepLabel_noPlateLayout.prt",
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "OVRFLW",
+                                        "error feature": "A2-300.0nm"
+                                    }
+                                ]
+                            },
                             "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_abs_SpectralScan_StepLabel_noPlateLayout.xpt",
                             "absorption spectrum data cube": {
                                 "label": "absorbance-spectrum",
@@ -100,7 +108,8 @@
                                         [300.0, 310.0, 320.0, 330.0, 340.0, 350.0, 360.0, 370.0, 380.0, 390.0, 400.0, 410.0, 420.0, 430.0, 440.0, 450.0, 460.0, 470.0, 480.0, 490.0, 500.0, 510.0, 520.0, 530.0, 540.0, 550.0, 560.0, 570.0, 580.0, 590.0, 600.0, 610.0, 620.0, 630.0, 640.0, 650.0, 660.0, 670.0, 680.0, 690.0, 700.0]
                                     ],
                                     "measures": [
-                                        [0.005, 0.011, 0.024, 0.047, 0.088, 0.152, 0.249, 0.382, 0.551, 0.748, 0.955, 1.14, 1.29, 1.39, 1.41, 1.36, 1.26, 1.15, 1.04, 0.963, 0.924, 0.928, 0.966, 1.02, 1.08, 1.14, 1.17, 1.17, 1.14, 1.07, 0.988, 0.879, 0.758, 0.634, 0.514, 0.404, 0.308, 0.228, 0.163, 0.114, 0.077]
+                                        [
+                                            -0.0, 0.011, 0.024, 0.047, 0.088, 0.152, 0.249, 0.382, 0.551, 0.748, 0.955, 1.14, 1.29, 1.39, 1.41, 1.36, 1.26, 1.15, 1.04, 0.963, 0.924, 0.928, 0.966, 1.02, 1.08, 1.14, 1.17, 1.17, 1.14, 1.07, 0.988, 0.879, 0.758, 0.634, 0.514, 0.404, 0.308, 0.228, 0.163, 0.114, 0.077]
                                     ]
                                 }
                             }
@@ -6361,7 +6370,7 @@
             "UNC path": "tests/parsers/agilent_gen5/testdata/absorbance/spectrum_data.txt",
             "file name": "spectrum_data.txt",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.87",
+            "ASM converter version": "0.1.90",
             "software name": "Gen5",
             "software version": "3.12.08"
         },

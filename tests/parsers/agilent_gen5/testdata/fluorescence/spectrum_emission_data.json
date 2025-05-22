@@ -43,8 +43,14 @@
                                 "sample identifier": "Plate 1 A1",
                                 "well plate identifier": "Plate 1"
                             },
-                            "analytical method identifier": "",
-                            "experimental data identifier": "",
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "OVRFLW",
+                                        "error feature": "A1-320.0nm"
+                                    }
+                                ]
+                            },
                             "fluorescence emission spectrum data cube": {
                                 "label": "absorbance-spectrum",
                                 "cube-structure": {
@@ -68,7 +74,9 @@
                                         [300.0, 310.0, 320.0]
                                     ],
                                     "measures": [
-                                        [0.123, 0.124, 0.125]
+                                        [0.123, 0.124,
+                                            -0.0
+                                        ]
                                     ]
                                 }
                             }

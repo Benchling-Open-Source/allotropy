@@ -1157,8 +1157,12 @@ def create_spectrum_results(
             else None,
             detector_gain_setting=filter_set.gain if filter_set else None,
             error_document=error_documents_by_well.get(well_position),
-            analytical_method_identifier=header_data.protocol_file_path,
-            experimental_data_identifier=header_data.experiment_file_path,
+            analytical_method_identifier=header_data.protocol_file_path
+            if header_data.protocol_file_path
+            else None,
+            experimental_data_identifier=header_data.experiment_file_path
+            if header_data.experiment_file_path
+            else None,
         )
 
         measurements.append(measurement)
@@ -1354,8 +1358,12 @@ def _create_measurement(
             "Plate Number": header_data.additional_data.pop("Plate Number", None)
         },
         measurement_custom_info=header_data.additional_data,
-        analytical_method_identifier=header_data.protocol_file_path,
-        experimental_data_identifier=header_data.experiment_file_path,
+        analytical_method_identifier=header_data.protocol_file_path
+        if header_data.protocol_file_path
+        else None,
+        experimental_data_identifier=header_data.experiment_file_path
+        if header_data.experiment_file_path
+        else None,
     )
 
 
