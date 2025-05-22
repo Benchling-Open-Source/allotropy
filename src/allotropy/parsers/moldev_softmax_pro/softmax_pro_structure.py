@@ -164,7 +164,7 @@ class GroupSampleData:
                             ),
                         )
                     )
-                else:
+                elif data_elements[column]:
                     data_elements[column][-1].positions.append(position)
 
         return GroupSampleData(

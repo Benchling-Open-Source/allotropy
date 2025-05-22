@@ -1,0 +1,145 @@
+##BLOCKS= 4
+Plate:	Plate01	1.3	PlateFormat	Endpoint	Absorbance	Raw	FALSE	1						2	450 650 	1	12	96	1	8		
+	Temperature(¡C)	1	2	3	4	5	6	7	8	9	10	11	12		1	2	3	4	5	6	7	8	9	10	11	12		
+	21.8	0.4011	0.3884	0.6576	0.6738	0.1197	0.1171	0.1738	0.1774	0.1305	0.1237	0.1156	0.1141		0.0394	0.0413	0.044	0.0439	0.038	0.0382	0.0391	0.0384	0.0399	0.0383	0.0382	0.0383		
+		0.26	0.2546	0.2149	0.2142	0.1186	0.1156	0.1218	0.1255	0.1167	0.1174	0.1132	0.1121		0.0436	0.0387	0.0383	0.0386	0.0374	0.0373	0.0372	0.0368	0.037	0.0371	0.0376	0.0369		
+		0.1852	0.1869	0.1273	0.1272	0.1179	0.1154	0.1308	0.1382	0.1184	0.1187	0.1151	0.1136		0.0391	0.0395	0.0393	0.0389	0.0398	0.039	0.0393	0.0439	0.039	0.0392	0.0391	0.039		
+		0.1439	0.1436	0.1254	0.1257	0.116	0.1156	0.1191	0.1187	0.1178	0.1178	0.1156	0.1121		0.0376	0.0387	0.0387	0.0386	0.039	0.0389	0.0385	0.0385	0.0386	0.0389	0.0389	0.0393		
+		0.1276	0.1268	0.1164	0.1126	0.465	0.4536	0.1157	0.1163	0.1156	0.1145	0.1149	0.1118		0.0319	0.0313	0.0315	0.0319	0.037	0.0381	0.0336	0.0341	0.0345	0.0338	0.0336	0.0357		
+		0.1152	0.1156	0.1162	0.1162	0.1693	0.164	0.1293	0.1294	0.1169	0.1154	0.1147	0.1113		0.037	0.0384	0.0394	0.0384	0.039	0.039	0.0387	0.0385	0.0384	0.0384	0.0393	0.0385		
+		0.2141	0.2177	0.1225	0.1237	0.1221	0.1203	0.1167	0.1184	0.1177	0.1178	0.1155	0.1138		0.0389	0.0397	0.0392	0.0388	0.0389	0.0391	0.0388	0.0387	0.039	0.0416	0.0391	0.0394		
+		0.1478	0.1473	0.1237	0.1276	0.4895	0.4711	0.1242	0.1239	0.1196	0.1212	0.1189	0.1104		0.0437	0.0525	0.048	0.0508	0.0514	0.0508	0.0447	0.0441	0.0413	0.0433	0.0426	0.0369		
+
+~End
+Group: Standards
+Sample	Standard Value ng/mL	BackCalcConc	Wells	OD	AvgOD	SD	CV	% Recovery	
+01	100.000	102.406	A1	0.401	0.395	0.009	2.3	100	
+ 	 	97.627	A2	0.388	 	 	 	 	
+02	50.000	50.894	B1	0.260	0.257	0.004	1.5	100	
+ 	 	48.985	B2	0.255	 	 	 	 	
+03	25.000	24.735	C1	0.185	0.186	0.001	0.6	100	
+ 	 	25.325	C2	0.187	 	 	 	 	
+04	10.000	10.399	D1	0.144	0.144	0.000	0.1	103	
+ 	 	10.295	D2	0.144	 	 	 	 	
+05	5.000	4.659	E1	0.128	0.127	0.001	0.4	90	
+ 	 	4.373	E2	0.127	 	 	 	 	
+06	0.000	0.093	F1	0.115	0.115	0.000	0.2	Inf	
+ 	 	0.255	F2	0.116	 	 	 	 	
+
+Group Column	Formula Name	Formula	Precision	Notation
+1	Sample	!SampleNames	2 decimal places	Numeric
+2	Standard Value	!SampleDescriptor	3 decimal places	Numeric
+3	BackCalcConc	InterpX(STD#1@StandardCurve,OD)	3 decimal places	Numeric
+4	Wells	!WellIDs	2 decimal places	Numeric
+5	OD	!WellValues	3 decimal places	Numeric
+6	AvgOD	Average(OD)	3 decimal places	Numeric
+7	SD	Stdev(OD)	3 decimal places	Numeric
+8	CV	Cv(OD)	1 decimal places	Numeric
+9	% Recovery	Average(BackCalcConc)/'Standard Value'*100	0 decimal places	Numeric
+
+Group Summaries
+MinStd	Smallest standard value =	0.115	Min(AvgOD)	3 decimal places	Numeric Notation 
+MaxStd	Largest standard value =	0.395	Max(AvgOD)	3 decimal places	Numeric Notation 
+R^2		1.000	RSquared(STD#1@StandardCurve)	3 decimal places	Numeric Notation 
+
+~End 
+Group: Controls
+Sample	Well	DilutionFactor	Values	Result	MeanResult	Std.Dev.	CV%	HC in Range?	LC in Range?	
+01	G1	150.000	0.214	34.779	35.407	0.888	2.508	Yes	 	
+ 	G2	 	0.218	36.035	 	 	 	 	 	
+02	H1	750.000	0.148	11.760	11.673	0.123	1.055	 	Yes	
+ 	H2	 	0.147	11.586	 	 	 	 	 	
+
+Group Column	Formula Name	Formula	Precision	Notation
+1	Sample	!SampleNames	3 decimal places	Numeric
+2	Well	!WellIDs	3 decimal places	Numeric
+3	DilutionFactor	!SampleDescriptor	3 decimal places	Numeric
+4	Values	!WellValues	3 decimal places	Numeric
+5	Result	InterpX(STD#1@StandardCurve,Values)	3 decimal places	Numeric
+6	MeanResult	Average(Result)	3 decimal places	Numeric
+7	Std.Dev.	Stdev(Result)	3 decimal places	Numeric
+8	CV%	Cv(Result)	3 decimal places	Numeric
+9	HC in Range?	If ((MeanResult>=31.636 and MeanResult<=81.418),"Yes"," ")	3 decimal places	Numeric
+10	LC in Range?	If ((MeanResult>=5.661 and MeanResult<=19.715),"Yes"," ")	3 decimal places	Numeric
+
+Group Summaries
+~End 
+Group: Samples
+Sample	Wells	OD	Conc	AvgConc	SD	CV	Dilution Factor 	AdjConc	
+01	A3	0.658	206.254	209.790	5.001	2.4	100.000	20979.025	
+ 	A4	0.674	213.326	 	 	 	 	 	
+02	B3	0.215	35.058	34.936	0.173	0.5	1000.000	34935.920	
+ 	B4	0.214	34.814	 	 	 	 	 	
+03	C3	0.127	4.552	4.534	0.025	0.6	10000.000	45340.745	
+ 	C4	0.127	4.516	 	 	 	 	 	
+04	D3	0.125	3.872	3.926	0.076	1.9	10.000	39.259	
+ 	D4	0.126	3.980	 	 	 	 	 	
+05	E3	0.116	0.567	0.567	0.000	0.0	100.000	56.663	
+ 	E4	0.113	Range?	 	 	 	 	 	
+06	F3	0.116	0.489	0.489	0.000	0.0	1000.000	489.446	
+ 	F4	0.116	0.489	 	 	 	 	 	
+07	G3	0.122	2.826	3.043	0.307	10.1	10.000	30.434	
+ 	G4	0.124	3.260	 	 	 	 	 	
+08	H3	0.124	3.260	3.960	0.989	25.0	100.000	395.971	
+ 	H4	0.128	4.659	 	 	 	 	 	
+09	A5	0.120	1.804	1.319	0.686	52.0	1000.000	1318.835	
+ 	A6	0.117	0.834	 	 	 	 	 	
+10	B5	0.119	1.397	0.826	0.808	97.8	10.000	8.256	
+ 	B6	0.116	0.255	 	 	 	 	 	
+11	C5	0.118	1.135	0.655	0.679	103.7	100.000	65.501	
+ 	C6	0.115	0.175	 	 	 	 	 	
+12	D5	0.116	0.412	0.333	0.111	33.4	1000.000	333.182	
+ 	D6	0.116	0.255	 	 	 	 	 	
+13	E5	0.465	126.938	124.720	3.138	2.5	10.000	1247.197	
+ 	E6	0.454	122.501	 	 	 	 	 	
+14	F5	0.169	19.225	18.306	1.299	7.1	100.000	1830.633	
+ 	F6	0.164	17.388	 	 	 	 	 	
+15	G5	0.122	2.681	2.353	0.465	19.7	1000.000	2352.808	
+ 	G6	0.120	2.024	 	 	 	 	 	
+16	H5	0.489	136.566	132.945	5.121	3.9	10.000	1329.450	
+ 	H6	0.471	129.324	 	 	 	 	 	
+17	A7	0.174	20.784	21.408	0.882	4.1	100.000	2140.804	
+ 	A8	0.177	22.032	 	 	 	 	 	
+18	B7	0.122	2.572	3.240	0.944	29.2	1000.000	3240.076	
+ 	B8	0.126	3.908	 	 	 	 	 	
+19	C7	0.131	5.796	7.100	1.844	26.0	10.000	71.005	
+ 	C8	0.138	8.404	 	 	 	 	 	
+20	D7	0.119	1.582	1.508	0.105	7.0	100.000	150.803	
+ 	D8	0.119	1.434	 	 	 	 	 	
+21	E7	0.116	0.294	0.411	0.165	40.2	1000.000	411.130	
+ 	E8	0.116	0.528	 	 	 	 	 	
+22	F7	0.129	5.264	5.282	0.025	0.5	10.000	52.819	
+ 	F8	0.129	5.300	 	 	 	 	 	
+23	G7	0.117	0.682	1.002	0.453	45.2	100.000	100.195	
+ 	G8	0.118	1.322	 	 	 	 	 	
+24	H7	0.124	3.441	3.387	0.076	2.3	1000.000	3386.651	
+ 	H8	0.124	3.333	 	 	 	 	 	
+25	A9	0.131	5.690	4.475	1.718	38.4	10.000	44.753	
+ 	A10	0.124	3.260	 	 	 	 	 	
+26	B9	0.117	0.682	0.815	0.188	23.1	100.000	81.452	
+ 	B10	0.117	0.947	 	 	 	 	 	
+27	C9	0.118	1.322	1.378	0.079	5.7	1000.000	1378.048	
+ 	C10	0.119	1.434	 	 	 	 	 	
+28	D9	0.118	1.098	1.098	0.000	0.0	10.000	10.979	
+ 	D10	0.118	1.098	 	 	 	 	 	
+29	E9	0.116	0.255	0.255	0.000	0.0	100.000	25.458	
+ 	E10	0.115	Range?	 	 	 	 	 	
+30	F9	0.117	0.758	0.466	0.412	88.5	1000.000	466.276	
+ 	F10	0.115	0.175	 	 	 	 	 	
+
+Group Column	Formula Name	Formula	Precision	Notation
+1	Sample	!SampleNames	2 decimal places	Numeric
+2	Wells	!WellIDs	2 decimal places	Numeric
+3	OD	!WellValues	3 decimal places	Numeric
+4	Conc	InterpX(STD#1@StandardCurve,OD)	3 decimal places	Numeric
+5	AvgConc	Average(Conc)	3 decimal places	Numeric
+6	SD	Stdev(Conc)	3 decimal places	Numeric
+7	CV	Cv(Conc)	1 decimal places	Numeric
+8	Dilution Factor	!SampleDescriptor	3 decimal places	Numeric
+9	AdjConc	AvgConc*!Factor	3 decimal places	Numeric
+
+Group Summaries
+
+~End 
+Original Filename: c258061-2025-0005; Date Last Saved: 4/21/2025 1:40:24 PM
+
