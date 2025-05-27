@@ -112,7 +112,7 @@ class ProcessedDataDocument:
     concentration_factor: float | None = None
 
 
-@dataclass(frozen=True)
+@dataclass
 class Measurement:
     # Measurement metadata
     type_: MeasurementType

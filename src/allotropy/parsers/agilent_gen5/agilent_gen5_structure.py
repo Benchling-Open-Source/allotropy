@@ -1005,6 +1005,74 @@ def create_metadata(header_data: HeaderData) -> Metadata:
     )
 
 
+def create_calculated_data_documents(
+    results_section: list[str] | None,
+    read_data: ReadData,
+    measurements: list[Measurement],
+) -> tuple[list[CalculatedDocument], dict[str, list[ErrorDocument]]]:
+    calculated_data = []
+    error_documents_by_well: defaultdict[str, list[ErrorDocument]] = defaultdict(list)
+    if results_section:
+        if results_section[0].strip() != "Results":
+            return [], {}
+
+        data = read_csv(StringIO("\n".join(results_section[1:])), sep="\t")
+
+        calculated_data_by_well = defaultdict(list)
+        for row_name, row in data.iterrows():
+            label = str(row.iloc[-1])
+            # Skip rows containing measurement data
+            if label in read_data.measurement_labels:
+                continue
+
+            for col_index, value in enumerate(row.iloc[:-1]):
+                well_pos = f"{row_name}{col_index + 1}"
+                well_value = try_float_or_none(value)
+
+                # Handle numeric values
+                if well_value is not None and not math.isnan(well_value):
+                    calculated_data_by_well[well_pos].append((label, well_value))
+                    continue
+
+                # Handle empty cells
+                if pd.isna(value) or value is None or str(value).strip() == "":
+                    continue
+
+                # Handle non-numeric error values
+                error_documents_by_well[well_pos].append(
+                    ErrorDocument(
+                        error=str(value).strip(),
+                        error_feature=label,
+                    )
+                )
+                calculated_data_by_well[well_pos].append((label, NEGATIVE_ZERO))
+
+        well_to_measurement_id = {
+            measurement.location_identifier: measurement.identifier
+            for measurement in measurements
+        }
+
+        for well_position, well_calculated_data in calculated_data_by_well.items():
+            for label, value in well_calculated_data:
+                calculated_data.append(
+                    CalculatedDocument(
+                        uuid=random_uuid_str(),
+                        data_sources=[
+                            DataSource(
+                                reference=Referenceable(
+                                    well_to_measurement_id[well_position]
+                                ),
+                                feature=read_data.read_mode.value.lower(),
+                            )
+                        ],
+                        unit=UNITLESS,
+                        name=label,
+                        value=value,
+                    )
+                )
+    return calculated_data, error_documents_by_well
+
+
 def create_spectrum_results(
     header_data: HeaderData,
     read_data_list: list[ReadData],
@@ -1167,59 +1235,29 @@ def create_spectrum_results(
 
         measurements.append(measurement)
 
-    measurement_group = MeasurementGroup(
-        measurement_time=header_data.datetime,
-        plate_well_count=header_data.plate_well_count,
-        measurements=measurements,
+    calculated_data, calculated_data_errors = create_calculated_data_documents(
+        results_section, read_data_list[0], measurements
     )
 
-    calculated_data = []
-    if results_section:
-        if results_section[0].strip() != "Results":
-            return [measurement_group], []
+    # Add calculated data errors to measurement error documents
+    for well_position, errors in calculated_data_errors.items():
+        for measurement in measurements:
+            if measurement.location_identifier == well_position:
+                if measurement.error_document:
+                    measurement.error_document.extend(errors)
+                else:
+                    measurement.error_document = errors
 
-        data = read_csv(StringIO("\n".join(results_section[1:])), sep="\t")
+    measurement_groups = [
+        MeasurementGroup(
+            measurement_time=header_data.datetime,
+            plate_well_count=header_data.plate_well_count,
+            measurements=[measurement],
+        )
+        for measurement in measurements
+    ]
 
-        calculated_data_by_well = defaultdict(list)
-        for row_name, row in data.iterrows():
-            label = str(row.iloc[-1])
-            # Skip rows containing measurement data
-            if label in read_data.measurement_labels:
-                continue
-
-            for col_index, value in enumerate(row.iloc[:-1]):
-                well_pos = f"{row_name}{col_index + 1}"
-                well_value = try_float_or_none(value)
-                if well_value is not None:
-                    calculated_data_by_well[well_pos].append((label, well_value))
-
-        well_to_measurement_id = {
-            measurement.location_identifier: measurement.identifier
-            for measurement in measurements
-        }
-
-        for well_position, well_calculated_data in calculated_data_by_well.items():
-            for label, value in well_calculated_data:
-                if math.isnan(value):
-                    continue
-                calculated_data.append(
-                    CalculatedDocument(
-                        uuid=random_uuid_str(),
-                        data_sources=[
-                            DataSource(
-                                reference=Referenceable(
-                                    well_to_measurement_id[well_position]
-                                ),
-                                feature=read_data.read_mode.value.lower(),
-                            )
-                        ],
-                        unit=UNITLESS,
-                        name=label,
-                        value=value,
-                    )
-                )
-
-    return [measurement_group], calculated_data
+    return measurement_groups, calculated_data
 
 
 def _is_label_in_measurement_labels(label: str, measurement_labels: set[str]) -> bool:

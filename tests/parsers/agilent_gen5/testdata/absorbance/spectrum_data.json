@@ -26,6 +26,14 @@
                                 "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240307_abs_SpectralScan_withStepLabel_noPlateLayout.prt",
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "OVRFLW",
+                                        "error feature": "Mean Max OD [Spectral_Scan_Test:Spectrum]"
+                                    }
+                                ]
+                            },
                             "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\20240215_abs_SpectralScan_StepLabel_noPlateLayout.xpt",
                             "absorption spectrum data cube": {
                                 "label": "absorbance-spectrum",
@@ -54,7 +62,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -81,6 +101,10 @@
                                     {
                                         "error": "OVRFLW",
                                         "error feature": "300.0nm"
+                                    },
+                                    {
+                                        "error": "OVRFLW",
+                                        "error feature": "Mean Max OD [Spectral_Scan_Test:Spectrum]"
                                     }
                                 ]
                             },
@@ -113,7 +137,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -163,7 +199,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -213,7 +261,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -263,7 +323,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -313,7 +385,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -363,7 +447,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -413,7 +509,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -463,7 +571,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -513,7 +633,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -563,7 +695,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -613,7 +757,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -663,7 +819,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -713,7 +881,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -763,7 +943,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -813,7 +1005,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -863,7 +1067,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -913,7 +1129,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -963,7 +1191,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -1013,7 +1253,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -1063,7 +1315,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -1113,7 +1377,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -1163,7 +1439,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -1213,7 +1501,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -1263,7 +1563,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -1313,7 +1625,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -1363,7 +1687,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -1413,7 +1749,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -1463,7 +1811,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -1513,7 +1873,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -1563,7 +1935,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -1613,7 +1997,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -1663,7 +2059,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -1713,7 +2121,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -1763,7 +2183,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -1813,7 +2245,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -1863,7 +2307,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -1913,7 +2369,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -1963,7 +2431,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -2013,7 +2493,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -2063,7 +2555,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -2113,7 +2617,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -2163,7 +2679,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -2213,7 +2741,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -2263,7 +2803,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -2313,7 +2865,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -2363,7 +2927,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -2413,7 +2989,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -2463,7 +3051,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -2513,7 +3113,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -2563,7 +3175,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -2613,7 +3237,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -2663,7 +3299,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -2713,7 +3361,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -2763,7 +3423,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -2813,7 +3485,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -2863,7 +3547,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -2913,7 +3609,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -2963,7 +3671,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3013,7 +3733,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3063,7 +3795,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3113,7 +3857,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3163,7 +3919,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3213,7 +3981,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3263,7 +4043,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3313,7 +4105,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3363,7 +4167,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3413,7 +4229,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3463,7 +4291,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3513,7 +4353,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3563,7 +4415,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3613,7 +4477,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3663,7 +4539,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3713,7 +4601,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3763,7 +4663,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3813,7 +4725,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3863,7 +4787,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3913,7 +4849,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -3963,7 +4911,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -4013,7 +4973,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -4063,7 +5035,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -4113,7 +5097,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -4163,7 +5159,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -4213,7 +5221,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -4263,7 +5283,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -4313,7 +5345,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -4363,7 +5407,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -4413,7 +5469,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -4463,7 +5531,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -4513,7 +5593,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -4563,7 +5655,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -4613,7 +5717,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -4663,7 +5779,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -4713,7 +5841,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -4763,7 +5903,19 @@
                                     ]
                                 }
                             }
-                        },
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
                         {
                             "device control aggregate document": {
                                 "device control document": [
@@ -4830,7 +5982,7 @@
                     "calculated data name": "Mean Max OD [Spectral_Scan_Test:Spectrum]",
                     "calculated result": {
                         "unit": "(unitless)",
-                        "value": 1.38
+                        "value": -0.0
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_96",
                     "data source aggregate document": {
@@ -4846,7 +5998,7 @@
                     "calculated data name": "Mean Max OD [Spectral_Scan_Test:Spectrum]",
                     "calculated result": {
                         "unit": "(unitless)",
-                        "value": 1.41
+                        "value": -0.0
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_97",
                     "data source aggregate document": {
