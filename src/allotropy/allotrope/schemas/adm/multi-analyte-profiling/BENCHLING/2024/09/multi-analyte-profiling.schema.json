@@ -2032,11 +2032,15 @@
           "enum": [
             "arithmetic mean role",
             "median role",
+            "coefficient of variation role",
             "relative standard deviation role",
             "skewness role",
             "standard deviation role",
             "variance role",
             "maximum value role",
+            "trimmed maximum role",
+            "trimmed count role",
+            "trimmed standard deviation role",
             "minimum value role",
             "initial value role",
             "final value role"
