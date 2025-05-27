@@ -735,7 +735,7 @@ def get_kinetic_measurements(
                         error_documents[str(col_name)].append(
                             ErrorDocument(
                                 error=str_value,
-                                error_feature=f"{col_name}-{time_point}s",
+                                error_feature=f"{time_point}s",
                             )
                         )
                 # Use NEGATIVE_ZERO for non-numeric values
@@ -1045,7 +1045,7 @@ def create_spectrum_results(
                     errors.append(
                         ErrorDocument(
                             error=original_value,
-                            error_feature=f"{column}-{wavelength}nm",
+                            error_feature=f"{wavelength}nm",
                         )
                     )
                 well_values.append(NEGATIVE_ZERO)
