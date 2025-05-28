@@ -12,6 +12,6 @@ Changes:
   * Proposal: Remove requirement for "fluorescence" field in analyte document
 
   
-* Add "coefficient of variation role", "trimmed mode role", "trimmed count role", "trimmed standard deviation role" to tStatisiticDatumRole class
+* Add "coefficient of variation role", "trimmed mode role", "trimmed count role", "trimmed standard deviation role", "trimmed arithmetic mean role" to tStatisiticDatumRole class
   * Reasoning: Support of additional statistical terms that are exported from multi-analyte-profilers
-  * Proposal: Add "coefficient of variation role", "trimmed mode role", "trimmed count role", "trimmed standard deviation role" to tStatisiticDatumRole 
+  * Proposal: Add "coefficient of variation role", "trimmed mode role", "trimmed count role", "trimmed standard deviation role", "trimmed arithmetic mean role" to tStatisiticDatumRole 
