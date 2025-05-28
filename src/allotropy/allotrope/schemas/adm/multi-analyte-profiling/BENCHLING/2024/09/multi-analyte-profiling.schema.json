@@ -1371,7 +1371,7 @@
                             "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001620",
                             "$asm.pattern": "value datum",
                             "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTimeStamp",
-                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tDateTimeStampValue"
                           },
                           "expiry time prescription": {
                             "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002037",
