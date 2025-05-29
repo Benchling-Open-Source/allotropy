@@ -1,0 +1,710 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
+    "cell counting aggregate document": {
+        "cell counting document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_0",
+                            "measurement time": "2025-05-06T13:27:41+00:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 2.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_1",
+                                        "viability (cell counter)": {
+                                            "value": 90.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 4.41,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 4.88,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.47,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 12.52,
+                                            "unit": "µm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 12.97,
+                                            "unit": "µm"
+                                        },
+                                        "total cell count": {
+                                            "value": 2489.0,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 2249.0,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 240.0,
+                                            "unit": "cell"
+                                        },
+                                        "custom information document": {
+                                            "cell aggregation percentage": {
+                                                "value": 2.2,
+                                                "unit": "%"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "5X-1-POS",
+                                "custom information document": {
+                                    "Row": "0",
+                                    "Column": "0",
+                                    "Well Plate Identifier": "17"
+                                }
+                            },
+                            "custom information document": {
+                                "Scanresult Timestamp": "5/6/2025 1:27:41 PM",
+                                "Aggregate Size": 31.62,
+                                "Aggregate Count": 56.0,
+                                "Assay Name": "AOPI OPC",
+                                "Instrument SN": "MX-120-0368"
+                            }
+                        }
+                    ]
+                },
+                "analyst": "admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_2",
+                            "measurement time": "2025-05-06T13:27:41+00:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 2.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_3",
+                                        "viability (cell counter)": {
+                                            "value": 92.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 4.11,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 4.49,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.38,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 12.93,
+                                            "unit": "µm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 16.12,
+                                            "unit": "µm"
+                                        },
+                                        "total cell count": {
+                                            "value": 2284.0,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 2092.0,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 192.0,
+                                            "unit": "cell"
+                                        },
+                                        "custom information document": {
+                                            "cell aggregation percentage": {
+                                                "value": 2.23,
+                                                "unit": "%"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "5X-2-POS",
+                                "custom information document": {
+                                    "Row": "0",
+                                    "Column": "1",
+                                    "Well Plate Identifier": "17"
+                                }
+                            },
+                            "custom information document": {
+                                "Scanresult Timestamp": "5/6/2025 1:27:41 PM",
+                                "Aggregate Size": 31.01,
+                                "Aggregate Count": 52.0
+                            }
+                        }
+                    ]
+                },
+                "analyst": "admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_4",
+                            "measurement time": "2025-05-06T13:27:41+00:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 2.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_5",
+                                        "viability (cell counter)": {
+                                            "value": 92.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 3.45,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 3.77,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.32,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 13.86,
+                                            "unit": "µm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 18.28,
+                                            "unit": "µm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1919.0,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 1757.0,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 162.0,
+                                            "unit": "cell"
+                                        },
+                                        "custom information document": {
+                                            "cell aggregation percentage": {
+                                                "value": 4.05,
+                                                "unit": "%"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "3X-1-POS",
+                                "custom information document": {
+                                    "Row": "0",
+                                    "Column": "2",
+                                    "Well Plate Identifier": "17"
+                                }
+                            },
+                            "custom information document": {
+                                "Scanresult Timestamp": "5/6/2025 1:27:41 PM",
+                                "Aggregate Size": 32.64,
+                                "Aggregate Count": 81.0
+                            }
+                        }
+                    ]
+                },
+                "analyst": "admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_6",
+                            "measurement time": "2025-05-06T13:27:41+00:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 2.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_7",
+                                        "viability (cell counter)": {
+                                            "value": 91.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 3.5,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 3.83,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.33,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 13.63,
+                                            "unit": "µm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 17.38,
+                                            "unit": "µm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1950.0,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 1783.0,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 167.0,
+                                            "unit": "cell"
+                                        },
+                                        "custom information document": {
+                                            "cell aggregation percentage": {
+                                                "value": 3.66,
+                                                "unit": "%"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "3X-2-POS",
+                                "custom information document": {
+                                    "Row": "0",
+                                    "Column": "3",
+                                    "Well Plate Identifier": "17"
+                                }
+                            },
+                            "custom information document": {
+                                "Scanresult Timestamp": "5/6/2025 1:27:41 PM",
+                                "Aggregate Size": 31.9,
+                                "Aggregate Count": 74.0
+                            }
+                        }
+                    ]
+                },
+                "analyst": "admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_8",
+                            "measurement time": "2025-05-06T13:27:41+00:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 2.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_9",
+                                        "viability (cell counter)": {
+                                            "value": 87.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 3.1,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 3.55,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.45,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 11.17,
+                                            "unit": "µm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 9.43,
+                                            "unit": "µm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1814.0,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 1585.0,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 229.0,
+                                            "unit": "cell"
+                                        },
+                                        "custom information document": {
+                                            "cell aggregation percentage": {
+                                                "value": 0.38,
+                                                "unit": "%"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "5X-1-NEG",
+                                "custom information document": {
+                                    "Row": "0",
+                                    "Column": "4",
+                                    "Well Plate Identifier": "17"
+                                }
+                            },
+                            "custom information document": {
+                                "Scanresult Timestamp": "5/6/2025 1:27:41 PM",
+                                "Aggregate Size": 33.54,
+                                "Aggregate Count": 7.0
+                            }
+                        }
+                    ]
+                },
+                "analyst": "admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_10",
+                            "measurement time": "2025-05-06T13:27:41+00:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 2.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_11",
+                                        "viability (cell counter)": {
+                                            "value": 88.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2.97,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 3.37,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.4,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 11.16,
+                                            "unit": "µm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 9.04,
+                                            "unit": "µm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1720.0,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 1517.0,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 203.0,
+                                            "unit": "cell"
+                                        },
+                                        "custom information document": {
+                                            "cell aggregation percentage": {
+                                                "value": 0.06,
+                                                "unit": "%"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "5X-2-NEG",
+                                "custom information document": {
+                                    "Row": "0",
+                                    "Column": "5",
+                                    "Well Plate Identifier": "17"
+                                }
+                            },
+                            "custom information document": {
+                                "Scanresult Timestamp": "5/6/2025 1:27:41 PM",
+                                "Aggregate Size": 25.13,
+                                "Aggregate Count": 1.0
+                            }
+                        }
+                    ]
+                },
+                "analyst": "admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_12",
+                            "measurement time": "2025-05-06T13:27:41+00:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 2.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_13",
+                                        "viability (cell counter)": {
+                                            "value": 87.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 3.56,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 4.08,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.52,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 11.3,
+                                            "unit": "µm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 9.76,
+                                            "unit": "µm"
+                                        },
+                                        "total cell count": {
+                                            "value": 2082.0,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 1817.0,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 265.0,
+                                            "unit": "cell"
+                                        },
+                                        "custom information document": {
+                                            "cell aggregation percentage": {
+                                                "value": 0.19,
+                                                "unit": "%"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "3X-1-NEG",
+                                "custom information document": {
+                                    "Row": "0",
+                                    "Column": "6",
+                                    "Well Plate Identifier": "17"
+                                }
+                            },
+                            "custom information document": {
+                                "Scanresult Timestamp": "5/6/2025 1:27:41 PM",
+                                "Aggregate Size": 25.72,
+                                "Aggregate Count": 4.0
+                            }
+                        }
+                    ]
+                },
+                "analyst": "admin"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_14",
+                            "measurement time": "2025-05-06T13:27:41+00:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 2.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_15",
+                                        "viability (cell counter)": {
+                                            "value": 88.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 3.23,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 3.69,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.46,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 11.31,
+                                            "unit": "µm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 9.22,
+                                            "unit": "µm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1882.0,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 1648.0,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 234.0,
+                                            "unit": "cell"
+                                        },
+                                        "custom information document": {
+                                            "cell aggregation percentage": {
+                                                "value": 0.63,
+                                                "unit": "%"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "3X-2-NEG",
+                                "custom information document": {
+                                    "Row": "0",
+                                    "Column": "7",
+                                    "Well Plate Identifier": "17"
+                                }
+                            },
+                            "custom information document": {
+                                "Scanresult Timestamp": "5/6/2025 1:27:41 PM",
+                                "Aggregate Size": 28.15,
+                                "Aggregate Count": 12.0
+                            }
+                        }
+                    ]
+                },
+                "analyst": "admin"
+            }
+        ],
+        "data system document": {
+            "ASM file identifier": "revvity_matrix_with_headers_section.json",
+            "data system instance identifier": "N/A",
+            "file name": "revvity_matrix_with_headers_section.csv",
+            "UNC path": "tests/parsers/revvity_matrix/testdata/revvity_matrix_with_headers_section.csv",
+            "ASM converter name": "allotropy_revvity_matrix",
+            "ASM converter version": "0.1.91",
+            "software name": "Revvity Matrix",
+            "software version": "2"
+        },
+        "device system document": {
+            "device identifier": "N/A"
+        }
+    }
+}

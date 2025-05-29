@@ -6,8 +6,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "1970-01-01T00:00:00+00:00",
-                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -15,12 +13,12 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "P2-1"
-                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_0",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_1",
                                         "viability (cell counter)": {
                                             "value": 87.0,
                                             "unit": "%"
@@ -63,6 +61,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P2-1"
                             }
                         }
                     ]
@@ -72,8 +73,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "1970-01-01T00:00:00+00:00",
-                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_1",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -81,12 +80,12 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "P2-2"
-                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_2",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_3",
                                         "viability (cell counter)": {
                                             "value": 87.0,
                                             "unit": "%"
@@ -129,6 +128,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P2-2"
                             }
                         }
                     ]
@@ -138,8 +140,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "1970-01-01T00:00:00+00:00",
-                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_2",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -147,12 +147,12 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "P2-3"
-                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_4",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_5",
                                         "viability (cell counter)": {
                                             "value": 85.0,
                                             "unit": "%"
@@ -195,6 +195,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P2-3"
                             }
                         }
                     ]
@@ -204,8 +207,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "1970-01-01T00:00:00+00:00",
-                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_3",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -213,12 +214,12 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "P2-4"
-                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_6",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_7",
                                         "viability (cell counter)": {
                                             "value": 84.0,
                                             "unit": "%"
@@ -261,6 +262,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P2-4"
                             }
                         }
                     ]
@@ -270,8 +274,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "1970-01-01T00:00:00+00:00",
-                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_4",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -279,12 +281,12 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "P2-5"
-                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_8",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_9",
                                         "viability (cell counter)": {
                                             "value": 84.0,
                                             "unit": "%"
@@ -327,6 +329,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P2-5"
                             }
                         }
                     ]
@@ -336,8 +341,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "1970-01-01T00:00:00+00:00",
-                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_5",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -345,12 +348,12 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "P2-6"
-                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_10",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_11",
                                         "viability (cell counter)": {
                                             "value": 85.0,
                                             "unit": "%"
@@ -393,6 +396,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P2-6"
                             }
                         }
                     ]
@@ -402,8 +408,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "1970-01-01T00:00:00+00:00",
-                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_6",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -411,12 +415,12 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "P2-7"
-                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_12",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_13",
                                         "viability (cell counter)": {
                                             "value": 85.0,
                                             "unit": "%"
@@ -459,6 +463,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P2-7"
                             }
                         }
                     ]
@@ -468,8 +475,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "1970-01-01T00:00:00+00:00",
-                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_7",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -477,12 +482,12 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "P2-8"
-                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_14",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_15",
                                         "viability (cell counter)": {
                                             "value": 85.0,
                                             "unit": "%"
@@ -525,6 +530,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P2-8"
                             }
                         }
                     ]
@@ -534,8 +542,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "1970-01-01T00:00:00+00:00",
-                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_8",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -543,12 +549,12 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "P2-9"
-                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_16",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_17",
                                         "viability (cell counter)": {
                                             "value": 85.0,
                                             "unit": "%"
@@ -591,6 +597,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P2-9"
                             }
                         }
                     ]
@@ -600,8 +609,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "1970-01-01T00:00:00+00:00",
-                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_9",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -609,12 +616,12 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "P3-1"
-                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_18",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_19",
                                         "viability (cell counter)": {
                                             "value": 96.0,
                                             "unit": "%"
@@ -658,19 +665,26 @@
                                     }
                                 ]
                             },
+                            "sample document": {
+                                "sample identifier": "P3-1"
+                            },
                             "error aggregate document": {
                                 "error document": [
                                     {
-                                        "error": "No Cells found in F2 Image C"
+                                        "error": "No Cells found in F2 Image C",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image D"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image D",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image F"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image F",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to low"
+                                        "error": " Intensity range to low",
+                                        "error feature": "Cell Counting"
                                     }
                                 ]
                             }
@@ -682,8 +696,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "1970-01-01T00:00:00+00:00",
-                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_10",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -691,12 +703,12 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "P3-2"
-                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_20",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_21",
                                         "viability (cell counter)": {
                                             "value": 83.0,
                                             "unit": "%"
@@ -739,6 +751,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P3-2"
                             }
                         }
                     ]
@@ -748,8 +763,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "1970-01-01T00:00:00+00:00",
-                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_11",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -757,12 +770,12 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "P3-3"
-                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_22",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_23",
                                         "viability (cell counter)": {
                                             "value": 84.0,
                                             "unit": "%"
@@ -805,6 +818,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P3-3"
                             }
                         }
                     ]
@@ -814,86 +830,94 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "1970-01-01T00:00:00+00:00",
-                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_12",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_24",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_25",
+                                        "viability (cell counter)": {
+                                            "value": 100.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 1.83,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 1.83,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 12.96,
+                                            "unit": "µm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 12.96,
+                                            "unit": "µm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 0.0,
+                                            "unit": "µm"
+                                        },
+                                        "total cell count": {
+                                            "value": 930.0,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 930.0,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 0.0,
+                                            "unit": "cell"
+                                        }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "P3-4"
                             },
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "viability (cell counter)": {
-                                            "value": 100.0,
-                                            "unit": "%"
-                                        },
-                                        "viable cell density (cell counter)": {
-                                            "value": 1.83,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "total cell density (cell counter)": {
-                                            "value": 1.83,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 12.96,
-                                            "unit": "µm"
-                                        },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 12.96,
-                                            "unit": "µm"
-                                        },
-                                        "average dead cell diameter (cell counter)": {
-                                            "value": 0.0,
-                                            "unit": "µm"
-                                        },
-                                        "total cell count": {
-                                            "value": 930.0,
-                                            "unit": "cell"
-                                        },
-                                        "viable cell count": {
-                                            "value": 930.0,
-                                            "unit": "cell"
-                                        },
-                                        "dead cell count": {
-                                            "value": 0.0,
-                                            "unit": "cell"
-                                        }
-                                    }
-                                ]
-                            },
                             "error aggregate document": {
                                 "error document": [
                                     {
-                                        "error": "No Cells found in F2 Image A"
+                                        "error": "No Cells found in F2 Image A",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image B"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image B",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image C"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image C",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image D"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image D",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image E"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image E",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image F"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image F",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to low"
+                                        "error": " Intensity range to low",
+                                        "error feature": "Cell Counting"
                                     }
                                 ]
                             }
@@ -905,86 +929,94 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "1970-01-01T00:00:00+00:00",
-                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_13",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_26",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_27",
+                                        "viability (cell counter)": {
+                                            "value": 100.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2.08,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 2.08,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 12.62,
+                                            "unit": "µm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 12.62,
+                                            "unit": "µm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 0.0,
+                                            "unit": "µm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1062.0,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 1062.0,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 0.0,
+                                            "unit": "cell"
+                                        }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "P3-5"
                             },
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "viability (cell counter)": {
-                                            "value": 100.0,
-                                            "unit": "%"
-                                        },
-                                        "viable cell density (cell counter)": {
-                                            "value": 2.08,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "total cell density (cell counter)": {
-                                            "value": 2.08,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 12.62,
-                                            "unit": "µm"
-                                        },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 12.62,
-                                            "unit": "µm"
-                                        },
-                                        "average dead cell diameter (cell counter)": {
-                                            "value": 0.0,
-                                            "unit": "µm"
-                                        },
-                                        "total cell count": {
-                                            "value": 1062.0,
-                                            "unit": "cell"
-                                        },
-                                        "viable cell count": {
-                                            "value": 1062.0,
-                                            "unit": "cell"
-                                        },
-                                        "dead cell count": {
-                                            "value": 0.0,
-                                            "unit": "cell"
-                                        }
-                                    }
-                                ]
-                            },
                             "error aggregate document": {
                                 "error document": [
                                     {
-                                        "error": "No Cells found in F2 Image A"
+                                        "error": "No Cells found in F2 Image A",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image B"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image B",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image C"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image C",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image D"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image D",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image E"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image E",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image F"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image F",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to low"
+                                        "error": " Intensity range to low",
+                                        "error feature": "Cell Counting"
                                     }
                                 ]
                             }
@@ -996,86 +1028,94 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "1970-01-01T00:00:00+00:00",
-                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_14",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_28",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_29",
+                                        "viability (cell counter)": {
+                                            "value": 100.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 1.81,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 1.81,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 13.02,
+                                            "unit": "µm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 13.02,
+                                            "unit": "µm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 0.0,
+                                            "unit": "µm"
+                                        },
+                                        "total cell count": {
+                                            "value": 920.0,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 920.0,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 0.0,
+                                            "unit": "cell"
+                                        }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "P3-6"
                             },
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "viability (cell counter)": {
-                                            "value": 100.0,
-                                            "unit": "%"
-                                        },
-                                        "viable cell density (cell counter)": {
-                                            "value": 1.81,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "total cell density (cell counter)": {
-                                            "value": 1.81,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 13.02,
-                                            "unit": "µm"
-                                        },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 13.02,
-                                            "unit": "µm"
-                                        },
-                                        "average dead cell diameter (cell counter)": {
-                                            "value": 0.0,
-                                            "unit": "µm"
-                                        },
-                                        "total cell count": {
-                                            "value": 920.0,
-                                            "unit": "cell"
-                                        },
-                                        "viable cell count": {
-                                            "value": 920.0,
-                                            "unit": "cell"
-                                        },
-                                        "dead cell count": {
-                                            "value": 0.0,
-                                            "unit": "cell"
-                                        }
-                                    }
-                                ]
-                            },
                             "error aggregate document": {
                                 "error document": [
                                     {
-                                        "error": "No Cells found in F2 Image A"
+                                        "error": "No Cells found in F2 Image A",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image B"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image B",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image C"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image C",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image D"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image D",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image E"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image E",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image F"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image F",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to low"
+                                        "error": " Intensity range to low",
+                                        "error feature": "Cell Counting"
                                     }
                                 ]
                             }
@@ -1087,86 +1127,94 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "1970-01-01T00:00:00+00:00",
-                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_15",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_30",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_31",
+                                        "viability (cell counter)": {
+                                            "value": 100.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 1.8,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 1.8,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 13.17,
+                                            "unit": "µm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 13.17,
+                                            "unit": "µm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 0.0,
+                                            "unit": "µm"
+                                        },
+                                        "total cell count": {
+                                            "value": 915.0,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 915.0,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 0.0,
+                                            "unit": "cell"
+                                        }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "P3-7"
                             },
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "viability (cell counter)": {
-                                            "value": 100.0,
-                                            "unit": "%"
-                                        },
-                                        "viable cell density (cell counter)": {
-                                            "value": 1.8,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "total cell density (cell counter)": {
-                                            "value": 1.8,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 13.17,
-                                            "unit": "µm"
-                                        },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 13.17,
-                                            "unit": "µm"
-                                        },
-                                        "average dead cell diameter (cell counter)": {
-                                            "value": 0.0,
-                                            "unit": "µm"
-                                        },
-                                        "total cell count": {
-                                            "value": 915.0,
-                                            "unit": "cell"
-                                        },
-                                        "viable cell count": {
-                                            "value": 915.0,
-                                            "unit": "cell"
-                                        },
-                                        "dead cell count": {
-                                            "value": 0.0,
-                                            "unit": "cell"
-                                        }
-                                    }
-                                ]
-                            },
                             "error aggregate document": {
                                 "error document": [
                                     {
-                                        "error": "No Cells found in F2 Image A"
+                                        "error": "No Cells found in F2 Image A",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image B"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image B",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image C"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image C",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image D"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image D",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image E"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image E",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image F"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image F",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to low"
+                                        "error": " Intensity range to low",
+                                        "error feature": "Cell Counting"
                                     }
                                 ]
                             }
@@ -1178,86 +1226,94 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "1970-01-01T00:00:00+00:00",
-                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_16",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_32",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_33",
+                                        "viability (cell counter)": {
+                                            "value": 100.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 1.73,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 1.73,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.0,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 11.83,
+                                            "unit": "µm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 11.83,
+                                            "unit": "µm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 0.0,
+                                            "unit": "µm"
+                                        },
+                                        "total cell count": {
+                                            "value": 882.0,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 882.0,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 0.0,
+                                            "unit": "cell"
+                                        }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "P3-8"
                             },
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "viability (cell counter)": {
-                                            "value": 100.0,
-                                            "unit": "%"
-                                        },
-                                        "viable cell density (cell counter)": {
-                                            "value": 1.73,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "total cell density (cell counter)": {
-                                            "value": 1.73,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "dead cell density (cell counter)": {
-                                            "value": 0.0,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 11.83,
-                                            "unit": "µm"
-                                        },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 11.83,
-                                            "unit": "µm"
-                                        },
-                                        "average dead cell diameter (cell counter)": {
-                                            "value": 0.0,
-                                            "unit": "µm"
-                                        },
-                                        "total cell count": {
-                                            "value": 882.0,
-                                            "unit": "cell"
-                                        },
-                                        "viable cell count": {
-                                            "value": 882.0,
-                                            "unit": "cell"
-                                        },
-                                        "dead cell count": {
-                                            "value": 0.0,
-                                            "unit": "cell"
-                                        }
-                                    }
-                                ]
-                            },
                             "error aggregate document": {
                                 "error document": [
                                     {
-                                        "error": "No Cells found in F2 Image A"
+                                        "error": "No Cells found in F2 Image A",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image B"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image B",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image C"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image C",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image D"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image D",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image E"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image E",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image F"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image F",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to low"
+                                        "error": " Intensity range to low",
+                                        "error feature": "Cell Counting"
                                     }
                                 ]
                             }
@@ -1269,8 +1325,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "1970-01-01T00:00:00+00:00",
-                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_17",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1278,12 +1332,12 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "P3-9"
-                            },
+                            "measurement identifier": "REVVITY_MATRIX_TEST_ID_34",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "processed data identifier": "REVVITY_MATRIX_TEST_ID_35",
                                         "viability (cell counter)": {
                                             "value": 100.0,
                                             "unit": "%"
@@ -1327,28 +1381,38 @@
                                     }
                                 ]
                             },
+                            "sample document": {
+                                "sample identifier": "P3-9"
+                            },
                             "error aggregate document": {
                                 "error document": [
                                     {
-                                        "error": "No Cells found in F2 Image A"
+                                        "error": "No Cells found in F2 Image A",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image B"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image B",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image C"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image C",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image D"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image D",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image E"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image E",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to lowNo Cells found in F2 Image F"
+                                        "error": " Intensity range to lowNo Cells found in F2 Image F",
+                                        "error feature": "Cell Counting"
                                     },
                                     {
-                                        "error": " Intensity range to low"
+                                        "error": " Intensity range to low",
+                                        "error feature": "Cell Counting"
                                     }
                                 ]
                             }
@@ -1363,7 +1427,8 @@
             "file name": "revvity_matrix_1_xlsx.xlsx",
             "UNC path": "tests/parsers/revvity_matrix/testdata/revvity_matrix_1_xlsx.xlsx",
             "ASM converter name": "allotropy_revvity_matrix",
-            "ASM converter version": "0.1.66"
+            "ASM converter version": "0.1.91",
+            "software name": "Revvity Matrix"
         },
         "device system document": {
             "device identifier": "N/A"
