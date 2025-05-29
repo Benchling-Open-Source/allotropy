@@ -22,7 +22,7 @@ class RevvityMatrixReader:
             df = read_csv(
                 named_file_contents.contents, encoding=named_file_contents.encoding
             )
-            # Check if this is the new format with headers
+            # Check if this is the format with headers
             if self._has_header_format(df):
                 self._extract_headers_and_data(df)
             else:
@@ -31,7 +31,7 @@ class RevvityMatrixReader:
 
         else:
             df = read_excel(named_file_contents.contents)
-            # Check if this is the new format with headers
+            # Check if this is the format with headers
             if self._has_header_format(df):
                 self._extract_headers_and_data(df)
             else:
