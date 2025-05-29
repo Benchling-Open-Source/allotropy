@@ -258,6 +258,13 @@
                                                             "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/RFU"
                                                           }
                                                         ]
+                                                      },
+                                                      "statistics aggregate document": {
+                                                        "allOf": [
+                                                          {
+                                                            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/hierarchy.schema#/$defs/statisticsAggregateDocument"
+                                                          }
+                                                        ]
                                                       }
                                                     },
                                                     "required": [
@@ -825,6 +832,34 @@
                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002698",
                 "type": "object",
                 "properties": {
+                  "statistic dimension aggregate document": {
+                    "$asm.pattern": "aggregate datum",
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002697",
+                    "properties": {
+                      "statistic dimension document": {
+                        "$asm.array-mixed": false,
+                        "$asm.array-ordered": false,
+                        "$asm.pattern": "indexed datum",
+                        "items": {
+                          "$asm.pattern": "aggregate datum",
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002698",
+                          "properties": {
+                            "dimension identifier": {
+                              "$asm.pattern": "value datum",
+                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0003003",
+                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                            },
+                            "statistical value": {
+                              "$asm.pattern": "quantity datum",
+                              "$asm.property-class": "TODO",
+                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
                   "statistical feature": {
                     "$asm.pattern": "class datum",
                     "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002699",
@@ -878,6 +913,7 @@
                           "concentration",
                           "container diameter",
                           "container height",
+                          "count",
                           "degassed sample weight",
                           "detector view volume",
                           "diameter",
