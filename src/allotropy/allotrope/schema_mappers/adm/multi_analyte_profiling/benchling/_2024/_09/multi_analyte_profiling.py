@@ -158,8 +158,7 @@ class Mapper(SchemaMapper[Data, Model]):
             measurement_aggregate_document=MeasurementAggregateDocument(
                 experiment_type=measurement_group.experiment_type,
                 analytical_method_identifier=measurement_group.analytical_method_identifier,
-                # TODO: either add it to the schema or to a custom document
-                method_version=measurement_group.method_version,  # type: ignore [call-arg]
+                method_version=measurement_group.method_version,
                 experimental_data_identifier=measurement_group.experimental_data_identifier,
                 container_type=measurement_group.container_type,
                 plate_well_count=quantity_or_none(

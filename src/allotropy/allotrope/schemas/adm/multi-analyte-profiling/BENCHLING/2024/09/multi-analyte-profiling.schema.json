@@ -40,6 +40,12 @@
                                 "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                                 "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
                               },
+                              "method version": {
+                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002837",
+                                "$asm.pattern": "value datum",
+                                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tStringValue"
+                              },
                               "experimental data identifier": {
                                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001977",
                                 "$asm.pattern": "value datum",
