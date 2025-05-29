@@ -24,6 +24,7 @@ def create_metadata(file_path: str, headers: SeriesData | None) -> Metadata:
         device_type=constants.DEVICE_TYPE,
         software_name="Revvity Matrix",
         software_version=headers.get(str, "Version") if headers else None,
+        equipment_serial_number=headers.get(str, "Instrument SN") if headers else None,
     )
 
 
@@ -98,8 +99,11 @@ def create_measurement_group(data: SeriesData, headers: SeriesData) -> Measureme
                 },
                 processed_data_identifier=random_uuid_str(),
                 cell_aggregation_percentage=data.get(float, "Aggregates (%)"),
-                aggregate_count=data.get(float, "Aggregates Count"),
-                aggregate_size=data.get(float, "Aggregates Size"),
+                aggregate_count=data.get(float, "Aggregate Count"),
+                aggregate_size=data.get(float, "Aggregate Size"),
+                experimental_data_identifier=headers.get(str, "Assay Name")
+                if has_headers
+                else None,
                 cell_density_dilution_factor=headers.get(float, "Dilution")
                 if has_headers
                 else None,
