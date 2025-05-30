@@ -18,7 +18,7 @@ def test_get_parser() -> None:
 
 
 def test_supported_schemas() -> None:
-    assert Vendor.AGILENT_GEN5.asm_versions == ["REC/2024/06"]
+    assert Vendor.AGILENT_GEN5.asm_versions == ["REC/2025/03"]
     assert Vendor.AGILENT_GEN5.technique == "Plate Reader"
     assert Vendor.APPBIO_ABSOLUTE_Q.technique == "dPCR"
 

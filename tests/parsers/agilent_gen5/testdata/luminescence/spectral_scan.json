@@ -1,0 +1,101 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2025/03/plate-reader.manifest",
+    "plate reader aggregate document": {
+        "plate reader document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Luminescence",
+                                        "detector carriage speed setting": "Normal",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 4.5,
+                                            "unit": "mm"
+                                        },
+                                        "detector gain setting": "200",
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "excitation wavelength setting": {
+                                            "value": 480.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation bandwidth setting": {
+                                            "value": 20.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_0",
+                            "sample document": {
+                                "location identifier": "A1",
+                                "sample identifier": "Plate 1 A1",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "OVRFLW",
+                                        "error feature": "310.0nm"
+                                    }
+                                ]
+                            },
+                            "fluorescence emission spectrum data cube": {
+                                "label": "absorbance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [300.0, 310.0, 320.0]
+                                    ],
+                                    "measures": [
+                                        [0.123,
+                                            -0.0, 0.125]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            }
+        ],
+        "data system document": {
+            "ASM file identifier": "spectral_scan.json",
+            "data system instance identifier": "N/A",
+            "UNC path": "tests/parsers/agilent_gen5/testdata/luminescence/spectral_scan.txt",
+            "file name": "spectral_scan.txt",
+            "ASM converter name": "allotropy_agilent_gen5",
+            "ASM converter version": "0.1.90",
+            "software name": "Gen5",
+            "software version": "3.12.08"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "Synergy Neo2",
+            "equipment serial number": "Unknown"
+        }
+    }
+}

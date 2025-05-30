@@ -94,8 +94,10 @@ class MeasurementType(Enum):
     FLUORESCENCE_CUBE_DETECTOR = "FLUORESCENCE_CUBE_DETECTOR"
     LUMINESCENCE_CUBE_DETECTOR = "LUMINESCENCE_CUBE_DETECTOR"
     ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM = "ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM"
-    FLUORESCENCE_CUBE_SPECTRUM = "FLUORESCENCE_CUBE_SPECTRUM"
-    LUMINESCENCE_CUBE_SPECTRUM = "LUMINESCENCE_CUBE_SPECTRUM"
+    EMISSION_FLUORESCENCE_CUBE_SPECTRUM = "EMISSION_FLUORESCENCE_CUBE_SPECTRUM"
+    EXCITATION_FLUORESCENCE_CUBE_SPECTRUM = "EXCITATION_FLUORESCENCE_CUBE_SPECTRUM"
+    EMISSION_LUMINESCENCE_CUBE_SPECTRUM = "EMISSION_LUMINESCENCE_CUBE_SPECTRUM"
+    EXCITATION_LUMINESCENCE_CUBE_SPECTRUM = "EXCITATION_LUMINESCENCE_CUBE_SPECTRUM"
 
 
 @dataclass(frozen=True)
@@ -110,7 +112,7 @@ class ProcessedDataDocument:
     concentration_factor: float | None = None
 
 
-@dataclass(frozen=True)
+@dataclass
 class Measurement:
     # Measurement metadata
     type_: MeasurementType
@@ -150,6 +152,8 @@ class Measurement:
     device_control_custom_info: dict[str, Any] | None = None
     electronic_absorbance_reference_wavelength_setting: float | None = None
     wavelength_identifier: str | None = None
+    analytical_method_identifier: str | None = None
+    experimental_data_identifier: str | None = None
 
     auto_focus_enabled_setting: bool | None = None
     exposure_duration_setting: float | None = None
@@ -184,8 +188,6 @@ class MeasurementGroup:
     plate_well_count: float
     measurement_time: str
     analyst: str | None = None
-    analytical_method_identifier: str | None = None
-    experimental_data_identifier: str | None = None
     experiment_type: str | None = None
     maximum_wavelength_signal: float | None = None
     custom_info: dict[str, Any] | None = None
@@ -293,8 +295,10 @@ class Mapper(SchemaMapper[Data, Model]):
             return self._get_profile_data_cube_measurement_document(measurement)
         elif measurement.type_ in [
             MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM,
-            MeasurementType.FLUORESCENCE_CUBE_SPECTRUM,
-            MeasurementType.LUMINESCENCE_CUBE_SPECTRUM,
+            MeasurementType.EXCITATION_FLUORESCENCE_CUBE_SPECTRUM,
+            MeasurementType.EMISSION_FLUORESCENCE_CUBE_SPECTRUM,
+            MeasurementType.EMISSION_LUMINESCENCE_CUBE_SPECTRUM,
+            MeasurementType.EXCITATION_LUMINESCENCE_CUBE_SPECTRUM,
         ]:
             return self._get_spectrum_data_cube_measurement_document(measurement)
         else:
@@ -345,6 +349,8 @@ class Mapper(SchemaMapper[Data, Model]):
             illumination_mode_setting=measurement.illumination_mode_setting,
         )
         measurement_doc = MeasurementDocument(
+            experimental_data_identifier=measurement.experimental_data_identifier,
+            analytical_method_identifier=measurement.analytical_method_identifier,
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
@@ -435,6 +441,8 @@ class Mapper(SchemaMapper[Data, Model]):
         )
         doc = MeasurementDocument(
             measurement_identifier=measurement.identifier,
+            experimental_data_identifier=measurement.experimental_data_identifier,
+            analytical_method_identifier=measurement.analytical_method_identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
@@ -520,6 +528,8 @@ class Mapper(SchemaMapper[Data, Model]):
         )
         measurement_doc = MeasurementDocument(
             measurement_identifier=measurement.identifier,
+            experimental_data_identifier=measurement.experimental_data_identifier,
+            analytical_method_identifier=measurement.analytical_method_identifier,
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
                     add_custom_information_document(
@@ -612,6 +622,8 @@ class Mapper(SchemaMapper[Data, Model]):
 
         return MeasurementDocument(
             measurement_identifier=measurement.identifier,
+            experimental_data_identifier=measurement.experimental_data_identifier,
+            analytical_method_identifier=measurement.analytical_method_identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[device_control_document]
@@ -634,6 +646,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 profile_data_cube
                 if measurement.type_ == MeasurementType.FLUORESCENCE_CUBE_DETECTOR
                 else None
+            ),
+            error_aggregate_document=self._get_error_aggregate_document(
+                measurement.error_document
             ),
         )
 
@@ -705,6 +720,8 @@ class Mapper(SchemaMapper[Data, Model]):
 
         measurement_doc = MeasurementDocument(
             measurement_identifier=measurement.identifier,
+            experimental_data_identifier=measurement.experimental_data_identifier,
+            analytical_method_identifier=measurement.analytical_method_identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
@@ -723,14 +740,18 @@ class Mapper(SchemaMapper[Data, Model]):
 
         if measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM:
             measurement_doc.absorption_spectrum_data_cube = spectrum_data_cube
-        elif measurement.type_ == MeasurementType.FLUORESCENCE_CUBE_SPECTRUM:
+        elif measurement.type_ in [
+            MeasurementType.EMISSION_FLUORESCENCE_CUBE_SPECTRUM,
+            MeasurementType.EMISSION_LUMINESCENCE_CUBE_SPECTRUM,
+        ]:
             measurement_doc.fluorescence_emission_spectrum_data_cube = (
                 spectrum_data_cube
             )
-        elif measurement.type_ == MeasurementType.LUMINESCENCE_CUBE_SPECTRUM:
-            # Luminescence spectrum also uses fluorescence emission spectrum data
-            # (spectrum of wavelengths for emission with a set excitation wavelength)
-            measurement_doc.fluorescence_emission_spectrum_data_cube = (
+        elif measurement.type_ in [
+            MeasurementType.EXCITATION_FLUORESCENCE_CUBE_SPECTRUM,
+            MeasurementType.EXCITATION_LUMINESCENCE_CUBE_SPECTRUM,
+        ]:
+            measurement_doc.fluorescence_excitation_spectrum_data_cube = (
                 spectrum_data_cube
             )
 
