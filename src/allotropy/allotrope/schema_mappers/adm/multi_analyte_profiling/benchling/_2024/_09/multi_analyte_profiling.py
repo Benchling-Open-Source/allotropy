@@ -17,6 +17,11 @@ from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._09.
     MultiAnalyteProfilingAggregateDocument,
     MultiAnalyteProfilingDocumentItem,
     SampleDocument,
+    StatisticDimensionAggregateDocument,
+    StatisticDimensionDocumentItem,
+    StatisticsAggregateDocument,
+    StatisticsDocumentItem,
+    TQuantityValueModel,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.models.shared.definitions.custom import (
@@ -34,13 +39,27 @@ from allotropy.parsers.utils.values import quantity_or_none
 
 
 @dataclass(frozen=True)
+class StatisticDimension:
+    value: float
+    unit: str
+    statistic_datum_role: TStatisticDatumRole
+
+
+@dataclass(frozen=True)
+class StatisticsDocument:
+    statistical_feature: str
+    statistic_dimensions: list[StatisticDimension]
+
+
+@dataclass(frozen=True)
 class Analyte:
     identifier: str
     name: str
-    value: float
     assay_bead_identifier: str
     assay_bead_count: float
-    statistic_datum_role: TStatisticDatumRole | None
+    statistics: list[StatisticsDocument] | None = None
+    statistic_datum_role: TStatisticDatumRole | None = None
+    fluorescence: float | None = None
 
 
 @dataclass(frozen=True)
@@ -208,8 +227,32 @@ class Mapper(SchemaMapper[Data, Model]):
                         ),
                         fluorescence=quantity_or_none(
                             TQuantityValueRelativeFluorescenceUnit,
-                            analyte.value,
+                            analyte.fluorescence,
                             has_statistic_datum_role=analyte.statistic_datum_role,
+                        ),
+                        statistics_aggregate_document=(
+                            StatisticsAggregateDocument(
+                                statistics_document=[
+                                    StatisticsDocumentItem(
+                                        statistical_feature=statistic.statistical_feature,
+                                        statistic_dimension_aggregate_document=StatisticDimensionAggregateDocument(
+                                            statistic_dimension_document=[
+                                                StatisticDimensionDocumentItem(
+                                                    statistical_value=TQuantityValueModel(
+                                                        value=dimension.value,
+                                                        unit=dimension.unit,
+                                                        has_statistic_datum_role=dimension.statistic_datum_role,
+                                                    ),
+                                                )
+                                                for dimension in statistic.statistic_dimensions
+                                            ]
+                                        ),
+                                    )
+                                    for statistic in analyte.statistics
+                                ]
+                            )
+                            if analyte.statistics
+                            else None
                         ),
                     )
                     for analyte in measurement.analytes
