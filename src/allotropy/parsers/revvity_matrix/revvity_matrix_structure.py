@@ -32,28 +32,20 @@ def create_measurement_group(data: SeriesData, headers: SeriesData) -> Measureme
     # This function will be called for every row in the dataset, use it to create
     # a corresponding measurement group.
 
-    # Handle cell density values based on whether the file has headers or not
-    has_headers = not headers.series.empty
-
-    if has_headers:
-        viable_cell_density = data[float, "Live Concentration (E6)"]
-    else:
-        viable_cell_density = data[float, "Live Cells/mL"]
+    viable_cell_density = data[float, ["Live Concentration (E6)", "Live Cells/mL"]]
+    # Live Cells/mL needs to be converted to 10^6 cells/mL
+    if not data.has_key("Live Concentration (E6)"):
         viable_cell_density = float(Decimal(viable_cell_density) / Decimal("1000000"))
 
-    if has_headers:
-        total_cell_density = data.get(float, "Total Concentration (E6)")
-    else:
-        total_cell_density = data.get(float, "Total Cells/mL")
-        if total_cell_density:
-            total_cell_density = float(Decimal(total_cell_density) / Decimal("1000000"))
+    total_cell_density = data.get(float, ["Total Concentration (E6)", "Total Cells/mL"])
+    # Total Cells/mL needs to be converted to 10^6 cells/mL
+    if total_cell_density is not None and not data.has_key("Total Concentration (E6)"):
+        total_cell_density = float(Decimal(total_cell_density) / Decimal("1000000"))
 
-    if has_headers:
-        dead_cell_density = data.get(float, "Dead Concentration (E6)")
-    else:
-        dead_cell_density = data.get(float, "Dead Cells/mL")
-        if dead_cell_density:
-            dead_cell_density = float(Decimal(dead_cell_density) / Decimal("1000000"))
+    dead_cell_density = data.get(float, ["Dead Concentration (E6)", "Dead Cells/mL"])
+    # Dead Cells/mL needs to be converted to 10^6 cells/mL
+    if dead_cell_density is not None and not data.has_key("Dead Concentration (E6)"):
+        dead_cell_density = float(Decimal(dead_cell_density) / Decimal("1000000"))
 
     errors = data.get(str, ["Errors:", "Errors"], validate=SeriesData.NOT_NAN)
 
