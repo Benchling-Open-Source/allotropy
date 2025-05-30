@@ -1,44 +1,16 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/multi-analyte-profiling/BENCHLING/2024/01/multi-analyte-profiling.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/multi-analyte-profiling/BENCHLING/2024/09/multi-analyte-profiling.manifest",
     "multi analyte profiling aggregate document": {
-        "device system document": {
-            "model number": "Intelliflex",
-            "equipment serial number": "SERIAL_12345",
-            "calibration aggregate document": {
-                "calibration document": [
-                    {
-                        "calibration name": "Calibration",
-                        "calibration time": "2024-10-18T10:26:00+00:00",
-                        "calibration report": "Calibrated"
-                    },
-                    {
-                        "calibration name": "Verification",
-                        "calibration time": "2024-10-18T10:54:00+00:00",
-                        "calibration report": "Verified"
-                    },
-                    {
-                        "calibration name": "Fluidics Test",
-                        "calibration time": "2024-10-18T11:33:00+00:00",
-                        "calibration report": "Verified"
-                    }
-                ]
-            }
-        },
         "multi analyte profiling document": [
             {
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_0",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor14_1",
-                                "location identifier": "A1"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -47,13 +19,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_0",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor14_1",
+                                "location identifier": "A1"
                             },
                             "assay bead count": {
                                 "value": 428.0,
@@ -147,16 +124,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_6",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor14_2",
-                                "location identifier": "A2"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -165,13 +137,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_6",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor14_2",
+                                "location identifier": "A2"
                             },
                             "assay bead count": {
                                 "value": 279.0,
@@ -265,16 +242,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_12",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor14_3",
-                                "location identifier": "A3"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -283,13 +255,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_12",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor14_3",
+                                "location identifier": "A3"
                             },
                             "assay bead count": {
                                 "value": 323.0,
@@ -383,16 +360,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_18",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor14_4",
-                                "location identifier": "A4"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -401,13 +373,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_18",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor14_4",
+                                "location identifier": "A4"
                             },
                             "assay bead count": {
                                 "value": 417.0,
@@ -501,16 +478,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_24",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor14_5",
-                                "location identifier": "A5"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -519,13 +491,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_24",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor14_5",
+                                "location identifier": "A5"
                             },
                             "assay bead count": {
                                 "value": 390.0,
@@ -619,16 +596,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_30",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor14_6",
-                                "location identifier": "A6"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -637,13 +609,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_30",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor14_6",
+                                "location identifier": "A6"
                             },
                             "assay bead count": {
                                 "value": 442.0,
@@ -737,16 +714,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_36",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor14_1",
-                                "location identifier": "A7"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -755,13 +727,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_36",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor14_1",
+                                "location identifier": "A7"
                             },
                             "assay bead count": {
                                 "value": 463.0,
@@ -855,16 +832,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_42",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor14_2",
-                                "location identifier": "A8"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -873,13 +845,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_42",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor14_2",
+                                "location identifier": "A8"
                             },
                             "assay bead count": {
                                 "value": 335.0,
@@ -973,16 +950,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_48",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor14_3",
-                                "location identifier": "A9"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -991,13 +963,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_48",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor14_3",
+                                "location identifier": "A9"
                             },
                             "assay bead count": {
                                 "value": 429.0,
@@ -1091,16 +1068,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_54",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor14_4",
-                                "location identifier": "A10"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -1109,13 +1081,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_54",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor14_4",
+                                "location identifier": "A10"
                             },
                             "assay bead count": {
                                 "value": 495.0,
@@ -1209,16 +1186,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_60",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor14_5",
-                                "location identifier": "A11"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -1227,13 +1199,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_60",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor14_5",
+                                "location identifier": "A11"
                             },
                             "assay bead count": {
                                 "value": 503.0,
@@ -1327,16 +1304,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_66",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor14_6",
-                                "location identifier": "A12"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -1345,13 +1317,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_66",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor14_6",
+                                "location identifier": "A12"
                             },
                             "assay bead count": {
                                 "value": 341.0,
@@ -1445,16 +1422,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_72",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor20_1",
-                                "location identifier": "B1"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -1463,13 +1435,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_72",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor20_1",
+                                "location identifier": "B1"
                             },
                             "assay bead count": {
                                 "value": 463.0,
@@ -1563,16 +1540,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_78",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor20_2",
-                                "location identifier": "B2"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -1581,13 +1553,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_78",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor20_2",
+                                "location identifier": "B2"
                             },
                             "assay bead count": {
                                 "value": 302.0,
@@ -1681,16 +1658,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_84",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor20_3",
-                                "location identifier": "B3"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -1699,13 +1671,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_84",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor20_3",
+                                "location identifier": "B3"
                             },
                             "assay bead count": {
                                 "value": 302.0,
@@ -1799,16 +1776,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_90",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor20_4",
-                                "location identifier": "B4"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -1817,13 +1789,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_90",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor20_4",
+                                "location identifier": "B4"
                             },
                             "assay bead count": {
                                 "value": 327.0,
@@ -1917,16 +1894,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_96",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor20_5",
-                                "location identifier": "B5"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -1935,13 +1907,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_96",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor20_5",
+                                "location identifier": "B5"
                             },
                             "assay bead count": {
                                 "value": 302.0,
@@ -2035,16 +2012,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_102",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor20_6",
-                                "location identifier": "B6"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -2053,13 +2025,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_102",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor20_6",
+                                "location identifier": "B6"
                             },
                             "assay bead count": {
                                 "value": 292.0,
@@ -2153,16 +2130,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_108",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor20_1",
-                                "location identifier": "B7"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -2171,13 +2143,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_108",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor20_1",
+                                "location identifier": "B7"
                             },
                             "assay bead count": {
                                 "value": 300.0,
@@ -2271,16 +2248,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_114",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor20_2",
-                                "location identifier": "B8"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -2289,13 +2261,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_114",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor20_2",
+                                "location identifier": "B8"
                             },
                             "assay bead count": {
                                 "value": 321.0,
@@ -2389,16 +2366,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_120",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor20_3",
-                                "location identifier": "B9"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -2407,13 +2379,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_120",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor20_3",
+                                "location identifier": "B9"
                             },
                             "assay bead count": {
                                 "value": 317.0,
@@ -2507,16 +2484,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_126",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor20_4",
-                                "location identifier": "B10"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -2525,13 +2497,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_126",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor20_4",
+                                "location identifier": "B10"
                             },
                             "assay bead count": {
                                 "value": 300.0,
@@ -2625,16 +2602,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_132",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor20_5",
-                                "location identifier": "B11"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -2643,13 +2615,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_132",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor20_5",
+                                "location identifier": "B11"
                             },
                             "assay bead count": {
                                 "value": 316.0,
@@ -2743,16 +2720,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_138",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor20_6",
-                                "location identifier": "B12"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -2761,13 +2733,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_138",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor20_6",
+                                "location identifier": "B12"
                             },
                             "assay bead count": {
                                 "value": 537.0,
@@ -2861,16 +2838,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_144",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor25_1",
-                                "location identifier": "C1"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -2879,13 +2851,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_144",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor25_1",
+                                "location identifier": "C1"
                             },
                             "assay bead count": {
                                 "value": 347.0,
@@ -2979,16 +2956,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_150",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor25_2",
-                                "location identifier": "C2"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -2997,13 +2969,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_150",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor25_2",
+                                "location identifier": "C2"
                             },
                             "assay bead count": {
                                 "value": 323.0,
@@ -3097,16 +3074,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_156",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor25_3",
-                                "location identifier": "C3"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -3115,13 +3087,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_156",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor25_3",
+                                "location identifier": "C3"
                             },
                             "assay bead count": {
                                 "value": 327.0,
@@ -3215,16 +3192,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_162",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor25_4",
-                                "location identifier": "C4"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -3233,13 +3205,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_162",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor25_4",
+                                "location identifier": "C4"
                             },
                             "assay bead count": {
                                 "value": 370.0,
@@ -3333,16 +3310,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_168",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor25_5",
-                                "location identifier": "C5"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -3351,13 +3323,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_168",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor25_5",
+                                "location identifier": "C5"
                             },
                             "assay bead count": {
                                 "value": 273.0,
@@ -3451,16 +3428,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_174",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor25_6",
-                                "location identifier": "C6"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -3469,13 +3441,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_174",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor25_6",
+                                "location identifier": "C6"
                             },
                             "assay bead count": {
                                 "value": 283.0,
@@ -3569,16 +3546,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_180",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor25_1",
-                                "location identifier": "C7"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -3587,13 +3559,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_180",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor25_1",
+                                "location identifier": "C7"
                             },
                             "assay bead count": {
                                 "value": 243.0,
@@ -3687,16 +3664,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_186",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor25_2",
-                                "location identifier": "C8"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -3705,13 +3677,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_186",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor25_2",
+                                "location identifier": "C8"
                             },
                             "assay bead count": {
                                 "value": 273.0,
@@ -3805,16 +3782,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_192",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor25_3",
-                                "location identifier": "C9"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -3823,13 +3795,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_192",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor25_3",
+                                "location identifier": "C9"
                             },
                             "assay bead count": {
                                 "value": 281.0,
@@ -3923,16 +3900,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_198",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor25_4",
-                                "location identifier": "C10"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -3941,13 +3913,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_198",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor25_4",
+                                "location identifier": "C10"
                             },
                             "assay bead count": {
                                 "value": 266.0,
@@ -4041,16 +4018,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_204",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor25_5",
-                                "location identifier": "C11"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -4059,13 +4031,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_204",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor25_5",
+                                "location identifier": "C11"
                             },
                             "assay bead count": {
                                 "value": 332.0,
@@ -4159,16 +4136,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_210",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Donor25_6",
-                                "location identifier": "C12"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -4177,13 +4149,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_210",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Donor25_6",
+                                "location identifier": "C12"
                             },
                             "assay bead count": {
                                 "value": 458.0,
@@ -4277,16 +4254,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_216",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "ACE2Fc_1000",
-                                "location identifier": "E1"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -4295,13 +4267,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_216",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "ACE2Fc_1000",
+                                "location identifier": "E1"
                             },
                             "assay bead count": {
                                 "value": 411.0,
@@ -4395,16 +4372,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_222",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "ACE2Fc_250",
-                                "location identifier": "E2"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -4413,13 +4385,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_222",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "ACE2Fc_250",
+                                "location identifier": "E2"
                             },
                             "assay bead count": {
                                 "value": 356.0,
@@ -4513,16 +4490,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_228",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "ACE2Fc_63",
-                                "location identifier": "E3"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -4531,13 +4503,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_228",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "ACE2Fc_63",
+                                "location identifier": "E3"
                             },
                             "assay bead count": {
                                 "value": 298.0,
@@ -4631,16 +4608,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_234",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "ACE2Fc_16",
-                                "location identifier": "E4"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -4649,13 +4621,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_234",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "ACE2Fc_16",
+                                "location identifier": "E4"
                             },
                             "assay bead count": {
                                 "value": 330.0,
@@ -4749,16 +4726,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_240",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "ACE2Fc_4",
-                                "location identifier": "E5"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -4767,13 +4739,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_240",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "ACE2Fc_4",
+                                "location identifier": "E5"
                             },
                             "assay bead count": {
                                 "value": 265.0,
@@ -4867,16 +4844,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_246",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "ACE2Fc_1",
-                                "location identifier": "E6"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -4885,13 +4857,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_246",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "ACE2Fc_1",
+                                "location identifier": "E6"
                             },
                             "assay bead count": {
                                 "value": 286.0,
@@ -4985,16 +4962,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_252",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "ACE2Fc_1000",
-                                "location identifier": "E7"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -5003,13 +4975,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_252",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "ACE2Fc_1000",
+                                "location identifier": "E7"
                             },
                             "assay bead count": {
                                 "value": 266.0,
@@ -5103,16 +5080,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_258",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "ACE2Fc_250",
-                                "location identifier": "E8"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -5121,13 +5093,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_258",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "ACE2Fc_250",
+                                "location identifier": "E8"
                             },
                             "assay bead count": {
                                 "value": 299.0,
@@ -5221,16 +5198,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_264",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "ACE2Fc_63",
-                                "location identifier": "E9"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -5239,13 +5211,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_264",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "ACE2Fc_63",
+                                "location identifier": "E9"
                             },
                             "assay bead count": {
                                 "value": 242.0,
@@ -5339,16 +5316,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_270",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "ACE2Fc_16",
-                                "location identifier": "E10"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -5357,13 +5329,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_270",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "ACE2Fc_16",
+                                "location identifier": "E10"
                             },
                             "assay bead count": {
                                 "value": 262.0,
@@ -5457,16 +5434,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_276",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "ACE2Fc_4",
-                                "location identifier": "E11"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -5475,13 +5447,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_276",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "ACE2Fc_4",
+                                "location identifier": "E11"
                             },
                             "assay bead count": {
                                 "value": 240.0,
@@ -5575,16 +5552,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_282",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "ACE2Fc_1",
-                                "location identifier": "E12"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -5593,13 +5565,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_282",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "ACE2Fc_1",
+                                "location identifier": "E12"
                             },
                             "assay bead count": {
                                 "value": 395.0,
@@ -5693,16 +5670,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_288",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "AntiHis_5",
-                                "location identifier": "H1"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -5711,13 +5683,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_288",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "AntiHis_5",
+                                "location identifier": "H1"
                             },
                             "assay bead count": {
                                 "value": 326.0,
@@ -5811,16 +5788,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_294",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "AntiHis_5",
-                                "location identifier": "H2"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -5829,13 +5801,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_294",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "AntiHis_5",
+                                "location identifier": "H2"
                             },
                             "assay bead count": {
                                 "value": 391.0,
@@ -5929,16 +5906,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_300",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "AntiHis_5",
-                                "location identifier": "H3"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -5947,13 +5919,18 @@
                                             "value": 1.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
                                     }
                                 ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_300",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "AntiHis_5",
+                                "location identifier": "H3"
                             },
                             "assay bead count": {
                                 "value": 389.0,
@@ -6047,16 +6024,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_306",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Background",
-                                "location identifier": "H7"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -6065,11 +6037,24 @@
                                             "value": -0.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_306",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Background",
+                                "location identifier": "H7"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Not reported in file",
+                                        "error feature": "dilution factor setting"
                                     }
                                 ]
                             },
@@ -6150,14 +6135,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "Not reported in file",
-                                        "error feature": "dilution factor setting"
-                                    }
-                                ]
                             }
                         }
                     ],
@@ -6173,16 +6150,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_312",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Background",
-                                "location identifier": "H8"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -6191,11 +6163,24 @@
                                             "value": -0.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_312",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Background",
+                                "location identifier": "H8"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Not reported in file",
+                                        "error feature": "dilution factor setting"
                                     }
                                 ]
                             },
@@ -6276,14 +6261,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "Not reported in file",
-                                        "error feature": "dilution factor setting"
-                                    }
-                                ]
                             }
                         }
                     ],
@@ -6299,16 +6276,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_318",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Background",
-                                "location identifier": "H9"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -6317,11 +6289,24 @@
                                             "value": -0.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_318",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Background",
+                                "location identifier": "H9"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Not reported in file",
+                                        "error feature": "dilution factor setting"
                                     }
                                 ]
                             },
@@ -6402,14 +6387,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "Not reported in file",
-                                        "error feature": "dilution factor setting"
-                                    }
-                                ]
                             }
                         }
                     ],
@@ -6425,16 +6402,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_324",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Background",
-                                "location identifier": "H10"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -6443,11 +6415,24 @@
                                             "value": -0.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_324",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Background",
+                                "location identifier": "H10"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Not reported in file",
+                                        "error feature": "dilution factor setting"
                                     }
                                 ]
                             },
@@ -6528,14 +6513,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "Not reported in file",
-                                        "error feature": "dilution factor setting"
-                                    }
-                                ]
                             }
                         }
                     ],
@@ -6551,16 +6528,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_330",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Background",
-                                "location identifier": "H11"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -6569,11 +6541,24 @@
                                             "value": -0.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_330",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Background",
+                                "location identifier": "H11"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Not reported in file",
+                                        "error feature": "dilution factor setting"
                                     }
                                 ]
                             },
@@ -6654,14 +6639,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "Not reported in file",
-                                        "error feature": "dilution factor setting"
-                                    }
-                                ]
                             }
                         }
                     ],
@@ -6677,16 +6654,11 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_336",
-                            "measurement time": "2024-10-18T11:36:00+00:00",
-                            "sample document": {
-                                "sample identifier": "Background",
-                                "location identifier": "H12"
-                            },
                             "device control aggregate document": {
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
                                             "unit": "μL"
@@ -6695,11 +6667,24 @@
                                             "value": -0.0,
                                             "unit": "(unitless)"
                                         },
-                                        "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
-                                        "minimum assay bead count setting": {
+                                        "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
                                         }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_336",
+                            "measurement time": "2024-10-18T11:36:00+00:00",
+                            "sample document": {
+                                "sample identifier": "Background",
+                                "location identifier": "H12"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Not reported in file",
+                                        "error feature": "dilution factor setting"
                                     }
                                 ]
                             },
@@ -6780,14 +6765,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "Not reported in file",
-                                        "error feature": "dilution factor setting"
-                                    }
-                                ]
                             }
                         }
                     ],
@@ -6801,13 +6778,37 @@
             }
         ],
         "data system document": {
+            "ASM file identifier": "luminex_xPONENT_missing_optional_fields.json",
             "data system instance identifier": "SOME-PC",
             "file name": "luminex_xPONENT_missing_optional_fields.csv",
             "UNC path": "tests/parsers/luminex_xponent/testdata/luminex_xPONENT_missing_optional_fields.csv",
-            "software name": "xPONENT",
-            "software version": "2.1.1015",
             "ASM converter name": "allotropy_luminex_xponent",
-            "ASM converter version": "0.1.74"
+            "ASM converter version": "0.1.91",
+            "software name": "xPONENT",
+            "software version": "2.1.1015"
+        },
+        "device system document": {
+            "equipment serial number": "SERIAL_12345",
+            "model number": "Intelliflex",
+            "calibration aggregate document": {
+                "calibration document": [
+                    {
+                        "calibration name": "Calibration",
+                        "calibration time": "2024-10-18T10:26:00+00:00",
+                        "calibration report": "Calibrated"
+                    },
+                    {
+                        "calibration name": "Verification",
+                        "calibration time": "2024-10-18T10:54:00+00:00",
+                        "calibration report": "Verified"
+                    },
+                    {
+                        "calibration name": "Fluidics Test",
+                        "calibration time": "2024-10-18T11:33:00+00:00",
+                        "calibration report": "Verified"
+                    }
+                ]
+            }
         }
     }
 }

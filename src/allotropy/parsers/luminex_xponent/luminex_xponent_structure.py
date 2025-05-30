@@ -9,7 +9,7 @@ import pandas as pd
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TStatisticDatumRole,
 )
-from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._01.multi_analyte_profiling import (
+from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
     Analyte,
     Calibration,
     Error,
@@ -59,11 +59,11 @@ class Header:
             analytical_method_identifier=info_row.get(str, "ProtocolName"),
             method_version=info_row.get(str, "ProtocolVersion"),
             experimental_data_identifier=info_row.get(str, "Batch"),
-            sample_volume_setting=try_float(
-                sample_volume.split()[0], "sample volume setting"
-            )
-            if sample_volume
-            else None,
+            sample_volume_setting=(
+                try_float(sample_volume.split()[0], "sample volume setting")
+                if sample_volume
+                else None
+            ),
             plate_well_count=cls._get_plate_well_count(header_data),
             measurement_time=raw_datetime,
             detector_gain_setting=info_row.get(
@@ -186,7 +186,7 @@ class Measurement:
                     assay_bead_count=SeriesData(count_data.loc[location])[
                         float, analyte
                     ],
-                    value=median_data[float, analyte],
+                    fluorescence=median_data[float, analyte],
                     statistic_datum_role=TStatisticDatumRole.median_role,
                 )
                 for analyte in [
@@ -244,9 +244,11 @@ class MeasurementList:
                 count_data=results_data["Count"],
                 bead_ids_data=bead_ids_data,
                 dilution_factor_data=results_data["Dilution Factor"],
-                errors_data=results_data["Warnings/Errors"]
-                if "Warnings/Errors" in results_data
-                else None,
+                errors_data=(
+                    results_data["Warnings/Errors"]
+                    if "Warnings/Errors" in results_data
+                    else None
+                ),
             )
 
         return MeasurementList(map_rows(results_data["Median"], create_measurement))
@@ -272,8 +274,10 @@ class Data:
 def create_metadata(
     header: Header, calibrations: list[Calibration], file_path: str
 ) -> Metadata:
+    path = Path(file_path)
     return Metadata(
-        file_name=Path(file_path).name,
+        file_name=path.name,
+        asm_file_identifier=path.with_suffix(".json").name,
         unc_path=file_path,
         equipment_serial_number=header.equipment_serial_number,
         model_number=header.model_number,

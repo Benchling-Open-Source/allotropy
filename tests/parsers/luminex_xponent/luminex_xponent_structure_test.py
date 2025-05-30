@@ -7,7 +7,7 @@ import pytest
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TStatisticDatumRole,
 )
-from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._01.multi_analyte_profiling import (
+from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
     Analyte,
     Calibration,
     Error,
@@ -178,7 +178,7 @@ def test_create_measurement_list() -> None:
                         name="alpha",
                         assay_bead_identifier="28",
                         assay_bead_count=30,
-                        value=10921.5,
+                        fluorescence=10921.5,
                         statistic_datum_role=TStatisticDatumRole.median_role,
                     ),
                     Analyte(
@@ -186,7 +186,7 @@ def test_create_measurement_list() -> None:
                         name="bravo",
                         assay_bead_identifier="35",
                         assay_bead_count=42,
-                        value=37214,
+                        fluorescence=37214,
                         statistic_datum_role=TStatisticDatumRole.median_role,
                     ),
                 ],
