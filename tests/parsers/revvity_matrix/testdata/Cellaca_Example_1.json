@@ -86,18 +86,14 @@
                                     "Well Plate Identifier": "Plate1"
                                 }
                             },
-                            "image aggregate document": {
-                                "image document": [
-                                    {
-                                        "experimental data identifier": "Assay"
-                                    }
-                                ]
-                            },
                             "custom information document": {
                                 "Scanresult Timestamp": "5/20/25 12:25"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "assay identifier": "Assay"
+                    }
                 },
                 "analyst": "admin"
             },
@@ -185,18 +181,14 @@
                                     "Well Plate Identifier": "Plate1"
                                 }
                             },
-                            "image aggregate document": {
-                                "image document": [
-                                    {
-                                        "experimental data identifier": "Assay"
-                                    }
-                                ]
-                            },
                             "custom information document": {
                                 "Scanresult Timestamp": "5/20/25 12:25"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "assay identifier": "Assay"
+                    }
                 },
                 "analyst": "admin"
             },
@@ -284,18 +276,14 @@
                                     "Well Plate Identifier": "Plate1"
                                 }
                             },
-                            "image aggregate document": {
-                                "image document": [
-                                    {
-                                        "experimental data identifier": "Assay"
-                                    }
-                                ]
-                            },
                             "custom information document": {
                                 "Scanresult Timestamp": "5/20/25 12:25"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "assay identifier": "Assay"
+                    }
                 },
                 "analyst": "admin"
             }

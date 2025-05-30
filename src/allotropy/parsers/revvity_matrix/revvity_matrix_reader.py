@@ -12,7 +12,7 @@ from allotropy.parsers.utils.pandas import (
 class RevvityMatrixReader:
     SUPPORTED_EXTENSIONS = "csv,xlsx"
     data: pd.DataFrame
-    headers: SeriesData | None
+    headers: SeriesData
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
         self.headers = SeriesData()

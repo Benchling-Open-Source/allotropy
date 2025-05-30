@@ -13,7 +13,7 @@ from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-def create_metadata(file_path: str, headers: SeriesData | None) -> Metadata:
+def create_metadata(file_path: str, headers: SeriesData) -> Metadata:
     path = Path(file_path)
     return Metadata(
         asm_file_identifier=path.with_suffix(".json").name,
@@ -23,8 +23,8 @@ def create_metadata(file_path: str, headers: SeriesData | None) -> Metadata:
         unc_path=file_path,
         device_type=constants.DEVICE_TYPE,
         software_name="Revvity Matrix",
-        software_version=headers.get(str, "Version") if headers else None,
-        equipment_serial_number=headers.get(str, "Instrument SN") if headers else None,
+        software_version=headers.get(str, "Version"),
+        equipment_serial_number=headers.get(str, "Instrument SN"),
     )
 
 
@@ -33,7 +33,7 @@ def create_measurement_group(data: SeriesData, headers: SeriesData) -> Measureme
     # a corresponding measurement group.
 
     # Handle cell density values based on whether the file has headers or not
-    has_headers = headers and not headers.series.empty
+    has_headers = not headers.series.empty
 
     if has_headers:
         viable_cell_density = data[float, "Live Concentration (E6)"]
@@ -58,7 +58,10 @@ def create_measurement_group(data: SeriesData, headers: SeriesData) -> Measureme
     errors = data.get(str, ["Errors:", "Errors"], validate=SeriesData.NOT_NAN)
 
     return MeasurementGroup(
-        analyst=headers.get(str, "Operator") if headers else None,
+        analyst=headers.get(str, "Operator"),
+        custom_info={
+            "assay identifier": headers.get(str, "Assay Name"),
+        },
         measurements=[
             Measurement(
                 measurement_identifier=random_uuid_str(),
@@ -66,9 +69,7 @@ def create_measurement_group(data: SeriesData, headers: SeriesData) -> Measureme
                 # EPOCH to signal no timestamp.
                 timestamp=headers.get(
                     str, "Results Timestamp", default=DEFAULT_EPOCH_TIMESTAMP
-                )
-                if has_headers
-                else DEFAULT_EPOCH_TIMESTAMP,
+                ),
                 sample_identifier=data[str, "Well Name"],
                 viability=data[float, ["Viability", "Viability (%)"]],
                 total_cell_count=data.get(float, "Total Count"),
@@ -93,26 +94,17 @@ def create_measurement_group(data: SeriesData, headers: SeriesData) -> Measureme
                 sample_custom_info={
                     "Row": data.get(str, "Row"),
                     "Column": data.get(str, "Column"),
-                    "Well Plate Identifier": headers.get(str, "Plate Name")
-                    if has_headers
-                    else None,
+                    "Well Plate Identifier": headers.get(str, "Plate Name"),
                 },
                 processed_data_identifier=random_uuid_str(),
                 cell_aggregation_percentage=data.get(float, "Aggregates (%)"),
                 aggregate_count=data.get(float, "Aggregate Count"),
                 aggregate_size=data.get(float, "Aggregate Size"),
-                experimental_data_identifier=headers.get(str, "Assay Name")
-                if has_headers
-                else None,
-                cell_density_dilution_factor=headers.get(float, "Dilution")
-                if has_headers
-                else None,
+                cell_density_dilution_factor=headers.get(float, "Dilution"),
                 custom_info={
-                    "Scanresult Timestamp": headers.get(str, "Scanresult Timestamp")
-                    if has_headers
-                    else None,
+                    "Scanresult Timestamp": headers.get(str, "Scanresult Timestamp"),
                     **(data.get_unread()),
-                    **(headers.get_unread() if has_headers else {}),
+                    **(headers.get_unread()),
                 },
             )
         ],
