@@ -102,6 +102,9 @@ class Measurement:
     # customer information document fields
     debris_index: float | None = None
     cell_aggregation_percentage: float | None = None
+    aggregate_size: float | None = None
+    aggregate_count: float | None = None
+    sample_custom_info: dict[str, Any] | None = None
     custom_info: dict[str, Any] | None = None
 
 
@@ -269,6 +272,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueMicroliter, measurement.dilution_volume
             ),
         }
+        custom_document.update(measurement.sample_custom_info or {})
         return add_custom_information_document(
             SampleDocument(
                 sample_identifier=measurement.sample_identifier,
@@ -307,6 +311,12 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
             "cell aggregation percentage": quantity_or_none(
                 TQuantityValuePercent, measurement.cell_aggregation_percentage
+            ),
+            "aggregate size": quantity_or_none(
+                TQuantityValueMicrometer, measurement.aggregate_size
+            ),
+            "aggregate count": quantity_or_none(
+                TQuantityValueCell, measurement.aggregate_count
             ),
             "debris index": quantity_or_none(
                 TQuantityValueUnitless, measurement.debris_index
