@@ -1,7 +1,7 @@
-from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.models.adm.plate_reader.rec._2025._03.plate_reader import (
     Model,
 )
-from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
     Data,
     Mapper,
 )
@@ -12,6 +12,7 @@ from allotropy.parsers.agilent_gen5.agilent_gen5_structure import (
     create_kinetic_results,
     create_metadata,
     create_results,
+    create_spectrum_results,
     get_identifiers,
     get_kinetic_measurements,
     get_results_section,
@@ -22,6 +23,7 @@ from allotropy.parsers.agilent_gen5.agilent_gen5_structure import (
 )
 from allotropy.parsers.agilent_gen5.constants import (
     NO_MEASUREMENTS_ERROR,
+    ReadType,
 )
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.vendor_parser import VendorParser
@@ -48,16 +50,40 @@ class AgilentGen5Parser(VendorParser[Data, Model]):
 
         sample_identifiers = get_identifiers(reader.sections.get("Layout"))
         actual_temperature = get_temperature(reader.sections.get("Actual Temperature"))
-        kinetic_measurements, kinetic_elapsed_time = get_kinetic_measurements(
-            reader.sections.get("Time")
-        ) or ({}, [])
+        kinetic_result = get_kinetic_measurements(reader.sections.get("Time"))
+        kinetic_measurements, kinetic_elapsed_time, kinetic_errors = kinetic_result or (
+            {},
+            [],
+            {},
+        )
 
         if kinetic_data and not (kinetic_measurements and kinetic_elapsed_time):
             msg = "Kinetic data is present in the file but no kinetic measurements data is found."
             raise AllotropeConversionError(msg)
 
-        # in case of single kinetic section, each well will contain one measurement document with the kinetic data cube
-        # otherwise each well will contain multiple measurement documents
+        read_is_spectral = read_data[0].read_type == ReadType.SPECTRUM
+        if read_is_spectral and reader.sections.get("Wavelength"):
+            (
+                wavelength_measurements,
+                wavelength_calculated_data,
+            ) = create_spectrum_results(
+                header_data,
+                read_data_list=read_data,
+                wavelengths_sections=reader.sections.get("Wavelength"),
+                sample_identifiers=sample_identifiers,
+                actual_temperature=actual_temperature,
+                results_section=results_section,
+            )
+
+            if not wavelength_measurements:
+                raise AllotropeConversionError(NO_MEASUREMENTS_ERROR)
+
+            return Data(
+                metadata=create_metadata(header_data),
+                measurement_groups=wavelength_measurements,
+                calculated_data=wavelength_calculated_data,
+            )
+
         if kinetic_data:
             measurement_groups, calculated_data = create_kinetic_results(
                 results_section,
@@ -68,6 +94,7 @@ class AgilentGen5Parser(VendorParser[Data, Model]):
                 kinetic_data,
                 kinetic_measurements,
                 kinetic_elapsed_time,
+                kinetic_errors,
             )
         else:
             measurement_groups, calculated_data = create_results(

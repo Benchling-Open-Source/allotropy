@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2025/03/plate-reader.manifest",
     "plate reader aggregate document": {
         "plate reader document": [
             {
@@ -11,31 +11,31 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Fluorescence",
+                                        "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
                                         },
+                                        "detector gain setting": "55",
                                         "number of averages": {
                                             "value": 10.0,
                                             "unit": "#"
                                         },
-                                        "detector gain setting": "55",
                                         "scan position setting (plate reader)": "top scan position (plate reader)",
-                                        "detector carriage speed setting": "Normal",
-                                        "detector wavelength setting": {
-                                            "value": 531.0,
-                                            "unit": "nm"
-                                        },
                                         "detector bandwidth setting": {
                                             "value": 20.0,
                                             "unit": "nm"
                                         },
-                                        "excitation bandwidth setting": {
-                                            "value": 20.0,
+                                        "detector wavelength setting": {
+                                            "value": 531.0,
                                             "unit": "nm"
                                         },
                                         "excitation wavelength setting": {
                                             "value": 504.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation bandwidth setting": {
+                                            "value": 20.0,
                                             "unit": "nm"
                                         },
                                         "custom information document": {
@@ -46,10 +46,11 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_0",
                             "sample document": {
-                                "sample identifier": "SPL1",
                                 "location identifier": "A1",
+                                "sample identifier": "SPL1",
                                 "well plate identifier": "Plate 1"
                             },
+                            "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "error aggregate document": {
                                 "error document": [
                                     {
@@ -58,6 +59,7 @@
                                     }
                                 ]
                             },
+                            "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
                             "compartment temperature": {
                                 "value": 21.6,
                                 "unit": "degC"
@@ -73,8 +75,6 @@
                         "value": 6,
                         "unit": "#"
                     },
-                    "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
-                    "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
                     "container type": "well plate"
                 }
             },
@@ -87,31 +87,31 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Fluorescence",
+                                        "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
                                         },
+                                        "detector gain setting": "55",
                                         "number of averages": {
                                             "value": 10.0,
                                             "unit": "#"
                                         },
-                                        "detector gain setting": "55",
                                         "scan position setting (plate reader)": "top scan position (plate reader)",
-                                        "detector carriage speed setting": "Normal",
-                                        "detector wavelength setting": {
-                                            "value": 531.0,
-                                            "unit": "nm"
-                                        },
                                         "detector bandwidth setting": {
                                             "value": 20.0,
                                             "unit": "nm"
                                         },
-                                        "excitation bandwidth setting": {
-                                            "value": 20.0,
+                                        "detector wavelength setting": {
+                                            "value": 531.0,
                                             "unit": "nm"
                                         },
                                         "excitation wavelength setting": {
                                             "value": 504.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation bandwidth setting": {
+                                            "value": 20.0,
                                             "unit": "nm"
                                         }
                                     }
@@ -119,10 +119,11 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_1",
                             "sample document": {
-                                "sample identifier": "SPL9",
                                 "location identifier": "A2",
+                                "sample identifier": "SPL9",
                                 "well plate identifier": "Plate 1"
                             },
+                            "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "error aggregate document": {
                                 "error document": [
                                     {
@@ -131,6 +132,7 @@
                                     }
                                 ]
                             },
+                            "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
                             "compartment temperature": {
                                 "value": 21.6,
                                 "unit": "degC"
@@ -146,8 +148,6 @@
                         "value": 6,
                         "unit": "#"
                     },
-                    "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
-                    "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
                     "container type": "well plate"
                 }
             },
@@ -160,31 +160,31 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Fluorescence",
+                                        "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
                                         },
+                                        "detector gain setting": "55",
                                         "number of averages": {
                                             "value": 10.0,
                                             "unit": "#"
                                         },
-                                        "detector gain setting": "55",
                                         "scan position setting (plate reader)": "top scan position (plate reader)",
-                                        "detector carriage speed setting": "Normal",
-                                        "detector wavelength setting": {
-                                            "value": 531.0,
-                                            "unit": "nm"
-                                        },
                                         "detector bandwidth setting": {
                                             "value": 20.0,
                                             "unit": "nm"
                                         },
-                                        "excitation bandwidth setting": {
-                                            "value": 20.0,
+                                        "detector wavelength setting": {
+                                            "value": 531.0,
                                             "unit": "nm"
                                         },
                                         "excitation wavelength setting": {
                                             "value": 504.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation bandwidth setting": {
+                                            "value": 20.0,
                                             "unit": "nm"
                                         }
                                     }
@@ -192,10 +192,11 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_2",
                             "sample document": {
-                                "sample identifier": "SPL17",
                                 "location identifier": "A3",
+                                "sample identifier": "SPL17",
                                 "well plate identifier": "Plate 1"
                             },
+                            "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "error aggregate document": {
                                 "error document": [
                                     {
@@ -204,6 +205,7 @@
                                     }
                                 ]
                             },
+                            "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
                             "compartment temperature": {
                                 "value": 21.6,
                                 "unit": "degC"
@@ -219,8 +221,6 @@
                         "value": 6,
                         "unit": "#"
                     },
-                    "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
-                    "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
                     "container type": "well plate"
                 }
             },
@@ -233,31 +233,31 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Fluorescence",
+                                        "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
                                         },
+                                        "detector gain setting": "55",
                                         "number of averages": {
                                             "value": 10.0,
                                             "unit": "#"
                                         },
-                                        "detector gain setting": "55",
                                         "scan position setting (plate reader)": "top scan position (plate reader)",
-                                        "detector carriage speed setting": "Normal",
-                                        "detector wavelength setting": {
-                                            "value": 531.0,
-                                            "unit": "nm"
-                                        },
                                         "detector bandwidth setting": {
                                             "value": 20.0,
                                             "unit": "nm"
                                         },
-                                        "excitation bandwidth setting": {
-                                            "value": 20.0,
+                                        "detector wavelength setting": {
+                                            "value": 531.0,
                                             "unit": "nm"
                                         },
                                         "excitation wavelength setting": {
                                             "value": 504.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation bandwidth setting": {
+                                            "value": 20.0,
                                             "unit": "nm"
                                         }
                                     }
@@ -265,10 +265,12 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_3",
                             "sample document": {
-                                "sample identifier": "SPL2",
                                 "location identifier": "B1",
+                                "sample identifier": "SPL2",
                                 "well plate identifier": "Plate 1"
                             },
+                            "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
+                            "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
                             "compartment temperature": {
                                 "value": 21.6,
                                 "unit": "degC"
@@ -284,8 +286,6 @@
                         "value": 6,
                         "unit": "#"
                     },
-                    "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
-                    "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
                     "container type": "well plate"
                 }
             },
@@ -298,31 +298,31 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Fluorescence",
+                                        "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
                                         },
+                                        "detector gain setting": "55",
                                         "number of averages": {
                                             "value": 10.0,
                                             "unit": "#"
                                         },
-                                        "detector gain setting": "55",
                                         "scan position setting (plate reader)": "top scan position (plate reader)",
-                                        "detector carriage speed setting": "Normal",
-                                        "detector wavelength setting": {
-                                            "value": 531.0,
-                                            "unit": "nm"
-                                        },
                                         "detector bandwidth setting": {
                                             "value": 20.0,
                                             "unit": "nm"
                                         },
-                                        "excitation bandwidth setting": {
-                                            "value": 20.0,
+                                        "detector wavelength setting": {
+                                            "value": 531.0,
                                             "unit": "nm"
                                         },
                                         "excitation wavelength setting": {
                                             "value": 504.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation bandwidth setting": {
+                                            "value": 20.0,
                                             "unit": "nm"
                                         }
                                     }
@@ -330,10 +330,11 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_4",
                             "sample document": {
-                                "sample identifier": "SPL10",
                                 "location identifier": "B2",
+                                "sample identifier": "SPL10",
                                 "well plate identifier": "Plate 1"
                             },
+                            "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "error aggregate document": {
                                 "error document": [
                                     {
@@ -342,6 +343,7 @@
                                     }
                                 ]
                             },
+                            "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
                             "compartment temperature": {
                                 "value": 21.6,
                                 "unit": "degC"
@@ -357,8 +359,6 @@
                         "value": 6,
                         "unit": "#"
                     },
-                    "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
-                    "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
                     "container type": "well plate"
                 }
             },
@@ -371,31 +371,31 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Fluorescence",
+                                        "detector carriage speed setting": "Normal",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
                                         },
+                                        "detector gain setting": "55",
                                         "number of averages": {
                                             "value": 10.0,
                                             "unit": "#"
                                         },
-                                        "detector gain setting": "55",
                                         "scan position setting (plate reader)": "top scan position (plate reader)",
-                                        "detector carriage speed setting": "Normal",
-                                        "detector wavelength setting": {
-                                            "value": 531.0,
-                                            "unit": "nm"
-                                        },
                                         "detector bandwidth setting": {
                                             "value": 20.0,
                                             "unit": "nm"
                                         },
-                                        "excitation bandwidth setting": {
-                                            "value": 20.0,
+                                        "detector wavelength setting": {
+                                            "value": 531.0,
                                             "unit": "nm"
                                         },
                                         "excitation wavelength setting": {
                                             "value": 504.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation bandwidth setting": {
+                                            "value": 20.0,
                                             "unit": "nm"
                                         }
                                     }
@@ -403,10 +403,11 @@
                             },
                             "measurement identifier": "AGILENT_GEN5_TEST_ID_5",
                             "sample document": {
-                                "sample identifier": "SPL18",
                                 "location identifier": "B3",
+                                "sample identifier": "SPL18",
                                 "well plate identifier": "Plate 1"
                             },
+                            "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
                             "error aggregate document": {
                                 "error document": [
                                     {
@@ -415,6 +416,7 @@
                                     }
                                 ]
                             },
+                            "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
                             "compartment temperature": {
                                 "value": 21.6,
                                 "unit": "degC"
@@ -430,8 +432,6 @@
                         "value": 6,
                         "unit": "#"
                     },
-                    "analytical method identifier": "Q:\\prod\\neo\\neo2_1_24030606\\protocols\\QuantiFluorDNA.prt",
-                    "experimental data identifier": "\\\\CB-NAS01\\Data\\prod\\neo\\neo2_1_24030606\\protocols\\BenchlingConnectTest2.xpt",
                     "container type": "well plate"
                 }
             }
@@ -441,8 +441,8 @@
                 {
                     "calculated data name": "Blank 504,531",
                     "calculated result": {
-                        "value": 112.0,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 112.0
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_6",
                     "data source aggregate document": {
@@ -457,8 +457,8 @@
                 {
                     "calculated data name": "Blank 504,531",
                     "calculated result": {
-                        "value": 145.0,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 145.0
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_7",
                     "data source aggregate document": {
@@ -473,8 +473,8 @@
                 {
                     "calculated data name": "Blank 504,531",
                     "calculated result": {
-                        "value": -55.0,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": -55.0
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_8",
                     "data source aggregate document": {
@@ -489,8 +489,8 @@
                 {
                     "calculated data name": "Blank 504,531",
                     "calculated result": {
-                        "value": 105.0,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 105.0
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_9",
                     "data source aggregate document": {
@@ -505,8 +505,8 @@
                 {
                     "calculated data name": "[Concentration]",
                     "calculated result": {
-                        "value": 205.17,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 205.17
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_10",
                     "data source aggregate document": {
@@ -521,8 +521,8 @@
                 {
                     "calculated data name": "Blank 504,531",
                     "calculated result": {
-                        "value": 125.0,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 125.0
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_11",
                     "data source aggregate document": {
@@ -537,8 +537,8 @@
                 {
                     "calculated data name": "Blank 504,531",
                     "calculated result": {
-                        "value": -54.0,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": -54.0
                     },
                     "calculated data identifier": "AGILENT_GEN5_TEST_ID_12",
                     "data source aggregate document": {
@@ -555,10 +555,10 @@
         "data system document": {
             "ASM file identifier": "endpoint_single_plate_example.json",
             "data system instance identifier": "N/A",
-            "file name": "endpoint_single_plate_example.txt",
             "UNC path": "tests/parsers/agilent_gen5/testdata/fluorescence/endpoint_single_plate_example.txt",
+            "file name": "endpoint_single_plate_example.txt",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.74",
+            "ASM converter version": "0.1.87",
             "software name": "Gen5",
             "software version": "3.15.15"
         },

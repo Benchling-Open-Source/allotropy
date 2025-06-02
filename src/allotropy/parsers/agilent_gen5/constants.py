@@ -24,6 +24,10 @@ HEADER_PREFIXES = frozenset(
 
 EMISSION_KEY = "Emission"
 EXCITATION_KEY = "Excitation"
+FIXED_EXCITATION_KEY = "Fixed Excitation"
+FIXED_EMISSION_KEY = "Fixed Emission"
+EMISSION_START_KEY = "Emission Start"
+EXCITATION_START_KEY = "Excitation Start"
 GAIN_KEY = "Gain"
 OPTICS_KEY = "Optics"
 MEASUREMENTS_DATA_POINT_KEY = "Measurements/Data Point"
@@ -76,4 +80,4 @@ SECONDS = "s"
 class ReadType(str, Enum):
     ENDPOINT = "Endpoint"
     AREASCAN = "Area Scan"
-    SPECTRAL = "Spectral"
+    SPECTRUM = "Spectrum"
