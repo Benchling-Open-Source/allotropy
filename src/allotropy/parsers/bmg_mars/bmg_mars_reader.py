@@ -2,6 +2,7 @@ from io import StringIO
 
 import pandas as pd
 
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.utils.pandas import read_csv, SeriesData
@@ -27,7 +28,13 @@ class BmgMarsReader:
             axis="index"
         )
         new = df["value"].str.split(": ", expand=True, n=1)
-        self.header = SeriesData(pd.Series(new[1].values, index=new[0].str.upper()))
+
+        # Handle the case where no ": " delimiter is found, resulting in a DataFrame with only one column
+        if new.shape[1] < 2:
+            msg = "Unable to parse header data: no key-value pairs found with expected format."
+            raise AllotropeConversionError(msg)
+        else:
+            self.header = SeriesData(pd.Series(new[1].values, index=new[0].str.upper()))
 
         # Read in the rest of the file as a dataframe
         reader.drop_empty(r"^[,\"\s]*$")
