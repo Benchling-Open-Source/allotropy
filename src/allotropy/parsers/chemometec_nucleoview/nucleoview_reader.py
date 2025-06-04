@@ -1,6 +1,6 @@
 import pandas as pd
 
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
 from allotropy.parsers.utils.pandas import assert_not_empty_df, read_csv
 from allotropy.types import IOType
 
@@ -13,7 +13,12 @@ class NucleoviewReader:
         df = read_csv(
             contents, sep="[;,]+", engine="python", skipinitialspace=True, index_col=0
         )
-        df = df[:-1].dropna(axis="index", how="all").T
+        try:
+            df = df[:-1].dropna(axis="index", how="all").T
+        except KeyError as e:
+            msg = f"Error processing CSV data structure. The file may be corrupted or have an invalid format: {e}"
+            raise AllotropeParsingError(msg) from e
+
         df = df.rename(
             {"Estimated cell diameter [um]": "Estimated cell diameter (um)"},
             axis="columns",
