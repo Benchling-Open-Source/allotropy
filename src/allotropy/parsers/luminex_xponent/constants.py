@@ -1,3 +1,5 @@
+from dataclasses import dataclass
+
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TStatisticDatumRole,
 )
@@ -14,41 +16,48 @@ EXPECTED_CALIBRATION_RESULT_LEN = 2
 EXPECTED_HEADER_COLUMNS = 7
 REQUIRED_SECTIONS = ["Count", "Units", "Dilution Factor"]
 
+
+@dataclass(frozen=True)
+class StatisticSectionConfig:
+    role: TStatisticDatumRole
+    unit: str
+
+
 STATISTIC_SECTIONS_CONF = {
-    "Median": {
-        "role": TStatisticDatumRole.median_role,
-        "unit": "RFU",
-    },
-    "Mean": {
-        "role": TStatisticDatumRole.arithmetic_mean_role,
-        "unit": "RFU",
-    },
-    "% CV": {
-        "role": TStatisticDatumRole.coefficient_of_variation_role,
-        "unit": "(unitless)",
-    },
-    "Standard Deviation": {
-        "role": TStatisticDatumRole.standard_deviation_role,
-        "unit": "(unitless)",
-    },
-    "Peak": {
-        "role": TStatisticDatumRole.mode_value_role,
-        "unit": "RFU",
-    },
-    "Trimmed Peak": {
-        "role": TStatisticDatumRole.trimmed_mode_role,
-        "unit": "RFU",
-    },
-    "Trimmed Count": {
-        "role": TStatisticDatumRole.trimmed_count_role,
-        "unit": "RFU",
-    },
-    "Trimmed Standard Deviation": {
-        "role": TStatisticDatumRole.trimmed_standard_deviation_role,
-        "unit": "(unitless)",
-    },
-    "Trimmed Mean": {
-        "role": TStatisticDatumRole.trimmed_arithmetic_mean_role,
-        "unit": "RFU",
-    },
+    "Median": StatisticSectionConfig(
+        role=TStatisticDatumRole.median_role,
+        unit="RFU",
+    ),
+    "Mean": StatisticSectionConfig(
+        role=TStatisticDatumRole.arithmetic_mean_role,
+        unit="RFU",
+    ),
+    "% CV": StatisticSectionConfig(
+        role=TStatisticDatumRole.coefficient_of_variation_role,
+        unit="(unitless)",
+    ),
+    "Standard Deviation": StatisticSectionConfig(
+        role=TStatisticDatumRole.standard_deviation_role,
+        unit="(unitless)",
+    ),
+    "Peak": StatisticSectionConfig(
+        role=TStatisticDatumRole.mode_value_role,
+        unit="RFU",
+    ),
+    "Trimmed Peak": StatisticSectionConfig(
+        role=TStatisticDatumRole.trimmed_mode_role,
+        unit="RFU",
+    ),
+    "Trimmed Count": StatisticSectionConfig(
+        role=TStatisticDatumRole.trimmed_count_role,
+        unit="RFU",
+    ),
+    "Trimmed Standard Deviation": StatisticSectionConfig(
+        role=TStatisticDatumRole.trimmed_standard_deviation_role,
+        unit="(unitless)",
+    ),
+    "Trimmed Mean": StatisticSectionConfig(
+        role=TStatisticDatumRole.trimmed_arithmetic_mean_role,
+        unit="RFU",
+    ),
 }

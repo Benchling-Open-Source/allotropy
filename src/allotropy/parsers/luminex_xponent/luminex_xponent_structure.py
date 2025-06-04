@@ -6,9 +6,6 @@ import re
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    TStatisticDatumRole,
-)
 from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
     Analyte,
     Calibration,
@@ -49,8 +46,8 @@ class Header:
     sample_volume_setting: float | None
     plate_well_count: float
     measurement_time: str
+    data_system_instance_identifier: str
     detector_gain_setting: str | None
-    data_system_instance_identifier: str | None
     minimum_assay_bead_count_setting: float | None
     analyst: str | None
 
@@ -79,7 +76,7 @@ class Header:
             detector_gain_setting=info_row.get(
                 str, ["ProtocolReporterGain", "ProtocolOperatingMode"]
             ),
-            data_system_instance_identifier=info_row.get(str, "ComputerName"),
+            data_system_instance_identifier=info_row[str, "ComputerName"],
             minimum_assay_bead_count_setting=minimum_assay_bead_count_setting,
             analyst=info_row.get(str, "Operator"),
         )
@@ -183,8 +180,8 @@ class Measurement:
             return [
                 StatisticDimension(
                     value=try_float(statistic_table.at[location, analyte], analyte),
-                    unit=statistic_conf["unit"],
-                    statistic_datum_role=statistic_conf["role"],
+                    unit=statistic_conf.unit,
+                    statistic_datum_role=statistic_conf.role,
                 )
                 for section, statistic_conf in STATISTIC_SECTIONS_CONF.items()
                 if (statistic_table := results_data.get(section)) is not None
