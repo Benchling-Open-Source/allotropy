@@ -11,6 +11,8 @@ from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2
     Analyte,
     Calibration,
     Error,
+    StatisticDimension,
+    StatisticsDocument,
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
@@ -178,16 +180,36 @@ def test_create_measurement_list() -> None:
                         name="alpha",
                         assay_bead_identifier="28",
                         assay_bead_count=30,
-                        fluorescence=10921.5,
-                        statistic_datum_role=TStatisticDatumRole.median_role,
+                        statistics=[
+                            StatisticsDocument(
+                                statistical_feature="fluorescence",
+                                statistic_dimensions=[
+                                    StatisticDimension(
+                                        value=10921.5,
+                                        unit="RFU",
+                                        statistic_datum_role=TStatisticDatumRole.median_role,
+                                    )
+                                ],
+                            )
+                        ],
                     ),
                     Analyte(
                         identifier="dummy_id",
                         name="bravo",
                         assay_bead_identifier="35",
                         assay_bead_count=42,
-                        fluorescence=37214,
-                        statistic_datum_role=TStatisticDatumRole.median_role,
+                        statistics=[
+                            StatisticsDocument(
+                                statistical_feature="fluorescence",
+                                statistic_dimensions=[
+                                    StatisticDimension(
+                                        value=37214,
+                                        unit="RFU",
+                                        statistic_datum_role=TStatisticDatumRole.median_role,
+                                    )
+                                ],
+                            )
+                        ],
                     ),
                 ],
                 errors=[

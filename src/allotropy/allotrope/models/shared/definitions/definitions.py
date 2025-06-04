@@ -84,6 +84,11 @@ class TStatisticDatumRole(Enum):
     frequency_of_grandparent_role = "frequency of grandparent role"
     frequency_of_total_role = "frequency of total role"
     sum_of_squares_role = "sum of squares role"
+    mode_value_role = "mode value role"
+    trimmed_mode_role = "trimmed mode role"
+    trimmed_count_role = "trimmed count role"
+    trimmed_standard_deviation_role = "trimmed standard deviation role"
+    trimmed_arithmetic_mean_role = "trimmed arithmetic mean role"
 
 
 class InvalidJsonFloat(Enum):
