@@ -1,5 +1,6 @@
 import pandas as pd
 
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.utils.pandas import parse_header_row, read_excel, SeriesData
 
@@ -17,8 +18,19 @@ class BeckmanPharmspecReader:
         by finding the index first row which contains the word 'Particle' and ending right before
         the index of the first row containing 'Approver'.
         """
-        start = df[df[1].str.contains("Particle", na=False)].index.values[0]
-        end = df[df[0].str.contains("Approver_", na=False)].index.values[0] - 1
+        # Check for rows containing "Particle" in column 1
+        particle_rows = df[df[1].str.contains("Particle", na=False)].index.values
+        if len(particle_rows) == 0:
+            msg = "Unable to find required 'Particle' marker in column 1 of the data file."
+            raise AllotropeConversionError(msg)
+        start = particle_rows[0]
+
+        # Check for rows containing "Approver_" in column 0
+        approver_rows = df[df[0].str.contains("Approver_", na=False)].index.values
+        if len(approver_rows) == 0:
+            msg = "Unable to find required 'Approver_' marker in column 0 of the data file."
+            raise AllotropeConversionError(msg)
+        end = approver_rows[0] - 1
 
         # The header data is everything up to the start of the data.
         # It is stored in two columns spread over the first 6 columns.
