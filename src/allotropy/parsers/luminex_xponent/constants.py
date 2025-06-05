@@ -45,7 +45,7 @@ STATISTIC_SECTIONS_CONF = {
         unit="RFU",
     ),
     "Trimmed Peak": StatisticSectionConfig(
-        role=TStatisticDatumRole.trimmed_mode_role,
+        role=TStatisticDatumRole.trimmed_mode_value_role,
         unit="RFU",
     ),
     "Trimmed Count": StatisticSectionConfig(
