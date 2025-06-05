@@ -32,7 +32,7 @@ STATISTIC_SECTIONS_CONF = {
         role=TStatisticDatumRole.arithmetic_mean_role,
         unit="RFU",
     ),
-    "% CV": StatisticSectionConfig(
+    "%CV": StatisticSectionConfig(
         role=TStatisticDatumRole.coefficient_of_variation_role,
         unit="(unitless)",
     ),
