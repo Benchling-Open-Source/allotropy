@@ -3,6 +3,7 @@ from __future__ import annotations
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
+import re
 from typing import Any
 
 import pandas as pd
@@ -17,8 +18,6 @@ from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.methodical_mind import constants
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-
-WELL_LABELS = ["A", "B", "C", "D", "E", "F", "G", "H"]
 
 
 @dataclass(frozen=True)
@@ -36,6 +35,10 @@ class Header:
             model=data[str, "Model"],
             serial_number=data[str, "Serial #"],
         )
+
+
+def _is_valid_well_label(label: str) -> bool:
+    return re.match("[A-Z]+", label)
 
 
 @dataclass(frozen=True)
@@ -56,7 +59,7 @@ class PlateData:
     ) -> PlateData:
         well_plate_id = header[str, "Barcode1"].strip("<>")
         unique_well_labels = [
-            label for label in data.index.unique() if label in WELL_LABELS
+            label for label in data.index.unique() if _is_valid_well_label(label)
         ]
         spot_id = header.get(int, "SpotID")
         well_data = [
@@ -70,7 +73,7 @@ class PlateData:
             for row_name in unique_well_labels
             for row_index, (_, row) in enumerate(data.loc[[row_name]].iterrows())
             for col_name, value in row.items()
-            if row_name in WELL_LABELS
+            if _is_valid_well_label(row_name)
             # Only include if the measurement is not an empty string, this skips blank entries for non-visible
             # measurements.
             if str(value).strip()
