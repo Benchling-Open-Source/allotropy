@@ -216,6 +216,7 @@ def test_create_measurement_list() -> None:
                     Error(error="Warning msg. (0x4FF010AB)"),
                     Error(error="Another Warning."),
                 ],
+                calculated_data=[],
             )
         ]
     )

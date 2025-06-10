@@ -31,5 +31,5 @@ class LuminexXponentParser(VendorParser[MapperData, Model]):
             create_metadata(
                 data.header, data.calibrations, named_file_contents.original_file_path
             ),
-            create_measurement_groups(data.measurement_list.measurements, data.header),
+            *create_measurement_groups(data.measurement_list.measurements, data.header),
         )

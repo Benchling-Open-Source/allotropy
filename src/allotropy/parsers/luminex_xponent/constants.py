@@ -61,3 +61,11 @@ STATISTIC_SECTIONS_CONF = {
         unit="RFU",
     ),
 }
+
+CALCULATED_DATA_SECTIONS: dict[str, str] = {
+    "Net MFI": "RFU",
+    "Avg Net MFI": "RFU",
+    "Test Result": "(unitless)",
+    "% Recovery": "(unitless)",
+    "%CV of Replicates": "(unitless)",
+}

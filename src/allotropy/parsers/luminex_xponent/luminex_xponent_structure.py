@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import itertools
 from pathlib import Path
 import re
 
@@ -19,6 +20,7 @@ from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NEGATIVE_ZERO
 from allotropy.parsers.luminex_xponent.constants import (
+    CALCULATED_DATA_SECTIONS,
     DEFAULT_CONTAINER_TYPE,
     DEFAULT_DEVICE_TYPE,
     DEFAULT_SOFTWARE_NAME,
@@ -29,6 +31,11 @@ from allotropy.parsers.luminex_xponent.constants import (
 )
 from allotropy.parsers.luminex_xponent.luminex_xponent_reader import (
     LuminexXponentReader,
+)
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+    DataSource,
+    Referenceable,
 )
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -143,6 +150,7 @@ class Measurement:
     dilution_factor_setting: float
     assay_bead_count: float
     analytes: list[Analyte]
+    calculated_data: list[CalculatedDocument]
     errors: list[Error] | None = None
 
     @classmethod
@@ -151,10 +159,11 @@ class Measurement:
         results_data: dict[str, pd.DataFrame],
         count_data: SeriesData,
         bead_ids_data: SeriesData,
-        dilution_factor_data: pd.DataFrame,
-        errors_data: pd.DataFrame | None,
     ) -> Measurement:
         location = str(count_data.series.name)
+        dilution_factor_data = results_data["Dilution Factor"]
+        errors_data = results_data.get("Warnings/Errors")
+
         if location not in dilution_factor_data.index:
             msg = f"Could not find 'Dilution Factor' data for: '{location}'."
             raise AllotropeConversionError(msg)
@@ -187,15 +196,15 @@ class Measurement:
                 if (statistic_table := results_data.get(section)) is not None
             ]
 
-        return Measurement(
-            identifier=random_uuid_str(),
-            sample_identifier=count_data[str, "Sample"],
-            location_identifier=location_id,
-            dilution_factor_setting=dilution_factor_setting,
-            assay_bead_count=count_data[float, "Total Events"],
-            analytes=[
+        measurement_id = random_uuid_str()
+        analytes = []
+        calculated_data = []
+        for analyte in [
+            key for key in count_data.series.index if key not in metadata_keys
+        ]:
+            analytes.append(
                 Analyte(
-                    identifier=random_uuid_str(),
+                    identifier=(analyte_identifier := random_uuid_str()),
                     name=analyte,
                     assay_bead_identifier=bead_ids_data[str, analyte],
                     assay_bead_count=count_data[float, analyte],
@@ -206,11 +215,40 @@ class Measurement:
                         ),
                     ],
                 )
-                for analyte in [
-                    key for key in count_data.series.index if key not in metadata_keys
+            )
+
+            calculated_data.extend(
+                [
+                    CalculatedDocument(
+                        uuid=random_uuid_str(),
+                        name=section_name,
+                        value=try_float(
+                            calculated_data_section.at[location, analyte], analyte
+                        ),
+                        unit=unit,
+                        data_sources=[
+                            DataSource(
+                                feature="fluorescence",
+                                reference=Referenceable(uuid=analyte_identifier),
+                            )
+                        ],
+                    )
+                    for section_name, unit in CALCULATED_DATA_SECTIONS.items()
+                    if section_name in results_data
+                    and location
+                    in (calculated_data_section := results_data[section_name]).index
                 ]
-            ],
+            )
+
+        return Measurement(
+            identifier=measurement_id,
+            sample_identifier=count_data[str, "Sample"],
+            location_identifier=location_id,
+            dilution_factor_setting=dilution_factor_setting,
+            assay_bead_count=count_data[float, "Total Events"],
+            analytes=analytes,
             errors=errors,
+            calculated_data=calculated_data,
         )
 
     @classmethod
@@ -265,12 +303,6 @@ class MeasurementList:
                 results_data=results_data,
                 count_data=count_data,
                 bead_ids_data=bead_ids_data,
-                dilution_factor_data=results_data["Dilution Factor"],
-                errors_data=(
-                    results_data["Warnings/Errors"]
-                    if "Warnings/Errors" in results_data
-                    else None
-                ),
             )
 
         return MeasurementList(map_rows(results_data["Count"], create_measurement))
@@ -313,8 +345,8 @@ def create_metadata(
 
 def create_measurement_groups(
     measurements: list[Measurement], header: Header
-) -> list[MeasurementGroup]:
-    return [
+) -> tuple[list[MeasurementGroup], list[CalculatedDocument] | None]:
+    measurement_groups = [
         MeasurementGroup(
             analyst=header.analyst,
             analytical_method_identifier=header.analytical_method_identifier,
@@ -340,3 +372,7 @@ def create_measurement_groups(
         )
         for measurement in measurements
     ]
+    calculated_documents = list(
+        itertools.chain(*[measurement.calculated_data for measurement in measurements])
+    )
+    return measurement_groups, calculated_documents

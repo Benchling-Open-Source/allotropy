@@ -76,7 +76,7 @@
                                         }
                                     },
                                     {
-                                        "analyte identifier": "LUMINEX_XPONENT_TEST_ID_2",
+                                        "analyte identifier": "LUMINEX_XPONENT_TEST_ID_3",
                                         "analyte name": "bravo",
                                         "assay bead identifier": "35",
                                         "assay bead count": {
@@ -141,7 +141,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_3",
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_5",
                             "measurement time": "2023-05-18T11:03:56+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown2",
@@ -154,7 +154,7 @@
                             "analyte aggregate document": {
                                 "analyte document": [
                                     {
-                                        "analyte identifier": "LUMINEX_XPONENT_TEST_ID_4",
+                                        "analyte identifier": "LUMINEX_XPONENT_TEST_ID_6",
                                         "analyte name": "alpha",
                                         "assay bead identifier": "28",
                                         "assay bead count": {
@@ -181,7 +181,7 @@
                                         }
                                     },
                                     {
-                                        "analyte identifier": "LUMINEX_XPONENT_TEST_ID_5",
+                                        "analyte identifier": "LUMINEX_XPONENT_TEST_ID_8",
                                         "analyte name": "bravo",
                                         "assay bead identifier": "35",
                                         "assay bead count": {
@@ -246,7 +246,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_6",
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_10",
                             "measurement time": "2023-05-18T11:03:56+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown3",
@@ -259,7 +259,7 @@
                             "analyte aggregate document": {
                                 "analyte document": [
                                     {
-                                        "analyte identifier": "LUMINEX_XPONENT_TEST_ID_7",
+                                        "analyte identifier": "LUMINEX_XPONENT_TEST_ID_11",
                                         "analyte name": "alpha",
                                         "assay bead identifier": "28",
                                         "assay bead count": {
@@ -286,7 +286,7 @@
                                         }
                                     },
                                     {
-                                        "analyte identifier": "LUMINEX_XPONENT_TEST_ID_8",
+                                        "analyte identifier": "LUMINEX_XPONENT_TEST_ID_13",
                                         "analyte name": "bravo",
                                         "assay bead identifier": "35",
                                         "assay bead count": {
@@ -351,7 +351,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_9",
+                            "measurement identifier": "LUMINEX_XPONENT_TEST_ID_15",
                             "measurement time": "2023-05-18T11:03:56+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown4",
@@ -364,7 +364,7 @@
                             "analyte aggregate document": {
                                 "analyte document": [
                                     {
-                                        "analyte identifier": "LUMINEX_XPONENT_TEST_ID_10",
+                                        "analyte identifier": "LUMINEX_XPONENT_TEST_ID_16",
                                         "analyte name": "alpha",
                                         "assay bead identifier": "28",
                                         "assay bead count": {
@@ -391,7 +391,7 @@
                                         }
                                     },
                                     {
-                                        "analyte identifier": "LUMINEX_XPONENT_TEST_ID_11",
+                                        "analyte identifier": "LUMINEX_XPONENT_TEST_ID_18",
                                         "analyte name": "bravo",
                                         "assay bead identifier": "35",
                                         "assay bead count": {
@@ -433,6 +433,138 @@
                 "analyst": "waldo"
             }
         ],
+        "calculated data aggregate document": {
+            "calculated data document": [
+                {
+                    "calculated data name": "Net MFI",
+                    "calculated result": {
+                        "value": 11510.0,
+                        "unit": "RFU"
+                    },
+                    "calculated data identifier": "LUMINEX_XPONENT_TEST_ID_2",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "LUMINEX_XPONENT_TEST_ID_1",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Net MFI",
+                    "calculated result": {
+                        "value": 38801.0,
+                        "unit": "RFU"
+                    },
+                    "calculated data identifier": "LUMINEX_XPONENT_TEST_ID_4",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "LUMINEX_XPONENT_TEST_ID_3",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Net MFI",
+                    "calculated result": {
+                        "value": 8538.0,
+                        "unit": "RFU"
+                    },
+                    "calculated data identifier": "LUMINEX_XPONENT_TEST_ID_7",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "LUMINEX_XPONENT_TEST_ID_6",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Net MFI",
+                    "calculated result": {
+                        "value": 36616.0,
+                        "unit": "RFU"
+                    },
+                    "calculated data identifier": "LUMINEX_XPONENT_TEST_ID_9",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "LUMINEX_XPONENT_TEST_ID_8",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Net MFI",
+                    "calculated result": {
+                        "value": 5523.0,
+                        "unit": "RFU"
+                    },
+                    "calculated data identifier": "LUMINEX_XPONENT_TEST_ID_12",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "LUMINEX_XPONENT_TEST_ID_11",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Net MFI",
+                    "calculated result": {
+                        "value": 34155.0,
+                        "unit": "RFU"
+                    },
+                    "calculated data identifier": "LUMINEX_XPONENT_TEST_ID_14",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "LUMINEX_XPONENT_TEST_ID_13",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Net MFI",
+                    "calculated result": {
+                        "value": 3206.5,
+                        "unit": "RFU"
+                    },
+                    "calculated data identifier": "LUMINEX_XPONENT_TEST_ID_17",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "LUMINEX_XPONENT_TEST_ID_16",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Net MFI",
+                    "calculated result": {
+                        "value": 28980.0,
+                        "unit": "RFU"
+                    },
+                    "calculated data identifier": "LUMINEX_XPONENT_TEST_ID_19",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "LUMINEX_XPONENT_TEST_ID_18",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
         "data system document": {
             "ASM file identifier": "luminex_xPONENT_example03.json",
             "data system instance identifier": "ABCDEFG123456",
