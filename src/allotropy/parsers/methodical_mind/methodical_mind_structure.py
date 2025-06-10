@@ -38,7 +38,7 @@ class Header:
 
 
 def _is_valid_well_label(label: str) -> bool:
-    return re.match("[A-Z]+", label)
+    return bool(re.match("[A-Z]+", label))
 
 
 @dataclass(frozen=True)
