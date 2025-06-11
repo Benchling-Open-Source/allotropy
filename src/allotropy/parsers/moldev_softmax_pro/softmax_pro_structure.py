@@ -918,12 +918,10 @@ class PlateBlock(ABC, Block):
     def _position_exists(self, position: str) -> bool:
         """Check if a well position exists in the actual data (for partial plates)."""
         if isinstance(self.block_data, PlateData):
-            # PlateWavelengthData - check data_elements directly
             for plate_wavelength_data in self.block_data.raw_data.wavelength_data:
                 if position in plate_wavelength_data.data_elements:
                     return True
         elif isinstance(self.block_data, TimeData):
-            # TimeWavelengthData - check measurement_data
             for time_wavelength_data in self.block_data.raw_data.wavelength_data:
                 if any(
                     position in measurement.data_elements
