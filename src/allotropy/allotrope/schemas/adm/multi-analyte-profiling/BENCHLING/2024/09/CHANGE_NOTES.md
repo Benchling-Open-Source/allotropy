@@ -15,6 +15,6 @@ Changes:
   * Reasoning: These should be included in REC/2024/12 core schema
   * Proposal: Add "method version" to measurement aggregate document
 
-* Add "coefficient of variation role", "trimmed mode role", "trimmed count role", "trimmed standard deviation role", "trimmed arithmetic mean role" to tStatisiticDatumRole class
+* Add "coefficient of variation role", "trimmed mode value role", "trimmed count role", "trimmed standard deviation role", "trimmed arithmetic mean role" to tStatisiticDatumRole class
   * Reasoning: Support of additional statistical terms that are exported from multi-analyte-profilers
-  * Proposal: Add "coefficient of variation role", "trimmed mode role", "trimmed count role", "trimmed standard deviation role", "trimmed arithmetic mean role" to tStatisiticDatumRole
+  * Proposal: Add "coefficient of variation role", "trimmed mode value role", "trimmed count role", "trimmed standard deviation role", "trimmed arithmetic mean role" to tStatisiticDatumRole

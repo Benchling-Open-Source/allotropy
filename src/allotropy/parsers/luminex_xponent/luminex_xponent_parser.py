@@ -1,7 +1,7 @@
-from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._01.multi_analyte_profiling import (
+from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
     Model,
 )
-from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._01.multi_analyte_profiling import (
+from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
     Data as MapperData,
     Mapper,
 )
@@ -31,5 +31,5 @@ class LuminexXponentParser(VendorParser[MapperData, Model]):
             create_metadata(
                 data.header, data.calibrations, named_file_contents.original_file_path
             ),
-            create_measurement_groups(data.measurement_list.measurements, data.header),
+            *create_measurement_groups(data.measurement_list.measurements, data.header),
         )
