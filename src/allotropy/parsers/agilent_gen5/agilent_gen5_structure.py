@@ -1182,8 +1182,23 @@ def create_spectrum_results(
         excitation_bandwidth_setting = 20.0
 
     for well_position, well_absorbance_data in wells_data.items():
+        if measurement_type == MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM:
+            label = "absorbance-spectrum"
+        elif measurement_type in (
+            MeasurementType.EMISSION_FLUORESCENCE_CUBE_SPECTRUM,
+            MeasurementType.EXCITATION_FLUORESCENCE_CUBE_SPECTRUM,
+        ):
+            label = "fluorescence-spectrum"
+        elif measurement_type in (
+            MeasurementType.EMISSION_LUMINESCENCE_CUBE_SPECTRUM,
+            MeasurementType.EXCITATION_LUMINESCENCE_CUBE_SPECTRUM,
+        ):
+            label = "luminescence-spectrum"
+        else:
+            label = "spectrum"
+
         spectrum_data_cube = DataCube(
-            label="absorbance-spectrum",
+            label=label,
             structure_dimensions=[
                 DataCubeComponent(
                     concept="wavelength",
