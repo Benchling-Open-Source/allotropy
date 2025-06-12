@@ -672,6 +672,12 @@ class PlateData:
         for plate_wavelength_data in self.raw_data.wavelength_data:
             yield plate_wavelength_data.data_elements[position]
 
+    def position_exists(self, position: str) -> bool:
+        for plate_wavelength_data in self.raw_data.wavelength_data:
+            if position in plate_wavelength_data.data_elements:
+                return True
+        return False
+
 
 @dataclass(frozen=True)
 class TimeMeasurementData:
@@ -807,6 +813,15 @@ class TimeData:
             for measurement_data in time_wavelength_data.measurement_data:
                 yield measurement_data.data_elements[position]
 
+    def position_exists(self, position: str) -> bool:
+        for time_wavelength_data in self.raw_data.wavelength_data:
+            if any(
+                position in measurement.data_elements
+                for measurement in time_wavelength_data.measurement_data
+            ):
+                return True
+        return False
+
 
 @dataclass(frozen=True)
 class PlateBlock(ABC, Block):
@@ -915,27 +930,12 @@ class PlateBlock(ABC, Block):
             start_f + step_f * i for i in range(int((end_f - start_f) / step_f) + 1)
         ]
 
-    def _position_exists(self, position: str) -> bool:
-        """Check if a well position exists in the actual data (for partial plates)."""
-        if isinstance(self.block_data, PlateData):
-            for plate_wavelength_data in self.block_data.raw_data.wavelength_data:
-                if position in plate_wavelength_data.data_elements:
-                    return True
-        elif isinstance(self.block_data, TimeData):
-            for time_wavelength_data in self.block_data.raw_data.wavelength_data:
-                if any(
-                    position in measurement.data_elements
-                    for measurement in time_wavelength_data.measurement_data
-                ):
-                    return True
-        return False
-
     def iter_wells(self) -> Iterator[str]:
         cols, rows = NUM_WELLS_TO_PLATE_DIMENSIONS[self.header.num_wells]
         for row in range(rows):
             for col in range(1, cols + 1):
                 position = f"{num_to_chars(row)}{col}"
-                if self._position_exists(position):
+                if self.block_data.position_exists(position):
                     yield position
 
     def iter_data_elements(self, position: str | list[str]) -> Iterator[DataElement]:
