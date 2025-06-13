@@ -478,7 +478,7 @@ class RawData:
         if len(columns) >= data.shape[1]:
             columns = columns.iloc[: data.shape[1]]
         elif len(columns) < data.shape[1]:
-            data = data.loc[:, :len(columns) - 1]
+            data = data.loc[:, : len(columns) - 1]
 
         set_columns(data, columns)
         return data
@@ -599,9 +599,7 @@ class SpectrumRawPlateData(RawData):
             reader, columns, rows
         ).iloc[:, 2:]
         signal_data = {
-            f"{num_to_chars(row_idx)}{col}": try_float_or_none(
-                str(raw_value)
-            )
+            f"{num_to_chars(row_idx)}{col}": try_float_or_none(str(raw_value))
             for row_idx, *row_data in max_wavelength_signal_data.itertuples()
             for col, raw_value in zip(
                 max_wavelength_signal_data.columns, row_data, strict=True
