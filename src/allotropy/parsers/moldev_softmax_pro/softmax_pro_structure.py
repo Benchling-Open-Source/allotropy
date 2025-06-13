@@ -564,7 +564,7 @@ class PlateRawData(RawData):
 
 @dataclass(frozen=True)
 class SpectrumRawPlateData(RawData):
-    maximum_wavelength_signal: dict[str, float]
+    maximum_wavelength_signal: dict[str, float | None]
 
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> SpectrumRawPlateData:
