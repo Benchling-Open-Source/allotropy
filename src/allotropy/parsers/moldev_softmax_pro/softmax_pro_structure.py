@@ -410,14 +410,12 @@ class PlateWavelengthData:
             for row_idx, *row_data in df_data.itertuples()
             for col, raw_value in zip(df_data.columns, row_data, strict=True)
         }
-
         data_elements = {}
         for position, raw_value in data.items():
             value = try_non_nan_float_or_none(raw_value)
             if value is None and elapsed_time is not None:
                 msg = f"Missing kinetic measurement for well position {position} at {elapsed_time}s."
                 raise AllotropeConversionError(msg)
-
             data_elements[str(position)] = DataElement(
                 uuid=random_uuid_str(),
                 plate=header.name,
@@ -477,9 +475,12 @@ class RawData:
         )
 
         # Truncate columns Series to match the actual number of data columns
-        truncated_columns = columns.iloc[: data.shape[1]]
+        if len(columns) >= data.shape[1]:
+            columns = columns.iloc[: data.shape[1]]
+        elif len(columns) < data.shape[1]:
+            data = data.loc[:, :len(columns) - 1]
 
-        set_columns(data, truncated_columns)
+        set_columns(data, columns)
         return data
 
 
@@ -598,8 +599,8 @@ class SpectrumRawPlateData(RawData):
             reader, columns, rows
         ).iloc[:, 2:]
         signal_data = {
-            f"{num_to_chars(row_idx)}{col}": try_float(
-                str(raw_value), "wavelength signal"
+            f"{num_to_chars(row_idx)}{col}": try_float_or_none(
+                str(raw_value)
             )
             for row_idx, *row_data in max_wavelength_signal_data.itertuples()
             for col, raw_value in zip(
