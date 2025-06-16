@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2025/03/plate-reader.manifest",
     "plate reader aggregate document": {
         "plate reader document": [
             {
@@ -11,33 +11,33 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Kinetic Fluorescence",
+                                        "detector gain setting": "Medium",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
                                         },
-                                        "detector gain setting": "Medium",
                                         "detector wavelength setting": {
                                             "value": 525.0,
                                             "unit": "nm"
-                                        },
-                                        "total measurement time setting": {
-                                            "value": 300.0,
-                                            "unit": "s"
-                                        },
-                                        "read interval setting": {
-                                            "value": 90.0,
-                                            "unit": "s"
                                         },
                                         "number of scans setting": {
                                             "value": 4,
                                             "unit": "#"
                                         },
-                                        "wavelength filter cutoff setting": {
-                                            "value": 515,
-                                            "unit": "nm"
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
                                         },
                                         "excitation wavelength setting": {
                                             "value": 485,
+                                            "unit": "nm"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
                                             "unit": "nm"
                                         }
                                     }
@@ -45,8 +45,8 @@
                             },
                             "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_0",
                             "sample document": {
-                                "sample identifier": "Plate1 A1",
                                 "location identifier": "A1",
+                                "sample identifier": "Plate1 A1",
                                 "well plate identifier": "Plate1"
                             },
                             "compartment temperature": {
@@ -87,33 +87,33 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Kinetic Fluorescence",
+                                        "detector gain setting": "Medium",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
                                         },
-                                        "detector gain setting": "Medium",
                                         "detector wavelength setting": {
                                             "value": 525.0,
                                             "unit": "nm"
-                                        },
-                                        "total measurement time setting": {
-                                            "value": 300.0,
-                                            "unit": "s"
-                                        },
-                                        "read interval setting": {
-                                            "value": 90.0,
-                                            "unit": "s"
                                         },
                                         "number of scans setting": {
                                             "value": 4,
                                             "unit": "#"
                                         },
-                                        "wavelength filter cutoff setting": {
-                                            "value": 515,
-                                            "unit": "nm"
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
                                         },
                                         "excitation wavelength setting": {
                                             "value": 485,
+                                            "unit": "nm"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
                                             "unit": "nm"
                                         }
                                     }
@@ -121,8 +121,8 @@
                             },
                             "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_6",
                             "sample document": {
-                                "sample identifier": "Plate1 A1",
                                 "location identifier": "A1",
+                                "sample identifier": "Plate1 A1",
                                 "well plate identifier": "Plate1"
                             },
                             "compartment temperature": {
@@ -175,33 +175,33 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Kinetic Fluorescence",
+                                        "detector gain setting": "Medium",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
                                         },
-                                        "detector gain setting": "Medium",
                                         "detector wavelength setting": {
                                             "value": 525.0,
                                             "unit": "nm"
-                                        },
-                                        "total measurement time setting": {
-                                            "value": 300.0,
-                                            "unit": "s"
-                                        },
-                                        "read interval setting": {
-                                            "value": 90.0,
-                                            "unit": "s"
                                         },
                                         "number of scans setting": {
                                             "value": 4,
                                             "unit": "#"
                                         },
-                                        "wavelength filter cutoff setting": {
-                                            "value": 515,
-                                            "unit": "nm"
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
                                         },
                                         "excitation wavelength setting": {
                                             "value": 485,
+                                            "unit": "nm"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
                                             "unit": "nm"
                                         }
                                     }
@@ -209,8 +209,8 @@
                             },
                             "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1",
                             "sample document": {
-                                "sample identifier": "Plate1 A2",
                                 "location identifier": "A2",
+                                "sample identifier": "Plate1 A2",
                                 "well plate identifier": "Plate1"
                             },
                             "compartment temperature": {
@@ -251,33 +251,33 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Kinetic Fluorescence",
+                                        "detector gain setting": "Medium",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
                                         },
-                                        "detector gain setting": "Medium",
                                         "detector wavelength setting": {
                                             "value": 525.0,
                                             "unit": "nm"
-                                        },
-                                        "total measurement time setting": {
-                                            "value": 300.0,
-                                            "unit": "s"
-                                        },
-                                        "read interval setting": {
-                                            "value": 90.0,
-                                            "unit": "s"
                                         },
                                         "number of scans setting": {
                                             "value": 4,
                                             "unit": "#"
                                         },
-                                        "wavelength filter cutoff setting": {
-                                            "value": 515,
-                                            "unit": "nm"
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
                                         },
                                         "excitation wavelength setting": {
                                             "value": 485,
+                                            "unit": "nm"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
                                             "unit": "nm"
                                         }
                                     }
@@ -285,8 +285,8 @@
                             },
                             "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_7",
                             "sample document": {
-                                "sample identifier": "Plate1 A2",
                                 "location identifier": "A2",
+                                "sample identifier": "Plate1 A2",
                                 "well plate identifier": "Plate1"
                             },
                             "compartment temperature": {
@@ -339,33 +339,33 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Kinetic Fluorescence",
+                                        "detector gain setting": "Medium",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
                                         },
-                                        "detector gain setting": "Medium",
                                         "detector wavelength setting": {
                                             "value": 525.0,
                                             "unit": "nm"
-                                        },
-                                        "total measurement time setting": {
-                                            "value": 300.0,
-                                            "unit": "s"
-                                        },
-                                        "read interval setting": {
-                                            "value": 90.0,
-                                            "unit": "s"
                                         },
                                         "number of scans setting": {
                                             "value": 4,
                                             "unit": "#"
                                         },
-                                        "wavelength filter cutoff setting": {
-                                            "value": 515,
-                                            "unit": "nm"
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
                                         },
                                         "excitation wavelength setting": {
                                             "value": 485,
+                                            "unit": "nm"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
                                             "unit": "nm"
                                         }
                                     }
@@ -373,8 +373,8 @@
                             },
                             "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_2",
                             "sample document": {
-                                "sample identifier": "Plate1 A3",
                                 "location identifier": "A3",
+                                "sample identifier": "Plate1 A3",
                                 "well plate identifier": "Plate1"
                             },
                             "compartment temperature": {
@@ -415,33 +415,33 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Kinetic Fluorescence",
+                                        "detector gain setting": "Medium",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
                                         },
-                                        "detector gain setting": "Medium",
                                         "detector wavelength setting": {
                                             "value": 525.0,
                                             "unit": "nm"
-                                        },
-                                        "total measurement time setting": {
-                                            "value": 300.0,
-                                            "unit": "s"
-                                        },
-                                        "read interval setting": {
-                                            "value": 90.0,
-                                            "unit": "s"
                                         },
                                         "number of scans setting": {
                                             "value": 4,
                                             "unit": "#"
                                         },
-                                        "wavelength filter cutoff setting": {
-                                            "value": 515,
-                                            "unit": "nm"
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
                                         },
                                         "excitation wavelength setting": {
                                             "value": 485,
+                                            "unit": "nm"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
                                             "unit": "nm"
                                         }
                                     }
@@ -449,8 +449,8 @@
                             },
                             "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_8",
                             "sample document": {
-                                "sample identifier": "Plate1 A3",
                                 "location identifier": "A3",
+                                "sample identifier": "Plate1 A3",
                                 "well plate identifier": "Plate1"
                             },
                             "compartment temperature": {
@@ -503,33 +503,33 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Kinetic Fluorescence",
+                                        "detector gain setting": "Medium",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
                                         },
-                                        "detector gain setting": "Medium",
                                         "detector wavelength setting": {
                                             "value": 525.0,
                                             "unit": "nm"
-                                        },
-                                        "total measurement time setting": {
-                                            "value": 300.0,
-                                            "unit": "s"
-                                        },
-                                        "read interval setting": {
-                                            "value": 90.0,
-                                            "unit": "s"
                                         },
                                         "number of scans setting": {
                                             "value": 4,
                                             "unit": "#"
                                         },
-                                        "wavelength filter cutoff setting": {
-                                            "value": 515,
-                                            "unit": "nm"
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
                                         },
                                         "excitation wavelength setting": {
                                             "value": 485,
+                                            "unit": "nm"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
                                             "unit": "nm"
                                         }
                                     }
@@ -537,8 +537,8 @@
                             },
                             "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_3",
                             "sample document": {
-                                "sample identifier": "Plate1 B1",
                                 "location identifier": "B1",
+                                "sample identifier": "Plate1 B1",
                                 "well plate identifier": "Plate1"
                             },
                             "compartment temperature": {
@@ -579,33 +579,33 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Kinetic Fluorescence",
+                                        "detector gain setting": "Medium",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
                                         },
-                                        "detector gain setting": "Medium",
                                         "detector wavelength setting": {
                                             "value": 525.0,
                                             "unit": "nm"
-                                        },
-                                        "total measurement time setting": {
-                                            "value": 300.0,
-                                            "unit": "s"
-                                        },
-                                        "read interval setting": {
-                                            "value": 90.0,
-                                            "unit": "s"
                                         },
                                         "number of scans setting": {
                                             "value": 4,
                                             "unit": "#"
                                         },
-                                        "wavelength filter cutoff setting": {
-                                            "value": 515,
-                                            "unit": "nm"
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
                                         },
                                         "excitation wavelength setting": {
                                             "value": 485,
+                                            "unit": "nm"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
                                             "unit": "nm"
                                         }
                                     }
@@ -613,8 +613,8 @@
                             },
                             "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_9",
                             "sample document": {
-                                "sample identifier": "Plate1 B1",
                                 "location identifier": "B1",
+                                "sample identifier": "Plate1 B1",
                                 "well plate identifier": "Plate1"
                             },
                             "compartment temperature": {
@@ -667,33 +667,33 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Kinetic Fluorescence",
+                                        "detector gain setting": "Medium",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
                                         },
-                                        "detector gain setting": "Medium",
                                         "detector wavelength setting": {
                                             "value": 525.0,
                                             "unit": "nm"
-                                        },
-                                        "total measurement time setting": {
-                                            "value": 300.0,
-                                            "unit": "s"
-                                        },
-                                        "read interval setting": {
-                                            "value": 90.0,
-                                            "unit": "s"
                                         },
                                         "number of scans setting": {
                                             "value": 4,
                                             "unit": "#"
                                         },
-                                        "wavelength filter cutoff setting": {
-                                            "value": 515,
-                                            "unit": "nm"
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
                                         },
                                         "excitation wavelength setting": {
                                             "value": 485,
+                                            "unit": "nm"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
                                             "unit": "nm"
                                         }
                                     }
@@ -701,8 +701,8 @@
                             },
                             "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_4",
                             "sample document": {
-                                "sample identifier": "Plate1 B2",
                                 "location identifier": "B2",
+                                "sample identifier": "Plate1 B2",
                                 "well plate identifier": "Plate1"
                             },
                             "compartment temperature": {
@@ -743,33 +743,33 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Kinetic Fluorescence",
+                                        "detector gain setting": "Medium",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
                                         },
-                                        "detector gain setting": "Medium",
                                         "detector wavelength setting": {
                                             "value": 525.0,
                                             "unit": "nm"
-                                        },
-                                        "total measurement time setting": {
-                                            "value": 300.0,
-                                            "unit": "s"
-                                        },
-                                        "read interval setting": {
-                                            "value": 90.0,
-                                            "unit": "s"
                                         },
                                         "number of scans setting": {
                                             "value": 4,
                                             "unit": "#"
                                         },
-                                        "wavelength filter cutoff setting": {
-                                            "value": 515,
-                                            "unit": "nm"
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
                                         },
                                         "excitation wavelength setting": {
                                             "value": 485,
+                                            "unit": "nm"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
                                             "unit": "nm"
                                         }
                                     }
@@ -777,8 +777,8 @@
                             },
                             "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_10",
                             "sample document": {
-                                "sample identifier": "Plate1 B2",
                                 "location identifier": "B2",
+                                "sample identifier": "Plate1 B2",
                                 "well plate identifier": "Plate1"
                             },
                             "compartment temperature": {
@@ -831,33 +831,33 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Kinetic Fluorescence",
+                                        "detector gain setting": "Medium",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
                                         },
-                                        "detector gain setting": "Medium",
                                         "detector wavelength setting": {
                                             "value": 525.0,
                                             "unit": "nm"
-                                        },
-                                        "total measurement time setting": {
-                                            "value": 300.0,
-                                            "unit": "s"
-                                        },
-                                        "read interval setting": {
-                                            "value": 90.0,
-                                            "unit": "s"
                                         },
                                         "number of scans setting": {
                                             "value": 4,
                                             "unit": "#"
                                         },
-                                        "wavelength filter cutoff setting": {
-                                            "value": 515,
-                                            "unit": "nm"
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
                                         },
                                         "excitation wavelength setting": {
                                             "value": 485,
+                                            "unit": "nm"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
                                             "unit": "nm"
                                         }
                                     }
@@ -865,8 +865,8 @@
                             },
                             "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_5",
                             "sample document": {
-                                "sample identifier": "Plate1 B3",
                                 "location identifier": "B3",
+                                "sample identifier": "Plate1 B3",
                                 "well plate identifier": "Plate1"
                             },
                             "compartment temperature": {
@@ -907,33 +907,33 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Kinetic Fluorescence",
+                                        "detector gain setting": "Medium",
                                         "number of averages": {
                                             "value": 6.0,
                                             "unit": "#"
                                         },
-                                        "detector gain setting": "Medium",
                                         "detector wavelength setting": {
                                             "value": 525.0,
                                             "unit": "nm"
-                                        },
-                                        "total measurement time setting": {
-                                            "value": 300.0,
-                                            "unit": "s"
-                                        },
-                                        "read interval setting": {
-                                            "value": 90.0,
-                                            "unit": "s"
                                         },
                                         "number of scans setting": {
                                             "value": 4,
                                             "unit": "#"
                                         },
-                                        "wavelength filter cutoff setting": {
-                                            "value": 515,
-                                            "unit": "nm"
+                                        "read interval setting": {
+                                            "value": 90.0,
+                                            "unit": "s"
+                                        },
+                                        "total measurement time setting": {
+                                            "value": 300.0,
+                                            "unit": "s"
                                         },
                                         "excitation wavelength setting": {
                                             "value": 485,
+                                            "unit": "nm"
+                                        },
+                                        "wavelength filter cutoff setting": {
+                                            "value": 515,
                                             "unit": "nm"
                                         }
                                     }
@@ -941,8 +941,8 @@
                             },
                             "measurement identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_11",
                             "sample document": {
-                                "sample identifier": "Plate1 B3",
                                 "location identifier": "B3",
+                                "sample identifier": "Plate1 B3",
                                 "well plate identifier": "Plate1"
                             },
                             "compartment temperature": {
@@ -992,8 +992,8 @@
                 {
                     "calculated data name": "Reduced",
                     "calculated result": {
-                        "value": 0.34262625396825386,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 0.34262625396825386
                     },
                     "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_12",
                     "data source aggregate document": {
@@ -1012,8 +1012,8 @@
                 {
                     "calculated data name": "Reduced",
                     "calculated result": {
-                        "value": 0.19835369841269834,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 0.19835369841269834
                     },
                     "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_13",
                     "data source aggregate document": {
@@ -1032,8 +1032,8 @@
                 {
                     "calculated data name": "Reduced",
                     "calculated result": {
-                        "value": 0.10696909920634921,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 0.10696909920634921
                     },
                     "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_14",
                     "data source aggregate document": {
@@ -1052,8 +1052,8 @@
                 {
                     "calculated data name": "Reduced",
                     "calculated result": {
-                        "value": 0.3564598492063492,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 0.3564598492063492
                     },
                     "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_15",
                     "data source aggregate document": {
@@ -1072,8 +1072,8 @@
                 {
                     "calculated data name": "Reduced",
                     "calculated result": {
-                        "value": 0.2079952698412698,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 0.2079952698412698
                     },
                     "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_16",
                     "data source aggregate document": {
@@ -1092,8 +1092,8 @@
                 {
                     "calculated data name": "Reduced",
                     "calculated result": {
-                        "value": 0.11264294841269841,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 0.11264294841269841
                     },
                     "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_17",
                     "data source aggregate document": {
@@ -1114,10 +1114,10 @@
         "data system document": {
             "ASM file identifier": "N/A",
             "data system instance identifier": "N/A",
-            "file name": "fl_kinetic_plates.txt",
             "UNC path": "tests/parsers/moldev_softmax_pro/testdata/fl_kinetic_plates.txt",
+            "file name": "fl_kinetic_plates.txt",
             "ASM converter name": "allotropy_molecular_devices_softmax_pro",
-            "ASM converter version": "0.1.80",
+            "ASM converter version": "0.1.92",
             "software name": "SoftMax Pro"
         },
         "device system document": {

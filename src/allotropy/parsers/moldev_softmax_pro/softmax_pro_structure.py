@@ -11,7 +11,7 @@ from typing import Any
 
 import pandas as pd
 
-from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
     ErrorDocument,
     MeasurementType,
     ScanPositionSettingPlateReader,
@@ -829,6 +829,15 @@ class PlateBlock(ABC, Block):
 
     @property
     def measurement_type(self) -> MeasurementType:
+        if self.header.read_type == ReadType.SPECTRUM.value:
+            if self.header.concept == "absorbance":
+                return MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM
+            elif self.header.concept == "fluorescence":
+                return MeasurementType.EMISSION_FLUORESCENCE_CUBE_SPECTRUM
+            elif self.header.concept == "luminescence":
+                return MeasurementType.EMISSION_LUMINESCENCE_CUBE_SPECTRUM
+
+        # Handle non-spectrum measurements
         read_mode_to_measurement_type = {
             "Absorbance": MeasurementType.ULTRAVIOLET_ABSORBANCE,
             "Fluorescence": MeasurementType.FLUORESCENCE,

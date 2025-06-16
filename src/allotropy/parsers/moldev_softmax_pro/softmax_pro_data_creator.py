@@ -10,7 +10,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
-from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -78,9 +78,83 @@ def _get_data_cube(
     )
 
 
+def _get_spectrum_data_cube(
+    plate_block: PlateBlock, data_elements: list[DataElement]
+) -> DataCube:
+    wavelengths = [data_element.wavelength for data_element in data_elements]
+    values = [data_element.value for data_element in data_elements]
+
+    return DataCube(
+        label=f"{plate_block.header.concept}-spectrum",
+        structure_dimensions=[
+            DataCubeComponent(
+                type_=FieldComponentDatatype.double, concept="wavelength", unit="nm"
+            )
+        ],
+        structure_measures=[
+            DataCubeComponent(
+                type_=FieldComponentDatatype.double,
+                concept=plate_block.header.concept,
+                unit=plate_block.header.unit,
+            )
+        ],
+        dimensions=[wavelengths],
+        measures=[values],
+    )
+
+
+def _create_spectrum_measurement(
+    plate_block: PlateBlock, data_elements: list[DataElement]
+) -> Measurement:
+    measurement_type = plate_block.measurement_type
+    first_data_element = data_elements[0]
+
+    return Measurement(
+        type_=measurement_type,
+        identifier=first_data_element.uuid,
+        spectrum_data_cube=_get_spectrum_data_cube(plate_block, data_elements),
+        compartment_temperature=first_data_element.temperature or None,
+        location_identifier=first_data_element.position,
+        well_plate_identifier=plate_block.header.name,
+        sample_identifier=first_data_element.sample_identifier,
+        sample_custom_info={"group_identifier": first_data_element.group_id},
+        device_type=DEVICE_TYPE,
+        detection_type=plate_block.header.read_mode,
+        scan_position_setting=plate_block.header.scan_position,
+        excitation_wavelength_setting=(
+            plate_block.header.excitation_wavelengths[0]
+            if plate_block.header.excitation_wavelengths
+            else None
+        ),
+        wavelength_filter_cutoff_setting=(
+            plate_block.header.cutoff_filters[0]
+            if plate_block.header.cutoff_filters
+            else None
+        ),
+        number_of_averages=plate_block.header.reads_per_well,
+        detector_gain_setting=plate_block.header.pmt_gain,
+        total_measurement_time_setting=plate_block.header.read_time,
+        read_interval_setting=plate_block.header.read_interval,
+        number_of_scans_setting=plate_block.header.kinetic_points,
+        error_document=first_data_element.error_document,
+        measurement_custom_info=first_data_element.custom_info,
+    )
+
+
 def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measurement]:
 
     measurement_type = plate_block.measurement_type
+    data_elements = list(plate_block.iter_data_elements(position))
+
+    # Handle spectrum measurements - create single measurement with spectrum_data_cube
+    if measurement_type in (
+        MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM,
+        MeasurementType.EMISSION_FLUORESCENCE_CUBE_SPECTRUM,
+        MeasurementType.EXCITATION_FLUORESCENCE_CUBE_SPECTRUM,
+        MeasurementType.EMISSION_LUMINESCENCE_CUBE_SPECTRUM,
+        MeasurementType.EXCITATION_LUMINESCENCE_CUBE_SPECTRUM,
+    ):
+        return [_create_spectrum_measurement(plate_block, data_elements)]
 
     return [
         Measurement(
@@ -134,7 +208,7 @@ def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measure
             # custom information
             measurement_custom_info=data_element.custom_info,
         )
-        for idx, data_element in enumerate(plate_block.iter_data_elements(position))
+        for idx, data_element in enumerate(data_elements)
     ]
 
 
