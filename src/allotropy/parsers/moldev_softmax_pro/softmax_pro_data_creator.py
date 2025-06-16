@@ -18,7 +18,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_rea
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP, NOT_APPLICABLE
+from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP, NOT_APPLICABLE, NEGATIVE_ZERO
 from allotropy.parsers.moldev_softmax_pro.constants import DEVICE_TYPE
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     DataElement,
@@ -80,9 +80,12 @@ def _get_data_cube(
 
 def _get_spectrum_data_cube(
     plate_block: PlateBlock, data_elements: list[DataElement]
-) -> DataCube:
+) -> DataCube | None:
     wavelengths = [data_element.wavelength for data_element in data_elements]
     values = [data_element.value for data_element in data_elements]
+    if NEGATIVE_ZERO in values:
+        # Ignore the wells completely from the ASM if there is an nan value
+        return None
 
     return DataCube(
         label=f"{plate_block.header.concept}-spectrum",
@@ -105,14 +108,16 @@ def _get_spectrum_data_cube(
 
 def _create_spectrum_measurement(
     plate_block: PlateBlock, data_elements: list[DataElement]
-) -> Measurement:
+) -> Measurement | None:
     measurement_type = plate_block.measurement_type
     first_data_element = data_elements[0]
-
+    spectrum_data_cube = _get_spectrum_data_cube(plate_block, data_elements)
+    if not spectrum_data_cube:
+        return None
     return Measurement(
         type_=measurement_type,
         identifier=first_data_element.uuid,
-        spectrum_data_cube=_get_spectrum_data_cube(plate_block, data_elements),
+        spectrum_data_cube=spectrum_data_cube,
         compartment_temperature=first_data_element.temperature or None,
         location_identifier=first_data_element.position,
         well_plate_identifier=plate_block.header.name,
@@ -154,7 +159,10 @@ def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measure
         MeasurementType.EMISSION_LUMINESCENCE_CUBE_SPECTRUM,
         MeasurementType.EXCITATION_LUMINESCENCE_CUBE_SPECTRUM,
     ):
-        return [_create_spectrum_measurement(plate_block, data_elements)]
+        measurement = _create_spectrum_measurement(plate_block, data_elements)
+        if not measurement:
+            return None
+        return [measurement]
 
     return [
         Measurement(
