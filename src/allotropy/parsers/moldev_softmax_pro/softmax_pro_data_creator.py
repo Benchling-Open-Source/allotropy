@@ -18,7 +18,11 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_rea
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP, NOT_APPLICABLE, NEGATIVE_ZERO
+from allotropy.parsers.constants import (
+    DEFAULT_EPOCH_TIMESTAMP,
+    NEGATIVE_ZERO,
+    NOT_APPLICABLE,
+)
 from allotropy.parsers.moldev_softmax_pro.constants import DEVICE_TYPE
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     DataElement,
@@ -161,7 +165,7 @@ def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measure
     ):
         measurement = _create_spectrum_measurement(plate_block, data_elements)
         if not measurement:
-            return None
+            return []
         return [measurement]
 
     return [
