@@ -1,0 +1,76 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
+    "cell counting aggregate document": {
+        "cell counting document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dark field imager (cell counter)",
+                                        "detection type": "dark field"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "CHEMOMETEC_NUCLEOVIEW_TEST_ID_0",
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 83.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 0.928,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 1.12,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.19,
+                                            "unit": "10^6 cells/mL"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "1111_viability count new 99x_pass 99"
+                            },
+                            "custom information document": {
+                                "Sample Media": "Via2-Cassette",
+                                "Instrument": "S/N:99999999999",
+                                "Diameter (um)": 9.7,
+                                "User": "gih",
+                                "Protocol": "Count & Viability; 1.49",
+                                "Dilution Factor": 10.0,
+                                "Secure Mode status": "Enable",
+                                "Debris Index": 50.0,
+                                "Software version": "9.9.9.99",
+                                "Aggregates (%)": 0.0,
+                                "Time (UTC)": "1999-09-99 09:49:29"
+                            }
+                        }
+                    ]
+                },
+                "analyst": "gih"
+            }
+        ],
+        "data system document": {
+            "ASM file identifier": "minervax_example_01.json",
+            "data system instance identifier": "N/A",
+            "file name": "minervax_example_01.csv",
+            "UNC path": "tests/parsers/chemometec_nucleoview/testdata/minervax_example_01.csv",
+            "ASM converter name": "allotropy_chemometec_nucleoview",
+            "ASM converter version": "0.1.93",
+            "software name": "NucleoView"
+        },
+        "device system document": {
+            "model number": "NucleoCounter NC-200"
+        }
+    }
+}
