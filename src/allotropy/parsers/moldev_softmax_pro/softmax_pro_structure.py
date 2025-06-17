@@ -712,16 +712,19 @@ class TimeWavelengthData:
         wavelength: float,
         columns: pd.Series[str],
     ) -> TimeWavelengthData:
-        data = assert_not_none(
-            reader.pop_csv_block_as_df(sep="\t"),
-            msg="unable to find raw data from time block.",
-        )
-        set_columns(data, columns)
+        # Try to get the raw data block
+        data_df = reader.pop_csv_block_as_df(sep="\t")
+
+        # If no data found, return empty measurement data
+        if data_df is None:
+            return TimeWavelengthData(wavelength=wavelength, measurement_data=[])
+
+        set_columns(data_df, columns)
         return TimeWavelengthData(
             wavelength=wavelength,
             measurement_data=[
                 TimeMeasurementData.create(header, wavelength, row)
-                for _, row in data.iterrows()
+                for _, row in data_df.iterrows()
             ],
         )
 
@@ -874,8 +877,12 @@ class PlateBlock(ABC, Block):
 
     @classmethod
     def check_data_type(cls, data_type: str) -> None:
-        if data_type not in (DataType.RAW.value, DataType.BOTH.value):
-            msg = f"The SoftMax Pro file is required to include either 'Raw' or 'Both' (Raw and Reduced) data for all plates, got {data_type}."
+        if data_type not in (
+            DataType.RAW.value,
+            DataType.BOTH.value,
+            DataType.REDUCED.value,
+        ):
+            msg = f"The SoftMax Pro file is required to include either 'Raw', 'Reduced', or 'Both' (Raw and Reduced) data for all plates, got {data_type}."
             raise AllotropeConversionError(msg)
 
     @classmethod
