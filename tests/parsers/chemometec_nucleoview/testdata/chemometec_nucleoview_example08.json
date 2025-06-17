@@ -42,17 +42,17 @@
                                 "sample identifier": "1111_viability count new 99x_pass 99"
                             },
                             "custom information document": {
-                                "Sample Media": "Via2-Cassette",
-                                "Instrument": "S/N:99999999999",
-                                "Diameter (um)": 9.7,
                                 "User": "gih",
-                                "Protocol": "Count & Viability; 1.49",
-                                "Dilution Factor": 10.0,
                                 "Secure Mode status": "Enable",
-                                "Debris Index": 50.0,
+                                "Sample Media": "Via2-Cassette",
                                 "Software version": "9.9.9.99",
+                                "Time (UTC)": "1999-09-99 09:49:29",
+                                "Debris Index": 50.0,
+                                "Instrument": "S/N:99999999999",
+                                "Protocol": "Count & Viability; 1.49",
                                 "Aggregates (%)": 0.0,
-                                "Time (UTC)": "1999-09-99 09:49:29"
+                                "Dilution Factor": 10.0,
+                                "Diameter (um)": 9.7
                             }
                         }
                     ]
@@ -61,10 +61,10 @@
             }
         ],
         "data system document": {
-            "ASM file identifier": "minervax_example_01.json",
+            "ASM file identifier": "chemometec_nucleoview_example08.json",
             "data system instance identifier": "N/A",
-            "file name": "minervax_example_01.csv",
-            "UNC path": "tests/parsers/chemometec_nucleoview/testdata/minervax_example_01.csv",
+            "file name": "chemometec_nucleoview_example08.csv",
+            "UNC path": "tests/parsers/chemometec_nucleoview/testdata/chemometec_nucleoview_example08.csv",
             "ASM converter name": "allotropy_chemometec_nucleoview",
             "ASM converter version": "0.1.93",
             "software name": "NucleoView"
