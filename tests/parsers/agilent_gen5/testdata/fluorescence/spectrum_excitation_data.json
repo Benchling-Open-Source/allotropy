@@ -52,7 +52,7 @@
                                 ]
                             },
                             "fluorescence excitation spectrum data cube": {
-                                "label": "absorbance-spectrum",
+                                "label": "fluorescence-spectrum",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -116,7 +116,7 @@
             "UNC path": "tests/parsers/agilent_gen5/testdata/fluorescence/spectrum_excitation_data.txt",
             "file name": "spectrum_excitation_data.txt",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.90",
+            "ASM converter version": "0.1.93",
             "software name": "Gen5",
             "software version": "3.12.08"
         },
