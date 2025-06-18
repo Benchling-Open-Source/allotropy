@@ -5,6 +5,18 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.94] - 2025-06-18
+
+### Added
+
+- ChemoMetec Nucleoview - add support for tab separated files (#1015)
+- Molecular Devices SoftMax Pro - update ASM structure for spectrum data (#1012)
+- Molecular Devices SoftMax Pro - update adapter to plate reader schema REC 25/03 (#1011)
+
+### Fixed
+
+- Agilent Gen5 - fix spectrum data cube label (#1014)
+
 ## [0.1.93] - 2025-06-10
 
 ### Fixed
