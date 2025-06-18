@@ -92,8 +92,8 @@ def _get_spectrum_data_cube(
 ) -> DataCube | None:
     wavelengths = [data_element.wavelength for data_element in data_elements]
     values = [data_element.value for data_element in data_elements]
-    if None in values:
-        # Ignore the wells completely from the ASM if there is an nan value
+    if all(value is None for value in values):
+        # Ignore the wells completely from the ASM if all values are None
         return None
 
     return DataCube(
@@ -123,6 +123,10 @@ def _create_spectrum_measurement(
     spectrum_data_cube = _get_spectrum_data_cube(plate_block, data_elements)
     if not spectrum_data_cube:
         return None
+    error_documents = []
+    for data_element in data_elements:
+        error_documents.extend(data_element.error_document)
+
     return Measurement(
         type_=measurement_type,
         identifier=first_data_element.uuid,
@@ -150,7 +154,7 @@ def _create_spectrum_measurement(
         total_measurement_time_setting=plate_block.header.read_time,
         read_interval_setting=plate_block.header.read_interval,
         number_of_scans_setting=plate_block.header.kinetic_points,
-        error_document=first_data_element.error_document,
+        error_document=error_documents,
         measurement_custom_info=first_data_element.custom_info,
     )
 
