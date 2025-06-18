@@ -78,7 +78,12 @@ def _get_data_cube(
             )
         ],
         dimensions=[data_element.elapsed_time],
-        measures=[data_element.kinetic_measures],
+        measures=[
+            [
+                value if value is not None else NEGATIVE_ZERO
+                for value in data_element.kinetic_measures
+            ]
+        ],
     )
 
 
@@ -87,7 +92,7 @@ def _get_spectrum_data_cube(
 ) -> DataCube | None:
     wavelengths = [data_element.wavelength for data_element in data_elements]
     values = [data_element.value for data_element in data_elements]
-    if NEGATIVE_ZERO in values:
+    if None in values:
         # Ignore the wells completely from the ASM if there is an nan value
         return None
 
@@ -106,7 +111,7 @@ def _get_spectrum_data_cube(
             )
         ],
         dimensions=[wavelengths],
-        measures=[values],
+        measures=[[value if value is not None else NEGATIVE_ZERO for value in values]],
     )
 
 
@@ -173,17 +178,29 @@ def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measure
             type_=measurement_type,
             identifier=data_element.uuid,
             absorbance=(
-                data_element.value
+                (
+                    data_element.value
+                    if data_element.value is not None
+                    else NEGATIVE_ZERO
+                )
                 if measurement_type == MeasurementType.ULTRAVIOLET_ABSORBANCE
                 else None
             ),
             fluorescence=(
-                data_element.value
+                (
+                    data_element.value
+                    if data_element.value is not None
+                    else NEGATIVE_ZERO
+                )
                 if measurement_type == MeasurementType.FLUORESCENCE
                 else None
             ),
             luminescence=(
-                data_element.value
+                (
+                    data_element.value
+                    if data_element.value is not None
+                    else NEGATIVE_ZERO
+                )
                 if measurement_type == MeasurementType.LUMINESCENCE
                 else None
             ),

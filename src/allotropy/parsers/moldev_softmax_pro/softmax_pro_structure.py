@@ -373,7 +373,7 @@ class DataElement:
     temperature: float | None
     wavelength: float
     position: str
-    value: float
+    value: float | None
     error_document: list[ErrorDocument]
     custom_info: dict[str, str] = field(default_factory=dict)
     elapsed_time: list[float] = field(default_factory=list)
@@ -422,7 +422,7 @@ class PlateWavelengthData:
                 temperature=temperature,
                 wavelength=wavelength,
                 position=str(position),
-                value=NEGATIVE_ZERO if value is None else value,
+                value=value,
                 error_document=(
                     [ErrorDocument(str(raw_value), header.read_mode)]
                     if value is None
@@ -702,7 +702,7 @@ class TimeMeasurementData:
                 temperature=temperature,
                 wavelength=wavelength,
                 position=str(position),
-                value=NEGATIVE_ZERO if value is None else value,
+                value=value,
                 error_document=error_document,
             )
 
