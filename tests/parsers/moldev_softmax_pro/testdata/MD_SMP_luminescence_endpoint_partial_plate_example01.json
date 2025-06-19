@@ -13350,12 +13350,198 @@
         "calculated data aggregate document": {
             "calculated data document": [
                 {
-                    "calculated data name": "Reduced",
+                    "calculated data name": "CV",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -0.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_291",
+                    "calculation description": "Cv(Result)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_26",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_123",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_220",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_38",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_135",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_232",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "MeanResult",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -0.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_292",
+                    "calculation description": "Average(Result)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_26",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_123",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_220",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_38",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_135",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_232",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -0.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_293",
+                    "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_26",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_123",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_220",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_38",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_135",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_232",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Result",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -0.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_294",
+                    "calculation description": "InterpX(Std@StandardCurve,Value)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_26",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_123",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_220",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_38",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_135",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_232",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "SD",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -0.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_295",
+                    "calculation description": "Stdev(Result)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_26",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_123",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_220",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_38",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_135",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_232",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Value",
                     "calculated result": {
                         "unit": "(unitless)",
                         "value": 2250491.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_291",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_296",
+                    "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13374,180 +13560,13 @@
                     }
                 },
                 {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 3039220.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_292",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_27",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_124",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_221",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 2507510.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_293",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_28",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_125",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_222",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 3219883.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_294",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_29",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_126",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_223",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 3777699.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_295",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_30",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_127",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_224",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1592721.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_296",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_31",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_128",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_225",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 332947.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_297",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_32",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_129",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_226",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 2112408.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_298",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_33",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_130",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_227",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
+                    "calculated data name": "Value",
                     "calculated result": {
                         "unit": "(unitless)",
                         "value": 680110.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_299",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_297",
+                    "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13566,12 +13585,223 @@
                     }
                 },
                 {
-                    "calculated data name": "Reduced",
+                    "calculated data name": "CV",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -0.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_298",
+                    "calculation description": "Cv(Result)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_27",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_124",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_221",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_39",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_136",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_233",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "MeanResult",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -0.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_299",
+                    "calculation description": "Average(Result)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_27",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_124",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_221",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_39",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_136",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_233",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -0.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_300",
+                    "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_27",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_124",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_221",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_39",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_136",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_233",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Result",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -0.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_301",
+                    "calculation description": "InterpX(Std@StandardCurve,Value)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_27",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_124",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_221",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_39",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_136",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_233",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "SD",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -0.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_302",
+                    "calculation description": "Stdev(Result)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_27",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_124",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_221",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_39",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_136",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_233",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Value",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 3039220.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_303",
+                    "calculation description": "!WellValues",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_27",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_124",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_221",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Value",
                     "calculated result": {
                         "unit": "(unitless)",
                         "value": 3926958.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_300",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_304",
+                    "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13590,12 +13820,223 @@
                     }
                 },
                 {
-                    "calculated data name": "Reduced",
+                    "calculated data name": "CV",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -0.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_305",
+                    "calculation description": "Cv(Result)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_28",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_125",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_222",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_40",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_137",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_234",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "MeanResult",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -0.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_306",
+                    "calculation description": "Average(Result)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_28",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_125",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_222",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_40",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_137",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_234",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -0.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_307",
+                    "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_28",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_125",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_222",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_40",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_137",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_234",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Result",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -0.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_308",
+                    "calculation description": "InterpX(Std@StandardCurve,Value)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_28",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_125",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_222",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_40",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_137",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_234",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "SD",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -0.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_309",
+                    "calculation description": "Stdev(Result)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_28",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_125",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_222",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_40",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_137",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_234",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Value",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 2507510.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_310",
+                    "calculation description": "!WellValues",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_28",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_125",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_222",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Value",
                     "calculated result": {
                         "unit": "(unitless)",
                         "value": 2899162.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_301",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_311",
+                    "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13614,12 +14055,223 @@
                     }
                 },
                 {
-                    "calculated data name": "Reduced",
+                    "calculated data name": "CV",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -0.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_312",
+                    "calculation description": "Cv(Result)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_29",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_126",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_223",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_41",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_138",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_235",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "MeanResult",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -0.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_313",
+                    "calculation description": "Average(Result)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_29",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_126",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_223",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_41",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_138",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_235",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "R",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -0.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_314",
+                    "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_29",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_126",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_223",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_41",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_138",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_235",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Result",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -0.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_315",
+                    "calculation description": "InterpX(Std@StandardCurve,Value)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_29",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_126",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_223",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_41",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_138",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_235",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "SD",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -0.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_316",
+                    "calculation description": "Stdev(Result)",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_29",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_126",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_223",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_41",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_138",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_235",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Value",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 3219883.0
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_317",
+                    "calculation description": "!WellValues",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_29",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_126",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_223",
+                                "data source feature": "Luminescence"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Value",
                     "calculated result": {
                         "unit": "(unitless)",
                         "value": 1458412.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_302",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_318",
+                    "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -13638,14 +14290,27 @@
                     }
                 },
                 {
-                    "calculated data name": "Reduced",
+                    "calculated data name": "CV",
                     "calculated result": {
                         "unit": "(unitless)",
-                        "value": 1822535.0
+                        "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_303",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_319",
+                    "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_30",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_127",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_224",
+                                "data source feature": "Luminescence"
+                            },
                             {
                                 "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_42",
                                 "data source feature": "Luminescence"
@@ -13662,1556 +14327,123 @@
                     }
                 },
                 {
-                    "calculated data name": "Reduced",
+                    "calculated data name": "MeanResult",
                     "calculated result": {
                         "unit": "(unitless)",
-                        "value": 1898005.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_304",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_43",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_140",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_237",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 2804632.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_305",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_44",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_141",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_238",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 17458.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_306",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_45",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_142",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_239",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 2448922.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_307",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_50",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_147",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_244",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1916934.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_308",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_51",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_148",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_245",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 793433.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_309",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_52",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_149",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_246",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 3920116.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_310",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_53",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_150",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_247",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 3347435.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_311",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_54",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_151",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_248",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 2687185.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_312",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_55",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_152",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_249",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 3396000.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_313",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_56",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_153",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_250",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 274781.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_314",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_57",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_154",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_251",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1533666.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_315",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_62",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_159",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_256",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 3706543.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_316",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_63",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_160",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_257",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1828703.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_317",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_64",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_161",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_258",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 553183.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_318",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_65",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_162",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_259",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 34960.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_319",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_66",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_163",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_260",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 3140638.0
+                        "value": -0.0
                     },
                     "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_320",
+                    "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_67",
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_30",
                                 "data source feature": "Luminescence"
                             },
                             {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_164",
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_127",
                                 "data source feature": "Luminescence"
                             },
                             {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_261",
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_224",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_42",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_139",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_236",
                                 "data source feature": "Luminescence"
                             }
                         ]
                     }
                 },
                 {
-                    "calculated data name": "Reduced",
+                    "calculated data name": "R",
                     "calculated result": {
                         "unit": "(unitless)",
-                        "value": 2885626.0
+                        "value": -0.0
                     },
                     "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_321",
+                    "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_68",
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_30",
                                 "data source feature": "Luminescence"
                             },
                             {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_165",
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_127",
                                 "data source feature": "Luminescence"
                             },
                             {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_262",
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_224",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_42",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_139",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_236",
                                 "data source feature": "Luminescence"
                             }
                         ]
                     }
                 },
                 {
-                    "calculated data name": "Reduced",
+                    "calculated data name": "Result",
                     "calculated result": {
                         "unit": "(unitless)",
-                        "value": 430522.0
+                        "value": -0.0
                     },
                     "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_322",
+                    "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_69",
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_30",
                                 "data source feature": "Luminescence"
                             },
                             {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_166",
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_127",
                                 "data source feature": "Luminescence"
                             },
                             {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_263",
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_224",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_42",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_139",
+                                "data source feature": "Luminescence"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_236",
                                 "data source feature": "Luminescence"
                             }
                         ]
                     }
                 },
                 {
-                    "calculated data name": "CV",
+                    "calculated data name": "SD",
                     "calculated result": {
                         "unit": "(unitless)",
                         "value": -0.0
                     },
                     "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_323",
-                    "calculation description": "Cv(Result)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_26",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_123",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_220",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_38",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_135",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_232",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "MeanResult",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_324",
-                    "calculation description": "Average(Result)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_26",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_123",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_220",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_38",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_135",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_232",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_325",
-                    "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_26",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_123",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_220",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_38",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_135",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_232",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Result",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_326",
-                    "calculation description": "InterpX(Std@StandardCurve,Value)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_26",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_123",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_220",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_38",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_135",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_232",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "SD",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_327",
-                    "calculation description": "Stdev(Result)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_26",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_123",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_220",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_38",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_135",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_232",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Value",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 2250491.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_328",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_26",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_123",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_220",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Value",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 680110.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_329",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_38",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_135",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_232",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "CV",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_330",
-                    "calculation description": "Cv(Result)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_27",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_124",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_221",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_39",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_136",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_233",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "MeanResult",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_331",
-                    "calculation description": "Average(Result)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_27",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_124",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_221",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_39",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_136",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_233",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_332",
-                    "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_27",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_124",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_221",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_39",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_136",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_233",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Result",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_333",
-                    "calculation description": "InterpX(Std@StandardCurve,Value)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_27",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_124",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_221",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_39",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_136",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_233",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "SD",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_334",
-                    "calculation description": "Stdev(Result)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_27",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_124",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_221",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_39",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_136",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_233",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Value",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 3039220.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_335",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_27",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_124",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_221",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Value",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 3926958.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_336",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_39",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_136",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_233",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "CV",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_337",
-                    "calculation description": "Cv(Result)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_28",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_125",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_222",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_40",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_137",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_234",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "MeanResult",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_338",
-                    "calculation description": "Average(Result)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_28",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_125",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_222",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_40",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_137",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_234",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_339",
-                    "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_28",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_125",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_222",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_40",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_137",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_234",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Result",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_340",
-                    "calculation description": "InterpX(Std@StandardCurve,Value)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_28",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_125",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_222",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_40",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_137",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_234",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "SD",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_341",
-                    "calculation description": "Stdev(Result)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_28",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_125",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_222",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_40",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_137",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_234",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Value",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 2507510.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_342",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_28",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_125",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_222",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Value",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 2899162.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_343",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_40",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_137",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_234",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "CV",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_344",
-                    "calculation description": "Cv(Result)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_29",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_126",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_223",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_41",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_138",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_235",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "MeanResult",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_345",
-                    "calculation description": "Average(Result)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_29",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_126",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_223",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_41",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_138",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_235",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_346",
-                    "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_29",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_126",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_223",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_41",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_138",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_235",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Result",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_347",
-                    "calculation description": "InterpX(Std@StandardCurve,Value)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_29",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_126",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_223",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_41",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_138",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_235",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "SD",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_348",
-                    "calculation description": "Stdev(Result)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_29",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_126",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_223",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_41",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_138",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_235",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Value",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 3219883.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_349",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_29",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_126",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_223",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Value",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1458412.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_350",
-                    "calculation description": "!WellValues",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_41",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_138",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_235",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "CV",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_351",
-                    "calculation description": "Cv(Result)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_30",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_127",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_224",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_42",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_139",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_236",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "MeanResult",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_352",
-                    "calculation description": "Average(Result)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_30",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_127",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_224",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_42",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_139",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_236",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "R",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_353",
-                    "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_30",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_127",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_224",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_42",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_139",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_236",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Result",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_354",
-                    "calculation description": "InterpX(Std@StandardCurve,Value)",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_30",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_127",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_224",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_42",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_139",
-                                "data source feature": "Luminescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_236",
-                                "data source feature": "Luminescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "SD",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.0
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_355",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15248,7 +14480,7 @@
                         "unit": "(unitless)",
                         "value": 3777699.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_356",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_324",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -15273,7 +14505,7 @@
                         "unit": "(unitless)",
                         "value": 1822535.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_357",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_325",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -15298,7 +14530,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_358",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_326",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15335,7 +14567,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_359",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_327",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15372,7 +14604,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_360",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_328",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -15409,7 +14641,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_361",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_329",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15446,7 +14678,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_362",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_330",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15483,7 +14715,7 @@
                         "unit": "(unitless)",
                         "value": 1592721.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_363",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_331",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -15508,7 +14740,7 @@
                         "unit": "(unitless)",
                         "value": 1898005.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_364",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_332",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -15533,7 +14765,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_365",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_333",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15570,7 +14802,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_366",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_334",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15607,7 +14839,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_367",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_335",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -15644,7 +14876,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_368",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_336",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15681,7 +14913,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_369",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_337",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15718,7 +14950,7 @@
                         "unit": "(unitless)",
                         "value": 332947.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_370",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_338",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -15743,7 +14975,7 @@
                         "unit": "(unitless)",
                         "value": 2804632.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_371",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_339",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -15768,7 +15000,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_372",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_340",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15805,7 +15037,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_373",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_341",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15842,7 +15074,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_374",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_342",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -15879,7 +15111,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_375",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_343",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15916,7 +15148,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_376",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_344",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15953,7 +15185,7 @@
                         "unit": "(unitless)",
                         "value": 2112408.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_377",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_345",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -15978,7 +15210,7 @@
                         "unit": "(unitless)",
                         "value": 17458.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_378",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_346",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16003,7 +15235,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_379",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_347",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16040,7 +15272,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_380",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_348",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16077,7 +15309,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_381",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_349",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -16114,7 +15346,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_382",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_350",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16151,7 +15383,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_383",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_351",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16188,7 +15420,7 @@
                         "unit": "(unitless)",
                         "value": 2448922.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_384",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_352",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16213,7 +15445,7 @@
                         "unit": "(unitless)",
                         "value": 1533666.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_385",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_353",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16238,7 +15470,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_386",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_354",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16275,7 +15507,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_387",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_355",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16312,7 +15544,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_388",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_356",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -16349,7 +15581,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_389",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_357",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16386,7 +15618,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_390",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_358",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16423,7 +15655,7 @@
                         "unit": "(unitless)",
                         "value": 1916934.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_391",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_359",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16448,7 +15680,7 @@
                         "unit": "(unitless)",
                         "value": 3706543.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_392",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_360",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16473,7 +15705,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_393",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_361",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16510,7 +15742,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_394",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_362",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16547,7 +15779,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_395",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_363",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -16584,7 +15816,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_396",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_364",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16621,7 +15853,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_397",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_365",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16658,7 +15890,7 @@
                         "unit": "(unitless)",
                         "value": 793433.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_398",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_366",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16683,7 +15915,7 @@
                         "unit": "(unitless)",
                         "value": 1828703.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_399",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_367",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16708,7 +15940,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_400",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_368",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16745,7 +15977,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_401",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_369",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16782,7 +16014,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_402",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_370",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -16819,7 +16051,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_403",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_371",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16856,7 +16088,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_404",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_372",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16893,7 +16125,7 @@
                         "unit": "(unitless)",
                         "value": 3920116.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_405",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_373",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16918,7 +16150,7 @@
                         "unit": "(unitless)",
                         "value": 553183.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_406",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_374",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16943,7 +16175,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_407",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_375",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16980,7 +16212,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_408",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_376",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17017,7 +16249,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_409",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_377",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -17054,7 +16286,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_410",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_378",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17091,7 +16323,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_411",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_379",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17128,7 +16360,7 @@
                         "unit": "(unitless)",
                         "value": 3347435.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_412",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_380",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17153,7 +16385,7 @@
                         "unit": "(unitless)",
                         "value": 34960.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_413",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_381",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17178,7 +16410,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_414",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_382",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17215,7 +16447,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_415",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_383",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17252,7 +16484,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_416",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_384",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -17289,7 +16521,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_417",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_385",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17326,7 +16558,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_418",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_386",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17363,7 +16595,7 @@
                         "unit": "(unitless)",
                         "value": 2687185.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_419",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_387",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17388,7 +16620,7 @@
                         "unit": "(unitless)",
                         "value": 3140638.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_420",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_388",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17413,7 +16645,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_421",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_389",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17450,7 +16682,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_422",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_390",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17487,7 +16719,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_423",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_391",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -17524,7 +16756,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_424",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_392",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17561,7 +16793,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_425",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_393",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17598,7 +16830,7 @@
                         "unit": "(unitless)",
                         "value": 3396000.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_426",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_394",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17623,7 +16855,7 @@
                         "unit": "(unitless)",
                         "value": 2885626.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_427",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_395",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17648,7 +16880,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_428",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_396",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17685,7 +16917,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_429",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_397",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17722,7 +16954,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_430",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_398",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -17759,7 +16991,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_431",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_399",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17796,7 +17028,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_432",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_400",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17833,7 +17065,7 @@
                         "unit": "(unitless)",
                         "value": 274781.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_433",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_401",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17858,7 +17090,7 @@
                         "unit": "(unitless)",
                         "value": 430522.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_434",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_402",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17885,7 +17117,7 @@
             "UNC path": "tests/parsers/moldev_softmax_pro/testdata/MD_SMP_luminescence_endpoint_partial_plate_example01.txt",
             "file name": "MD_SMP_luminescence_endpoint_partial_plate_example01.txt",
             "ASM converter name": "allotropy_molecular_devices_softmax_pro",
-            "ASM converter version": "0.1.92",
+            "ASM converter version": "0.1.93",
             "software name": "SoftMax Pro"
         },
         "device system document": {

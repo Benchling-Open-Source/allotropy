@@ -14790,780 +14790,12 @@
         "calculated data aggregate document": {
             "calculated data document": [
                 {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.8848228705216661
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_291",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_26",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_123",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_220",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.3023171579727606
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_292",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_27",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_124",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_221",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 0.6191201278905174
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_293",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_28",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_125",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_222",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.1049842160531355
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_294",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_29",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_126",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_223",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -3.7321046897361514
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_295",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_30",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_127",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_224",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -11.320330570865881
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_296",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_31",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_128",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_225",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 0.5335968609358692
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_297",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_32",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_129",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_226",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.8652827022748466
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_298",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_33",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_130",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_227",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -1.309410890480182
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_299",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_38",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_135",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_232",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.6350006575774846
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_300",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_39",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_136",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_233",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 5.204994040954892
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_301",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_40",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_137",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_234",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 0.27283626343832745
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_302",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_41",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_138",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_235",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.6124332028958186
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_303",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_42",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_139",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_236",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 0.368044666854976
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_304",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_43",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_140",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_237",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 0.675919871916384
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_305",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_44",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_141",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_238",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.29310091981688324
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_306",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_45",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_142",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_239",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.5030448483729613
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_307",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_50",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_147",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_244",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -0.5013387634233029
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_308",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_51",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_148",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_245",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 2.8651386859766492
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_309",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_52",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_149",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_246",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 0.08694505298593637
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_310",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_53",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_150",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_247",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -3.198924816210239
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_311",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_54",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_151",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_248",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -2.7757437539828413
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_312",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_55",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_152",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_249",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.7279643441342893
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_313",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_56",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_153",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_250",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -7.2166076996244835
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_314",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_57",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_154",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_251",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -3.9639606448535427
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_315",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_62",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_159",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_256",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 0.6812673949246042
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_316",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_63",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_160",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_257",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": -1.1706191296943966
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_317",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_64",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_161",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_258",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 0.06616278545885589
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_318",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_65",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_162",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_259",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 2.493289303511329
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_319",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_66",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_163",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_260",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 0.7994660907172829
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_320",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_67",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_164",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_261",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 1.307466304674779
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_321",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_68",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_165",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_262",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "calculated data name": "Reduced",
-                    "calculated result": {
-                        "unit": "(unitless)",
-                        "value": 2.1852130545735604
-                    },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_322",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_69",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_166",
-                                "data source feature": "Fluorescence"
-                            },
-                            {
-                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_263",
-                                "data source feature": "Fluorescence"
-                            }
-                        ]
-                    }
-                },
-                {
                     "calculated data name": "CV",
                     "calculated result": {
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_323",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_291",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15600,7 +14832,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_324",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_292",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15637,7 +14869,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_325",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_293",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -15674,7 +14906,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_326",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_294",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15711,7 +14943,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_327",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_295",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15748,7 +14980,7 @@
                         "unit": "(unitless)",
                         "value": -0.885
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_328",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_296",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -15773,7 +15005,7 @@
                         "unit": "(unitless)",
                         "value": -1.309
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_329",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_297",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -15798,7 +15030,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_330",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_298",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15835,7 +15067,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_331",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_299",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15872,7 +15104,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_332",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_300",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -15909,7 +15141,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_333",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_301",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15946,7 +15178,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_334",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_302",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -15983,7 +15215,7 @@
                         "unit": "(unitless)",
                         "value": -0.302
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_335",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_303",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16008,7 +15240,7 @@
                         "unit": "(unitless)",
                         "value": -0.635
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_336",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_304",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16033,7 +15265,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_337",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_305",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16070,7 +15302,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_338",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_306",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16107,7 +15339,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_339",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_307",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -16144,7 +15376,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_340",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_308",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16181,7 +15413,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_341",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_309",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16218,7 +15450,7 @@
                         "unit": "(unitless)",
                         "value": 0.619
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_342",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_310",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16243,7 +15475,7 @@
                         "unit": "(unitless)",
                         "value": 5.205
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_343",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_311",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16268,7 +15500,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_344",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_312",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16305,7 +15537,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_345",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_313",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16342,7 +15574,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_346",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_314",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -16379,7 +15611,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_347",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_315",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16416,7 +15648,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_348",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_316",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16453,7 +15685,7 @@
                         "unit": "(unitless)",
                         "value": -0.105
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_349",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_317",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16478,7 +15710,7 @@
                         "unit": "(unitless)",
                         "value": 0.273
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_350",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_318",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16503,7 +15735,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_351",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_319",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16540,7 +15772,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_352",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_320",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16577,7 +15809,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_353",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_321",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -16614,7 +15846,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_354",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_322",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16651,7 +15883,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_355",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_323",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16688,7 +15920,7 @@
                         "unit": "(unitless)",
                         "value": -3.732
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_356",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_324",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16713,7 +15945,7 @@
                         "unit": "(unitless)",
                         "value": 1.612
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_357",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_325",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16738,7 +15970,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_358",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_326",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16775,7 +16007,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_359",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_327",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16812,7 +16044,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_360",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_328",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -16849,7 +16081,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_361",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_329",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16886,7 +16118,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_362",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_330",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -16923,7 +16155,7 @@
                         "unit": "(unitless)",
                         "value": -11.32
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_363",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_331",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16948,7 +16180,7 @@
                         "unit": "(unitless)",
                         "value": 0.368
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_364",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_332",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -16973,7 +16205,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_365",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_333",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17010,7 +16242,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_366",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_334",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17047,7 +16279,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_367",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_335",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -17084,7 +16316,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_368",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_336",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17121,7 +16353,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_369",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_337",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17158,7 +16390,7 @@
                         "unit": "(unitless)",
                         "value": 0.534
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_370",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_338",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17183,7 +16415,7 @@
                         "unit": "(unitless)",
                         "value": 0.676
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_371",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_339",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17208,7 +16440,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_372",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_340",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17245,7 +16477,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_373",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_341",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17282,7 +16514,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_374",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_342",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -17319,7 +16551,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_375",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_343",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17356,7 +16588,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_376",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_344",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17393,7 +16625,7 @@
                         "unit": "(unitless)",
                         "value": -0.865
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_377",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_345",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17418,7 +16650,7 @@
                         "unit": "(unitless)",
                         "value": -0.293
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_378",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_346",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17443,7 +16675,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_379",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_347",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17480,7 +16712,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_380",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_348",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17517,7 +16749,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_381",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_349",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -17554,7 +16786,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_382",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_350",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17591,7 +16823,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_383",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_351",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17628,7 +16860,7 @@
                         "unit": "(unitless)",
                         "value": 1.503
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_384",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_352",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17653,7 +16885,7 @@
                         "unit": "(unitless)",
                         "value": -3.964
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_385",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_353",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17678,7 +16910,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_386",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_354",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17715,7 +16947,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_387",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_355",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17752,7 +16984,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_388",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_356",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -17789,7 +17021,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_389",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_357",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17826,7 +17058,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_390",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_358",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17863,7 +17095,7 @@
                         "unit": "(unitless)",
                         "value": -0.501
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_391",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_359",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17888,7 +17120,7 @@
                         "unit": "(unitless)",
                         "value": 0.681
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_392",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_360",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -17913,7 +17145,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_393",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_361",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17950,7 +17182,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_394",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_362",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -17987,7 +17219,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_395",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_363",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -18024,7 +17256,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_396",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_364",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18061,7 +17293,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_397",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_365",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18098,7 +17330,7 @@
                         "unit": "(unitless)",
                         "value": 2.865
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_398",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_366",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -18123,7 +17355,7 @@
                         "unit": "(unitless)",
                         "value": -1.171
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_399",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_367",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -18148,7 +17380,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_400",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_368",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18185,7 +17417,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_401",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_369",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18222,7 +17454,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_402",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_370",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -18259,7 +17491,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_403",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_371",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18296,7 +17528,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_404",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_372",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18333,7 +17565,7 @@
                         "unit": "(unitless)",
                         "value": 0.087
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_405",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_373",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -18358,7 +17590,7 @@
                         "unit": "(unitless)",
                         "value": 0.066
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_406",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_374",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -18383,7 +17615,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_407",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_375",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18420,7 +17652,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_408",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_376",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18457,7 +17689,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_409",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_377",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -18494,7 +17726,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_410",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_378",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18531,7 +17763,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_411",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_379",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18568,7 +17800,7 @@
                         "unit": "(unitless)",
                         "value": -3.199
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_412",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_380",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -18593,7 +17825,7 @@
                         "unit": "(unitless)",
                         "value": 2.493
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_413",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_381",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -18618,7 +17850,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_414",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_382",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18655,7 +17887,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_415",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_383",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18692,7 +17924,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_416",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_384",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -18729,7 +17961,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_417",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_385",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18766,7 +17998,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_418",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_386",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18803,7 +18035,7 @@
                         "unit": "(unitless)",
                         "value": -2.776
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_419",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_387",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -18828,7 +18060,7 @@
                         "unit": "(unitless)",
                         "value": 0.799
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_420",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_388",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -18853,7 +18085,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_421",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_389",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18890,7 +18122,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_422",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_390",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -18927,7 +18159,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_423",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_391",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -18964,7 +18196,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_424",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_392",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -19001,7 +18233,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_425",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_393",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -19038,7 +18270,7 @@
                         "unit": "(unitless)",
                         "value": 1.728
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_426",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_394",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -19063,7 +18295,7 @@
                         "unit": "(unitless)",
                         "value": 1.307
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_427",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_395",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -19088,7 +18320,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_428",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_396",
                     "calculation description": "Cv(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -19125,7 +18357,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_429",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_397",
                     "calculation description": "Average(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -19162,7 +18394,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_430",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_398",
                     "calculation description": "If (Value>=MinStd@Standards and Value<=MaxStd@Standards,\"\",\"R\")",
                     "data source aggregate document": {
                         "data source document": [
@@ -19199,7 +18431,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_431",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_399",
                     "calculation description": "InterpX(Std@StandardCurve,Value)",
                     "data source aggregate document": {
                         "data source document": [
@@ -19236,7 +18468,7 @@
                         "unit": "(unitless)",
                         "value": -0.0
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_432",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_400",
                     "calculation description": "Stdev(Result)",
                     "data source aggregate document": {
                         "data source document": [
@@ -19273,7 +18505,7 @@
                         "unit": "(unitless)",
                         "value": -7.217
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_433",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_401",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -19298,7 +18530,7 @@
                         "unit": "(unitless)",
                         "value": 2.185
                     },
-                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_434",
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_402",
                     "calculation description": "!WellValues",
                     "data source aggregate document": {
                         "data source document": [
@@ -19325,7 +18557,7 @@
             "UNC path": "tests/parsers/moldev_softmax_pro/testdata/MD_SMP_fluorescence_endpoint_partial_plate_example01.txt",
             "file name": "MD_SMP_fluorescence_endpoint_partial_plate_example01.txt",
             "ASM converter name": "allotropy_molecular_devices_softmax_pro",
-            "ASM converter version": "0.1.92",
+            "ASM converter version": "0.1.93",
             "software name": "SoftMax Pro"
         },
         "device system document": {

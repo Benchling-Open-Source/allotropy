@@ -792,13 +792,69 @@ class TimeData:
         reader: CsvReader,
         header: PlateHeader,
     ) -> TimeData:
+        raw_data = None
+        reduced_data = None
+
+        # Read raw data if data_type is RAW or BOTH
+        if header.data_type in (DataType.RAW.value, DataType.BOTH.value):
+            raw_data = TimeRawData.create(reader, header)
+        # For REDUCED only, create synthetic raw data with error message
+        else:
+            # Create synthetic wavelength data for each wavelength
+            synthetic_wavelength_data = []
+
+            for wavelength in header.wavelengths:
+                # For each position in the plate, create a data element with an error document
+                num_cols = header.num_columns
+                num_rows = header.num_rows
+
+                # Create synthetic data elements for all well positions
+                data_elements = {}
+                for row in range(1, num_rows + 1):
+                    for col in range(1, num_cols + 1):
+                        position = f"{num_to_chars(row-1)}{col}"
+                        data_elements[position] = DataElement(
+                            uuid=random_uuid_str(),
+                            plate=header.name,
+                            temperature=None,
+                            wavelength=wavelength,
+                            position=position,
+                            value=NEGATIVE_ZERO,
+                            error_document=[
+                                ErrorDocument("Not reported", header.read_mode)
+                            ],
+                            elapsed_time=[
+                                0.0
+                            ],  # Add a dummy value to ensure array is not empty
+                            kinetic_measures=[
+                                NEGATIVE_ZERO
+                            ],  # Add a dummy value to ensure array is not empty
+                        )
+
+                # Create a single TimeMeasurementData with all positions
+                measurement_data = [TimeMeasurementData(data_elements=data_elements)]
+
+                # Add this wavelength data to our list
+                synthetic_wavelength_data.append(
+                    TimeWavelengthData(
+                        wavelength=wavelength,
+                        measurement_data=measurement_data,
+                    )
+                )
+
+            # Create TimeRawData with our synthetic wavelength data
+            raw_data = TimeRawData(wavelength_data=synthetic_wavelength_data)
+
+        # Read reduced data if data_type is REDUCED or BOTH
+        if (
+            header.data_type in (DataType.REDUCED.value, DataType.BOTH.value)
+            and reader.current_line_exists()
+        ):
+            reduced_data = TimeReducedData.create(reader, header)
+
         return TimeData(
-            raw_data=TimeRawData.create(reader, header),
-            reduced_data=(
-                TimeReducedData.create(reader, header)
-                if reader.current_line_exists()
-                else None
-            ),
+            raw_data=raw_data,
+            reduced_data=reduced_data,
         )
 
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
