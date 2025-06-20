@@ -11,6 +11,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
+    ErrorDocument,
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -18,7 +19,11 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_rea
 )
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.constants import DEFAULT_EPOCH_TIMESTAMP, NOT_APPLICABLE
+from allotropy.parsers.constants import (
+    DEFAULT_EPOCH_TIMESTAMP,
+    NEGATIVE_ZERO,
+    NOT_APPLICABLE,
+)
 from allotropy.parsers.moldev_softmax_pro.constants import DEVICE_TYPE
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     DataElement,
@@ -74,15 +79,23 @@ def _get_data_cube(
             )
         ],
         dimensions=[data_element.elapsed_time],
-        measures=[data_element.kinetic_measures],
+        measures=[
+            [
+                value if value is not None else NEGATIVE_ZERO
+                for value in data_element.kinetic_measures
+            ]
+        ],
     )
 
 
 def _get_spectrum_data_cube(
     plate_block: PlateBlock, data_elements: list[DataElement]
-) -> DataCube:
+) -> DataCube | None:
     wavelengths = [data_element.wavelength for data_element in data_elements]
     values = [data_element.value for data_element in data_elements]
+    if all(value is None for value in values):
+        # Ignore the wells completely from the ASM if all values are None
+        return None
 
     return DataCube(
         label=f"{plate_block.header.concept}-spectrum",
@@ -99,20 +112,36 @@ def _get_spectrum_data_cube(
             )
         ],
         dimensions=[wavelengths],
-        measures=[values],
+        measures=[[value if value is not None else NEGATIVE_ZERO for value in values]],
     )
 
 
 def _create_spectrum_measurement(
     plate_block: PlateBlock, data_elements: list[DataElement]
-) -> Measurement:
+) -> Measurement | None:
     measurement_type = plate_block.measurement_type
     first_data_element = data_elements[0]
+    spectrum_data_cube = _get_spectrum_data_cube(plate_block, data_elements)
+    if not spectrum_data_cube:
+        return None
+
+    # Collect error documents and update error_feature to include wavelength with unit
+    error_documents = []
+    for data_element in data_elements:
+        for error_doc in data_element.error_document:
+            if error_doc.error_feature == plate_block.header.read_mode:
+                updated_error_doc = ErrorDocument(
+                    error=error_doc.error, error_feature=f"{data_element.wavelength}nm"
+                )
+                error_documents.append(updated_error_doc)
+            else:
+                # Keep original error_feature for non-spectrum data cube errors
+                error_documents.append(error_doc)
 
     return Measurement(
         type_=measurement_type,
         identifier=first_data_element.uuid,
-        spectrum_data_cube=_get_spectrum_data_cube(plate_block, data_elements),
+        spectrum_data_cube=spectrum_data_cube,
         compartment_temperature=first_data_element.temperature or None,
         location_identifier=first_data_element.position,
         well_plate_identifier=plate_block.header.name,
@@ -136,7 +165,7 @@ def _create_spectrum_measurement(
         total_measurement_time_setting=plate_block.header.read_time,
         read_interval_setting=plate_block.header.read_interval,
         number_of_scans_setting=plate_block.header.kinetic_points,
-        error_document=first_data_element.error_document,
+        error_document=error_documents,
         measurement_custom_info=first_data_element.custom_info,
     )
 
@@ -154,24 +183,39 @@ def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measure
         MeasurementType.EMISSION_LUMINESCENCE_CUBE_SPECTRUM,
         MeasurementType.EXCITATION_LUMINESCENCE_CUBE_SPECTRUM,
     ):
-        return [_create_spectrum_measurement(plate_block, data_elements)]
+        measurement = _create_spectrum_measurement(plate_block, data_elements)
+        if not measurement:
+            return []
+        return [measurement]
 
     return [
         Measurement(
             type_=measurement_type,
             identifier=data_element.uuid,
             absorbance=(
-                data_element.value
+                (
+                    data_element.value
+                    if data_element.value is not None
+                    else NEGATIVE_ZERO
+                )
                 if measurement_type == MeasurementType.ULTRAVIOLET_ABSORBANCE
                 else None
             ),
             fluorescence=(
-                data_element.value
+                (
+                    data_element.value
+                    if data_element.value is not None
+                    else NEGATIVE_ZERO
+                )
                 if measurement_type == MeasurementType.FLUORESCENCE
                 else None
             ),
             luminescence=(
-                data_element.value
+                (
+                    data_element.value
+                    if data_element.value is not None
+                    else NEGATIVE_ZERO
+                )
                 if measurement_type == MeasurementType.LUMINESCENCE
                 else None
             ),
