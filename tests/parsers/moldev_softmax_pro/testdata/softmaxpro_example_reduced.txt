@@ -1,0 +1,186 @@
+##BLOCKS= 8
+Note: 
+Summary1	R2 of standard graph =	1.000	RSquared(Std@StandardCurve)	3 decimal places	Numeric Notation 
+Summary2	R2 Result =	Pass	If (Summary1>=Rsquared@Notes1,"Pass","Fail")	3 decimal places	Numeric Notation 
+MinSpikeRecovery	Minimum % Spike Recovery =	83.834	Min(%SpikeRecovery@Matrix_Spike_1)	3 decimal places	Numeric Notation 
+MaxSpikeRecovery	Maximum % Spike Recovery =	83.834	Max(%SpikeRecovery@Matrix_Spike_1)	3 decimal places	Numeric Notation 
+~End 
+Note: 
+Acceptance Criteria: 
+Rsquared	R2 of standard graph must be >=	0.980	0.98	3 decimal places	Numeric Notation 
+ControlCV	Control CV =<	25.000	25	3 decimal places	Numeric Notation 
+StandardCV	Standard CV =<	25.000	25	3 decimal places	Numeric Notation 
+Sample_CV	Sample CV =<	20.000	20	3 decimal places	Numeric Notation 
+Spike_Recovery_Upper	Spike Recovery for each sample <=	130.000	130	3 decimal places	Numeric Notation 
+Spike_Recovery_Lower	Spike Recovery for each sample >=	70.000	70	3 decimal places	Numeric Notation 
+Known_Spike_Value1	Known Spike Value1 =	50.000	50	3 decimal places	Numeric Notation 
+Known_Spike_Value2	Known Spike Value2 =	5.000	5	3 decimal places	Numeric Notation 
+~End 
+Plate:	Plate1	1.3	TimeFormat	Endpoint	Absorbance	Reduced	FALSE	1						2	450 650 	1	12	96	1	8			
+		A1	A2	A3	A4	A5	A6	A7	A8	A9	A10	A11	A12	B1	B2	B3	B4	B5	B6	B7	B8	B9	B10	B11	B12	C1	C2	C3	C4	C5	C6	C7	C8	C9	C10	C11	C12	D1	D2	D3	D4	D5	D6	D7	D8	D9	D10	D11	D12	E1	E2	E3	E4	E5	E6	E7	E8	E9	E10	E11	E12	F1	F2	F3	F4	F5	F6	F7	F8	F9	F10	F11	F12	G1	G2	G3	G4	G5	G6	G7	G8	G9	G10	G11	G12	H1	H2	H3	H4	H5	H6	H7	H8	H9	H10	H11	H12	
+		1.8565999999999998	1.8385999999999998	0.2026	0.19879999999999998	0.51369999999999993	0.49760000000000004	0.5858	0.57490000000000008	0.21880000000000002	0.1998	-0.0001	0	0.91780000000000006	0.9146	2.0092000000000003	1.9141000000000001	0.98139999999999994	0.9896	0.21830000000000002	0.20320000000000002	0.1824	0.1622	0	0	0.3449	0.34149999999999997	0.97939999999999994	0.9804	0.73039999999999994	0.7215	0.2604	0.17250000000000001	0.14179999999999998	0.128	-0.0001	-0.0003	0.16670000000000002	0.157	0.8609	0.80609999999999993	0.4696	0.47680000000000006	0.18419999999999998	0.171	0.11880000000000002	0.1077	-0.0002	0	0.11019999999999999	0.11069999999999999	0.82790000000000008	0.8046	0.34390000000000004	0.36269999999999997	0.16360000000000002	0.1623	0.3756	0.34709999999999996	-0.0001	-0.0001	0.0869	0.091799999999999993	0.6441	0.70100000000000007	1.6042	1.6323	0.1485	0.1459	0.4508	0.41609999999999997	-0.0003	0	0.3804	0.37339999999999995	0.6429	0.6134	2.1105	2.1402	0.1525	0.1432	0.2658	0.2548	0	0	0.95110000000000006	0.9496	0.6059	0.6533	1.4622000000000002	1.4094	0.1288	0.124	0.0851	0.0834	-0.0002	-0.0001	
+~End
+Group: Control
+Sample	Wells	Sample#	Values	Results	MeanResults	CVs	CVresults	
+01	G1	1	0.380	13.494	13.331	1.313	Pass	
+ 	G2	 	0.373	13.169	 	 	 	
+
+Group Column	Formula Name	Formula	Precision	Notation
+1	Sample	!SampleNames	2 decimal places	Numeric
+2	Wells	!WellIDs	2 decimal places	Numeric
+3	Sample#	Index	0 decimal places	Numeric
+4	Values	!WellValues	3 decimal places	Numeric
+5	Results	InterpX(Std@StandardCurve,Values)	3 decimal places	Numeric
+6	MeanResults	Average(Results)	3 decimal places	Numeric
+7	CVs	Cv(Values)	3 decimal places	Numeric
+8	CVresults	If (CVs<=ControlCV@Notes1,"Pass","Fail")	3 decimal places	Numeric
+
+Group Summaries
+
+~End 
+Group: Matrix_Spike_1
+Sample	Wells	Value	R	Result	MeanResult	CVs	CvResult	%SpikeRecovery	
+01	H1	0.951		41.958	41.917	0.1	Pass	83.834	
+ 	H2	0.950		41.876	 	 	 	 	
+
+Group Column	Formula Name	Formula	Precision	Notation
+1	Sample	!SampleNames	2 decimal places	Numeric
+2	Wells	!WellIDs	2 decimal places	Numeric
+3	Value	!WellValues	3 decimal places	Numeric
+4	R	If (Value>=MinStd@Standards and Value<=MaxStd@Standards,"","R")	3 decimal places	Numeric
+5	Result	InterpX(Std@StandardCurve,Value)	3 decimal places	Numeric
+6	MeanResult	Average(Result)	3 decimal places	Numeric
+7	CVs	Cv(Result)	1 decimal places	Numeric
+8	CvResult	If (CVs<=Sample_CV@Notes1,"Pass","Fail")	3 decimal places	Numeric
+9	%SpikeRecovery	MeanResult/Known_Spike_Value1@Notes1*100	3 decimal places	Numeric
+
+Group Summaries
+InRange	R - Outside standard range			0 decimal places	Numeric Notation 
+~End 
+Group: Matrix_Spike_2
+Sample	Well	Value	R	Result	MeanResult	CVs	CVResult	%SpikeRecovery	
+01	A3	0.203		5.292	5.204	2.387	Pass	104.081	
+ 	A4	0.199		5.116	 	 	 	 	
+
+Group Column	Formula Name	Formula	Precision	Notation
+1	Sample	!SampleNames	3 decimal places	Numeric
+2	Well	!WellIDs	3 decimal places	Numeric
+3	Value	!WellValues	3 decimal places	Numeric
+4	R	If (Value@Matrix_Spike_1>=MinStd@Standards and Value@Matrix_Spike_1<=MaxStd@Standards,"","R")	3 decimal places	Numeric
+5	Result	InterpX(Std@StandardCurve,Value)	3 decimal places	Numeric
+6	MeanResult	Average(Result)	3 decimal places	Numeric
+7	CVs	Cv(Result)	3 decimal places	Numeric
+8	CVResult	If (CVs<=Sample_CV@Notes1,"Pass","Fail")	3 decimal places	Numeric
+9	%SpikeRecovery	MeanResult/Known_Spike_Value2@Notes1*100	3 decimal places	Numeric
+
+Group Summaries
+
+~End 
+Group: Standards
+Sample	Concentration ng/mL	Wells	Value	MeanValue	SD	CVs	CV_Result	
+01	100.000	A1	1.8566	1.848	0.0127	0.7	Pass	
+ 	 	A2	1.8386	 	 	 	 	
+02	40.000	B1	0.9178	0.916	0.0023	0.2	Pass	
+ 	 	B2	0.9146	 	 	 	 	
+03	12.000	C1	0.3449	0.343	0.0024	0.7	Pass	
+ 	 	C2	0.3415	 	 	 	 	
+04	3.000	D1	0.1667	0.162	0.0069	4.2	Pass	
+ 	 	D2	0.1570	 	 	 	 	
+05	1.000	E1	0.1102	0.110	0.0004	0.3	Pass	
+ 	 	E2	0.1107	 	 	 	 	
+06	0.000	F1	0.0869	0.089	0.0035	3.9	Pass	
+ 	 	F2	0.0918	 	 	 	 	
+
+Group Column	Formula Name	Formula	Precision	Notation
+1	Sample	!SampleNames	2 decimal places	Numeric
+2	Concentration	!SampleDescriptor	3 decimal places	Numeric
+3	Wells	!WellIDs	2 decimal places	Numeric
+4	Value	!WellValues	4 decimal places	Numeric
+5	MeanValue	Average(Value)	3 decimal places	Numeric
+6	SD	Stdev(Value)	4 decimal places	Numeric
+7	CVs	Cv(Value)	1 decimal places	Numeric
+8	CV_Result	If (CVs<=StandardCV@Notes1,"Pass","Fail")	3 decimal places	Numeric
+
+Group Summaries
+MinStd	Smallest standard value:	0.089	Min(MeanValue)	3 decimal places	Numeric Notation 
+MaxStd	Largest standard value:	1.848	Max(MeanValue)	3 decimal places	Numeric Notation 
+
+~End 
+Group: Samples
+Sample	Wells	Value	R	Result	MeanResult	SD	CVs	CVresult	
+01	B3	2.009	R	113.062	109.152	5.529	5.1	Pass	
+ 	B4	1.914	R	105.243	 	 	 	 	
+02	C3	0.979		43.500	43.527	0.039	0.1	Pass	
+ 	C4	0.980		43.555	 	 	 	 	
+03	D3	0.861		37.138	35.707	2.023	5.7	Pass	
+ 	D4	0.806		34.277	 	 	 	 	
+04	E3	0.828		35.409	34.804	0.855	2.5	Pass	
+ 	E4	0.805		34.200	 	 	 	 	
+05	F3	0.644		26.095	27.510	2.001	7.3	Pass	
+ 	F4	0.701		28.925	 	 	 	 	
+06	G3	0.643		26.035	25.311	1.025	4.0	Pass	
+ 	G4	0.613		24.586	 	 	 	 	
+07	H3	0.606		24.219	25.384	1.647	6.5	Pass	
+ 	H4	0.653		26.549	 	 	 	 	
+08	A5	0.514		19.769	19.385	0.542	2.8	Pass	
+ 	A6	0.498		19.002	 	 	 	 	
+09	B5	0.981		43.610	43.835	0.318	0.7	Pass	
+ 	B6	0.990		44.060	 	 	 	 	
+10	C5	0.730		30.405	30.180	0.318	1.1	Pass	
+ 	C6	0.722		29.956	 	 	 	 	
+11	D5	0.470		17.674	17.844	0.241	1.3	Pass	
+ 	D6	0.477		18.015	 	 	 	 	
+12	E5	0.344		11.802	12.237	0.616	5.0	Pass	
+ 	E6	0.363		12.672	 	 	 	 	
+13	F5	1.604		82.044	83.031	1.395	1.7	Pass	
+ 	F6	1.632		84.018	 	 	 	 	
+14	G5	2.111	R	121.803	123.127	1.873	1.5	Pass	
+ 	G6	2.140	R	124.451	 	 	 	 	
+15	H5	1.462		72.427	70.710	2.428	3.4	Pass	
+ 	H6	1.409		68.994	 	 	 	 	
+16	A7	0.586		23.240	22.976	0.374	1.6	Pass	
+ 	A8	0.575		22.712	 	 	 	 	
+17	B7	0.218		6.016	5.668	0.493	8.7	Pass	
+ 	B8	0.203		5.320	 	 	 	 	
+18	C7	0.260		7.954	5.925	2.869	48.4	Fail	
+ 	C8	0.173		3.896	 	 	 	 	
+19	D7	0.184		4.440	4.133	0.434	10.5	Pass	
+ 	D8	0.171		3.826	 	 	 	 	
+20	E7	0.164		3.480	3.450	0.043	1.2	Pass	
+ 	E8	0.162		3.419	 	 	 	 	
+21	F7	0.148		2.771	2.709	0.087	3.2	Pass	
+ 	F8	0.146		2.648	 	 	 	 	
+22	G7	0.152		2.959	2.740	0.311	11.3	Pass	
+ 	G8	0.143		2.520	 	 	 	 	
+23	H7	0.129		1.833	1.717	0.164	9.5	Pass	
+ 	H8	0.124		1.601	 	 	 	 	
+24	A9	0.219		6.039	5.601	0.620	11.1	Pass	
+ 	A10	0.200		5.162	 	 	 	 	
+25	B9	0.182		4.356	3.886	0.666	17.1	Pass	
+ 	B10	0.162		3.415	 	 	 	 	
+26	C9	0.142		2.454	2.124	0.466	22.0	Fail	
+ 	C10	0.128		1.794	 	 	 	 	
+27	D9	0.119		1.348	1.073	0.389	36.2	Fail	
+ 	D10	0.108		0.798	 	 	 	 	
+28	E9	0.376		13.271	12.610	0.934	7.4	Pass	
+ 	E10	0.347		11.950	 	 	 	 	
+29	F9	0.451		16.787	15.973	1.151	7.2	Pass	
+ 	F10	0.416		15.159	 	 	 	 	
+30	G9	0.266		8.202	7.949	0.358	4.5	Pass	
+ 	G10	0.255		7.696	 	 	 	 	
+
+Group Column	Formula Name	Formula	Precision	Notation
+1	Sample	!SampleNames	2 decimal places	Numeric
+2	Wells	!WellIDs	2 decimal places	Numeric
+3	Value	!WellValues	3 decimal places	Numeric
+4	R	If (Value>=MinStd@Standards and Value<=MaxStd@Standards,"","R")	3 decimal places	Numeric
+5	Result	InterpX(Std@StandardCurve,Value)	3 decimal places	Numeric
+6	MeanResult	Average(Result)	3 decimal places	Numeric
+7	SD	Stdev(Result)	3 decimal places	Numeric
+8	CVs	Cv(Result)	1 decimal places	Numeric
+9	CVresult	If (CVs<=Sample_CV@Notes1,"Pass","Fail")	3 decimal places	Numeric
+
+Group Summaries
+InRange	R - Outside standard range			0 decimal places	Numeric Notation 
+~End 
+Original Filename: HCP for GB_JB 17JAN2025; Date Last Saved: 1/17/2025 12:13:53 PM

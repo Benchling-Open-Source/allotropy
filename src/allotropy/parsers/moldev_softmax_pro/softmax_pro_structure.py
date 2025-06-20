@@ -712,16 +712,19 @@ class TimeWavelengthData:
         wavelength: float,
         columns: pd.Series[str],
     ) -> TimeWavelengthData:
-        data = assert_not_none(
-            reader.pop_csv_block_as_df(sep="\t"),
-            msg="unable to find raw data from time block.",
-        )
-        set_columns(data, columns)
+        # Try to get the raw data block
+        data_df = reader.pop_csv_block_as_df(sep="\t")
+
+        # If no data found, return empty measurement data
+        if data_df is None:
+            return TimeWavelengthData(wavelength=wavelength, measurement_data=[])
+
+        set_columns(data_df, columns)
         return TimeWavelengthData(
             wavelength=wavelength,
             measurement_data=[
                 TimeMeasurementData.create(header, wavelength, row)
-                for _, row in data.iterrows()
+                for _, row in data_df.iterrows()
             ],
         )
 
@@ -789,13 +792,69 @@ class TimeData:
         reader: CsvReader,
         header: PlateHeader,
     ) -> TimeData:
+        raw_data = None
+        reduced_data = None
+
+        # Read raw data if data_type is RAW or BOTH
+        if header.data_type in (DataType.RAW.value, DataType.BOTH.value):
+            raw_data = TimeRawData.create(reader, header)
+        # For REDUCED only, create synthetic raw data with error message
+        else:
+            # Create synthetic wavelength data for each wavelength
+            synthetic_wavelength_data = []
+
+            for wavelength in header.wavelengths:
+                # For each position in the plate, create a data element with an error document
+                num_cols = header.num_columns
+                num_rows = header.num_rows
+
+                # Create synthetic data elements for all well positions
+                data_elements = {}
+                for row in range(1, num_rows + 1):
+                    for col in range(1, num_cols + 1):
+                        position = f"{num_to_chars(row-1)}{col}"
+                        data_elements[position] = DataElement(
+                            uuid=random_uuid_str(),
+                            plate=header.name,
+                            temperature=None,
+                            wavelength=wavelength,
+                            position=position,
+                            value=NEGATIVE_ZERO,
+                            error_document=[
+                                ErrorDocument("Not reported", header.read_mode)
+                            ],
+                            elapsed_time=[
+                                0.0
+                            ],  # Add a dummy value to ensure array is not empty
+                            kinetic_measures=[
+                                NEGATIVE_ZERO
+                            ],  # Add a dummy value to ensure array is not empty
+                        )
+
+                # Create a single TimeMeasurementData with all positions
+                measurement_data = [TimeMeasurementData(data_elements=data_elements)]
+
+                # Add this wavelength data to our list
+                synthetic_wavelength_data.append(
+                    TimeWavelengthData(
+                        wavelength=wavelength,
+                        measurement_data=measurement_data,
+                    )
+                )
+
+            # Create TimeRawData with our synthetic wavelength data
+            raw_data = TimeRawData(wavelength_data=synthetic_wavelength_data)
+
+        # Read reduced data if data_type is REDUCED or BOTH
+        if (
+            header.data_type in (DataType.REDUCED.value, DataType.BOTH.value)
+            and reader.current_line_exists()
+        ):
+            reduced_data = TimeReducedData.create(reader, header)
+
         return TimeData(
-            raw_data=TimeRawData.create(reader, header),
-            reduced_data=(
-                TimeReducedData.create(reader, header)
-                if reader.current_line_exists()
-                else None
-            ),
+            raw_data=raw_data,
+            reduced_data=reduced_data,
         )
 
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
@@ -874,8 +933,12 @@ class PlateBlock(ABC, Block):
 
     @classmethod
     def check_data_type(cls, data_type: str) -> None:
-        if data_type not in (DataType.RAW.value, DataType.BOTH.value):
-            msg = f"The SoftMax Pro file is required to include either 'Raw' or 'Both' (Raw and Reduced) data for all plates, got {data_type}."
+        if data_type not in (
+            DataType.RAW.value,
+            DataType.BOTH.value,
+            DataType.REDUCED.value,
+        ):
+            msg = f"The SoftMax Pro file is required to include either 'Raw', 'Reduced', or 'Both' (Raw and Reduced) data for all plates, got {data_type}."
             raise AllotropeConversionError(msg)
 
     @classmethod
