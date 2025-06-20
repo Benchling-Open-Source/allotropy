@@ -11,6 +11,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
+    ErrorDocument,
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -123,9 +124,19 @@ def _create_spectrum_measurement(
     spectrum_data_cube = _get_spectrum_data_cube(plate_block, data_elements)
     if not spectrum_data_cube:
         return None
+
+    # Collect error documents and update error_feature to include wavelength with unit
     error_documents = []
     for data_element in data_elements:
-        error_documents.extend(data_element.error_document)
+        for error_doc in data_element.error_document:
+            if error_doc.error_feature == plate_block.header.read_mode:
+                updated_error_doc = ErrorDocument(
+                    error=error_doc.error, error_feature=f"{data_element.wavelength}nm"
+                )
+                error_documents.append(updated_error_doc)
+            else:
+                # Keep original error_feature for non-spectrum data cube errors
+                error_documents.append(error_doc)
 
     return Measurement(
         type_=measurement_type,

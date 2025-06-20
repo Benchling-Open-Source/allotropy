@@ -1299,12 +1299,26 @@ class StructureData:
                         # experiment, there is no way at the moment to link the group data with a plate.
                         continue
                     plate_block = block_list.plate_blocks[group_data_element.plate]
+                    is_spectrum = (
+                        plate_block.header.read_type == ReadType.SPECTRUM.value
+                    )
+                    processed_positions = set()
+
                     for data_element in plate_block.iter_data_elements(
                         group_data_element.positions
                     ):
                         data_element.group_id = group_block.group_data.name
                         data_element.sample_id = group_data_element.sample
-                        data_element.error_document += group_data_element.errors
+
+                        # For spectrum measurements, only add errors to the first DataElement per well
+                        if (
+                            not is_spectrum
+                            or data_element.position not in processed_positions
+                        ):
+                            data_element.error_document += group_data_element.errors
+                            if is_spectrum:
+                                processed_positions.add(data_element.position)
+
                         data_element.custom_info.update(group_data_element.custom_info)
 
         return StructureData(
