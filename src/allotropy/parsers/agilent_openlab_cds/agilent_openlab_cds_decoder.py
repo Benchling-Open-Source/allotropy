@@ -9,6 +9,8 @@ import zipfile
 import rainbow.agilent.chemstation as rb  # type: ignore
 import xmltodict
 
+from allotropy.types import IOType
+
 
 def merge_peak_with_signal_name(
     peak_data: list[dict[str, Any]],
@@ -273,7 +275,7 @@ def _get_matching_filenames(zip_ref: zipfile.ZipFile, pattern: str) -> list[str]
     ]
 
 
-def decode_data(input_bytes: IO[bytes]) -> dict[str, Any]:
+def decode_data(input_bytes: IOType) -> dict[str, Any]:
     """
     decoded the files in input folder path and returns a structured data
     :param input_path: input folder path
