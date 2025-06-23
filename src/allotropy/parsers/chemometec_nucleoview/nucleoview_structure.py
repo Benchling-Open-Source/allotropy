@@ -107,7 +107,8 @@ def create_measurement_groups(
             Measurement(
                 measurement_identifier=random_uuid_str(),
                 timestamp=timestamp or DEFAULT_EPOCH_TIMESTAMP,
-                sample_identifier=data[str, "Image"].split("-")[3],
+                sample_identifier=data.get(str, "Sample ID")
+                or data[str, "Image"].split("-")[3],
                 cell_density_dilution_factor=data.get(float, "Multiplication factor"),
                 viability=data[float, "Viability (%)"],
                 # Cell counts are measured in cells/mL, but reported in millions of cells/mL
