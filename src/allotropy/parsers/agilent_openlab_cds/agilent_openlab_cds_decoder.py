@@ -273,7 +273,7 @@ def _get_matching_filenames(zip_ref: zipfile.ZipFile, pattern: str) -> list[str]
     ]
 
 
-def decode_data(input_path: str) -> dict[str, Any]:
+def decode_data(input_bytes: IO[bytes]) -> dict[str, Any]:
     """
     decoded the files in input folder path and returns a structured data
     :param input_path: input folder path
@@ -284,7 +284,7 @@ def decode_data(input_path: str) -> dict[str, Any]:
     total_injection_chromatogram_details: list[dict[str, Any]] = []
     total_peak_details: list[dict[str, Any]] = []
 
-    with zipfile.ZipFile(input_path, "r") as zip_ref:
+    with zipfile.ZipFile(input_bytes) as zip_ref:
         acaml_path = next(iter(_get_matching_filenames(zip_ref, ".*acaml")))
         with zip_ref.open(acaml_path) as acaml_file_data:
             acaml_file_content = acaml_file_data.read().decode("utf-8-sig")
