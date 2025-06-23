@@ -373,7 +373,7 @@ class DataElement:
     temperature: float | None
     wavelength: float
     position: str
-    value: float
+    value: float | None
     error_document: list[ErrorDocument]
     custom_info: dict[str, str] = field(default_factory=dict)
     elapsed_time: list[float] = field(default_factory=list)
@@ -410,21 +410,19 @@ class PlateWavelengthData:
             for row_idx, *row_data in df_data.itertuples()
             for col, raw_value in zip(df_data.columns, row_data, strict=True)
         }
-
         data_elements = {}
         for position, raw_value in data.items():
             value = try_non_nan_float_or_none(raw_value)
             if value is None and elapsed_time is not None:
                 msg = f"Missing kinetic measurement for well position {position} at {elapsed_time}s."
                 raise AllotropeConversionError(msg)
-
             data_elements[str(position)] = DataElement(
                 uuid=random_uuid_str(),
                 plate=header.name,
                 temperature=temperature,
                 wavelength=wavelength,
                 position=str(position),
-                value=NEGATIVE_ZERO if value is None else value,
+                value=value,
                 error_document=(
                     [ErrorDocument(str(raw_value), header.read_mode)]
                     if value is None
@@ -475,6 +473,13 @@ class RawData:
             reader.lines_as_df(lines=lines, sep="\t"),
             msg="unable to find data from plate block.",
         )
+
+        # Truncate columns Series to match the actual number of data columns
+        if len(columns) >= data.shape[1]:
+            columns = columns.iloc[: data.shape[1]]
+        elif len(columns) < data.shape[1]:
+            data = data.loc[:, : len(columns) - 1]
+
         set_columns(data, columns)
         return data
 
@@ -559,7 +564,7 @@ class PlateRawData(RawData):
 
 @dataclass(frozen=True)
 class SpectrumRawPlateData(RawData):
-    maximum_wavelength_signal: dict[str, float]
+    maximum_wavelength_signal: dict[str, float | None]
 
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> SpectrumRawPlateData:
@@ -594,9 +599,7 @@ class SpectrumRawPlateData(RawData):
             reader, columns, rows
         ).iloc[:, 2:]
         signal_data = {
-            f"{num_to_chars(row_idx)}{col}": try_float(
-                str(raw_value), "wavelength signal"
-            )
+            f"{num_to_chars(row_idx)}{col}": try_float_or_none(str(raw_value))
             for row_idx, *row_data in max_wavelength_signal_data.itertuples()
             for col, raw_value in zip(
                 max_wavelength_signal_data.columns, row_data, strict=True
@@ -665,8 +668,14 @@ class PlateData:
         )
 
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
-        for wavelength_data in self.raw_data.wavelength_data:
-            yield wavelength_data.data_elements[position]
+        for plate_wavelength_data in self.raw_data.wavelength_data:
+            yield plate_wavelength_data.data_elements[position]
+
+    def position_exists(self, position: str) -> bool:
+        for plate_wavelength_data in self.raw_data.wavelength_data:
+            if position in plate_wavelength_data.data_elements:
+                return True
+        return False
 
 
 @dataclass(frozen=True)
@@ -693,7 +702,7 @@ class TimeMeasurementData:
                 temperature=temperature,
                 wavelength=wavelength,
                 position=str(position),
-                value=NEGATIVE_ZERO if value is None else value,
+                value=value,
                 error_document=error_document,
             )
 
@@ -799,9 +808,18 @@ class TimeData:
         )
 
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
-        for wavelength_data in self.raw_data.wavelength_data:
-            for measurement_data in wavelength_data.measurement_data:
+        for time_wavelength_data in self.raw_data.wavelength_data:
+            for measurement_data in time_wavelength_data.measurement_data:
                 yield measurement_data.data_elements[position]
+
+    def position_exists(self, position: str) -> bool:
+        for time_wavelength_data in self.raw_data.wavelength_data:
+            if any(
+                position in measurement.data_elements
+                for measurement in time_wavelength_data.measurement_data
+            ):
+                return True
+        return False
 
 
 @dataclass(frozen=True)
@@ -915,7 +933,9 @@ class PlateBlock(ABC, Block):
         cols, rows = NUM_WELLS_TO_PLATE_DIMENSIONS[self.header.num_wells]
         for row in range(rows):
             for col in range(1, cols + 1):
-                yield f"{num_to_chars(row)}{col}"
+                position = f"{num_to_chars(row)}{col}"
+                if self.block_data.position_exists(position):
+                    yield position
 
     def iter_data_elements(self, position: str | list[str]) -> Iterator[DataElement]:
         position = [position] if isinstance(position, str) else position
@@ -1279,12 +1299,26 @@ class StructureData:
                         # experiment, there is no way at the moment to link the group data with a plate.
                         continue
                     plate_block = block_list.plate_blocks[group_data_element.plate]
+                    is_spectrum = (
+                        plate_block.header.read_type == ReadType.SPECTRUM.value
+                    )
+                    processed_positions = set()
+
                     for data_element in plate_block.iter_data_elements(
                         group_data_element.positions
                     ):
                         data_element.group_id = group_block.group_data.name
                         data_element.sample_id = group_data_element.sample
-                        data_element.error_document += group_data_element.errors
+
+                        # For spectrum measurements, only add errors to the first DataElement per well
+                        if (
+                            not is_spectrum
+                            or data_element.position not in processed_positions
+                        ):
+                            data_element.error_document += group_data_element.errors
+                            if is_spectrum:
+                                processed_positions.add(data_element.position)
+
                         data_element.custom_info.update(group_data_element.custom_info)
 
         return StructureData(
