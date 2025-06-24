@@ -26,7 +26,7 @@ class AgilentOpenLabCDSParser(VendorParser[Data, Model]):
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        structured_data = decode_data(named_file_contents.contents)
+        structured_data = decode_data(named_file_contents.get_bytes_stream())
         return Data(
             metadata=create_metadata(structured_data, named_file_contents),
             measurement_groups=[create_measurement_groups(structured_data)],
