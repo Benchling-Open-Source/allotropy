@@ -75,6 +75,22 @@
                             },
                             "sample document": {
                                 "sample identifier": "CLB001"
+                            },
+                            "custom information document": {
+                                "Viable spot area (%)": 10.0,
+                                "Images for analysis": 59.0,
+                                "Cluster count": 45.0,
+                                "Average background intensity": 135.0,
+                                "Cell sharpness": 10.0,
+                                "Average cells per image": 20.0,
+                                "Minimum circularity": 0.0,
+                                "Wash": "Normal Wash",
+                                "Viable spot brightness (%)": 55.0,
+                                "Bubble count": 0.0,
+                                "Mixing cycles": 3.0,
+                                "Decluster degree": "Medium",
+                                "Images": 100.0,
+                                "Aspiration cycles": 4.0
                             }
                         }
                     ]
@@ -154,6 +170,22 @@
                             },
                             "sample document": {
                                 "sample identifier": "CLB002"
+                            },
+                            "custom information document": {
+                                "Viable spot area (%)": 10.0,
+                                "Images for analysis": 51.0,
+                                "Cluster count": 33.0,
+                                "Average background intensity": 134.0,
+                                "Cell sharpness": 10.0,
+                                "Average cells per image": 9.0,
+                                "Minimum circularity": 0.0,
+                                "Wash": "Normal Wash",
+                                "Viable spot brightness (%)": 55.0,
+                                "Bubble count": 0.0,
+                                "Mixing cycles": 3.0,
+                                "Decluster degree": "Medium",
+                                "Images": 100.0,
+                                "Aspiration cycles": 4.0
                             }
                         }
                     ]
@@ -233,6 +265,22 @@
                             },
                             "sample document": {
                                 "sample identifier": "CLB003"
+                            },
+                            "custom information document": {
+                                "Viable spot area (%)": 10.0,
+                                "Images for analysis": 50.0,
+                                "Cluster count": 41.0,
+                                "Average background intensity": 134.0,
+                                "Cell sharpness": 10.0,
+                                "Average cells per image": 34.0,
+                                "Minimum circularity": 0.0,
+                                "Wash": "Normal Wash",
+                                "Viable spot brightness (%)": 55.0,
+                                "Bubble count": 0.0,
+                                "Mixing cycles": 3.0,
+                                "Decluster degree": "Medium",
+                                "Images": 100.0,
+                                "Aspiration cycles": 4.0
                             }
                         }
                     ]
@@ -312,6 +360,22 @@
                             },
                             "sample document": {
                                 "sample identifier": "CLB004"
+                            },
+                            "custom information document": {
+                                "Viable spot area (%)": 10.0,
+                                "Images for analysis": 62.0,
+                                "Cluster count": 40.0,
+                                "Average background intensity": 135.0,
+                                "Cell sharpness": 10.0,
+                                "Average cells per image": 28.0,
+                                "Minimum circularity": 0.0,
+                                "Wash": "Normal Wash",
+                                "Viable spot brightness (%)": 55.0,
+                                "Bubble count": 0.0,
+                                "Mixing cycles": 3.0,
+                                "Decluster degree": "Medium",
+                                "Images": 100.0,
+                                "Aspiration cycles": 4.0
                             }
                         }
                     ]
@@ -391,6 +455,22 @@
                             },
                             "sample document": {
                                 "sample identifier": "CLB005"
+                            },
+                            "custom information document": {
+                                "Viable spot area (%)": 10.0,
+                                "Images for analysis": 50.0,
+                                "Cluster count": 58.0,
+                                "Average background intensity": 134.0,
+                                "Cell sharpness": 10.0,
+                                "Average cells per image": 16.0,
+                                "Minimum circularity": 0.0,
+                                "Wash": "Normal Wash",
+                                "Viable spot brightness (%)": 55.0,
+                                "Bubble count": 0.0,
+                                "Mixing cycles": 3.0,
+                                "Decluster degree": "Medium",
+                                "Images": 100.0,
+                                "Aspiration cycles": 4.0
                             }
                         }
                     ]
@@ -404,7 +484,7 @@
             "file name": "Beckman_Vi-Cell-BLU_example02.csv",
             "UNC path": "tests/parsers/beckman_vi_cell_blu/testdata/Beckman_Vi-Cell-BLU_example02.csv",
             "ASM converter name": "allotropy_beckman_coulter_vi_cell_blu",
-            "ASM converter version": "0.1.69",
+            "ASM converter version": "0.1.94",
             "software name": "Vi-Cell BLU"
         },
         "device system document": {

@@ -53,6 +53,7 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                 average_viable_cell_circularity=data.get(
                     float, "Average viable circularity"
                 ),
+                custom_info=data.get_unread(),
             )
         ],
     )
