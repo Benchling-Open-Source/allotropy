@@ -937,7 +937,7 @@ class PlateBlock(ABC, Block):
             DataType.BOTH.value,
             DataType.REDUCED.value,
         ):
-            msg = f"The SoftMax Pro file is required to include either 'Raw', 'Reduced', or 'Both' (Raw and Reduced) data for all plates, got {data_type}."
+            msg = f"Unexpected data type: {data_type}, supported values are RAW, REDUCED, or BOTH."
             raise AllotropeConversionError(msg)
 
     @classmethod
