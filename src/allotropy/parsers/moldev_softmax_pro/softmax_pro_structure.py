@@ -800,11 +800,8 @@ class TimeData:
         else:
             raw_data = TimeData._create_synthetic_raw_data(header)
 
-        # Read reduced data if data_type is REDUCED or BOTH
-        if (
-            header.data_type in (DataType.REDUCED.value, DataType.BOTH.value)
-            and reader.current_line_exists()
-        ):
+        # Read reduced data if available, regardless of data_type (RAW can have reduced data!)
+        if reader.current_line_exists():
             reduced_data = TimeReducedData.create(reader, header)
 
         return TimeData(
