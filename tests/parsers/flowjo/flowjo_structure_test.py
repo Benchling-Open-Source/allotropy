@@ -327,7 +327,10 @@ def test_create_compensation_matrix_groups() -> None:
     sample = root_element.recursive_find_or_none(["SampleList", "Sample"])
     assert sample is not None
 
-    comp_matrix_groups = _create_compensation_matrix_groups(sample)
+    transform_matrix_element = sample.find_or_none("transforms:spilloverMatrix")
+    assert transform_matrix_element is not None
+
+    comp_matrix_groups = _create_compensation_matrix_groups(transform_matrix_element)
 
     assert comp_matrix_groups is not None
     assert len(comp_matrix_groups) == 1
