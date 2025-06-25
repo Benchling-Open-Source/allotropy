@@ -30,13 +30,29 @@ def extract_flowjo_namespaces(root_element: ET.Element) -> dict[str, str]:
         return {}
 
     namespace_list = namespaces_text.split()
-    return {
+    namespaces = {
         "transforms": next(
             (ns for ns in namespace_list if "transformations" in ns), ""
         ),
         "data-type": next((ns for ns in namespace_list if "datatypes" in ns), ""),
         "gating": next((ns for ns in namespace_list if "gating" in ns), ""),
     }
+
+    # Extract all xmlns namespace declarations
+    for key, value in attributes:
+        if key.startswith("xmlns:"):
+            prefix = key[6:]  # Remove "xmlns:" prefix
+            if prefix not in namespaces:  # Don't override existing mappings
+                namespaces[prefix] = value
+
+    # ElementTree doesn't preserve xmlns declarations as attributes, but we can detect namespace usage
+    # and add common mappings manually
+    for key, _ in attributes:
+        if key.startswith("{http://www.w3.org/2001/XMLSchema-instance}"):
+            namespaces["xsi"] = "http://www.w3.org/2001/XMLSchema-instance"
+            break
+
+    return namespaces
 
 
 class FlowjoParser(VendorParser[Data, Model]):
@@ -56,6 +72,7 @@ class FlowjoParser(VendorParser[Data, Model]):
         except ET.ParseError as e:
             msg = f"There was an error when trying to read the xml file: {e}"
             raise AllotropeParsingError(msg) from e
+
         return Data(
             metadata=create_metadata(
                 root_element, named_file_contents.original_file_path
