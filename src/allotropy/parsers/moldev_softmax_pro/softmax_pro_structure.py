@@ -712,19 +712,17 @@ class TimeWavelengthData:
         wavelength: float,
         columns: pd.Series[str],
     ) -> TimeWavelengthData:
-        # Try to get the raw data block
-        data_df = reader.pop_csv_block_as_df(sep="\t")
+        data = assert_not_none(
+            reader.pop_csv_block_as_df(sep="\t"),
+            msg="unable to find raw data from time block.",
+        )
+        set_columns(data, columns)
 
-        # If no data found, return empty measurement data
-        if data_df is None:
-            return TimeWavelengthData(wavelength=wavelength, measurement_data=[])
-
-        set_columns(data_df, columns)
         return TimeWavelengthData(
             wavelength=wavelength,
             measurement_data=[
                 TimeMeasurementData.create(header, wavelength, row)
-                for _, row in data_df.iterrows()
+                for _, row in data.iterrows()
             ],
         )
 
