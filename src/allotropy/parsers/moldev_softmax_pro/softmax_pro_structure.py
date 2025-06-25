@@ -798,50 +798,7 @@ class TimeData:
             raw_data = TimeRawData.create(reader, header)
         # For REDUCED only, create synthetic raw data with error message
         else:
-            # Create synthetic wavelength data for each wavelength
-            synthetic_wavelength_data = []
-
-            for wavelength in header.wavelengths:
-                # For each position in the plate, create a data element with an error document
-                num_cols = header.num_columns
-                num_rows = header.num_rows
-
-                # Create synthetic data elements for all well positions
-                data_elements = {}
-                for row in range(1, num_rows + 1):
-                    for col in range(1, num_cols + 1):
-                        position = f"{num_to_chars(row-1)}{col}"
-                        data_elements[position] = DataElement(
-                            uuid=random_uuid_str(),
-                            plate=header.name,
-                            temperature=None,
-                            wavelength=wavelength,
-                            position=position,
-                            value=NEGATIVE_ZERO,
-                            error_document=[
-                                ErrorDocument("Not reported", header.read_mode)
-                            ],
-                            elapsed_time=[
-                                0.0
-                            ],  # Add a dummy value to ensure array is not empty
-                            kinetic_measures=[
-                                NEGATIVE_ZERO
-                            ],  # Add a dummy value to ensure array is not empty
-                        )
-
-                # Create a single TimeMeasurementData with all positions
-                measurement_data = [TimeMeasurementData(data_elements=data_elements)]
-
-                # Add this wavelength data to our list
-                synthetic_wavelength_data.append(
-                    TimeWavelengthData(
-                        wavelength=wavelength,
-                        measurement_data=measurement_data,
-                    )
-                )
-
-            # Create TimeRawData with our synthetic wavelength data
-            raw_data = TimeRawData(wavelength_data=synthetic_wavelength_data)
+            raw_data = TimeData._create_synthetic_raw_data(header)
 
         # Read reduced data if data_type is REDUCED or BOTH
         if (
@@ -854,6 +811,53 @@ class TimeData:
             raw_data=raw_data,
             reduced_data=reduced_data,
         )
+
+    @staticmethod
+    def _create_synthetic_raw_data(header: PlateHeader) -> TimeRawData:
+        """Create synthetic raw data with error messages when only reduced data is available."""
+        synthetic_wavelength_data = []
+
+        for wavelength in header.wavelengths:
+            # For each position in the plate, create a data element with an error document
+            num_cols = header.num_columns
+            num_rows = header.num_rows
+
+            # Create synthetic data elements for all well positions
+            data_elements = {}
+            for row in range(1, num_rows + 1):
+                for col in range(1, num_cols + 1):
+                    position = f"{num_to_chars(row-1)}{col}"
+                    data_elements[position] = DataElement(
+                        uuid=random_uuid_str(),
+                        plate=header.name,
+                        temperature=None,
+                        wavelength=wavelength,
+                        position=position,
+                        value=NEGATIVE_ZERO,
+                        error_document=[
+                            ErrorDocument("Not reported", header.read_mode)
+                        ],
+                        elapsed_time=[
+                            0.0
+                        ],  # Add a dummy value to ensure array is not empty
+                        kinetic_measures=[
+                            NEGATIVE_ZERO
+                        ],  # Add a dummy value to ensure array is not empty
+                    )
+
+            # Create a single TimeMeasurementData with all positions
+            measurement_data = [TimeMeasurementData(data_elements=data_elements)]
+
+            # Add this wavelength data to our list
+            synthetic_wavelength_data.append(
+                TimeWavelengthData(
+                    wavelength=wavelength,
+                    measurement_data=measurement_data,
+                )
+            )
+
+        # Create TimeRawData with our synthetic wavelength data
+        return TimeRawData(wavelength_data=synthetic_wavelength_data)
 
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
         for wavelength_data in self.raw_data.wavelength_data:
