@@ -255,6 +255,8 @@ class ThermoSkanItMeasurementGroups:
         df.set_index(df.columns[0], inplace=True)
         # Set the first row (well numbers) as the columns
         df = parse_header_row(df)
+        valid_columns = df.columns.notna() & (df.columns.astype(str).str.lower() != "nan")
+        df = df.loc[:, valid_columns]
         # Cast row numbers to int (float first to handle decimals, e.g. 1.0)
         df.columns = df.columns.astype(float).astype(int)
         return df
