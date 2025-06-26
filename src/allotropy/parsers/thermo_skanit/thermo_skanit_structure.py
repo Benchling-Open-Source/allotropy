@@ -8,18 +8,20 @@ import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
     Data,
+    ErrorDocument,
     Measurement,
     MeasurementGroup,
     MeasurementType,
     Metadata,
 )
 from allotropy.exceptions import AllotropyParserError
-from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
 from allotropy.parsers.thermo_skanit.constants import DEVICE_TYPE, SAMPLE_ROLE_MAPPINGS
 from allotropy.parsers.utils.pandas import df_to_series_data, parse_header_row
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import try_float_or_none
 
 MEASUREMENT_TYPES = {
     MeasurementType.ULTRAVIOLET_ABSORBANCE: "Absorbance",
@@ -52,8 +54,11 @@ class ThermoSkanItMetadata:
             instrument_info_df
         )
         general_info_data = ThermoSkanItMetadata._get_general_info_data(general_info_df)
+        path = Path(file_path)
         return Metadata(
-            file_name=Path(file_path).name,
+            asm_file_identifier=path.with_suffix(".json").name,
+            data_system_instance_id=NOT_APPLICABLE,
+            file_name=path.name,
             unc_path=file_path,
             device_identifier=instrument_info_data["device_identifier"],
             model_number=instrument_info_data["model_number"],
@@ -116,7 +121,7 @@ class ThermoSkanItMetadata:
         }
 
 
-@dataclass(frozen=True)
+@dataclass
 class DataWell(Measurement):
     @staticmethod
     def create(
@@ -126,8 +131,12 @@ class DataWell(Measurement):
         type_: MeasurementType,
         detector_wavelength: float | None,
         well_plate_identifier: str | None,
+        error_documents: list[ErrorDocument] | None = None,
+        experimental_data_identifier: str | None = None,
     ) -> Measurement:
         measurement_type_str = MEASUREMENT_TYPES[type_]
+        error_docs = error_documents or []
+
         return Measurement(
             type_=type_,
             identifier=random_uuid_str(),
@@ -148,6 +157,8 @@ class DataWell(Measurement):
             luminescence=value
             if measurement_type_str == MEASUREMENT_TYPES[MeasurementType.LUMINESCENCE]
             else None,
+            experimental_data_identifier=experimental_data_identifier,
+            error_document=error_docs if error_docs else None,
         )
 
     @staticmethod
@@ -210,20 +221,36 @@ class ThermoSkanItMeasurementGroups:
                 sample_name = name_df.loc[well_letter, well_column]
             else:
                 sample_name = f"{well_plate_identifier}_{well_letter}{well_column}"
+
+            measurement_value = stacked.loc[well_letter, well_column]
+            error_docs = []
+
+            # Check if measurement value is non-numeric and create error document if so
+            if not try_float_or_none(measurement_value):
+                error_value = str(measurement_value)
+                error_docs.append(
+                    ErrorDocument(
+                        error=error_value,
+                        error_feature=MEASUREMENT_TYPES[type_],
+                    )
+                )
+                measurement_value = NEGATIVE_ZERO
+
             well = DataWell.create(
                 well_location=well_letter + str(well_column),
-                value=stacked.loc[well_letter, well_column],
+                value=measurement_value,
                 sample_name=sample_name,
                 detector_wavelength=wavelength,
                 type_=type_,
                 well_plate_identifier=well_plate_identifier,
+                error_documents=error_docs if error_docs else None,
+                experimental_data_identifier=session_name,
             )
             meas_groups.append(
                 MeasurementGroup(
                     measurements=[well],
                     plate_well_count=plate_well_count,
                     measurement_time=exec_time,
-                    experimental_data_identifier=session_name,
                 )
             )
         return meas_groups
@@ -255,8 +282,10 @@ class ThermoSkanItMeasurementGroups:
         df.set_index(df.columns[0], inplace=True)
         # Set the first row (well numbers) as the columns
         df = parse_header_row(df)
-        valid_columns = df.columns.notna() & (df.columns.astype(str).str.lower() != "nan")
-        df = df.loc[:, valid_columns]
+        valid_columns = pd.notna(df.columns) & (
+            df.columns.astype(str).str.lower() != "nan"
+        )
+        df = df[df.columns[valid_columns]]
         # Cast row numbers to int (float first to handle decimals, e.g. 1.0)
         df.columns = df.columns.astype(float).astype(int)
         return df
