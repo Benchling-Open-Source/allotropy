@@ -72,6 +72,7 @@ class ErrorAggregateDocument:
 class ImageDocumentItem:
     experimental_data_identifier: TStringValue | None = None
     index: TIntegerValue | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(kw_only=True)
@@ -116,6 +117,7 @@ class DataProcessingDocument:
     cell_density_dilution_factor: TQuantityValueUnitless | None = None
     minimum_cell_diameter_setting: TQuantityValueMicrometer | None = None
     maximum_cell_diameter_setting: TQuantityValueMicrometer | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(kw_only=True)
@@ -250,6 +252,7 @@ class DeviceControlDocumentItem:
     excitation_bandwidth_setting: TQuantityValueNanometer | None = None
     excitation_wavelength_setting: TQuantityValueNanometer | None = None
     fluorescent_tag_setting: TStringValue | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(kw_only=True)
@@ -263,6 +266,7 @@ class DeviceControlAggregateDocument:
 @dataclass(kw_only=True)
 class ProcessedDataDocumentItem:
     fluorescent_tag_positive_cell_count: TQuantityValueCell | None = None
+    custom_info: dict[str, Any] | None = None
     custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
         None
     )

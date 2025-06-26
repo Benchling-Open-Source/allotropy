@@ -53,6 +53,27 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                 average_viable_cell_circularity=data.get(
                     float, "Average viable circularity"
                 ),
+                device_control_custom_info=data.get_custom_keys(
+                    {"Wash", "Mixing cycles", "Aspiration cycles"}
+                ),
+                image_processing_custom_info=data.get_custom_keys(
+                    {"Images", "Images for analysis"}
+                ),
+                data_processing_custom_info=data.get_custom_keys(
+                    {
+                        "Decluster degree",
+                        "Minimum circularity",
+                        "Viable spot area",
+                        "Viable spot brightness (%)",
+                        "Cell sharpness",
+                        "Average background intensity",
+                        "Bubble count",
+                        "Cluster count"
+                    }
+                ),
+                processed_data_custom_info=data.get_custom_keys(
+                    {"Average cells per image"}
+                ),
                 custom_info=data.get_unread(),
             )
         ],

@@ -10,7 +10,12 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom info": {
+                                            "Mixing cycles": 3.0,
+                                            "Aspiration cycles": 4.0,
+                                            "Wash": "Normal Wash"
+                                        }
                                     }
                                 ]
                             },
@@ -19,6 +24,9 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom info": {
+                                            "Average cells per image": 20.0
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "HeLa (😢)",
                                             "cell density dilution factor": {
@@ -32,6 +40,15 @@
                                             "maximum cell diameter setting": {
                                                 "value": 50.0,
                                                 "unit": "µm"
+                                            },
+                                            "custom info": {
+                                                "Cluster count": 45.0,
+                                                "Bubble count": 0.0,
+                                                "Viable spot brightness (%)": 55.0,
+                                                "Cell sharpness": 10.0,
+                                                "Decluster degree": "Medium",
+                                                "Average background intensity": 135.0,
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -76,21 +93,18 @@
                             "sample document": {
                                 "sample identifier": "CLB001"
                             },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom info": {
+                                            "Images": 100.0,
+                                            "Images for analysis": 59.0
+                                        }
+                                    }
+                                ]
+                            },
                             "custom information document": {
-                                "Viable spot area (%)": 10.0,
-                                "Images for analysis": 59.0,
-                                "Cluster count": 45.0,
-                                "Average background intensity": 135.0,
-                                "Cell sharpness": 10.0,
-                                "Average cells per image": 20.0,
-                                "Minimum circularity": 0.0,
-                                "Wash": "Normal Wash",
-                                "Viable spot brightness (%)": 55.0,
-                                "Bubble count": 0.0,
-                                "Mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Images": 100.0,
-                                "Aspiration cycles": 4.0
+                                "Viable spot area (%)": 10.0
                             }
                         }
                     ]
@@ -105,7 +119,12 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom info": {
+                                            "Mixing cycles": 3.0,
+                                            "Aspiration cycles": 4.0,
+                                            "Wash": "Normal Wash"
+                                        }
                                     }
                                 ]
                             },
@@ -114,6 +133,9 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom info": {
+                                            "Average cells per image": 9.0
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "HeLa (😢)",
                                             "cell density dilution factor": {
@@ -127,6 +149,15 @@
                                             "maximum cell diameter setting": {
                                                 "value": 50.0,
                                                 "unit": "µm"
+                                            },
+                                            "custom info": {
+                                                "Cluster count": 33.0,
+                                                "Bubble count": 0.0,
+                                                "Viable spot brightness (%)": 55.0,
+                                                "Cell sharpness": 10.0,
+                                                "Decluster degree": "Medium",
+                                                "Average background intensity": 134.0,
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -171,21 +202,18 @@
                             "sample document": {
                                 "sample identifier": "CLB002"
                             },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom info": {
+                                            "Images": 100.0,
+                                            "Images for analysis": 51.0
+                                        }
+                                    }
+                                ]
+                            },
                             "custom information document": {
-                                "Viable spot area (%)": 10.0,
-                                "Images for analysis": 51.0,
-                                "Cluster count": 33.0,
-                                "Average background intensity": 134.0,
-                                "Cell sharpness": 10.0,
-                                "Average cells per image": 9.0,
-                                "Minimum circularity": 0.0,
-                                "Wash": "Normal Wash",
-                                "Viable spot brightness (%)": 55.0,
-                                "Bubble count": 0.0,
-                                "Mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Images": 100.0,
-                                "Aspiration cycles": 4.0
+                                "Viable spot area (%)": 10.0
                             }
                         }
                     ]
@@ -200,7 +228,12 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom info": {
+                                            "Mixing cycles": 3.0,
+                                            "Aspiration cycles": 4.0,
+                                            "Wash": "Normal Wash"
+                                        }
                                     }
                                 ]
                             },
@@ -209,6 +242,9 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom info": {
+                                            "Average cells per image": 34.0
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "HeLa (😢)",
                                             "cell density dilution factor": {
@@ -222,6 +258,15 @@
                                             "maximum cell diameter setting": {
                                                 "value": 50.0,
                                                 "unit": "µm"
+                                            },
+                                            "custom info": {
+                                                "Cluster count": 41.0,
+                                                "Bubble count": 0.0,
+                                                "Viable spot brightness (%)": 55.0,
+                                                "Cell sharpness": 10.0,
+                                                "Decluster degree": "Medium",
+                                                "Average background intensity": 134.0,
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -266,21 +311,18 @@
                             "sample document": {
                                 "sample identifier": "CLB003"
                             },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom info": {
+                                            "Images": 100.0,
+                                            "Images for analysis": 50.0
+                                        }
+                                    }
+                                ]
+                            },
                             "custom information document": {
-                                "Viable spot area (%)": 10.0,
-                                "Images for analysis": 50.0,
-                                "Cluster count": 41.0,
-                                "Average background intensity": 134.0,
-                                "Cell sharpness": 10.0,
-                                "Average cells per image": 34.0,
-                                "Minimum circularity": 0.0,
-                                "Wash": "Normal Wash",
-                                "Viable spot brightness (%)": 55.0,
-                                "Bubble count": 0.0,
-                                "Mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Images": 100.0,
-                                "Aspiration cycles": 4.0
+                                "Viable spot area (%)": 10.0
                             }
                         }
                     ]
@@ -295,7 +337,12 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom info": {
+                                            "Mixing cycles": 3.0,
+                                            "Aspiration cycles": 4.0,
+                                            "Wash": "Normal Wash"
+                                        }
                                     }
                                 ]
                             },
@@ -304,6 +351,9 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom info": {
+                                            "Average cells per image": 28.0
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "HeLa (😢)",
                                             "cell density dilution factor": {
@@ -317,6 +367,15 @@
                                             "maximum cell diameter setting": {
                                                 "value": 50.0,
                                                 "unit": "µm"
+                                            },
+                                            "custom info": {
+                                                "Cluster count": 40.0,
+                                                "Bubble count": 0.0,
+                                                "Viable spot brightness (%)": 55.0,
+                                                "Cell sharpness": 10.0,
+                                                "Decluster degree": "Medium",
+                                                "Average background intensity": 135.0,
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -361,21 +420,18 @@
                             "sample document": {
                                 "sample identifier": "CLB004"
                             },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom info": {
+                                            "Images": 100.0,
+                                            "Images for analysis": 62.0
+                                        }
+                                    }
+                                ]
+                            },
                             "custom information document": {
-                                "Viable spot area (%)": 10.0,
-                                "Images for analysis": 62.0,
-                                "Cluster count": 40.0,
-                                "Average background intensity": 135.0,
-                                "Cell sharpness": 10.0,
-                                "Average cells per image": 28.0,
-                                "Minimum circularity": 0.0,
-                                "Wash": "Normal Wash",
-                                "Viable spot brightness (%)": 55.0,
-                                "Bubble count": 0.0,
-                                "Mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Images": 100.0,
-                                "Aspiration cycles": 4.0
+                                "Viable spot area (%)": 10.0
                             }
                         }
                     ]
@@ -390,7 +446,12 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom info": {
+                                            "Mixing cycles": 3.0,
+                                            "Aspiration cycles": 4.0,
+                                            "Wash": "Normal Wash"
+                                        }
                                     }
                                 ]
                             },
@@ -399,6 +460,9 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom info": {
+                                            "Average cells per image": 16.0
+                                        },
                                         "data processing document": {
                                             "cell type processing method": "HeLa (😢)",
                                             "cell density dilution factor": {
@@ -412,6 +476,15 @@
                                             "maximum cell diameter setting": {
                                                 "value": 50.0,
                                                 "unit": "µm"
+                                            },
+                                            "custom info": {
+                                                "Cluster count": 58.0,
+                                                "Bubble count": 0.0,
+                                                "Viable spot brightness (%)": 55.0,
+                                                "Cell sharpness": 10.0,
+                                                "Decluster degree": "Medium",
+                                                "Average background intensity": 134.0,
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -456,21 +529,18 @@
                             "sample document": {
                                 "sample identifier": "CLB005"
                             },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom info": {
+                                            "Images": 100.0,
+                                            "Images for analysis": 50.0
+                                        }
+                                    }
+                                ]
+                            },
                             "custom information document": {
-                                "Viable spot area (%)": 10.0,
-                                "Images for analysis": 50.0,
-                                "Cluster count": 58.0,
-                                "Average background intensity": 134.0,
-                                "Cell sharpness": 10.0,
-                                "Average cells per image": 16.0,
-                                "Minimum circularity": 0.0,
-                                "Wash": "Normal Wash",
-                                "Viable spot brightness (%)": 55.0,
-                                "Bubble count": 0.0,
-                                "Mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Images": 100.0,
-                                "Aspiration cycles": 4.0
+                                "Viable spot area (%)": 10.0
                             }
                         }
                     ]
@@ -484,7 +554,7 @@
             "file name": "Beckman_Vi-Cell-BLU_example02.csv",
             "UNC path": "tests/parsers/beckman_vi_cell_blu/testdata/Beckman_Vi-Cell-BLU_example02.csv",
             "ASM converter name": "allotropy_beckman_coulter_vi_cell_blu",
-            "ASM converter version": "0.1.94",
+            "ASM converter version": "0.1.97",
             "software name": "Vi-Cell BLU"
         },
         "device system document": {

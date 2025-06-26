@@ -107,6 +107,12 @@ class Measurement:
     sample_custom_info: dict[str, Any] | None = None
     custom_info: dict[str, Any] | None = None
 
+    # Custom information documents
+    device_control_custom_info: dict[str, Any] | None = None
+    image_processing_custom_info: dict[str, Any] | None = None
+    data_processing_custom_info: dict[str, Any] | None = None
+    processed_data_custom_info: dict[str, Any] | None = None
+
 
 @dataclass(frozen=True)
 class MeasurementGroup:
@@ -236,6 +242,7 @@ class Mapper(SchemaMapper[Data, Model]):
                             TQuantityValueMicroliter,
                             measurement.sample_volume_setting,
                         ),
+                        custom_info=measurement.device_control_custom_info,
                     )
                 ]
             ),
@@ -248,11 +255,12 @@ class Mapper(SchemaMapper[Data, Model]):
             image_aggregate_document=ImageAggregateDocument(
                 image_document=[
                     ImageDocumentItem(
-                        experimental_data_identifier=measurement.experimental_data_identifier
+                        experimental_data_identifier=measurement.experimental_data_identifier,
+                        custom_info=measurement.image_processing_custom_info
                     )
                 ],
             )
-            if measurement.experimental_data_identifier
+            if measurement.experimental_data_identifier or measurement.image_processing_custom_info
             else None,
         )
         return add_custom_information_document(
@@ -336,6 +344,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueUnitless,
                 measurement.cell_density_dilution_factor,
             ),
+            custom_info=measurement.data_processing_custom_info,
         )
         processed_data_document = ProcessedDataDocumentItem(
             processed_data_identifier=measurement.processed_data_identifier,
@@ -344,6 +353,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 if has_value(data_processing_document)
                 else None
             ),
+            custom_info=measurement.processed_data_custom_info,
             viability__cell_counter_=TQuantityValuePercent(value=measurement.viability),
             viable_cell_density__cell_counter_=TQuantityValueMillionCellsPerMilliliter(
                 value=measurement.viable_cell_density
