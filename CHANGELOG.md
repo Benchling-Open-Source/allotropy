@@ -5,6 +5,36 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.97] - 2025-06-24
+
+### Fixed
+
+- Agilent OpenLab CDS - use bytes to read zip file instead of file name (#1021)
+
+## [0.1.96] - 2025-06-23
+
+### Fixed
+
+- Molecular Devices SoftMax Pro - account for partial plate reads (#1013)
+
+## [0.1.95] - 2025-06-19
+
+### Added
+
+- Luminex xPONENT - migrate to BENCHLING/2024/09 schema (#1007)
+
+## [0.1.94] - 2025-06-18
+
+### Added
+
+- ChemoMetec Nucleoview - add support for tab separated files (#1015)
+- Molecular Devices SoftMax Pro - update ASM structure for spectrum data (#1012)
+- Molecular Devices SoftMax Pro - update adapter to plate reader schema REC 25/03 (#1011)
+
+### Fixed
+
+- Agilent Gen5 - fix spectrum data cube label (#1014)
+
 ## [0.1.93] - 2025-06-10
 
 ### Fixed
