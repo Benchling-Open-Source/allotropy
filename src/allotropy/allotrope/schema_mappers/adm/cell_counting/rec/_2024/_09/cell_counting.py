@@ -235,7 +235,7 @@ class Mapper(SchemaMapper[Data, Model]):
             sample_volume_setting=quantity_or_none(
                 TQuantityValueMicroliter,
                 measurement.sample_volume_setting,
-            )
+            ),
         )
         device_control_doc = add_custom_information_document(
             device_control_doc, measurement.device_control_custom_info or {}
@@ -245,9 +245,7 @@ class Mapper(SchemaMapper[Data, Model]):
             measurement_identifier=measurement.measurement_identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
-                device_control_document=[
-                    device_control_doc
-                ]
+                device_control_document=[device_control_doc]
             ),
             processed_data_aggregate_document=self._get_processed_data_aggregate_document(
                 measurement
@@ -261,11 +259,12 @@ class Mapper(SchemaMapper[Data, Model]):
                         ImageDocumentItem(
                             experimental_data_identifier=measurement.experimental_data_identifier
                         ),
-                        measurement.image_processing_custom_info or {}
+                        measurement.image_processing_custom_info or {},
                     )
                 ],
             )
-            if measurement.experimental_data_identifier or measurement.image_processing_custom_info
+            if measurement.experimental_data_identifier
+            or measurement.image_processing_custom_info
             else None,
         )
         return add_custom_information_document(
@@ -351,7 +350,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     measurement.cell_density_dilution_factor,
                 ),
             ),
-            measurement.data_processing_custom_info or {}
+            measurement.data_processing_custom_info or {},
         )
         processed_data_document = ProcessedDataDocumentItem(
             processed_data_identifier=measurement.processed_data_identifier,
@@ -405,7 +404,8 @@ class Mapper(SchemaMapper[Data, Model]):
         return ProcessedDataAggregateDocument(
             processed_data_document=[
                 add_custom_information_document(
-                    processed_data_document, custom_document | (measurement.processed_data_custom_info or {})
+                    processed_data_document,
+                    custom_document | (measurement.processed_data_custom_info or {}),
                 )
             ]
         )

@@ -68,7 +68,7 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                         "Cell sharpness",
                         "Average background intensity",
                         "Bubble count",
-                        "Cluster count"
+                        "Cluster count",
                     }
                 ),
                 processed_data_custom_info=data.get_custom_keys(
