@@ -107,6 +107,12 @@ class Measurement:
     sample_custom_info: dict[str, Any] | None = None
     custom_info: dict[str, Any] | None = None
 
+    # Custom information documents
+    device_control_custom_info: dict[str, Any] | None = None
+    image_processing_custom_info: dict[str, Any] | None = None
+    data_processing_custom_info: dict[str, Any] | None = None
+    processed_data_custom_info: dict[str, Any] | None = None
+
 
 @dataclass(frozen=True)
 class MeasurementGroup:
@@ -223,21 +229,23 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocument:
+        device_control_doc = DeviceControlDocumentItem(
+            device_type=metadata.device_type,
+            detection_type=metadata.detection_type,
+            sample_volume_setting=quantity_or_none(
+                TQuantityValueMicroliter,
+                measurement.sample_volume_setting,
+            ),
+        )
+        device_control_doc = add_custom_information_document(
+            device_control_doc, measurement.device_control_custom_info or {}
+        )
         measurement_document = MeasurementDocument(
             measurement_time=self.get_date_time(measurement.timestamp),
             measurement_identifier=measurement.measurement_identifier,
             sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=DeviceControlAggregateDocument(
-                device_control_document=[
-                    DeviceControlDocumentItem(
-                        device_type=metadata.device_type,
-                        detection_type=metadata.detection_type,
-                        sample_volume_setting=quantity_or_none(
-                            TQuantityValueMicroliter,
-                            measurement.sample_volume_setting,
-                        ),
-                    )
-                ]
+                device_control_document=[device_control_doc]
             ),
             processed_data_aggregate_document=self._get_processed_data_aggregate_document(
                 measurement
@@ -247,12 +255,16 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
             image_aggregate_document=ImageAggregateDocument(
                 image_document=[
-                    ImageDocumentItem(
-                        experimental_data_identifier=measurement.experimental_data_identifier
+                    add_custom_information_document(
+                        ImageDocumentItem(
+                            experimental_data_identifier=measurement.experimental_data_identifier
+                        ),
+                        measurement.image_processing_custom_info or {},
                     )
                 ],
             )
             if measurement.experimental_data_identifier
+            or measurement.image_processing_custom_info
             else None,
         )
         return add_custom_information_document(
@@ -322,20 +334,23 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueUnitless, measurement.debris_index
             ),
         }
-        data_processing_document = DataProcessingDocument(
-            cell_type_processing_method=measurement.cell_type_processing_method,
-            minimum_cell_diameter_setting=quantity_or_none(
-                TQuantityValueMicrometer,
-                measurement.minimum_cell_diameter_setting,
+        data_processing_document = add_custom_information_document(
+            DataProcessingDocument(
+                cell_type_processing_method=measurement.cell_type_processing_method,
+                minimum_cell_diameter_setting=quantity_or_none(
+                    TQuantityValueMicrometer,
+                    measurement.minimum_cell_diameter_setting,
+                ),
+                maximum_cell_diameter_setting=quantity_or_none(
+                    TQuantityValueMicrometer,
+                    measurement.maximum_cell_diameter_setting,
+                ),
+                cell_density_dilution_factor=quantity_or_none(
+                    TQuantityValueUnitless,
+                    measurement.cell_density_dilution_factor,
+                ),
             ),
-            maximum_cell_diameter_setting=quantity_or_none(
-                TQuantityValueMicrometer,
-                measurement.maximum_cell_diameter_setting,
-            ),
-            cell_density_dilution_factor=quantity_or_none(
-                TQuantityValueUnitless,
-                measurement.cell_density_dilution_factor,
-            ),
+            measurement.data_processing_custom_info or {},
         )
         processed_data_document = ProcessedDataDocumentItem(
             processed_data_identifier=measurement.processed_data_identifier,
@@ -389,7 +404,8 @@ class Mapper(SchemaMapper[Data, Model]):
         return ProcessedDataAggregateDocument(
             processed_data_document=[
                 add_custom_information_document(
-                    processed_data_document, custom_document
+                    processed_data_document,
+                    custom_document | (measurement.processed_data_custom_info or {}),
                 )
             ]
         )
