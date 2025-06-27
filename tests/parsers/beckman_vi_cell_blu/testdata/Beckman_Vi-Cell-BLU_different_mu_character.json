@@ -11,10 +11,10 @@
                                     {
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
-                                        "custom info": {
-                                            "Aspiration cycles": 3.0,
+                                        "custom information document": {
+                                            "Wash": "Normal Wash",
                                             "Mixing cycles": 3.0,
-                                            "Wash": "Normal Wash"
+                                            "Aspiration cycles": 3.0
                                         }
                                     }
                                 ]
@@ -24,9 +24,6 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "custom info": {
-                                            "Average cells per image": 21.0
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "Mammalian",
                                             "cell density dilution factor": {
@@ -41,14 +38,14 @@
                                                 "value": 30.0,
                                                 "unit": "µm"
                                             },
-                                            "custom info": {
-                                                "Cell sharpness": 7.0,
-                                                "Viable spot brightness (%)": 50.0,
-                                                "Minimum circularity": 0.1,
-                                                "Decluster degree": "Medium",
-                                                "Cluster count": 0.0,
+                                            "custom information document": {
                                                 "Bubble count": 0.0,
-                                                "Average background intensity": 134.0
+                                                "Viable spot brightness (%)": 50.0,
+                                                "Cell sharpness": 7.0,
+                                                "Minimum circularity": 0.1,
+                                                "Average background intensity": 134.0,
+                                                "Decluster degree": "Medium",
+                                                "Cluster count": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -86,6 +83,9 @@
                                         "average viable cell circularity": {
                                             "value": 0.88,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Average cells per image": 21.0
                                         }
                                     }
                                 ]
@@ -96,9 +96,9 @@
                             "image aggregate document": {
                                 "image document": [
                                     {
-                                        "custom info": {
-                                            "Images": 100.0,
-                                            "Images for analysis": 100.0
+                                        "custom information document": {
+                                            "Images for analysis": 100.0,
+                                            "Images": 100.0
                                         }
                                     }
                                 ]
