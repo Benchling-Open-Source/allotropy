@@ -63,7 +63,7 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                     {
                         "Decluster degree",
                         "Minimum circularity",
-                        "Viable spot area",
+                        "Viable spot area (%)",
                         "Viable spot brightness (%)",
                         "Cell sharpness",
                         "Average background intensity",

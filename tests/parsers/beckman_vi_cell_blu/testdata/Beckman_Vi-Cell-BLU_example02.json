@@ -12,9 +12,9 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Aspiration cycles": 4.0,
+                                            "Wash": "Normal Wash",
                                             "Mixing cycles": 3.0,
-                                            "Wash": "Normal Wash"
+                                            "Aspiration cycles": 4.0
                                         }
                                     }
                                 ]
@@ -39,13 +39,14 @@
                                                 "unit": "µm"
                                             },
                                             "custom information document": {
-                                                "Average background intensity": 135.0,
                                                 "Decluster degree": "Medium",
-                                                "Cluster count": 45.0,
                                                 "Minimum circularity": 0.0,
-                                                "Bubble count": 0.0,
+                                                "Cluster count": 45.0,
                                                 "Cell sharpness": 10.0,
-                                                "Viable spot brightness (%)": 55.0
+                                                "Viable spot area (%)": 10.0,
+                                                "Bubble count": 0.0,
+                                                "Viable spot brightness (%)": 55.0,
+                                                "Average background intensity": 135.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -102,9 +103,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Viable spot area (%)": 10.0
                             }
                         }
                     ]
@@ -121,9 +119,9 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Aspiration cycles": 4.0,
+                                            "Wash": "Normal Wash",
                                             "Mixing cycles": 3.0,
-                                            "Wash": "Normal Wash"
+                                            "Aspiration cycles": 4.0
                                         }
                                     }
                                 ]
@@ -148,13 +146,14 @@
                                                 "unit": "µm"
                                             },
                                             "custom information document": {
-                                                "Average background intensity": 134.0,
                                                 "Decluster degree": "Medium",
-                                                "Cluster count": 33.0,
                                                 "Minimum circularity": 0.0,
-                                                "Bubble count": 0.0,
+                                                "Cluster count": 33.0,
                                                 "Cell sharpness": 10.0,
-                                                "Viable spot brightness (%)": 55.0
+                                                "Viable spot area (%)": 10.0,
+                                                "Bubble count": 0.0,
+                                                "Viable spot brightness (%)": 55.0,
+                                                "Average background intensity": 134.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -211,9 +210,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Viable spot area (%)": 10.0
                             }
                         }
                     ]
@@ -230,9 +226,9 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Aspiration cycles": 4.0,
+                                            "Wash": "Normal Wash",
                                             "Mixing cycles": 3.0,
-                                            "Wash": "Normal Wash"
+                                            "Aspiration cycles": 4.0
                                         }
                                     }
                                 ]
@@ -257,13 +253,14 @@
                                                 "unit": "µm"
                                             },
                                             "custom information document": {
-                                                "Average background intensity": 134.0,
                                                 "Decluster degree": "Medium",
-                                                "Cluster count": 41.0,
                                                 "Minimum circularity": 0.0,
-                                                "Bubble count": 0.0,
+                                                "Cluster count": 41.0,
                                                 "Cell sharpness": 10.0,
-                                                "Viable spot brightness (%)": 55.0
+                                                "Viable spot area (%)": 10.0,
+                                                "Bubble count": 0.0,
+                                                "Viable spot brightness (%)": 55.0,
+                                                "Average background intensity": 134.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -320,9 +317,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Viable spot area (%)": 10.0
                             }
                         }
                     ]
@@ -339,9 +333,9 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Aspiration cycles": 4.0,
+                                            "Wash": "Normal Wash",
                                             "Mixing cycles": 3.0,
-                                            "Wash": "Normal Wash"
+                                            "Aspiration cycles": 4.0
                                         }
                                     }
                                 ]
@@ -366,13 +360,14 @@
                                                 "unit": "µm"
                                             },
                                             "custom information document": {
-                                                "Average background intensity": 135.0,
                                                 "Decluster degree": "Medium",
-                                                "Cluster count": 40.0,
                                                 "Minimum circularity": 0.0,
-                                                "Bubble count": 0.0,
+                                                "Cluster count": 40.0,
                                                 "Cell sharpness": 10.0,
-                                                "Viable spot brightness (%)": 55.0
+                                                "Viable spot area (%)": 10.0,
+                                                "Bubble count": 0.0,
+                                                "Viable spot brightness (%)": 55.0,
+                                                "Average background intensity": 135.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -429,9 +424,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Viable spot area (%)": 10.0
                             }
                         }
                     ]
@@ -448,9 +440,9 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Aspiration cycles": 4.0,
+                                            "Wash": "Normal Wash",
                                             "Mixing cycles": 3.0,
-                                            "Wash": "Normal Wash"
+                                            "Aspiration cycles": 4.0
                                         }
                                     }
                                 ]
@@ -475,13 +467,14 @@
                                                 "unit": "µm"
                                             },
                                             "custom information document": {
-                                                "Average background intensity": 134.0,
                                                 "Decluster degree": "Medium",
-                                                "Cluster count": 58.0,
                                                 "Minimum circularity": 0.0,
-                                                "Bubble count": 0.0,
+                                                "Cluster count": 58.0,
                                                 "Cell sharpness": 10.0,
-                                                "Viable spot brightness (%)": 55.0
+                                                "Viable spot area (%)": 10.0,
+                                                "Bubble count": 0.0,
+                                                "Viable spot brightness (%)": 55.0,
+                                                "Average background intensity": 134.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -538,9 +531,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Viable spot area (%)": 10.0
                             }
                         }
                     ]

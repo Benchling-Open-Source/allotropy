@@ -13,8 +13,8 @@
                                         "detection type": "brightfield",
                                         "custom information document": {
                                             "Wash": "Normal Wash",
-                                            "Mixing cycles": 3.0,
-                                            "Aspiration cycles": 3.0
+                                            "Aspiration cycles": 3.0,
+                                            "Mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -40,12 +40,13 @@
                                             },
                                             "custom information document": {
                                                 "Bubble count": 0.0,
-                                                "Viable spot brightness (%)": 50.0,
-                                                "Cell sharpness": 7.0,
                                                 "Minimum circularity": 0.1,
-                                                "Average background intensity": 134.0,
+                                                "Cluster count": 0.0,
                                                 "Decluster degree": "Medium",
-                                                "Cluster count": 0.0
+                                                "Viable spot brightness (%)": 50.0,
+                                                "Viable spot area (%)": 5.0,
+                                                "Average background intensity": 134.0,
+                                                "Cell sharpness": 7.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -97,14 +98,11 @@
                                 "image document": [
                                     {
                                         "custom information document": {
-                                            "Images for analysis": 100.0,
-                                            "Images": 100.0
+                                            "Images": 100.0,
+                                            "Images for analysis": 100.0
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "Viable spot area (%)": 5.0
                             }
                         }
                     ]
