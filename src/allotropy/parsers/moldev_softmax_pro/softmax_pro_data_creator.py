@@ -6,6 +6,7 @@ from pathlib import Path
 
 from dateutil import parser
 
+from allotropy.allotrope.models.shared.definitions.custom import TQuantityValueNanometer
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
@@ -39,6 +40,7 @@ from allotropy.parsers.utils.calculated_data_documents.definition import (
     Referenceable,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import quantity_or_none
 
 
 def create_metadata(file_path: str) -> Metadata:
@@ -117,13 +119,22 @@ def _get_spectrum_data_cube(
 
 
 def _create_spectrum_measurement(
-    plate_block: PlateBlock, data_elements: list[DataElement]
+    plate_block: PlateBlock, data_elements: list[DataElement], position: str
 ) -> Measurement | None:
     measurement_type = plate_block.measurement_type
     first_data_element = data_elements[0]
     spectrum_data_cube = _get_spectrum_data_cube(plate_block, data_elements)
     if not spectrum_data_cube:
         return None
+    if isinstance(plate_block.block_data.raw_data, SpectrumRawPlateData):
+        first_data_element.custom_info.update(
+            {
+                "maximum wavelength signal": quantity_or_none(
+                    TQuantityValueNanometer,
+                    plate_block.block_data.raw_data.maximum_wavelength_signal[position],
+                )
+            }
+        )
 
     # Collect error documents and update error_feature to include wavelength with unit
     error_documents = []
@@ -183,7 +194,7 @@ def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measure
         MeasurementType.EMISSION_LUMINESCENCE_CUBE_SPECTRUM,
         MeasurementType.EXCITATION_LUMINESCENCE_CUBE_SPECTRUM,
     ):
-        measurement = _create_spectrum_measurement(plate_block, data_elements)
+        measurement = _create_spectrum_measurement(plate_block, data_elements, position)
         if not measurement:
             return []
         return [measurement]
@@ -263,12 +274,6 @@ def _create_measurement_group(
     if not (measurements := _create_measurements(plate_block, position)):
         return None
 
-    maximum_wavelength_signal = None
-    if isinstance(plate_block.block_data.raw_data, SpectrumRawPlateData):
-        maximum_wavelength_signal = (
-            plate_block.block_data.raw_data.maximum_wavelength_signal[position]
-        )
-
     measurement_time = DEFAULT_EPOCH_TIMESTAMP
     if date_last_saved:
         delta = datetime.timedelta(seconds=plate_block.header.read_time or 0)
@@ -278,7 +283,6 @@ def _create_measurement_group(
         measurements=measurements,
         plate_well_count=plate_block.header.num_wells,
         measurement_time=measurement_time,
-        maximum_wavelength_signal=maximum_wavelength_signal,
     )
 
 
