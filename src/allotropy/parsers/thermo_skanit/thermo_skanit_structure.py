@@ -46,8 +46,8 @@ GENERAL_INFO_KEYS = [
 @dataclass(frozen=True)
 class PlateData:
     plate_identifier: str
-    wavelength_data: dict[float, pd.DataFrame]  # wavelength -> measurement data
-    sample_data: pd.DataFrame  # sample names for wells
+    wavelength_data: dict[float, pd.DataFrame]
+    sample_data: pd.DataFrame
 
     @staticmethod
     def create(
@@ -243,12 +243,9 @@ class ThermoSkanItMeasurementGroups:
                     well_key = (plate.plate_identifier, well_location)
 
                     if not plate.sample_data.empty:
-                        try:
-                            sample_name = plate.sample_data.loc[
-                                well_letter, well_column
-                            ]
-                        except (KeyError, IndexError):
-                            sample_name = f"{plate.plate_identifier}_{well_location}"
+                        sample_name = plate.sample_data.loc[
+                            well_letter, well_column
+                        ]
                     else:
                         sample_name = f"{plate.plate_identifier}_{well_location}"
 
@@ -362,8 +359,7 @@ class ThermoSkanItMeasurementGroups:
                         wavelength_data = plates_dict[current_plate_id][
                             "wavelength_data"
                         ]
-                        if isinstance(wavelength_data, dict):
-                            wavelength_data[current_wavelength] = data_df
+                        wavelength_data[current_wavelength] = data_df
 
                     current_wavelength = float(wavelength_match.group(1))
                     current_data_section = []
@@ -398,8 +394,7 @@ class ThermoSkanItMeasurementGroups:
                         pd.DataFrame(current_data_section)
                     )
                     wavelength_data = plates_dict[current_plate_id]["wavelength_data"]
-                    if isinstance(wavelength_data, dict):
-                        wavelength_data[current_wavelength] = data_df
+                    wavelength_data[current_wavelength] = data_df
 
                 reading_samples = True
                 reading_data = False
@@ -425,8 +420,7 @@ class ThermoSkanItMeasurementGroups:
                 pd.DataFrame(current_data_section)
             )
             wavelength_data = plates_dict[current_plate_id]["wavelength_data"]
-            if isinstance(wavelength_data, dict):
-                wavelength_data[current_wavelength] = data_df
+            wavelength_data[current_wavelength] = data_df
 
         if current_sample_section and current_plate_id:
             sample_df = ThermoSkanItMeasurementGroups._set_headers(
@@ -438,16 +432,13 @@ class ThermoSkanItMeasurementGroups:
         for plate_id, plate_info in plates_dict.items():
             wavelength_data = plate_info["wavelength_data"]
             sample_data = plate_info["sample_data"]
-            if isinstance(wavelength_data, dict) and isinstance(
-                sample_data, pd.DataFrame
-            ):
-                plates.append(
-                    PlateData.create(
-                        plate_identifier=plate_id,
-                        wavelength_data=wavelength_data,
-                        sample_data=sample_data,
-                    )
+            plates.append(
+                PlateData.create(
+                    plate_identifier=plate_id,
+                    wavelength_data=wavelength_data,
+                    sample_data=sample_data,
                 )
+            )
 
         return plates
 

@@ -179,7 +179,7 @@ def test_create_skanit_meas_group() -> None:
     )
     assert len(skanit_meas_group) == 96
     assert skanit_meas_group[0].plate_well_count == 96
-
+    assert skanit_meas_group[0].measurements[0].experimental_data_identifier == "5. APOE potency MOA_EB_20230522_003"
     assert skanit_meas_group[95].measurements[0].location_identifier == "H12"
     assert skanit_meas_group[95].measurements[0].absorbance == 0.1032
 
