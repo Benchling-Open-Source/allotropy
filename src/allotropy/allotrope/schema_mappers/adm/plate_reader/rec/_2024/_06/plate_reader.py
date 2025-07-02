@@ -169,7 +169,6 @@ class MeasurementGroup:
     analytical_method_identifier: str | None = None
     experimental_data_identifier: str | None = None
     experiment_type: str | None = None
-    maximum_wavelength_signal: float | None = None
     custom_info: dict[str, Any] | None = None
 
 
@@ -251,13 +250,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 ],
             ),
         )
-        custom_info_doc = {
-            "maximum wavelength signal": quantity_or_none(
-                TQuantityValueNanometer, measurement_group.maximum_wavelength_signal
-            )
-        }
-        custom_info_doc.update(measurement_group.custom_info or {})
-        return add_custom_information_document(plate_reader_doc, custom_info_doc)
+        return add_custom_information_document(
+            plate_reader_doc, measurement_group.custom_info
+        )
 
     def _get_measurement_document(
         self, measurement: Measurement
@@ -326,21 +321,23 @@ class Mapper(SchemaMapper[Data, Model]):
             error_aggregate_document=self._get_error_aggregate_document(
                 measurement.error_document
             ),
-            processed_data_aggregate_document=ProcessedDataAggregateDocument(
-                processed_data_document=[
-                    ProcessedDataDocumentItem(
-                        processed_data_identifier=measurement.processed_data_document.identifier,
-                        data_processing_document={
-                            "concentration factor": quantity_or_none(
-                                TQuantityValueNanogramPerMicroliter,
-                                measurement.processed_data_document.concentration_factor,
-                            )
-                        },
-                    )
-                ]
-            )
-            if measurement.processed_data_document
-            else None,
+            processed_data_aggregate_document=(
+                ProcessedDataAggregateDocument(
+                    processed_data_document=[
+                        ProcessedDataDocumentItem(
+                            processed_data_identifier=measurement.processed_data_document.identifier,
+                            data_processing_document={
+                                "concentration factor": quantity_or_none(
+                                    TQuantityValueNanogramPerMicroliter,
+                                    measurement.processed_data_document.concentration_factor,
+                                )
+                            },
+                        )
+                    ]
+                )
+                if measurement.processed_data_document
+                else None
+            ),
         )
         return add_custom_information_document(
             measurement_doc, measurement.measurement_custom_info

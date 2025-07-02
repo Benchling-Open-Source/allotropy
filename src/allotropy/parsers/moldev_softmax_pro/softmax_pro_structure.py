@@ -375,7 +375,7 @@ class DataElement:
     position: str
     value: float | None
     error_document: list[ErrorDocument]
-    custom_info: dict[str, str] = field(default_factory=dict)
+    custom_info: dict[str, Any] = field(default_factory=dict)
     elapsed_time: list[float] = field(default_factory=list)
     kinetic_measures: list[float | None] = field(default_factory=list)
     sample_id: str | None = None
