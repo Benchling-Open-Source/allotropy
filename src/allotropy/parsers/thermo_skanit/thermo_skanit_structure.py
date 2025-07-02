@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 import re
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -40,6 +41,25 @@ GENERAL_INFO_KEYS = [
     "software_name",
     "software_version",
 ]
+
+
+@dataclass(frozen=True)
+class PlateData:
+    plate_identifier: str
+    wavelength_data: dict[float, pd.DataFrame]  # wavelength -> measurement data
+    sample_data: pd.DataFrame  # sample names for wells
+
+    @staticmethod
+    def create(
+        plate_identifier: str,
+        wavelength_data: dict[float, pd.DataFrame],
+        sample_data: pd.DataFrame,
+    ) -> PlateData:
+        return PlateData(
+            plate_identifier=plate_identifier,
+            wavelength_data=wavelength_data,
+            sample_data=sample_data,
+        )
 
 
 @dataclass(frozen=True)
@@ -179,20 +199,13 @@ class ThermoSkanItMeasurementGroups:
         layout_definitions_df: pd.DataFrame | None,
         session_info_df: pd.DataFrame | None,
     ) -> list[MeasurementGroup]:
-        (
-            data_df,
-            name_df,
-            wavelength,
-            well_plate_identifier,
-        ) = ThermoSkanItMeasurementGroups.identify_data_and_sample_dfs(sheet_df)
-        data_df.dropna(how="all", inplace=True)
+        plates = ThermoSkanItMeasurementGroups.identify_data_and_sample_dfs(sheet_df)
+
         plate_well_count = None
         if layout_definitions_df is not None:
             plate_well_count = ThermoSkanItMeasurementGroups.get_plate_well_count(
                 layout_definitions_df
             )
-        if not plate_well_count:
-            plate_well_count = data_df.size
 
         session_name = exec_time = None
         if session_info_df is not None:
@@ -211,48 +224,72 @@ class ThermoSkanItMeasurementGroups:
             experiment = sheet_df.iloc[0].iloc[0]
             session_name = experiment.replace(".skax", "") if experiment else None
 
-        meas_groups = []
-        # Stack the DataFrame, creating a MultiIndex
-        stacked = data_df.stack()
+        well_measurements: dict[tuple[str, str], list[Measurement]] = {}
 
-        # Iterate through the MultiIndex series and unpack it correctly
-        for well_letter, well_column in stacked.index:
-            if not name_df.empty:
-                sample_name = name_df.loc[well_letter, well_column]
-            else:
-                sample_name = f"{well_plate_identifier}_{well_letter}{well_column}"
+        for plate in plates:
+            for wavelength, data_df in plate.wavelength_data.items():
+                if data_df.empty:
+                    continue
 
-            measurement_value = stacked.loc[well_letter, well_column]
-            error_docs = []
+                data_df.dropna(how="all", inplace=True)
 
-            # Check if measurement value is non-numeric and create error document if so
-            if not try_float_or_none(measurement_value):
-                error_value = str(measurement_value)
-                error_docs.append(
-                    ErrorDocument(
-                        error=error_value,
-                        error_feature=MEASUREMENT_TYPES[type_],
+                if not plate_well_count:
+                    plate_well_count = data_df.size
+
+                stacked = data_df.stack()
+
+                for well_letter, well_column in stacked.index:
+                    well_location = well_letter + str(well_column)
+                    well_key = (plate.plate_identifier, well_location)
+
+                    if not plate.sample_data.empty:
+                        try:
+                            sample_name = plate.sample_data.loc[
+                                well_letter, well_column
+                            ]
+                        except (KeyError, IndexError):
+                            sample_name = f"{plate.plate_identifier}_{well_location}"
+                    else:
+                        sample_name = f"{plate.plate_identifier}_{well_location}"
+
+                    measurement_value = stacked.loc[well_letter, well_column]
+                    error_docs = []
+
+                    if not try_float_or_none(measurement_value):
+                        error_value = str(measurement_value)
+                        error_docs.append(
+                            ErrorDocument(
+                                error=error_value,
+                                error_feature=MEASUREMENT_TYPES[type_],
+                            )
+                        )
+                        measurement_value = NEGATIVE_ZERO
+
+                    well = DataWell.create(
+                        well_location=well_location,
+                        value=measurement_value,
+                        sample_name=sample_name,
+                        detector_wavelength=wavelength if wavelength > 0 else None,
+                        type_=type_,
+                        well_plate_identifier=plate.plate_identifier,
+                        error_documents=error_docs if error_docs else None,
+                        experimental_data_identifier=session_name,
                     )
-                )
-                measurement_value = NEGATIVE_ZERO
 
-            well = DataWell.create(
-                well_location=well_letter + str(well_column),
-                value=measurement_value,
-                sample_name=sample_name,
-                detector_wavelength=wavelength,
-                type_=type_,
-                well_plate_identifier=well_plate_identifier,
-                error_documents=error_docs if error_docs else None,
-                experimental_data_identifier=session_name,
-            )
+                    if well_key not in well_measurements:
+                        well_measurements[well_key] = []
+                    well_measurements[well_key].append(well)
+
+        meas_groups = []
+        for (_plate_id, _), measurements in well_measurements.items():
             meas_groups.append(
                 MeasurementGroup(
-                    measurements=[well],
-                    plate_well_count=plate_well_count,
+                    measurements=measurements,
+                    plate_well_count=plate_well_count,  # type: ignore[arg-type]
                     measurement_time=exec_time,
                 )
             )
+
         return meas_groups
 
     @staticmethod
@@ -293,52 +330,126 @@ class ThermoSkanItMeasurementGroups:
     @staticmethod
     def identify_data_and_sample_dfs(
         absorbance_sheet_df: pd.DataFrame,
-    ) -> tuple[pd.DataFrame, pd.DataFrame, float | None, str | None]:
-        # Initialize variables
-        start_reading_data = False
-        start_reading_sample = False
-        data_between_abs_and_blank = []
-        data_between_sample_and_blank = []
-        wavelength = None
-        well_plate_identifier = None
+    ) -> list[PlateData]:
+        """Parse multiple plates from sheet data, each with multiple wavelengths."""
+        plates_dict: dict[str, dict[str, dict[float, pd.DataFrame] | pd.DataFrame]] = {}
+        current_plate_id = None
+        current_wavelength = None
+        current_data_section: list[pd.Series[Any]] = []
+        current_sample_section: list[pd.Series[Any]] = []
+        reading_data = False
+        reading_samples = False
 
-        # Iterate through each row
-        for _, row in absorbance_sheet_df.iterrows():
-            if pd.notna(row.iloc[0]) and "Wavelength" in row.iloc[0]:
-                match = re.search(r"Wavelength:\s*(\d{1,3})\s*nm", row.iloc[0])
-                if match and (val := float(match.group(1))) != 0:
-                    wavelength = val
-            if pd.notna(row.iloc[0]) and "Plate" in row.iloc[0]:
-                match = re.search(r"Plate\s*(\d)", row.iloc[0])
-                if match:
-                    well_plate_identifier = match.group(0)
+        for _idx, row in absorbance_sheet_df.iterrows():
+            row_str = str(row.iloc[0]) if pd.notna(row.iloc[0]) else ""
+
+            if "Wavelength:" in row_str:
+                wavelength_match = re.search(r"Wavelength:\s*(\d{1,3})\s*nm", row_str)
+                if wavelength_match:
+                    if (
+                        current_wavelength is not None
+                        and current_data_section
+                        and current_plate_id
+                    ):
+                        data_df = ThermoSkanItMeasurementGroups._set_headers(
+                            pd.DataFrame(current_data_section)
+                        )
+                        if current_plate_id not in plates_dict:
+                            plates_dict[current_plate_id] = {
+                                "wavelength_data": {},
+                                "sample_data": pd.DataFrame(),
+                            }
+                        wavelength_data = plates_dict[current_plate_id][
+                            "wavelength_data"
+                        ]
+                        if isinstance(wavelength_data, dict):
+                            wavelength_data[current_wavelength] = data_df
+
+                    current_wavelength = float(wavelength_match.group(1))
+                    current_data_section = []
+                    reading_data = False
+                    reading_samples = False
+                    continue
+
+            if "Plate" in row_str:
+                plate_match = re.search(r"Plate\s*(\d+)", row_str)
+                if plate_match:
+                    current_plate_id = plate_match.group(0)
+                    if current_plate_id not in plates_dict:
+                        plates_dict[current_plate_id] = {
+                            "wavelength_data": {},
+                            "sample_data": pd.DataFrame(),
+                        }
+                    continue
+
             if "Abs" in row.values.astype(str) or "RLU" in row.values.astype(str):
-                start_reading_data = True
+                reading_data = True
+                reading_samples = False
+                current_data_section = [row]
+                continue
+
             if "Sample" in row.values.astype(str):
-                start_reading_sample = True
+                if (
+                    current_wavelength is not None
+                    and current_data_section
+                    and current_plate_id
+                ):
+                    data_df = ThermoSkanItMeasurementGroups._set_headers(
+                        pd.DataFrame(current_data_section)
+                    )
+                    wavelength_data = plates_dict[current_plate_id]["wavelength_data"]
+                    if isinstance(wavelength_data, dict):
+                        wavelength_data[current_wavelength] = data_df
 
-            if start_reading_sample:
-                data_between_sample_and_blank.append(row)
-            elif start_reading_data:
-                data_between_abs_and_blank.append(row)
+                reading_samples = True
+                reading_data = False
+                current_sample_section = [row]
+                continue
 
-        # Create DataFrames with the collected data
-        df_between_abs_and_blank = ThermoSkanItMeasurementGroups._set_headers(
-            pd.DataFrame(data_between_abs_and_blank)
-        )
-        if data_between_sample_and_blank:
-            df_between_sample_and_blank = ThermoSkanItMeasurementGroups._set_headers(
-                pd.DataFrame(data_between_sample_and_blank)
+            if reading_data:
+                current_data_section.append(row)
+            elif reading_samples:
+                current_sample_section.append(row)
+
+                if pd.isna(row.iloc[0]) or str(row.iloc[0]).strip() == "":
+                    if current_sample_section and current_plate_id:
+                        sample_df = ThermoSkanItMeasurementGroups._set_headers(
+                            pd.DataFrame(current_sample_section[:-1])
+                        )
+                        plates_dict[current_plate_id]["sample_data"] = sample_df
+                        current_sample_section = []
+                        reading_samples = False
+
+        if current_wavelength is not None and current_data_section and current_plate_id:
+            data_df = ThermoSkanItMeasurementGroups._set_headers(
+                pd.DataFrame(current_data_section)
             )
-        else:
-            df_between_sample_and_blank = pd.DataFrame()
+            wavelength_data = plates_dict[current_plate_id]["wavelength_data"]
+            if isinstance(wavelength_data, dict):
+                wavelength_data[current_wavelength] = data_df
 
-        return (
-            df_between_abs_and_blank,
-            df_between_sample_and_blank,
-            wavelength,
-            well_plate_identifier,
-        )
+        if current_sample_section and current_plate_id:
+            sample_df = ThermoSkanItMeasurementGroups._set_headers(
+                pd.DataFrame(current_sample_section)
+            )
+            plates_dict[current_plate_id]["sample_data"] = sample_df
+
+        plates = []
+        for plate_id, plate_info in plates_dict.items():
+            wavelength_data = plate_info["wavelength_data"]
+            sample_data = plate_info["sample_data"]
+            if isinstance(wavelength_data, dict) and isinstance(
+                sample_data, pd.DataFrame
+            ):
+                plates.append(
+                    PlateData.create(
+                        plate_identifier=plate_id,
+                        wavelength_data=wavelength_data,
+                        sample_data=sample_data,
+                    )
+                )
+
+        return plates
 
 
 @dataclass(frozen=True)
