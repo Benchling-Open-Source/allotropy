@@ -737,8 +737,36 @@ class TimeWavelengthData:
 
 
 @dataclass(frozen=True)
+class SpectrumTimeWavelengthData:
+    wavelength: float
+    measurement_data: list[TimeMeasurementData]
+
+    @staticmethod
+    def create(
+        reader: CsvReader,
+        header: PlateHeader,
+        wavelength: float,
+        columns: pd.Series[str],
+    ) -> SpectrumTimeWavelengthData:
+        data = assert_not_none(
+            reader.pop_line_as_df(sep="\t"),
+            msg="unable to find raw data from time block for Spectrum read type.",
+        )
+
+        set_columns(data, columns)
+
+        return SpectrumTimeWavelengthData(
+            wavelength=wavelength,
+            measurement_data=[
+                TimeMeasurementData.create(header, wavelength, row)
+                for _, row in data.iterrows()
+            ],
+        )
+
+
+@dataclass(frozen=True)
 class TimeRawData:
-    wavelength_data: list[TimeWavelengthData]
+    wavelength_data: list[TimeWavelengthData | SpectrumTimeWavelengthData]
 
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> TimeRawData:
@@ -747,9 +775,17 @@ class TimeRawData:
             msg="unable to find data columns for time block raw data.",
         )
 
+        if header.read_type == ReadType.SPECTRUM.value:
+            wavelength_data_class = SpectrumTimeWavelengthData
+        elif header.read_type == ReadType.ENDPOINT.value:
+            wavelength_data_class = TimeWavelengthData
+        else:
+            msg = f"Unsupported read type: {header.read_type}"
+            raise AllotropeConversionError(msg)
+
         return TimeRawData(
             wavelength_data=[
-                TimeWavelengthData.create(
+                wavelength_data_class.create(
                     reader,
                     header,
                     wavelength,
