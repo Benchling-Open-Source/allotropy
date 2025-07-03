@@ -226,15 +226,15 @@ class ThermoSkanItMeasurementGroups:
         plate_well_counts: dict[str, int] = {}
 
         for plate in plates:
-            plate_well_count = 0
             for wavelength, data_df in plate.wavelength_data.items():
                 if data_df.empty:
                     continue
 
-                data_df.dropna(how="all", inplace=True)
+                valid_rows = data_df.index.notna() & (data_df.index != "")
+                valid_cols = data_df.columns.notna() & (data_df.columns != "")
+                plate_well_count = len(data_df.index[valid_rows]) * len(data_df.columns[valid_cols])
 
-                if plate_well_count == 0:
-                    plate_well_count = len(data_df.index) * len(data_df.columns)
+                data_df.dropna(how="all", inplace=True)
 
                 stacked = data_df.stack()
 
