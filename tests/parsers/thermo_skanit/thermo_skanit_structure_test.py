@@ -1,7 +1,7 @@
 import pandas as pd
 
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
     MeasurementType,
 )
 from allotropy.parsers.thermo_skanit.thermo_skanit_structure import (
@@ -164,26 +164,21 @@ def test_create_skanit_meas_group() -> None:
     absorbance_df = DataThermoSkanIt._clean_dataframe(
         pd.read_excel(file_path, sheet_name="Absorbance 1_01")
     )
-    layout_definitions_df = DataThermoSkanIt._clean_dataframe(
-        pd.read_excel(file_path, sheet_name="Layout definitions")
-    )
     session_info_df = DataThermoSkanIt._clean_dataframe(
         pd.read_excel(file_path, sheet_name="Session information")
     )
 
     skanit_meas_group = ThermoSkanItMeasurementGroups.create(
         sheet_df=absorbance_df,
-        layout_definitions_df=layout_definitions_df,
         session_info_df=session_info_df,
         type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
     )
     assert len(skanit_meas_group) == 96
     assert skanit_meas_group[0].plate_well_count == 96
     assert (
-        skanit_meas_group[0].experimental_data_identifier
-        == "5. APOE potency MOA_EB_20230522_003"
+        skanit_meas_group[0].measurements[0].experimental_data_identifier
+        == "5. APOE potency MOA_EB_20230522_003 (1)"
     )
-
     assert skanit_meas_group[95].measurements[0].location_identifier == "H12"
     assert skanit_meas_group[95].measurements[0].absorbance == 0.1032
 

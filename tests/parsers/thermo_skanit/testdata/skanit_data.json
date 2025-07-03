@@ -1,17 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2025/03/plate-reader.manifest",
     "plate reader aggregate document": {
         "plate reader document": [
             {
                 "measurement aggregate document": {
-                    "measurement time": "2023-06-05T18:09:56+00:00",
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -24,32 +18,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_0",
                             "sample document": {
-                                "sample identifier": "Std0001",
                                 "location identifier": "A1",
+                                "sample identifier": "Std0001",
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 1.7455,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_1",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -62,32 +56,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_1",
                             "sample document": {
-                                "sample identifier": "Std0001",
                                 "location identifier": "A2",
+                                "sample identifier": "Std0001",
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 1.6148,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_2",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -100,32 +94,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_2",
                             "sample document": {
-                                "sample identifier": "Un0001",
                                 "location identifier": "A3",
+                                "sample identifier": "Un0001",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.0805,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_3",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -138,32 +132,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_3",
                             "sample document": {
-                                "sample identifier": "Un0001",
                                 "location identifier": "A4",
+                                "sample identifier": "Un0001",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.0865,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_4",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -176,32 +170,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_4",
                             "sample document": {
-                                "sample identifier": "Un0002",
                                 "location identifier": "A5",
+                                "sample identifier": "Un0002",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.0743,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_5",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -214,32 +208,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_5",
                             "sample document": {
-                                "sample identifier": "Un0002",
                                 "location identifier": "A6",
+                                "sample identifier": "Un0002",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.0774,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_6",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -252,32 +246,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_6",
                             "sample document": {
-                                "sample identifier": "Un0003",
                                 "location identifier": "A7",
+                                "sample identifier": "Un0003",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1245,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_7",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -290,32 +284,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_7",
                             "sample document": {
-                                "sample identifier": "Un0003",
                                 "location identifier": "A8",
+                                "sample identifier": "Un0003",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.0914,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_8",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -328,32 +322,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_8",
                             "sample document": {
-                                "sample identifier": "Un0004",
                                 "location identifier": "A9",
+                                "sample identifier": "Un0004",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.0761,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_9",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -366,32 +360,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_9",
                             "sample document": {
-                                "sample identifier": "Un0004",
                                 "location identifier": "A10",
+                                "sample identifier": "Un0004",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.0778,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_10",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -404,32 +398,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_10",
                             "sample document": {
-                                "sample identifier": "Un0005",
                                 "location identifier": "A11",
+                                "sample identifier": "Un0005",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1483,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_11",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -442,32 +436,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_11",
                             "sample document": {
-                                "sample identifier": "Un0005",
                                 "location identifier": "A12",
+                                "sample identifier": "Un0005",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1768,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_12",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -480,32 +474,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_12",
                             "sample document": {
-                                "sample identifier": "Std0002",
                                 "location identifier": "B1",
+                                "sample identifier": "Std0002",
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 1.3625,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_13",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -518,32 +512,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_13",
                             "sample document": {
-                                "sample identifier": "Std0002",
                                 "location identifier": "B2",
+                                "sample identifier": "Std0002",
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 1.1336,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_14",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -556,32 +550,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_14",
                             "sample document": {
-                                "sample identifier": "Un0007",
                                 "location identifier": "B3",
+                                "sample identifier": "Un0007",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.3925,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_15",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -594,32 +588,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_15",
                             "sample document": {
-                                "sample identifier": "Un0007",
                                 "location identifier": "B4",
+                                "sample identifier": "Un0007",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.461,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_16",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -632,32 +626,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_16",
                             "sample document": {
-                                "sample identifier": "Un0008",
                                 "location identifier": "B5",
+                                "sample identifier": "Un0008",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1506,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_17",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -670,32 +664,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_17",
                             "sample document": {
-                                "sample identifier": "Un0008",
                                 "location identifier": "B6",
+                                "sample identifier": "Un0008",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1452,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_18",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -708,32 +702,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_18",
                             "sample document": {
-                                "sample identifier": "Un0014",
                                 "location identifier": "B7",
+                                "sample identifier": "Un0014",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.829,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_19",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -746,32 +740,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_19",
                             "sample document": {
-                                "sample identifier": "Un0014",
                                 "location identifier": "B8",
+                                "sample identifier": "Un0014",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.8926,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_20",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -784,32 +778,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_20",
                             "sample document": {
-                                "sample identifier": "Un0015",
                                 "location identifier": "B9",
+                                "sample identifier": "Un0015",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2635,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_21",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -822,32 +816,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_21",
                             "sample document": {
-                                "sample identifier": "Un0015",
                                 "location identifier": "B10",
+                                "sample identifier": "Un0015",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2679,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_22",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -860,32 +854,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_22",
                             "sample document": {
-                                "sample identifier": "Un0016",
                                 "location identifier": "B11",
+                                "sample identifier": "Un0016",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.6276,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_23",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -898,32 +892,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_23",
                             "sample document": {
-                                "sample identifier": "Un0016",
                                 "location identifier": "B12",
+                                "sample identifier": "Un0016",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.737,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_24",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -936,32 +930,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_24",
                             "sample document": {
-                                "sample identifier": "Std0003",
                                 "location identifier": "C1",
+                                "sample identifier": "Std0003",
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.9252,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_25",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -974,32 +968,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_25",
                             "sample document": {
-                                "sample identifier": "Std0003",
                                 "location identifier": "C2",
+                                "sample identifier": "Std0003",
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.953,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_26",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1012,32 +1006,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_26",
                             "sample document": {
-                                "sample identifier": "Un0017",
                                 "location identifier": "C3",
+                                "sample identifier": "Un0017",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2837,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_27",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1050,32 +1044,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_27",
                             "sample document": {
-                                "sample identifier": "Un0017",
                                 "location identifier": "C4",
+                                "sample identifier": "Un0017",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2678,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_28",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1088,32 +1082,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_28",
                             "sample document": {
-                                "sample identifier": "Un0018",
                                 "location identifier": "C5",
+                                "sample identifier": "Un0018",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1058,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_29",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1126,32 +1120,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_29",
                             "sample document": {
-                                "sample identifier": "Un0018",
                                 "location identifier": "C6",
+                                "sample identifier": "Un0018",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1021,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_30",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1164,32 +1158,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_30",
                             "sample document": {
-                                "sample identifier": "Un0009",
                                 "location identifier": "C7",
+                                "sample identifier": "Un0009",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.4054,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_31",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1202,32 +1196,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_31",
                             "sample document": {
-                                "sample identifier": "Un0009",
                                 "location identifier": "C8",
+                                "sample identifier": "Un0009",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.5109,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_32",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1240,32 +1234,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_32",
                             "sample document": {
-                                "sample identifier": "Un0010",
                                 "location identifier": "C9",
+                                "sample identifier": "Un0010",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1533,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_33",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1278,32 +1272,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_33",
                             "sample document": {
-                                "sample identifier": "Un0010",
                                 "location identifier": "C10",
+                                "sample identifier": "Un0010",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1443,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_34",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1316,32 +1310,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_34",
                             "sample document": {
-                                "sample identifier": "Un0011",
                                 "location identifier": "C11",
+                                "sample identifier": "Un0011",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.3224,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_35",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1354,32 +1348,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_35",
                             "sample document": {
-                                "sample identifier": "Un0011",
                                 "location identifier": "C12",
+                                "sample identifier": "Un0011",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.3837,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_36",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1392,32 +1386,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_36",
                             "sample document": {
-                                "sample identifier": "Std0004",
                                 "location identifier": "D1",
+                                "sample identifier": "Std0004",
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.573,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_37",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1430,32 +1424,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_37",
                             "sample document": {
-                                "sample identifier": "Std0004",
                                 "location identifier": "D2",
+                                "sample identifier": "Std0004",
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.5763,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_38",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1468,32 +1462,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_38",
                             "sample document": {
-                                "sample identifier": "Un0023",
                                 "location identifier": "D3",
+                                "sample identifier": "Un0023",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.9125,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_39",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1506,32 +1500,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_39",
                             "sample document": {
-                                "sample identifier": "Un0023",
                                 "location identifier": "D4",
+                                "sample identifier": "Un0023",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.9411,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_40",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1544,32 +1538,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_40",
                             "sample document": {
-                                "sample identifier": "Un0024",
                                 "location identifier": "D5",
+                                "sample identifier": "Un0024",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.4575,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_41",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1582,32 +1576,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_41",
                             "sample document": {
-                                "sample identifier": "Un0024",
                                 "location identifier": "D6",
+                                "sample identifier": "Un0024",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.4357,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_42",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1620,32 +1614,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_42",
                             "sample document": {
-                                "sample identifier": "Un0019",
                                 "location identifier": "D7",
+                                "sample identifier": "Un0019",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.271,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_43",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1658,32 +1652,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_43",
                             "sample document": {
-                                "sample identifier": "Un0019",
                                 "location identifier": "D8",
+                                "sample identifier": "Un0019",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.3048,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_44",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1696,32 +1690,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_44",
                             "sample document": {
-                                "sample identifier": "Un0020",
                                 "location identifier": "D9",
+                                "sample identifier": "Un0020",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1117,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_45",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1734,32 +1728,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_45",
                             "sample document": {
-                                "sample identifier": "Un0020",
                                 "location identifier": "D10",
+                                "sample identifier": "Un0020",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1059,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_46",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1772,32 +1766,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_46",
                             "sample document": {
-                                "sample identifier": "Un0021",
                                 "location identifier": "D11",
+                                "sample identifier": "Un0021",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.19,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_47",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1810,32 +1804,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_47",
                             "sample document": {
-                                "sample identifier": "Un0021",
                                 "location identifier": "D12",
+                                "sample identifier": "Un0021",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.262,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_48",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1848,32 +1842,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_48",
                             "sample document": {
-                                "sample identifier": "Std0005",
                                 "location identifier": "E1",
+                                "sample identifier": "Std0005",
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.3996,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_49",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1886,32 +1880,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_49",
                             "sample document": {
-                                "sample identifier": "Std0005",
                                 "location identifier": "E2",
+                                "sample identifier": "Std0005",
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.4006,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_50",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1924,32 +1918,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_50",
                             "sample document": {
-                                "sample identifier": "Un0030",
                                 "location identifier": "E3",
+                                "sample identifier": "Un0030",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.5936,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_51",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1962,32 +1956,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_51",
                             "sample document": {
-                                "sample identifier": "Un0030",
                                 "location identifier": "E4",
+                                "sample identifier": "Un0030",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.5507,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_52",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2000,32 +1994,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_52",
                             "sample document": {
-                                "sample identifier": "Un0031",
                                 "location identifier": "E5",
+                                "sample identifier": "Un0031",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2488,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_53",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2038,32 +2032,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_53",
                             "sample document": {
-                                "sample identifier": "Un0031",
                                 "location identifier": "E6",
+                                "sample identifier": "Un0031",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.284,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_54",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2076,32 +2070,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_54",
                             "sample document": {
-                                "sample identifier": "Un0025",
                                 "location identifier": "E7",
+                                "sample identifier": "Un0025",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.9017,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_55",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2114,32 +2108,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_55",
                             "sample document": {
-                                "sample identifier": "Un0025",
                                 "location identifier": "E8",
+                                "sample identifier": "Un0025",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.9641,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_56",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2152,32 +2146,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_56",
                             "sample document": {
-                                "sample identifier": "Un0026",
                                 "location identifier": "E9",
+                                "sample identifier": "Un0026",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.3821,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_57",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2190,32 +2184,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_57",
                             "sample document": {
-                                "sample identifier": "Un0026",
                                 "location identifier": "E10",
+                                "sample identifier": "Un0026",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.4055,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_58",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2228,32 +2222,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_58",
                             "sample document": {
-                                "sample identifier": "Un0027",
                                 "location identifier": "E11",
+                                "sample identifier": "Un0027",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2567,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_59",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2266,32 +2260,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_59",
                             "sample document": {
-                                "sample identifier": "Un0027",
                                 "location identifier": "E12",
+                                "sample identifier": "Un0027",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.235,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_60",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2304,32 +2298,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_60",
                             "sample document": {
-                                "sample identifier": "Std0006",
                                 "location identifier": "F1",
+                                "sample identifier": "Std0006",
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2403,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_61",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2342,32 +2336,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_61",
                             "sample document": {
-                                "sample identifier": "Std0006",
                                 "location identifier": "F2",
+                                "sample identifier": "Std0006",
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2398,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_62",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2380,32 +2374,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_62",
                             "sample document": {
-                                "sample identifier": "Un0035",
                                 "location identifier": "F3",
+                                "sample identifier": "Un0035",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.3468,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_63",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2418,32 +2412,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_63",
                             "sample document": {
-                                "sample identifier": "Un0035",
                                 "location identifier": "F4",
+                                "sample identifier": "Un0035",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.3336,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_64",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2456,32 +2450,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_64",
                             "sample document": {
-                                "sample identifier": "Un0036",
                                 "location identifier": "F5",
+                                "sample identifier": "Un0036",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1641,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_65",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2494,32 +2488,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_65",
                             "sample document": {
-                                "sample identifier": "Un0036",
                                 "location identifier": "F6",
+                                "sample identifier": "Un0036",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1712,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_66",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2532,32 +2526,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_66",
                             "sample document": {
-                                "sample identifier": "Un0032",
                                 "location identifier": "F7",
+                                "sample identifier": "Un0032",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.4684,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_67",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2570,32 +2564,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_67",
                             "sample document": {
-                                "sample identifier": "Un0032",
                                 "location identifier": "F8",
+                                "sample identifier": "Un0032",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.4533,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_68",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2608,32 +2602,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_68",
                             "sample document": {
-                                "sample identifier": "Un0033",
                                 "location identifier": "F9",
+                                "sample identifier": "Un0033",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2035,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_69",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2646,32 +2640,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_69",
                             "sample document": {
-                                "sample identifier": "Un0033",
                                 "location identifier": "F10",
+                                "sample identifier": "Un0033",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1862,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_70",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2684,32 +2678,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_70",
                             "sample document": {
-                                "sample identifier": "Un0034",
                                 "location identifier": "F11",
+                                "sample identifier": "Un0034",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1577,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_71",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2722,32 +2716,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_71",
                             "sample document": {
-                                "sample identifier": "Un0034",
                                 "location identifier": "F12",
+                                "sample identifier": "Un0034",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.154,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_72",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2760,32 +2754,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_72",
                             "sample document": {
-                                "sample identifier": "Std0007",
                                 "location identifier": "G1",
+                                "sample identifier": "Std0007",
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1677,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_73",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2798,32 +2792,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_73",
                             "sample document": {
-                                "sample identifier": "Std0007",
                                 "location identifier": "G2",
+                                "sample identifier": "Std0007",
                                 "sample role type": "standard sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1577,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_74",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2836,32 +2830,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_74",
                             "sample document": {
-                                "sample identifier": "Un0006",
                                 "location identifier": "G3",
+                                "sample identifier": "Un0006",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.115,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_75",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2874,32 +2868,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_75",
                             "sample document": {
-                                "sample identifier": "Un0006",
                                 "location identifier": "G4",
+                                "sample identifier": "Un0006",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1239,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_76",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2912,32 +2906,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_76",
                             "sample document": {
-                                "sample identifier": "Un0012",
                                 "location identifier": "G5",
+                                "sample identifier": "Un0012",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2031,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_77",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2950,32 +2944,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_77",
                             "sample document": {
-                                "sample identifier": "Un0012",
                                 "location identifier": "G6",
+                                "sample identifier": "Un0012",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1964,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_78",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2988,32 +2982,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_78",
                             "sample document": {
-                                "sample identifier": "Un0037",
                                 "location identifier": "G7",
+                                "sample identifier": "Un0037",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2585,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_79",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3026,32 +3020,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_79",
                             "sample document": {
-                                "sample identifier": "Un0037",
                                 "location identifier": "G8",
+                                "sample identifier": "Un0037",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.2894,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_80",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3064,32 +3058,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_80",
                             "sample document": {
-                                "sample identifier": "Un0038",
                                 "location identifier": "G9",
+                                "sample identifier": "Un0038",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1536,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_81",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3102,32 +3096,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_81",
                             "sample document": {
-                                "sample identifier": "Un0038",
                                 "location identifier": "G10",
+                                "sample identifier": "Un0038",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1317,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_82",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3140,32 +3134,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_82",
                             "sample document": {
-                                "sample identifier": "Un0039",
                                 "location identifier": "G11",
+                                "sample identifier": "Un0039",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1065,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_83",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3178,32 +3172,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_83",
                             "sample document": {
-                                "sample identifier": "Un0039",
                                 "location identifier": "G12",
+                                "sample identifier": "Un0039",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1264,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_84",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3216,32 +3210,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_84",
                             "sample document": {
-                                "sample identifier": "Blank1",
                                 "location identifier": "H1",
+                                "sample identifier": "Blank1",
                                 "sample role type": "blank role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.0905,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_85",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3254,32 +3248,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_85",
                             "sample document": {
-                                "sample identifier": "Blank1",
                                 "location identifier": "H2",
+                                "sample identifier": "Blank1",
                                 "sample role type": "blank role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.0916,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_86",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3292,32 +3286,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_86",
                             "sample document": {
-                                "sample identifier": "Un0013",
                                 "location identifier": "H3",
+                                "sample identifier": "Un0013",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.4253,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_87",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3330,32 +3324,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_87",
                             "sample document": {
-                                "sample identifier": "Un0013",
                                 "location identifier": "H4",
+                                "sample identifier": "Un0013",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.4251,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_88",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3368,32 +3362,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_88",
                             "sample document": {
-                                "sample identifier": "Un0022",
                                 "location identifier": "H5",
+                                "sample identifier": "Un0022",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.147,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_89",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3406,32 +3400,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_89",
                             "sample document": {
-                                "sample identifier": "Un0022",
                                 "location identifier": "H6",
+                                "sample identifier": "Un0022",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1505,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_90",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3444,32 +3438,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_90",
                             "sample document": {
-                                "sample identifier": "Un0028",
                                 "location identifier": "H7",
+                                "sample identifier": "Un0028",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1549,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_91",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3482,32 +3476,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_91",
                             "sample document": {
-                                "sample identifier": "Un0028",
                                 "location identifier": "H8",
+                                "sample identifier": "Un0028",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.151,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_92",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3520,32 +3514,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_92",
                             "sample document": {
-                                "sample identifier": "Un0029",
                                 "location identifier": "H9",
+                                "sample identifier": "Un0029",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1131,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_93",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3558,32 +3552,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_93",
                             "sample document": {
-                                "sample identifier": "Un0029",
                                 "location identifier": "H10",
+                                "sample identifier": "Un0029",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1188,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_94",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3596,32 +3590,32 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_94",
                             "sample document": {
-                                "sample identifier": "Un0040",
                                 "location identifier": "H11",
+                                "sample identifier": "Un0040",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1001,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2023-06-05T18:09:56+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_95",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3634,35 +3628,43 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_95",
                             "sample document": {
-                                "sample identifier": "Un0040",
                                 "location identifier": "H12",
+                                "sample identifier": "Un0040",
                                 "sample role type": "unknown sample role",
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
                                 "value": 0.1032,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "5. APOE potency MOA_EB_20230522_003 (1)"
                         }
                     ],
-                    "experimental data identifier": "5. APOE potency MOA_EB_20230522_003",
+                    "measurement time": "2023-06-05T18:09:56+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
                     "container type": "well plate"
                 }
             }
         ],
+        "data system document": {
+            "ASM file identifier": "skanit_data.json",
+            "data system instance identifier": "N/A",
+            "UNC path": "tests/parsers/thermo_skanit/testdata/skanit_data.xlsx",
+            "file name": "skanit_data.xlsx",
+            "ASM converter name": "allotropy_thermo_fisher_scientific_skanit",
+            "ASM converter version": "0.1.97",
+            "software name": "SkanIt Software 7.0 RE for Microplate Readers RE",
+            "software version": "7.0.0.50"
+        },
         "device system document": {
             "device identifier": "Varioskan LUX",
             "model number": "Varioskan LUX",
             "equipment serial number": "3020-81776"
-        },
-        "data system document": {
-            "file name": "skanit_data.xlsx",
-            "UNC path": "tests/parsers/thermo_skanit/testdata/skanit_data.xlsx",
-            "software name": "SkanIt Software 7.0 RE for Microplate Readers RE",
-            "software version": "7.0.0.50",
-            "ASM converter name": "allotropy_thermo_fisher_scientific_skanit",
-            "ASM converter version": "0.1.74"
         }
     }
 }
