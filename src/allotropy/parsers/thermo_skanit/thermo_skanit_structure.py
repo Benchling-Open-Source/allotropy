@@ -230,9 +230,11 @@ class ThermoSkanItMeasurementGroups:
                 if data_df.empty:
                     continue
 
-                valid_rows = data_df.index.notna() & (data_df.index != "")
-                valid_cols = data_df.columns.notna() & (data_df.columns != "")
-                plate_well_count = len(data_df.index[valid_rows]) * len(data_df.columns[valid_cols])
+                valid_rows = ~pd.isnull(data_df.index) & (data_df.index != "")
+                valid_cols = ~pd.isnull(data_df.columns) & (data_df.columns != "")
+                plate_well_count = len(data_df.index[valid_rows]) * len(
+                    data_df.columns[valid_cols]
+                )
 
                 data_df.dropna(how="all", inplace=True)
 
