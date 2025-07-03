@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 import re
-from typing import Any
+from typing import Any, TypedDict
 
 import numpy as np
 import pandas as pd
@@ -41,6 +41,11 @@ GENERAL_INFO_KEYS = [
     "software_name",
     "software_version",
 ]
+
+
+class PlateDict(TypedDict):
+    wavelength_data: dict[float, pd.DataFrame]
+    sample_data: pd.DataFrame
 
 
 @dataclass(frozen=True)
@@ -196,21 +201,14 @@ class ThermoSkanItMeasurementGroups:
     def create(
         sheet_df: pd.DataFrame,
         type_: MeasurementType,
-        layout_definitions_df: pd.DataFrame | None,
         session_info_df: pd.DataFrame | None,
     ) -> list[MeasurementGroup]:
         plates = ThermoSkanItMeasurementGroups.identify_data_and_sample_dfs(sheet_df)
 
-        plate_well_count = None
-        if layout_definitions_df is not None:
-            plate_well_count = ThermoSkanItMeasurementGroups.get_plate_well_count(
-                layout_definitions_df
-            )
-
         session_name = exec_time = None
         if session_info_df is not None:
             session_info_data = df_to_series_data(parse_header_row(session_info_df.T))
-            session_name = session_info_data.get(str, "Session notes")
+            session_name = session_info_data.get(str, "Session name")
             exec_time = session_info_data.get(str, "Execution time")
 
         if not exec_time:
@@ -225,16 +223,18 @@ class ThermoSkanItMeasurementGroups:
             session_name = experiment.replace(".skax", "") if experiment else None
 
         well_measurements: dict[tuple[str, str], list[Measurement]] = {}
+        plate_well_counts: dict[str, int] = {}
 
         for plate in plates:
+            plate_well_count = 0
             for wavelength, data_df in plate.wavelength_data.items():
                 if data_df.empty:
                     continue
 
                 data_df.dropna(how="all", inplace=True)
 
-                if not plate_well_count:
-                    plate_well_count = data_df.size
+                if plate_well_count == 0:
+                    plate_well_count = len(data_df.index) * len(data_df.columns)
 
                 stacked = data_df.stack()
 
@@ -243,9 +243,7 @@ class ThermoSkanItMeasurementGroups:
                     well_key = (plate.plate_identifier, well_location)
 
                     if not plate.sample_data.empty:
-                        sample_name = plate.sample_data.loc[
-                            well_letter, well_column
-                        ]
+                        sample_name = plate.sample_data.loc[well_letter, well_column]
                     else:
                         sample_name = f"{plate.plate_identifier}_{well_location}"
 
@@ -270,45 +268,28 @@ class ThermoSkanItMeasurementGroups:
                         type_=type_,
                         well_plate_identifier=plate.plate_identifier,
                         error_documents=error_docs if error_docs else None,
-                        experimental_data_identifier=session_name,
+                        experimental_data_identifier=session_name.replace(".skax", "")
+                        if session_name
+                        else None,
                     )
 
                     if well_key not in well_measurements:
                         well_measurements[well_key] = []
                     well_measurements[well_key].append(well)
 
+            plate_well_counts[plate.plate_identifier] = plate_well_count
+
         meas_groups = []
-        for (_plate_id, _), measurements in well_measurements.items():
+        for (plate_id, _), measurements in well_measurements.items():
             meas_groups.append(
                 MeasurementGroup(
                     measurements=measurements,
-                    plate_well_count=plate_well_count,  # type: ignore[arg-type]
+                    plate_well_count=plate_well_counts[plate_id],
                     measurement_time=exec_time,
                 )
             )
 
         return meas_groups
-
-    @staticmethod
-    def get_plate_well_count(layout_definitions_df: pd.DataFrame) -> int | None:
-        # Find row containing "Plate template"
-        plate_row = layout_definitions_df[
-            layout_definitions_df.iloc[:, 0].str.contains(
-                "Plate template", case=False, na=False
-            )
-        ]
-
-        if plate_row.empty:
-            return None
-
-        # Combine all non-empty values in the row
-        combined_value = plate_row.iloc[0].dropna().str.cat(sep=" ")
-
-        # Extract first number found
-        if match := re.search(r"\d+", combined_value):
-            return int(match.group())
-
-        return None
 
     @staticmethod
     def _set_headers(df: pd.DataFrame) -> pd.DataFrame:
@@ -329,7 +310,7 @@ class ThermoSkanItMeasurementGroups:
         absorbance_sheet_df: pd.DataFrame,
     ) -> list[PlateData]:
         """Parse multiple plates from sheet data, each with multiple wavelengths."""
-        plates_dict: dict[str, dict[str, dict[float, pd.DataFrame] | pd.DataFrame]] = {}
+        plates_dict: dict[str, PlateDict] = {}
         current_plate_id = None
         current_wavelength = None
         current_data_section: list[pd.Series[Any]] = []
@@ -430,13 +411,11 @@ class ThermoSkanItMeasurementGroups:
 
         plates = []
         for plate_id, plate_info in plates_dict.items():
-            wavelength_data = plate_info["wavelength_data"]
-            sample_data = plate_info["sample_data"]
             plates.append(
                 PlateData.create(
                     plate_identifier=plate_id,
-                    wavelength_data=wavelength_data,
-                    sample_data=sample_data,
+                    wavelength_data=plate_info["wavelength_data"],
+                    sample_data=plate_info["sample_data"],
                 )
             )
 
@@ -479,7 +458,6 @@ class DataThermoSkanIt(Data):
         )
         measurement_groups = ThermoSkanItMeasurementGroups.create(
             sheet_df=measurement_df,
-            layout_definitions_df=clean_data.get("Layout definitions"),
             session_info_df=clean_data.get("Session information"),
             type_=_type,
         )
