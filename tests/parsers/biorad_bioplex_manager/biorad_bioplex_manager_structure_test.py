@@ -5,7 +5,7 @@ from allotropy.allotrope.models.shared.components.plate_reader import SampleRole
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TStatisticDatumRole,
 )
-from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._01.multi_analyte_profiling import (
+from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
     Analyte,
     Error,
 )
@@ -92,7 +92,7 @@ def test_create_analyte_document_data() -> None:
     assert analyte_document_data == Analyte(
         identifier="dummy_id",
         name="Pn4",
-        value=992.5,
+        fluorescence=992.5,
         assay_bead_count=46,
         assay_bead_identifier="62",
         statistic_datum_role=TStatisticDatumRole.median_role,

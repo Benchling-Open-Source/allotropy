@@ -8,7 +8,7 @@ from allotropy.allotrope.models.shared.components.plate_reader import SampleRole
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TStatisticDatumRole,
 )
-from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._01.multi_analyte_profiling import (
+from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
     Analyte,
     Error,
     Measurement,
@@ -17,6 +17,7 @@ from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2
 )
 from allotropy.exceptions import get_key_or_error
 from allotropy.parsers.biorad_bioplex_manager import constants
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     num_to_chars,
@@ -156,7 +157,9 @@ def create_analyte(
     return Analyte(
         identifier=random_uuid_str(),
         name=analyte_region_dict[assay_bead_identifier],
-        value=try_float(get_val_from_xml(bead_region_xml, "Median"), "fluorescence"),
+        fluorescence=try_float(
+            get_val_from_xml(bead_region_xml, "Median"), "fluorescence"
+        ),
         assay_bead_identifier=assay_bead_identifier,
         assay_bead_count=try_int(
             get_val_from_xml(bead_region_xml, "RegionCount"), "assay_bead_count"
@@ -213,8 +216,9 @@ def get_well_name(well_attrib: dict[str, str]) -> str:
 def create_metadata(
     root_xml: Et.Element, system_metadata: SystemMetadata, file_path: str
 ) -> Metadata:
+    path = Path(file_path)
     return Metadata(
-        file_name=Path(file_path).name,
+        file_name=path.name,
         unc_path=file_path,
         software_name=constants.SOFTWARE_NAME,
         software_version=root_xml.attrib["BioPlexManagerVersion"],
@@ -222,6 +226,8 @@ def create_metadata(
         firmware_version=system_metadata.controller_version,
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
         device_type=constants.DEVICE_TYPE,
+        asm_file_identifier=path.with_suffix(".json").name,
+        data_system_instance_identifier=NOT_APPLICABLE,
     )
 
 
