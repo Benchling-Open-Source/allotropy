@@ -766,7 +766,7 @@ class SpectrumTimeWavelengthData:
 
 @dataclass(frozen=True)
 class TimeRawData:
-    wavelength_data: list[TimeWavelengthData | SpectrumTimeWavelengthData]
+    wavelength_data: list[TimeWavelengthData]
 
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> TimeRawData:
@@ -775,20 +775,9 @@ class TimeRawData:
             msg="unable to find data columns for time block raw data.",
         )
 
-        wavelength_data_class: type[TimeWavelengthData] | type[
-            SpectrumTimeWavelengthData
-        ]
-        if header.read_type == ReadType.SPECTRUM.value:
-            wavelength_data_class = SpectrumTimeWavelengthData
-        elif header.read_type == ReadType.ENDPOINT.value:
-            wavelength_data_class = TimeWavelengthData
-        else:
-            msg = f"Unsupported read type: {header.read_type}"
-            raise AllotropeConversionError(msg)
-
         return TimeRawData(
             wavelength_data=[
-                wavelength_data_class.create(
+                TimeWavelengthData.create(
                     reader,
                     header,
                     wavelength,
@@ -796,6 +785,50 @@ class TimeRawData:
                 )
                 for wavelength in header.wavelengths
             ]
+        )
+
+
+@dataclass(frozen=True)
+class TimeSpectrumRawData:
+    wavelength_data: list[SpectrumTimeWavelengthData]
+    maximum_wavelength_signal: dict[str, float]
+
+    @staticmethod
+    def create(reader: CsvReader, header: PlateHeader) -> TimeSpectrumRawData:
+        columns = assert_not_none(
+            reader.pop_as_series(sep="\t"),
+            msg="unable to find data columns for time block raw data.",
+        )
+        wavelength_data = [
+            SpectrumTimeWavelengthData.create(
+                reader,
+                header,
+                wavelength,
+                columns,
+            )
+            for wavelength in header.wavelengths
+        ]
+
+        columns = assert_not_none(
+            reader.pop_as_series(sep="\t"),
+            msg="unable to find columns for time block reduced data.",
+        )
+        data = assert_not_none(
+            reader.pop_as_series(sep="\t"),
+            msg="unable to find reduced data from time block.",
+        )
+
+        data.index = pd.Index(columns)
+        max_wavelength_signal_data = {}
+
+        for pos, str_value in data[2:].items():
+            float_value = try_non_nan_float_or_none(str_value)
+            if float_value is not None:
+                max_wavelength_signal_data[str(pos)] = float_value
+
+        return TimeSpectrumRawData(
+            wavelength_data=wavelength_data,
+            maximum_wavelength_signal=max_wavelength_signal_data,
         )
 
 
@@ -830,7 +863,7 @@ class TimeReducedData:
 
 @dataclass(frozen=True)
 class TimeData:
-    raw_data: TimeRawData
+    raw_data: TimeRawData | TimeSpectrumRawData
     reduced_data: TimeReducedData | None
 
     @staticmethod
@@ -838,12 +871,16 @@ class TimeData:
         reader: CsvReader,
         header: PlateHeader,
     ) -> TimeData:
-        raw_data = None
         reduced_data = None
 
         # Read raw data if data_type is RAW or BOTH
         if header.data_type in (DataType.RAW.value, DataType.BOTH.value):
-            raw_data = TimeRawData.create(reader, header)
+            if header.read_type == ReadType.SPECTRUM.value:
+                raw_data: TimeRawData | TimeSpectrumRawData = (
+                    TimeSpectrumRawData.create(reader, header)
+                )
+            else:
+                raw_data = TimeRawData.create(reader, header)
         # For REDUCED only, create synthetic raw data with error message
         else:
             raw_data = TimeData._create_synthetic_raw_data(header)
@@ -860,10 +897,8 @@ class TimeData:
     @staticmethod
     def _create_synthetic_raw_data(header: PlateHeader) -> TimeRawData:
         """Create synthetic raw data with error messages when only reduced data is available."""
-        synthetic_wavelength_data: list[
-            TimeWavelengthData | SpectrumTimeWavelengthData
-        ] = []
 
+        synthetic_wavelength_data = []
         for wavelength in header.wavelengths:
             # For each position in the plate, create a data element with an error document
             num_cols = header.num_columns
