@@ -181,7 +181,9 @@ class CsvReader(LinesReader):
         line = self.pop()
         return None if line is None else pd.Series(line.split(sep))
 
-    def pop_line_as_df(self, sep: str = " ", empty_pat: str = EMPTY_STR_PATTERN) -> pd.DataFrame | None:
+    def pop_line_as_df(
+        self, sep: str = " ", empty_pat: str = EMPTY_STR_PATTERN
+    ) -> pd.DataFrame | None:
         self.drop_empty(empty_pat)
         line = self.pop()
         self.drop_empty(empty_pat)

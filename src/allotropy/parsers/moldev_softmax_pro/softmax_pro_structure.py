@@ -775,6 +775,9 @@ class TimeRawData:
             msg="unable to find data columns for time block raw data.",
         )
 
+        wavelength_data_class: type[TimeWavelengthData] | type[
+            SpectrumTimeWavelengthData
+        ]
         if header.read_type == ReadType.SPECTRUM.value:
             wavelength_data_class = SpectrumTimeWavelengthData
         elif header.read_type == ReadType.ENDPOINT.value:
@@ -857,7 +860,9 @@ class TimeData:
     @staticmethod
     def _create_synthetic_raw_data(header: PlateHeader) -> TimeRawData:
         """Create synthetic raw data with error messages when only reduced data is available."""
-        synthetic_wavelength_data = []
+        synthetic_wavelength_data: list[
+            TimeWavelengthData | SpectrumTimeWavelengthData
+        ] = []
 
         for wavelength in header.wavelengths:
             # For each position in the plate, create a data element with an error document
