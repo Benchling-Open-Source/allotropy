@@ -10,7 +10,12 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Wash": "Normal Wash",
+                                            "Aspiration cycles": 3.0,
+                                            "Mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -32,6 +37,16 @@
                                             "maximum cell diameter setting": {
                                                 "value": 30.0,
                                                 "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Bubble count": 0.0,
+                                                "Minimum circularity": 0.1,
+                                                "Cluster count": 0.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable spot brightness (%)": 50.0,
+                                                "Viable spot area (%)": 5.0,
+                                                "Average background intensity": 134.0,
+                                                "Cell sharpness": 7.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -69,12 +84,25 @@
                                         "average viable cell circularity": {
                                             "value": 0.88,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Average cells per image": 21.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB001"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 100.0,
+                                            "Images for analysis": 100.0
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -88,7 +116,7 @@
             "file name": "Beckman_Vi-Cell-BLU_different_mu_character.csv",
             "UNC path": "tests/parsers/beckman_vi_cell_blu/testdata/Beckman_Vi-Cell-BLU_different_mu_character.csv",
             "ASM converter name": "allotropy_beckman_coulter_vi_cell_blu",
-            "ASM converter version": "0.1.69",
+            "ASM converter version": "0.1.97",
             "software name": "Vi-Cell BLU"
         },
         "device system document": {
