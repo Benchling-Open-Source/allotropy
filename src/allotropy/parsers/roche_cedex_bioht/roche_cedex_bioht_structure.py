@@ -64,13 +64,26 @@ class RawMeasurement:
             if BELOW_TEST_RANGE in error
             else data.get(float, "concentration value", NaN)
         )
+
+        value, unit = RawMeasurement._get_value_and_unit(
+            concentration_value, data[str, "concentration unit"]
+        )
+
         return RawMeasurement(
             data[str, "analyte name"],
             data[str, "measurement time"],
-            concentration_value,
-            data[str, "concentration unit"],
+            value,
+            unit,
             error or None,
         )
+
+    @staticmethod
+    def _get_value_and_unit(value: JsonFloat, unit: str) -> tuple[JsonFloat, str]:
+        if isinstance(value, int | float):
+            if unit == "mg/L":
+                return value / 1000, "g/L"
+
+        return value, unit
 
 
 def create_measurements(data: pd.DataFrame) -> dict[str, dict[str, RawMeasurement]]:
