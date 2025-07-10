@@ -564,7 +564,6 @@ class PlateRawData(RawData):
 
 @dataclass(frozen=True)
 class SpectrumRawPlateData(RawData):
-
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> SpectrumRawPlateData:
 
@@ -594,9 +593,7 @@ class SpectrumRawPlateData(RawData):
             )
         reader.drop_empty()
 
-        return SpectrumRawPlateData(
-            wavelength_data=wavelength_data
-        )
+        return SpectrumRawPlateData(wavelength_data=wavelength_data)
 
 
 @dataclass(frozen=True)
