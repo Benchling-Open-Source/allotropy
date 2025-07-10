@@ -30,7 +30,6 @@ from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     GroupBlock,
     GroupSampleData,
     PlateBlock,
-    SpectrumRawPlateData,
     StructureData,
 )
 from allotropy.parsers.utils.calculated_data_documents.definition import (
@@ -264,10 +263,6 @@ def _create_measurement_group(
         return None
 
     maximum_wavelength_signal = None
-    if isinstance(plate_block.block_data.raw_data, SpectrumRawPlateData):
-        maximum_wavelength_signal = (
-            plate_block.block_data.raw_data.maximum_wavelength_signal[position]
-        )
 
     measurement_time = DEFAULT_EPOCH_TIMESTAMP
     if date_last_saved:
