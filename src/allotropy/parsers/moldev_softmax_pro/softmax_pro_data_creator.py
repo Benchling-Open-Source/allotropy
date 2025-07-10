@@ -262,8 +262,6 @@ def _create_measurement_group(
     if not (measurements := _create_measurements(plate_block, position)):
         return None
 
-    maximum_wavelength_signal = None
-
     measurement_time = DEFAULT_EPOCH_TIMESTAMP
     if date_last_saved:
         delta = datetime.timedelta(seconds=plate_block.header.read_time or 0)
@@ -273,7 +271,6 @@ def _create_measurement_group(
         measurements=measurements,
         plate_well_count=plate_block.header.num_wells,
         measurement_time=measurement_time,
-        maximum_wavelength_signal=maximum_wavelength_signal,
     )
 
 
