@@ -209,8 +209,8 @@ class StrictXmlElement:
         self._handle_skip_keys(skip)
         matching_keys = self._apply_regex_filter(attribute_keys, regex)
 
-        unread_keys = {}
-        processed_attrs = set()
+        unread_keys: dict[str, str | None] = {}
+        processed_attrs: set[str] = set()
 
         for key in matching_keys - self.read_keys:
             if key.startswith("attr:"):
@@ -242,7 +242,9 @@ class StrictXmlElement:
             skip_keys = self._get_matching_keys(skip)
             self.read_keys |= skip_keys
 
-    def _apply_regex_filter(self, attribute_keys: set[str], regex: str | None) -> set[str]:
+    def _apply_regex_filter(
+        self, attribute_keys: set[str], regex: str | None
+    ) -> set[str]:
         """Apply regex filter to attribute keys if provided."""
         if regex:
             return {k for k in attribute_keys if re.fullmatch(regex, k)}
@@ -253,7 +255,7 @@ class StrictXmlElement:
         key: str,
         matching_keys: set[str],
         unread_keys: dict[str, str | None],
-        processed_attrs: set[str]
+        processed_attrs: set[str],
     ) -> None:
         """Process an 'attr:' prefixed key."""
         attr_name = key[5:]  # Remove "attr:" prefix
@@ -270,10 +272,7 @@ class StrictXmlElement:
         processed_attrs.add(attr_name)
 
     def _process_ns_attr_key(
-        self,
-        key: str,
-        unread_keys: dict[str, str | None],
-        processed_attrs: set[str]
+        self, key: str, unread_keys: dict[str, str | None], processed_attrs: set[str]
     ) -> None:
         """Process a 'ns_attr:' prefixed key."""
         parts = key.split(":", 2)
@@ -300,7 +299,9 @@ class StrictXmlElement:
         unread_keys[clean_key] = self.element.get(full_attr_name)
         processed_attrs.add(full_attr_name)
 
-    def _is_attr_already_processed(self, attr_name: str, processed_attrs: set[str]) -> bool:
+    def _is_attr_already_processed(
+        self, attr_name: str, processed_attrs: set[str]
+    ) -> bool:
         """Check if attribute has already been processed or read via namespaced access."""
         if attr_name in processed_attrs:
             return True
@@ -314,7 +315,9 @@ class StrictXmlElement:
                     return True
         return False
 
-    def _should_skip_for_namespace_form(self, attr_name: str, matching_keys: set[str]) -> bool:
+    def _should_skip_for_namespace_form(
+        self, attr_name: str, matching_keys: set[str]
+    ) -> bool:
         """Check if this attr should be skipped because namespace form is available."""
         for namespace_key, namespace_uri in self.namespaces.items():
             if attr_name.startswith(f"{{{namespace_uri}}}"):

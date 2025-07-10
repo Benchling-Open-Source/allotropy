@@ -440,6 +440,11 @@ def create_metadata(root_element: StrictXmlElement, file_path: str) -> Metadata:
             "hideCompNodes",
             "groupPaneHeight",
             "curGroup",
+            "nonAutoSaveFileName",
+            "modDate",
+            "name",
+            "clientTimestamp",
+            "homepage",
         }
     )
     if root_unread:
@@ -458,6 +463,21 @@ def create_metadata(root_element: StrictXmlElement, file_path: str) -> Metadata:
                 "widthBasis",
                 "useTransform",
                 "icon",
+                "modDate",
+                "name",
+                "clientTimestamp",
+                "homepage",
+                "linFromKW",
+                "logFromKW",
+                "linMax",
+                "logMax",
+                "useFCS3",
+                "useGain",
+                "linearRescale",
+                "logMin",
+                "linMin",
+                "extraNegs",
+                "logRescale",
             }
         )
         if cytometer_unread:
@@ -1001,6 +1021,34 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
             if value is not None and value.strip() != "":
                 measurement_custom_info[keyword] = value
 
+        # Also extract root element fields for measurement document
+        root_element_fields = ["modDate", "name", "clientTimestamp", "homepage"]
+        for field in root_element_fields:
+            root_value = root_element.get_attr_or_none(field)
+            if root_value is not None and root_value.strip() != "":
+                measurement_custom_info[field] = root_value.strip()
+
+        # Check sample_list element for measurement document fields
+        if sample_list:
+            for field in root_element_fields:
+                sample_list_value = sample_list.get_attr_or_none(field)
+                if (
+                    sample_list_value is not None
+                    and sample_list_value.strip() != ""
+                    and field not in measurement_custom_info
+                ):
+                    measurement_custom_info[field] = sample_list_value.strip()
+
+        # Check current sample element for measurement document fields
+        for field in root_element_fields:
+            sample_value = sample.get_attr_or_none(field)
+            if (
+                sample_value is not None
+                and sample_value.strip() != ""
+                and field not in measurement_custom_info
+            ):
+                measurement_custom_info[field] = sample_value.strip()
+
         # Extract sample-level metadata fields
         sample_custom_info = {}
         for keyword in SAMPLE_DOCUMENT_KEYWORDS:
@@ -1014,6 +1062,61 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
             value = get_keyword_value(keyword)
             if value is not None and value.strip() != "":
                 processed_data_custom_info[keyword] = value
+
+        # Also extract root element fields for processed data document
+        root_data_processing_fields = [
+            "linFromKW",
+            "logFromKW",
+            "linMax",
+            "logMax",
+            "useFCS3",
+            "useGain",
+            "linearRescale",
+            "logMin",
+            "linMin",
+            "extraNegs",
+            "logRescale",
+        ]
+
+        # Check root element
+        for field in root_data_processing_fields:
+            root_value = root_element.get_attr_or_none(field)
+            if root_value is not None and root_value.strip() != "":
+                processed_data_custom_info[field] = root_value.strip()
+
+        # Check cytometer element
+        cytometer = root_element.recursive_find_or_none(["Cytometers", "Cytometer"])
+        if cytometer:
+            # Extract measurement document fields from cytometer first
+            for field in root_element_fields:
+                cytometer_value = cytometer.get_attr_or_none(field)
+                if (
+                    cytometer_value is not None
+                    and cytometer_value.strip() != ""
+                    and field not in measurement_custom_info
+                ):
+                    measurement_custom_info[field] = cytometer_value.strip()
+
+            # Then extract data processing fields
+            for field in root_data_processing_fields:
+                cytometer_value = cytometer.get_attr_or_none(field)
+                if (
+                    cytometer_value is not None
+                    and cytometer_value.strip() != ""
+                    and field not in processed_data_custom_info
+                ):
+                    processed_data_custom_info[field] = cytometer_value.strip()
+            cytometer.mark_read(
+                {
+                    "cyt",
+                    "widthBasis",
+                    "useTransform",
+                    "icon",
+                    "manufacturer",
+                    "serialnumber",
+                    "transformType",
+                }
+            )
 
         # Extract device control-level metadata fields (parameter, laser, and CST fields)
         keywords = sample.find_or_none("Keywords")

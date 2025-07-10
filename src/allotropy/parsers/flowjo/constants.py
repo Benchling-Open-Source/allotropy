@@ -42,6 +42,10 @@ MEASUREMENT_DOCUMENT_KEYWORDS = {
     "WINDOW EXTENSION",
     "EXPORT USER NAME",
     "EXPORT TIME",
+    "modDate",
+    "name",
+    "clientTimestamp",
+    "homepage",
 }
 
 # Keywords extracted at sample document level (custom_info)
@@ -62,6 +66,10 @@ PROCESSED_DATA_KEYWORDS = {
     "FSC ASF",
     "AUTOBS",
     "SPILL",
+    "logMin",
+    "linMin",
+    "extraNegs",
+    "logRescale",
 }
 
 # Combined set of all structured keywords (for exclusion logic)
