@@ -1,15 +1,13 @@
 from __future__ import annotations
 
-from enum import Enum
+from collections.abc import Callable
 import math
 from pathlib import Path
+import re
 
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueSecondTime,
-)
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    TStatisticDatumRole,
 )
 from allotropy.allotrope.schema_mappers.adm.flow_cytometry.benchling._2025._03.flow_cytometry import (
     CompensationMatrix,
@@ -26,6 +24,18 @@ from allotropy.allotrope.schema_mappers.adm.flow_cytometry.benchling._2025._03.f
 from allotropy.exceptions import AllotropeParsingError
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.flowjo import constants
+from allotropy.parsers.flowjo.constants import (
+    ALL_STRUCTURED_KEYWORDS,
+    COUNT_FIELDS,
+    EQUIPMENT_SERIAL_KEYWORDS,
+    FLOWJO_STATISTIC_MAP,
+    FLUORESCENCE_FIELDS,
+    MEASUREMENT_DOCUMENT_KEYWORDS,
+    PROCESSED_DATA_KEYWORDS,
+    RegionType,
+    SAMPLE_DOCUMENT_KEYWORDS,
+    VertexRole,
+)
 from allotropy.parsers.utils.strict_xml_element import StrictXmlElement
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import try_float_or_none
@@ -35,90 +45,148 @@ def _filter_unread_data(unread_data: dict[str, str | None]) -> dict[str, str | N
     return {
         key: value
         for key, value in unread_data.items()
-        if not ((value == "") or (value is None))
+        if not (
+            (value == "")
+            or (value is None)
+            or (isinstance(value, str) and value.strip() == "")
+        )
     }
 
 
-# Map of FlowJo field names to statistic datum roles and units
-FLOWJO_STATISTIC_MAP = {
-    # Fluorescence statistics
-    "Median": {"role": TStatisticDatumRole.median_role.value, "unit": "RFU"},
-    "CV": {
-        "role": TStatisticDatumRole.coefficient_of_variation_role.value,
-        "unit": "%",
-    },
-    "Robust CV": {
-        "role": TStatisticDatumRole.robust_coefficient_of_variation_role.value,
-        "unit": "%",
-    },
-    "Mean": {"role": TStatisticDatumRole.arithmetic_mean_role.value, "unit": "RFU"},
-    "Geometric Mean": {
-        "role": TStatisticDatumRole.geometric_mean_role.value,
-        "unit": "RFU",
-    },
-    "Percentile": {"role": TStatisticDatumRole.percentile_role.value, "unit": "RFU"},
-    "SD": {
-        "role": TStatisticDatumRole.standard_deviation_role.value,
-        "unit": "(unitless)",
-    },
-    "MADExact": {
-        "role": TStatisticDatumRole.median_absolute_deviation_percentile_role.value,
-        "unit": "(unitless)",
-    },
-    "Robust SD": {
-        "role": TStatisticDatumRole.robust_standard_deviation_role.value,
-        "unit": "(unitless)",
-    },
-    "Median Abs Dev": {
-        "role": TStatisticDatumRole.median_absolute_deviation_role.value,
-        "unit": "(unitless)",
-    },
-    # Count statistics
-    "fj.stat.freqofparent": {
-        "role": TStatisticDatumRole.frequency_of_parent_role.value,
-        "unit": "%",
-    },
-    "fj.stat.freqofgrandparent": {
-        "role": TStatisticDatumRole.frequency_of_grandparent_role.value,
-        "unit": "%",
-    },
-    "fj.stat.freqoftotal": {
-        "role": TStatisticDatumRole.frequency_of_total_role.value,
-        "unit": "%",
-    },
-}
+def _process_keywords(
+    keywords: StrictXmlElement | None,
+) -> tuple[str | None, dict[str, str]]:
+    """
+    Process keywords to extract equipment serial number and custom info.
 
-# Identify statistics that belong to the "Count" feature
-COUNT_FIELDS = [
-    "fj.stat.freqofparent",
-    "fj.stat.freqofgrandparent",
-    "fj.stat.freqoftotal",
-    "fj.stat.freqof",
-]
-FLUORESCENCE_FIELDS = [
-    "Median",
-    "CV",
-    "Robust CV",
-    "Mean",
-    "Geometric Mean",
-    "Percentile",
-    "SD",
-    "MADExact",
-    "Robust SD",
-    "Median Abs Dev",
-]
+    Returns:
+        tuple: (equipment_serial_number, keywords_custom_info)
+    """
+    if keywords is None:
+        return None, {}
+
+    equipment_serial_number = None
+    keywords_custom_info = {}
+
+    keyword_elements = keywords.findall("Keyword")
+    for kw in keyword_elements:
+        name = kw.get_attr_or_none("name")
+        value = kw.get_attr_or_none("value")
+
+        # Extract equipment serial number for the main metadata fields
+        if name in EQUIPMENT_SERIAL_KEYWORDS:
+            equipment_serial_number = value.strip() if value else None
+
+        # Filter out null/empty values and exclude structured keywords
+        if (
+            name is not None
+            and value is not None
+            and value.strip() != ""
+            and name not in ALL_STRUCTURED_KEYWORDS
+            and not _is_device_control_field(name)
+        ):
+            keywords_custom_info[name] = value.strip()
+
+    return equipment_serial_number, keywords_custom_info
 
 
-class RegionType(Enum):
-    RECTANGLE = "Rectangle"
-    POLYGON = "Polygon"
-    ELLIPSOID = "Ellipsoid"
-    CURLY_QUAD = "CurlyQuad"
+def _extract_keywords_by_filter(
+    keywords: StrictXmlElement | None, filter_func: Callable[[str, str], bool]
+) -> dict[str, str]:
+    """
+    Extract keywords from a Keywords element using a filter function.
+
+    Args:
+        keywords: The Keywords element to process
+        filter_func: Function that takes (name, value) and returns True if keyword should be included
+
+    Returns:
+        Dictionary of filtered keywords
+    """
+    if keywords is None:
+        return {}
+
+    result = {}
+    keyword_elements = keywords.findall("Keyword")
+
+    for kw in keyword_elements:
+        name = kw.get_attr_or_none("name")
+        value = kw.get_attr_or_none("value")
+
+        # Basic validation
+        if name is None or value is None or value.strip() == "":
+            continue
+
+        # Apply filter function
+        if filter_func(name, value):
+            result[name] = value.strip()
+
+    return result
 
 
-class VertexRole(Enum):
-    FOCI = "foci"
-    EDGE = "edge"
+def _extract_device_control_keywords(
+    keywords: StrictXmlElement | None,
+) -> dict[str, str]:
+    """Extract device control keywords (parameter, laser, and CST fields)."""
+    return _extract_keywords_by_filter(
+        keywords, lambda name, _: _is_device_control_field(name)
+    )
+
+
+def _extract_general_custom_keywords(
+    keywords: StrictXmlElement | None,
+) -> dict[str, str]:
+    """Extract general custom keywords (excluding structured fields)."""
+    return _extract_keywords_by_filter(
+        keywords,
+        lambda name, _: (
+            name not in ALL_STRUCTURED_KEYWORDS
+            and name not in ["FJ FCS VERSION", "curGroup"]
+            and not _is_device_control_field(name)
+        ),
+    )
+
+
+def _is_device_control_field(keyword: str) -> bool:
+    """
+    Check if a keyword belongs to device control document.
+
+    Patterns include:
+    - Parameter fields: $P{digit}[NRBEVGS], P{digit}(DISPLAY|BS|MS)
+    - Laser fields: LASER{digit}(NAME|DELAY|ASF)
+    - CST fields: specific cytometer setup and tracking fields
+    """
+    if not keyword:
+        return False
+
+    # Pattern for $P{digit}[NRBEVGS] (e.g., $P1N, $P20R, $P11S)
+    dollar_p_pattern = r"^\$P\d+[NRBEVGS]$"
+
+    # Pattern for P{digit}(DISPLAY|BS|MS) (e.g., P1DISPLAY, P20BS, P11MS)
+    p_pattern = r"^P\d+(DISPLAY|BS|MS)$"
+
+    # Pattern for LASER{digit}(NAME|DELAY|ASF) (e.g., LASER1NAME, LASER2DELAY, LASER3ASF)
+    laser_pattern = r"^LASER\d+(NAME|DELAY|ASF)$"
+
+    # CST and other specific device control fields
+    cst_fields = {
+        "CST SETUP STATUS",
+        "CST BEADS LOT ID",
+        "CYTOMETER CONFIG NAME",
+        "CYTOMETER CONFIG CREATE DATE",
+        "CST SETUP DATE",
+        "CST BASELINE DATE",
+        "CST BEADS EXPIRED",
+        "CST PERFORMANCE EXPIRED",
+        "CST REGULATORY STATUS",
+    }
+
+    return bool(
+        re.match(dollar_p_pattern, keyword)
+        or re.match(p_pattern, keyword)
+        or re.match(laser_pattern, keyword)
+        or keyword in cst_fields
+    )
 
 
 class VertexExtractor:
@@ -355,30 +423,24 @@ def create_metadata(root_element: StrictXmlElement, file_path: str) -> Metadata:
         if sample:
             keywords = sample.find_or_none("Keywords")
 
-    equipment_serial_number = None
-    keywords_custom_info = {}
-
-    if keywords is not None:
-        keyword_elements = keywords.findall("Keyword")
-        for kw in keyword_elements:
-            name = kw.get_attr_or_none("name")
-            value = kw.get_attr_or_none("value")
-
-            # Extract equipment serial number for the main metadata fields
-            if name in ["CTNUM", "$CYTSN"]:
-                equipment_serial_number = value
-
-            # Filter out null/empty values
-            if name is not None and value is not None and value != "":
-                keywords_custom_info[name] = value
+    equipment_serial_number, keywords_custom_info = _process_keywords(keywords)
     all_custom_info = {}
 
     if keywords_custom_info:
         all_custom_info.update(keywords_custom_info)
 
-    # Collect unread data from root element (skip schemaLocation as it's not useful custom info)
+    # Collect unread data from root element (skip fields already captured elsewhere)
     root_unread = root_element.get_unread(
-        skip={"attr:{http://www.w3.org/2001/XMLSchema-instance}schemaLocation"}
+        skip={
+            "schemaLocation",
+            "version",
+            "flowJoVersion",
+            "drawRowBorders",
+            "drawColumnBorders",
+            "hideCompNodes",
+            "groupPaneHeight",
+            "curGroup",
+        }
     )
     if root_unread:
         filtered_root_unread = _filter_unread_data(root_unread)
@@ -390,7 +452,14 @@ def create_metadata(root_element: StrictXmlElement, file_path: str) -> Metadata:
 
     # Collect unread data from cytometer element
     if cytometer:
-        cytometer_unread = cytometer.get_unread()
+        cytometer_unread = cytometer.get_unread(
+            skip={
+                "cyt",
+                "widthBasis",
+                "useTransform",
+                "icon",
+            }
+        )
         if cytometer_unread:
             filtered_cytometer_unread = _filter_unread_data(cytometer_unread)
             # Filter out None values before updating
@@ -455,7 +524,7 @@ def _get_keyword_value_by_name_from_sample(
         kw_name = kw.get_attr_or_none("name")
         kw_value = kw.get_attr_or_none("value")
         if kw_name == name:
-            found_value = kw_value
+            found_value = kw_value.strip() if kw_value else kw_value
         kw.mark_all_as_read()
     keywords.mark_all_as_read()
     return found_value
@@ -537,7 +606,13 @@ def _extract_statistics(population: StrictXmlElement) -> list[Statistic] | None:
         dimension_id = statistic.get_attr_or_none("id")
         value_str = statistic.get_attr_or_none("value")
 
-        statistic_unread = statistic.get_unread()
+        statistic_unread = statistic.get_unread(
+            skip={
+                "owningGroup",
+                "sortPriority",
+                "expanded",
+            }
+        )
         filtered_statistic_unread = _filter_unread_data(statistic_unread)
 
         if not (name and value_str):
@@ -608,7 +683,14 @@ def _create_populations(
             sub_populations = []
 
         # Collect unread data from population element
-        population_unread = population.get_unread()
+        population_unread = population.get_unread(
+            skip={
+                "owningGroup",
+                "sortPriority",
+                "expanded",
+                "count",
+            }
+        )
         filtered_population_unread = _filter_unread_data(population_unread)
 
         # Combine custom info
@@ -765,7 +847,6 @@ def _create_data_regions(sample: StrictXmlElement) -> list[DataRegion]:
         if not (gate := population.find_or_none("Gate")) or not (
             gate_type := _get_gate_type(gate)
         ):
-            population.get_unread()
             return
         if gate_type == RegionType.CURLY_QUAD.value:
             gate_element = gate.find_or_none("gating:CurlyQuad")
@@ -773,8 +854,6 @@ def _create_data_regions(sample: StrictXmlElement) -> list[DataRegion]:
             gate_element = gate.find_or_none(f"gating:{gate_type}Gate")
 
         if not gate_element:
-            gate.get_unread()
-            population.get_unread()
             return
 
         x_dim, y_dim = _extract_dimension_identifiers(gate_element)
@@ -868,14 +947,14 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
             compensation_matrix_groups = _create_compensation_matrix_groups(
                 transform_matrix_element
             )
-            # Skip the transforms id attribute using the element's namespace
-            transforms_namespace = transform_matrix_element.namespaces.get(
-                "transforms", ""
-            )
-            skip_keys = set()
-            if transforms_namespace:
-                skip_keys.add(f"attr:{{{transforms_namespace}}}id")
-                skip_keys.add("ns_attr:transforms:id")
+            skip_keys = {
+                "id",
+                "spectral",
+                "prefix",
+                "editable",
+                "color",
+                "version",
+            }
             matrix_unread_data = transform_matrix_element.get_unread(skip=skip_keys)
             if matrix_unread_data:
                 filtered_matrix_unread = _filter_unread_data(matrix_unread_data)
@@ -887,7 +966,17 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
                     all_custom_info.update(non_none_matrix_unread)
 
         # Collect unread data from SampleNode
-        sample_node_unread = sample_node.get_unread()
+        sample_node_unread = sample_node.get_unread(
+            skip={
+                "sampleID",
+                "count",
+                "owningGroup",
+                "sortPriority",
+                "expanded",
+                "FJ FCS VERSION",
+                "curGroup",
+            }
+        )
         if sample_node_unread:
             filtered_sample_node_unread = _filter_unread_data(sample_node_unread)
             if filtered_sample_node_unread:
@@ -898,6 +987,43 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
                     if v is not None
                 }
                 all_custom_info.update(non_none_sample_node_unread)
+
+        # Extract specific keyword values for measurement-level fields
+        def get_keyword_value(
+            name: str, current_sample: StrictXmlElement = sample
+        ) -> str | None:
+            return _get_keyword_value_by_name_from_sample(current_sample, name)
+
+        # Extract measurement-level metadata fields
+        measurement_custom_info = {}
+        for keyword in MEASUREMENT_DOCUMENT_KEYWORDS:
+            value = get_keyword_value(keyword)
+            if value is not None and value.strip() != "":
+                measurement_custom_info[keyword] = value
+
+        # Extract sample-level metadata fields
+        sample_custom_info = {}
+        for keyword in SAMPLE_DOCUMENT_KEYWORDS:
+            value = get_keyword_value(keyword)
+            if value is not None and value.strip() != "":
+                sample_custom_info[keyword] = value
+
+        # Extract processed data-level metadata fields
+        processed_data_custom_info = {}
+        for keyword in PROCESSED_DATA_KEYWORDS:
+            value = get_keyword_value(keyword)
+            if value is not None and value.strip() != "":
+                processed_data_custom_info[keyword] = value
+
+        # Extract device control-level metadata fields (parameter, laser, and CST fields)
+        keywords = sample.find_or_none("Keywords")
+        device_control_custom_info = _extract_device_control_keywords(keywords)
+
+        # Get all remaining keywords for general custom info
+        keywords_custom_info = _extract_general_custom_keywords(keywords)
+
+        if keywords_custom_info:
+            all_custom_info.update(keywords_custom_info)
 
         measurement_group = MeasurementGroup(
             experimental_data_identifier=experimental_data_identifier,
@@ -922,14 +1048,23 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
                     processed_data_identifier=random_uuid_str(),
                     populations=_process_sample(sample),
                     data_regions=_create_data_regions(sample),
+                    custom_info=measurement_custom_info
+                    if measurement_custom_info
+                    else None,
+                    sample_custom_info=sample_custom_info
+                    if sample_custom_info
+                    else None,
+                    processed_data_custom_info=processed_data_custom_info
+                    if processed_data_custom_info
+                    else None,
+                    device_control_custom_info=device_control_custom_info
+                    if device_control_custom_info
+                    else None,
                 )
             ],
         )
 
         result.append(measurement_group)
-
-    # Collect unread data from sample_list
-    sample_list.get_unread()
     return result
 
 

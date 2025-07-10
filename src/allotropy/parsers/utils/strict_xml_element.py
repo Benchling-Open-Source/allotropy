@@ -134,11 +134,50 @@ class StrictXmlElement:
     def _get_matching_keys(self, key_or_keys: str | set[str]) -> set[str]:
         """Get keys that match the given pattern(s)."""
         all_keys = self._get_all_available_keys()
+
+        # Normalize keys by adding appropriate prefixes if they don't have them
+        normalized_keys = set()
+        for regex_key in key_or_keys if isinstance(key_or_keys, set) else {key_or_keys}:
+            # If the key doesn't have a prefix and it's a simple attribute name,
+            # automatically add the "attr:" prefix
+            if not any(
+                regex_key.startswith(prefix)
+                for prefix in ["attr:", "ns_attr:", "element:", "text:"]
+            ):
+                # Check if this matches any actual attribute name (including namespaced ones)
+                attr_key = f"attr:{regex_key}"
+                matches_found = False
+
+                # Check for exact match
+                if any(
+                    k for k in all_keys if k == attr_key or re.fullmatch(attr_key, k)
+                ):
+                    normalized_keys.add(attr_key)
+                    matches_found = True
+
+                # Check for namespaced matches (e.g., "schemaLocation" should match "attr:{namespace}schemaLocation")
+                for key in all_keys:
+                    if key.startswith("attr:"):
+                        attr_name = key[5:]  # Remove "attr:" prefix
+                        # Check if the attribute name ends with our regex_key (for namespaced attributes)
+                        if (
+                            attr_name.endswith(regex_key)
+                            and "{" in attr_name
+                            and "}" in attr_name
+                        ):
+                            # This is a namespaced attribute that ends with our key
+                            normalized_keys.add(key)
+                            matches_found = True
+
+                if not matches_found:
+                    # Keep the original key for other types of matches
+                    normalized_keys.add(regex_key)
+            else:
+                normalized_keys.add(regex_key)
+
         return {
             matched
-            for regex_key in (
-                key_or_keys if isinstance(key_or_keys, set) else {key_or_keys}
-            )
+            for regex_key in normalized_keys
             for matched in [
                 k for k in all_keys if k == regex_key or re.fullmatch(regex_key, k)
             ]

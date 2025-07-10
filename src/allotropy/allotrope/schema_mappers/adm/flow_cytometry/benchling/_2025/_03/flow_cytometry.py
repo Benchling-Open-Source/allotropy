@@ -127,6 +127,8 @@ class Measurement:
 
     sample_custom_info: dict[str, Any] | None = None
     processed_data_custom_info: dict[str, Any] | None = None
+    device_control_custom_info: dict[str, Any] | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -227,52 +229,58 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_measurement_document(
         self, measurement: Measurement
     ) -> MeasurementDocumentItem:
-        return MeasurementDocumentItem(
-            measurement_identifier=measurement.measurement_identifier,
-            sample_document=self._get_sample_document(measurement),
-            device_control_aggregate_document=DeviceControlAggregateDocument(
-                device_control_document=[
-                    DeviceControlDocumentItem(
-                        device_type=measurement.device_type,
-                    )
-                ],
-            ),
-            processed_data_aggregate_document=ProcessedDataAggregateDocument(
-                processed_data_document=[
-                    add_custom_information_document(
-                        ProcessedDataDocumentItem(
-                            data_processing_document=DataProcessingDocument(
-                                method_version=measurement.method_version,
-                                data_processing_time=self.get_date_time(
-                                    measurement.data_processing_time
-                                )
-                                if measurement.data_processing_time
-                                else None,
+        return add_custom_information_document(
+            MeasurementDocumentItem(
+                measurement_identifier=measurement.measurement_identifier,
+                sample_document=self._get_sample_document(measurement),
+                device_control_aggregate_document=DeviceControlAggregateDocument(
+                    device_control_document=[
+                        add_custom_information_document(
+                            DeviceControlDocumentItem(
+                                device_type=measurement.device_type,
                             ),
-                            processed_data_identifier=measurement.processed_data_identifier,
-                            population_aggregate_document=[
-                                PopulationAggregateDocumentItem(
-                                    population_document=[
-                                        self._get_population_document(population)
-                                        for population in measurement.populations
+                            measurement.device_control_custom_info,
+                        )
+                    ],
+                ),
+                processed_data_aggregate_document=ProcessedDataAggregateDocument(
+                    processed_data_document=[
+                        add_custom_information_document(
+                            ProcessedDataDocumentItem(
+                                data_processing_document=DataProcessingDocument(
+                                    method_version=measurement.method_version,
+                                    data_processing_time=self.get_date_time(
+                                        measurement.data_processing_time
+                                    )
+                                    if measurement.data_processing_time
+                                    else None,
+                                ),
+                                processed_data_identifier=measurement.processed_data_identifier,
+                                population_aggregate_document=[
+                                    PopulationAggregateDocumentItem(
+                                        population_document=[
+                                            self._get_population_document(population)
+                                            for population in measurement.populations
+                                        ]
+                                        if measurement.populations
+                                        else None
+                                    )
+                                ],
+                                data_region_aggregate_document=DataRegionAggregateDocument(
+                                    data_region_document=[
+                                        self._get_data_region_document(data_region)
+                                        for data_region in measurement.data_regions
                                     ]
-                                    if measurement.populations
+                                    if measurement.data_regions
                                     else None
-                                )
-                            ],
-                            data_region_aggregate_document=DataRegionAggregateDocument(
-                                data_region_document=[
-                                    self._get_data_region_document(data_region)
-                                    for data_region in measurement.data_regions
-                                ]
-                                if measurement.data_regions
-                                else None
+                                ),
                             ),
-                        ),
-                        measurement.processed_data_custom_info,
-                    )
-                ]
+                            measurement.processed_data_custom_info,
+                        )
+                    ]
+                ),
             ),
+            measurement.custom_info,
         )
 
     def _get_data_region_document(

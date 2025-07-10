@@ -9,14 +9,238 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Flow Cytometer"
+                                        "device type": "flow cytometer",
+                                        "custom information document": {
+                                            "LASER1NAME": "Blue",
+                                            "LASER1DELAY": "0.00",
+                                            "LASER1ASF": "0.65",
+                                            "LASER2NAME": "Red",
+                                            "LASER2DELAY": "62.41",
+                                            "LASER2ASF": "0.77",
+                                            "LASER3NAME": "Violet",
+                                            "LASER3DELAY": "30.83",
+                                            "LASER3ASF": "0.81",
+                                            "$P1N": "FSC-A",
+                                            "$P1R": "262144",
+                                            "$P1B": "32",
+                                            "$P1E": "0,0",
+                                            "$P1V": "541",
+                                            "$P1G": "1.0",
+                                            "P1DISPLAY": "LIN",
+                                            "P1BS": "0",
+                                            "P1MS": "0",
+                                            "$P2N": "FSC-H",
+                                            "$P2R": "262144",
+                                            "$P2B": "32",
+                                            "$P2E": "0,0",
+                                            "$P2V": "541",
+                                            "$P2G": "1.0",
+                                            "P2DISPLAY": "LIN",
+                                            "P2BS": "0",
+                                            "P2MS": "0",
+                                            "$P3N": "FSC-W",
+                                            "$P3R": "262144",
+                                            "$P3B": "32",
+                                            "$P3E": "0,0",
+                                            "$P3V": "541",
+                                            "$P3G": "1.0",
+                                            "P3BS": "-1",
+                                            "P3MS": "0",
+                                            "$P4N": "SSC-A",
+                                            "$P4R": "262144",
+                                            "$P4B": "32",
+                                            "$P4E": "0,0",
+                                            "$P4V": "340",
+                                            "$P4G": "1.0",
+                                            "P4DISPLAY": "LIN",
+                                            "P4BS": "0",
+                                            "P4MS": "0",
+                                            "$P5N": "SSC-H",
+                                            "$P5R": "262144",
+                                            "$P5B": "32",
+                                            "$P5E": "0,0",
+                                            "$P5V": "340",
+                                            "$P5G": "1.0",
+                                            "P5DISPLAY": "LIN",
+                                            "P5BS": "0",
+                                            "P5MS": "0",
+                                            "$P6N": "SSC-W",
+                                            "$P6R": "262144",
+                                            "$P6B": "32",
+                                            "$P6E": "0,0",
+                                            "$P6V": "340",
+                                            "$P6G": "1.0",
+                                            "P6BS": "-1",
+                                            "P6MS": "0",
+                                            "$P7N": "BV421-A",
+                                            "$P7R": "262144",
+                                            "$P7B": "32",
+                                            "$P7E": "0,0",
+                                            "$P7V": "412",
+                                            "$P7G": "1.0",
+                                            "P7DISPLAY": "LOG",
+                                            "P7BS": "171",
+                                            "P7MS": "0",
+                                            "$P8N": "BV510-A",
+                                            "$P8R": "262144",
+                                            "$P8B": "32",
+                                            "$P8E": "0,0",
+                                            "$P8V": "456",
+                                            "$P8G": "1.0",
+                                            "P8DISPLAY": "LOG",
+                                            "P8BS": "556",
+                                            "P8MS": "0",
+                                            "$P9N": "BV605-A",
+                                            "$P9R": "262144",
+                                            "$P9B": "32",
+                                            "$P9E": "0,0",
+                                            "$P9V": "505",
+                                            "$P9G": "1.0",
+                                            "P9DISPLAY": "LOG",
+                                            "P9BS": "1075",
+                                            "P9MS": "0",
+                                            "$P10N": "BV650-A",
+                                            "$P10R": "262144",
+                                            "$P10B": "32",
+                                            "$P10E": "0,0",
+                                            "$P10V": "595",
+                                            "$P10G": "1.0",
+                                            "P10DISPLAY": "LOG",
+                                            "P10BS": "14769",
+                                            "P10MS": "0",
+                                            "$P11N": "BV786-A",
+                                            "$P11S": "CD4",
+                                            "$P11R": "262144",
+                                            "$P11B": "32",
+                                            "$P11E": "0,0",
+                                            "$P11V": "610",
+                                            "$P11G": "1.0",
+                                            "P11DISPLAY": "LOG",
+                                            "P11BS": "49718",
+                                            "P11MS": "0",
+                                            "$P12N": "BB515-A",
+                                            "$P12R": "262144",
+                                            "$P12B": "32",
+                                            "$P12E": "0,0",
+                                            "$P12V": "474",
+                                            "$P12G": "1.0",
+                                            "P12DISPLAY": "LOG",
+                                            "P12BS": "716",
+                                            "P12MS": "0",
+                                            "$P13N": "PE-A",
+                                            "$P13S": "CD8",
+                                            "$P13R": "262144",
+                                            "$P13B": "32",
+                                            "$P13E": "0,0",
+                                            "$P13V": "505",
+                                            "$P13G": "1.0",
+                                            "P13DISPLAY": "LOG",
+                                            "P13BS": "180",
+                                            "P13MS": "0",
+                                            "$P14N": "PE-CF594-A",
+                                            "$P14R": "262144",
+                                            "$P14B": "32",
+                                            "$P14E": "0,0",
+                                            "$P14V": "519",
+                                            "$P14G": "1.0",
+                                            "P14DISPLAY": "LOG",
+                                            "P14BS": "19036",
+                                            "P14MS": "0",
+                                            "$P15N": "PerCP-Cy5-5-A",
+                                            "$P15S": "Live_Dead",
+                                            "$P15R": "262144",
+                                            "$P15B": "32",
+                                            "$P15E": "0,0",
+                                            "$P15V": "577",
+                                            "$P15G": "1.0",
+                                            "P15DISPLAY": "LOG",
+                                            "P15BS": "1092",
+                                            "P15MS": "0",
+                                            "$P16N": "APC-A",
+                                            "$P16S": "CD3",
+                                            "$P16R": "262144",
+                                            "$P16B": "32",
+                                            "$P16E": "0,0",
+                                            "$P16V": "626",
+                                            "$P16G": "1.0",
+                                            "P16DISPLAY": "LOG",
+                                            "P16BS": "442",
+                                            "P16MS": "0",
+                                            "$P17N": "APC-R700-A",
+                                            "$P17R": "262144",
+                                            "$P17B": "32",
+                                            "$P17E": "0,0",
+                                            "$P17V": "538",
+                                            "$P17G": "1.0",
+                                            "P17DISPLAY": "LOG",
+                                            "P17BS": "3896",
+                                            "P17MS": "0",
+                                            "$P18N": "APC-Cy7-A",
+                                            "$P18S": "CD45",
+                                            "$P18R": "262144",
+                                            "$P18B": "32",
+                                            "$P18E": "0,0",
+                                            "$P18V": "555",
+                                            "$P18G": "1.0",
+                                            "P18DISPLAY": "LOG",
+                                            "P18BS": "14220",
+                                            "P18MS": "0",
+                                            "$P19N": "Time",
+                                            "$P19R": "262144",
+                                            "$P19B": "32",
+                                            "$P19E": "0,0",
+                                            "$P19G": "0.01",
+                                            "P19BS": "0",
+                                            "P19MS": "0",
+                                            "CST SETUP STATUS": "SUCCESS",
+                                            "CST BEADS LOT ID": "80998",
+                                            "CYTOMETER CONFIG NAME": "FACSCelesta 4-Blue 3-Red 5-Violet",
+                                            "CYTOMETER CONFIG CREATE DATE": "2017-03-01T12:21:36+09:00",
+                                            "CST SETUP DATE": "2019-06-26T10:35:30+09:00",
+                                            "CST BASELINE DATE": "2019-06-10T11:10:26+09:00",
+                                            "CST BEADS EXPIRED": "False",
+                                            "CST PERFORMANCE EXPIRED": "2019-06-27T10:35:30+09:00",
+                                            "CST REGULATORY STATUS": "RUO Performance Check",
+                                            "$P20N": "Comp-BV421-A",
+                                            "$P20R": "262144",
+                                            "$P21N": "Comp-BV510-A",
+                                            "$P21R": "262144",
+                                            "$P22N": "Comp-BV605-A",
+                                            "$P22R": "262144",
+                                            "$P23N": "Comp-BV650-A",
+                                            "$P23R": "262144",
+                                            "$P24N": "Comp-BV786-A",
+                                            "$P24S": "CD4",
+                                            "$P24R": "262144",
+                                            "$P25N": "Comp-BB515-A",
+                                            "$P25R": "262144",
+                                            "$P26N": "Comp-PE-A",
+                                            "$P26S": "CD8",
+                                            "$P26R": "262144",
+                                            "$P27N": "Comp-PE-CF594-A",
+                                            "$P27R": "262144",
+                                            "$P28N": "Comp-PerCP-Cy5-5-A",
+                                            "$P28S": "Live_Dead",
+                                            "$P28R": "262144",
+                                            "$P29N": "Comp-APC-A",
+                                            "$P29S": "CD3",
+                                            "$P29R": "262144",
+                                            "$P30N": "Comp-APC-R700-A",
+                                            "$P30R": "262144",
+                                            "$P31N": "Comp-APC-Cy7-A",
+                                            "$P31S": "CD45",
+                                            "$P31R": "262144"
+                                        }
                                     }
                                 ]
                             },
                             "measurement identifier": "FLOWJO_TEST_ID_0",
                             "sample document": {
                                 "sample identifier": "33",
-                                "written name": "Spleenocytes_Tcells"
+                                "written name": "Spleenocytes_Tcells",
+                                "custom information document": {
+                                    "TUBE NAME": "Vaccinated_Saline"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -1103,9 +1327,7 @@
                                                                                                                                                         "data region identifier": "ID1029297903",
                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_7",
                                                                                                                                                         "custom information document": {
-                                                                                                                                                            "group identifier": "All Samples",
-                                                                                                                                                            "sortPriority": "10",
-                                                                                                                                                            "expanded": "0"
+                                                                                                                                                            "group identifier": "All Samples"
                                                                                                                                                         }
                                                                                                                                                     },
                                                                                                                                                     {
@@ -1118,9 +1340,7 @@
                                                                                                                                                         "data region identifier": "ID753466671",
                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_7",
                                                                                                                                                         "custom information document": {
-                                                                                                                                                            "group identifier": "All Samples",
-                                                                                                                                                            "sortPriority": "10",
-                                                                                                                                                            "expanded": "0"
+                                                                                                                                                            "group identifier": "All Samples"
                                                                                                                                                         }
                                                                                                                                                     },
                                                                                                                                                     {
@@ -1133,9 +1353,7 @@
                                                                                                                                                         "data region identifier": "ID622803157",
                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_7",
                                                                                                                                                         "custom information document": {
-                                                                                                                                                            "group identifier": "All Samples",
-                                                                                                                                                            "sortPriority": "10",
-                                                                                                                                                            "expanded": "0"
+                                                                                                                                                            "group identifier": "All Samples"
                                                                                                                                                         }
                                                                                                                                                     },
                                                                                                                                                     {
@@ -1160,9 +1378,7 @@
                                                                                                                                                                         "data region identifier": "ID1630875370",
                                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_11",
                                                                                                                                                                         "custom information document": {
-                                                                                                                                                                            "group identifier": "All Samples",
-                                                                                                                                                                            "sortPriority": "10",
-                                                                                                                                                                            "expanded": "0"
+                                                                                                                                                                            "group identifier": "All Samples"
                                                                                                                                                                         }
                                                                                                                                                                     },
                                                                                                                                                                     {
@@ -1187,9 +1403,7 @@
                                                                                                                                                                                         "data region identifier": "ID1385334932",
                                                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_13",
                                                                                                                                                                                         "custom information document": {
-                                                                                                                                                                                            "group identifier": "All Samples",
-                                                                                                                                                                                            "sortPriority": "10",
-                                                                                                                                                                                            "expanded": "1"
+                                                                                                                                                                                            "group identifier": "All Samples"
                                                                                                                                                                                         }
                                                                                                                                                                                     },
                                                                                                                                                                                     {
@@ -1202,9 +1416,7 @@
                                                                                                                                                                                         "data region identifier": "ID1039510638",
                                                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_13",
                                                                                                                                                                                         "custom information document": {
-                                                                                                                                                                                            "group identifier": "All Samples",
-                                                                                                                                                                                            "sortPriority": "10",
-                                                                                                                                                                                            "expanded": "1"
+                                                                                                                                                                                            "group identifier": "All Samples"
                                                                                                                                                                                         }
                                                                                                                                                                                     },
                                                                                                                                                                                     {
@@ -1217,9 +1429,7 @@
                                                                                                                                                                                         "data region identifier": "ID724572069",
                                                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_13",
                                                                                                                                                                                         "custom information document": {
-                                                                                                                                                                                            "group identifier": "All Samples",
-                                                                                                                                                                                            "sortPriority": "10",
-                                                                                                                                                                                            "expanded": "1"
+                                                                                                                                                                                            "group identifier": "All Samples"
                                                                                                                                                                                         }
                                                                                                                                                                                     },
                                                                                                                                                                                     {
@@ -1232,18 +1442,14 @@
                                                                                                                                                                                         "data region identifier": "ID246829924",
                                                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_13",
                                                                                                                                                                                         "custom information document": {
-                                                                                                                                                                                            "group identifier": "All Samples",
-                                                                                                                                                                                            "sortPriority": "10",
-                                                                                                                                                                                            "expanded": "1"
+                                                                                                                                                                                            "group identifier": "All Samples"
                                                                                                                                                                                         }
                                                                                                                                                                                     }
                                                                                                                                                                                 ]
                                                                                                                                                                             }
                                                                                                                                                                         ],
                                                                                                                                                                         "custom information document": {
-                                                                                                                                                                            "group identifier": "All Samples",
-                                                                                                                                                                            "sortPriority": "10",
-                                                                                                                                                                            "expanded": "1"
+                                                                                                                                                                            "group identifier": "All Samples"
                                                                                                                                                                         }
                                                                                                                                                                     },
                                                                                                                                                                     {
@@ -1256,9 +1462,7 @@
                                                                                                                                                                         "data region identifier": "ID2118391290",
                                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_11",
                                                                                                                                                                         "custom information document": {
-                                                                                                                                                                            "group identifier": "All Samples",
-                                                                                                                                                                            "sortPriority": "10",
-                                                                                                                                                                            "expanded": "1"
+                                                                                                                                                                            "group identifier": "All Samples"
                                                                                                                                                                         }
                                                                                                                                                                     },
                                                                                                                                                                     {
@@ -1271,9 +1475,7 @@
                                                                                                                                                                         "data region identifier": "ID714384950",
                                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_11",
                                                                                                                                                                         "custom information document": {
-                                                                                                                                                                            "group identifier": "All Samples",
-                                                                                                                                                                            "sortPriority": "10",
-                                                                                                                                                                            "expanded": "1"
+                                                                                                                                                                            "group identifier": "All Samples"
                                                                                                                                                                         }
                                                                                                                                                                     },
                                                                                                                                                                     {
@@ -1286,9 +1488,7 @@
                                                                                                                                                                         "data region identifier": "ID1278107227",
                                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_11",
                                                                                                                                                                         "custom information document": {
-                                                                                                                                                                            "group identifier": "All Samples",
-                                                                                                                                                                            "sortPriority": "10",
-                                                                                                                                                                            "expanded": "1"
+                                                                                                                                                                            "group identifier": "All Samples"
                                                                                                                                                                         }
                                                                                                                                                                     },
                                                                                                                                                                     {
@@ -1301,63 +1501,49 @@
                                                                                                                                                                         "data region identifier": "ID1722477981",
                                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_11",
                                                                                                                                                                         "custom information document": {
-                                                                                                                                                                            "group identifier": "All Samples",
-                                                                                                                                                                            "sortPriority": "10",
-                                                                                                                                                                            "expanded": "1"
+                                                                                                                                                                            "group identifier": "All Samples"
                                                                                                                                                                         }
                                                                                                                                                                     }
                                                                                                                                                                 ]
                                                                                                                                                             }
                                                                                                                                                         ],
                                                                                                                                                         "custom information document": {
-                                                                                                                                                            "group identifier": "All Samples",
-                                                                                                                                                            "sortPriority": "10",
-                                                                                                                                                            "expanded": "1"
+                                                                                                                                                            "group identifier": "All Samples"
                                                                                                                                                         }
                                                                                                                                                     }
                                                                                                                                                 ]
                                                                                                                                             }
                                                                                                                                         ],
                                                                                                                                         "custom information document": {
-                                                                                                                                            "group identifier": "All Samples",
-                                                                                                                                            "sortPriority": "10",
-                                                                                                                                            "expanded": "1"
+                                                                                                                                            "group identifier": "All Samples"
                                                                                                                                         }
                                                                                                                                     }
                                                                                                                                 ]
                                                                                                                             }
                                                                                                                         ],
                                                                                                                         "custom information document": {
-                                                                                                                            "group identifier": "All Samples",
-                                                                                                                            "sortPriority": "10",
-                                                                                                                            "expanded": "1"
+                                                                                                                            "group identifier": "All Samples"
                                                                                                                         }
                                                                                                                     }
                                                                                                                 ]
                                                                                                             }
                                                                                                         ],
                                                                                                         "custom information document": {
-                                                                                                            "group identifier": "All Samples",
-                                                                                                            "sortPriority": "10",
-                                                                                                            "expanded": "1"
+                                                                                                            "group identifier": "All Samples"
                                                                                                         }
                                                                                                     }
                                                                                                 ]
                                                                                             }
                                                                                         ],
                                                                                         "custom information document": {
-                                                                                            "group identifier": "All Samples",
-                                                                                            "sortPriority": "10",
-                                                                                            "expanded": "1"
+                                                                                            "group identifier": "All Samples"
                                                                                         }
                                                                                     }
                                                                                 ]
                                                                             }
                                                                         ],
                                                                         "custom information document": {
-                                                                            "group identifier": "All Samples",
-                                                                            "sortPriority": "10",
-                                                                            "expanded": "1"
+                                                                            "group identifier": "All Samples"
                                                                         }
                                                                     }
                                                                 ]
@@ -1366,9 +1552,45 @@
                                                     }
                                                 ]
                                             }
-                                        ]
+                                        ],
+                                        "custom information document": {
+                                            "THRESHOLD": "(FSC,25000).AND.(SSC,25000)",
+                                            "APPLY COMPENSATION": "TRUE",
+                                            "SPILL": "12,BV421-A,BV510-A,BV605-A,BV650-A,BV786-A,BB515-A,PE-A,PE-CF594-A,PerCP-Cy5-5-A,APC-A,APC-R700-A,APC-Cy7-A,1,0.15520471876766434,0.007070775698261806,0.0015525851077886315,0.00013668390004186064,0,0,0,0,0,0,0,0.0693255213500295,1,0.31644538573061065,0.15628690280665786,0.01703785982437692,0.0013170873956364728,0.0009745968746158193,0.00048716286807561765,0.00039421444404474926,0,0,0.00019158918849572092,0.019894254924240438,0,1,0.6566870088423832,0.06333638890656612,0.00024941873344214307,0.006228576495172426,0.018224352301592334,0.006990331218473922,0.0030740064472666653,0.00009780577426925479,0,0,0,0,1,0,0,0,0,0,0,0,0,0.02868299800050016,0.005598325770334901,0.0009154325363158023,0.002867550613401192,1,0,0,0,0,0.00038555959004805225,0.003063953780970383,0.03761557047044958,0,0.12337726528429546,0.014282539299186055,0.0039697455742805695,0,1,0.3269636214826594,0.07747329225154301,0.014334888160005258,0,0,0,0.0000729045650742252,0.006072500440447583,0.14145803115745983,0.04269162903294424,0.002795460894505961,0.00743234448647316,1,0.2992334320308451,0.06536320879256716,0,0.00011508728580770512,0,0.0003319510921675397,0.001227203966737059,0.4062365531560618,0.21269822393516674,0.016153465369858643,0.001672397746242899,0.15860040286416166,1,0.345673612053555,0.005477590417801589,0.0008336372767413526,0,0,0,0.19527877389453457,1.0275951968054227,0.16647932990852013,0,0.028015379164201947,0.25817091335936787,1,0.15845066593743645,0.045865349838703856,0.017282191075746255,0,0,0,0.08010604302111092,0.006027925001649746,0,0,0,0.0019741027050838122,1,0.14872289321646937,0.05427000408726241,0,0,0,0.022254471408052395,0.02918191633843289,0,0,0,0.008459293976908207,0.3959051710454102,1,0.29129407410153735,0.00016162738576906265,0.0007385579012483889,0,0.005488565657950853,0.1237648022884669,0.00015087682711924268,0.00008430062378536572,0.00019090997709227502,0,0.06366860334833628,0.06937811815889859,1",
+                                            "$TIMESTEP": "0.01",
+                                            "AUTOBS": "TRUE",
+                                            "FSC ASF": "0.50"
+                                        }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "$FIL": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs",
+                                "$TOT": "65121",
+                                "FJ FCS VERSION": "3",
+                                "$ENDDATA": "4954449",
+                                "WINDOW EXTENSION": "10.00",
+                                "EXPORT TIME": "25-AUG-2022-15:59:44",
+                                "$DATE": "10-DEC-2021",
+                                "CREATOR": "BD FACSDiva Software Version 8.0.1.1",
+                                "$ENDANALYSIS": "0",
+                                "SETTINGS": "Cytometer",
+                                "GUID": "28af8a64-23e1-46b1-be03-860b24e59993",
+                                "$BTIM": "17:28:39",
+                                "$NEXTDATA": "0",
+                                "$PAR": "19",
+                                "$SYS": "Windows 7 6.1",
+                                "$BEGINANALYSIS": "0",
+                                "$BYTEORD": "4,3,2,1",
+                                "$MODE": "L",
+                                "$BEGINDATA": "5254",
+                                "$ENDSTEXT": "0",
+                                "$SRC": "Spleenocytes_Tcells",
+                                "$BEGINSTEXT": "0",
+                                "EXPORT USER NAME": "Administrator",
+                                "$ETIM": "17:28:48",
+                                "$DATATYPE": "F",
+                                "EXPERIMENT NAME": "confrimation_pilot_data"
                             }
                         }
                     ],
@@ -2509,18 +2731,9 @@
                     ]
                 },
                 "custom information document": {
-                    "spectral": "0",
-                    "prefix": "Comp-",
                     "weightOptAlgorithmType": "OLS",
-                    "color": "#c0c0c0",
-                    "status": "FINALIZED",
-                    "editable": "0",
-                    "version": "FlowJo-10.10.0",
                     "name": "Acquisition-defined",
-                    "expanded": "1",
-                    "count": "65121",
-                    "sortPriority": "10",
-                    "sampleID": "33"
+                    "status": "FINALIZED"
                 }
             }
         ],
@@ -2539,289 +2752,22 @@
             "model number": "FACSCelesta"
         },
         "custom information document": {
-            "FJ FCS VERSION": "3",
-            "$BEGINANALYSIS": "0",
-            "$ENDANALYSIS": "0",
-            "$BEGINSTEXT": "0",
-            "$ENDSTEXT": "0",
-            "$BEGINDATA": "5254",
-            "$ENDDATA": "4954449            ",
-            "$FIL": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs",
-            "$SYS": "Windows 7 6.1",
-            "$TOT": "65121              ",
-            "$PAR": "19",
-            "$MODE": "L",
-            "$BYTEORD": "4,3,2,1",
-            "$DATATYPE": "F",
-            "$NEXTDATA": "0",
-            "CREATOR": "BD FACSDiva Software Version 8.0.1.1",
-            "TUBE NAME": "Vaccinated_Saline",
-            "$SRC": "Spleenocytes_Tcells",
-            "EXPERIMENT NAME": "confrimation_pilot_data",
-            "GUID": "28af8a64-23e1-46b1-be03-860b24e59993",
-            "$DATE": "10-DEC-2021",
-            "$BTIM": "17:28:39",
-            "$ETIM": "17:28:48",
-            "$CYT": "FACSCelesta",
-            "SETTINGS": "Cytometer",
-            "CYTNUM": "H66034400108",
-            "WINDOW EXTENSION": "10.00",
-            "EXPORT USER NAME": "Administrator",
-            "EXPORT TIME": "25-AUG-2022-15:59:44",
-            "$OP": "Administrator",
-            "FSC ASF": "0.50",
-            "AUTOBS": "TRUE",
-            "$INST": " ",
-            "LASER1NAME": "Blue",
-            "LASER1DELAY": "0.00",
-            "LASER1ASF": "0.65",
-            "LASER2NAME": "Red",
-            "LASER2DELAY": "62.41",
-            "LASER2ASF": "0.77",
-            "LASER3NAME": "Violet",
-            "LASER3DELAY": "30.83",
-            "LASER3ASF": "0.81",
-            "$TIMESTEP": "0.01",
-            "SPILL": "12,BV421-A,BV510-A,BV605-A,BV650-A,BV786-A,BB515-A,PE-A,PE-CF594-A,PerCP-Cy5-5-A,APC-A,APC-R700-A,APC-Cy7-A,1,0.15520471876766434,0.007070775698261806,0.0015525851077886315,0.00013668390004186064,0,0,0,0,0,0,0,0.0693255213500295,1,0.31644538573061065,0.15628690280665786,0.01703785982437692,0.0013170873956364728,0.0009745968746158193,0.00048716286807561765,0.00039421444404474926,0,0,0.00019158918849572092,0.019894254924240438,0,1,0.6566870088423832,0.06333638890656612,0.00024941873344214307,0.006228576495172426,0.018224352301592334,0.006990331218473922,0.0030740064472666653,0.00009780577426925479,0,0,0,0,1,0,0,0,0,0,0,0,0,0.02868299800050016,0.005598325770334901,0.0009154325363158023,0.002867550613401192,1,0,0,0,0,0.00038555959004805225,0.003063953780970383,0.03761557047044958,0,0.12337726528429546,0.014282539299186055,0.0039697455742805695,0,1,0.3269636214826594,0.07747329225154301,0.014334888160005258,0,0,0,0.0000729045650742252,0.006072500440447583,0.14145803115745983,0.04269162903294424,0.002795460894505961,0.00743234448647316,1,0.2992334320308451,0.06536320879256716,0,0.00011508728580770512,0,0.0003319510921675397,0.001227203966737059,0.4062365531560618,0.21269822393516674,0.016153465369858643,0.001672397746242899,0.15860040286416166,1,0.345673612053555,0.005477590417801589,0.0008336372767413526,0,0,0,0.19527877389453457,1.0275951968054227,0.16647932990852013,0,0.028015379164201947,0.25817091335936787,1,0.15845066593743645,0.045865349838703856,0.017282191075746255,0,0,0,0.08010604302111092,0.006027925001649746,0,0,0,0.0019741027050838122,1,0.14872289321646937,0.05427000408726241,0,0,0,0.022254471408052395,0.02918191633843289,0,0,0,0.008459293976908207,0.3959051710454102,1,0.29129407410153735,0.00016162738576906265,0.0007385579012483889,0,0.005488565657950853,0.1237648022884669,0.00015087682711924268,0.00008430062378536572,0.00019090997709227502,0,0.06366860334833628,0.06937811815889859,1",
-            "APPLY COMPENSATION": "TRUE",
-            "THRESHOLD": "(FSC,25000).AND.(SSC,25000)",
-            "$P1N": "FSC-A",
-            "$P1R": "262144",
-            "$P1B": "32",
-            "$P1E": "0,0",
-            "$P1V": "541",
-            "$P1G": "1.0",
-            "P1DISPLAY": "LIN",
-            "P1BS": "0",
-            "P1MS": "0",
-            "$P2N": "FSC-H",
-            "$P2R": "262144",
-            "$P2B": "32",
-            "$P2E": "0,0",
-            "$P2V": "541",
-            "$P2G": "1.0",
-            "P2DISPLAY": "LIN",
-            "P2BS": "0",
-            "P2MS": "0",
-            "$P3N": "FSC-W",
-            "$P3R": "262144",
-            "$P3B": "32",
-            "$P3E": "0,0",
-            "$P3V": "541",
-            "$P3G": "1.0",
-            "P3BS": "-1",
-            "P3MS": "0",
-            "$P4N": "SSC-A",
-            "$P4R": "262144",
-            "$P4B": "32",
-            "$P4E": "0,0",
-            "$P4V": "340",
-            "$P4G": "1.0",
-            "P4DISPLAY": "LIN",
-            "P4BS": "0",
-            "P4MS": "0",
-            "$P5N": "SSC-H",
-            "$P5R": "262144",
-            "$P5B": "32",
-            "$P5E": "0,0",
-            "$P5V": "340",
-            "$P5G": "1.0",
-            "P5DISPLAY": "LIN",
-            "P5BS": "0",
-            "P5MS": "0",
-            "$P6N": "SSC-W",
-            "$P6R": "262144",
-            "$P6B": "32",
-            "$P6E": "0,0",
-            "$P6V": "340",
-            "$P6G": "1.0",
-            "P6BS": "-1",
-            "P6MS": "0",
-            "$P7N": "BV421-A",
-            "$P7R": "262144",
-            "$P7B": "32",
-            "$P7E": "0,0",
-            "$P7V": "412",
-            "$P7G": "1.0",
-            "P7DISPLAY": "LOG",
-            "P7BS": "171",
-            "P7MS": "0",
-            "$P8N": "BV510-A",
-            "$P8R": "262144",
-            "$P8B": "32",
-            "$P8E": "0,0",
-            "$P8V": "456",
-            "$P8G": "1.0",
-            "P8DISPLAY": "LOG",
-            "P8BS": "556",
-            "P8MS": "0",
-            "$P9N": "BV605-A",
-            "$P9R": "262144",
-            "$P9B": "32",
-            "$P9E": "0,0",
-            "$P9V": "505",
-            "$P9G": "1.0",
-            "P9DISPLAY": "LOG",
-            "P9BS": "1075",
-            "P9MS": "0",
-            "$P10N": "BV650-A",
-            "$P10R": "262144",
-            "$P10B": "32",
-            "$P10E": "0,0",
-            "$P10V": "595",
-            "$P10G": "1.0",
-            "P10DISPLAY": "LOG",
-            "P10BS": "14769",
-            "P10MS": "0",
-            "$P11N": "BV786-A",
-            "$P11S": "CD4",
-            "$P11R": "262144",
-            "$P11B": "32",
-            "$P11E": "0,0",
-            "$P11V": "610",
-            "$P11G": "1.0",
-            "P11DISPLAY": "LOG",
-            "P11BS": "49718",
-            "P11MS": "0",
-            "$P12N": "BB515-A",
-            "$P12R": "262144",
-            "$P12B": "32",
-            "$P12E": "0,0",
-            "$P12V": "474",
-            "$P12G": "1.0",
-            "P12DISPLAY": "LOG",
-            "P12BS": "716",
-            "P12MS": "0",
-            "$P13N": "PE-A",
-            "$P13S": "CD8",
-            "$P13R": "262144",
-            "$P13B": "32",
-            "$P13E": "0,0",
-            "$P13V": "505",
-            "$P13G": "1.0",
-            "P13DISPLAY": "LOG",
-            "P13BS": "180",
-            "P13MS": "0",
-            "$P14N": "PE-CF594-A",
-            "$P14R": "262144",
-            "$P14B": "32",
-            "$P14E": "0,0",
-            "$P14V": "519",
-            "$P14G": "1.0",
-            "P14DISPLAY": "LOG",
-            "P14BS": "19036",
-            "P14MS": "0",
-            "$P15N": "PerCP-Cy5-5-A",
-            "$P15S": "Live_Dead",
-            "$P15R": "262144",
-            "$P15B": "32",
-            "$P15E": "0,0",
-            "$P15V": "577",
-            "$P15G": "1.0",
-            "P15DISPLAY": "LOG",
-            "P15BS": "1092",
-            "P15MS": "0",
-            "$P16N": "APC-A",
-            "$P16S": "CD3",
-            "$P16R": "262144",
-            "$P16B": "32",
-            "$P16E": "0,0",
-            "$P16V": "626",
-            "$P16G": "1.0",
-            "P16DISPLAY": "LOG",
-            "P16BS": "442",
-            "P16MS": "0",
-            "$P17N": "APC-R700-A",
-            "$P17R": "262144",
-            "$P17B": "32",
-            "$P17E": "0,0",
-            "$P17V": "538",
-            "$P17G": "1.0",
-            "P17DISPLAY": "LOG",
-            "P17BS": "3896",
-            "P17MS": "0",
-            "$P18N": "APC-Cy7-A",
-            "$P18S": "CD45",
-            "$P18R": "262144",
-            "$P18B": "32",
-            "$P18E": "0,0",
-            "$P18V": "555",
-            "$P18G": "1.0",
-            "P18DISPLAY": "LOG",
-            "P18BS": "14220",
-            "P18MS": "0",
-            "$P19N": "Time",
-            "$P19R": "262144",
-            "$P19B": "32",
-            "$P19E": "0,0",
-            "$P19G": "0.01",
-            "P19BS": "0",
-            "P19MS": "0",
-            "CST SETUP STATUS": "SUCCESS",
-            "CST BEADS LOT ID": "80998",
-            "CYTOMETER CONFIG NAME": "FACSCelesta 4-Blue 3-Red 5-Violet",
-            "CYTOMETER CONFIG CREATE DATE": "2017-03-01T12:21:36+09:00",
-            "CST SETUP DATE": "2019-06-26T10:35:30+09:00",
-            "CST BASELINE DATE": "2019-06-10T11:10:26+09:00",
-            "CST BEADS EXPIRED": "False",
-            "CST PERFORMANCE EXPIRED": "2019-06-27T10:35:30+09:00",
-            "CST REGULATORY STATUS": "RUO Performance Check",
-            "$P20N": "Comp-BV421-A",
-            "$P20R": "262144",
-            "$P21N": "Comp-BV510-A",
-            "$P21R": "262144",
-            "$P22N": "Comp-BV605-A",
-            "$P22R": "262144",
-            "$P23N": "Comp-BV650-A",
-            "$P23R": "262144",
-            "$P24N": "Comp-BV786-A",
-            "$P24S": "CD4",
-            "$P24R": "262144",
-            "$P25N": "Comp-BB515-A",
-            "$P25R": "262144",
-            "$P26N": "Comp-PE-A",
-            "$P26S": "CD8",
-            "$P26R": "262144",
-            "$P27N": "Comp-PE-CF594-A",
-            "$P27R": "262144",
-            "$P28N": "Comp-PerCP-Cy5-5-A",
-            "$P28S": "Live_Dead",
-            "$P28R": "262144",
-            "$P29N": "Comp-APC-A",
-            "$P29S": "CD3",
-            "$P29R": "262144",
-            "$P30N": "Comp-APC-R700-A",
-            "$P30R": "262144",
-            "$P31N": "Comp-APC-Cy7-A",
-            "$P31S": "CD45",
-            "$P31R": "262144",
-            "hideCompNodes": "1",
             "clientTimestamp": "1741965895686",
-            "curGroup": "All Samples",
-            "flowJoVersion": "10.10.0",
             "modDate": "Fri Mar 14 08:24:55 PDT 2025",
-            "drawColumnBorders": "1",
-            "drawRowBorders": "1",
-            "groupPaneHeight": "169",
             "nonAutoSaveFileName": "file:/Y:/Documents/Flow%20Cytometry/FlowJo/LST_Depletion_check_14-Feb-2022(ellispsoid,%20curly%20quad,%20spider).wsp",
-            "version": "20.0",
-            "useGain": "0",
-            "linFromKW": "1",
             "logFromKW": "1",
+            "extraNegs": "0",
             "transformType": "LOG",
+            "logMax": "10000",
             "linMax": "10000",
+            "linFromKW": "1",
             "homepage": "workspaces-and-samples/flowjo-and-your-cytometer/ws-instrumentation/",
+            "logRescale": "1",
+            "logMin": "1",
+            "useGain": "0",
             "linMin": "0",
             "linearRescale": "1",
-            "extraNegs": "0",
-            "icon": "generic.png",
             "name": "GENERIC",
-            "logRescale": "1",
-            "logMax": "10000",
-            "cyt": "FACSCelesta",
-            "widthBasis": "-10",
-            "logMin": "1",
-            "useTransform": "0",
             "useFCS3": "1"
         }
     }

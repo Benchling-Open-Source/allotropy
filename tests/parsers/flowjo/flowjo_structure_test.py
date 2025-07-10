@@ -5,7 +5,9 @@ import xml.etree.ElementTree as ET  # noqa: N817
 from allotropy.parsers.flowjo.constants import (
     DEVICE_IDENTIFIER,
     DEVICE_TYPE,
+    RegionType,
     SOFTWARE_NAME,
+    VertexRole,
 )
 from allotropy.parsers.flowjo.flowjo_structure import (
     _create_compensation_matrix_groups,
@@ -20,8 +22,6 @@ from allotropy.parsers.flowjo.flowjo_structure import (
     _process_sample,
     create_measurement_groups,
     create_metadata,
-    RegionType,
-    VertexRole,
 )
 from allotropy.parsers.utils.strict_xml_element import StrictXmlElement
 
