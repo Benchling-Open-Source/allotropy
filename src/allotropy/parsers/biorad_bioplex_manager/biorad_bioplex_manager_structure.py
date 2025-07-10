@@ -5,18 +5,18 @@ from pathlib import Path
 import xml.etree.ElementTree as Et
 
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    TStatisticDatumRole,
-)
-from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._01.multi_analyte_profiling import (
+from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
     Analyte,
     Error,
     Measurement,
     MeasurementGroup,
     Metadata,
+    StatisticDimension,
+    StatisticsDocument,
 )
 from allotropy.exceptions import get_key_or_error
 from allotropy.parsers.biorad_bioplex_manager import constants
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     num_to_chars,
@@ -153,15 +153,32 @@ def create_analyte(
 ) -> Analyte:
     # Look up analyte name from sample
     assay_bead_identifier = bead_region_xml.attrib["RegionNumber"]
+
+    # Create statistics dimensions from available statistics in the XML
+    statistic_dimensions = []
+    for statistic_name, statistic_config in constants.STATISTIC_SECTIONS_CONF.items():
+        statistic_value = get_val_from_xml(bead_region_xml, statistic_name)
+        statistic_dimensions.append(
+            StatisticDimension(
+                value=try_float(statistic_value, f"{statistic_name} statistic"),
+                unit=statistic_config.unit,
+                statistic_datum_role=statistic_config.role,
+            )
+        )
+
     return Analyte(
         identifier=random_uuid_str(),
         name=analyte_region_dict[assay_bead_identifier],
-        value=try_float(get_val_from_xml(bead_region_xml, "Median"), "fluorescence"),
         assay_bead_identifier=assay_bead_identifier,
         assay_bead_count=try_int(
             get_val_from_xml(bead_region_xml, "RegionCount"), "assay_bead_count"
         ),
-        statistic_datum_role=TStatisticDatumRole.median_role,
+        statistics=[
+            StatisticsDocument(
+                statistical_feature="fluorescence",
+                statistic_dimensions=statistic_dimensions,
+            )
+        ],
     )
 
 
@@ -213,8 +230,9 @@ def get_well_name(well_attrib: dict[str, str]) -> str:
 def create_metadata(
     root_xml: Et.Element, system_metadata: SystemMetadata, file_path: str
 ) -> Metadata:
+    path = Path(file_path)
     return Metadata(
-        file_name=Path(file_path).name,
+        file_name=path.name,
         unc_path=file_path,
         software_name=constants.SOFTWARE_NAME,
         software_version=root_xml.attrib["BioPlexManagerVersion"],
@@ -222,6 +240,8 @@ def create_metadata(
         firmware_version=system_metadata.controller_version,
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
         device_type=constants.DEVICE_TYPE,
+        asm_file_identifier=path.with_suffix(".json").name,
+        data_system_instance_identifier=NOT_APPLICABLE,
     )
 
 

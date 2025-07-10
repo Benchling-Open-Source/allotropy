@@ -30,7 +30,10 @@
                             "sample document": {
                                 "location identifier": "A1",
                                 "sample identifier": "STD1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1000.0
+                                }
                             },
                             "absorbance": {
                                 "value": 3.411,
@@ -73,7 +76,10 @@
                             "sample document": {
                                 "location identifier": "A2",
                                 "sample identifier": "STD1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1000.0
+                                }
                             },
                             "absorbance": {
                                 "value": 3.329,
@@ -116,7 +122,10 @@
                             "sample document": {
                                 "location identifier": "A3",
                                 "sample identifier": "STD1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1000.0
+                                }
                             },
                             "absorbance": {
                                 "value": 3.343,
@@ -159,7 +168,10 @@
                             "sample document": {
                                 "location identifier": "A4",
                                 "sample identifier": "SPL1:1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1.0
+                                }
                             },
                             "absorbance": {
                                 "value": 2.586,
@@ -202,7 +214,10 @@
                             "sample document": {
                                 "location identifier": "A5",
                                 "sample identifier": "SPL1:1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1.0
+                                }
                             },
                             "absorbance": {
                                 "value": 2.616,
@@ -245,7 +260,10 @@
                             "sample document": {
                                 "location identifier": "A6",
                                 "sample identifier": "SPL1:1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1.0
+                                }
                             },
                             "absorbance": {
                                 "value": 2.575,
@@ -288,7 +306,10 @@
                             "sample document": {
                                 "location identifier": "A7",
                                 "sample identifier": "SPL2:1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1.0
+                                }
                             },
                             "absorbance": {
                                 "value": 1.327,
@@ -331,7 +352,10 @@
                             "sample document": {
                                 "location identifier": "A8",
                                 "sample identifier": "SPL2:1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1.0
+                                }
                             },
                             "absorbance": {
                                 "value": 1.34,
@@ -374,7 +398,10 @@
                             "sample document": {
                                 "location identifier": "A9",
                                 "sample identifier": "SPL2:1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1.0
+                                }
                             },
                             "absorbance": {
                                 "value": 1.359,
@@ -417,7 +444,10 @@
                             "sample document": {
                                 "location identifier": "A10",
                                 "sample identifier": "SPL3:1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1.0
+                                }
                             },
                             "absorbance": {
                                 "value": 1.485,
@@ -460,7 +490,10 @@
                             "sample document": {
                                 "location identifier": "A11",
                                 "sample identifier": "SPL3:1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1.0
+                                }
                             },
                             "absorbance": {
                                 "value": 1.493,
@@ -503,7 +536,10 @@
                             "sample document": {
                                 "location identifier": "A12",
                                 "sample identifier": "SPL3:1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1.0
+                                }
                             },
                             "absorbance": {
                                 "value": 1.457,
@@ -546,7 +582,10 @@
                             "sample document": {
                                 "location identifier": "B1",
                                 "sample identifier": "STD2",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 333.33
+                                }
                             },
                             "absorbance": {
                                 "value": 1.137,
@@ -589,7 +628,10 @@
                             "sample document": {
                                 "location identifier": "B2",
                                 "sample identifier": "STD2",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 333.33
+                                }
                             },
                             "absorbance": {
                                 "value": 1.11,
@@ -632,7 +674,10 @@
                             "sample document": {
                                 "location identifier": "B3",
                                 "sample identifier": "STD2",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 333.33
+                                }
                             },
                             "absorbance": {
                                 "value": 1.114,
@@ -675,7 +720,10 @@
                             "sample document": {
                                 "location identifier": "B4",
                                 "sample identifier": "SPL1:2",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.5
+                                }
                             },
                             "absorbance": {
                                 "value": 1.293,
@@ -718,7 +766,10 @@
                             "sample document": {
                                 "location identifier": "B5",
                                 "sample identifier": "SPL1:2",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.5
+                                }
                             },
                             "absorbance": {
                                 "value": 1.308,
@@ -761,7 +812,10 @@
                             "sample document": {
                                 "location identifier": "B6",
                                 "sample identifier": "SPL1:2",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.5
+                                }
                             },
                             "absorbance": {
                                 "value": 1.287,
@@ -804,7 +858,10 @@
                             "sample document": {
                                 "location identifier": "B7",
                                 "sample identifier": "SPL2:2",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.5
+                                }
                             },
                             "absorbance": {
                                 "value": 0.664,
@@ -847,7 +904,10 @@
                             "sample document": {
                                 "location identifier": "B8",
                                 "sample identifier": "SPL2:2",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.5
+                                }
                             },
                             "absorbance": {
                                 "value": 0.67,
@@ -890,7 +950,10 @@
                             "sample document": {
                                 "location identifier": "B9",
                                 "sample identifier": "SPL2:2",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.5
+                                }
                             },
                             "absorbance": {
                                 "value": 0.679,
@@ -933,7 +996,10 @@
                             "sample document": {
                                 "location identifier": "B10",
                                 "sample identifier": "SPL3:2",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.5
+                                }
                             },
                             "absorbance": {
                                 "value": 0.742,
@@ -976,7 +1042,10 @@
                             "sample document": {
                                 "location identifier": "B11",
                                 "sample identifier": "SPL3:2",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.5
+                                }
                             },
                             "absorbance": {
                                 "value": 0.746,
@@ -1019,7 +1088,10 @@
                             "sample document": {
                                 "location identifier": "B12",
                                 "sample identifier": "SPL3:2",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.5
+                                }
                             },
                             "absorbance": {
                                 "value": 0.728,
@@ -1062,7 +1134,10 @@
                             "sample document": {
                                 "location identifier": "C1",
                                 "sample identifier": "STD3",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 111.11
+                                }
                             },
                             "absorbance": {
                                 "value": 0.379,
@@ -1105,7 +1180,10 @@
                             "sample document": {
                                 "location identifier": "C2",
                                 "sample identifier": "STD3",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 111.11
+                                }
                             },
                             "absorbance": {
                                 "value": 0.37,
@@ -1148,7 +1226,10 @@
                             "sample document": {
                                 "location identifier": "C3",
                                 "sample identifier": "STD3",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 111.11
+                                }
                             },
                             "absorbance": {
                                 "value": 0.371,
@@ -1191,7 +1272,10 @@
                             "sample document": {
                                 "location identifier": "C4",
                                 "sample identifier": "SPL1:3",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.25
+                                }
                             },
                             "absorbance": {
                                 "value": 0.647,
@@ -1234,7 +1318,10 @@
                             "sample document": {
                                 "location identifier": "C5",
                                 "sample identifier": "SPL1:3",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.25
+                                }
                             },
                             "absorbance": {
                                 "value": 0.654,
@@ -1277,7 +1364,10 @@
                             "sample document": {
                                 "location identifier": "C6",
                                 "sample identifier": "SPL1:3",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.25
+                                }
                             },
                             "absorbance": {
                                 "value": 0.644,
@@ -1320,7 +1410,10 @@
                             "sample document": {
                                 "location identifier": "C7",
                                 "sample identifier": "SPL2:3",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.25
+                                }
                             },
                             "absorbance": {
                                 "value": 0.332,
@@ -1363,7 +1456,10 @@
                             "sample document": {
                                 "location identifier": "C8",
                                 "sample identifier": "SPL2:3",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.25
+                                }
                             },
                             "absorbance": {
                                 "value": 0.335,
@@ -1406,7 +1502,10 @@
                             "sample document": {
                                 "location identifier": "C9",
                                 "sample identifier": "SPL2:3",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.25
+                                }
                             },
                             "absorbance": {
                                 "value": 0.34,
@@ -1449,7 +1548,10 @@
                             "sample document": {
                                 "location identifier": "C10",
                                 "sample identifier": "SPL3:3",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.25
+                                }
                             },
                             "absorbance": {
                                 "value": 0.371,
@@ -1492,7 +1594,10 @@
                             "sample document": {
                                 "location identifier": "C11",
                                 "sample identifier": "SPL3:3",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.25
+                                }
                             },
                             "absorbance": {
                                 "value": 0.373,
@@ -1535,7 +1640,10 @@
                             "sample document": {
                                 "location identifier": "C12",
                                 "sample identifier": "SPL3:3",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.25
+                                }
                             },
                             "absorbance": {
                                 "value": 0.364,
@@ -1578,7 +1686,10 @@
                             "sample document": {
                                 "location identifier": "D1",
                                 "sample identifier": "STD4",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 37.037
+                                }
                             },
                             "absorbance": {
                                 "value": 0.126,
@@ -1621,7 +1732,10 @@
                             "sample document": {
                                 "location identifier": "D2",
                                 "sample identifier": "STD4",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 37.037
+                                }
                             },
                             "absorbance": {
                                 "value": 0.123,
@@ -1664,7 +1778,10 @@
                             "sample document": {
                                 "location identifier": "D3",
                                 "sample identifier": "STD4",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 37.037
+                                }
                             },
                             "absorbance": {
                                 "value": 0.124,
@@ -1707,7 +1824,10 @@
                             "sample document": {
                                 "location identifier": "D4",
                                 "sample identifier": "SPL1:4",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.125
+                                }
                             },
                             "absorbance": {
                                 "value": 0.323,
@@ -1750,7 +1870,10 @@
                             "sample document": {
                                 "location identifier": "D5",
                                 "sample identifier": "SPL1:4",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.125
+                                }
                             },
                             "absorbance": {
                                 "value": 0.327,
@@ -1793,7 +1916,10 @@
                             "sample document": {
                                 "location identifier": "D6",
                                 "sample identifier": "SPL1:4",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.125
+                                }
                             },
                             "absorbance": {
                                 "value": 0.322,
@@ -1836,7 +1962,10 @@
                             "sample document": {
                                 "location identifier": "D7",
                                 "sample identifier": "SPL2:4",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.125
+                                }
                             },
                             "absorbance": {
                                 "value": 0.166,
@@ -1879,7 +2008,10 @@
                             "sample document": {
                                 "location identifier": "D8",
                                 "sample identifier": "SPL2:4",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.125
+                                }
                             },
                             "absorbance": {
                                 "value": 0.168,
@@ -1922,7 +2054,10 @@
                             "sample document": {
                                 "location identifier": "D9",
                                 "sample identifier": "SPL2:4",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.125
+                                }
                             },
                             "absorbance": {
                                 "value": 0.17,
@@ -1965,7 +2100,10 @@
                             "sample document": {
                                 "location identifier": "D10",
                                 "sample identifier": "SPL3:4",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.125
+                                }
                             },
                             "absorbance": {
                                 "value": 0.186,
@@ -2008,7 +2146,10 @@
                             "sample document": {
                                 "location identifier": "D11",
                                 "sample identifier": "SPL3:4",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.125
+                                }
                             },
                             "absorbance": {
                                 "value": 0.187,
@@ -2051,7 +2192,10 @@
                             "sample document": {
                                 "location identifier": "D12",
                                 "sample identifier": "SPL3:4",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.125
+                                }
                             },
                             "absorbance": {
                                 "value": 0.182,
@@ -2094,7 +2238,10 @@
                             "sample document": {
                                 "location identifier": "E1",
                                 "sample identifier": "STD5",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 12.346
+                                }
                             },
                             "absorbance": {
                                 "value": 0.042,
@@ -2137,7 +2284,10 @@
                             "sample document": {
                                 "location identifier": "E2",
                                 "sample identifier": "STD5",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 12.346
+                                }
                             },
                             "absorbance": {
                                 "value": 0.041,
@@ -2180,7 +2330,10 @@
                             "sample document": {
                                 "location identifier": "E3",
                                 "sample identifier": "STD5",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 12.346
+                                }
                             },
                             "absorbance": {
                                 "value": 0.041,
@@ -2223,7 +2376,10 @@
                             "sample document": {
                                 "location identifier": "E4",
                                 "sample identifier": "SPL4:1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1.0
+                                }
                             },
                             "absorbance": {
                                 "value": 2.894,
@@ -2266,7 +2422,10 @@
                             "sample document": {
                                 "location identifier": "E5",
                                 "sample identifier": "SPL4:1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1.0
+                                }
                             },
                             "absorbance": {
                                 "value": 2.805,
@@ -2309,7 +2468,10 @@
                             "sample document": {
                                 "location identifier": "E6",
                                 "sample identifier": "SPL4:1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1.0
+                                }
                             },
                             "absorbance": {
                                 "value": 2.89,
@@ -2352,7 +2514,10 @@
                             "sample document": {
                                 "location identifier": "E7",
                                 "sample identifier": "SPL5:1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1.0
+                                }
                             },
                             "absorbance": {
                                 "value": 2.482,
@@ -2395,7 +2560,10 @@
                             "sample document": {
                                 "location identifier": "E8",
                                 "sample identifier": "SPL5:1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1.0
+                                }
                             },
                             "absorbance": {
                                 "value": 2.441,
@@ -2438,7 +2606,10 @@
                             "sample document": {
                                 "location identifier": "E9",
                                 "sample identifier": "SPL5:1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1.0
+                                }
                             },
                             "absorbance": {
                                 "value": 2.407,
@@ -2481,7 +2652,10 @@
                             "sample document": {
                                 "location identifier": "E10",
                                 "sample identifier": "SPL6:1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1.0
+                                }
                             },
                             "absorbance": {
                                 "value": 1.349,
@@ -2524,7 +2698,10 @@
                             "sample document": {
                                 "location identifier": "E11",
                                 "sample identifier": "SPL6:1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1.0
+                                }
                             },
                             "absorbance": {
                                 "value": 1.378,
@@ -2567,7 +2744,10 @@
                             "sample document": {
                                 "location identifier": "E12",
                                 "sample identifier": "SPL6:1",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1.0
+                                }
                             },
                             "absorbance": {
                                 "value": 1.352,
@@ -2610,7 +2790,10 @@
                             "sample document": {
                                 "location identifier": "F1",
                                 "sample identifier": "STD6",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 4.1152
+                                }
                             },
                             "absorbance": {
                                 "value": 0.014,
@@ -2653,7 +2836,10 @@
                             "sample document": {
                                 "location identifier": "F2",
                                 "sample identifier": "STD6",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 4.1152
+                                }
                             },
                             "absorbance": {
                                 "value": 0.014,
@@ -2696,7 +2882,10 @@
                             "sample document": {
                                 "location identifier": "F3",
                                 "sample identifier": "STD6",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 4.1152
+                                }
                             },
                             "absorbance": {
                                 "value": 0.014,
@@ -2739,7 +2928,10 @@
                             "sample document": {
                                 "location identifier": "F4",
                                 "sample identifier": "SPL4:2",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.5
+                                }
                             },
                             "absorbance": {
                                 "value": 1.447,
@@ -2782,7 +2974,10 @@
                             "sample document": {
                                 "location identifier": "F5",
                                 "sample identifier": "SPL4:2",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.5
+                                }
                             },
                             "absorbance": {
                                 "value": 1.402,
@@ -2825,7 +3020,10 @@
                             "sample document": {
                                 "location identifier": "F6",
                                 "sample identifier": "SPL4:2",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.5
+                                }
                             },
                             "absorbance": {
                                 "value": 1.445,
@@ -2868,7 +3066,10 @@
                             "sample document": {
                                 "location identifier": "F7",
                                 "sample identifier": "SPL5:2",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.5
+                                }
                             },
                             "absorbance": {
                                 "value": 1.241,
@@ -2911,7 +3112,10 @@
                             "sample document": {
                                 "location identifier": "F8",
                                 "sample identifier": "SPL5:2",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.5
+                                }
                             },
                             "absorbance": {
                                 "value": 1.22,
@@ -2954,7 +3158,10 @@
                             "sample document": {
                                 "location identifier": "F9",
                                 "sample identifier": "SPL5:2",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.5
+                                }
                             },
                             "absorbance": {
                                 "value": 1.204,
@@ -2997,7 +3204,10 @@
                             "sample document": {
                                 "location identifier": "F10",
                                 "sample identifier": "SPL6:2",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.5
+                                }
                             },
                             "absorbance": {
                                 "value": 0.675,
@@ -3040,7 +3250,10 @@
                             "sample document": {
                                 "location identifier": "F11",
                                 "sample identifier": "SPL6:2",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.5
+                                }
                             },
                             "absorbance": {
                                 "value": 0.689,
@@ -3083,7 +3296,10 @@
                             "sample document": {
                                 "location identifier": "F12",
                                 "sample identifier": "SPL6:2",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.5
+                                }
                             },
                             "absorbance": {
                                 "value": 0.676,
@@ -3126,7 +3342,10 @@
                             "sample document": {
                                 "location identifier": "G1",
                                 "sample identifier": "STD7",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1.3717
+                                }
                             },
                             "absorbance": {
                                 "value": 0.005,
@@ -3169,7 +3388,10 @@
                             "sample document": {
                                 "location identifier": "G2",
                                 "sample identifier": "STD7",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1.3717
+                                }
                             },
                             "absorbance": {
                                 "value": 0.005,
@@ -3212,7 +3434,10 @@
                             "sample document": {
                                 "location identifier": "G3",
                                 "sample identifier": "STD7",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 1.3717
+                                }
                             },
                             "absorbance": {
                                 "value": 0.005,
@@ -3255,7 +3480,10 @@
                             "sample document": {
                                 "location identifier": "G4",
                                 "sample identifier": "SPL4:3",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.25
+                                }
                             },
                             "absorbance": {
                                 "value": 0.723,
@@ -3298,7 +3526,10 @@
                             "sample document": {
                                 "location identifier": "G5",
                                 "sample identifier": "SPL4:3",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.25
+                                }
                             },
                             "absorbance": {
                                 "value": 0.701,
@@ -3341,7 +3572,10 @@
                             "sample document": {
                                 "location identifier": "G6",
                                 "sample identifier": "SPL4:3",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.25
+                                }
                             },
                             "absorbance": {
                                 "value": 0.722,
@@ -3384,7 +3618,10 @@
                             "sample document": {
                                 "location identifier": "G7",
                                 "sample identifier": "SPL5:3",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.25
+                                }
                             },
                             "absorbance": {
                                 "value": 0.621,
@@ -3427,7 +3664,10 @@
                             "sample document": {
                                 "location identifier": "G8",
                                 "sample identifier": "SPL5:3",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.25
+                                }
                             },
                             "absorbance": {
                                 "value": 0.61,
@@ -3470,7 +3710,10 @@
                             "sample document": {
                                 "location identifier": "G9",
                                 "sample identifier": "SPL5:3",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.25
+                                }
                             },
                             "absorbance": {
                                 "value": 0.602,
@@ -3513,7 +3756,10 @@
                             "sample document": {
                                 "location identifier": "G10",
                                 "sample identifier": "SPL6:3",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.25
+                                }
                             },
                             "absorbance": {
                                 "value": 0.337,
@@ -3556,7 +3802,10 @@
                             "sample document": {
                                 "location identifier": "G11",
                                 "sample identifier": "SPL6:3",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.25
+                                }
                             },
                             "absorbance": {
                                 "value": 0.345,
@@ -3599,7 +3848,10 @@
                             "sample document": {
                                 "location identifier": "G12",
                                 "sample identifier": "SPL6:3",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.25
+                                }
                             },
                             "absorbance": {
                                 "value": 0.338,
@@ -3771,7 +4023,10 @@
                             "sample document": {
                                 "location identifier": "H4",
                                 "sample identifier": "SPL4:4",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.125
+                                }
                             },
                             "absorbance": {
                                 "value": 0.362,
@@ -3814,7 +4069,10 @@
                             "sample document": {
                                 "location identifier": "H5",
                                 "sample identifier": "SPL4:4",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.125
+                                }
                             },
                             "absorbance": {
                                 "value": 0.351,
@@ -3857,7 +4115,10 @@
                             "sample document": {
                                 "location identifier": "H6",
                                 "sample identifier": "SPL4:4",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.125
+                                }
                             },
                             "absorbance": {
                                 "value": 0.361,
@@ -3900,7 +4161,10 @@
                             "sample document": {
                                 "location identifier": "H7",
                                 "sample identifier": "SPL5:4",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.125
+                                }
                             },
                             "absorbance": {
                                 "value": 0.31,
@@ -3943,7 +4207,10 @@
                             "sample document": {
                                 "location identifier": "H8",
                                 "sample identifier": "SPL5:4",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.125
+                                }
                             },
                             "absorbance": {
                                 "value": 0.305,
@@ -3986,7 +4253,10 @@
                             "sample document": {
                                 "location identifier": "H9",
                                 "sample identifier": "SPL5:4",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.125
+                                }
                             },
                             "absorbance": {
                                 "value": 0.301,
@@ -4029,7 +4299,10 @@
                             "sample document": {
                                 "location identifier": "H10",
                                 "sample identifier": "SPL6:4",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.125
+                                }
                             },
                             "absorbance": {
                                 "value": 0.169,
@@ -4072,7 +4345,10 @@
                             "sample document": {
                                 "location identifier": "H11",
                                 "sample identifier": "SPL6:4",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.125
+                                }
                             },
                             "absorbance": {
                                 "value": 0.172,
@@ -4115,7 +4391,10 @@
                             "sample document": {
                                 "location identifier": "H12",
                                 "sample identifier": "SPL6:4",
-                                "well plate identifier": "Plate 1"
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "Conc/Dil": 0.125
+                                }
                             },
                             "absorbance": {
                                 "value": 0.169,
@@ -7216,7 +7495,7 @@
             "UNC path": "tests/parsers/agilent_gen5/testdata/absorbance/endpoint_stdcurve_singleplate_2.txt",
             "file name": "endpoint_stdcurve_singleplate_2.txt",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.87",
+            "ASM converter version": "0.1.97",
             "software name": "Gen5",
             "software version": "3.12.08"
         },

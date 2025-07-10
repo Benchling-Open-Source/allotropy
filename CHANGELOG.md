@@ -5,6 +5,17 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.98] - 2025-07-08
+
+### Added
+
+- Bio-Rad Bio-Plex Manager - Add support for statistics dimensions (#1029)
+- Agilent Gen5 - Add Conc/Dil to Sample document custom fields (#1030)
+- Roche Cedex BioHT - Added support for mg/L (#1028)
+- Thermo Fisher Scientific SkanIt - Support multiplates (#1025)
+- Beckman Vi-Cell Blu - Added get_unread data to parser (#1023)
+- Molecular Devices SoftMax Pro - Enable Reduced-only file parsing (#1016)
+
 ## [0.1.97] - 2025-06-24
 
 ### Fixed
