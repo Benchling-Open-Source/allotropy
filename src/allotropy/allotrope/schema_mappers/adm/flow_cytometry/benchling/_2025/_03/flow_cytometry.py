@@ -127,6 +127,7 @@ class Measurement:
 
     sample_custom_info: dict[str, Any] | None = None
     processed_data_custom_info: dict[str, Any] | None = None
+    data_processing_custom_info: dict[str, Any] | None = None
     device_control_custom_info: dict[str, Any] | None = None
     custom_info: dict[str, Any] | None = None
 
@@ -247,13 +248,16 @@ class Mapper(SchemaMapper[Data, Model]):
                     processed_data_document=[
                         add_custom_information_document(
                             ProcessedDataDocumentItem(
-                                data_processing_document=DataProcessingDocument(
-                                    method_version=measurement.method_version,
-                                    data_processing_time=self.get_date_time(
-                                        measurement.data_processing_time
-                                    )
-                                    if measurement.data_processing_time
-                                    else None,
+                                data_processing_document=add_custom_information_document(
+                                    DataProcessingDocument(
+                                        method_version=measurement.method_version,
+                                        data_processing_time=self.get_date_time(
+                                            measurement.data_processing_time
+                                        )
+                                        if measurement.data_processing_time
+                                        else None,
+                                    ),
+                                    measurement.data_processing_custom_info,
                                 ),
                                 processed_data_identifier=measurement.processed_data_identifier,
                                 population_aggregate_document=[

@@ -1056,14 +1056,14 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
             if value is not None and value.strip() != "":
                 sample_custom_info[keyword] = value
 
-        # Extract processed data-level metadata fields
-        processed_data_custom_info = {}
+        # Extract data processing document-level metadata fields
+        data_processing_custom_info = {}
         for keyword in PROCESSED_DATA_KEYWORDS:
             value = get_keyword_value(keyword)
             if value is not None and value.strip() != "":
-                processed_data_custom_info[keyword] = value
+                data_processing_custom_info[keyword] = value
 
-        # Also extract root element fields for processed data document
+        # Also extract root element fields for data processing document
         root_data_processing_fields = [
             "linFromKW",
             "logFromKW",
@@ -1082,7 +1082,7 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
         for field in root_data_processing_fields:
             root_value = root_element.get_attr_or_none(field)
             if root_value is not None and root_value.strip() != "":
-                processed_data_custom_info[field] = root_value.strip()
+                data_processing_custom_info[field] = root_value.strip()
 
         # Check cytometer element
         cytometer = root_element.recursive_find_or_none(["Cytometers", "Cytometer"])
@@ -1103,9 +1103,9 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
                 if (
                     cytometer_value is not None
                     and cytometer_value.strip() != ""
-                    and field not in processed_data_custom_info
+                    and field not in data_processing_custom_info
                 ):
-                    processed_data_custom_info[field] = cytometer_value.strip()
+                    data_processing_custom_info[field] = cytometer_value.strip()
             cytometer.mark_read(
                 {
                     "cyt",
@@ -1157,8 +1157,8 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
                     sample_custom_info=sample_custom_info
                     if sample_custom_info
                     else None,
-                    processed_data_custom_info=processed_data_custom_info
-                    if processed_data_custom_info
+                    data_processing_custom_info=data_processing_custom_info
+                    if data_processing_custom_info
                     else None,
                     device_control_custom_info=device_control_custom_info
                     if device_control_custom_info

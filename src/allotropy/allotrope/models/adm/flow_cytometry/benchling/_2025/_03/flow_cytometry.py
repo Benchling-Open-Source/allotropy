@@ -74,6 +74,9 @@ class StatisticsAggregateDocument:
 class DataProcessingDocument:
     method_version: TStringValue | None = None
     data_processing_time: TDateTimeStampValue | None = None
+    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
+        None
+    )
 
 
 @dataclass(kw_only=True)
