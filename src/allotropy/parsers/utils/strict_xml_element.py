@@ -205,109 +205,148 @@ class StrictXmlElement:
         - attribute names without "attr:" prefix
         - namespaced attribute names without "ns_attr:" prefix
         """
-        # Get only attribute keys, not child elements or text
+        attribute_keys = self._get_all_attribute_keys()
+        self._handle_skip_keys(skip)
+        matching_keys = self._apply_regex_filter(attribute_keys, regex)
+
+        unread_keys = {}
+        processed_attrs = set()
+
+        for key in matching_keys - self.read_keys:
+            if key.startswith("attr:"):
+                self._process_attr_key(key, matching_keys, unread_keys, processed_attrs)
+            elif key.startswith("ns_attr:"):
+                self._process_ns_attr_key(key, unread_keys, processed_attrs)
+
+        self._mark_processed_keys_as_read(matching_keys, unread_keys)
+        return unread_keys
+
+    def _get_all_attribute_keys(self) -> set[str]:
+        """Get all attribute keys with appropriate prefixes."""
         attribute_keys = set()
 
-        # Add attributes with "attr:" prefix
         for attr_name in self.element.attrib.keys():
             attribute_keys.add(f"attr:{attr_name}")
 
-            # Also check if this is a namespaced attribute and add the ns_attr version
+            # Add namespaced versions
             for namespace_key, namespace_uri in self.namespaces.items():
                 if attr_name.startswith(f"{{{namespace_uri}}}"):
                     field_name = attr_name.replace(f"{{{namespace_uri}}}", "")
                     attribute_keys.add(f"ns_attr:{namespace_key}:{field_name}")
 
-        skip_keys = self._get_matching_keys(skip) if skip else set()
-        # Mark explicitly skipped keys as "read"
-        self.read_keys |= skip_keys
+        return attribute_keys
 
-        matching_keys = (
-            {k for k in attribute_keys if regex and re.fullmatch(regex, k)}
-            if regex
-            else attribute_keys
-        )
+    def _handle_skip_keys(self, skip: set[str] | None) -> None:
+        """Process and mark skip keys as read."""
+        if skip:
+            skip_keys = self._get_matching_keys(skip)
+            self.read_keys |= skip_keys
 
-        unread_keys = {}
-        processed_attrs = set()  # Track which attributes we've already processed
+    def _apply_regex_filter(self, attribute_keys: set[str], regex: str | None) -> set[str]:
+        """Apply regex filter to attribute keys if provided."""
+        if regex:
+            return {k for k in attribute_keys if re.fullmatch(regex, k)}
+        return attribute_keys
 
-        for key in matching_keys - self.read_keys:
-            if key.startswith("attr:"):
-                attr_name = key[5:]  # Remove "attr:" prefix
+    def _process_attr_key(
+        self,
+        key: str,
+        matching_keys: set[str],
+        unread_keys: dict[str, str | None],
+        processed_attrs: set[str]
+    ) -> None:
+        """Process an 'attr:' prefixed key."""
+        attr_name = key[5:]  # Remove "attr:" prefix
 
-                # Check if this is a namespaced attribute that has been read via ns_attr
-                is_namespaced_and_read = False
-                namespace_form_key = None
-                for namespace_key, namespace_uri in self.namespaces.items():
-                    if attr_name.startswith(f"{{{namespace_uri}}}"):
-                        field_name = attr_name.replace(f"{{{namespace_uri}}}", "")
-                        ns_attr_key = f"ns_attr:{namespace_key}:{field_name}"
-                        namespace_form_key = f"{namespace_key}:{field_name}"
-                        # Check if this attribute was read via namespaced access
-                        if ns_attr_key in self.read_keys:
-                            is_namespaced_and_read = True
-                            break
+        if self._is_attr_already_processed(attr_name, processed_attrs):
+            return
 
-                # Only include if it hasn't been read via namespaced access and we haven't processed this attribute yet
-                if not is_namespaced_and_read and attr_name not in processed_attrs:
-                    # If there's a namespace form available, prefer that over the full URI form
-                    if (
-                        namespace_form_key
-                        and f"ns_attr:{namespace_key}:{field_name}" in matching_keys
-                    ):
-                        # Skip this full URI form - we'll process the namespace form instead
-                        pass
-                    else:
-                        # Convert full URI to namespace prefix format if possible
-                        clean_key = attr_name
-                        for ns_key, ns_uri in self.namespaces.items():
-                            if attr_name.startswith(f"{{{ns_uri}}}"):
-                                field_name = attr_name.replace(f"{{{ns_uri}}}", "")
-                                # Check if this is XMLSchema-instance namespace by looking for 'xsi' key
-                                if ns_key == "xsi":
-                                    clean_key = field_name
-                                else:
-                                    clean_key = f"{ns_key}:{field_name}"
-                                break
-                        unread_keys[clean_key] = self.element.get(attr_name)
-                        processed_attrs.add(attr_name)
+        # Check if this should be skipped in favor of namespace form
+        if self._should_skip_for_namespace_form(attr_name, matching_keys):
+            return
 
-            elif key.startswith("ns_attr:"):
-                # Parse "ns_attr:namespace:field"
-                parts = key.split(":", 2)
-                if len(parts) == 3:
-                    namespace_key, field = parts[1], parts[2]
-                    if namespace_key in self.namespaces:
-                        namespace_uri = self.namespaces[namespace_key]
-                        full_attr_name = f"{{{namespace_uri}}}{field}"
-                        full_attr_key = f"attr:{full_attr_name}"
+        clean_key = self._get_clean_attribute_name(attr_name)
+        unread_keys[clean_key] = self.element.get(attr_name)
+        processed_attrs.add(attr_name)
 
-                        # Only include if neither the ns_attr nor the full URI version has been read
-                        # and we haven't processed this attribute yet
-                        if (
-                            key not in self.read_keys
-                            and full_attr_key not in self.read_keys
-                            and full_attr_name not in processed_attrs
-                        ):
-                            clean_key = (
-                                f"{namespace_key}:{field}"  # Use namespace:field as key
-                            )
-                            unread_keys[clean_key] = self.element.get(
-                                f"{{{namespace_uri}}}{field}"
-                            )
-                            processed_attrs.add(full_attr_name)
+    def _process_ns_attr_key(
+        self,
+        key: str,
+        unread_keys: dict[str, str | None],
+        processed_attrs: set[str]
+    ) -> None:
+        """Process a 'ns_attr:' prefixed key."""
+        parts = key.split(":", 2)
+        if len(parts) != 3:
+            return
 
-        # Mark these keys as read now that we've accessed them
+        namespace_key, field = parts[1], parts[2]
+        if namespace_key not in self.namespaces:
+            return
+
+        namespace_uri = self.namespaces[namespace_key]
+        full_attr_name = f"{{{namespace_uri}}}{field}"
+        full_attr_key = f"attr:{full_attr_name}"
+
+        # Check if already processed
+        if (
+            key in self.read_keys
+            or full_attr_key in self.read_keys
+            or full_attr_name in processed_attrs
+        ):
+            return
+
+        clean_key = f"{namespace_key}:{field}"
+        unread_keys[clean_key] = self.element.get(full_attr_name)
+        processed_attrs.add(full_attr_name)
+
+    def _is_attr_already_processed(self, attr_name: str, processed_attrs: set[str]) -> bool:
+        """Check if attribute has already been processed or read via namespaced access."""
+        if attr_name in processed_attrs:
+            return True
+
+        # Check if read via ns_attr
+        for namespace_key, namespace_uri in self.namespaces.items():
+            if attr_name.startswith(f"{{{namespace_uri}}}"):
+                field_name = attr_name.replace(f"{{{namespace_uri}}}", "")
+                ns_attr_key = f"ns_attr:{namespace_key}:{field_name}"
+                if ns_attr_key in self.read_keys:
+                    return True
+        return False
+
+    def _should_skip_for_namespace_form(self, attr_name: str, matching_keys: set[str]) -> bool:
+        """Check if this attr should be skipped because namespace form is available."""
+        for namespace_key, namespace_uri in self.namespaces.items():
+            if attr_name.startswith(f"{{{namespace_uri}}}"):
+                field_name = attr_name.replace(f"{{{namespace_uri}}}", "")
+                ns_attr_form = f"ns_attr:{namespace_key}:{field_name}"
+                if ns_attr_form in matching_keys:
+                    return True
+        return False
+
+    def _get_clean_attribute_name(self, attr_name: str) -> str:
+        """Convert attribute name to clean format, handling namespaces."""
+        for ns_key, ns_uri in self.namespaces.items():
+            if attr_name.startswith(f"{{{ns_uri}}}"):
+                field_name = attr_name.replace(f"{{{ns_uri}}}", "")
+                # Special handling for XMLSchema-instance namespace
+                if ns_key == "xsi":
+                    return field_name
+                else:
+                    return f"{ns_key}:{field_name}"
+        return attr_name
+
+    def _mark_processed_keys_as_read(
+        self, matching_keys: set[str], unread_keys: dict[str, str | None]
+    ) -> None:
+        """Mark the processed keys as read."""
         if unread_keys:
-            # We need to mark the actual keys we found as read, not the clean keys
             keys_to_mark = {
                 key
                 for key in matching_keys - self.read_keys
                 if key.startswith(("attr:", "ns_attr:"))
             }
             self.read_keys |= keys_to_mark
-
-        return unread_keys
 
     def find_or_none(self, name: str) -> StrictXmlElement | None:
         self.read_keys.add(f"element:{name}")
