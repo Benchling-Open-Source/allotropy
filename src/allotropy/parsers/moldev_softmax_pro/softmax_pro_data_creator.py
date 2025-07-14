@@ -299,12 +299,28 @@ def create_calculated_data(data: StructureData) -> list[CalculatedDocument]:
 def _get_calc_docs_data_sources(
     plate_block: PlateBlock, position: str
 ) -> list[DataSource]:
+    data_elements = list(plate_block.iter_data_elements(position))
+
+    if plate_block.measurement_type in (
+        MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM,
+        MeasurementType.EMISSION_FLUORESCENCE_CUBE_SPECTRUM,
+        MeasurementType.EXCITATION_FLUORESCENCE_CUBE_SPECTRUM,
+        MeasurementType.EMISSION_LUMINESCENCE_CUBE_SPECTRUM,
+        MeasurementType.EXCITATION_LUMINESCENCE_CUBE_SPECTRUM,
+    ):
+        return [
+            DataSource(
+                reference=Referenceable(data_elements[0].uuid),
+                feature=plate_block.header.read_mode,
+            )
+        ]
+
     return [
         DataSource(
             reference=Referenceable(data_source.uuid),
             feature=plate_block.header.read_mode,
         )
-        for data_source in plate_block.iter_data_elements(position)
+        for data_source in data_elements
     ]
 
 
