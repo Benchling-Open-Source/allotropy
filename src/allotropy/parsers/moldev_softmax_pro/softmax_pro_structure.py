@@ -692,6 +692,34 @@ class TimeMeasurementData:
 
 
 @dataclass(frozen=True)
+class SpectrumTimeWavelengthData:
+    wavelength: float
+    measurement_data: list[TimeMeasurementData | SpectrumTimeWavelengthData]
+
+    @staticmethod
+    def create(
+        reader: CsvReader,
+        header: PlateHeader,
+        wavelength: float,
+        columns: pd.Series[str],
+    ) -> SpectrumTimeWavelengthData:
+        data = assert_not_none(
+            reader.pop_line_as_df(sep="\t"),
+            msg="unable to find raw data from time block for Spectrum read type.",
+        )
+
+        set_columns(data, columns)
+
+        return SpectrumTimeWavelengthData(
+            wavelength=wavelength,
+            measurement_data=[
+                TimeMeasurementData.create(header, wavelength, row)
+                for _, row in data.iterrows()
+            ],
+        )
+
+
+@dataclass(frozen=True)
 class TimeWavelengthData:
     wavelength: float
     measurement_data: list[TimeMeasurementData]
@@ -709,12 +737,14 @@ class TimeWavelengthData:
         )
         set_columns(data, columns)
 
+        measurement_data = [
+            TimeMeasurementData.create(header, wavelength, row)
+            for _, row in data.iterrows()
+        ]
+
         return TimeWavelengthData(
             wavelength=wavelength,
-            measurement_data=[
-                TimeMeasurementData.create(header, wavelength, row)
-                for _, row in data.iterrows()
-            ],
+            measurement_data=measurement_data,
         )
 
 
@@ -773,7 +803,6 @@ class TimeRawData:
 @dataclass(frozen=True)
 class TimeSpectrumRawData:
     wavelength_data: list[SpectrumTimeWavelengthData]
-    maximum_wavelength_signal: dict[str, float]
 
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> TimeSpectrumRawData:
@@ -791,26 +820,8 @@ class TimeSpectrumRawData:
             for wavelength in header.wavelengths
         ]
 
-        columns = assert_not_none(
-            reader.pop_as_series(sep="\t"),
-            msg="unable to find columns for time block reduced data.",
-        )
-        data = assert_not_none(
-            reader.pop_as_series(sep="\t"),
-            msg="unable to find reduced data from time block.",
-        )
-
-        data.index = pd.Index(columns)
-        max_wavelength_signal_data = {}
-
-        for pos, str_value in data[2:].items():
-            float_value = try_non_nan_float_or_none(str_value)
-            if float_value is not None:
-                max_wavelength_signal_data[str(pos)] = float_value
-
         return TimeSpectrumRawData(
-            wavelength_data=wavelength_data,
-            maximum_wavelength_signal=max_wavelength_signal_data,
+            wavelength_data=wavelength_data
         )
 
 
