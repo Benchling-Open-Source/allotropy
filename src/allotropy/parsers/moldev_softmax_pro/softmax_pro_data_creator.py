@@ -31,7 +31,6 @@ from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     GroupSampleData,
     PlateBlock,
     StructureData,
-    TimeSpectrumRawData,
 )
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,

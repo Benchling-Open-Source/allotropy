@@ -820,9 +820,7 @@ class TimeSpectrumRawData:
             for wavelength in header.wavelengths
         ]
 
-        return TimeSpectrumRawData(
-            wavelength_data=wavelength_data
-        )
+        return TimeSpectrumRawData(wavelength_data=wavelength_data)
 
 
 @dataclass(frozen=True)
