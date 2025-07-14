@@ -692,34 +692,6 @@ class TimeMeasurementData:
 
 
 @dataclass(frozen=True)
-class SpectrumTimeWavelengthData:
-    wavelength: float
-    measurement_data: list[TimeMeasurementData | SpectrumTimeWavelengthData]
-
-    @staticmethod
-    def create(
-        reader: CsvReader,
-        header: PlateHeader,
-        wavelength: float,
-        columns: pd.Series[str],
-    ) -> SpectrumTimeWavelengthData:
-        data = assert_not_none(
-            reader.pop_line_as_df(sep="\t"),
-            msg="unable to find raw data from time block for Spectrum read type.",
-        )
-
-        set_columns(data, columns)
-
-        return SpectrumTimeWavelengthData(
-            wavelength=wavelength,
-            measurement_data=[
-                TimeMeasurementData.create(header, wavelength, row)
-                for _, row in data.iterrows()
-            ],
-        )
-
-
-@dataclass(frozen=True)
 class TimeWavelengthData:
     wavelength: float
     measurement_data: list[TimeMeasurementData]
