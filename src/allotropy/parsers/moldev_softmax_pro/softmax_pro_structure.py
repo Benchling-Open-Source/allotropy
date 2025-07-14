@@ -709,7 +709,37 @@ class TimeWavelengthData:
         )
         set_columns(data, columns)
 
+        measurement_data = [
+            TimeMeasurementData.create(header, wavelength, row)
+            for _, row in data.iterrows()
+        ]
+
         return TimeWavelengthData(
+            wavelength=wavelength,
+            measurement_data=measurement_data,
+        )
+
+
+@dataclass(frozen=True)
+class SpectrumTimeWavelengthData:
+    wavelength: float
+    measurement_data: list[TimeMeasurementData]
+
+    @staticmethod
+    def create(
+        reader: CsvReader,
+        header: PlateHeader,
+        wavelength: float,
+        columns: pd.Series[str],
+    ) -> SpectrumTimeWavelengthData:
+        data = assert_not_none(
+            reader.pop_line_as_df(sep="\t"),
+            msg="unable to find raw data from time block for Spectrum read type.",
+        )
+
+        set_columns(data, columns)
+
+        return SpectrumTimeWavelengthData(
             wavelength=wavelength,
             measurement_data=[
                 TimeMeasurementData.create(header, wavelength, row)
@@ -743,6 +773,29 @@ class TimeRawData:
 
 
 @dataclass(frozen=True)
+class TimeSpectrumRawData:
+    wavelength_data: list[SpectrumTimeWavelengthData]
+
+    @staticmethod
+    def create(reader: CsvReader, header: PlateHeader) -> TimeSpectrumRawData:
+        columns = assert_not_none(
+            reader.pop_as_series(sep="\t"),
+            msg="unable to find data columns for time block raw data.",
+        )
+        wavelength_data = [
+            SpectrumTimeWavelengthData.create(
+                reader,
+                header,
+                wavelength,
+                columns,
+            )
+            for wavelength in header.wavelengths
+        ]
+
+        return TimeSpectrumRawData(wavelength_data=wavelength_data)
+
+
+@dataclass(frozen=True)
 class TimeReducedData:
     data: list[ReducedDataElement]
 
@@ -773,7 +826,7 @@ class TimeReducedData:
 
 @dataclass(frozen=True)
 class TimeData:
-    raw_data: TimeRawData
+    raw_data: TimeRawData | TimeSpectrumRawData
     reduced_data: TimeReducedData | None
 
     @staticmethod
@@ -781,12 +834,15 @@ class TimeData:
         reader: CsvReader,
         header: PlateHeader,
     ) -> TimeData:
-        raw_data = None
         reduced_data = None
+        raw_data: TimeRawData | TimeSpectrumRawData | None = None
 
         # Read raw data if data_type is RAW or BOTH
         if header.data_type in (DataType.RAW.value, DataType.BOTH.value):
-            raw_data = TimeRawData.create(reader, header)
+            if header.read_type == ReadType.SPECTRUM.value:
+                raw_data = TimeSpectrumRawData.create(reader, header)
+            else:
+                raw_data = TimeRawData.create(reader, header)
         # For REDUCED only, create synthetic raw data with error message
         else:
             raw_data = TimeData._create_synthetic_raw_data(header)
@@ -803,8 +859,8 @@ class TimeData:
     @staticmethod
     def _create_synthetic_raw_data(header: PlateHeader) -> TimeRawData:
         """Create synthetic raw data with error messages when only reduced data is available."""
-        synthetic_wavelength_data = []
 
+        synthetic_wavelength_data = []
         for wavelength in header.wavelengths:
             # For each position in the plate, create a data element with an error document
             num_cols = header.num_columns
