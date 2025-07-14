@@ -181,7 +181,7 @@ extra-dependencies = [
 typing = "mypy --install-types --non-interactive {args:src/allotropy scripts tests}"
 style = [
   "ruff {args:.}",
-  "black --check {args:.}",
+  "black --check --diff {args:.}",
 ]
 fmt = [
   "black {args:.}",
