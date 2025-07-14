@@ -564,8 +564,6 @@ class PlateRawData(RawData):
 
 @dataclass(frozen=True)
 class SpectrumRawPlateData(RawData):
-    maximum_wavelength_signal: dict[str, float | None]
-
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> SpectrumRawPlateData:
 
@@ -593,23 +591,9 @@ class SpectrumRawPlateData(RawData):
                     df_data=data.iloc[:, 2:],
                 )
             )
-        reader.pop()
         reader.drop_empty()
-        max_wavelength_signal_data = RawData.get_measurement_section(
-            reader, columns, rows
-        ).iloc[:, 2:]
-        signal_data = {
-            f"{num_to_chars(row_idx)}{col}": try_float_or_none(str(raw_value))
-            for row_idx, *row_data in max_wavelength_signal_data.itertuples()
-            for col, raw_value in zip(
-                max_wavelength_signal_data.columns, row_data, strict=True
-            )
-        }
 
-        return SpectrumRawPlateData(
-            wavelength_data=wavelength_data,
-            maximum_wavelength_signal=signal_data,
-        )
+        return SpectrumRawPlateData(wavelength_data=wavelength_data)
 
 
 @dataclass(frozen=True)
@@ -618,8 +602,6 @@ class PlateReducedData:
 
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> PlateReducedData:
-        if header.read_type == ReadType.SPECTRUM.value:
-            return PlateReducedData(data=[])
 
         raw_data = assert_not_none(
             reader.pop_csv_block_as_df(sep="\t", header=0),
