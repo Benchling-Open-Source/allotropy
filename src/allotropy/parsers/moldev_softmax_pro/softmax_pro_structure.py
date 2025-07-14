@@ -835,13 +835,12 @@ class TimeData:
         header: PlateHeader,
     ) -> TimeData:
         reduced_data = None
+        raw_data: TimeRawData | TimeSpectrumRawData | None = None
 
         # Read raw data if data_type is RAW or BOTH
         if header.data_type in (DataType.RAW.value, DataType.BOTH.value):
             if header.read_type == ReadType.SPECTRUM.value:
-                raw_data: TimeRawData | TimeSpectrumRawData = (
-                    TimeSpectrumRawData.create(reader, header)
-                )
+                raw_data = TimeSpectrumRawData.create(reader, header)
             else:
                 raw_data = TimeRawData.create(reader, header)
         # For REDUCED only, create synthetic raw data with error message
