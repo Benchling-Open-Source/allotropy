@@ -78,7 +78,16 @@ NON_UNIQUE_IDENTIFIERS = {
     "identifier",
 }
 
-VALID_CALC_DATA_SOURCES = {"measurement identifier", "calculated data identifier", "report point identifier","analyte identifier", "distribution identifier", "identifier",  "data region identifier", "experimental data identifier"}
+VALID_CALC_DATA_SOURCES = {
+    "measurement identifier",
+    "calculated data identifier",
+    "report point identifier",
+    "analyte identifier",
+    "distribution identifier",
+    "identifier",
+    "data region identifier",
+    "experimental data identifier",
+}
 
 PATH_KEYS = {
     "POSIX path",
