@@ -565,9 +565,9 @@ class PlateRawData(RawData):
 
 
 @dataclass(frozen=True)
-class SpectrumRawPlateData(RawData):
+class SpectrumPlateRawData(RawData):
     @staticmethod
-    def create(reader: CsvReader, header: PlateHeader) -> SpectrumRawPlateData:
+    def create(reader: CsvReader, header: PlateHeader) -> SpectrumPlateRawData:
         columns = assert_not_none(
             reader.pop_as_series(sep="\t"),
             msg="unable to find data columns for plate block raw data.",
@@ -594,7 +594,7 @@ class SpectrumRawPlateData(RawData):
             )
         reader.drop_empty()
 
-        return SpectrumRawPlateData(wavelength_data=wavelength_data)
+        return SpectrumPlateRawData(wavelength_data=wavelength_data)
 
 
 @dataclass(frozen=True)
@@ -637,7 +637,7 @@ class PlateData:
         header: PlateHeader,
     ) -> PlateData:
         raw_data: RawData = (
-            SpectrumRawPlateData.create(reader, header)
+            SpectrumPlateRawData.create(reader, header)
             if header.read_type.is_spectrum
             else PlateRawData.create(reader, header)
         )
