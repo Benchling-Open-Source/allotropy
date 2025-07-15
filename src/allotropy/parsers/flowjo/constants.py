@@ -6,7 +6,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 
 # FlowJo parser constants
 DEVICE_IDENTIFIER = "cytometer"
-DEVICE_TYPE = "flow cytometer"
+DEVICE_TYPE = "Flow Cytometer"
 SOFTWARE_NAME = "FlowJo"
 DISPLAY_NAME = "FlowJo"
 
