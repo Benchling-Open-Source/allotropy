@@ -638,7 +638,7 @@ class PlateData:
     ) -> PlateData:
         raw_data: RawData = (
             SpectrumRawPlateData.create(reader, header)
-            if header.read_type is ReadType.SPECTRUM
+            if header.read_type.is_spectrum
             else PlateRawData.create(reader, header)
         )
         return PlateData(
@@ -822,7 +822,7 @@ class TimeData:
 
         # Read raw data if data_type is RAW or BOTH
         if header.data_type in (DataType.RAW, DataType.BOTH):
-            if header.read_type is ReadType.SPECTRUM:
+            if header.read_type.is_spectrum:
                 raw_data = TimeSpectrumRawData.create(reader, header)
             else:
                 raw_data = TimeRawData.create(reader, header)
