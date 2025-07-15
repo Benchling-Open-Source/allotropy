@@ -190,7 +190,7 @@ def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measure
                     else NEGATIVE_ZERO
                 )
                 if plate_block.measurement_type
-                == MeasurementType.ULTRAVIOLET_ABSORBANCE
+                is MeasurementType.ULTRAVIOLET_ABSORBANCE
                 else None
             ),
             fluorescence=(
@@ -199,7 +199,7 @@ def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measure
                     if data_element.value is not None
                     else NEGATIVE_ZERO
                 )
-                if plate_block.measurement_type == MeasurementType.FLUORESCENCE
+                if plate_block.measurement_type is MeasurementType.FLUORESCENCE
                 else None
             ),
             luminescence=(
@@ -208,7 +208,7 @@ def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measure
                     if data_element.value is not None
                     else NEGATIVE_ZERO
                 )
-                if plate_block.measurement_type == MeasurementType.LUMINESCENCE
+                if plate_block.measurement_type is MeasurementType.LUMINESCENCE
                 else None
             ),
             profile_data_cube=_get_data_cube(plate_block, data_element),
