@@ -705,10 +705,12 @@ class TimeWavelengthData:
         wavelength: float,
         columns: pd.Series[str],
     ) -> TimeWavelengthData:
-        data = assert_not_none(
-            cls.read_data(reader),
-            msg="unable to find raw data from time block.",
+        raw_data = (
+            reader.pop_line_as_df(sep="\t")
+            if header.read_type.is_spectrum
+            else reader.pop_csv_block_as_df(sep="\t")
         )
+        data = assert_not_none(raw_data, msg="unable to find raw data from time block.")
         set_columns(data, columns)
 
         return TimeWavelengthData(
@@ -718,17 +720,6 @@ class TimeWavelengthData:
                 for _, row in data.iterrows()
             ],
         )
-
-    @classmethod
-    def read_data(cls, reader: CsvReader) -> pd.DataFrame | None:
-        return reader.pop_csv_block_as_df(sep="\t")
-
-
-@dataclass(frozen=True)
-class SpectrumTimeWavelengthData(TimeWavelengthData):
-    @classmethod
-    def read_data(cls, reader: CsvReader) -> pd.DataFrame | None:
-        return reader.pop_line_as_df(sep="\t")
 
 
 @dataclass(frozen=True)
@@ -743,21 +734,10 @@ class TimeRawData:
         )
         return TimeRawData(
             wavelength_data=[
-                cls.wavelength_data_type().create(reader, header, wavelength, columns)
+                TimeWavelengthData.create(reader, header, wavelength, columns)
                 for wavelength in header.wavelengths
             ]
         )
-
-    @classmethod
-    def wavelength_data_type(cls) -> type[TimeWavelengthData]:
-        return TimeWavelengthData
-
-
-@dataclass(frozen=True)
-class TimeSpectrumRawData(TimeRawData):
-    @classmethod
-    def wavelength_data_type(cls) -> type[TimeWavelengthData]:
-        return SpectrumTimeWavelengthData
 
 
 @dataclass(frozen=True)
@@ -804,10 +784,7 @@ class TimeData:
 
         # Read raw data if data_type is RAW or BOTH
         if header.data_type in (DataType.RAW, DataType.BOTH):
-            if header.read_type.is_spectrum:
-                raw_data = TimeSpectrumRawData.create(reader, header)
-            else:
-                raw_data = TimeRawData.create(reader, header)
+            raw_data = TimeRawData.create(reader, header)
         # For REDUCED only, create synthetic raw data with error message
         else:
             raw_data = TimeData._create_synthetic_raw_data(header)
