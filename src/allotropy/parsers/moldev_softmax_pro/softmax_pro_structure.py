@@ -791,7 +791,7 @@ class TimeReducedData:
 
 @dataclass(frozen=True)
 class TimeData:
-    raw_data: TimeRawData | TimeSpectrumRawData
+    raw_data: TimeRawData
     reduced_data: TimeReducedData | None
 
     @staticmethod
@@ -800,7 +800,7 @@ class TimeData:
         header: PlateHeader,
     ) -> TimeData:
         reduced_data = None
-        raw_data: TimeRawData | TimeSpectrumRawData | None = None
+        raw_data: TimeRawData | None = None
 
         # Read raw data if data_type is RAW or BOTH
         if header.data_type in (DataType.RAW, DataType.BOTH):
