@@ -720,14 +720,14 @@ class TimeWavelengthData:
         )
 
     @classmethod
-    def read_data(cls, reader) -> pd.DataFrame:
+    def read_data(cls, reader: CsvReader) -> pd.DataFrame | None:
         return reader.pop_csv_block_as_df(sep="\t")
 
 
 @dataclass(frozen=True)
 class SpectrumTimeWavelengthData(TimeWavelengthData):
     @classmethod
-    def read_data(cls, reader) -> pd.DataFrame:
+    def read_data(cls, reader: CsvReader) -> pd.DataFrame | None:
         return reader.pop_line_as_df(sep="\t")
 
 
