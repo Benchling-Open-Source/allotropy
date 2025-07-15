@@ -735,47 +735,29 @@ class SpectrumTimeWavelengthData(TimeWavelengthData):
 class TimeRawData:
     wavelength_data: list[TimeWavelengthData]
 
-    @staticmethod
-    def create(reader: CsvReader, header: PlateHeader) -> TimeRawData:
+    @classmethod
+    def create(cls, reader: CsvReader, header: PlateHeader) -> TimeRawData:
         columns = assert_not_none(
             reader.pop_as_series(sep="\t"),
             msg="unable to find data columns for time block raw data.",
         )
-
         return TimeRawData(
             wavelength_data=[
-                TimeWavelengthData.create(
-                    reader,
-                    header,
-                    wavelength,
-                    columns,
-                )
+                cls.wavelength_data_type().create(reader, header, wavelength, columns)
                 for wavelength in header.wavelengths
             ]
         )
 
+    @classmethod
+    def wavelength_data_type(cls) -> type[TimeWavelengthData]:
+        return TimeWavelengthData
+
 
 @dataclass(frozen=True)
-class TimeSpectrumRawData:
-    wavelength_data: list[SpectrumTimeWavelengthData]
-
-    @staticmethod
-    def create(reader: CsvReader, header: PlateHeader) -> TimeSpectrumRawData:
-        columns = assert_not_none(
-            reader.pop_as_series(sep="\t"),
-            msg="unable to find data columns for time block raw data.",
-        )
-        wavelength_data = [
-            SpectrumTimeWavelengthData.create(
-                reader,
-                header,
-                wavelength,
-                columns,
-            )
-            for wavelength in header.wavelengths
-        ]
-
-        return TimeSpectrumRawData(wavelength_data=wavelength_data)
+class TimeSpectrumRawData(TimeRawData):
+    @classmethod
+    def wavelength_data_type(cls) -> type[TimeWavelengthData]:
+        return SpectrumTimeWavelengthData
 
 
 @dataclass(frozen=True)
