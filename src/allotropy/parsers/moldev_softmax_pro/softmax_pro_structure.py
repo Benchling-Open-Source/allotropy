@@ -697,9 +697,8 @@ class TimeWavelengthData:
     wavelength: float
     measurement_data: list[TimeMeasurementData]
 
-    @classmethod
+    @staticmethod
     def create(
-        cls,
         reader: CsvReader,
         header: PlateHeader,
         wavelength: float,
