@@ -170,18 +170,10 @@ def _create_spectrum_measurement(
 
 
 def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measurement]:
-
-    measurement_type = plate_block.measurement_type
     data_elements = list(plate_block.iter_data_elements(position))
 
     # Handle spectrum measurements - create single measurement with spectrum_data_cube
-    if measurement_type in (
-        MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM,
-        MeasurementType.EMISSION_FLUORESCENCE_CUBE_SPECTRUM,
-        MeasurementType.EXCITATION_FLUORESCENCE_CUBE_SPECTRUM,
-        MeasurementType.EMISSION_LUMINESCENCE_CUBE_SPECTRUM,
-        MeasurementType.EXCITATION_LUMINESCENCE_CUBE_SPECTRUM,
-    ):
+    if plate_block.measurement_type.is_spectrum:
         measurement = _create_spectrum_measurement(plate_block, data_elements)
         if not measurement:
             return []
@@ -189,7 +181,7 @@ def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measure
 
     return [
         Measurement(
-            type_=measurement_type,
+            type_=plate_block.measurement_type,
             identifier=data_element.uuid,
             absorbance=(
                 (
@@ -197,7 +189,7 @@ def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measure
                     if data_element.value is not None
                     else NEGATIVE_ZERO
                 )
-                if measurement_type == MeasurementType.ULTRAVIOLET_ABSORBANCE
+                if plate_block.measurement_type == MeasurementType.ULTRAVIOLET_ABSORBANCE
                 else None
             ),
             fluorescence=(
@@ -206,7 +198,7 @@ def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measure
                     if data_element.value is not None
                     else NEGATIVE_ZERO
                 )
-                if measurement_type == MeasurementType.FLUORESCENCE
+                if plate_block.measurement_type == MeasurementType.FLUORESCENCE
                 else None
             ),
             luminescence=(
@@ -215,7 +207,7 @@ def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measure
                     if data_element.value is not None
                     else NEGATIVE_ZERO
                 )
-                if measurement_type == MeasurementType.LUMINESCENCE
+                if plate_block.measurement_type == MeasurementType.LUMINESCENCE
                 else None
             ),
             profile_data_cube=_get_data_cube(plate_block, data_element),
@@ -301,13 +293,7 @@ def _get_calc_docs_data_sources(
 ) -> list[DataSource]:
     data_elements = list(plate_block.iter_data_elements(position))
 
-    if plate_block.measurement_type in (
-        MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM,
-        MeasurementType.EMISSION_FLUORESCENCE_CUBE_SPECTRUM,
-        MeasurementType.EXCITATION_FLUORESCENCE_CUBE_SPECTRUM,
-        MeasurementType.EMISSION_LUMINESCENCE_CUBE_SPECTRUM,
-        MeasurementType.EXCITATION_LUMINESCENCE_CUBE_SPECTRUM,
-    ):
+    if plate_block.measurement_type.is_spectrum:
         return [
             DataSource(
                 reference=Referenceable(data_elements[0].uuid),

@@ -488,7 +488,6 @@ class RawData:
 class PlateRawData(RawData):
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> PlateRawData:
-
         columns = assert_not_none(
             reader.pop_as_series(sep="\t"),
             msg="unable to find data columns for plate block raw data.",
@@ -566,7 +565,6 @@ class PlateRawData(RawData):
 class SpectrumRawPlateData(RawData):
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> SpectrumRawPlateData:
-
         columns = assert_not_none(
             reader.pop_as_series(sep="\t"),
             msg="unable to find data columns for plate block raw data.",
