@@ -189,7 +189,8 @@ def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measure
                     if data_element.value is not None
                     else NEGATIVE_ZERO
                 )
-                if plate_block.measurement_type == MeasurementType.ULTRAVIOLET_ABSORBANCE
+                if plate_block.measurement_type
+                == MeasurementType.ULTRAVIOLET_ABSORBANCE
                 else None
             ),
             fluorescence=(
