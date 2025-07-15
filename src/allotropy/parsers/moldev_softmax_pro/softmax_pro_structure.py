@@ -351,7 +351,7 @@ class PlateHeader:
     export_version: str
     export_format: str
     read_type: ReadType
-    data_type: str
+    data_type: DataType
     kinetic_points: int
     num_wavelengths: int
     wavelengths: list[float]
@@ -821,7 +821,7 @@ class TimeData:
         raw_data: TimeRawData | TimeSpectrumRawData | None = None
 
         # Read raw data if data_type is RAW or BOTH
-        if header.data_type in (DataType.RAW.value, DataType.BOTH.value):
+        if header.data_type in (DataType.RAW, DataType.BOTH):
             if header.read_type is ReadType.SPECTRUM:
                 raw_data = TimeSpectrumRawData.create(reader, header)
             else:
@@ -946,7 +946,7 @@ class PlateBlock(ABC, Block):
         return read_mode_to_measurement_type[self.header.read_mode]
 
     @classmethod
-    def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
+    def parse_header(cls, _: pd.Series[str]) -> PlateHeader:
         raise NotImplementedError
 
     @classmethod
@@ -956,7 +956,7 @@ class PlateBlock(ABC, Block):
             raise AllotropeConversionError(msg)
 
     @classmethod
-    def check_read_type(cls, read_type_raw: str) -> None:
+    def check_read_type(cls, read_type_raw: str) -> ReadType:
         if read_type_raw not in (
             ReadType.ENDPOINT.value,
             ReadType.KINETIC.value,
@@ -964,20 +964,22 @@ class PlateBlock(ABC, Block):
         ):
             msg = f"Only Endpoint, Spectrum or Kinetic measurements can be processed at this time, got: {read_type_raw}"
             raise AllotropeConversionError(msg)
+        return ReadType(read_type_raw)
 
     @classmethod
     def get_read_mode(cls, read_type: ReadType, read_mode_raw: str) -> str:
         return f"{'Kinetic ' if read_type is ReadType.KINETIC else ''}{read_mode_raw}"
 
     @classmethod
-    def check_data_type(cls, data_type: str) -> None:
-        if data_type not in (
+    def check_data_type(cls, data_type_raw: str) -> DataType:
+        if data_type_raw not in (
             DataType.RAW.value,
             DataType.BOTH.value,
             DataType.REDUCED.value,
         ):
-            msg = f"Unexpected data type: {data_type}, supported values are RAW, REDUCED, or BOTH."
+            msg = f"Unexpected data type: {data_type_raw}, supported values are RAW, REDUCED, or BOTH."
             raise AllotropeConversionError(msg)
+        return DataType(data_type_raw)
 
     @classmethod
     def check_num_wavelengths(
@@ -1042,7 +1044,7 @@ class FluorescencePlateBlock(PlateBlock):
             read_type_raw,
             read_mode_raw,
             raw_scan_position,
-            data_type,
+            data_type_raw,
             _,  # Pre-read, always FALSE
             kinetic_points_raw,
             read_time,  # read_time_or_scan_pattern
@@ -1069,9 +1071,8 @@ class FluorescencePlateBlock(PlateBlock):
         ] = header[:31]
 
         cls.check_export_version(export_version)
-        cls.check_read_type(read_type_raw)
-        read_type = ReadType(read_type_raw)
-        cls.check_data_type(data_type)
+        read_type = cls.check_read_type(read_type_raw)
+        data_type = cls.check_data_type(data_type_raw)
         if read_type is ReadType.SPECTRUM:
             msg = (
                 "Spectrum read type is not currently supported for fluorescence plates."
@@ -1163,7 +1164,7 @@ class LuminescencePlateBlock(PlateBlock):
             export_format,
             read_type_raw,
             read_mode_raw,
-            data_type,
+            data_type_raw,
             _,  # Pre-read, always FALSE
             kinetic_points_raw,
             read_time,  # read_time_or_scan_pattern
@@ -1190,9 +1191,8 @@ class LuminescencePlateBlock(PlateBlock):
         ] = header[:30]
 
         cls.check_export_version(export_version)
-        cls.check_read_type(read_type_raw)
-        read_type = ReadType(read_type_raw)
-        cls.check_data_type(data_type)
+        read_type = cls.check_read_type(read_type_raw)
+        data_type = cls.check_data_type(data_type_raw)
         if read_type is ReadType.SPECTRUM:
             msg = (
                 "Spectrum read type is not currently supported for luminescence plates."
@@ -1242,7 +1242,7 @@ class AbsorbancePlateBlock(PlateBlock):
             export_format,
             read_type_raw,
             read_mode_raw,
-            data_type,
+            data_type_raw,
             _,  # Pre-read, always FALSE
             kinetic_points_raw,
             read_time,  # read_time_or_scan_pattern
@@ -1260,9 +1260,8 @@ class AbsorbancePlateBlock(PlateBlock):
         ] = header[:21]
 
         cls.check_export_version(export_version)
-        cls.check_read_type(read_type_raw)
-        read_type = ReadType(read_type_raw)
-        cls.check_data_type(data_type)
+        read_type = cls.check_read_type(read_type_raw)
+        data_type = cls.check_data_type(data_type_raw)
 
         num_wavelengths = cls.get_num_wavelengths(num_wavelengths_raw)
         if read_type is ReadType.SPECTRUM:
