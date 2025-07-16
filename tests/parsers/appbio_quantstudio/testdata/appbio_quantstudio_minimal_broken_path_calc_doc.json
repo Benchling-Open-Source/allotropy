@@ -122,7 +122,11 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "RNaseP"
+                            "target DNA description": "RNaseP",
+                            "custom information document": {
+                                "Analysis Type": "Singleplex",
+                                "RQ Min/Max Confidence Level": 95.0
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example",
@@ -213,7 +217,7 @@
             "file name": "appbio_quantstudio_minimal_broken_path_calc_doc.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_broken_path_calc_doc.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.76",
+            "ASM converter version": "0.1.84",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },

@@ -115,7 +115,22 @@
                                         },
                                         "genotyping qPCR result": "Negative Control (NC)",
                                         "custom information document": {
-                                            "omit": false
+                                            "omit": false,
+                                            "Allele1 Amp Score": 0.0,
+                                            "Method": "Auto",
+                                            "Allele2 Ct Threshold": 0.132,
+                                            "Allele1 Cq Conf": 0.0,
+                                            "Allele2 Amp Score": 0.0,
+                                            "Allele2 Delta Rn": 0.029,
+                                            "Allele2 Baseline End": 39.0,
+                                            "Allele2 Ct": "Undetermined",
+                                            "Quality(%)": 100.0,
+                                            "SNP Assay Name": "CYP19_2",
+                                            "Allele2 Baseline Start": 3.0,
+                                            "Allele2 Cq Conf": 0.0,
+                                            "Allele2 Automatic Ct Threshold": "True",
+                                            "Allele2 Automatic Baseline": "True",
+                                            "Pass.Ref": 846041.75
                                         }
                                     }
                                 ]
@@ -147,7 +162,12 @@
                                 "well location identifier": "A1",
                                 "custom information document": {
                                     "well identifier": 1,
-                                    "sample color": "RGB(238,238,0)"
+                                    "sample color": "RGB(238,238,0)",
+                                    "Allele2 Quencher": "NFQ-MGB",
+                                    "Allele1 Color": "RGB(0,0,255)",
+                                    "SNP Assay Color": "RGB(176,23,31)",
+                                    "Allele1 Quencher": "NFQ-MGB",
+                                    "Allele2 Color": "RGB(0,139,69)"
                                 }
                             },
                             "processed data aggregate document": {
@@ -260,7 +280,7 @@
             "file name": "appbio_quantstudio_minimal_test03.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test03.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.76",
+            "ASM converter version": "0.1.84",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },

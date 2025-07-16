@@ -173,6 +173,7 @@ class MeasurementGroup:
     experimental_data_identifier: str
     well_volume: float
     analyst: str | None = None
+    custom_info: dict[str, Any] | None = None
 
     # Error document
     error_document: list[Error] | None = None
@@ -248,7 +249,7 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> QpcrDocumentItem:
         return QpcrDocumentItem(
             analyst=measurement_group.analyst,
-            measurement_aggregate_document=MeasurementAggregateDocument(
+            measurement_aggregate_document=add_custom_information_document(MeasurementAggregateDocument(
                 experimental_data_identifier=measurement_group.experimental_data_identifier,
                 experiment_type=metadata.experiment_type,
                 container_type=metadata.container_type.value,
@@ -265,7 +266,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 error_aggregate_document=self._get_error_aggregate_document(
                     measurement_group.error_document
                 ),
-            ),
+            ), measurement_group.custom_info or {}),
         )
 
     def _get_measurement_document_item(

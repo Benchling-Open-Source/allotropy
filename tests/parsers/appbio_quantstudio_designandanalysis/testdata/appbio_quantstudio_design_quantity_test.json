@@ -30,9 +30,9 @@
                                 "well location identifier": "K3",
                                 "custom information document": {
                                     "Amp Status": "Amp",
-                                    "Standard Deviation": 2.015234474408053,
-                                    "Standard Error": 0.15158309805899972,
                                     "Dye": "FAM",
+                                    "Standard Error": 0.15158309805899972,
+                                    "Standard Deviation": 2.015234474408053,
                                     "Omit": "False"
                                 }
                             },
@@ -211,9 +211,9 @@
                                 "well location identifier": "K3",
                                 "custom information document": {
                                     "Amp Status": "Amp",
-                                    "Standard Deviation": 0.44366910386407277,
-                                    "Standard Error": 0.02995508185430743,
                                     "Dye": "CY5",
+                                    "Standard Error": 0.02995508185430743,
+                                    "Standard Deviation": 0.44366910386407277,
                                     "Omit": "False"
                                 }
                             },
@@ -378,6 +378,11 @@
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "total measurement duration setting": "69 minutes 15 seconds",
+                        "Cover Temperature": 105.0,
+                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -410,9 +415,9 @@
                                 "well location identifier": "K4",
                                 "custom information document": {
                                     "Amp Status": "Amp",
-                                    "Standard Deviation": 2.015234474408053,
-                                    "Standard Error": 0.15158309805899972,
                                     "Dye": "FAM",
+                                    "Standard Error": 0.15158309805899972,
+                                    "Standard Deviation": 2.015234474408053,
                                     "Omit": "False"
                                 }
                             },
@@ -590,9 +595,9 @@
                                 "well location identifier": "K4",
                                 "custom information document": {
                                     "Amp Status": "Amp",
-                                    "Standard Deviation": 0.44366910386407277,
-                                    "Standard Error": 0.02995508185430743,
                                     "Dye": "CY5",
+                                    "Standard Error": 0.02995508185430743,
+                                    "Standard Deviation": 0.44366910386407277,
                                     "Omit": "False"
                                 }
                             },
@@ -754,6 +759,11 @@
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "total measurement duration setting": "69 minutes 15 seconds",
+                        "Cover Temperature": 105.0,
+                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -786,9 +796,9 @@
                                 "well location identifier": "L3",
                                 "custom information document": {
                                     "Amp Status": "Amp",
-                                    "Standard Deviation": 2.015234474408053,
-                                    "Standard Error": 0.15158309805899972,
                                     "Dye": "FAM",
+                                    "Standard Error": 0.15158309805899972,
+                                    "Standard Deviation": 2.015234474408053,
                                     "Omit": "False"
                                 }
                             },
@@ -968,9 +978,9 @@
                                 "well location identifier": "L3",
                                 "custom information document": {
                                     "Amp Status": "Amp",
-                                    "Standard Deviation": 0.44366910386407277,
-                                    "Standard Error": 0.02995508185430743,
                                     "Dye": "CY5",
+                                    "Standard Error": 0.02995508185430743,
+                                    "Standard Deviation": 0.44366910386407277,
                                     "Omit": "False"
                                 }
                             },
@@ -1135,6 +1145,11 @@
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "total measurement duration setting": "69 minutes 15 seconds",
+                        "Cover Temperature": 105.0,
+                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -1167,9 +1182,9 @@
                                 "well location identifier": "L4",
                                 "custom information document": {
                                     "Amp Status": "Amp",
-                                    "Standard Deviation": 2.015234474408053,
-                                    "Standard Error": 0.15158309805899972,
                                     "Dye": "FAM",
+                                    "Standard Error": 0.15158309805899972,
+                                    "Standard Deviation": 2.015234474408053,
                                     "Omit": "False"
                                 }
                             },
@@ -1348,9 +1363,9 @@
                                 "well location identifier": "L4",
                                 "custom information document": {
                                     "Amp Status": "Amp",
-                                    "Standard Deviation": 0.44366910386407277,
-                                    "Standard Error": 0.02995508185430743,
                                     "Dye": "CY5",
+                                    "Standard Error": 0.02995508185430743,
+                                    "Standard Deviation": 0.44366910386407277,
                                     "Omit": "False"
                                 }
                             },
@@ -1514,6 +1529,11 @@
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "total measurement duration setting": "69 minutes 15 seconds",
+                        "Cover Temperature": 105.0,
+                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -1547,9 +1567,9 @@
                                 "custom information document": {
                                     "quantity": 2.5,
                                     "Amp Status": "No Amp",
-                                    "Standard Deviation": 2.015234474408053,
-                                    "Standard Error": 0.15158309805899972,
                                     "Dye": "FAM",
+                                    "Standard Error": 0.15158309805899972,
+                                    "Standard Deviation": 2.015234474408053,
                                     "Omit": "False"
                                 }
                             },
@@ -1735,9 +1755,9 @@
                                 "custom information document": {
                                     "quantity": 2.5,
                                     "Amp Status": "No Amp",
-                                    "Standard Deviation": 0.44366910386407277,
-                                    "Standard Error": 0.02995508185430743,
                                     "Dye": "CY5",
+                                    "Standard Error": 0.02995508185430743,
+                                    "Standard Deviation": 0.44366910386407277,
                                     "Omit": "False"
                                 }
                             },
@@ -1905,6 +1925,11 @@
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "total measurement duration setting": "69 minutes 15 seconds",
+                        "Cover Temperature": 105.0,
+                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -1938,9 +1963,9 @@
                                 "custom information document": {
                                     "quantity": 2.5,
                                     "Amp Status": "No Amp",
-                                    "Standard Deviation": 2.015234474408053,
-                                    "Standard Error": 0.15158309805899972,
                                     "Dye": "FAM",
+                                    "Standard Error": 0.15158309805899972,
+                                    "Standard Deviation": 2.015234474408053,
                                     "Omit": "False"
                                 }
                             },
@@ -2119,9 +2144,9 @@
                                 "custom information document": {
                                     "quantity": 2.5,
                                     "Amp Status": "No Amp",
-                                    "Standard Deviation": 0.44366910386407277,
-                                    "Standard Error": 0.02995508185430743,
                                     "Dye": "CY5",
+                                    "Standard Error": 0.02995508185430743,
+                                    "Standard Deviation": 0.44366910386407277,
                                     "Omit": "False"
                                 }
                             },
@@ -2289,6 +2314,11 @@
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "total measurement duration setting": "69 minutes 15 seconds",
+                        "Cover Temperature": 105.0,
+                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -2322,9 +2352,9 @@
                                 "custom information document": {
                                     "quantity": 2.5,
                                     "Amp Status": "No Amp",
-                                    "Standard Deviation": 2.015234474408053,
-                                    "Standard Error": 0.15158309805899972,
                                     "Dye": "FAM",
+                                    "Standard Error": 0.15158309805899972,
+                                    "Standard Deviation": 2.015234474408053,
                                     "Omit": "False"
                                 }
                             },
@@ -2511,9 +2541,9 @@
                                 "custom information document": {
                                     "quantity": 2.5,
                                     "Amp Status": "No Amp",
-                                    "Standard Deviation": 0.44366910386407277,
-                                    "Standard Error": 0.02995508185430743,
                                     "Dye": "CY5",
+                                    "Standard Error": 0.02995508185430743,
+                                    "Standard Deviation": 0.44366910386407277,
                                     "Omit": "False"
                                 }
                             },
@@ -2684,6 +2714,11 @@
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "total measurement duration setting": "69 minutes 15 seconds",
+                        "Cover Temperature": 105.0,
+                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -2717,9 +2752,9 @@
                                 "custom information document": {
                                     "quantity": 2.5,
                                     "Amp Status": "No Amp",
-                                    "Standard Deviation": 2.015234474408053,
-                                    "Standard Error": 0.15158309805899972,
                                     "Dye": "FAM",
+                                    "Standard Error": 0.15158309805899972,
+                                    "Standard Deviation": 2.015234474408053,
                                     "Omit": "False"
                                 }
                             },
@@ -2904,9 +2939,9 @@
                                 "custom information document": {
                                     "quantity": 2.5,
                                     "Amp Status": "No Amp",
-                                    "Standard Deviation": 0.44366910386407277,
-                                    "Standard Error": 0.02995508185430743,
                                     "Dye": "CY5",
+                                    "Standard Error": 0.02995508185430743,
+                                    "Standard Deviation": 0.44366910386407277,
                                     "Omit": "False"
                                 }
                             },
@@ -3075,6 +3110,11 @@
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "total measurement duration setting": "69 minutes 15 seconds",
+                        "Cover Temperature": 105.0,
+                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -3107,9 +3147,9 @@
                                 "well location identifier": "O3",
                                 "custom information document": {
                                     "Amp Status": "No Amp",
-                                    "Standard Deviation": 2.015234474408053,
-                                    "Standard Error": 0.15158309805899972,
                                     "Dye": "FAM",
+                                    "Standard Error": 0.15158309805899972,
+                                    "Standard Deviation": 2.015234474408053,
                                     "Omit": "False"
                                 }
                             },
@@ -3291,9 +3331,9 @@
                                 "well location identifier": "O3",
                                 "custom information document": {
                                     "Amp Status": "No Amp",
-                                    "Standard Deviation": 0.44366910386407277,
-                                    "Standard Error": 0.02995508185430743,
                                     "Dye": "CY5",
+                                    "Standard Error": 0.02995508185430743,
+                                    "Standard Deviation": 0.44366910386407277,
                                     "Omit": "False"
                                 }
                             },
@@ -3463,6 +3503,11 @@
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "total measurement duration setting": "69 minutes 15 seconds",
+                        "Cover Temperature": 105.0,
+                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -3495,9 +3540,9 @@
                                 "well location identifier": "O4",
                                 "custom information document": {
                                     "Amp Status": "No Amp",
-                                    "Standard Deviation": 2.015234474408053,
-                                    "Standard Error": 0.15158309805899972,
                                     "Dye": "FAM",
+                                    "Standard Error": 0.15158309805899972,
+                                    "Standard Deviation": 2.015234474408053,
                                     "Omit": "False"
                                 }
                             },
@@ -3676,9 +3721,9 @@
                                 "well location identifier": "O4",
                                 "custom information document": {
                                     "Amp Status": "No Amp",
-                                    "Standard Deviation": 0.44366910386407277,
-                                    "Standard Error": 0.02995508185430743,
                                     "Dye": "CY5",
+                                    "Standard Error": 0.02995508185430743,
+                                    "Standard Deviation": 0.44366910386407277,
                                     "Omit": "False"
                                 }
                             },
@@ -3850,6 +3895,11 @@
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "total measurement duration setting": "69 minutes 15 seconds",
+                        "Cover Temperature": 105.0,
+                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -3882,9 +3932,9 @@
                                 "well location identifier": "P3",
                                 "custom information document": {
                                     "Amp Status": "No Amp",
-                                    "Standard Deviation": 2.015234474408053,
-                                    "Standard Error": 0.15158309805899972,
                                     "Dye": "FAM",
+                                    "Standard Error": 0.15158309805899972,
+                                    "Standard Deviation": 2.015234474408053,
                                     "Omit": "False"
                                 }
                             },
@@ -4064,9 +4114,9 @@
                                 "well location identifier": "P3",
                                 "custom information document": {
                                     "Amp Status": "No Amp",
-                                    "Standard Deviation": 0.44366910386407277,
-                                    "Standard Error": 0.02995508185430743,
                                     "Dye": "CY5",
+                                    "Standard Error": 0.02995508185430743,
+                                    "Standard Deviation": 0.44366910386407277,
                                     "Omit": "False"
                                 }
                             },
@@ -4235,6 +4285,11 @@
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "total measurement duration setting": "69 minutes 15 seconds",
+                        "Cover Temperature": 105.0,
+                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -4267,9 +4322,9 @@
                                 "well location identifier": "P4",
                                 "custom information document": {
                                     "Amp Status": "No Amp",
-                                    "Standard Deviation": 2.015234474408053,
-                                    "Standard Error": 0.15158309805899972,
                                     "Dye": "FAM",
+                                    "Standard Error": 0.15158309805899972,
+                                    "Standard Deviation": 2.015234474408053,
                                     "Omit": "False"
                                 }
                             },
@@ -4448,9 +4503,9 @@
                                 "well location identifier": "P4",
                                 "custom information document": {
                                     "Amp Status": "No Amp",
-                                    "Standard Deviation": 0.44366910386407277,
-                                    "Standard Error": 0.02995508185430743,
                                     "Dye": "CY5",
+                                    "Standard Error": 0.02995508185430743,
+                                    "Standard Deviation": 0.44366910386407277,
                                     "Omit": "False"
                                 }
                             },
@@ -4619,6 +4674,11 @@
                     "plate well count": {
                         "value": 384,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "total measurement duration setting": "69 minutes 15 seconds",
+                        "Cover Temperature": 105.0,
+                        "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
                     }
                 },
                 "analyst": "user"
@@ -5301,12 +5361,12 @@
             "product manufacturer": "ThermoFisher Scientific"
         },
         "custom information document": {
-            "Run Duration": "69 minutes 15 seconds",
             "Analysis Date/Time": "2024-12-07 04:56:35 PM EST",
+            "Cover Temperature": 105.0,
+            "Run Duration": "69 minutes 15 seconds",
+            "Exported By": "user",
             "Exported On": "2024-12-07 04:59:25 PM EST",
             "Sample Volume": 20.0,
-            "Exported By": "user",
-            "Cover Temperature": 105.0,
             "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
         }
     }

@@ -183,6 +183,11 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
                 _create_measurement(well, well_item, data)
                 for well_item in well.items.values()
             ],
+            custom_info={
+                "total measurement duration setting": header.extra_data.get("Run Duration"),
+                "Cover Temperature": header.extra_data.get("Cover Temperature"),
+                "Run Start Date/Time": header.extra_data.get("Run Start Date/Time"),
+            }
         )
         for well in data.wells.wells
     ]
