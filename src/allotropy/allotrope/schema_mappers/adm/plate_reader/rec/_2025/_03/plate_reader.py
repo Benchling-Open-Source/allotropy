@@ -99,6 +99,16 @@ class MeasurementType(Enum):
     EMISSION_LUMINESCENCE_CUBE_SPECTRUM = "EMISSION_LUMINESCENCE_CUBE_SPECTRUM"
     EXCITATION_LUMINESCENCE_CUBE_SPECTRUM = "EXCITATION_LUMINESCENCE_CUBE_SPECTRUM"
 
+    @property
+    def is_spectrum(self) -> bool:
+        return self in (
+            MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM,
+            MeasurementType.EMISSION_FLUORESCENCE_CUBE_SPECTRUM,
+            MeasurementType.EXCITATION_FLUORESCENCE_CUBE_SPECTRUM,
+            MeasurementType.EMISSION_LUMINESCENCE_CUBE_SPECTRUM,
+            MeasurementType.EXCITATION_LUMINESCENCE_CUBE_SPECTRUM,
+        )
+
 
 @dataclass(frozen=True)
 class ErrorDocument:
