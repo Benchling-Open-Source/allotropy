@@ -4,6 +4,7 @@ from dataclasses import dataclass
 import itertools
 from pathlib import Path
 import re
+from typing import Any
 
 import pandas as pd
 
@@ -39,7 +40,12 @@ from allotropy.parsers.utils.calculated_data_documents.definition import (
 )
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import assert_not_none, try_float
+from allotropy.parsers.utils.values import (
+    assert_not_none,
+    try_float,
+    try_non_nan_float_or_negative_zero,
+    try_non_nan_float_or_none,
+)
 
 
 @dataclass(frozen=True)
@@ -163,6 +169,7 @@ class Measurement:
         location = str(count_data.series.name)
         dilution_factor_data = results_data["Dilution Factor"]
         errors_data = results_data.get("Warnings/Errors")
+        measurement_identifier = random_uuid_str()
 
         if location not in dilution_factor_data.index:
             msg = f"Could not find 'Dilution Factor' data for: '{location}'."
@@ -177,31 +184,49 @@ class Measurement:
         )
         errors: list[Error] = []
         data_errors = cls._get_errors(errors_data, well_location) or []
-        for error in data_errors:
-            errors.append(Error(error=error))
+        for data_error in data_errors:
+            errors.append(Error(error=data_error))
 
         if dilution_factor_setting == NEGATIVE_ZERO:
             errors.append(
                 Error(error="Not reported in file", feature="dilution factor setting")
             )
 
-        def get_statistic_dimensions(analyte: str) -> list[StatisticDimension]:
-            return [
-                StatisticDimension(
-                    value=try_float(statistic_table.at[location, analyte], analyte),
-                    unit=statistic_conf.unit,
-                    statistic_datum_role=statistic_conf.role,
-                )
-                for section, statistic_conf in STATISTIC_SECTIONS_CONF.items()
-                if (statistic_table := results_data.get(section)) is not None
-            ]
+        def get_statistics_error(
+            raw_value: Any, analyte: str, role: str
+        ) -> Error | None:
+            """Check if the raw value is empty or NaN and return an Error if so."""
+            error = None
+            if raw_value == "":
+                error = "Not reported"
+            elif try_non_nan_float_or_none(raw_value) is None:
+                error = "NaN"
+            return Error(error=error, feature=f"{analyte} <{role}>") if error else None
 
-        measurement_id = random_uuid_str()
+        def get_statistic_dimensions(analyte: str) -> list[StatisticDimension]:
+            statistic_dimensions = []
+            for section, statistic_conf in STATISTIC_SECTIONS_CONF.items():
+                if (statistic_table := results_data.get(section)) is None:
+                    continue
+                raw_value = statistic_table.at[location, analyte]
+                role = statistic_conf.role
+                if error := get_statistics_error(raw_value, analyte, role.value):
+                    errors.append(error)
+                statistic_dimensions.append(
+                    StatisticDimension(
+                        value=try_non_nan_float_or_negative_zero(raw_value),
+                        unit=statistic_conf.unit,
+                        statistic_datum_role=role,
+                    )
+                )
+            return statistic_dimensions
+
         analytes = []
         calculated_data = []
-        for analyte in [
+        analyte_keys = [
             key for key in count_data.series.index if key not in metadata_keys
-        ]:
+        ]
+        for analyte in analyte_keys:
             analytes.append(
                 Analyte(
                     identifier=(analyte_identifier := random_uuid_str()),
@@ -217,14 +242,21 @@ class Measurement:
                 )
             )
 
-            calculated_data.extend(
-                [
+            for section_name, unit in CALCULATED_DATA_SECTIONS.items():
+                calculated_data_section = results_data.get(section_name, pd.DataFrame())
+                # Some sections don't include the location as an index, in those cases we cannot associate
+                # the calculated data with the measurement.
+                if location not in calculated_data_section.index:
+                    continue
+                raw_value = calculated_data_section.at[location, analyte]
+                if error := get_statistics_error(raw_value, analyte, section_name):
+                    errors.append(error)
+                calculated_data_id = random_uuid_str()
+                calculated_data.append(
                     CalculatedDocument(
-                        uuid=random_uuid_str(),
+                        uuid=calculated_data_id,
                         name=section_name,
-                        value=try_float(
-                            calculated_data_section.at[location, analyte], analyte
-                        ),
+                        value=try_non_nan_float_or_negative_zero(raw_value),
                         unit=unit,
                         data_sources=[
                             DataSource(
@@ -233,15 +265,10 @@ class Measurement:
                             )
                         ],
                     )
-                    for section_name, unit in CALCULATED_DATA_SECTIONS.items()
-                    if section_name in results_data
-                    and location
-                    in (calculated_data_section := results_data[section_name]).index
-                ]
-            )
+                )
 
         return Measurement(
-            identifier=measurement_id,
+            identifier=measurement_identifier,
             sample_identifier=count_data[str, "Sample"],
             location_identifier=location_id,
             dilution_factor_setting=dilution_factor_setting,
