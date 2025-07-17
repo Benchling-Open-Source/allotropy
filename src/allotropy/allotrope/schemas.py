@@ -1,9 +1,11 @@
+from collections.abc import Mapping
 import json
 from pathlib import Path
 from typing import Any
 
 from allotropy.allotrope.schema_parser.path_util import (
     get_full_schema_path,
+    get_schema_path_from_asm,
     get_schema_path_from_manifest,
     SHARED_SCHEMAS_DEFINITIONS_PATH,
 )
@@ -49,6 +51,10 @@ def get_schema(schema_path: Path) -> dict[str, Any]:
 
 def get_schema_from_manifest(manifest: str) -> dict[str, Any]:
     return get_schema(get_schema_path_from_manifest(manifest))
+
+
+def get_schema_from_asm(asm_dict: Mapping[str, Any]) -> dict[str, Any]:
+    return get_schema(get_schema_path_from_asm(asm_dict))
 
 
 def get_schema_from_model(model: Any) -> dict[str, Any]:
