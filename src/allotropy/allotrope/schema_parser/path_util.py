@@ -71,7 +71,7 @@ def get_schema_path_from_manifest(manifest: str) -> Path:
     return Path(f"adm/{match.groups()[0]}.schema.json")
 
 
-def get_schema_path_from_asm(asm_dict: dict[str, Any]) -> Path:
+def get_schema_path_from_asm(asm_dict: Mapping[str, Any]) -> Path:
     if "$asm.manifest" not in asm_dict:
         msg = "File is not valid ASM - missing $asm.manifest field"
         raise AllotropeValidationError(msg)
