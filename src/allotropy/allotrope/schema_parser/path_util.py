@@ -4,6 +4,8 @@ from pathlib import Path, PurePosixPath, PureWindowsPath
 import re
 from typing import Any
 
+from allotropy.exceptions import AllotropeValidationError
+
 ALLOTROPE_DIR: Path = Path(__file__).parent.parent
 ALLOTROPY_DIR: Path = ALLOTROPE_DIR.parent
 ROOT_DIR: Path = ALLOTROPE_DIR.parent.parent.parent
@@ -69,6 +71,16 @@ def get_schema_path_from_manifest(manifest: str) -> Path:
     return Path(f"adm/{match.groups()[0]}.schema.json")
 
 
+def get_schema_path_from_asm(asm_dict: dict[str, Any]) -> Path:
+    if "$asm.manifest" not in asm_dict:
+        msg = "File is not valid ASM - missing $asm.manifest field"
+        raise AllotropeValidationError(msg)
+    if not isinstance(asm_dict["$asm.manifest"], str):
+        msg = f"File is not valid ASM - $asm.manifest is not a string: {asm_dict['$asm.manifest']}"
+        raise AllotropeValidationError(msg)
+    return get_schema_path_from_manifest(asm_dict["$asm.manifest"])
+
+
 def get_schema_path_from_reference(reference: str) -> Path:
     ref_match = re.match(r"http://purl.allotrope.org/json-schemas/(.*)", reference)
     if not ref_match:
@@ -111,7 +123,7 @@ def get_import_path_from_path(model_path: Path) -> str:
 
 
 def get_model_class_from_schema(asm: Mapping[str, Any]) -> Any:
-    schema_path = get_schema_path_from_manifest(asm["$asm.manifest"])
+    schema_path = get_schema_path_from_asm(asm)
     model_path = get_model_path_from_schema_path(Path(schema_path))
     import_path = get_import_path_from_path(model_path)
     # NOTE: it is safe to assume that every schema module has Model, as we generate this code.
