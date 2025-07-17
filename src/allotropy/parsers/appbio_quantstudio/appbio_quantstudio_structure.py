@@ -210,7 +210,7 @@ class WellItem(Referenceable):
                 "sample color": data.get(str, "Sample Color"),
                 "biogroup color": data.get(str, "Biogroup Color"),
                 "target color": data.get(str, "Target Color"),
-                **data.get_unread()
+                **data.get_unread(),
             },
         )
 
