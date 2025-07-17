@@ -29,11 +29,12 @@
                                 "sample role type": "standard sample role",
                                 "well location identifier": "K3",
                                 "custom information document": {
-                                    "Amp Status": "Amp",
-                                    "Dye": "FAM",
                                     "Standard Error": 0.15158309805899972,
                                     "Standard Deviation": 2.015234474408053,
-                                    "Omit": "False"
+                                    "Dye": "FAM",
+                                    "Amp Status": "Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -53,6 +54,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 26,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -210,11 +215,12 @@
                                 "sample role type": "standard sample role",
                                 "well location identifier": "K3",
                                 "custom information document": {
-                                    "Amp Status": "Amp",
-                                    "Dye": "CY5",
                                     "Standard Error": 0.02995508185430743,
                                     "Standard Deviation": 0.44366910386407277,
-                                    "Omit": "False"
+                                    "Dye": "CY5",
+                                    "Amp Status": "Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -234,6 +240,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 26,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -414,11 +424,12 @@
                                 "sample role type": "standard sample role",
                                 "well location identifier": "K4",
                                 "custom information document": {
-                                    "Amp Status": "Amp",
-                                    "Dye": "FAM",
                                     "Standard Error": 0.15158309805899972,
                                     "Standard Deviation": 2.015234474408053,
-                                    "Omit": "False"
+                                    "Dye": "FAM",
+                                    "Amp Status": "Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -438,6 +449,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 24,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -594,11 +609,12 @@
                                 "sample role type": "standard sample role",
                                 "well location identifier": "K4",
                                 "custom information document": {
-                                    "Amp Status": "Amp",
-                                    "Dye": "CY5",
                                     "Standard Error": 0.02995508185430743,
                                     "Standard Deviation": 0.44366910386407277,
-                                    "Omit": "False"
+                                    "Dye": "CY5",
+                                    "Amp Status": "Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -618,6 +634,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 26,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -795,11 +815,12 @@
                                 "sample role type": "standard sample role",
                                 "well location identifier": "L3",
                                 "custom information document": {
-                                    "Amp Status": "Amp",
-                                    "Dye": "FAM",
                                     "Standard Error": 0.15158309805899972,
                                     "Standard Deviation": 2.015234474408053,
-                                    "Omit": "False"
+                                    "Dye": "FAM",
+                                    "Amp Status": "Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -819,6 +840,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 27,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -977,11 +1002,12 @@
                                 "sample role type": "standard sample role",
                                 "well location identifier": "L3",
                                 "custom information document": {
-                                    "Amp Status": "Amp",
-                                    "Dye": "CY5",
                                     "Standard Error": 0.02995508185430743,
                                     "Standard Deviation": 0.44366910386407277,
-                                    "Omit": "False"
+                                    "Dye": "CY5",
+                                    "Amp Status": "Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -1001,6 +1027,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 27,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1181,11 +1211,12 @@
                                 "sample role type": "standard sample role",
                                 "well location identifier": "L4",
                                 "custom information document": {
-                                    "Amp Status": "Amp",
-                                    "Dye": "FAM",
                                     "Standard Error": 0.15158309805899972,
                                     "Standard Deviation": 2.015234474408053,
-                                    "Omit": "False"
+                                    "Dye": "FAM",
+                                    "Amp Status": "Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -1205,6 +1236,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 25,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1362,11 +1397,12 @@
                                 "sample role type": "standard sample role",
                                 "well location identifier": "L4",
                                 "custom information document": {
-                                    "Amp Status": "Amp",
-                                    "Dye": "CY5",
                                     "Standard Error": 0.02995508185430743,
                                     "Standard Deviation": 0.44366910386407277,
-                                    "Omit": "False"
+                                    "Dye": "CY5",
+                                    "Amp Status": "Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -1386,6 +1422,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 27,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1566,11 +1606,12 @@
                                 "well location identifier": "M3",
                                 "custom information document": {
                                     "quantity": 2.5,
-                                    "Amp Status": "No Amp",
-                                    "Dye": "FAM",
                                     "Standard Error": 0.15158309805899972,
                                     "Standard Deviation": 2.015234474408053,
-                                    "Omit": "False"
+                                    "Dye": "FAM",
+                                    "Amp Status": "No Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -1590,6 +1631,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 39,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -1754,11 +1799,12 @@
                                 "well location identifier": "M3",
                                 "custom information document": {
                                     "quantity": 2.5,
-                                    "Amp Status": "No Amp",
-                                    "Dye": "CY5",
                                     "Standard Error": 0.02995508185430743,
                                     "Standard Deviation": 0.44366910386407277,
-                                    "Omit": "False"
+                                    "Dye": "CY5",
+                                    "Amp Status": "No Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -1778,6 +1824,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 39,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -1962,11 +2012,12 @@
                                 "well location identifier": "M4",
                                 "custom information document": {
                                     "quantity": 2.5,
-                                    "Amp Status": "No Amp",
-                                    "Dye": "FAM",
                                     "Standard Error": 0.15158309805899972,
                                     "Standard Deviation": 2.015234474408053,
-                                    "Omit": "False"
+                                    "Dye": "FAM",
+                                    "Amp Status": "No Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -1986,6 +2037,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 39,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -2143,11 +2198,12 @@
                                 "well location identifier": "M4",
                                 "custom information document": {
                                     "quantity": 2.5,
-                                    "Amp Status": "No Amp",
-                                    "Dye": "CY5",
                                     "Standard Error": 0.02995508185430743,
                                     "Standard Deviation": 0.44366910386407277,
-                                    "Omit": "False"
+                                    "Dye": "CY5",
+                                    "Amp Status": "No Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -2167,6 +2223,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 39,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -2351,11 +2411,12 @@
                                 "well location identifier": "N3",
                                 "custom information document": {
                                     "quantity": 2.5,
-                                    "Amp Status": "No Amp",
-                                    "Dye": "FAM",
                                     "Standard Error": 0.15158309805899972,
                                     "Standard Deviation": 2.015234474408053,
-                                    "Omit": "False"
+                                    "Dye": "FAM",
+                                    "Amp Status": "No Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -2375,6 +2436,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 39,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -2540,11 +2605,12 @@
                                 "well location identifier": "N3",
                                 "custom information document": {
                                     "quantity": 2.5,
-                                    "Amp Status": "No Amp",
-                                    "Dye": "CY5",
                                     "Standard Error": 0.02995508185430743,
                                     "Standard Deviation": 0.44366910386407277,
-                                    "Omit": "False"
+                                    "Dye": "CY5",
+                                    "Amp Status": "No Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -2564,6 +2630,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 39,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -2751,11 +2821,12 @@
                                 "well location identifier": "N4",
                                 "custom information document": {
                                     "quantity": 2.5,
-                                    "Amp Status": "No Amp",
-                                    "Dye": "FAM",
                                     "Standard Error": 0.15158309805899972,
                                     "Standard Deviation": 2.015234474408053,
-                                    "Omit": "False"
+                                    "Dye": "FAM",
+                                    "Amp Status": "No Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -2775,6 +2846,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 39,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -2938,11 +3013,12 @@
                                 "well location identifier": "N4",
                                 "custom information document": {
                                     "quantity": 2.5,
-                                    "Amp Status": "No Amp",
-                                    "Dye": "CY5",
                                     "Standard Error": 0.02995508185430743,
                                     "Standard Deviation": 0.44366910386407277,
-                                    "Omit": "False"
+                                    "Dye": "CY5",
+                                    "Amp Status": "No Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -2962,6 +3038,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 39,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -3146,11 +3226,12 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "O3",
                                 "custom information document": {
-                                    "Amp Status": "No Amp",
-                                    "Dye": "FAM",
                                     "Standard Error": 0.15158309805899972,
                                     "Standard Deviation": 2.015234474408053,
-                                    "Omit": "False"
+                                    "Dye": "FAM",
+                                    "Amp Status": "No Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -3170,6 +3251,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 39,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -3330,11 +3415,12 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "O3",
                                 "custom information document": {
-                                    "Amp Status": "No Amp",
-                                    "Dye": "CY5",
                                     "Standard Error": 0.02995508185430743,
                                     "Standard Deviation": 0.44366910386407277,
-                                    "Omit": "False"
+                                    "Dye": "CY5",
+                                    "Amp Status": "No Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -3354,6 +3440,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 39,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -3539,11 +3629,12 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "O4",
                                 "custom information document": {
-                                    "Amp Status": "No Amp",
-                                    "Dye": "FAM",
                                     "Standard Error": 0.15158309805899972,
                                     "Standard Deviation": 2.015234474408053,
-                                    "Omit": "False"
+                                    "Dye": "FAM",
+                                    "Amp Status": "No Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -3563,6 +3654,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 39,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -3720,11 +3815,12 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "O4",
                                 "custom information document": {
-                                    "Amp Status": "No Amp",
-                                    "Dye": "CY5",
                                     "Standard Error": 0.02995508185430743,
                                     "Standard Deviation": 0.44366910386407277,
-                                    "Omit": "False"
+                                    "Dye": "CY5",
+                                    "Amp Status": "No Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -3744,6 +3840,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 39,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -3931,11 +4031,12 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "P3",
                                 "custom information document": {
-                                    "Amp Status": "No Amp",
-                                    "Dye": "FAM",
                                     "Standard Error": 0.15158309805899972,
                                     "Standard Deviation": 2.015234474408053,
-                                    "Omit": "False"
+                                    "Dye": "FAM",
+                                    "Amp Status": "No Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -3955,6 +4056,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 39,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -4113,11 +4218,12 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "P3",
                                 "custom information document": {
-                                    "Amp Status": "No Amp",
-                                    "Dye": "CY5",
                                     "Standard Error": 0.02995508185430743,
                                     "Standard Deviation": 0.44366910386407277,
-                                    "Omit": "False"
+                                    "Dye": "CY5",
+                                    "Amp Status": "No Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -4137,6 +4243,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 39,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -4321,11 +4431,12 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "P4",
                                 "custom information document": {
-                                    "Amp Status": "No Amp",
-                                    "Dye": "FAM",
                                     "Standard Error": 0.15158309805899972,
                                     "Standard Deviation": 2.015234474408053,
-                                    "Omit": "False"
+                                    "Dye": "FAM",
+                                    "Amp Status": "No Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -4345,6 +4456,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 39,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -4502,11 +4617,12 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "P4",
                                 "custom information document": {
-                                    "Amp Status": "No Amp",
-                                    "Dye": "CY5",
                                     "Standard Error": 0.02995508185430743,
                                     "Standard Deviation": 0.44366910386407277,
-                                    "Omit": "False"
+                                    "Dye": "CY5",
+                                    "Amp Status": "No Amp",
+                                    "Omit": "False",
+                                    "sample volume setting": 20.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -4526,6 +4642,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 39,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2024-12-07 04:56:35 PM EST",
+                                                "Exported On": "2024-12-07 04:59:25 PM EST"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -5359,15 +5479,6 @@
             "equipment serial number": "123456789",
             "model number": "QuantStudio™ 7 Pro System",
             "product manufacturer": "ThermoFisher Scientific"
-        },
-        "custom information document": {
-            "Analysis Date/Time": "2024-12-07 04:56:35 PM EST",
-            "Cover Temperature": 105.0,
-            "Run Duration": "69 minutes 15 seconds",
-            "Exported By": "user",
-            "Exported On": "2024-12-07 04:59:25 PM EST",
-            "Sample Volume": 20.0,
-            "Run Start Date/Time": "2024-05-13 10:37:44 AM EDT"
         }
     }
 }

@@ -28,9 +28,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A1",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.95050048828125
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.95050048828125,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -50,6 +51,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 17,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -259,9 +264,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A2",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.95050048828125
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.95050048828125,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -281,6 +287,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -492,9 +502,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A3",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.04759216308594
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.04759216308594,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -514,6 +525,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 19,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -722,9 +737,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A4",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.04759216308594
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.04759216308594,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -744,6 +760,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -952,9 +972,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A5",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.89781188964844
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.89781188964844,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -974,6 +995,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 19,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1179,9 +1204,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A6",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.89781188964844
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.89781188964844,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -1201,6 +1227,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 17,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1407,9 +1437,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A7",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.98405456542969
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.98405456542969,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -1429,6 +1460,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 17,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1640,9 +1675,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A8",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.98405456542969
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.98405456542969,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -1662,6 +1698,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 16,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1875,9 +1915,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A9",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.99151611328125
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.99151611328125,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -1897,6 +1938,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2105,9 +2150,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A10",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.14775848388672
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.14775848388672,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -2127,6 +2173,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2338,9 +2388,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A11",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.0216293334961
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.0216293334961,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -2360,6 +2411,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2567,9 +2622,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "A12",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.0216293334961
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.0216293334961,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -2589,6 +2645,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 17,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2798,9 +2858,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B1",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.95050048828125
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.95050048828125,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -2820,6 +2881,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3029,9 +3094,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B2",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.79354858398438
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.79354858398438,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -3051,6 +3117,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3276,9 +3346,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B3",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.04759216308594
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.04759216308594,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -3298,6 +3369,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3507,9 +3582,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B4",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.04759216308594
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.04759216308594,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -3529,6 +3605,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3737,9 +3817,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B5",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.89781188964844
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.89781188964844,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -3759,6 +3840,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 17,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3967,9 +4052,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B6",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.89781188964844
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.89781188964844,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -3989,6 +4075,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4199,9 +4289,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B7",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.98405456542969
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.98405456542969,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -4221,6 +4312,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4431,9 +4526,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B8",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.98405456542969
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.98405456542969,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -4453,6 +4549,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4673,9 +4773,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B9",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.14775848388672
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.14775848388672,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -4695,6 +4796,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 19,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4901,9 +5006,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B10",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.99151611328125
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.99151611328125,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -4923,6 +5029,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -5130,9 +5240,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B11",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.0216293334961
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.0216293334961,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -5152,6 +5263,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -5359,9 +5474,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "B12",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.0216293334961
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.0216293334961,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -5381,6 +5497,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -5588,9 +5708,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C1",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.79354858398438
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.79354858398438,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -5610,6 +5731,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -5816,9 +5941,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C2",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.95050048828125
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.95050048828125,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -5838,6 +5964,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -6046,9 +6176,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C3",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.04759216308594
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.04759216308594,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -6068,6 +6199,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -6278,9 +6413,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C4",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.04759216308594
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.04759216308594,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -6300,6 +6436,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -6510,9 +6650,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C5",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.89781188964844
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.89781188964844,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -6532,6 +6673,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -6739,9 +6884,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C6",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.89781188964844
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.89781188964844,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -6761,6 +6907,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -6970,9 +7120,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C7",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.98405456542969
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.98405456542969,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -6992,6 +7143,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 16,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -7202,9 +7357,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C8",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.98405456542969
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.98405456542969,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -7224,6 +7380,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -7429,9 +7589,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C9",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.99151611328125
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.99151611328125,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -7451,6 +7612,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -7659,9 +7824,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C10",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.99151611328125
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.99151611328125,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -7681,6 +7847,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 16,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -7887,9 +8057,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C11",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.0216293334961
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.0216293334961,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -7909,6 +8080,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -8116,9 +8291,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "C12",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.0216293334961
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.0216293334961,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -8138,6 +8314,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 16,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -8347,9 +8527,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D1",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.95050048828125
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.95050048828125,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -8369,6 +8550,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -8576,9 +8761,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D2",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.95050048828125
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.95050048828125,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -8598,6 +8784,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -8806,9 +8996,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D3",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.04759216308594
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.04759216308594,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -8828,6 +9019,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 19,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -9036,9 +9231,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D4",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.04759216308594
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.04759216308594,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -9058,6 +9254,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -9267,9 +9467,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D5",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.89781188964844
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.89781188964844,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -9289,6 +9490,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -9494,9 +9699,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D6",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.05445098876953
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.05445098876953,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -9516,6 +9722,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 17,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -9724,9 +9934,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D7",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.98405456542969
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.98405456542969,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -9746,6 +9957,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 17,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -9953,9 +10168,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D8",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.98405456542969
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.98405456542969,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -9975,6 +10191,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -10183,9 +10403,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D9",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.99151611328125
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.99151611328125,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -10205,6 +10426,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 19,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -10417,9 +10642,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D10",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.99151611328125
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.99151611328125,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -10439,6 +10665,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 17,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -10646,9 +10876,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D11",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.0216293334961
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.0216293334961,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -10668,6 +10899,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -10874,9 +11109,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "D12",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.0216293334961
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.0216293334961,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -10896,6 +11132,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 17,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -11102,9 +11342,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "E1",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.95050048828125
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.95050048828125,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -11124,6 +11365,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 17,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -11331,9 +11576,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "E2",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.95050048828125
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.95050048828125,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -11353,6 +11599,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 17,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -11561,9 +11811,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "E3",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.04759216308594
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.04759216308594,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -11583,6 +11834,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -11790,9 +12045,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "E4",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.04759216308594
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.04759216308594,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -11812,6 +12068,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -12022,9 +12282,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "E5",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.05445098876953
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.05445098876953,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -12044,6 +12305,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -12250,9 +12515,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "E6",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.05445098876953
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.05445098876953,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -12272,6 +12538,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -12479,9 +12749,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "E7",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.98405456542969
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.98405456542969,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -12501,6 +12772,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -12706,9 +12981,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "E8",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.98405456542969
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.98405456542969,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -12728,6 +13004,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 17,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -12935,9 +13215,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "E9",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.99151611328125
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.99151611328125,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -12957,6 +13238,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -13166,9 +13451,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "E10",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.99151611328125
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.99151611328125,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -13188,6 +13474,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -13395,9 +13685,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "E11",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.0216293334961
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.0216293334961,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -13417,6 +13708,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 17,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -13621,9 +13916,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "E12",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.0216293334961
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.0216293334961,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -13643,6 +13939,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 19,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -13850,9 +14150,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "F1",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.95050048828125
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.95050048828125,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -13872,6 +14173,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 19,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -14081,9 +14386,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "F2",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.95050048828125
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.95050048828125,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -14103,6 +14409,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 19,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -14311,9 +14621,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "F3",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.04759216308594
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.04759216308594,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -14333,6 +14644,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -14540,9 +14855,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "F4",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.04759216308594
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.04759216308594,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -14562,6 +14878,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -14772,9 +15092,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "F5",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.05445098876953
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.05445098876953,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -14794,6 +15115,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 19,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -15001,9 +15326,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "F6",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.21109008789062
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.21109008789062,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -15023,6 +15349,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 19,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -15233,9 +15563,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "F7",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.98405456542969
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.98405456542969,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -15255,6 +15586,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -15459,9 +15794,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "F8",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.98405456542969
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.98405456542969,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -15481,6 +15817,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 17,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -15686,9 +16026,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "F9",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.99151611328125
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.99151611328125,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -15708,6 +16049,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -15915,9 +16260,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "F10",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.99151611328125
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.99151611328125,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -15937,6 +16283,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -16145,9 +16495,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "F11",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.0216293334961
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.0216293334961,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -16167,6 +16518,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -16374,9 +16729,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "F12",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.0216293334961
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.0216293334961,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -16396,6 +16752,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 17,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -16603,9 +16963,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "G1",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.10745239257812
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.10745239257812,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -16625,6 +16986,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -16832,9 +17197,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "G2",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.10745239257812
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.10745239257812,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -16854,6 +17220,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 19,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -17062,9 +17432,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "G3",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.20417785644531
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.20417785644531,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -17084,6 +17455,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -17291,9 +17666,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "G4",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.20417785644531
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.20417785644531,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -17313,6 +17689,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 19,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -17521,9 +17901,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "G5",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.21109008789062
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.21109008789062,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -17543,6 +17924,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -17749,9 +18134,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "G6",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.21109008789062
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.21109008789062,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -17771,6 +18157,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -17980,9 +18370,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "G7",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.98405456542969
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.98405456542969,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -18002,6 +18393,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -18207,9 +18602,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "G8",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.98405456542969
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.98405456542969,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -18229,6 +18625,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -18452,9 +18852,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "G9",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.14775848388672
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.14775848388672,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -18474,6 +18875,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 17,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -18682,9 +19087,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "G10",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.14775848388672
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.14775848388672,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -18704,6 +19110,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -18908,9 +19318,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "G11",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.17804718017578
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.17804718017578,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -18930,6 +19341,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -19140,9 +19555,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "G12",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.0216293334961
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.0216293334961,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -19162,6 +19578,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 19,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -19368,9 +19788,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "H1",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.10745239257812
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.10745239257812,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -19390,6 +19811,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 17,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -19593,9 +20018,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "H2",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.10745239257812
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.10745239257812,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -19615,6 +20041,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -19824,9 +20254,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "H3",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.20417785644531
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.20417785644531,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -19846,6 +20277,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -20053,9 +20488,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "H4",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.20417785644531
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.20417785644531,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -20075,6 +20511,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -20281,9 +20721,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "H5",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.21109008789062
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.21109008789062,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -20303,6 +20744,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -20511,9 +20956,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "H6",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.21109008789062
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.21109008789062,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -20533,6 +20979,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -20745,9 +21195,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "H7",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.45857238769531
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.45857238769531,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -20767,6 +21218,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 19,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -20971,9 +21426,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "H8",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 84.98405456542969
+                                    "Amp Status": "AMP",
+                                    "Tm1": 84.98405456542969,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -20993,6 +21449,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -21203,9 +21663,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "H9",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.14775848388672
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.14775848388672,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -21225,6 +21686,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -21432,9 +21897,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "H10",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.14775848388672
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.14775848388672,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -21454,6 +21920,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 18,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -21666,9 +22136,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "H11",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.17804718017578
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.17804718017578,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -21688,6 +22159,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 16,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -21893,9 +22368,10 @@
                                 "sample role type": "unknown sample role",
                                 "well location identifier": "H12",
                                 "custom information document": {
-                                    "Amp Status": "AMP",
                                     "Omit": "FALSE",
-                                    "Tm1": 85.17804718017578
+                                    "Amp Status": "AMP",
+                                    "Tm1": 85.17804718017578,
+                                    "sample volume setting": 10.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -21915,6 +22391,10 @@
                                             "baseline determination end cycle setting": {
                                                 "value": 19,
                                                 "unit": "#"
+                                            },
+                                            "custom information document": {
+                                                "data processing time": "2023-12-19 04:04:18 PM EST",
+                                                "Exported On": "2023-12-19 04:04:25 PM EST"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -22114,15 +22594,9 @@
             "product manufacturer": "ThermoFisher Scientific"
         },
         "custom information document": {
-            "Cover Temperature": 105.0,
-            "Exported On": "2023-12-19 04:04:25 PM EST",
-            "Melt Stage Number": 3.0,
-            "Run Start Date/Time": "2019-03-19 04:06:56 AM EDT",
-            "Sample Volume": 10.0,
-            "Analysis Date/Time": "2023-12-19 04:04:18 PM EST",
             "Block serial number": 2778219020021.0,
-            "Run Duration": "40 minutes 44 seconds",
-            "Reduce dye signal crosstalk by algorithm": "No (Default)"
+            "Reduce dye signal crosstalk by algorithm": "No (Default)",
+            "Melt Stage Number": 3.0
         }
     }
 }
