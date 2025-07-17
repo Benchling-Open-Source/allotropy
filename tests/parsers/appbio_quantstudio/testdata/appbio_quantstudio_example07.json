@@ -198,8 +198,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -245,7 +245,8 @@
                                 "well location identifier": "A2",
                                 "custom information document": {
                                     "well identifier": 2,
-                                    "target color": "RGB(176,23,31)"
+                                    "target color": "RGB(176,23,31)",
+                                    "Quantity": 312.5
                                 }
                             },
                             "processed data aggregate document": {
@@ -408,8 +409,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -455,7 +456,8 @@
                                 "well location identifier": "A3",
                                 "custom information document": {
                                     "well identifier": 3,
-                                    "target color": "RGB(176,23,31)"
+                                    "target color": "RGB(176,23,31)",
+                                    "Quantity": 625.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -617,8 +619,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -664,7 +666,8 @@
                                 "well location identifier": "A4",
                                 "custom information document": {
                                     "well identifier": 4,
-                                    "target color": "RGB(176,23,31)"
+                                    "target color": "RGB(176,23,31)",
+                                    "Quantity": 1250.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -826,8 +829,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -873,7 +876,8 @@
                                 "well location identifier": "A5",
                                 "custom information document": {
                                     "well identifier": 5,
-                                    "target color": "RGB(176,23,31)"
+                                    "target color": "RGB(176,23,31)",
+                                    "Quantity": 2500.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -1038,8 +1042,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -1085,7 +1089,8 @@
                                 "well location identifier": "A6",
                                 "custom information document": {
                                     "well identifier": 6,
-                                    "target color": "RGB(176,23,31)"
+                                    "target color": "RGB(176,23,31)",
+                                    "Quantity": 5000.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -1244,8 +1249,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -1455,8 +1460,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -1502,7 +1507,8 @@
                                 "well location identifier": "A8",
                                 "custom information document": {
                                     "well identifier": 8,
-                                    "target color": "RGB(0,0,255)"
+                                    "target color": "RGB(0,0,255)",
+                                    "Quantity": 156.25
                                 }
                             },
                             "processed data aggregate document": {
@@ -1667,8 +1673,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -1714,7 +1720,8 @@
                                 "well location identifier": "A9",
                                 "custom information document": {
                                     "well identifier": 9,
-                                    "target color": "RGB(0,0,255)"
+                                    "target color": "RGB(0,0,255)",
+                                    "Quantity": 312.5
                                 }
                             },
                             "processed data aggregate document": {
@@ -1880,8 +1887,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -1927,7 +1934,8 @@
                                 "well location identifier": "A10",
                                 "custom information document": {
                                     "well identifier": 10,
-                                    "target color": "RGB(0,0,255)"
+                                    "target color": "RGB(0,0,255)",
+                                    "Quantity": 625.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -2095,8 +2103,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -2142,7 +2150,8 @@
                                 "well location identifier": "A11",
                                 "custom information document": {
                                     "well identifier": 11,
-                                    "target color": "RGB(0,0,255)"
+                                    "target color": "RGB(0,0,255)",
+                                    "Quantity": 1250.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -2305,8 +2314,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -2352,7 +2361,8 @@
                                 "well location identifier": "A12",
                                 "custom information document": {
                                     "well identifier": 12,
-                                    "target color": "RGB(0,0,255)"
+                                    "target color": "RGB(0,0,255)",
+                                    "Quantity": 2500.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -2513,8 +2523,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -2728,8 +2738,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -2775,7 +2785,8 @@
                                 "well location identifier": "B2",
                                 "custom information document": {
                                     "well identifier": 14,
-                                    "target color": "RGB(176,23,31)"
+                                    "target color": "RGB(176,23,31)",
+                                    "Quantity": 312.5
                                 }
                             },
                             "processed data aggregate document": {
@@ -2938,8 +2949,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -2985,7 +2996,8 @@
                                 "well location identifier": "B3",
                                 "custom information document": {
                                     "well identifier": 15,
-                                    "target color": "RGB(176,23,31)"
+                                    "target color": "RGB(176,23,31)",
+                                    "Quantity": 625.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -3146,8 +3158,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -3193,7 +3205,8 @@
                                 "well location identifier": "B4",
                                 "custom information document": {
                                     "well identifier": 16,
-                                    "target color": "RGB(176,23,31)"
+                                    "target color": "RGB(176,23,31)",
+                                    "Quantity": 1250.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -3353,8 +3366,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -3400,7 +3413,8 @@
                                 "well location identifier": "B5",
                                 "custom information document": {
                                     "well identifier": 17,
-                                    "target color": "RGB(176,23,31)"
+                                    "target color": "RGB(176,23,31)",
+                                    "Quantity": 2500.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -3562,8 +3576,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -3609,7 +3623,8 @@
                                 "well location identifier": "B6",
                                 "custom information document": {
                                     "well identifier": 18,
-                                    "target color": "RGB(176,23,31)"
+                                    "target color": "RGB(176,23,31)",
+                                    "Quantity": 5000.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -3769,8 +3784,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -3981,8 +3996,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -4028,7 +4043,8 @@
                                 "well location identifier": "B8",
                                 "custom information document": {
                                     "well identifier": 20,
-                                    "target color": "RGB(0,0,255)"
+                                    "target color": "RGB(0,0,255)",
+                                    "Quantity": 156.25
                                 }
                             },
                             "processed data aggregate document": {
@@ -4194,8 +4210,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -4241,7 +4257,8 @@
                                 "well location identifier": "B9",
                                 "custom information document": {
                                     "well identifier": 21,
-                                    "target color": "RGB(0,0,255)"
+                                    "target color": "RGB(0,0,255)",
+                                    "Quantity": 312.5
                                 }
                             },
                             "processed data aggregate document": {
@@ -4405,8 +4422,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -4452,7 +4469,8 @@
                                 "well location identifier": "B10",
                                 "custom information document": {
                                     "well identifier": 22,
-                                    "target color": "RGB(0,0,255)"
+                                    "target color": "RGB(0,0,255)",
+                                    "Quantity": 625.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -4616,8 +4634,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -4663,7 +4681,8 @@
                                 "well location identifier": "B11",
                                 "custom information document": {
                                     "well identifier": 23,
-                                    "target color": "RGB(0,0,255)"
+                                    "target color": "RGB(0,0,255)",
+                                    "Quantity": 1250.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -4828,8 +4847,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -4875,7 +4894,8 @@
                                 "well location identifier": "B12",
                                 "custom information document": {
                                     "well identifier": 24,
-                                    "target color": "RGB(0,0,255)"
+                                    "target color": "RGB(0,0,255)",
+                                    "Quantity": 2500.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -5038,8 +5058,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -5247,8 +5267,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -5294,7 +5314,8 @@
                                 "well location identifier": "C2",
                                 "custom information document": {
                                     "well identifier": 26,
-                                    "target color": "RGB(176,23,31)"
+                                    "target color": "RGB(176,23,31)",
+                                    "Quantity": 312.5
                                 }
                             },
                             "processed data aggregate document": {
@@ -5456,8 +5477,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -5503,7 +5524,8 @@
                                 "well location identifier": "C3",
                                 "custom information document": {
                                     "well identifier": 27,
-                                    "target color": "RGB(176,23,31)"
+                                    "target color": "RGB(176,23,31)",
+                                    "Quantity": 625.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -5666,8 +5688,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -5713,7 +5735,8 @@
                                 "well location identifier": "C4",
                                 "custom information document": {
                                     "well identifier": 28,
-                                    "target color": "RGB(176,23,31)"
+                                    "target color": "RGB(176,23,31)",
+                                    "Quantity": 1250.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -5873,8 +5896,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -5920,7 +5943,8 @@
                                 "well location identifier": "C5",
                                 "custom information document": {
                                     "well identifier": 29,
-                                    "target color": "RGB(176,23,31)"
+                                    "target color": "RGB(176,23,31)",
+                                    "Quantity": 2500.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -6083,8 +6107,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -6130,7 +6154,8 @@
                                 "well location identifier": "C6",
                                 "custom information document": {
                                     "well identifier": 30,
-                                    "target color": "RGB(176,23,31)"
+                                    "target color": "RGB(176,23,31)",
+                                    "Quantity": 5000.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -6289,8 +6314,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -6501,8 +6526,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -6548,7 +6573,8 @@
                                 "well location identifier": "C8",
                                 "custom information document": {
                                     "well identifier": 32,
-                                    "target color": "RGB(0,0,255)"
+                                    "target color": "RGB(0,0,255)",
+                                    "Quantity": 156.25
                                 }
                             },
                             "processed data aggregate document": {
@@ -6713,8 +6739,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -6760,7 +6786,8 @@
                                 "well location identifier": "C9",
                                 "custom information document": {
                                     "well identifier": 33,
-                                    "target color": "RGB(0,0,255)"
+                                    "target color": "RGB(0,0,255)",
+                                    "Quantity": 312.5
                                 }
                             },
                             "processed data aggregate document": {
@@ -6923,8 +6950,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -6970,7 +6997,8 @@
                                 "well location identifier": "C10",
                                 "custom information document": {
                                     "well identifier": 34,
-                                    "target color": "RGB(0,0,255)"
+                                    "target color": "RGB(0,0,255)",
+                                    "Quantity": 625.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -7133,8 +7161,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -7180,7 +7208,8 @@
                                 "well location identifier": "C11",
                                 "custom information document": {
                                     "well identifier": 35,
-                                    "target color": "RGB(0,0,255)"
+                                    "target color": "RGB(0,0,255)",
+                                    "Quantity": 1250.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -7343,8 +7372,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -7390,7 +7419,8 @@
                                 "well location identifier": "C12",
                                 "custom information document": {
                                     "well identifier": 36,
-                                    "target color": "RGB(0,0,255)"
+                                    "target color": "RGB(0,0,255)",
+                                    "Quantity": 2500.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -7553,8 +7583,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -7763,8 +7793,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -7975,8 +8005,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -8186,8 +8216,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -8394,8 +8424,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -8603,8 +8633,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -8813,8 +8843,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -9023,8 +9053,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -9234,8 +9264,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -9443,8 +9473,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -9651,8 +9681,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -9860,8 +9890,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -10072,8 +10102,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -10284,8 +10314,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -10491,8 +10521,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -10697,8 +10727,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -10907,8 +10937,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -11116,8 +11146,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -11325,8 +11355,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -11534,8 +11564,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -11744,8 +11774,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -11950,8 +11980,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -12161,8 +12191,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -12370,8 +12400,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -12576,8 +12606,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -12786,8 +12816,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -12995,8 +13025,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -13203,8 +13233,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -13411,8 +13441,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -13621,8 +13651,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -13829,8 +13859,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -14037,8 +14067,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -14246,8 +14276,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -14453,8 +14483,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -14661,8 +14691,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -14873,8 +14903,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -15083,8 +15113,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -15294,8 +15324,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -15505,8 +15535,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -15715,8 +15745,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -15924,8 +15954,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -16136,8 +16166,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -16343,8 +16373,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -16553,8 +16583,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -16759,8 +16789,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -16966,8 +16996,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -17173,8 +17203,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -17378,8 +17408,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -17587,8 +17617,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -17801,8 +17831,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -18012,8 +18042,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -18224,8 +18254,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -18437,8 +18467,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -18648,8 +18678,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -18861,8 +18891,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -19072,8 +19102,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -19284,8 +19314,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -19497,8 +19527,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -19711,8 +19741,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -19920,8 +19950,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -20129,8 +20159,8 @@
                                 }
                             },
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
