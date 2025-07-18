@@ -59,3 +59,31 @@ class AgilentGen5Reader:
             lines = list(plate_reader.pop_until_empty())
             self.sections[lines[0].split("\t")[0].strip(":")] = lines
             plate_reader.drop_empty()
+
+    def get_required_section(self, section_name: str) -> list[str]:
+        """Get a required section, raises error if not found."""
+        section = self.sections.get(section_name)
+        if section is None:
+            msg = f"Required section '{section_name}' not found."
+            raise AllotropeConversionError(msg)
+        return section
+
+    @property
+    def procedure_details(self) -> list[str]:
+        return self.get_required_section("Procedure Details")
+
+    @property
+    def layout_section(self) -> list[str] | None:
+        return self.sections.get("Layout")
+
+    @property
+    def wavelength_section(self) -> list[str] | None:
+        return self.sections.get("Wavelength")
+
+    @property
+    def time_section(self) -> list[str] | None:
+        return self.sections.get("Time")
+
+    @property
+    def actual_temperature_section(self) -> list[str] | None:
+        return self.sections.get("Actual Temperature")
