@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from abc import ABC, abstractmethod
 from collections import defaultdict
 from dataclasses import dataclass
 from io import StringIO
@@ -7,6 +8,7 @@ import math
 from pathlib import Path
 import re
 from typing import Any
+from typing import cast
 
 import pandas as pd
 
@@ -330,6 +332,33 @@ class KineticData:
         )
 
 
+@dataclass
+class Gen5DataContext:
+    header_data: HeaderData
+    read_data: list[ReadData]
+    kinetic_data: KineticData | None
+    results_section: list[str]
+    sample_identifiers: dict[str, str]
+    concentration_values: dict[str, float | None]
+    actual_temperature: float | None
+    kinetic_measurements: dict[str, list[float | None]]
+    kinetic_elapsed_time: list[float]
+    kinetic_errors: dict[str, list[ErrorDocument]]
+    wavelength_section: list[str] | None
+
+    @property
+    def is_spectral(self) -> bool:
+        return bool(self.read_data and self.read_data[0].read_type == ReadType.SPECTRUM)
+
+    @property
+    def has_kinetic_data(self) -> bool:
+        return self.kinetic_data is not None
+
+    @property
+    def has_kinetic_measurements(self) -> bool:
+        return bool(self.kinetic_measurements and self.kinetic_elapsed_time)
+
+
 @dataclass(frozen=True)
 class ReadData:
     read_mode: ReadMode
@@ -448,66 +477,123 @@ class ReadData:
     def _get_measurement_labels(
         cls, device_control_data: DeviceControlData, read_mode: str, read_type: str
     ) -> tuple[list[str], dict[str, set[str]]]:
+        """Get measurement labels and aliases for the given read mode."""
         step_label = device_control_data.step_label
         label_prefix = f"{step_label}:" if step_label else ""
-        measurement_labels = []
-        # Some measurement labels may be reported in more than one format in the result rows, e.g.
-        # fluorescence measurements may include bandwidths, or not: 360/40,460/40 or 360,460.
-        label_aliases: dict[str, set[str]] = {}
+
         if read_mode == ReadMode.ABSORBANCE:
-            measurement_labels = cls._get_absorbance_measurement_labels(
-                label_prefix, device_control_data
+            return cls._get_absorbance_labels(
+                label_prefix, device_control_data, read_type
             )
-            if not measurement_labels and read_type == ReadType.SPECTRUM:
-                measurement_labels = [f"{step_label}:Spectrum"]
+        elif read_mode == ReadMode.FLUORESCENCE:
+            return cls._get_fluorescence_labels(label_prefix, device_control_data)
+        elif read_mode == ReadMode.LUMINESCENCE:
+            return cls._get_luminescence_labels(label_prefix, device_control_data)
+        else:
+            return [], {}
 
-        if read_mode == ReadMode.FLUORESCENCE:
-            excitations: list[str] = (
-                device_control_data.get_list(EXCITATION_KEY)
-                or device_control_data.get_list(FIXED_EXCITATION_KEY)
-                or device_control_data.get_list(EXCITATION_START_KEY)
+    @classmethod
+    def _get_absorbance_labels(
+        cls, label_prefix: str, device_control_data: DeviceControlData, read_type: str
+    ) -> tuple[list[str], dict[str, set[str]]]:
+        """Get measurement labels for absorbance measurements."""
+        measurement_labels = cls._get_absorbance_measurement_labels(
+            label_prefix, device_control_data
+        )
+        if not measurement_labels and read_type == ReadType.SPECTRUM:
+            measurement_labels = [f"{label_prefix.rstrip(':')}:Spectrum"]
+        return measurement_labels, {}
+
+    @classmethod
+    def _get_fluorescence_labels(
+        cls, label_prefix: str, device_control_data: DeviceControlData
+    ) -> tuple[list[str], dict[str, set[str]]]:
+        """Get measurement labels for fluorescence measurements."""
+        excitations, emissions = cls._get_excitation_emission_data(device_control_data)
+
+        if not excitations or not emissions:
+            return ["Alpha"], {}
+
+        measurement_labels = [
+            f"{label_prefix}{excitation},{emission}"
+            for excitation, emission in zip(excitations, emissions, strict=True)
+        ]
+
+        if device_control_data.is_polarization:
+            return cls._handle_polarization_labels(measurement_labels)
+        else:
+            return cls._create_fluorescence_aliases(
+                label_prefix, excitations, emissions
             )
-            emissions: list[str] = (
-                device_control_data.get_list(EMISSION_KEY)
-                or device_control_data.get_list(FIXED_EMISSION_KEY)
-                or device_control_data.get_list(EMISSION_START_KEY)
+
+    @classmethod
+    def _get_luminescence_labels(
+        cls, label_prefix: str, device_control_data: DeviceControlData
+    ) -> tuple[list[str], dict[str, set[str]]]:
+        """Get measurement labels for luminescence measurements."""
+        emissions = (
+            device_control_data.get_list(EMISSION_KEY)
+            or device_control_data.get_list(FIXED_EMISSION_KEY)
+            or device_control_data.get_list(EMISSION_START_KEY)
+        )
+
+        measurement_labels = []
+        for emission in emissions:
+            label = "Lum" if emission in NAN_EMISSION_EXCITATION else emission
+            measurement_labels.append(f"{label_prefix}{label}")
+
+        return measurement_labels, {}
+
+    @classmethod
+    def _get_excitation_emission_data(
+        cls, device_control_data: DeviceControlData
+    ) -> tuple[list[str], list[str]]:
+        """Extract excitation and emission data from device control data."""
+        excitations = (
+            device_control_data.get_list(EXCITATION_KEY)
+            or device_control_data.get_list(FIXED_EXCITATION_KEY)
+            or device_control_data.get_list(EXCITATION_START_KEY)
+        )
+        emissions = (
+            device_control_data.get_list(EMISSION_KEY)
+            or device_control_data.get_list(FIXED_EMISSION_KEY)
+            or device_control_data.get_list(EMISSION_START_KEY)
+        )
+        return excitations, emissions
+
+    @classmethod
+    def _handle_polarization_labels(
+        cls, measurement_labels: list[str]
+    ) -> tuple[list[str], dict[str, set[str]]]:
+        """Handle polarization measurement labels."""
+        if len(measurement_labels) != 2:
+            msg = "Expected the Fluorescence Polarization read mode to contain exactly 2 filter sets."
+            raise AllotropeConversionError(msg)
+
+        polarization_labels = [
+            f"{label} [{light_direction}]"
+            for label, light_direction in zip(
+                measurement_labels, LIGHT_DIRECTIONS, strict=True
             )
+        ]
+        return polarization_labels, {}
 
-            measurement_labels = [
-                f"{label_prefix}{excitation},{emission}"
-                for excitation, emission in zip(excitations, emissions, strict=True)
-            ]
-            if device_control_data.is_polarization:
-                if len(measurement_labels) != 2:
-                    msg = "Expected the Fluorescence Polarization read mode to contain exactly 2 filter sets."
-                    raise AllotropeConversionError(msg)
-                measurement_labels = [
-                    f"{label} [{light_direction}]"
-                    for label, light_direction in zip(
-                        measurement_labels, LIGHT_DIRECTIONS, strict=True
-                    )
-                ]
-                label_aliases = {}
-            else:
-                label_aliases = {
-                    f"{label_prefix}{excitation},{emission}": {
-                        f"{label_prefix}{excitation.split('/')[0]},{emission.split('/')[0]}"
-                    }
-                    for excitation, emission in zip(excitations, emissions, strict=True)
-                }
+    @classmethod
+    def _create_fluorescence_aliases(
+        cls, label_prefix: str, excitations: list[str], emissions: list[str]
+    ) -> tuple[list[str], dict[str, set[str]]]:
+        """Create fluorescence measurement labels and their aliases."""
+        measurement_labels = [
+            f"{label_prefix}{excitation},{emission}"
+            for excitation, emission in zip(excitations, emissions, strict=True)
+        ]
 
-            if not measurement_labels:
-                measurement_labels = ["Alpha"]
-
-        if read_mode == ReadMode.LUMINESCENCE:
-            emissions = (
-                device_control_data.get_list(EMISSION_KEY)
-                or device_control_data.get_list(FIXED_EMISSION_KEY)
-                or device_control_data.get_list(EMISSION_START_KEY)
-            )
-            for emission in emissions:
-                label = "Lum" if emission in NAN_EMISSION_EXCITATION else emission
-                measurement_labels.append(f"{label_prefix}{label}")
+        label_aliases = {
+            f"{label_prefix}{excitation},{emission}": {
+                f"{label_prefix}{excitation.split('/')[0]},{emission.split('/')[0]}"
+            }
+            for excitation, emission in zip(excitations, emissions, strict=True)
+        }
 
         return measurement_labels, label_aliases
 
@@ -538,68 +624,113 @@ class ReadData:
         device_control_data: DeviceControlData,
         read_mode: ReadMode,
     ) -> dict[str, FilterSet]:
-        filter_data: dict[str, FilterSet] = {}
         if read_mode == ReadMode.ABSORBANCE:
-            return filter_data
+            return {}
 
-        emissions = device_control_data.get_list(EMISSION_KEY)
-        excitations = device_control_data.get_list(EXCITATION_KEY)
-        fixed_emissions = device_control_data.get_list(FIXED_EMISSION_KEY)
-        fixed_excitations = device_control_data.get_list(FIXED_EXCITATION_KEY)
-        emission_start = device_control_data.get_list(EMISSION_START_KEY)
-        excitation_start = device_control_data.get_list(EXCITATION_START_KEY)
-        mirrors = device_control_data.get_list(MIRROR_KEY)
-        optics = device_control_data.get_list(OPTICS_KEY)
-        gains = device_control_data.get_list(GAIN_KEY)
+        filter_data_extractor = cls._FilterDataExtractor(device_control_data, read_mode)
+        filter_data = cls._create_filter_sets_for_labels(
+            measurement_labels, filter_data_extractor, device_control_data
+        )
 
-        if len(measurement_labels) != len(gains):
-            msg = f"Expected the number of measurement labels: {measurement_labels} to match the number of gains: {gains}."
-            raise AllotropeConversionError(msg)
-
-        for idx, label in enumerate(measurement_labels):
-            mirror = None
-            if mirrors and read_mode == ReadMode.FLUORESCENCE:
-                mirror = mirrors[idx]
-
-            # Logic to determine which emission/excitation value to use
-            excitation = None
-            if idx < len(excitations) and excitations:
-                excitation = excitations[idx]
-            elif idx < len(fixed_excitations) and fixed_excitations:
-                excitation = fixed_excitations[idx]
-            elif idx < len(excitation_start) and excitation_start:
-                excitation = excitation_start[idx]
-
-            emission = None
-            if idx < len(emissions) and emissions:
-                emission = emissions[idx]
-            elif idx < len(fixed_emissions) and fixed_emissions:
-                emission = fixed_emissions[idx]
-            elif idx < len(emission_start) and emission_start:
-                emission = emission_start[idx]
-
-            if excitation and " nm" in excitation:
-                excitation = excitation.split(" nm")[0]
-            if emission and " nm" in emission:
-                emission = emission.split(" nm")[0]
-
-            filter_data[label] = FilterSet(
-                emission=emission,
-                gain=gains[idx],
-                excitation=excitation,
-                mirror=mirror,
-                optics=optics[idx] if optics else None,
-                light_direction=(
-                    LIGHT_DIRECTIONS[idx]
-                    if device_control_data.is_polarization
-                    else None
-                ),
-            )
         for measurement_label, aliases in label_aliases.items():
             for alias in aliases:
                 filter_data[alias] = filter_data[measurement_label]
 
         return filter_data
+
+    @classmethod
+    def _create_filter_sets_for_labels(
+        cls,
+        measurement_labels: list[str],
+        extractor: _FilterDataExtractor,
+        device_control_data: DeviceControlData,
+    ) -> dict[str, FilterSet]:
+        gains = extractor.gains
+        if len(measurement_labels) != len(gains):
+            msg = f"Expected the number of measurement labels: {measurement_labels} to match the number of gains: {gains}."
+            raise AllotropeConversionError(msg)
+
+        filter_data = {}
+        for idx, label in enumerate(measurement_labels):
+            filter_set = cls._create_single_filter_set(
+                idx, extractor, device_control_data
+            )
+            filter_data[label] = filter_set
+
+        return filter_data
+
+    @classmethod
+    def _create_single_filter_set(
+        cls,
+        idx: int,
+        extractor: _FilterDataExtractor,
+        device_control_data: DeviceControlData,
+    ) -> FilterSet:
+        excitation = cls._clean_wavelength_value(extractor.get_excitation_at_index(idx))
+        emission = cls._clean_wavelength_value(extractor.get_emission_at_index(idx))
+        mirror = extractor.get_mirror_at_index(idx)
+        optics = extractor.get_optics_at_index(idx)
+        gain = extractor.gains[idx]
+
+        light_direction = (
+            LIGHT_DIRECTIONS[idx] if device_control_data.is_polarization else None
+        )
+
+        return FilterSet(
+            emission=emission,
+            gain=gain,
+            excitation=excitation,
+            mirror=mirror,
+            optics=optics,
+            light_direction=light_direction,
+        )
+
+    @staticmethod
+    def _clean_wavelength_value(wavelength: str | None) -> str | None:
+        if wavelength and " nm" in wavelength:
+            return wavelength.split(" nm")[0]
+        return wavelength
+
+    class _FilterDataExtractor:
+        def __init__(self, device_control_data: DeviceControlData, read_mode: ReadMode):
+            self.device_control_data = device_control_data
+            self.read_mode = read_mode
+
+            self.emissions = device_control_data.get_list(EMISSION_KEY)
+            self.excitations = device_control_data.get_list(EXCITATION_KEY)
+            self.fixed_emissions = device_control_data.get_list(FIXED_EMISSION_KEY)
+            self.fixed_excitations = device_control_data.get_list(FIXED_EXCITATION_KEY)
+            self.emission_start = device_control_data.get_list(EMISSION_START_KEY)
+            self.excitation_start = device_control_data.get_list(EXCITATION_START_KEY)
+            self.mirrors = device_control_data.get_list(MIRROR_KEY)
+            self.optics = device_control_data.get_list(OPTICS_KEY)
+            self.gains = device_control_data.get_list(GAIN_KEY)
+
+        def get_excitation_at_index(self, idx: int) -> str | None:
+            return (
+                self._safe_get(self.excitations, idx)
+                or self._safe_get(self.fixed_excitations, idx)
+                or self._safe_get(self.excitation_start, idx)
+            )
+
+        def get_emission_at_index(self, idx: int) -> str | None:
+            return (
+                self._safe_get(self.emissions, idx)
+                or self._safe_get(self.fixed_emissions, idx)
+                or self._safe_get(self.emission_start, idx)
+            )
+
+        def get_mirror_at_index(self, idx: int) -> str | None:
+            if self.mirrors and self.read_mode == ReadMode.FLUORESCENCE:
+                return self._safe_get(self.mirrors, idx)
+            return None
+
+        def get_optics_at_index(self, idx: int) -> str | None:
+            return self._safe_get(self.optics, idx)
+
+        @staticmethod
+        def _safe_get(data_list: list[str], idx: int) -> str | None:
+            return data_list[idx] if data_list and idx < len(data_list) else None
 
 
 def _validate_result_sections(result_sections: list[list[str]]) -> None:
@@ -1483,3 +1614,88 @@ def _convert_time_to_seconds(time_str: str | None) -> float:
     except ValueError:
         msg = f"Invalid time string: '{time_str}'."
         raise AllotropeConversionError(msg) from None
+
+
+class ResultProcessor(ABC):
+    """Abstract base class for processing different types of Gen5 results."""
+
+    @abstractmethod
+    def can_process(self, context: Gen5DataContext) -> bool:
+        """Check if this processor can handle the given context."""
+        pass
+
+    @abstractmethod
+    def process(
+        self, context: Gen5DataContext
+    ) -> tuple[list[MeasurementGroup], list[CalculatedDocument]]:
+        """Process the context and return measurement groups and calculated data."""
+        pass
+
+
+class SpectralResultProcessor(ResultProcessor):
+    """Processor for spectral measurements with wavelength data."""
+
+    def can_process(self, context: Gen5DataContext) -> bool:
+        return context.is_spectral and context.wavelength_section is not None
+
+    def process(
+        self, context: Gen5DataContext
+    ) -> tuple[list[MeasurementGroup], list[CalculatedDocument]]:
+        return create_spectrum_results(
+            context.header_data,
+            read_data_list=context.read_data,
+            wavelengths_sections=context.wavelength_section,
+            sample_identifiers=context.sample_identifiers,
+            actual_temperature=context.actual_temperature,
+            results_section=context.results_section,
+            concentration_values=context.concentration_values,
+        )
+
+
+class KineticResultProcessor(ResultProcessor):
+    """Processor for kinetic measurements with time series data."""
+
+    def can_process(self, context: Gen5DataContext) -> bool:
+        if not context.has_kinetic_data:
+            return False
+
+        if not context.has_kinetic_measurements:
+            msg = "Kinetic data is present in the file but no kinetic measurements data is found."
+            raise AllotropeConversionError(msg)
+
+        return True
+
+    def process(
+        self, context: Gen5DataContext
+    ) -> tuple[list[MeasurementGroup], list[CalculatedDocument]]:
+        return create_kinetic_results(
+            context.results_section,
+            context.header_data,
+            context.read_data,
+            context.sample_identifiers,
+            context.actual_temperature,
+            cast(KineticData, context.kinetic_data),
+            context.kinetic_measurements,
+            context.kinetic_elapsed_time,
+            context.kinetic_errors,
+            context.concentration_values,
+        )
+
+
+class StandardResultProcessor(ResultProcessor):
+    """Processor for standard endpoint measurements."""
+
+    def can_process(self, _: Gen5DataContext) -> bool:
+        return True
+
+    def process(
+        self, context: Gen5DataContext
+    ) -> tuple[list[MeasurementGroup], list[CalculatedDocument]]:
+        return create_results(
+            context.results_section,
+            context.header_data,
+            context.read_data,
+            context.sample_identifiers,
+            context.actual_temperature,
+            context.concentration_values,
+        )
