@@ -122,7 +122,11 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TGF-B"
+                            "target DNA description": "TGF-B",
+                            "custom information document": {
+                                "Analysis Type": "Singleplex",
+                                "RQ Min/Max Confidence Level": 95.0
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -260,7 +264,11 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TGF-B"
+                            "target DNA description": "TGF-B",
+                            "custom information document": {
+                                "Analysis Type": "Singleplex",
+                                "RQ Min/Max Confidence Level": 95.0
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -396,7 +404,11 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TGF-B"
+                            "target DNA description": "TGF-B",
+                            "custom information document": {
+                                "Analysis Type": "Singleplex",
+                                "RQ Min/Max Confidence Level": 95.0
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -532,7 +544,11 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TGF-B"
+                            "target DNA description": "TGF-B",
+                            "custom information document": {
+                                "Analysis Type": "Singleplex",
+                                "RQ Min/Max Confidence Level": 95.0
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -668,7 +684,11 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TGF-B"
+                            "target DNA description": "TGF-B",
+                            "custom information document": {
+                                "Analysis Type": "Singleplex",
+                                "RQ Min/Max Confidence Level": 95.0
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -804,7 +824,11 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "GAPDH"
+                            "target DNA description": "GAPDH",
+                            "custom information document": {
+                                "Analysis Type": "Singleplex",
+                                "RQ Min/Max Confidence Level": 95.0
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -940,7 +964,11 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "GAPDH"
+                            "target DNA description": "GAPDH",
+                            "custom information document": {
+                                "Analysis Type": "Singleplex",
+                                "RQ Min/Max Confidence Level": 95.0
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -1076,7 +1104,11 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "GAPDH"
+                            "target DNA description": "GAPDH",
+                            "custom information document": {
+                                "Analysis Type": "Singleplex",
+                                "RQ Min/Max Confidence Level": 95.0
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -1212,7 +1244,11 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "GAPDH"
+                            "target DNA description": "GAPDH",
+                            "custom information document": {
+                                "Analysis Type": "Singleplex",
+                                "RQ Min/Max Confidence Level": 95.0
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -1911,7 +1947,7 @@
             "file name": "appbio_quantstudio_example06.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_example06.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.76",
+            "ASM converter version": "0.1.84",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },

@@ -173,6 +173,7 @@ class MeasurementGroup:
     experimental_data_identifier: str
     well_volume: float
     analyst: str | None = None
+    custom_info: dict[str, Any] | None = None
 
     # Error document
     error_document: list[Error] | None = None
@@ -194,6 +195,7 @@ class Metadata:
     software_name: str | None = None
     software_version: str | None = None
     product_manufacturer: str | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass
@@ -212,30 +214,33 @@ class Mapper(SchemaMapper[Data, Model]):
     def map_model(self, data: Data) -> Model:
         return Model(
             field_asm_manifest=self.MANIFEST,
-            qpcr_aggregate_document=QpcrAggregateDocument(
-                device_system_document=DeviceSystemDocument(
-                    device_identifier=data.metadata.device_identifier,
-                    model_number=data.metadata.model_number,
-                    equipment_serial_number=data.metadata.device_serial_number,
-                    product_manufacturer=data.metadata.product_manufacturer,
+            qpcr_aggregate_document=add_custom_information_document(
+                QpcrAggregateDocument(
+                    device_system_document=DeviceSystemDocument(
+                        device_identifier=data.metadata.device_identifier,
+                        model_number=data.metadata.model_number,
+                        equipment_serial_number=data.metadata.device_serial_number,
+                        product_manufacturer=data.metadata.product_manufacturer,
+                    ),
+                    data_system_document=DataSystemDocument(
+                        data_system_instance_identifier=data.metadata.data_system_instance_identifier,
+                        file_name=data.metadata.file_name,
+                        UNC_path=data.metadata.unc_path,
+                        software_name=data.metadata.software_name,
+                        software_version=data.metadata.software_version,
+                        ASM_converter_name=self.converter_name,
+                        ASM_converter_version=ASM_CONVERTER_VERSION,
+                        ASM_file_identifier=data.metadata.asm_file_identifier,
+                    ),
+                    qpcr_document=[
+                        self._get_technique_document(measurement_group, data.metadata)
+                        for measurement_group in data.measurement_groups
+                    ],
+                    calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
+                        data
+                    ),
                 ),
-                data_system_document=DataSystemDocument(
-                    data_system_instance_identifier=data.metadata.data_system_instance_identifier,
-                    file_name=data.metadata.file_name,
-                    UNC_path=data.metadata.unc_path,
-                    software_name=data.metadata.software_name,
-                    software_version=data.metadata.software_version,
-                    ASM_converter_name=self.converter_name,
-                    ASM_converter_version=ASM_CONVERTER_VERSION,
-                    ASM_file_identifier=data.metadata.asm_file_identifier,
-                ),
-                qpcr_document=[
-                    self._get_technique_document(measurement_group, data.metadata)
-                    for measurement_group in data.measurement_groups
-                ],
-                calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
-                    data
-                ),
+                data.metadata.custom_info,
             ),
         )
 
@@ -244,23 +249,26 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> QpcrDocumentItem:
         return QpcrDocumentItem(
             analyst=measurement_group.analyst,
-            measurement_aggregate_document=MeasurementAggregateDocument(
-                experimental_data_identifier=measurement_group.experimental_data_identifier,
-                experiment_type=metadata.experiment_type,
-                container_type=metadata.container_type.value,
-                well_volume=TQuantityValueMicroliter(
-                    value=measurement_group.well_volume
+            measurement_aggregate_document=add_custom_information_document(
+                MeasurementAggregateDocument(
+                    experimental_data_identifier=measurement_group.experimental_data_identifier,
+                    experiment_type=metadata.experiment_type,
+                    container_type=metadata.container_type.value,
+                    well_volume=TQuantityValueMicroliter(
+                        value=measurement_group.well_volume
+                    ),
+                    plate_well_count=quantity_or_none(
+                        TQuantityValueNumber, measurement_group.plate_well_count
+                    ),
+                    measurement_document=[
+                        self._get_measurement_document_item(measurement, metadata)
+                        for measurement in measurement_group.measurements
+                    ],
+                    error_aggregate_document=self._get_error_aggregate_document(
+                        measurement_group.error_document
+                    ),
                 ),
-                plate_well_count=quantity_or_none(
-                    TQuantityValueNumber, measurement_group.plate_well_count
-                ),
-                measurement_document=[
-                    self._get_measurement_document_item(measurement, metadata)
-                    for measurement in measurement_group.measurements
-                ],
-                error_aggregate_document=self._get_error_aggregate_document(
-                    measurement_group.error_document
-                ),
+                measurement_group.custom_info or {},
             ),
         )
 
