@@ -1,0 +1,4 @@
+DISPLAY_NAME = "Luminex INTELLIFLEX"
+DEFAULT_SOFTWARE_NAME = "INTELLIFLEX"
+DEFAULT_CONTAINER_TYPE = "well plate"
+DEFAULT_DEVICE_TYPE = "multi analyte profiling analyzer"
