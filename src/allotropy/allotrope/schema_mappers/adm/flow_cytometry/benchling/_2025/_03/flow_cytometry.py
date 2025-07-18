@@ -53,6 +53,7 @@ class Vertex:
     x_unit: str
     y_unit: str
     vertex_role: str | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -63,18 +64,21 @@ class DataRegion:
     x_coordinate_dimension_identifier: str | None = None
     y_coordinate_dimension_identifier: str | None = None
     vertices: list[Vertex] | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
 class CompensationMatrix:
     dimension_identifier: str | None
     compensation_value: float | None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
 class CompensationMatrixGroup:
     dimension_identifier: str | None
     compensation_matrices: list[CompensationMatrix] | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -83,12 +87,14 @@ class StatisticDimension:
     unit: str
     has_statistic_datum_role: str | None = None
     dimension_identifier: str | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
 class Statistic:
     statistic_dimension: list[StatisticDimension]
     statistical_feature: str
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -121,6 +127,9 @@ class Measurement:
 
     sample_custom_info: dict[str, Any] | None = None
     processed_data_custom_info: dict[str, Any] | None = None
+    data_processing_custom_info: dict[str, Any] | None = None
+    device_control_custom_info: dict[str, Any] | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -131,6 +140,7 @@ class MeasurementGroup:
     measurement_time: str | None = None
     experimental_data_identifier: str | None = None
     experiment_identifier: str | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass
@@ -189,92 +199,109 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_technique_document(
         self, measurement_group: MeasurementGroup
     ) -> FlowCytometryDocumentItem:
-        return FlowCytometryDocumentItem(
-            measurement_aggregate_document=MeasurementAggregateDocument(
-                measurement_document=[
-                    self._get_measurement_document(measurement)
-                    for measurement in measurement_group.measurements
-                ],
-                analyst=measurement_group.analyst,
-                measurement_time=self.get_date_time(measurement_group.measurement_time)
-                if measurement_group.measurement_time
-                else None,
-                experimental_data_identifier=measurement_group.experimental_data_identifier,
-                experiment_identifier=measurement_group.experiment_identifier,
+        return add_custom_information_document(
+            FlowCytometryDocumentItem(
+                measurement_aggregate_document=MeasurementAggregateDocument(
+                    measurement_document=[
+                        self._get_measurement_document(measurement)
+                        for measurement in measurement_group.measurements
+                    ],
+                    analyst=measurement_group.analyst,
+                    measurement_time=self.get_date_time(
+                        measurement_group.measurement_time
+                    )
+                    if measurement_group.measurement_time
+                    else None,
+                    experimental_data_identifier=measurement_group.experimental_data_identifier,
+                    experiment_identifier=measurement_group.experiment_identifier,
+                ),
+                compensation_matrix_aggregate_document=CompensationMatrixAggregateDocument(
+                    compensation_matrix_document=[
+                        self._get_compensation_matrix_document(compensation_matrix)
+                        for compensation_matrix in measurement_group.compensation_matrix_groups
+                    ]
+                    if measurement_group.compensation_matrix_groups
+                    else None,
+                ),
             ),
-            compensation_matrix_aggregate_document=CompensationMatrixAggregateDocument(
-                compensation_matrix_document=[
-                    self._get_compensation_matrix_document(compensation_matrix)
-                    for compensation_matrix in measurement_group.compensation_matrix_groups
-                ]
-                if measurement_group.compensation_matrix_groups
-                else None,
-            ),
+            measurement_group.custom_info,
         )
 
     def _get_measurement_document(
         self, measurement: Measurement
     ) -> MeasurementDocumentItem:
-        return MeasurementDocumentItem(
-            measurement_identifier=measurement.measurement_identifier,
-            sample_document=self._get_sample_document(measurement),
-            device_control_aggregate_document=DeviceControlAggregateDocument(
-                device_control_document=[
-                    DeviceControlDocumentItem(
-                        device_type=measurement.device_type,
-                    )
-                ],
-            ),
-            processed_data_aggregate_document=ProcessedDataAggregateDocument(
-                processed_data_document=[
-                    add_custom_information_document(
-                        ProcessedDataDocumentItem(
-                            data_processing_document=DataProcessingDocument(
-                                method_version=measurement.method_version,
-                                data_processing_time=self.get_date_time(
-                                    measurement.data_processing_time
-                                )
-                                if measurement.data_processing_time
-                                else None,
+        return add_custom_information_document(
+            MeasurementDocumentItem(
+                measurement_identifier=measurement.measurement_identifier,
+                sample_document=self._get_sample_document(measurement),
+                device_control_aggregate_document=DeviceControlAggregateDocument(
+                    device_control_document=[
+                        add_custom_information_document(
+                            DeviceControlDocumentItem(
+                                device_type=measurement.device_type,
                             ),
-                            processed_data_identifier=measurement.processed_data_identifier,
-                            population_aggregate_document=[
-                                PopulationAggregateDocumentItem(
-                                    population_document=[
-                                        self._get_population_document(population)
-                                        for population in measurement.populations
+                            measurement.device_control_custom_info,
+                        )
+                    ],
+                ),
+                processed_data_aggregate_document=ProcessedDataAggregateDocument(
+                    processed_data_document=[
+                        add_custom_information_document(
+                            ProcessedDataDocumentItem(
+                                data_processing_document=add_custom_information_document(
+                                    DataProcessingDocument(
+                                        method_version=measurement.method_version,
+                                        data_processing_time=self.get_date_time(
+                                            measurement.data_processing_time
+                                        )
+                                        if measurement.data_processing_time
+                                        else None,
+                                    ),
+                                    measurement.data_processing_custom_info,
+                                ),
+                                processed_data_identifier=measurement.processed_data_identifier,
+                                population_aggregate_document=[
+                                    PopulationAggregateDocumentItem(
+                                        population_document=[
+                                            self._get_population_document(population)
+                                            for population in measurement.populations
+                                        ]
+                                        if measurement.populations
+                                        else None
+                                    )
+                                ],
+                                data_region_aggregate_document=DataRegionAggregateDocument(
+                                    data_region_document=[
+                                        self._get_data_region_document(data_region)
+                                        for data_region in measurement.data_regions
                                     ]
-                                    if measurement.populations
+                                    if measurement.data_regions
                                     else None
-                                )
-                            ],
-                            data_region_aggregate_document=DataRegionAggregateDocument(
-                                data_region_document=[
-                                    self._get_data_region_document(data_region)
-                                    for data_region in measurement.data_regions
-                                ]
-                                if measurement.data_regions
-                                else None
+                                ),
                             ),
-                        ),
-                        measurement.processed_data_custom_info,
-                    )
-                ]
+                            measurement.processed_data_custom_info,
+                        )
+                    ]
+                ),
             ),
+            measurement.custom_info,
         )
 
     def _get_data_region_document(
         self, data_region: DataRegion
     ) -> DataRegionDocumentItem:
-        return DataRegionDocumentItem(
-            data_region_identifier=data_region.region_data_identifier,
-            region_type=data_region.region_data_type,
-            parent_data_region_identifier=data_region.parent_data_region_identifier,
-            x_coordinate_dimension_identifier=data_region.x_coordinate_dimension_identifier,
-            y_coordinate_dimension_identifier=data_region.y_coordinate_dimension_identifier,
-            vertex_aggregate_document=self._get_vertex_aggregate_document(
-                data_region.vertices
+        return add_custom_information_document(
+            DataRegionDocumentItem(
+                data_region_identifier=data_region.region_data_identifier,
+                region_type=data_region.region_data_type,
+                parent_data_region_identifier=data_region.parent_data_region_identifier,
+                x_coordinate_dimension_identifier=data_region.x_coordinate_dimension_identifier,
+                y_coordinate_dimension_identifier=data_region.y_coordinate_dimension_identifier,
+                vertex_aggregate_document=self._get_vertex_aggregate_document(
+                    data_region.vertices
+                ),
             ),
+            data_region.custom_info,
         )
 
     def _get_vertex_aggregate_document(
@@ -284,10 +311,13 @@ class Mapper(SchemaMapper[Data, Model]):
             return None
         return VertexAggregateDocument(
             vertex_document=[
-                VertexDocumentItem(
-                    x_coordinate=quantity_or_none_from_unit(vertex.x_unit, vertex.x_coordinate),  # type: ignore[arg-type]
-                    y_coordinate=quantity_or_none_from_unit(vertex.y_unit, vertex.y_coordinate),  # type: ignore[arg-type]
-                    vertex_role=vertex.vertex_role,
+                add_custom_information_document(
+                    VertexDocumentItem(
+                        x_coordinate=quantity_or_none_from_unit(vertex.x_unit, vertex.x_coordinate),  # type: ignore[arg-type]
+                        y_coordinate=quantity_or_none_from_unit(vertex.y_unit, vertex.y_coordinate),  # type: ignore[arg-type]
+                        vertex_role=vertex.vertex_role,
+                    ),
+                    vertex.custom_info,
                 )
                 for vertex in vertices
             ]
@@ -323,21 +353,28 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_compensation_matrix_document(
         self, compensation_matrix_group: CompensationMatrixGroup
     ) -> CompensationMatrixDocumentItem:
-        return CompensationMatrixDocumentItem(
-            dimension_identifier=compensation_matrix_group.dimension_identifier,
-            matrix_aggregate_document=MatrixAggregateDocument(
-                matrix_document=[
-                    MatrixDocumentItem(
-                        dimension_identifier=compensation.dimension_identifier,
-                        compensation_value=quantity_or_none(
-                            TQuantityValueUnitless, compensation.compensation_value
-                        ),
-                    )
-                    for compensation in compensation_matrix_group.compensation_matrices
-                ]
-                if compensation_matrix_group.compensation_matrices
-                else None,
+        return add_custom_information_document(
+            CompensationMatrixDocumentItem(
+                dimension_identifier=compensation_matrix_group.dimension_identifier,
+                matrix_aggregate_document=MatrixAggregateDocument(
+                    matrix_document=[
+                        add_custom_information_document(
+                            MatrixDocumentItem(
+                                dimension_identifier=compensation.dimension_identifier,
+                                compensation_value=quantity_or_none(
+                                    TQuantityValueUnitless,
+                                    compensation.compensation_value,
+                                ),
+                            ),
+                            compensation.custom_info,
+                        )
+                        for compensation in compensation_matrix_group.compensation_matrices
+                    ]
+                    if compensation_matrix_group.compensation_matrices
+                    else None,
+                ),
             ),
+            compensation_matrix_group.custom_info,
         )
 
     def _get_statistics_aggregate_document(
@@ -347,26 +384,35 @@ class Mapper(SchemaMapper[Data, Model]):
             return None
         return StatisticsAggregateDocument(
             statistics_document=[
-                StatisticsDocumentItem(
-                    statistical_feature=statistic.statistical_feature,
-                    statistic_dimension_aggregate_document=StatisticDimensionAggregateDocument(
-                        statistic_dimension_document=[
-                            StatisticDimensionDocumentItem(
-                                dimension_identifier=statistic_dimension.dimension_identifier,
-                                statistical_value=TQuantityValue(
-                                    value=statistic_dimension.value,
-                                    unit=statistic_dimension.unit,
-                                    has_statistic_datum_role=TStatisticDatumRole(
-                                        statistic_dimension.has_statistic_datum_role
-                                    )
-                                    if statistic_dimension.has_statistic_datum_role
-                                    in {role.value for role in TStatisticDatumRole}
-                                    else None,
-                                ),
-                            )
-                            for statistic_dimension in statistic.statistic_dimension
-                        ]
+                add_custom_information_document(
+                    StatisticsDocumentItem(
+                        statistical_feature=statistic.statistical_feature,
+                        statistic_dimension_aggregate_document=StatisticDimensionAggregateDocument(
+                            statistic_dimension_document=[
+                                add_custom_information_document(
+                                    StatisticDimensionDocumentItem(
+                                        dimension_identifier=statistic_dimension.dimension_identifier,
+                                        statistical_value=TQuantityValue(
+                                            value=statistic_dimension.value,
+                                            unit=statistic_dimension.unit,
+                                            has_statistic_datum_role=TStatisticDatumRole(
+                                                statistic_dimension.has_statistic_datum_role
+                                            )
+                                            if statistic_dimension.has_statistic_datum_role
+                                            in {
+                                                role.value
+                                                for role in TStatisticDatumRole
+                                            }
+                                            else None,
+                                        ),
+                                    ),
+                                    statistic_dimension.custom_info,
+                                )
+                                for statistic_dimension in statistic.statistic_dimension
+                            ]
+                        ),
                     ),
+                    statistic.custom_info,
                 )
                 for statistic in statistics
             ]
