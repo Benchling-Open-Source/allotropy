@@ -129,22 +129,39 @@ class Header:
 def create_calibration(calibration_data: SeriesData) -> Calibration:
     """Create a CalibrationItem from a calibration line.
 
-    Each line should follow the pattern "Last <calibration_name>,<calibration_report> <calibration_time><,,,,"
-    example: "Last F3DeCAL1 Calibration,Passed 05/17/2023 09:25:11,,,,,,"
+    Each line should follow one of these patterns:
+    - "Last <calibration_name>,<calibration_report> <calibration_time><,,,,"
+    - "Last <calibration_name>,<calibration_time><,,,,"
     """
     if len(calibration_data.series.index) < MINIMUM_CALIBRATION_LINE_COLS:
         msg = f"Expected at least two columns on the calibration line, got:\n{calibration_data.series}."
         raise AllotropeConversionError(msg)
 
-    calibration_result = calibration_data.series.iloc[1].split(maxsplit=1)
-    if len(calibration_result) != EXPECTED_CALIBRATION_RESULT_LEN:
-        msg = f"Invalid calibration result format, expected to split into two values, got: {calibration_result}."
+    calibration_info = calibration_data.series.iloc[1].strip()
+
+    # Check if the calibration info starts with a known status value
+    status_values = ["Passed", "Failed", "Calibrated", "Verified"]
+    first_word = calibration_info.split()[0] if calibration_info.split() else ""
+
+    report = None
+    time = None
+
+    if first_word in status_values:
+        calibration_result = calibration_info.split(maxsplit=1)
+        if len(calibration_result) == EXPECTED_CALIBRATION_RESULT_LEN:
+            report = calibration_result[0]
+            time = calibration_result[1]
+    elif calibration_info and any(char.isdigit() for char in calibration_info):
+        time = calibration_info
+
+    if not time:
+        msg = f"Invalid calibration result format, got: ['{calibration_info}']."
         raise AllotropeConversionError(msg)
 
     return Calibration(
         name=calibration_data.series.iloc[0].replace("Last", "").strip(),
-        report=calibration_result[0],
-        time=calibration_result[1],
+        time=time,
+        report=report,
     )
 
 
