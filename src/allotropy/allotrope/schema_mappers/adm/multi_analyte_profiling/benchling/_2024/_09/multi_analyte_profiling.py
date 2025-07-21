@@ -117,8 +117,8 @@ class MeasurementGroup:
 @dataclass(frozen=True)
 class Calibration:
     name: str
-    report: str
     time: str
+    report: str | None = None
 
 
 @dataclass(frozen=True)

@@ -138,7 +138,7 @@ def test_create_calibration_item() -> None:
 
     assert create_calibration(
         SeriesData(pd.Series([name, f"{report} {time}"]))
-    ) == Calibration(name, report, time)
+    ) == Calibration(name, time, report)
 
 
 def test_create_calibration_item_invalid_line_format() -> None:
@@ -153,7 +153,7 @@ def test_create_calibration_item_invalid_line_format() -> None:
 
 def test_create_calibration_item_invalid_calibration_result() -> None:
     bad_result = "bad_result"
-    error = f"Invalid calibration result format, expected to split into two values, got: ['{bad_result}']"
+    error = f"Invalid calibration result format, got: ['{bad_result}']"
     with pytest.raises(AllotropeConversionError, match=re.escape(error)):
         create_calibration(SeriesData(pd.Series(["Last CalReport", bad_result])))
 
