@@ -6,6 +6,7 @@ from pathlib import Path
 import re
 from typing import Any
 
+from dateutil.parser import parse, ParserError
 import pandas as pd
 
 from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
@@ -137,7 +138,7 @@ def create_calibration(calibration_data: SeriesData) -> Calibration:
         msg = f"Expected at least two columns on the calibration line, got:\n{calibration_data.series}."
         raise AllotropeConversionError(msg)
 
-    calibration_info = calibration_data.series.iloc[1].strip()
+    calibration_info = str(calibration_data.series.iloc[1]).strip()
 
     # Check if the calibration info starts with a known status value
     status_values = ["Passed", "Failed", "Calibrated", "Verified"]
@@ -151,8 +152,12 @@ def create_calibration(calibration_data: SeriesData) -> Calibration:
         if len(calibration_result) == EXPECTED_CALIBRATION_RESULT_LEN:
             report = calibration_result[0]
             time = calibration_result[1]
-    elif calibration_info and any(char.isdigit() for char in calibration_info):
-        time = calibration_info
+    else:
+        try:
+            parse(calibration_info)
+            time = calibration_info
+        except ParserError:
+            pass
 
     if not time:
         msg = f"Invalid calibration result format, got: ['{calibration_info}']."
