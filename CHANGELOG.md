@@ -5,6 +5,20 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.100] - 2025-07-21
+
+### Added
+
+- Luminex xPONENT - add errors for nan and missing values in statistics tables (#1036)
+
+### Fixed
+
+- Luminex xponent - handle case for missing calibration report field (#1039)
+
+### Changed
+
+- Add get_schema_from_asm (#1037)
+
 ## [0.1.99] - 2025-07-15
 
 ### Added
