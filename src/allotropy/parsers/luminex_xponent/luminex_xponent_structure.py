@@ -253,7 +253,7 @@ class Measurement:
                 Analyte(
                     identifier=(analyte_identifier := random_uuid_str()),
                     name=analyte,
-                    assay_bead_identifier=str(bead_ids_data[float, analyte]),
+                    assay_bead_identifier=bead_ids_data[str, analyte],
                     assay_bead_count=count_data[float, analyte],
                     statistics=[
                         StatisticsDocument(
