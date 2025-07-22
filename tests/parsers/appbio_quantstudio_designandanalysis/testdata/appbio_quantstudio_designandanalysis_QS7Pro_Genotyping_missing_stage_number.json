@@ -37932,10 +37932,10 @@
             "product manufacturer": "ThermoFisher Scientific"
         },
         "custom information document": {
-            "Reduce dye signal crosstalk by algorithm": "No (Default)",
             "Pre-read Stage/Step": "Stage 1 Step 1",
-            "Post-read Stage/Step": "Stage 4 Step 1",
-            "Block serial number": 2778219020021.0
+            "Block serial number": 2778219020021.0,
+            "Reduce dye signal crosstalk by algorithm": "No (Default)",
+            "Post-read Stage/Step": "Stage 4 Step 1"
         }
     }
 }

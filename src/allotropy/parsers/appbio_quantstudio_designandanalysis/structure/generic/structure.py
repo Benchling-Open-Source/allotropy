@@ -89,6 +89,12 @@ class Header:
     software_version: str | None
     block_serial_number: str | None
     heated_cover_serial_number: str | None
+    run_duration: str | None = None
+    cover_temperature: float | None = None
+    run_start_datetime: str | None = None
+    sample_volume_setting: float | None = None
+    analysis_datetime: str | None = None
+    exported_on: str | None = None
     extra_data: dict[str, Any] | None = None
 
     @staticmethod
@@ -142,6 +148,12 @@ class Header:
             software_name=software_name,
             software_version=software_version,
             well_volume=get_well_volume(block_type),
+            run_duration=header.get(str, "Run Duration"),
+            cover_temperature=header.get(float, "Cover Temperature"),
+            run_start_datetime=header.get(str, "Run Start Date/Time"),
+            sample_volume_setting=header.get(float, "Sample Volume"),
+            analysis_datetime=header.get(str, "Analysis Date/Time"),
+            exported_on=header.get(str, "Exported On"),
             extra_data=header.get_unread(),
         )
 

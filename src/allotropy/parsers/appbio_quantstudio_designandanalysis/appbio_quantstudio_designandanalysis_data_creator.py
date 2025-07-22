@@ -63,27 +63,6 @@ def create_metadata(
     header: Header, file_path: str, experiment_type: constants.ExperimentType
 ) -> Metadata:
     path = Path(file_path)
-
-    # Filter out fields that are already mapped in the schema
-    already_mapped_fields = {
-        "Sample Volume",
-        "Run Duration",
-        "Cover Temperature",
-        "Run Start Date/Time",
-        "Analysis Date/Time",
-        "Exported On",
-        "Exported By",
-    }
-
-    metadata_custom_info = None
-    if header.extra_data:
-        filtered_extra_data = {
-            key: value
-            for key, value in header.extra_data.items()
-            if key not in already_mapped_fields
-        }
-        metadata_custom_info = filtered_extra_data if filtered_extra_data else None
-
     return Metadata(
         file_name=path.name,
         asm_file_identifier=path.with_suffix(".json").name,
@@ -99,7 +78,7 @@ def create_metadata(
         device_type=constants.DEVICE_TYPE,
         experiment_type=experiment_type.value,
         measurement_method_identifier=header.measurement_method_identifier,
-        custom_info=metadata_custom_info,
+        custom_info=header.extra_data,
     )
 
 
@@ -113,18 +92,9 @@ def _create_processed_data(well_item: WellItem, data: Data) -> ProcessedData:
     data_processing_custom_info = {
         "reference dna description": data.reference_target,
         "reference sample description": data.reference_sample,
+        "data processing time": data.header.analysis_datetime,
+        "Exported On": data.header.exported_on,
     }
-
-    header = data.header
-    if header.extra_data:
-        if "Analysis Date/Time" in header.extra_data:
-            data_processing_custom_info["data processing time"] = header.extra_data[
-                "Analysis Date/Time"
-            ]
-        if "Exported On" in header.extra_data:
-            data_processing_custom_info["Exported On"] = header.extra_data[
-                "Exported On"
-            ]
 
     return ProcessedData(
         automatic_cycle_threshold_enabled_setting=result.automatic_cycle_threshold_enabled_setting,
@@ -176,9 +146,9 @@ def _create_measurement(well: Well, well_item: WellItem, data: Data) -> Measurem
         header.passive_reference_dye_setting,
     )
 
-    sample_custom_info = {}
-    if header.extra_data and "Sample Volume" in header.extra_data:
-        sample_custom_info["sample volume setting"] = header.extra_data["Sample Volume"]
+    sample_custom_info = {
+        "sample volume setting": header.sample_volume_setting
+    }
 
     return Measurement(
         identifier=well_item.uuid,
@@ -213,22 +183,11 @@ def _create_measurement(well: Well, well_item: WellItem, data: Data) -> Measurem
 
 def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
     header = data.header
-
-    measurement_aggregate_custom_info = {}
-    if header.extra_data:
-        if "Run Duration" in header.extra_data:
-            measurement_aggregate_custom_info[
-                "total measurement duration setting"
-            ] = header.extra_data["Run Duration"]
-        if "Cover Temperature" in header.extra_data:
-            measurement_aggregate_custom_info["Cover Temperature"] = header.extra_data[
-                "Cover Temperature"
-            ]
-        if "Run Start Date/Time" in header.extra_data:
-            measurement_aggregate_custom_info[
-                "Run Start Date/Time"
-            ] = header.extra_data["Run Start Date/Time"]
-
+    measurement_aggregate_custom_info = {
+        "total measurement duration setting": header.run_duration,
+        "Cover Temperature": header.cover_temperature,
+        "Run Start Date/Time": header.run_start_datetime,
+    }
     return [
         MeasurementGroup(
             analyst=header.analyst,
@@ -245,8 +204,6 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
                 for well_item in well.items.values()
             ],
             custom_info=measurement_aggregate_custom_info
-            if measurement_aggregate_custom_info
-            else None,
         )
         for well in data.wells.wells
     ]
