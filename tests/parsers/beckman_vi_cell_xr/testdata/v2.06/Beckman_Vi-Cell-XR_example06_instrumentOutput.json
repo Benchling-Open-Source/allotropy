@@ -59,6 +59,10 @@
                             },
                             "sample document": {
                                 "sample identifier": "LAC DG 046 T0 M1"
+                            },
+                            "custom information document": {
+                                "Avg. bg intensity": 204.5,
+                                "File name": "LAC DG 046 T0 M1.smp"
                             }
                         }
                     ]
@@ -122,6 +126,10 @@
                             },
                             "sample document": {
                                 "sample identifier": "LAC DG 046 T0 M2"
+                            },
+                            "custom information document": {
+                                "Avg. bg intensity": 204.1,
+                                "File name": "LAC DG 046 T0 M2.smp"
                             }
                         }
                     ]
@@ -185,6 +193,10 @@
                             },
                             "sample document": {
                                 "sample identifier": "LAC DG 046 T0 M3"
+                            },
+                            "custom information document": {
+                                "Avg. bg intensity": 204.0,
+                                "File name": "LAC DG 046 T0 M3.smp"
                             }
                         }
                     ]
@@ -198,7 +210,7 @@
             "file name": "Beckman_Vi-Cell-XR_example06_instrumentOutput.xlsx",
             "UNC path": "tests/parsers/beckman_vi_cell_xr/testdata/v2.06/Beckman_Vi-Cell-XR_example06_instrumentOutput.xlsx",
             "ASM converter name": "allotropy_beckman_coulter_vi_cell_xr",
-            "ASM converter version": "0.1.69",
+            "ASM converter version": "0.1.100",
             "software name": "Vi-Cell XR",
             "software version": "2.06"
         },

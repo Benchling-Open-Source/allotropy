@@ -46,6 +46,7 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                 average_total_cell_diameter=data.get(float, "Avg. diam. (microns)"),
                 viable_cell_count=viable_cell_count,
                 average_total_cell_circularity=data.get(float, "Avg. circ."),
+                custom_info=data.get_unread(),
             )
         ],
     )

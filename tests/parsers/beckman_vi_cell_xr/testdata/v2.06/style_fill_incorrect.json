@@ -59,6 +59,22 @@
                             },
                             "sample document": {
                                 "sample identifier": "JK TEST Count 2-13-2024"
+                            },
+                            "custom information document": {
+                                "Trypan blue mixing cycles": 3.0,
+                                "Decluster degree": "Medium",
+                                "Max diam. (microns)": 50.0,
+                                "Brightness (%)": 85.0,
+                                "Avg. cells / image": 179.0,
+                                "Viable cell spot area (%)": 5.0,
+                                "Avg. bg intensity": 201.2,
+                                "V. cell spot brightness (%)": 55.0,
+                                "Sharpness": 100.0,
+                                "Minimum circularity": 0.0,
+                                "Aspirate cycles": 1.0,
+                                "File name": "JK TEST Count 2-13-2024.smp",
+                                "Images": 25.0,
+                                "Min diam. (microns)": 5.0
                             }
                         }
                     ]
@@ -72,7 +88,7 @@
             "file name": "style_fill_incorrect.xlsx",
             "UNC path": "tests/parsers/beckman_vi_cell_xr/testdata/v2.06/style_fill_incorrect.xlsx",
             "ASM converter name": "allotropy_beckman_coulter_vi_cell_xr",
-            "ASM converter version": "0.1.69",
+            "ASM converter version": "0.1.100",
             "software name": "Vi-Cell XR",
             "software version": "2.06"
         },
