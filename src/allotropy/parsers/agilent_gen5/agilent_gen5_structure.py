@@ -6,6 +6,7 @@ from io import StringIO
 import math
 from pathlib import Path
 import re
+from typing import Any
 
 import pandas as pd
 
@@ -781,7 +782,7 @@ class MeasurementData:
     label: str
 
 
-def _get_label(row: pd.Series, measurement_labels: set[str]) -> tuple[str, bool]:
+def _get_label(row: pd.Series[Any], measurement_labels: set[str]) -> tuple[str, bool]:
     raw_label = row.iloc[-1]
     if str(raw_label) in measurement_labels:
         return str(raw_label), True
