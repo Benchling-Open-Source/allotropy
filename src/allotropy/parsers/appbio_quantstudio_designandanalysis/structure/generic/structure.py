@@ -222,6 +222,11 @@ class WellItem(Referenceable):
 
         result_class = cls.get_result_class()
         result = result_class.create(data, identifier)
+        quantity_custom_info = {
+            "quantity": result.quantity
+            if result.cycle_threshold_result is None and result.quantity is not None
+            else None
+        }
 
         return WellItem(
             uuid=random_uuid_str(),
@@ -238,10 +243,7 @@ class WellItem(Referenceable):
             amplification_data=amplification_data,
             melt_curve_data=melt_curve_data,
             result=result,
-            sample_custom_info={
-                **data.get_unread(),
-                **{"quantity": result.quantity if result.cycle_threshold_result is None and result.quantity is not None else None}
-            },
+            sample_custom_info={**data.get_unread(), **quantity_custom_info},
         )
 
 

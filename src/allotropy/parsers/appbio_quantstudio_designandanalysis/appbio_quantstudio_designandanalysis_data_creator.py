@@ -167,7 +167,7 @@ def _create_measurement(well: Well, well_item: WellItem, data: Data) -> Measurem
         sample_custom_info={
             **(well_item.sample_custom_info or {}),
             **{"sample volume setting": header.sample_volume_setting},
-        }
+        },
     )
 
 
