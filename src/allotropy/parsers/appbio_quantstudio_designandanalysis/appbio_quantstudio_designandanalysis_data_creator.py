@@ -88,14 +88,6 @@ def _create_processed_data(well_item: WellItem, data: Data) -> ProcessedData:
         baseline_corrected_reporter_data_cube,
     ) = _create_processed_data_cubes(well_item.amplification_data)
     result = well_item.result
-
-    data_processing_custom_info = {
-        "reference dna description": data.reference_target,
-        "reference sample description": data.reference_sample,
-        "data processing time": data.header.analysis_datetime,
-        "Exported On": data.header.exported_on,
-    }
-
     return ProcessedData(
         automatic_cycle_threshold_enabled_setting=result.automatic_cycle_threshold_enabled_setting,
         cycle_threshold_value_setting=result.cycle_threshold_value_setting,
@@ -109,7 +101,12 @@ def _create_processed_data(well_item: WellItem, data: Data) -> ProcessedData:
         baseline_corrected_reporter_result=result.baseline_corrected_reporter_result,
         normalized_reporter_data_cube=normalized_reporter_data_cube,
         baseline_corrected_reporter_data_cube=baseline_corrected_reporter_data_cube,
-        data_processing_custom_info=data_processing_custom_info,
+        data_processing_custom_info={
+            "reference dna description": data.reference_target,
+            "reference sample description": data.reference_sample,
+            "data processing time": data.header.analysis_datetime,
+            "Exported On": data.header.exported_on,
+        },
     )
 
 
@@ -145,9 +142,6 @@ def _create_measurement(well: Well, well_item: WellItem, data: Data) -> Measurem
         well_item.reporter_dye_setting,
         header.passive_reference_dye_setting,
     )
-
-    sample_custom_info = {"sample volume setting": header.sample_volume_setting}
-
     return Measurement(
         identifier=well_item.uuid,
         timestamp=header.measurement_time,
@@ -172,20 +166,13 @@ def _create_measurement(well: Well, well_item: WellItem, data: Data) -> Measurem
         melting_curve_data_cube=_create_melt_curve_data_cube(well_item.melt_curve_data),
         sample_custom_info={
             **(well_item.sample_custom_info or {}),
-            **sample_custom_info,
+            **{"sample volume setting": header.sample_volume_setting},
         }
-        if well_item.sample_custom_info or sample_custom_info
-        else None,
     )
 
 
 def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
     header = data.header
-    measurement_aggregate_custom_info = {
-        "total measurement duration setting": header.run_duration,
-        "Cover Temperature": header.cover_temperature,
-        "Run Start Date/Time": header.run_start_datetime,
-    }
     return [
         MeasurementGroup(
             analyst=header.analyst,
@@ -201,7 +188,11 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
                 _create_measurement(well, well_item, data)
                 for well_item in well.items.values()
             ],
-            custom_info=measurement_aggregate_custom_info,
+            custom_info={
+                "total measurement duration setting": header.run_duration,
+                "Cover Temperature": header.cover_temperature,
+                "Run Start Date/Time": header.run_start_datetime,
+            },
         )
         for well in data.wells.wells
     ]
