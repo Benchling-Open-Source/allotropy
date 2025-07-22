@@ -781,6 +781,15 @@ class MeasurementData:
     label: str
 
 
+def _get_label(row: pd.Series, measurement_labels: set[str]) -> tuple[str, bool]:
+    raw_label = row.iloc[-1]
+    if str(raw_label) in measurement_labels:
+        return str(raw_label), True
+    if isinstance(raw_label, float) and str(int(raw_label)) in measurement_labels:
+        return str(int(raw_label)), True
+    return str(raw_label), False
+
+
 def create_results(
     result_lines: list[str],
     header_data: HeaderData,
@@ -796,22 +805,22 @@ def create_results(
     # Create dataframe from tabular data and forward fill empty values in index
     data = read_csv(StringIO("\n".join(result_lines[1:])), sep="\t")
     data = data.set_index(data.index.to_series().ffill(axis="index").values)
-
     well_to_measurements: defaultdict[str, list[MeasurementData]] = defaultdict(
         list[MeasurementData]
     )
     calculated_data: defaultdict[str, list[tuple[str, float]]] = defaultdict(
         list[tuple[str, float]]
     )
-    measurement_labels = [
+    measurement_labels = {
         label for r_data in read_data for label in r_data.measurement_labels
-    ]
+    }
     error_documents_per_well: defaultdict[str, list[ErrorDocument]] = defaultdict(
         list[ErrorDocument]
     )
+
     for row_name, row in data.iterrows():
-        label = str(row.iloc[-1])
-        is_measurement = label in measurement_labels
+        label, is_measurement = _get_label(row, measurement_labels)
+
         for col_index, value in enumerate(row.iloc[:-1]):
             well_pos = f"{row_name}{col_index + 1}"
             well_value = try_float_or_none(value)
@@ -831,7 +840,6 @@ def create_results(
                     )
                 )
             if is_measurement:
-
                 well_to_measurements[well_pos].append(
                     MeasurementData(
                         random_uuid_str(),
