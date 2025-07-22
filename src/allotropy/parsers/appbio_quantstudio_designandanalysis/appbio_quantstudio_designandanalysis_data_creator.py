@@ -146,9 +146,7 @@ def _create_measurement(well: Well, well_item: WellItem, data: Data) -> Measurem
         header.passive_reference_dye_setting,
     )
 
-    sample_custom_info = {
-        "sample volume setting": header.sample_volume_setting
-    }
+    sample_custom_info = {"sample volume setting": header.sample_volume_setting}
 
     return Measurement(
         identifier=well_item.uuid,
@@ -203,7 +201,7 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
                 _create_measurement(well, well_item, data)
                 for well_item in well.items.values()
             ],
-            custom_info=measurement_aggregate_custom_info
+            custom_info=measurement_aggregate_custom_info,
         )
         for well in data.wells.wells
     ]
