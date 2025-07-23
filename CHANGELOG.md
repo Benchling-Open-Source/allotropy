@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Cytiva Biacore T200 Control - improve performance (#1043)
-- Luminex Intelliflex - Create connector (#1035)
+- Luminex Intelliflex - initial implementation (#1035)
 
 ### Fixed
 
