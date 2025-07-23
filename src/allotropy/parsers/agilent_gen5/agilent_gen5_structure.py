@@ -7,8 +7,7 @@ from io import StringIO
 import math
 from pathlib import Path
 import re
-from typing import Any
-from typing import cast
+from typing import Any, cast
 
 import pandas as pd
 
