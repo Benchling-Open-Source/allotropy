@@ -189,7 +189,8 @@ def _create_measurement(well: Well, well_item: WellItem, data: Data) -> Measurem
         passive_reference_dye_data_cube=passive_reference_dye_data_cube,
         melting_curve_data_cube=_create_melt_curve_data_cube(well_item.melt_curve_data),
         sample_custom_info={
-            **(well_item.sample_custom_info or {}),
+            **{k: v for k, v in (well_item.sample_custom_info or {}).items()
+               if k not in {"Amp Status", "Tm1", "Tm2", "Tm3", "Tm4"}},
             **{"sample volume setting": header.sample_volume_setting},
         },
     )
