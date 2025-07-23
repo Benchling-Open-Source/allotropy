@@ -88,6 +88,34 @@ def _create_processed_data(well_item: WellItem, data: Data) -> ProcessedData:
         baseline_corrected_reporter_data_cube,
     ) = _create_processed_data_cubes(well_item.amplification_data)
     result = well_item.result
+
+    custom_info = well_item.sample_custom_info or {}
+
+    processed_data_custom_info = {}
+
+    if "Amp Status" in custom_info:
+        processed_data_custom_info["Amp Status"] = custom_info["Amp Status"]
+
+    for tm_field in ["Tm1", "Tm2", "Tm3", "Tm4"]:
+        if tm_field in custom_info and custom_info[tm_field] is not None:
+            processed_data_custom_info[tm_field] = custom_info[tm_field]
+
+    data_processing_custom_info = {
+        "reference dna description": data.reference_target,
+        "reference sample description": data.reference_sample,
+        "data processing time": data.header.analysis_datetime,
+        "Exported On": data.header.exported_on,
+        "prfdrop": custom_info.get("prfdrop", "N"),
+        "BADROX": custom_info.get("BADROX", "N"),
+        "CQCONF": custom_info.get("CQCONF", "N"),
+        "NOISE": custom_info.get("NOISE", "N"),
+        "OUTLIERRG": custom_info.get("OUTLIERRG", "N"),
+        "Analysis Type": "SinglePlex",
+        "RQ Min/Max Confidence Level": 0.95,
+        "omit": custom_info.get("omit", False),
+        "Omit": custom_info.get("Omit", False),
+    }
+
     return ProcessedData(
         automatic_cycle_threshold_enabled_setting=result.automatic_cycle_threshold_enabled_setting,
         cycle_threshold_value_setting=result.cycle_threshold_value_setting,
@@ -101,12 +129,8 @@ def _create_processed_data(well_item: WellItem, data: Data) -> ProcessedData:
         baseline_corrected_reporter_result=result.baseline_corrected_reporter_result,
         normalized_reporter_data_cube=normalized_reporter_data_cube,
         baseline_corrected_reporter_data_cube=baseline_corrected_reporter_data_cube,
-        data_processing_custom_info={
-            "reference dna description": data.reference_target,
-            "reference sample description": data.reference_sample,
-            "data processing time": data.header.analysis_datetime,
-            "Exported On": data.header.exported_on,
-        },
+        custom_info=processed_data_custom_info,
+        data_processing_custom_info=data_processing_custom_info,
     )
 
 

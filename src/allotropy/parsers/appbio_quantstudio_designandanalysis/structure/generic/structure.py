@@ -243,7 +243,10 @@ class WellItem(Referenceable):
             amplification_data=amplification_data,
             melt_curve_data=melt_curve_data,
             result=result,
-            sample_custom_info={**data.get_unread(), **quantity_custom_info},
+            sample_custom_info={
+                **data.get_unread(skip={"Dye", "Standard Deviation", "Standard Error"}),
+                **quantity_custom_info,
+            },
         )
 
 
@@ -478,6 +481,8 @@ class Result:
     efficiency: float | None
     amp_score: float | None
     cq_conf: float | None
+    standard_deviation: float | None
+    standard_error: float | None
 
     @classmethod
     def get_genotyping_determination_result(cls, _: SeriesData) -> str | None:
@@ -580,6 +585,8 @@ class Result:
             efficiency=target_data.get(float, "Efficiency"),
             amp_score=target_data.get(float, "Amp Score"),
             cq_conf=target_data.get(float, "Cq Confidence"),
+            standard_deviation=target_data.get(float, "Standard Deviation"),
+            standard_error=target_data.get(float, "Standard Error"),
         )
 
 

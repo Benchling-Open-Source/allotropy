@@ -55,5 +55,7 @@ class AppbioQuantstudioDAExtractor(Extractor[WellItem]):
                 "efficiency": well_item.result.efficiency,
                 "amp_score": well_item.result.amp_score,
                 "cq_conf": well_item.result.cq_conf,
+                "standard_deviation": well_item.result.standard_deviation,
+                "standard_error": well_item.result.standard_error,
             },
         )

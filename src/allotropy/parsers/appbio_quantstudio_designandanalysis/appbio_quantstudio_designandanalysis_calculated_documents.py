@@ -122,6 +122,24 @@ def efficiency(view_data: ViewData) -> CalculatedDataConfig:
     )
 
 
+def standard_deviation(view_data: ViewData) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="standard deviation",
+        value="standard_deviation",
+        view_data=view_data,
+        source_configs=(ctr(),),
+    )
+
+
+def standard_error(view_data: ViewData) -> CalculatedDataConfig:
+    return CalculatedDataConfig(
+        name="standard error",
+        value="standard_error",
+        view_data=view_data,
+        source_configs=(ctr(),),
+    )
+
+
 def rn_mean(view_data: ViewData) -> CalculatedDataConfig:
     return CalculatedDataConfig(
         name="rn mean",
@@ -334,7 +352,7 @@ def iter_standard_curve_calc_docs(
 ) -> Iterator[CalculatedDocument]:
     # Y-intercept, Slope, Quantity, Amp score, Cq confidence,
     # Quantity Mean, Quantity SD, Ct Mean, Ct SD
-    # R^2, Efficiency
+    # R^2, Efficiency, Standard Deviation, Standard Error
     elements = AppbioQuantstudioDAExtractor.get_elements(well_items)
 
     sid_tdna_view_data = SampleView(sub_view=TargetView()).apply(elements)
@@ -362,6 +380,8 @@ def iter_standard_curve_calc_docs(
             r_squared(tdna_view_data),
             slope(tdna_view_data),
             efficiency(tdna_view_data),
+            standard_deviation(sid_tdna_uuid_view_data),
+            standard_error(sid_tdna_uuid_view_data),
         ]
     )
 
