@@ -5,6 +5,18 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.101] - 2025-07-23
+
+### Added
+
+- Cytiva Biacore T200 Control - improve performance (#1043)
+- Luminex Intelliflex - Create connector (#1035)
+
+### Fixed
+
+- Agilent Gen5 - fix issue with numeric wavelength measurement labels (#1045)
+- Luminex xPONENT - improve calibration datetime validation check (#1041)
+
 ## [0.1.100] - 2025-07-21
 
 ### Added
