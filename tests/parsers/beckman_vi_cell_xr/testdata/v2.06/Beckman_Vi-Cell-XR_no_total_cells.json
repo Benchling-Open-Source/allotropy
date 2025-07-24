@@ -10,7 +10,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -24,6 +28,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -49,6 +69,10 @@
                                         "average total cell circularity": {
                                             "value": 0.767,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 132.0,
+                                            "Avg. bg intensity": 203.8
                                         }
                                     }
                                 ]
@@ -57,19 +81,7 @@
                                 "sample identifier": "foobar#1"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 132.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#1.smp",
-                                "Avg. bg intensity": 203.8,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#1.smp"
                             }
                         }
                     ]
@@ -84,7 +96,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -98,6 +114,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -123,6 +155,10 @@
                                         "average total cell circularity": {
                                             "value": 0.792,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 123.0,
+                                            "Avg. bg intensity": 203.5
                                         }
                                     }
                                 ]
@@ -131,19 +167,7 @@
                                 "sample identifier": "foobar#2"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 123.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#2.smp",
-                                "Avg. bg intensity": 203.5,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#2.smp"
                             }
                         }
                     ]
@@ -158,7 +182,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -172,6 +200,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -197,6 +241,10 @@
                                         "average total cell circularity": {
                                             "value": 0.804,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 123.0,
+                                            "Avg. bg intensity": 202.9
                                         }
                                     }
                                 ]
@@ -205,19 +253,7 @@
                                 "sample identifier": "foobar#3"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 123.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#3.smp",
-                                "Avg. bg intensity": 202.9,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#3.smp"
                             }
                         }
                     ]
@@ -232,7 +268,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -246,6 +286,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -271,6 +327,10 @@
                                         "average total cell circularity": {
                                             "value": 0.777,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 114.0,
+                                            "Avg. bg intensity": 204.3
                                         }
                                     }
                                 ]
@@ -279,19 +339,7 @@
                                 "sample identifier": "foobar#4"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 114.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#4.smp",
-                                "Avg. bg intensity": 204.3,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#4.smp"
                             }
                         }
                     ]
@@ -306,7 +354,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -320,6 +372,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -345,6 +413,10 @@
                                         "average total cell circularity": {
                                             "value": 0.798,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 121.0,
+                                            "Avg. bg intensity": 202.4
                                         }
                                     }
                                 ]
@@ -353,19 +425,7 @@
                                 "sample identifier": "foobar#5"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 121.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#5.smp",
-                                "Avg. bg intensity": 202.4,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#5.smp"
                             }
                         }
                     ]
@@ -380,7 +440,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -394,6 +458,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -419,6 +499,10 @@
                                         "average total cell circularity": {
                                             "value": 0.807,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 118.0,
+                                            "Avg. bg intensity": 203.0
                                         }
                                     }
                                 ]
@@ -427,19 +511,7 @@
                                 "sample identifier": "foobar#6"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 118.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#6.smp",
-                                "Avg. bg intensity": 203.0,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#6.smp"
                             }
                         }
                     ]
@@ -454,7 +526,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -468,6 +544,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -493,6 +585,10 @@
                                         "average total cell circularity": {
                                             "value": 0.807,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 117.0,
+                                            "Avg. bg intensity": 203.0
                                         }
                                     }
                                 ]
@@ -501,19 +597,7 @@
                                 "sample identifier": "foobar#7"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 117.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#7.smp",
-                                "Avg. bg intensity": 203.0,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#7.smp"
                             }
                         }
                     ]
@@ -528,7 +612,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -542,6 +630,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -567,6 +671,10 @@
                                         "average total cell circularity": {
                                             "value": 0.755,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 119.0,
+                                            "Avg. bg intensity": 204.6
                                         }
                                     }
                                 ]
@@ -575,19 +683,7 @@
                                 "sample identifier": "foobar#8"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 119.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#8.smp",
-                                "Avg. bg intensity": 204.6,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#8.smp"
                             }
                         }
                     ]
@@ -602,7 +698,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -616,6 +716,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -641,6 +757,10 @@
                                         "average total cell circularity": {
                                             "value": 0.802,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 115.0,
+                                            "Avg. bg intensity": 204.5
                                         }
                                     }
                                 ]
@@ -649,19 +769,7 @@
                                 "sample identifier": "foobar#9"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 115.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#9.smp",
-                                "Avg. bg intensity": 204.5,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#9.smp"
                             }
                         }
                     ]
@@ -676,7 +784,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -690,6 +802,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -715,6 +843,10 @@
                                         "average total cell circularity": {
                                             "value": 0.812,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 118.0,
+                                            "Avg. bg intensity": 202.8
                                         }
                                     }
                                 ]
@@ -723,19 +855,7 @@
                                 "sample identifier": "foobar#10"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 118.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#10.smp",
-                                "Avg. bg intensity": 202.8,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#10.smp"
                             }
                         }
                     ]
@@ -750,7 +870,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -764,6 +888,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -789,6 +929,10 @@
                                         "average total cell circularity": {
                                             "value": 0.807,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 116.0,
+                                            "Avg. bg intensity": 202.1
                                         }
                                     }
                                 ]
@@ -797,19 +941,7 @@
                                 "sample identifier": "foobar#11"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 116.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#11.smp",
-                                "Avg. bg intensity": 202.1,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#11.smp"
                             }
                         }
                     ]
@@ -824,7 +956,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -838,6 +974,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -863,6 +1015,10 @@
                                         "average total cell circularity": {
                                             "value": 0.808,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 117.0,
+                                            "Avg. bg intensity": 204.5
                                         }
                                     }
                                 ]
@@ -871,19 +1027,7 @@
                                 "sample identifier": "foobar#12"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 117.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#12.smp",
-                                "Avg. bg intensity": 204.5,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#12.smp"
                             }
                         }
                     ]
@@ -898,7 +1042,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -912,6 +1060,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -937,6 +1101,10 @@
                                         "average total cell circularity": {
                                             "value": 0.803,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 120.0,
+                                            "Avg. bg intensity": 202.4
                                         }
                                     }
                                 ]
@@ -945,19 +1113,7 @@
                                 "sample identifier": "foobar#13"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 120.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#13.smp",
-                                "Avg. bg intensity": 202.4,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#13.smp"
                             }
                         }
                     ]
@@ -972,7 +1128,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -986,6 +1146,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1011,6 +1187,10 @@
                                         "average total cell circularity": {
                                             "value": 0.808,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 109.0,
+                                            "Avg. bg intensity": 203.5
                                         }
                                     }
                                 ]
@@ -1019,19 +1199,7 @@
                                 "sample identifier": "foobar#14"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 109.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#14.smp",
-                                "Avg. bg intensity": 203.5,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#14.smp"
                             }
                         }
                     ]
@@ -1046,7 +1214,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1060,6 +1232,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1085,6 +1273,10 @@
                                         "average total cell circularity": {
                                             "value": 0.813,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 115.0,
+                                            "Avg. bg intensity": 202.6
                                         }
                                     }
                                 ]
@@ -1093,19 +1285,7 @@
                                 "sample identifier": "foobar#15"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 115.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#15.smp",
-                                "Avg. bg intensity": 202.6,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#15.smp"
                             }
                         }
                     ]
@@ -1120,7 +1300,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1134,6 +1318,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1159,6 +1359,10 @@
                                         "average total cell circularity": {
                                             "value": 0.767,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 124.0,
+                                            "Avg. bg intensity": 203.3
                                         }
                                     }
                                 ]
@@ -1167,19 +1371,7 @@
                                 "sample identifier": "foobar#16"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 124.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#16.smp",
-                                "Avg. bg intensity": 203.3,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#16.smp"
                             }
                         }
                     ]
@@ -1194,7 +1386,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1208,6 +1404,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1233,6 +1445,10 @@
                                         "average total cell circularity": {
                                             "value": 0.805,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 117.0,
+                                            "Avg. bg intensity": 203.6
                                         }
                                     }
                                 ]
@@ -1241,19 +1457,7 @@
                                 "sample identifier": "foobar#17"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 117.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#17.smp",
-                                "Avg. bg intensity": 203.6,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#17.smp"
                             }
                         }
                     ]
@@ -1268,7 +1472,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1282,6 +1490,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1307,6 +1531,10 @@
                                         "average total cell circularity": {
                                             "value": 0.814,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 122.0,
+                                            "Avg. bg intensity": 203.1
                                         }
                                     }
                                 ]
@@ -1315,19 +1543,7 @@
                                 "sample identifier": "foobar#18"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 122.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#18.smp",
-                                "Avg. bg intensity": 203.1,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#18.smp"
                             }
                         }
                     ]
@@ -1342,7 +1558,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1356,6 +1576,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1381,6 +1617,10 @@
                                         "average total cell circularity": {
                                             "value": 0.758,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 128.0,
+                                            "Avg. bg intensity": 202.9
                                         }
                                     }
                                 ]
@@ -1389,19 +1629,7 @@
                                 "sample identifier": "foobar#19"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 128.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#19.smp",
-                                "Avg. bg intensity": 202.9,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#19.smp"
                             }
                         }
                     ]
@@ -1416,7 +1644,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1430,6 +1662,22 @@
                                             "cell density dilution factor": {
                                                 "value": 3.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1455,6 +1703,10 @@
                                         "average total cell circularity": {
                                             "value": 0.807,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 114.0,
+                                            "Avg. bg intensity": 204.4
                                         }
                                     }
                                 ]
@@ -1463,19 +1715,7 @@
                                 "sample identifier": "foobar#20"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 114.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#20.smp",
-                                "Avg. bg intensity": 204.4,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#20.smp"
                             }
                         }
                     ]
@@ -1490,7 +1730,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1504,6 +1748,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1529,6 +1789,10 @@
                                         "average total cell circularity": {
                                             "value": 0.796,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 110.0,
+                                            "Avg. bg intensity": 205.0
                                         }
                                     }
                                 ]
@@ -1537,19 +1801,7 @@
                                 "sample identifier": "foobar#21"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 110.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#21.smp",
-                                "Avg. bg intensity": 205.0,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#21.smp"
                             }
                         }
                     ]
@@ -1564,7 +1816,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1578,6 +1834,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1603,6 +1875,10 @@
                                         "average total cell circularity": {
                                             "value": 0.815,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 117.0,
+                                            "Avg. bg intensity": 202.9
                                         }
                                     }
                                 ]
@@ -1611,19 +1887,7 @@
                                 "sample identifier": "foobar#22"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 117.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#22.smp",
-                                "Avg. bg intensity": 202.9,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#22.smp"
                             }
                         }
                     ]
@@ -1638,7 +1902,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1652,6 +1920,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1677,6 +1961,10 @@
                                         "average total cell circularity": {
                                             "value": 0.783,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 121.0,
+                                            "Avg. bg intensity": 202.8
                                         }
                                     }
                                 ]
@@ -1685,19 +1973,7 @@
                                 "sample identifier": "foobar#23"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 121.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#23.smp",
-                                "Avg. bg intensity": 202.8,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#23.smp"
                             }
                         }
                     ]
@@ -1712,7 +1988,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1726,6 +2006,22 @@
                                             "cell density dilution factor": {
                                                 "value": 2.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1751,6 +2047,10 @@
                                         "average total cell circularity": {
                                             "value": 0.756,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 131.0,
+                                            "Avg. bg intensity": 203.6
                                         }
                                     }
                                 ]
@@ -1759,19 +2059,7 @@
                                 "sample identifier": "foobar#24"
                             },
                             "custom information document": {
-                                "Aspirate cycles": 1.0,
-                                "V. cell spot brightness (%)": 75.0,
-                                "Max diam. (microns)": 50.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. cells / image": 131.0,
-                                "Minimum circularity": 0.0,
-                                "File name": "foobar#24.smp",
-                                "Avg. bg intensity": 203.6,
-                                "Sharpness": 100.0,
-                                "Min diam. (microns)": 6.0,
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Brightness (%)": 85.0
+                                "File name": "foobar#24.smp"
                             }
                         }
                     ]

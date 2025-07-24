@@ -30,6 +30,9 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
         viable_cell_count if viable_cell_count is None else round(viable_cell_count)
     )
 
+    # Mark unused keys to be ignored
+    data.mark_read({"Settings:", "Results:", "Settings", "Results"})
+
     return MeasurementGroup(
         analyst=DEFAULT_ANALYST,
         measurements=[
@@ -45,7 +48,65 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                 total_cell_density=data.get(float, "Total cells/ml (x10^6)"),
                 average_total_cell_diameter=data.get(float, "Avg. diam. (microns)"),
                 viable_cell_count=viable_cell_count,
+                dead_cell_count=data.get(float, "Nonviable cells"),
                 average_total_cell_circularity=data.get(float, "Avg. circ."),
+                maximum_cell_diameter_setting=data.get(float, "Max diam. (microns)") or data.get(float, "Maximum diameter (microns)"),
+                minimum_cell_diameter_setting=data.get(float, "Min diam. (microns)")
+                or data.get(float, "Minimum diameter (microns)"),
+                sample_custom_info=data.get_custom_keys(
+                    {
+                        "Internal Dilution",
+                        "Dilution",
+                    }
+                ),
+                device_control_custom_info=data.get_custom_keys(
+                    {
+                        "Aspirate cycles",
+                        "Probe volume (ml x 10^-6)",
+                        "Trypan blue mixing cycles",
+                    }
+                ),
+                data_processing_custom_info=data.get_custom_keys(
+                    {
+                        "Decluster degree",
+                        "Viable cell spot area (%)",
+                        "Viable spot area",
+                        "Viable cell spot brightness (%)",
+                        "V. cell spot brightness (%)",
+                        "Cell sharpness",
+                        "Sharpness",
+                        "Cell brightness (%)",
+                        "Brightness (%)",
+                        "Brightness",
+                        "Analysis version",
+                        "Number of bins",
+                        "Minimum circularity",
+                        "Sample depth (microns)",
+                    }
+                ),
+                image_processing_custom_info=data.get_custom_keys(
+                    {
+                        "Images",
+                        "Saved images",
+                        "ImageBaseName",
+                        "Frames",
+                        "Microns/pixel ratio",
+                        "ImageDirectory",
+                        "Image size",
+                        "Field of view (microns)",
+                    }
+                ),
+                processed_data_custom_info=data.get_custom_keys(
+                    {
+                        "Avg. cells / image",
+                        "Average cells / image",
+                        "Background intensity sum",
+                        "Total diameter sum",
+                        "Total circularity sum",
+                        "Avg. background intensity",
+                        "Avg. bg intensity",
+                    }
+                ),
                 custom_info=data.get_unread(),
             )
         ],

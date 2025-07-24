@@ -10,7 +10,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Trypan blue mixing cycles": 3.0,
+                                            "Aspirate cycles": 1.0
+                                        }
                                     }
                                 ]
                             },
@@ -24,6 +28,22 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 5.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Minimum circularity": 0.0,
+                                                "Brightness (%)": 85.0,
+                                                "Decluster degree": "Medium",
+                                                "Sharpness": 100.0,
+                                                "Viable cell spot area (%)": 5.0,
+                                                "V. cell spot brightness (%)": 55.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -53,6 +73,10 @@
                                         "average total cell circularity": {
                                             "value": 0.803,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. cells / image": 179.0,
+                                            "Avg. bg intensity": 201.2
                                         }
                                     }
                                 ]
@@ -60,21 +84,17 @@
                             "sample document": {
                                 "sample identifier": "JK TEST Count 2-13-2024"
                             },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 25.0
+                                        }
+                                    }
+                                ]
+                            },
                             "custom information document": {
-                                "Trypan blue mixing cycles": 3.0,
-                                "Decluster degree": "Medium",
-                                "Max diam. (microns)": 50.0,
-                                "Brightness (%)": 85.0,
-                                "Avg. cells / image": 179.0,
-                                "Viable cell spot area (%)": 5.0,
-                                "Avg. bg intensity": 201.2,
-                                "V. cell spot brightness (%)": 55.0,
-                                "Sharpness": 100.0,
-                                "Minimum circularity": 0.0,
-                                "Aspirate cycles": 1.0,
-                                "File name": "JK TEST Count 2-13-2024.smp",
-                                "Images": 25.0,
-                                "Min diam. (microns)": 5.0
+                                "File name": "JK TEST Count 2-13-2024.smp"
                             }
                         }
                     ]
