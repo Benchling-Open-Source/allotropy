@@ -50,7 +50,8 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                 viable_cell_count=viable_cell_count,
                 dead_cell_count=data.get(float, "Nonviable cells"),
                 average_total_cell_circularity=data.get(float, "Avg. circ."),
-                maximum_cell_diameter_setting=data.get(float, "Max diam. (microns)") or data.get(float, "Maximum diameter (microns)"),
+                maximum_cell_diameter_setting=data.get(float, "Max diam. (microns)")
+                or data.get(float, "Maximum diameter (microns)"),
                 minimum_cell_diameter_setting=data.get(float, "Min diam. (microns)")
                 or data.get(float, "Minimum diameter (microns)"),
                 sample_custom_info=data.get_custom_keys(
