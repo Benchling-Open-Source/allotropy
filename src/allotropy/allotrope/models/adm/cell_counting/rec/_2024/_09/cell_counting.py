@@ -354,9 +354,6 @@ class MeasurementAggregateDocument:
     image_aggregate_document: ImageAggregateDocument | None = None
     processed_data_aggregate_document: ProcessedDataAggregateDocument | None = None
     statistics_aggregate_document: StatisticsAggregateDocument | None = None
-    custom_information_aggregate_document: CustomInformationAggregateDocument | None = (
-        None
-    )
 
 
 @dataclass(kw_only=True)
