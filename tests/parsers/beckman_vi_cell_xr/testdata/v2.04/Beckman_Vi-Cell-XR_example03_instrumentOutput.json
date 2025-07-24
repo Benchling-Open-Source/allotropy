@@ -10,7 +10,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -24,6 +28,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -53,12 +65,30 @@
                                         "average total cell circularity": {
                                             "value": 0.7941950393676758,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 203.0399932861328,
+                                            "Avg. cells / image": 35.040000915527344
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB001"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB001.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -73,7 +103,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -87,6 +121,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -116,12 +158,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8573068810462952,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 203.74000549316406,
+                                            "Avg. cells / image": 94.55999755859375
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB002"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB002.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -136,7 +196,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -150,6 +214,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -179,12 +251,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8530879450798035,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 203.16000366210938,
+                                            "Avg. cells / image": 90.80000305175781
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB003"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB003.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -199,7 +289,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -213,6 +307,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -242,12 +344,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8523285223007202,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 202.6999969482422,
+                                            "Avg. cells / image": 87.16000366210938
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB004"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB004.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -262,7 +382,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -276,6 +400,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -305,12 +437,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8534211946487427,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 202.97999572753906,
+                                            "Avg. cells / image": 81.13999938964844
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB005"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB005.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -325,7 +475,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -339,6 +493,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -368,12 +530,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8578418327331543,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 203.8800048828125,
+                                            "Avg. cells / image": 82.0199966430664
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB006"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB006.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -388,7 +568,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -402,6 +586,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -431,12 +623,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8468651605606079,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 202.89999389648438,
+                                            "Avg. cells / image": 98.22000122070312
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB007"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB007.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -451,7 +661,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -465,6 +679,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -494,12 +716,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8465075326919556,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 203.3000030517578,
+                                            "Avg. cells / image": 91.05999755859375
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB008"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB008.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -514,7 +754,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -528,6 +772,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -557,12 +809,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8566391302108765,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 203.10000610351562,
+                                            "Avg. cells / image": 63.20000076293945
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB009"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB009.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -577,7 +847,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -591,6 +865,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -620,12 +902,30 @@
                                         "average total cell circularity": {
                                             "value": 0.846275491809845,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 203.83999633789062,
+                                            "Avg. cells / image": 58.02000045776367
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB010"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB010.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -640,7 +940,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -654,6 +958,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -683,12 +995,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8513926697731018,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 203.36000061035156,
+                                            "Avg. cells / image": 59.599998474121094
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB011"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB011.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -703,7 +1033,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -717,6 +1051,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -746,12 +1088,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8477007580757141,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 202.6199951171875,
+                                            "Avg. cells / image": 55.18000030517578
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB012"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB012.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -766,7 +1126,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -780,6 +1144,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -809,12 +1181,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8478140069007873,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 203.1999969482422,
+                                            "Avg. cells / image": 15.34000015258789
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB013"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB013.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -829,7 +1219,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -843,6 +1237,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -872,12 +1274,30 @@
                                         "average total cell circularity": {
                                             "value": 0.850202961063385,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 203.63999938964844,
+                                            "Avg. cells / image": 20.920000076293945
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB014"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB014.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -892,7 +1312,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -906,6 +1330,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -935,12 +1367,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8540007902145386,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 202.72000122070312,
+                                            "Avg. cells / image": 19.219999313354492
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB015"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB015.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -955,7 +1405,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -969,6 +1423,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -998,12 +1460,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8558155132293701,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 202.3000030517578,
+                                            "Avg. cells / image": 18.020000457763672
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB016"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB016.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -1018,7 +1498,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1032,6 +1516,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1061,12 +1553,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8846805525779724,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 203.25999450683594,
+                                            "Avg. cells / image": 20.899999618530273
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB017"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB017.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -1081,7 +1591,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1095,6 +1609,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1124,12 +1646,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8491016460418701,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 203.0800018310547,
+                                            "Avg. cells / image": 22.040000915527344
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB018"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB018.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -1144,7 +1684,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1158,6 +1702,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1187,12 +1739,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8525158596992493,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 202.3000030517578,
+                                            "Avg. cells / image": 25.700000762939453
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB019"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB019.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -1207,7 +1777,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1221,6 +1795,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1250,12 +1832,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8691162301063537,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 203.4600067138672,
+                                            "Avg. cells / image": 28.200000762939453
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB020"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB020.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -1270,7 +1870,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1284,6 +1888,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1313,12 +1925,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8690674735069275,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 202.89999389648438,
+                                            "Avg. cells / image": 23.219999313354492
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB021"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB021.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -1333,7 +1963,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1347,6 +1981,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1376,12 +2018,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8675957156181335,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 203.5399932861328,
+                                            "Avg. cells / image": 29.579999923706055
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB022"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB022.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -1396,7 +2056,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1410,6 +2074,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1439,12 +2111,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8607621026992798,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 203.89999389648438,
+                                            "Avg. cells / image": 25.260000228881836
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB023"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB023.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -1459,7 +2149,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1473,6 +2167,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1502,12 +2204,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8066686225891113,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 203.72000122070312,
+                                            "Avg. cells / image": 44.84000015258789
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB024"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB024.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -1522,7 +2242,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1536,6 +2260,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1565,12 +2297,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8101201487541199,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 203.3800048828125,
+                                            "Avg. cells / image": 62.720001220703125
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB025"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB025.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -1585,7 +2335,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1599,6 +2353,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1628,12 +2390,30 @@
                                         "average total cell circularity": {
                                             "value": 0.848058505153656,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 203.44000244140625,
+                                            "Avg. cells / image": 44.41999816894531
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB026"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB026.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -1648,7 +2428,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1662,6 +2446,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1691,12 +2483,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8238553238868713,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 203.39999389648438,
+                                            "Avg. cells / image": 42.040000915527344
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB027"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB027.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -1711,7 +2521,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1725,6 +2539,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1754,12 +2576,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8887351585388183,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 202.8000030517578,
+                                            "Avg. cells / image": 20.6200008392334
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB028"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB028.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -1774,7 +2614,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1788,6 +2632,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1817,12 +2669,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8359930349349975,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 203.13999938964844,
+                                            "Avg. cells / image": 81.91999816894531
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB029"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB029.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -1837,7 +2707,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1851,6 +2725,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1880,12 +2762,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8531865907669067,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 203.44000244140625,
+                                            "Avg. cells / image": 92.81999969482422
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB030"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB030.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -1900,7 +2800,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1914,6 +2818,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1943,12 +2855,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8635202480316162,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 202.52000427246094,
+                                            "Avg. cells / image": 35.060001373291016
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB031"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB031.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -1963,7 +2893,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -1977,6 +2911,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -2006,12 +2948,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8519420457839966,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 203.39999389648438,
+                                            "Avg. cells / image": 35.81999969482422
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB032"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB032.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -2026,7 +2986,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -2040,6 +3004,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -2069,12 +3041,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8571249676704407,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 204.10000610351562,
+                                            "Avg. cells / image": 46.119998931884766
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB033"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB033.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -2089,7 +3079,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -2103,6 +3097,14 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Decluster degree": "Medium",
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Cell brightness (%)": 85.0,
+                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
+                                                "Cell sharpness": 100.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -2132,12 +3134,30 @@
                                         "average total cell circularity": {
                                             "value": 0.8484919501304626,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. background intensity": 202.75999450683594,
+                                            "Avg. cells / image": 24.920000076293945
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB034"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "custom information document": {
+                                "Min. diam. (microns)": 6.0,
+                                "File name": "CLB034.txt",
+                                "Max. diam. (microns)": 50.0
                             }
                         }
                     ]
@@ -2151,7 +3171,7 @@
             "file name": "Beckman_Vi-Cell-XR_example03_instrumentOutput.xls",
             "UNC path": "tests/parsers/beckman_vi_cell_xr/testdata/v2.04/Beckman_Vi-Cell-XR_example03_instrumentOutput.xls",
             "ASM converter name": "allotropy_beckman_coulter_vi_cell_xr",
-            "ASM converter version": "0.1.69",
+            "ASM converter version": "0.1.100",
             "software name": "Vi-Cell XR",
             "software version": "2.04"
         },
