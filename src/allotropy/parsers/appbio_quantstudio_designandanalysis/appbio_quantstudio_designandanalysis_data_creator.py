@@ -78,6 +78,7 @@ def create_metadata(
         device_type=constants.DEVICE_TYPE,
         experiment_type=experiment_type.value,
         measurement_method_identifier=header.measurement_method_identifier,
+        custom_info=header.extra_data,
     )
 
 
@@ -87,6 +88,33 @@ def _create_processed_data(well_item: WellItem, data: Data) -> ProcessedData:
         baseline_corrected_reporter_data_cube,
     ) = _create_processed_data_cubes(well_item.amplification_data)
     result = well_item.result
+
+    custom_info = well_item.sample_custom_info or {}
+
+    processed_data_custom_info = {}
+
+    if "Amp Status" in custom_info:
+        processed_data_custom_info["Amp Status"] = custom_info["Amp Status"]
+
+    for tm_field in ["Tm1", "Tm2", "Tm3", "Tm4"]:
+        if tm_field in custom_info and custom_info[tm_field] is not None:
+            processed_data_custom_info[tm_field] = custom_info[tm_field]
+
+    data_processing_custom_info = {
+        "reference dna description": data.reference_target,
+        "reference sample description": data.reference_sample,
+        "data processing time": data.header.analysis_datetime,
+        "Exported On": data.header.exported_on,
+        "prfdrop": custom_info.get("prfdrop", "N"),
+        "BADROX": custom_info.get("BADROX", "N"),
+        "CQCONF": custom_info.get("CQCONF", "N"),
+        "NOISE": custom_info.get("NOISE", "N"),
+        "OUTLIERRG": custom_info.get("OUTLIERRG", "N"),
+        "Analysis Type": "SinglePlex",
+        "RQ Min/Max Confidence Level": 0.95,
+        "Omit": custom_info.get("Omit", False),
+    }
+
     return ProcessedData(
         automatic_cycle_threshold_enabled_setting=result.automatic_cycle_threshold_enabled_setting,
         cycle_threshold_value_setting=result.cycle_threshold_value_setting,
@@ -100,10 +128,8 @@ def _create_processed_data(well_item: WellItem, data: Data) -> ProcessedData:
         baseline_corrected_reporter_result=result.baseline_corrected_reporter_result,
         normalized_reporter_data_cube=normalized_reporter_data_cube,
         baseline_corrected_reporter_data_cube=baseline_corrected_reporter_data_cube,
-        data_processing_custom_info={
-            "reference dna description": data.reference_target,
-            "reference sample description": data.reference_sample,
-        },
+        custom_info=processed_data_custom_info,
+        data_processing_custom_info=data_processing_custom_info,
     )
 
 
@@ -161,7 +187,14 @@ def _create_measurement(well: Well, well_item: WellItem, data: Data) -> Measurem
         reporter_dye_data_cube=reporter_dye_data_cube,
         passive_reference_dye_data_cube=passive_reference_dye_data_cube,
         melting_curve_data_cube=_create_melt_curve_data_cube(well_item.melt_curve_data),
-        sample_custom_info=well_item.sample_custom_info,
+        sample_custom_info={
+            **{
+                k: v
+                for k, v in (well_item.sample_custom_info or {}).items()
+                if k not in {"Amp Status", "Tm1", "Tm2", "Tm3", "Tm4"}
+            },
+            **{"sample volume setting": header.sample_volume_setting},
+        },
     )
 
 
@@ -182,6 +215,11 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
                 _create_measurement(well, well_item, data)
                 for well_item in well.items.values()
             ],
+            custom_info={
+                "total measurement duration setting": header.run_duration,
+                "Cover Temperature": header.cover_temperature,
+                "Run Start Date/Time": header.run_start_datetime,
+            },
         )
         for well in data.wells.wells
     ]

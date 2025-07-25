@@ -79,6 +79,62 @@ def _create_processed_data(
         normalized_reporter_data_cube,
         baseline_corrected_reporter_data_cube,
     ) = _create_processed_data_cubes(amplification_data)
+    extra_data = result.extra_data or {}
+
+    data_processing_field_names = {
+        "omit",
+        "Method",
+        "SNP Assay Name",
+        "prfdrop",
+        "BADROX",
+        "CQCONF",
+        "NOISE",
+        "OUTLIERRG",
+        "highsd",
+        "noamp",
+        "expfail",
+        "tholdfail",
+    }
+
+    skip_fields = {
+        "Allele2 Baseline End",
+        "Allele2 Baseline Start",
+        "Allele2 Automatic Ct Threshold",
+        "Allele2 Automatic Baseline",
+        "Allele2 Ct",
+    }
+
+    processed_data_custom_info = {
+        k: v
+        for k, v in extra_data.items()
+        if k not in data_processing_field_names and k not in skip_fields
+    }
+
+    data_processing_defaults = {
+        "prfdrop": "N",
+        "BADROX": "N",
+        "CQCONF": "N",
+        "NOISE": "N",
+        "OUTLIERRG": "N",
+        "highsd": "N",
+        "noamp": "N",
+        "expfail": "N",
+        "tholdfail": "N",
+    }
+
+    data_processing_custom_info = {
+        "reference dna description": result_metadata.reference_dna_description,
+        "reference sample description": result_metadata.reference_sample_description,
+        "Analysis Type": "SinglePlex",
+        "RQ Min/Max Confidence Level": 0.95,
+    }
+
+    for field in data_processing_field_names:
+        if field in extra_data:
+            data_processing_custom_info[field] = extra_data[field]
+        elif field in data_processing_defaults:
+            data_processing_custom_info[field] = data_processing_defaults[field]
+
     return ProcessedData(
         automatic_cycle_threshold_enabled_setting=result.automatic_cycle_threshold_enabled_setting,
         cycle_threshold_value_setting=result.cycle_threshold_value_setting,
@@ -92,11 +148,8 @@ def _create_processed_data(
         baseline_corrected_reporter_result=result.baseline_corrected_reporter_result,
         normalized_reporter_data_cube=normalized_reporter_data_cube,
         baseline_corrected_reporter_data_cube=baseline_corrected_reporter_data_cube,
-        data_processing_custom_info={
-            "reference dna description": result_metadata.reference_dna_description,
-            "reference sample description": result_metadata.reference_sample_description,
-        },
-        custom_info=result.extra_data,
+        custom_info=processed_data_custom_info,
+        data_processing_custom_info=data_processing_custom_info,
     )
 
 
@@ -216,6 +269,7 @@ def _create_measurement(
         reporter_dye_data_cube=reporter_dye_data_cube,
         passive_reference_dye_data_cube=passive_reference_dye_data_cube,
         melting_curve_data_cube=_create_melt_curve_data_cube(melt_curve_raw_data),
+        custom_info=result_metadata.extra_data,
     )
 
 
