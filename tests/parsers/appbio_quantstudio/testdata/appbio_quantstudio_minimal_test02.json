@@ -54,7 +54,14 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "N/A",
-                                                "reference sample description": "N/A"
+                                                "reference sample description": "N/A",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -118,7 +125,6 @@
                                             }
                                         },
                                         "custom information document": {
-                                            "omit": false,
                                             "Tm1": 78.122
                                         }
                                     }

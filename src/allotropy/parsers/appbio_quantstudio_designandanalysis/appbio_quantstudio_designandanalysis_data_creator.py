@@ -112,7 +112,6 @@ def _create_processed_data(well_item: WellItem, data: Data) -> ProcessedData:
         "OUTLIERRG": custom_info.get("OUTLIERRG", "N"),
         "Analysis Type": "SinglePlex",
         "RQ Min/Max Confidence Level": 0.95,
-        "omit": custom_info.get("omit", False),
         "Omit": custom_info.get("Omit", False),
     }
 

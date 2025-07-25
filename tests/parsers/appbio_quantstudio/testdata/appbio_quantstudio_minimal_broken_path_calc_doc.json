@@ -55,7 +55,14 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "RNaseP",
-                                                "reference sample description": "800"
+                                                "reference sample description": "800",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -115,17 +122,14 @@
                                                     [0.001]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false
                                         }
                                     }
                                 ]
                             },
                             "target DNA description": "RNaseP",
                             "custom information document": {
-                                "Analysis Type": "Singleplex",
-                                "RQ Min/Max Confidence Level": 95.0
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],

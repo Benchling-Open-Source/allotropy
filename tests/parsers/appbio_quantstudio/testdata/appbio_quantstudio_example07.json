@@ -54,7 +54,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -133,11 +141,6 @@
                                                     ]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -269,7 +272,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -344,11 +355,6 @@
                                                         -0.0, 0.0, 0.003, 0.007, 0.015, 0.029, 0.056, 0.104, 0.176, 0.277, 0.402, 0.545, 0.7, 0.861, 1.028, 1.193, 1.331]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -480,7 +486,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -554,11 +568,6 @@
                                                         -0.0, 0.001, 0.006, 0.013, 0.026, 0.053, 0.1, 0.17, 0.268, 0.388, 0.527, 0.677, 0.834, 0.993, 1.154, 1.314, 1.445]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -690,7 +699,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -764,11 +781,6 @@
                                                         -0.001, 0.0, 0.001, 0.003, 0.007, 0.014, 0.028, 0.055, 0.101, 0.173, 0.272, 0.396, 0.538, 0.691, 0.852, 1.017, 1.179, 1.341, 1.497, 1.624]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -900,7 +912,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -977,11 +997,6 @@
                                                         -0.001, 0.001, 0.004, 0.011, 0.026, 0.052, 0.098, 0.169, 0.266, 0.387, 0.528, 0.679, 0.837, 0.997, 1.156, 1.315, 1.471, 1.62, 1.74]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -1113,7 +1128,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1184,11 +1207,6 @@
                                                         -0.001, 0.0, 0.001, 0.004, 0.011, 0.025, 0.051, 0.097, 0.168, 0.267, 0.391, 0.531, 0.683, 0.844, 1.006, 1.168, 1.326, 1.481, 1.633, 1.778, 1.893]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -1319,7 +1337,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -1395,11 +1421,6 @@
                                                     ]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -1531,7 +1552,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "Y"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1608,11 +1637,6 @@
                                                         -0.001, 0.001, 0.005, 0.012, 0.023, 0.042, 0.071, 0.112, 0.157, 0.194, 0.22, 0.235]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "Y",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -1744,7 +1768,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1822,11 +1854,6 @@
                                                         -0.0, 0.0, 0.0, 0.001, 0.003, 0.007, 0.016, 0.031, 0.055, 0.089, 0.131, 0.174, 0.207, 0.227, 0.239, 0.245]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -1958,7 +1985,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2038,11 +2073,6 @@
                                                         -0.001, 0.002, 0.003, 0.01, 0.021, 0.041, 0.072, 0.113, 0.157, 0.194, 0.219, 0.234, 0.241, 0.245]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -2174,7 +2204,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2249,11 +2287,6 @@
                                                         -0.001, 0.001, 0.002, 0.004, 0.01, 0.019, 0.037, 0.065, 0.105, 0.152, 0.193, 0.222, 0.239, 0.247, 0.252, 0.255, 0.257]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -2385,7 +2418,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2458,11 +2499,6 @@
                                                         -0.0, 0.001, 0.001, 0.004, 0.009, 0.018, 0.033, 0.06, 0.098, 0.141, 0.18, 0.21, 0.228, 0.237, 0.242, 0.245, 0.247, 0.248]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -2593,7 +2629,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -2673,11 +2717,6 @@
                                                     ]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -2809,7 +2848,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2884,11 +2931,6 @@
                                                         -0.0, 0.001, 0.002, 0.006, 0.014, 0.029, 0.056, 0.105, 0.18, 0.28, 0.402, 0.544, 0.696, 0.856, 1.018, 1.178, 1.316]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -3020,7 +3062,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3093,11 +3143,6 @@
                                                         -0.0, 0.001, 0.002, 0.006, 0.014, 0.027, 0.054, 0.101, 0.172, 0.272, 0.395, 0.536, 0.69, 0.851, 1.015, 1.179, 1.342, 1.478]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -3229,7 +3274,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3301,11 +3354,6 @@
                                                         -0.0, 0.002, 0.005, 0.011, 0.026, 0.051, 0.097, 0.168, 0.264, 0.385, 0.525, 0.679, 0.839, 1.002, 1.166, 1.325, 1.481, 1.609]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -3437,7 +3485,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3511,11 +3567,6 @@
                                                         -0.0, 0.0, 0.001, 0.002, 0.005, 0.012, 0.027, 0.052, 0.097, 0.166, 0.264, 0.386, 0.527, 0.681, 0.842, 1.005, 1.168, 1.328, 1.487, 1.639, 1.764]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -3647,7 +3698,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3719,11 +3778,6 @@
                                                         -0.0, 0.001, 0.002, 0.007, 0.013, 0.027, 0.053, 0.098, 0.168, 0.266, 0.389, 0.53, 0.683, 0.843, 1.008, 1.172, 1.33, 1.486, 1.638, 1.784, 1.902]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -3854,7 +3908,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -3931,11 +3993,6 @@
                                                     ]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -4067,7 +4124,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "Y",
+                                                "omit": false,
+                                                "highsd": "Y"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4145,11 +4210,6 @@
                                                         -0.001, 0.003, 0.005, 0.011, 0.022, 0.041, 0.073, 0.116, 0.159, 0.195, 0.216]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "Y",
-                                            "OUTLIERRG": "Y"
                                         }
                                     }
                                 ]
@@ -4281,7 +4341,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4357,11 +4425,6 @@
                                                         -0.001, 0.0, 0.002, 0.007, 0.014, 0.028, 0.05, 0.083, 0.126, 0.168, 0.202, 0.223, 0.236, 0.241]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -4493,7 +4556,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4569,11 +4640,6 @@
                                                         -0.0, 0.001, 0.003, 0.006, 0.014, 0.029, 0.054, 0.088, 0.132, 0.174, 0.208, 0.227, 0.237, 0.243, 0.247]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -4705,7 +4771,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4782,11 +4856,6 @@
                                                         -0.001, 0.001, 0.004, 0.009, 0.019, 0.037, 0.065, 0.104, 0.15, 0.19, 0.22, 0.239, 0.248, 0.252, 0.254, 0.257]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -4918,7 +4987,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4993,11 +5070,6 @@
                                                         -0.001, 0.003, 0.009, 0.018, 0.033, 0.058, 0.094, 0.138, 0.178, 0.207, 0.226, 0.235, 0.24, 0.243, 0.245, 0.247]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -5128,7 +5200,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -5202,11 +5282,6 @@
                                                     ]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -5338,7 +5413,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -5412,11 +5495,6 @@
                                                         -0.0, 0.001, 0.003, 0.005, 0.013, 0.028, 0.057, 0.105, 0.178, 0.279, 0.405, 0.549, 0.704, 0.865, 1.029, 1.193, 1.33]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -5548,7 +5626,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -5623,11 +5709,6 @@
                                                         -0.001, 0.001, 0.003, 0.007, 0.014, 0.028, 0.053, 0.098, 0.169, 0.267, 0.389, 0.53, 0.682, 0.842, 1.007, 1.17, 1.33, 1.462]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -5759,7 +5840,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -5831,11 +5920,6 @@
                                                         -0.0, 0.003, 0.005, 0.012, 0.026, 0.052, 0.095, 0.165, 0.262, 0.383, 0.522, 0.674, 0.832, 0.994, 1.159, 1.319, 1.474, 1.604]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -5967,7 +6051,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -6042,11 +6134,6 @@
                                                         -0.0, 0.002, 0.005, 0.012, 0.026, 0.052, 0.099, 0.172, 0.271, 0.395, 0.534, 0.687, 0.845, 1.007, 1.171, 1.33, 1.485, 1.635, 1.76]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -6178,7 +6265,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -6249,11 +6344,6 @@
                                                         -0.001, 0.002, 0.006, 0.013, 0.027, 0.052, 0.099, 0.169, 0.267, 0.389, 0.528, 0.68, 0.839, 1.0, 1.162, 1.32, 1.475, 1.627, 1.772, 1.886]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -6384,7 +6474,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -6461,11 +6559,6 @@
                                                     ]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -6597,7 +6690,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "Y"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -6674,11 +6775,6 @@
                                                         -0.0, 0.004, 0.009, 0.022, 0.042, 0.072, 0.113, 0.157, 0.194, 0.221, 0.236]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "Y",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -6810,7 +6906,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -6885,11 +6989,6 @@
                                                         -0.0, 0.001, 0.005, 0.013, 0.027, 0.049, 0.084, 0.127, 0.169, 0.203, 0.225, 0.236, 0.243]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -7021,7 +7120,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -7096,11 +7203,6 @@
                                                         -0.001, 0.0, 0.002, 0.007, 0.016, 0.031, 0.057, 0.093, 0.136, 0.178, 0.209, 0.228, 0.238, 0.245, 0.248]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -7232,7 +7334,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -7307,11 +7417,6 @@
                                                         -0.001, 0.0, 0.003, 0.008, 0.016, 0.032, 0.058, 0.094, 0.139, 0.182, 0.214, 0.233, 0.243, 0.25, 0.253, 0.253]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -7443,7 +7548,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -7518,11 +7631,6 @@
                                                         -0.0, 0.001, 0.004, 0.008, 0.016, 0.03, 0.054, 0.089, 0.132, 0.174, 0.204, 0.223, 0.233, 0.239, 0.242, 0.245, 0.247]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -7654,7 +7762,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -7728,11 +7844,6 @@
                                                         -0.001, 0.001, 0.003, 0.008, 0.017, 0.035, 0.067, 0.122, 0.203, 0.312, 0.444, 0.593, 0.753, 0.917, 1.084, 1.25, 1.413, 1.548]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -7864,7 +7975,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -7940,11 +8059,6 @@
                                                         -0.0, 0.001, 0.003, 0.008, 0.018, 0.035, 0.067, 0.123, 0.205, 0.314, 0.445, 0.594, 0.754, 0.919, 1.084, 1.249, 1.412, 1.55]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -8076,7 +8190,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -8151,11 +8273,6 @@
                                                         -0.001, 0.002, 0.002, 0.007, 0.017, 0.034, 0.065, 0.117, 0.197, 0.302, 0.431, 0.575, 0.73, 0.892, 1.059, 1.224, 1.386, 1.52]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -8287,7 +8404,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -8359,11 +8484,6 @@
                                                         -0.0, 0.0, 0.0, 0.002, 0.006, 0.016, 0.033, 0.066, 0.122, 0.205, 0.311, 0.442, 0.59, 0.745, 0.909, 1.074, 1.237, 1.399, 1.555, 1.683]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -8495,7 +8615,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -8568,11 +8696,6 @@
                                                         -0.0, 0.001, 0.003, 0.008, 0.018, 0.034, 0.066, 0.12, 0.201, 0.31, 0.442, 0.59, 0.749, 0.911, 1.077, 1.246, 1.408, 1.564, 1.697]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -8704,7 +8827,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -8778,11 +8909,6 @@
                                                         -0.001, 0.002, 0.004, 0.008, 0.016, 0.033, 0.065, 0.12, 0.202, 0.31, 0.441, 0.588, 0.745, 0.909, 1.075, 1.242, 1.406, 1.56, 1.69]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -8914,7 +9040,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -8988,11 +9122,6 @@
                                                         -0.001, 0.001, 0.003, 0.007, 0.014, 0.027, 0.055, 0.1, 0.17, 0.268, 0.392, 0.535, 0.691, 0.855, 1.021, 1.186, 1.352, 1.512, 1.665, 1.814, 1.935]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -9124,7 +9253,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -9199,11 +9336,6 @@
                                                         -0.0, 0.002, 0.006, 0.014, 0.028, 0.053, 0.098, 0.17, 0.268, 0.393, 0.537, 0.693, 0.857, 1.025, 1.194, 1.361, 1.524, 1.683, 1.831, 1.945]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -9335,7 +9467,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -9408,11 +9548,6 @@
                                                         -0.0, 0.003, 0.006, 0.014, 0.026, 0.052, 0.099, 0.17, 0.268, 0.394, 0.539, 0.696, 0.862, 1.031, 1.199, 1.362, 1.528, 1.683, 1.829, 1.951]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -9544,7 +9679,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -9616,11 +9759,6 @@
                                                         -0.0, 0.001, 0.004, 0.01, 0.021, 0.044, 0.086, 0.151, 0.244, 0.363, 0.504, 0.659, 0.821, 0.989, 1.157, 1.322, 1.485, 1.619]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -9752,7 +9890,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -9825,11 +9971,6 @@
                                                         -0.001, 0.001, 0.004, 0.009, 0.02, 0.04, 0.077, 0.138, 0.227, 0.342, 0.48, 0.632, 0.793, 0.96, 1.127, 1.294, 1.454, 1.588]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -9961,7 +10102,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -10037,11 +10186,6 @@
                                                         -0.0, 0.001, 0.003, 0.01, 0.021, 0.044, 0.084, 0.149, 0.24, 0.359, 0.499, 0.653, 0.816, 0.983, 1.151, 1.316, 1.477, 1.611]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -10173,7 +10317,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -10249,11 +10401,6 @@
                                                         -0.0, 0.002, 0.008, 0.018, 0.036, 0.069, 0.125, 0.209, 0.319, 0.451, 0.6, 0.76, 0.925, 1.092, 1.257, 1.419, 1.556]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -10385,7 +10532,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -10456,11 +10611,6 @@
                                                         -0.001, 0.0, 0.003, 0.007, 0.017, 0.036, 0.068, 0.121, 0.203, 0.312, 0.441, 0.585, 0.742, 0.904, 1.066, 1.229, 1.389, 1.524]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -10592,7 +10742,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -10662,11 +10820,6 @@
                                                         -0.001, 0.001, 0.003, 0.008, 0.018, 0.035, 0.067, 0.122, 0.204, 0.311, 0.442, 0.589, 0.748, 0.911, 1.076, 1.242, 1.402, 1.538]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -10798,7 +10951,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -10872,11 +11033,6 @@
                                                         -0.001, 0.001, 0.003, 0.008, 0.017, 0.035, 0.069, 0.125, 0.209, 0.318, 0.449, 0.597, 0.756, 0.921, 1.087, 1.253, 1.416, 1.573, 1.704]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -11008,7 +11164,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -11081,11 +11245,6 @@
                                                         -0.001, 0.001, 0.004, 0.009, 0.018, 0.036, 0.069, 0.124, 0.207, 0.316, 0.447, 0.594, 0.749, 0.912, 1.076, 1.239, 1.399, 1.554, 1.685]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -11217,7 +11376,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -11290,11 +11457,6 @@
                                                         -0.0, 0.0, 0.002, 0.004, 0.008, 0.018, 0.037, 0.069, 0.125, 0.209, 0.318, 0.451, 0.598, 0.757, 0.92, 1.084, 1.248, 1.408, 1.565, 1.694]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -11426,7 +11588,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -11499,11 +11669,6 @@
                                                         -0.0, 0.003, 0.007, 0.014, 0.028, 0.053, 0.099, 0.169, 0.27, 0.395, 0.537, 0.693, 0.857, 1.025, 1.192, 1.357, 1.516, 1.672, 1.82, 1.942]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -11635,7 +11800,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -11709,11 +11882,6 @@
                                                         -0.0, 0.002, 0.007, 0.014, 0.027, 0.052, 0.098, 0.169, 0.269, 0.394, 0.539, 0.697, 0.862, 1.03, 1.198, 1.367, 1.531, 1.687, 1.837, 1.961]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -11845,7 +12013,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -11915,11 +12091,6 @@
                                                         -0.0, 0.0, 0.001, 0.002, 0.005, 0.012, 0.025, 0.052, 0.096, 0.168, 0.268, 0.392, 0.536, 0.693, 0.857, 1.026, 1.194, 1.36, 1.523, 1.679, 1.829, 1.952]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -12051,7 +12222,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -12126,11 +12305,6 @@
                                                         -0.001, 0.001, 0.004, 0.009, 0.019, 0.041, 0.078, 0.139, 0.227, 0.342, 0.478, 0.63, 0.791, 0.958, 1.126, 1.292, 1.453, 1.588]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -12262,7 +12436,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -12335,11 +12517,6 @@
                                                         -0.001, 0.0, 0.0, 0.003, 0.01, 0.021, 0.044, 0.083, 0.144, 0.235, 0.354, 0.493, 0.645, 0.807, 0.974, 1.143, 1.311, 1.473, 1.608]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -12471,7 +12648,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -12541,11 +12726,6 @@
                                                         -0.001, 0.001, 0.001, 0.001, 0.004, 0.009, 0.021, 0.043, 0.082, 0.148, 0.24, 0.36, 0.5, 0.655, 0.819, 0.987, 1.155, 1.321, 1.486, 1.623]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -12677,7 +12857,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -12751,11 +12939,6 @@
                                                         -0.001, 0.0, 0.002, 0.007, 0.018, 0.036, 0.071, 0.127, 0.211, 0.323, 0.459, 0.61, 0.768, 0.935, 1.104, 1.273, 1.437, 1.575]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -12887,7 +13070,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -12960,11 +13151,6 @@
                                                         -0.0, 0.001, 0.003, 0.008, 0.017, 0.035, 0.068, 0.123, 0.203, 0.313, 0.445, 0.594, 0.752, 0.917, 1.083, 1.248, 1.411, 1.547]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -13096,7 +13282,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -13168,11 +13362,6 @@
                                                         -0.001, 0.001, 0.003, 0.007, 0.016, 0.034, 0.066, 0.121, 0.203, 0.312, 0.442, 0.586, 0.744, 0.906, 1.071, 1.233, 1.395, 1.529]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -13304,7 +13493,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -13376,11 +13573,6 @@
                                                         -0.0, 0.0, 0.002, 0.007, 0.017, 0.035, 0.067, 0.121, 0.203, 0.311, 0.444, 0.594, 0.754, 0.918, 1.085, 1.251, 1.414, 1.572, 1.704]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -13512,7 +13704,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -13586,11 +13786,6 @@
                                                         -0.0, 0.001, 0.003, 0.008, 0.018, 0.037, 0.069, 0.126, 0.21, 0.319, 0.451, 0.6, 0.759, 0.924, 1.089, 1.253, 1.415, 1.573, 1.705]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -13722,7 +13917,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -13794,11 +13997,6 @@
                                                         -0.0, 0.0, 0.0, 0.003, 0.008, 0.017, 0.035, 0.067, 0.121, 0.203, 0.312, 0.445, 0.593, 0.753, 0.918, 1.085, 1.251, 1.415, 1.573, 1.703]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -13930,7 +14128,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -14002,11 +14208,6 @@
                                                         -0.0, 0.0, 0.002, 0.005, 0.013, 0.027, 0.052, 0.096, 0.167, 0.267, 0.393, 0.538, 0.697, 0.861, 1.028, 1.195, 1.361, 1.523, 1.679, 1.827, 1.951]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -14138,7 +14339,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -14211,11 +14420,6 @@
                                                         -0.001, 0.001, 0.006, 0.013, 0.028, 0.052, 0.096, 0.167, 0.266, 0.39, 0.533, 0.69, 0.855, 1.021, 1.187, 1.352, 1.514, 1.67, 1.818, 1.941]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -14347,7 +14551,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -14418,11 +14630,6 @@
                                                         -0.001, 0.002, 0.006, 0.012, 0.025, 0.05, 0.094, 0.165, 0.263, 0.389, 0.534, 0.692, 0.857, 1.025, 1.194, 1.36, 1.524, 1.683, 1.834, 1.955]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -14554,7 +14761,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -14626,11 +14841,6 @@
                                                         -0.001, 0.001, 0.004, 0.01, 0.021, 0.042, 0.081, 0.143, 0.234, 0.352, 0.492, 0.645, 0.806, 0.973, 1.144, 1.311, 1.473, 1.608]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -14762,7 +14972,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -14838,11 +15056,6 @@
                                                         -0.001, 0.001, 0.004, 0.01, 0.02, 0.041, 0.079, 0.141, 0.232, 0.351, 0.49, 0.644, 0.808, 0.977, 1.147, 1.316, 1.481, 1.618]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -14974,7 +15187,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -15048,11 +15269,6 @@
                                                         -0.001, 0.001, 0.004, 0.01, 0.02, 0.041, 0.082, 0.146, 0.237, 0.356, 0.496, 0.651, 0.816, 0.984, 1.153, 1.322, 1.489, 1.626]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -15184,7 +15400,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -15259,11 +15483,6 @@
                                                         -0.0, 0.004, 0.009, 0.019, 0.037, 0.072, 0.129, 0.213, 0.325, 0.46, 0.609, 0.772, 0.937, 1.105, 1.269, 1.434, 1.573]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -15395,7 +15614,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -15470,11 +15697,6 @@
                                                         -0.001, 0.001, 0.003, 0.008, 0.018, 0.035, 0.069, 0.125, 0.208, 0.319, 0.453, 0.604, 0.764, 0.932, 1.1, 1.266, 1.431, 1.57]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -15606,7 +15828,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -15680,11 +15910,6 @@
                                                         -0.0, 0.001, 0.003, 0.007, 0.015, 0.032, 0.064, 0.115, 0.191, 0.294, 0.42, 0.562, 0.715, 0.874, 1.035, 1.194, 1.351, 1.485]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -15816,7 +16041,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -15889,11 +16122,6 @@
                                                         -0.0, 0.0, 0.003, 0.007, 0.017, 0.035, 0.068, 0.123, 0.204, 0.315, 0.448, 0.596, 0.754, 0.919, 1.087, 1.253, 1.413, 1.569, 1.701]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -16025,7 +16253,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -16101,11 +16337,6 @@
                                                         -0.0, 0.001, 0.004, 0.008, 0.018, 0.035, 0.067, 0.123, 0.206, 0.317, 0.451, 0.601, 0.761, 0.929, 1.098, 1.266, 1.429, 1.589, 1.72]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -16237,7 +16468,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -16308,11 +16547,6 @@
                                                         -0.0, 0.0, 0.001, 0.002, 0.008, 0.017, 0.034, 0.065, 0.119, 0.2, 0.309, 0.44, 0.588, 0.745, 0.907, 1.073, 1.24, 1.403, 1.561, 1.694]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -16444,7 +16678,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -16518,11 +16760,6 @@
                                                         -0.0, 0.002, 0.004, 0.011, 0.023, 0.05, 0.095, 0.166, 0.265, 0.389, 0.532, 0.689, 0.854, 1.02, 1.187, 1.352, 1.513, 1.669, 1.819, 1.94]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -16654,7 +16891,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -16724,11 +16969,6 @@
                                                         -0.0, 0.001, 0.002, 0.005, 0.012, 0.026, 0.052, 0.096, 0.167, 0.267, 0.395, 0.541, 0.699, 0.865, 1.035, 1.206, 1.375, 1.54, 1.698, 1.85, 1.971]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -16860,7 +17100,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -16931,11 +17179,6 @@
                                                         -0.0, 0.0, 0.003, 0.007, 0.014, 0.028, 0.054, 0.1, 0.173, 0.274, 0.399, 0.544, 0.702, 0.868, 1.036, 1.205, 1.371, 1.534, 1.691, 1.84, 1.961]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -17067,7 +17310,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -17138,11 +17389,6 @@
                                                         -0.0, 0.001, 0.003, 0.009, 0.021, 0.042, 0.081, 0.143, 0.235, 0.353, 0.494, 0.648, 0.812, 0.979, 1.148, 1.317, 1.482, 1.618]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -17274,7 +17520,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -17343,11 +17597,6 @@
                                                         -0.001, 0.0, 0.001, 0.003, 0.01, 0.023, 0.045, 0.084, 0.149, 0.241, 0.36, 0.502, 0.658, 0.821, 0.99, 1.16, 1.327, 1.49, 1.628]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -17479,7 +17728,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -17552,11 +17809,6 @@
                                                         -0.001, 0.0, 0.001, 0.002, 0.009, 0.023, 0.045, 0.084, 0.148, 0.242, 0.363, 0.505, 0.661, 0.827, 0.998, 1.17, 1.336, 1.502, 1.638]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -17688,7 +17940,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -17766,11 +18026,6 @@
                                                         -0.001, 0.0, 0.002, 0.004, 0.01, 0.022, 0.041, 0.071, 0.11, 0.152, 0.188, 0.214, 0.228, 0.234, 0.237]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -17902,7 +18157,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -17977,11 +18240,6 @@
                                                         -0.0, 0.0, 0.003, 0.009, 0.02, 0.04, 0.07, 0.111, 0.155, 0.194, 0.219, 0.234, 0.242, 0.247]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -18113,7 +18371,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -18189,11 +18455,6 @@
                                                         -0.001, 0.0, 0.001, 0.002, 0.004, 0.009, 0.02, 0.037, 0.065, 0.104, 0.15, 0.19, 0.219, 0.235, 0.244, 0.248]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -18325,7 +18586,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -18402,11 +18671,6 @@
                                                         -0.001, 0.001, 0.003, 0.008, 0.016, 0.031, 0.057, 0.093, 0.137, 0.18, 0.211, 0.229, 0.238, 0.243]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -18538,7 +18802,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -18613,11 +18885,6 @@
                                                         -0.0, 0.001, 0.001, 0.003, 0.009, 0.02, 0.038, 0.065, 0.104, 0.149, 0.189, 0.219, 0.236, 0.245, 0.249]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -18749,7 +19016,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -18826,11 +19101,6 @@
                                                         -0.001, 0.001, 0.003, 0.01, 0.02, 0.039, 0.069, 0.109, 0.155, 0.194, 0.22, 0.236, 0.244, 0.249]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -18962,7 +19232,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -19037,11 +19315,6 @@
                                                         -0.0, 0.0, 0.003, 0.007, 0.015, 0.028, 0.05, 0.085, 0.128, 0.171, 0.206, 0.228, 0.24, 0.245]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -19173,7 +19446,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -19249,11 +19530,6 @@
                                                         -0.001, 0.001, 0.003, 0.009, 0.02, 0.035, 0.063, 0.102, 0.147, 0.189, 0.219, 0.236, 0.245, 0.249]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -19385,7 +19661,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -19462,11 +19746,6 @@
                                                         -0.0, 0.003, 0.009, 0.019, 0.036, 0.061, 0.099, 0.143, 0.182, 0.21, 0.228, 0.238, 0.242]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -19598,7 +19877,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -19676,11 +19963,6 @@
                                                         -0.0, 0.001, 0.004, 0.01, 0.021, 0.038, 0.067, 0.106, 0.15, 0.191, 0.22, 0.235, 0.244, 0.249]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -19812,7 +20094,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -19885,11 +20175,6 @@
                                                         -0.001, 0.0, 0.001, 0.003, 0.009, 0.016, 0.032, 0.057, 0.093, 0.136, 0.179, 0.212, 0.23, 0.241, 0.245]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]
@@ -20021,7 +20306,15 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "IPC",
-                                                "reference sample description": "1000"
+                                                "reference sample description": "1000",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false,
+                                                "highsd": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -20094,11 +20387,6 @@
                                                         -0.002, 0.0, 0.003, 0.004, 0.008, 0.019, 0.038, 0.067, 0.106, 0.149, 0.188, 0.216, 0.233, 0.241, 0.245]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false,
-                                            "highsd": "N",
-                                            "OUTLIERRG": "N"
                                         }
                                     }
                                 ]

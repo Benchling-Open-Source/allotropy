@@ -55,6 +55,17 @@
                                             "genotyping qPCR method setting (qPCR)": {
                                                 "value": 0.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "BADROX": "N",
+                                                "noamp": "N",
+                                                "expfail": "N",
+                                                "omit": false,
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N"
                                             }
                                         },
                                         "normalized reporter result": {
@@ -117,12 +128,7 @@
                                                 ]
                                             }
                                         },
-                                        "genotyping qPCR result": "Blocked IPC Control",
-                                        "custom information document": {
-                                            "omit": false,
-                                            "noamp": "N",
-                                            "expfail": "N"
-                                        }
+                                        "genotyping qPCR result": "Blocked IPC Control"
                                     }
                                 ]
                             },
@@ -233,6 +239,17 @@
                                             "genotyping qPCR method setting (qPCR)": {
                                                 "value": 0.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "BADROX": "N",
+                                                "noamp": "N",
+                                                "expfail": "N",
+                                                "omit": false,
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N"
                                             }
                                         },
                                         "normalized reporter result": {
@@ -295,12 +312,7 @@
                                                 ]
                                             }
                                         },
-                                        "genotyping qPCR result": "Negative Control",
-                                        "custom information document": {
-                                            "omit": false,
-                                            "noamp": "N",
-                                            "expfail": "N"
-                                        }
+                                        "genotyping qPCR result": "Negative Control"
                                     }
                                 ]
                             },
