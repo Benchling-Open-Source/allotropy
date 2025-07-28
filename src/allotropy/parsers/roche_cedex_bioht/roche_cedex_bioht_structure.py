@@ -49,10 +49,10 @@ class Title:
 @dataclass(frozen=True)
 class RawMeasurement:
     name: str
-    analyte_code: str
     measurement_time: str
     concentration_value: JsonFloat
     unit: str
+    analyte_code: str
     error: str | None = None
     custom_info: dict[str, Any] | None = None
 
@@ -81,10 +81,10 @@ class RawMeasurement:
 
         return RawMeasurement(
             data[str, "analyte name"],
-            data[str, "analyte code"],
             data[str, "measurement time"],
             value,
             unit,
+            data[str, "analyte code"],
             error or None,
             custom_info,
         )
@@ -126,7 +126,7 @@ def create_measurements(data: pd.DataFrame) -> dict[str, dict[str, RawMeasuremen
                 groups[current_measurement_time][analyte_id].concentration_value
                 is not NaN
             ):
-                msg = f"Duplicate measurement for {analyte.analyte_code} in the same measurement group: {analyte.concentration_value} vs {groups[current_measurement_time][analyte.analyte_code].concentration_value}"
+                msg = f"Duplicate measurement for {analyte.analyte_code} in the same measurement group."
                 raise AllotropyParserError(msg)
         groups[current_measurement_time][analyte_id] = analyte
         previous_measurement_time = analyte.measurement_time
@@ -165,14 +165,14 @@ def _create_measurements(
     measurements: list[Measurement] = []
 
     analytes: list[Analyte] = []
-    for name in sorted(raw_measurements):
-        measurement = raw_measurements[name]
+    for analyte_id in sorted(raw_measurements):
+        measurement = raw_measurements[analyte_id]
         value = measurement.concentration_value
         # TODO: report value and add error
         if value is NaN:
             continue
 
-        if name == OPTICAL_DENSITY:
+        if measurement.name == OPTICAL_DENSITY:
             measurements.append(
                 Measurement(
                     identifier=random_uuid_str(),
