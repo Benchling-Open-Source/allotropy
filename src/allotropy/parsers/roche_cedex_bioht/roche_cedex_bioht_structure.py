@@ -3,6 +3,7 @@ from __future__ import annotations
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 from dateutil import parser
 import pandas as pd
@@ -48,10 +49,12 @@ class Title:
 @dataclass(frozen=True)
 class RawMeasurement:
     name: str
+    analyte_code: str
     measurement_time: str
     concentration_value: JsonFloat
     unit: str
     error: str | None = None
+    custom_info: dict[str, Any] | None = None
 
     @staticmethod
     def create(data: SeriesData) -> RawMeasurement:
@@ -69,12 +72,21 @@ class RawMeasurement:
             concentration_value, data[str, "concentration unit"]
         )
 
+        custom_info = data.get_custom_keys(
+            {
+                "detection kit",
+                "detection kit range",
+            }
+        )
+
         return RawMeasurement(
             data[str, "analyte name"],
+            data[str, "analyte code"],
             data[str, "measurement time"],
             value,
             unit,
             error or None,
+            custom_info,
         )
 
     @staticmethod
@@ -97,12 +109,13 @@ def create_measurements(data: pd.DataFrame) -> dict[str, dict[str, RawMeasuremen
     current_measurement_time = measurements[0].measurement_time
     previous_measurement_time = current_measurement_time
     for analyte in measurements:
+        analyte_id = f"{analyte.name}_{analyte.analyte_code}"
         time_diff = parser.parse(analyte.measurement_time) - parser.parse(
             previous_measurement_time
         )
         if time_diff > MAX_MEASUREMENT_TIME_GROUP_DIFFERENCE:
             current_measurement_time = analyte.measurement_time
-        if analyte.name in groups[current_measurement_time]:
+        if analyte_id in groups[current_measurement_time]:
             if analyte.concentration_value is NaN:
                 continue
             # NOTE: if this fails, it's probably because MAX_MEASUREMENT_TIME_GROUP_DIFFERENCE is too big
@@ -110,12 +123,12 @@ def create_measurements(data: pd.DataFrame) -> dict[str, dict[str, RawMeasuremen
             # We could potentially make this more robust by just splitting into a new group if a duplicate
             # measurement is found, but cross that bridge when we come to it.
             if (
-                groups[current_measurement_time][analyte.name].concentration_value
+                groups[current_measurement_time][analyte_id].concentration_value
                 is not NaN
             ):
-                msg = f"Duplicate measurement for {analyte.name} in the same measurement group: {analyte.concentration_value} vs {groups[current_measurement_time][analyte.name].concentration_value}"
+                msg = f"Duplicate measurement for {analyte.analyte_code} in the same measurement group: {analyte.concentration_value} vs {groups[current_measurement_time][analyte.analyte_code].concentration_value}"
                 raise AllotropyParserError(msg)
-        groups[current_measurement_time][analyte.name] = analyte
+        groups[current_measurement_time][analyte_id] = analyte
         previous_measurement_time = analyte.measurement_time
 
     return dict(groups)
@@ -175,6 +188,7 @@ def _create_measurements(
                     name=measurement.name,
                     value=value if isinstance(value, float) else -1,
                     unit=measurement.unit,
+                    custom_info=measurement.custom_info,
                 )
             )
 
