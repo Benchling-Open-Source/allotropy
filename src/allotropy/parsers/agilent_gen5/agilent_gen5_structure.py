@@ -32,7 +32,6 @@ from allotropy.exceptions import (
     AllotropeConversionError,
     AllotropyParserError,
 )
-from allotropy.parsers.agilent_gen5.agilent_gen5_reader import AgilentGen5Reader
 from allotropy.parsers.agilent_gen5.constants import (
     ALPHALISA_FLUORESCENCE_FOUND,
     DATA_SOURCE_FEATURE_VALUES,
@@ -730,55 +729,6 @@ class ReadData:
         @staticmethod
         def _safe_get(data_list: list[str], idx: int) -> str | None:
             return data_list[idx] if data_list and idx < len(data_list) else None
-
-
-def _validate_result_sections(result_sections: list[list[str]]) -> None:
-    """Validates whether all the result sections dimensions are consistent."""
-    first_section = result_sections[0]
-
-    for section in result_sections[1:]:
-        if not first_section[0] == section[0] and len(first_section) == len(section):
-            msg = "All result tables should have the same dimensions."
-            raise AllotropeConversionError(msg)
-
-
-def get_results_section(reader: AgilentGen5Reader) -> list[str] | None:
-    """Returns a valid Results Matrix from the reader sections if found.
-
-    Checks for Results in the reader sections, if not found, creates the results matrix with all
-    sections that are correctly formatted as a results table (excluding the Layout section). If
-    no tables with results are found, returns None
-    """
-    if "Results" in reader.sections:
-        return reader.sections["Results"]
-
-    def is_results(section: list[str]) -> bool:
-        return (
-            len(section) > 2
-            and section[1].startswith("\t1")
-            and section[2].startswith("A\t")
-        )
-
-    result_sections = []
-    for name, section in reader.sections.items():
-        if name == "Layout":
-            continue
-        if is_results(section):
-            result_sections.append(section[1:])
-
-    if result_sections:
-        _validate_result_sections(result_sections)
-        return [
-            "Results",
-            result_sections[0][0],
-            *[
-                section[i + 1]
-                for i in range(len(result_sections[0]) - 1)
-                for section in result_sections
-            ],
-        ]
-
-    return None
 
 
 def get_concentrations(layout_lines: list[str] | None) -> dict[str, float | None]:
@@ -1618,8 +1568,9 @@ def _convert_time_to_seconds(time_str: str | None) -> float:
 class ResultProcessor(ABC):
     """Abstract base class for processing different types of Gen5 results."""
 
+    @classmethod
     @abstractmethod
-    def can_process(self, context: Gen5DataContext) -> bool:
+    def can_process(cls, context: Gen5DataContext) -> bool:
         """Check if this processor can handle the given context."""
         pass
 
@@ -1634,7 +1585,8 @@ class ResultProcessor(ABC):
 class SpectralResultProcessor(ResultProcessor):
     """Processor for spectral measurements with wavelength data."""
 
-    def can_process(self, context: Gen5DataContext) -> bool:
+    @classmethod
+    def can_process(cls, context: Gen5DataContext) -> bool:
         return context.is_spectral and context.wavelength_section is not None
 
     def process(
@@ -1654,7 +1606,8 @@ class SpectralResultProcessor(ResultProcessor):
 class KineticResultProcessor(ResultProcessor):
     """Processor for kinetic measurements with time series data."""
 
-    def can_process(self, context: Gen5DataContext) -> bool:
+    @classmethod
+    def can_process(cls, context: Gen5DataContext) -> bool:
         if not context.has_kinetic_data:
             return False
 
@@ -1684,7 +1637,8 @@ class KineticResultProcessor(ResultProcessor):
 class StandardResultProcessor(ResultProcessor):
     """Processor for standard endpoint measurements."""
 
-    def can_process(self, _: Gen5DataContext) -> bool:
+    @classmethod
+    def can_process(cls, _: Gen5DataContext) -> bool:
         return True
 
     def process(
@@ -1698,3 +1652,18 @@ class StandardResultProcessor(ResultProcessor):
             context.actual_temperature,
             context.concentration_values,
         )
+
+
+def get_processor(
+    context: Gen5DataContext,
+) -> SpectralResultProcessor | KineticResultProcessor | StandardResultProcessor:
+    """Factory function to get the appropriate processor for the given context."""
+    if SpectralResultProcessor.can_process(context):
+        return SpectralResultProcessor()
+    if KineticResultProcessor.can_process(context):
+        return KineticResultProcessor()
+    if StandardResultProcessor.can_process(context):
+        return StandardResultProcessor()
+
+    msg = "No suitable processor found for the data."
+    raise AllotropeConversionError(msg)
