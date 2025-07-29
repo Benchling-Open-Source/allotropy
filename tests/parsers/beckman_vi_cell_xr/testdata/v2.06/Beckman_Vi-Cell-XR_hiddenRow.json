@@ -12,8 +12,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -39,11 +39,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -75,20 +75,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 132.0,
-                                            "Avg. bg intensity": 203.8
+                                            "Avg. bg intensity": 203.8,
+                                            "Avg. cells / image": 132.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#1"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#1.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#1.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -102,8 +102,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -129,11 +129,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -165,20 +165,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 123.0,
-                                            "Avg. bg intensity": 203.5
+                                            "Avg. bg intensity": 203.5,
+                                            "Avg. cells / image": 123.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#2"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#2.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#2.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -192,8 +192,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -219,11 +219,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -255,20 +255,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 123.0,
-                                            "Avg. bg intensity": 202.9
+                                            "Avg. bg intensity": 202.9,
+                                            "Avg. cells / image": 123.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#3"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#3.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#3.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -282,8 +282,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -309,11 +309,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -345,20 +345,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 114.0,
-                                            "Avg. bg intensity": 204.3
+                                            "Avg. bg intensity": 204.3,
+                                            "Avg. cells / image": 114.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#4"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#4.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#4.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -372,8 +372,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -399,11 +399,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -435,20 +435,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 121.0,
-                                            "Avg. bg intensity": 202.4
+                                            "Avg. bg intensity": 202.4,
+                                            "Avg. cells / image": 121.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#5"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#5.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#5.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -462,8 +462,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -489,11 +489,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -525,20 +525,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 118.0,
-                                            "Avg. bg intensity": 203.0
+                                            "Avg. bg intensity": 203.0,
+                                            "Avg. cells / image": 118.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#6"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#6.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#6.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -552,8 +552,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -579,11 +579,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -615,20 +615,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 117.0,
-                                            "Avg. bg intensity": 203.0
+                                            "Avg. bg intensity": 203.0,
+                                            "Avg. cells / image": 117.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#7"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#7.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#7.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -642,8 +642,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -669,11 +669,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -705,20 +705,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 119.0,
-                                            "Avg. bg intensity": 204.6
+                                            "Avg. bg intensity": 204.6,
+                                            "Avg. cells / image": 119.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#8"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#8.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#8.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -732,8 +732,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -759,11 +759,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -795,20 +795,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 115.0,
-                                            "Avg. bg intensity": 204.5
+                                            "Avg. bg intensity": 204.5,
+                                            "Avg. cells / image": 115.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#9"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#9.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#9.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -822,8 +822,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -849,11 +849,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -885,20 +885,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 118.0,
-                                            "Avg. bg intensity": 202.8
+                                            "Avg. bg intensity": 202.8,
+                                            "Avg. cells / image": 118.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#10"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#10.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#10.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -912,8 +912,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -939,11 +939,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -975,20 +975,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 116.0,
-                                            "Avg. bg intensity": 202.1
+                                            "Avg. bg intensity": 202.1,
+                                            "Avg. cells / image": 116.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#11"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#11.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#11.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -1002,8 +1002,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -1029,11 +1029,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1065,20 +1065,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 117.0,
-                                            "Avg. bg intensity": 204.5
+                                            "Avg. bg intensity": 204.5,
+                                            "Avg. cells / image": 117.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#12"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#12.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#12.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -1092,8 +1092,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -1119,11 +1119,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1155,20 +1155,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 120.0,
-                                            "Avg. bg intensity": 202.4
+                                            "Avg. bg intensity": 202.4,
+                                            "Avg. cells / image": 120.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#13"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#13.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#13.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -1182,8 +1182,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -1209,11 +1209,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1245,20 +1245,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 109.0,
-                                            "Avg. bg intensity": 203.5
+                                            "Avg. bg intensity": 203.5,
+                                            "Avg. cells / image": 109.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#14"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#14.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#14.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -1272,8 +1272,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -1299,11 +1299,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1335,20 +1335,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 115.0,
-                                            "Avg. bg intensity": 202.6
+                                            "Avg. bg intensity": 202.6,
+                                            "Avg. cells / image": 115.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#15"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#15.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#15.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -1362,8 +1362,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -1389,11 +1389,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1425,20 +1425,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 124.0,
-                                            "Avg. bg intensity": 203.3
+                                            "Avg. bg intensity": 203.3,
+                                            "Avg. cells / image": 124.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#16"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#16.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#16.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -1452,8 +1452,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -1479,11 +1479,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1515,20 +1515,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 117.0,
-                                            "Avg. bg intensity": 203.6
+                                            "Avg. bg intensity": 203.6,
+                                            "Avg. cells / image": 117.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#17"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#17.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#17.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -1542,8 +1542,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -1569,11 +1569,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1605,20 +1605,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 122.0,
-                                            "Avg. bg intensity": 203.1
+                                            "Avg. bg intensity": 203.1,
+                                            "Avg. cells / image": 122.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#18"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#18.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#18.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -1632,8 +1632,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -1659,11 +1659,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1695,20 +1695,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 128.0,
-                                            "Avg. bg intensity": 202.9
+                                            "Avg. bg intensity": 202.9,
+                                            "Avg. cells / image": 128.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#19"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#19.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#19.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -1722,8 +1722,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -1749,11 +1749,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1785,20 +1785,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 114.0,
-                                            "Avg. bg intensity": 204.4
+                                            "Avg. bg intensity": 204.4,
+                                            "Avg. cells / image": 114.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#20"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#20.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#20.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -1812,8 +1812,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -1839,11 +1839,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1875,20 +1875,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 110.0,
-                                            "Avg. bg intensity": 205.0
+                                            "Avg. bg intensity": 205.0,
+                                            "Avg. cells / image": 110.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#21"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#21.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#21.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -1902,8 +1902,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -1929,11 +1929,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1965,20 +1965,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 117.0,
-                                            "Avg. bg intensity": 202.9
+                                            "Avg. bg intensity": 202.9,
+                                            "Avg. cells / image": 117.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#22"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#22.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#22.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -1992,8 +1992,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -2019,11 +2019,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -2055,20 +2055,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 121.0,
-                                            "Avg. bg intensity": 202.8
+                                            "Avg. bg intensity": 202.8,
+                                            "Avg. cells / image": 121.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#23"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#23.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#23.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -2082,8 +2082,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -2109,11 +2109,11 @@
                                             },
                                             "custom information document": {
                                                 "Sharpness": 100.0,
-                                                "Decluster degree": "Medium",
-                                                "Minimum circularity": 0.0,
+                                                "V. cell spot brightness (%)": 75.0,
                                                 "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
-                                                "V. cell spot brightness (%)": 75.0
+                                                "Decluster degree": "Medium",
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -2145,20 +2145,20 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. cells / image": 131.0,
-                                            "Avg. bg intensity": 203.6
+                                            "Avg. bg intensity": 203.6,
+                                            "Avg. cells / image": 131.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "foobar#24"
-                            },
-                            "custom information document": {
-                                "File name": "foobar#24.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "foobar#24.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             }
@@ -2169,7 +2169,7 @@
             "file name": "Beckman_Vi-Cell-XR_hiddenRow.xlsx",
             "UNC path": "tests/parsers/beckman_vi_cell_xr/testdata/v2.06/Beckman_Vi-Cell-XR_hiddenRow.xlsx",
             "ASM converter name": "allotropy_beckman_coulter_vi_cell_xr",
-            "ASM converter version": "0.1.100",
+            "ASM converter version": "0.1.101",
             "software name": "Vi-Cell XR",
             "software version": "2.06"
         },

@@ -62,12 +62,12 @@
                             },
                             "sample document": {
                                 "sample identifier": "LAC DG 046 T0 M1"
-                            },
-                            "custom information document": {
-                                "File name": "LAC DG 046 T0 M1.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "LAC DG 046 T0 M1.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -131,12 +131,12 @@
                             },
                             "sample document": {
                                 "sample identifier": "LAC DG 046 T0 M2"
-                            },
-                            "custom information document": {
-                                "File name": "LAC DG 046 T0 M2.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "LAC DG 046 T0 M2.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -200,12 +200,12 @@
                             },
                             "sample document": {
                                 "sample identifier": "LAC DG 046 T0 M3"
-                            },
-                            "custom information document": {
-                                "File name": "LAC DG 046 T0 M3.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "LAC DG 046 T0 M3.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             }
@@ -216,7 +216,7 @@
             "file name": "Beckman_Vi-Cell-XR_example06_instrumentOutput.xlsx",
             "UNC path": "tests/parsers/beckman_vi_cell_xr/testdata/v2.06/Beckman_Vi-Cell-XR_example06_instrumentOutput.xlsx",
             "ASM converter name": "allotropy_beckman_coulter_vi_cell_xr",
-            "ASM converter version": "0.1.100",
+            "ASM converter version": "0.1.101",
             "software name": "Vi-Cell XR",
             "software version": "2.06"
         },

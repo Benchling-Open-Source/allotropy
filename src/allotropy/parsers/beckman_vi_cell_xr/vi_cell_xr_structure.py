@@ -30,6 +30,15 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
         viable_cell_count if viable_cell_count is None else round(viable_cell_count)
     )
 
+    custom_info_measurement_group = data.get_custom_keys(
+        {
+            "File Name",
+            "File name",
+            "LogDate",
+            "FileDate",
+        }
+    )
+
     # Mark unused keys to be ignored
     data.mark_read({"Settings:", "Results:", "Settings", "Results"})
 
@@ -111,6 +120,7 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                 custom_info=data.get_unread(),
             )
         ],
+        custom_info=custom_info_measurement_group,
     )
 
 

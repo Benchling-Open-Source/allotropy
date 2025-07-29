@@ -12,8 +12,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Aspirate cycles": 1.0,
-                                            "Trypan blue mixing cycles": 3.0
+                                            "Trypan blue mixing cycles": 3.0,
+                                            "Aspirate cycles": 1.0
                                         }
                                     }
                                 ]
@@ -38,12 +38,12 @@
                                                 "unit": "µm"
                                             },
                                             "custom information document": {
+                                                "Sharpness": 100.0,
+                                                "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
                                                 "Decluster degree": "Medium",
                                                 "V. cell spot brightness (%)": 75.0,
-                                                "Viable cell spot area (%)": 5.0,
-                                                "Minimum circularity": 0.0,
-                                                "Sharpness": 100.0
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -92,12 +92,12 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "File name": "CLB001.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "CLB001.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -111,8 +111,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Aspirate cycles": 1.0,
-                                            "Trypan blue mixing cycles": 3.0
+                                            "Trypan blue mixing cycles": 3.0,
+                                            "Aspirate cycles": 1.0
                                         }
                                     }
                                 ]
@@ -137,12 +137,12 @@
                                                 "unit": "µm"
                                             },
                                             "custom information document": {
+                                                "Sharpness": 100.0,
+                                                "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
                                                 "Decluster degree": "Medium",
                                                 "V. cell spot brightness (%)": 75.0,
-                                                "Viable cell spot area (%)": 5.0,
-                                                "Minimum circularity": 0.0,
-                                                "Sharpness": 100.0
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -191,12 +191,12 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "File name": "CLB002.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "CLB002.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -210,8 +210,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Aspirate cycles": 1.0,
-                                            "Trypan blue mixing cycles": 3.0
+                                            "Trypan blue mixing cycles": 3.0,
+                                            "Aspirate cycles": 1.0
                                         }
                                     }
                                 ]
@@ -236,12 +236,12 @@
                                                 "unit": "µm"
                                             },
                                             "custom information document": {
+                                                "Sharpness": 100.0,
+                                                "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
                                                 "Decluster degree": "Medium",
                                                 "V. cell spot brightness (%)": 75.0,
-                                                "Viable cell spot area (%)": 5.0,
-                                                "Minimum circularity": 0.0,
-                                                "Sharpness": 100.0
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -290,12 +290,12 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "File name": "CLB003.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "CLB003.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -309,8 +309,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Aspirate cycles": 1.0,
-                                            "Trypan blue mixing cycles": 3.0
+                                            "Trypan blue mixing cycles": 3.0,
+                                            "Aspirate cycles": 1.0
                                         }
                                     }
                                 ]
@@ -335,12 +335,12 @@
                                                 "unit": "µm"
                                             },
                                             "custom information document": {
+                                                "Sharpness": 100.0,
+                                                "Viable cell spot area (%)": 5.0,
                                                 "Brightness (%)": 85.0,
                                                 "Decluster degree": "Medium",
                                                 "V. cell spot brightness (%)": 75.0,
-                                                "Viable cell spot area (%)": 5.0,
-                                                "Minimum circularity": 0.0,
-                                                "Sharpness": 100.0
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -389,12 +389,12 @@
                                         }
                                     }
                                 ]
-                            },
-                            "custom information document": {
-                                "File name": "CLB004.smp"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "File name": "CLB004.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             }
@@ -405,7 +405,7 @@
             "file name": "Beckman_Vi-Cell-XR_example05_instrumentOutput.xlsx",
             "UNC path": "tests/parsers/beckman_vi_cell_xr/testdata/v2.06/Beckman_Vi-Cell-XR_example05_instrumentOutput.xlsx",
             "ASM converter name": "allotropy_beckman_coulter_vi_cell_xr",
-            "ASM converter version": "0.1.100",
+            "ASM converter version": "0.1.101",
             "software name": "Vi-Cell XR",
             "software version": "2.06"
         },
