@@ -3,8 +3,12 @@ from dataclasses import dataclass
 from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
     AnalyteAggregateDocument,
     AnalyteDocumentItem,
+    CalculatedDataAggregateDocument,
+    CalculatedDataDocumentItem,
     CalibrationAggregateDocument,
     CalibrationDocumentItem,
+    DataSourceAggregateDocument,
+    DataSourceDocumentItem,
     DataSystemDocument,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
@@ -17,6 +21,11 @@ from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._09.
     MultiAnalyteProfilingAggregateDocument,
     MultiAnalyteProfilingDocumentItem,
     SampleDocument,
+    StatisticDimensionAggregateDocument,
+    StatisticDimensionDocumentItem,
+    StatisticsAggregateDocument,
+    StatisticsDocumentItem,
+    TQuantityValueModel,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.models.shared.definitions.custom import (
@@ -28,19 +37,37 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TStatisticDatumRole,
 )
+from allotropy.allotrope.models.shared.definitions.units import Unitless
 from allotropy.allotrope.schema_mappers.schema_mapper import SchemaMapper
 from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+)
 from allotropy.parsers.utils.values import quantity_or_none
+
+
+@dataclass(frozen=True)
+class StatisticDimension:
+    value: float
+    unit: str
+    statistic_datum_role: TStatisticDatumRole
+
+
+@dataclass(frozen=True)
+class StatisticsDocument:
+    statistical_feature: str
+    statistic_dimensions: list[StatisticDimension]
 
 
 @dataclass(frozen=True)
 class Analyte:
     identifier: str
     name: str
-    value: float
     assay_bead_identifier: str
     assay_bead_count: float
-    statistic_datum_role: TStatisticDatumRole | None
+    statistics: list[StatisticsDocument] | None = None
+    statistic_datum_role: TStatisticDatumRole | None = None
+    fluorescence: float | None = None
 
 
 @dataclass(frozen=True)
@@ -90,8 +117,8 @@ class MeasurementGroup:
 @dataclass(frozen=True)
 class Calibration:
     name: str
-    report: str
     time: str
+    report: str | None = None
 
 
 @dataclass(frozen=True)
@@ -115,6 +142,7 @@ class Metadata:
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
+    calculated_data: list[CalculatedDocument] | None = None
 
 
 class Mapper(SchemaMapper[Data, Model]):
@@ -146,6 +174,9 @@ class Mapper(SchemaMapper[Data, Model]):
                     self._get_technique_document(measurement_group, data.metadata)
                     for measurement_group in data.measurement_groups
                 ],
+                calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
+                    data.calculated_data
+                ),
             ),
             field_asm_manifest=self.MANIFEST,
         )
@@ -208,8 +239,32 @@ class Mapper(SchemaMapper[Data, Model]):
                         ),
                         fluorescence=quantity_or_none(
                             TQuantityValueRelativeFluorescenceUnit,
-                            analyte.value,
+                            analyte.fluorescence,
                             has_statistic_datum_role=analyte.statistic_datum_role,
+                        ),
+                        statistics_aggregate_document=(
+                            StatisticsAggregateDocument(
+                                statistics_document=[
+                                    StatisticsDocumentItem(
+                                        statistical_feature=statistic.statistical_feature,
+                                        statistic_dimension_aggregate_document=StatisticDimensionAggregateDocument(
+                                            statistic_dimension_document=[
+                                                StatisticDimensionDocumentItem(
+                                                    statistical_value=TQuantityValueModel(
+                                                        value=dimension.value,
+                                                        unit=dimension.unit,
+                                                        has_statistic_datum_role=dimension.statistic_datum_role,
+                                                    ),
+                                                )
+                                                for dimension in statistic.statistic_dimensions
+                                            ]
+                                        ),
+                                    )
+                                    for statistic in analyte.statistics
+                                ]
+                            )
+                            if analyte.statistics
+                            else None
                         ),
                     )
                     for analyte in measurement.analytes
@@ -259,5 +314,35 @@ class Mapper(SchemaMapper[Data, Model]):
             error_document=[
                 ErrorDocumentItem(error=error.error, error_feature=error.feature)
                 for error in errors
+            ]
+        )
+
+    def _get_calculated_data_aggregate_document(
+        self, calculated_data_items: list[CalculatedDocument] | None
+    ) -> CalculatedDataAggregateDocument | None:
+        if not calculated_data_items:
+            return None
+
+        return CalculatedDataAggregateDocument(
+            calculated_data_document=[
+                CalculatedDataDocumentItem(
+                    calculated_data_identifier=calculated_data_item.uuid,
+                    calculated_data_name=calculated_data_item.name,
+                    calculation_description=calculated_data_item.description,
+                    calculated_result=TQuantityValueModel(
+                        value=calculated_data_item.value,
+                        unit=calculated_data_item.unit or Unitless.unit,
+                    ),
+                    data_source_aggregate_document=DataSourceAggregateDocument(
+                        data_source_document=[
+                            DataSourceDocumentItem(
+                                data_source_identifier=item.reference.uuid,
+                                data_source_feature=item.feature,
+                            )
+                            for item in calculated_data_item.data_sources
+                        ]
+                    ),
+                )
+                for calculated_data_item in calculated_data_items
             ]
         )

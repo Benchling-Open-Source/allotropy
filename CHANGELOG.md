@@ -5,6 +5,84 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.101] - 2025-07-23
+
+### Added
+
+- Cytiva Biacore T200 Control - improve performance (#1043)
+- Luminex Intelliflex - initial implementation (#1035)
+
+### Fixed
+
+- Agilent Gen5 - fix issue with numeric wavelength measurement labels (#1045)
+- Luminex xPONENT - improve calibration datetime validation check (#1041)
+
+## [0.1.100] - 2025-07-21
+
+### Added
+
+- Luminex xPONENT - add errors for nan and missing values in statistics tables (#1036)
+
+### Fixed
+
+- Luminex xponent - handle case for missing calibration report field (#1039)
+
+### Changed
+
+- Add get_schema_from_asm (#1037)
+
+## [0.1.99] - 2025-07-15
+
+### Added
+
+- Molecular Devices SoftMax Pro - add support for spectral TimeFormat measurements (#1026)
+
+### Fixed
+
+- Molecular Devices SoftMax Pro - fix duplicate data source documents in spectrum measurements (#1033)
+- Molecular Devices SoftMax Pro - move reduced data from custom info to calculated data document (#1032)
+
+## [0.1.98] - 2025-07-08
+
+### Added
+
+- Bio-Rad Bio-Plex Manager - Add support for statistics dimensions (#1029)
+- Agilent Gen5 - Add Conc/Dil to Sample document custom fields (#1030)
+- Roche Cedex BioHT - Added support for mg/L (#1028)
+- Thermo Fisher Scientific SkanIt - Support multiplates (#1025)
+- Beckman Vi-Cell Blu - Added get_unread data to parser (#1023)
+- Molecular Devices SoftMax Pro - Enable Reduced-only file parsing (#1016)
+
+## [0.1.97] - 2025-06-24
+
+### Fixed
+
+- Agilent OpenLab CDS - use bytes to read zip file instead of file name (#1021)
+
+## [0.1.96] - 2025-06-23
+
+### Fixed
+
+- Molecular Devices SoftMax Pro - account for partial plate reads (#1013)
+
+## [0.1.95] - 2025-06-19
+
+### Added
+
+- Luminex xPONENT - migrate to BENCHLING/2024/09 schema (#1007)
+
+## [0.1.94] - 2025-06-18
+
+### Added
+
+- ChemoMetec Nucleoview - add support for tab separated files (#1015)
+- Molecular Devices SoftMax Pro - update ASM structure for spectrum data (#1012)
+- Molecular Devices SoftMax Pro - update adapter to plate reader schema REC 25/03 (#1011)
+
+### Fixed
+
+- Agilent Gen5 - fix spectrum data cube label (#1014)
+
 ## [0.1.93] - 2025-06-10
 
 ### Fixed

@@ -12,6 +12,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TStatisticDatumRole,
 )
 from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
+from allotropy.parsers.constants import NEGATIVE_ZERO
 from allotropy.parsers.utils.units import get_quantity_class
 
 PrimitiveValue = str | int | float
@@ -88,6 +89,11 @@ def try_non_nan_float(value: str) -> float:
         msg = f"Invalid non nan float string: '{value}'."
         raise AllotropeConversionError(msg)
     return float_value
+
+
+def try_non_nan_float_or_negative_zero(value: str) -> float:
+    float_value = try_non_nan_float_or_none(value)
+    return NEGATIVE_ZERO if float_value is None else float_value
 
 
 def try_int_or_nan(value: str | int | None) -> int | InvalidJsonFloat:

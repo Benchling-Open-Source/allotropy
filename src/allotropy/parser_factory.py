@@ -65,6 +65,9 @@ from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_parser impo
     ExampleWeylandYutaniParser,
 )
 from allotropy.parsers.flowjo.flowjo_parser import FlowjoParser
+from allotropy.parsers.luminex_intelliflex.luminex_intelliflex_parser import (
+    LuminexIntelliflexParser,
+)
 from allotropy.parsers.luminex_xponent.luminex_xponent_parser import (
     LuminexXponentParser,
 )
@@ -149,6 +152,7 @@ class Vendor(Enum):
     CYTIVA_UNICORN = "CYTIVA_UNICORN"
     EXAMPLE_WEYLAND_YUTANI = "EXAMPLE_WEYLAND_YUTANI"
     FLOWJO = "FLOWJO"
+    LUMINEX_INTELLIFLEX = "LUMINEX_INTELLIFLEX"
     LUMINEX_XPONENT = "LUMINEX_XPONENT"
     MABTECH_APEX = "MABTECH_APEX"
     METHODICAL_MIND = "METHODICAL_MIND"
@@ -245,6 +249,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.EXAMPLE_WEYLAND_YUTANI: ExampleWeylandYutaniParser,
     Vendor.FLOWJO: FlowjoParser,
     Vendor.BD_BIOSCIENCES_FACSDIVA: BDFACSDivaParser,
+    Vendor.LUMINEX_INTELLIFLEX: LuminexIntelliflexParser,
     Vendor.LUMINEX_XPONENT: LuminexXponentParser,
     Vendor.MABTECH_APEX: MabtechApexParser,
     Vendor.METHODICAL_MIND: MethodicalMindParser,

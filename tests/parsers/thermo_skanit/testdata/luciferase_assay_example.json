@@ -1,17 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2025/03/plate-reader.manifest",
     "plate reader aggregate document": {
         "plate reader document": [
             {
                 "measurement aggregate document": {
-                    "measurement time": "2024-08-23T15:02:30+00:00",
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -20,31 +14,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_0",
                             "sample document": {
-                                "sample identifier": "Plate 1_A1",
                                 "location identifier": "A1",
+                                "sample identifier": "Plate 1_A1",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 105.4,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_1",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -53,31 +47,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_1",
                             "sample document": {
-                                "sample identifier": "Plate 1_A2",
                                 "location identifier": "A2",
+                                "sample identifier": "Plate 1_A2",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 111.6,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_2",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -86,31 +80,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_2",
                             "sample document": {
-                                "sample identifier": "Plate 1_A3",
                                 "location identifier": "A3",
+                                "sample identifier": "Plate 1_A3",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 87.6,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_3",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -119,31 +113,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_3",
                             "sample document": {
-                                "sample identifier": "Plate 1_A4",
                                 "location identifier": "A4",
+                                "sample identifier": "Plate 1_A4",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 218.5,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_4",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -152,31 +146,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_4",
                             "sample document": {
-                                "sample identifier": "Plate 1_A5",
                                 "location identifier": "A5",
+                                "sample identifier": "Plate 1_A5",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 387.4,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_5",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -185,31 +179,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_5",
                             "sample document": {
-                                "sample identifier": "Plate 1_A6",
                                 "location identifier": "A6",
+                                "sample identifier": "Plate 1_A6",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 1087.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_6",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -218,31 +212,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_6",
                             "sample document": {
-                                "sample identifier": "Plate 1_A7",
                                 "location identifier": "A7",
+                                "sample identifier": "Plate 1_A7",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 2368.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_7",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -251,31 +245,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_7",
                             "sample document": {
-                                "sample identifier": "Plate 1_A8",
                                 "location identifier": "A8",
+                                "sample identifier": "Plate 1_A8",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 3075.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_8",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -284,31 +278,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_8",
                             "sample document": {
-                                "sample identifier": "Plate 1_A9",
                                 "location identifier": "A9",
+                                "sample identifier": "Plate 1_A9",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 3824.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_9",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -317,31 +311,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_9",
                             "sample document": {
-                                "sample identifier": "Plate 1_A10",
                                 "location identifier": "A10",
+                                "sample identifier": "Plate 1_A10",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 3880.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_10",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -350,31 +344,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_10",
                             "sample document": {
-                                "sample identifier": "Plate 1_A11",
                                 "location identifier": "A11",
+                                "sample identifier": "Plate 1_A11",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 2897.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_11",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -383,31 +377,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_11",
                             "sample document": {
-                                "sample identifier": "Plate 1_A12",
                                 "location identifier": "A12",
+                                "sample identifier": "Plate 1_A12",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 1185.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_12",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -416,31 +410,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_12",
                             "sample document": {
-                                "sample identifier": "Plate 1_B1",
                                 "location identifier": "B1",
+                                "sample identifier": "Plate 1_B1",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 90.72,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_13",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -449,31 +443,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_13",
                             "sample document": {
-                                "sample identifier": "Plate 1_B2",
                                 "location identifier": "B2",
+                                "sample identifier": "Plate 1_B2",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 79.45,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_14",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -482,31 +476,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_14",
                             "sample document": {
-                                "sample identifier": "Plate 1_B3",
                                 "location identifier": "B3",
+                                "sample identifier": "Plate 1_B3",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 128.4,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_15",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -515,31 +509,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_15",
                             "sample document": {
-                                "sample identifier": "Plate 1_B4",
                                 "location identifier": "B4",
+                                "sample identifier": "Plate 1_B4",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 187.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_16",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -548,31 +542,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_16",
                             "sample document": {
-                                "sample identifier": "Plate 1_B5",
                                 "location identifier": "B5",
+                                "sample identifier": "Plate 1_B5",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 1133.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_17",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -581,31 +575,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_17",
                             "sample document": {
-                                "sample identifier": "Plate 1_B6",
                                 "location identifier": "B6",
+                                "sample identifier": "Plate 1_B6",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 58370.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_18",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -614,31 +608,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_18",
                             "sample document": {
-                                "sample identifier": "Plate 1_B7",
                                 "location identifier": "B7",
+                                "sample identifier": "Plate 1_B7",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 398100.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_19",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -647,31 +641,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_19",
                             "sample document": {
-                                "sample identifier": "Plate 1_B8",
                                 "location identifier": "B8",
+                                "sample identifier": "Plate 1_B8",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 585700.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_20",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -680,31 +674,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_20",
                             "sample document": {
-                                "sample identifier": "Plate 1_B9",
                                 "location identifier": "B9",
+                                "sample identifier": "Plate 1_B9",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 607100.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_21",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -713,31 +707,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_21",
                             "sample document": {
-                                "sample identifier": "Plate 1_B10",
                                 "location identifier": "B10",
+                                "sample identifier": "Plate 1_B10",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 674100.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_22",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -746,31 +740,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_22",
                             "sample document": {
-                                "sample identifier": "Plate 1_B11",
                                 "location identifier": "B11",
+                                "sample identifier": "Plate 1_B11",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 629400.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_23",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -779,31 +773,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_23",
                             "sample document": {
-                                "sample identifier": "Plate 1_B12",
                                 "location identifier": "B12",
+                                "sample identifier": "Plate 1_B12",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 2650.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_24",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -812,31 +806,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_24",
                             "sample document": {
-                                "sample identifier": "Plate 1_C1",
                                 "location identifier": "C1",
+                                "sample identifier": "Plate 1_C1",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 78.12,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_25",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -845,31 +839,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_25",
                             "sample document": {
-                                "sample identifier": "Plate 1_C2",
                                 "location identifier": "C2",
+                                "sample identifier": "Plate 1_C2",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 88.4,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_26",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -878,31 +872,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_26",
                             "sample document": {
-                                "sample identifier": "Plate 1_C3",
                                 "location identifier": "C3",
+                                "sample identifier": "Plate 1_C3",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 135.8,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_27",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -911,31 +905,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_27",
                             "sample document": {
-                                "sample identifier": "Plate 1_C4",
                                 "location identifier": "C4",
+                                "sample identifier": "Plate 1_C4",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 210.8,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_28",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -944,31 +938,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_28",
                             "sample document": {
-                                "sample identifier": "Plate 1_C5",
                                 "location identifier": "C5",
+                                "sample identifier": "Plate 1_C5",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 8523.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_29",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -977,31 +971,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_29",
                             "sample document": {
-                                "sample identifier": "Plate 1_C6",
                                 "location identifier": "C6",
+                                "sample identifier": "Plate 1_C6",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 71210.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_30",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1010,31 +1004,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_30",
                             "sample document": {
-                                "sample identifier": "Plate 1_C7",
                                 "location identifier": "C7",
+                                "sample identifier": "Plate 1_C7",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 351400.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_31",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1043,31 +1037,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_31",
                             "sample document": {
-                                "sample identifier": "Plate 1_C8",
                                 "location identifier": "C8",
+                                "sample identifier": "Plate 1_C8",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 504400.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_32",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1076,31 +1070,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_32",
                             "sample document": {
-                                "sample identifier": "Plate 1_C9",
                                 "location identifier": "C9",
+                                "sample identifier": "Plate 1_C9",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 634700.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_33",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1109,31 +1103,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_33",
                             "sample document": {
-                                "sample identifier": "Plate 1_C10",
                                 "location identifier": "C10",
+                                "sample identifier": "Plate 1_C10",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 555700.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_34",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1142,31 +1136,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_34",
                             "sample document": {
-                                "sample identifier": "Plate 1_C11",
                                 "location identifier": "C11",
+                                "sample identifier": "Plate 1_C11",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 674300.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_35",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1175,31 +1169,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_35",
                             "sample document": {
-                                "sample identifier": "Plate 1_C12",
                                 "location identifier": "C12",
+                                "sample identifier": "Plate 1_C12",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 3251.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_36",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1208,31 +1202,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_36",
                             "sample document": {
-                                "sample identifier": "Plate 1_D1",
                                 "location identifier": "D1",
+                                "sample identifier": "Plate 1_D1",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 66.75,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_37",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1241,31 +1235,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_37",
                             "sample document": {
-                                "sample identifier": "Plate 1_D2",
                                 "location identifier": "D2",
+                                "sample identifier": "Plate 1_D2",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 92.13,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_38",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1274,31 +1268,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_38",
                             "sample document": {
-                                "sample identifier": "Plate 1_D3",
                                 "location identifier": "D3",
+                                "sample identifier": "Plate 1_D3",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 142.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_39",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1307,31 +1301,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_39",
                             "sample document": {
-                                "sample identifier": "Plate 1_D4",
                                 "location identifier": "D4",
+                                "sample identifier": "Plate 1_D4",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 241.7,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_40",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1340,31 +1334,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_40",
                             "sample document": {
-                                "sample identifier": "Plate 1_D5",
                                 "location identifier": "D5",
+                                "sample identifier": "Plate 1_D5",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 354.5,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_41",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1373,31 +1367,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_41",
                             "sample document": {
-                                "sample identifier": "Plate 1_D6",
                                 "location identifier": "D6",
+                                "sample identifier": "Plate 1_D6",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 1687.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_42",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1406,31 +1400,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_42",
                             "sample document": {
-                                "sample identifier": "Plate 1_D7",
                                 "location identifier": "D7",
+                                "sample identifier": "Plate 1_D7",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 58790.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_43",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1439,31 +1433,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_43",
                             "sample document": {
-                                "sample identifier": "Plate 1_D8",
                                 "location identifier": "D8",
+                                "sample identifier": "Plate 1_D8",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 341300.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_44",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1472,31 +1466,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_44",
                             "sample document": {
-                                "sample identifier": "Plate 1_D9",
                                 "location identifier": "D9",
+                                "sample identifier": "Plate 1_D9",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 519200.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_45",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1505,31 +1499,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_45",
                             "sample document": {
-                                "sample identifier": "Plate 1_D10",
                                 "location identifier": "D10",
+                                "sample identifier": "Plate 1_D10",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 576800.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_46",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1538,31 +1532,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_46",
                             "sample document": {
-                                "sample identifier": "Plate 1_D11",
                                 "location identifier": "D11",
+                                "sample identifier": "Plate 1_D11",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 677000.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_47",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1571,31 +1565,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_47",
                             "sample document": {
-                                "sample identifier": "Plate 1_D12",
                                 "location identifier": "D12",
+                                "sample identifier": "Plate 1_D12",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 3445.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_48",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1604,31 +1598,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_48",
                             "sample document": {
-                                "sample identifier": "Plate 1_E1",
                                 "location identifier": "E1",
+                                "sample identifier": "Plate 1_E1",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 41.33,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_49",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1637,31 +1631,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_49",
                             "sample document": {
-                                "sample identifier": "Plate 1_E2",
                                 "location identifier": "E2",
+                                "sample identifier": "Plate 1_E2",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 99.06,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_50",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1670,31 +1664,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_50",
                             "sample document": {
-                                "sample identifier": "Plate 1_E3",
                                 "location identifier": "E3",
+                                "sample identifier": "Plate 1_E3",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 91.67,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_51",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1703,31 +1697,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_51",
                             "sample document": {
-                                "sample identifier": "Plate 1_E4",
                                 "location identifier": "E4",
+                                "sample identifier": "Plate 1_E4",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 137.6,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_52",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1736,31 +1730,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_52",
                             "sample document": {
-                                "sample identifier": "Plate 1_E5",
                                 "location identifier": "E5",
+                                "sample identifier": "Plate 1_E5",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 342.6,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_53",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1769,31 +1763,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_53",
                             "sample document": {
-                                "sample identifier": "Plate 1_E6",
                                 "location identifier": "E6",
+                                "sample identifier": "Plate 1_E6",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 1135.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_54",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1802,31 +1796,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_54",
                             "sample document": {
-                                "sample identifier": "Plate 1_E7",
                                 "location identifier": "E7",
+                                "sample identifier": "Plate 1_E7",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 79850.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_55",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1835,31 +1829,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_55",
                             "sample document": {
-                                "sample identifier": "Plate 1_E8",
                                 "location identifier": "E8",
+                                "sample identifier": "Plate 1_E8",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 343100.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_56",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1868,31 +1862,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_56",
                             "sample document": {
-                                "sample identifier": "Plate 1_E9",
                                 "location identifier": "E9",
+                                "sample identifier": "Plate 1_E9",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 504300.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_57",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1901,31 +1895,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_57",
                             "sample document": {
-                                "sample identifier": "Plate 1_E10",
                                 "location identifier": "E10",
+                                "sample identifier": "Plate 1_E10",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 601200.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_58",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1934,31 +1928,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_58",
                             "sample document": {
-                                "sample identifier": "Plate 1_E11",
                                 "location identifier": "E11",
+                                "sample identifier": "Plate 1_E11",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 651700.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_59",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1967,31 +1961,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_59",
                             "sample document": {
-                                "sample identifier": "Plate 1_E12",
                                 "location identifier": "E12",
+                                "sample identifier": "Plate 1_E12",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 3192.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_60",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2000,31 +1994,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_60",
                             "sample document": {
-                                "sample identifier": "Plate 1_F1",
                                 "location identifier": "F1",
+                                "sample identifier": "Plate 1_F1",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 66.91,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_61",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2033,31 +2027,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_61",
                             "sample document": {
-                                "sample identifier": "Plate 1_F2",
                                 "location identifier": "F2",
+                                "sample identifier": "Plate 1_F2",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 236.3,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_62",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2066,31 +2060,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_62",
                             "sample document": {
-                                "sample identifier": "Plate 1_F3",
                                 "location identifier": "F3",
+                                "sample identifier": "Plate 1_F3",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 1957.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_63",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2099,31 +2093,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_63",
                             "sample document": {
-                                "sample identifier": "Plate 1_F4",
                                 "location identifier": "F4",
+                                "sample identifier": "Plate 1_F4",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 1842.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_64",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2132,31 +2126,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_64",
                             "sample document": {
-                                "sample identifier": "Plate 1_F5",
                                 "location identifier": "F5",
+                                "sample identifier": "Plate 1_F5",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 3872.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_65",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2165,31 +2159,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_65",
                             "sample document": {
-                                "sample identifier": "Plate 1_F6",
                                 "location identifier": "F6",
+                                "sample identifier": "Plate 1_F6",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 16170.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_66",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2198,31 +2192,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_66",
                             "sample document": {
-                                "sample identifier": "Plate 1_F7",
                                 "location identifier": "F7",
+                                "sample identifier": "Plate 1_F7",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 66630.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_67",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2231,31 +2225,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_67",
                             "sample document": {
-                                "sample identifier": "Plate 1_F8",
                                 "location identifier": "F8",
+                                "sample identifier": "Plate 1_F8",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 230600.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_68",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2264,31 +2258,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_68",
                             "sample document": {
-                                "sample identifier": "Plate 1_F9",
                                 "location identifier": "F9",
+                                "sample identifier": "Plate 1_F9",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 406300.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_69",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2297,31 +2291,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_69",
                             "sample document": {
-                                "sample identifier": "Plate 1_F10",
                                 "location identifier": "F10",
+                                "sample identifier": "Plate 1_F10",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 593300.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_70",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2330,31 +2324,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_70",
                             "sample document": {
-                                "sample identifier": "Plate 1_F11",
                                 "location identifier": "F11",
+                                "sample identifier": "Plate 1_F11",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 737900.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_71",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2363,31 +2357,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_71",
                             "sample document": {
-                                "sample identifier": "Plate 1_F12",
                                 "location identifier": "F12",
+                                "sample identifier": "Plate 1_F12",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 3425.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_72",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2396,31 +2390,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_72",
                             "sample document": {
-                                "sample identifier": "Plate 1_G1",
                                 "location identifier": "G1",
+                                "sample identifier": "Plate 1_G1",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 39.2,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_73",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2429,31 +2423,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_73",
                             "sample document": {
-                                "sample identifier": "Plate 1_G2",
                                 "location identifier": "G2",
+                                "sample identifier": "Plate 1_G2",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 101.8,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_74",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2462,31 +2456,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_74",
                             "sample document": {
-                                "sample identifier": "Plate 1_G3",
                                 "location identifier": "G3",
+                                "sample identifier": "Plate 1_G3",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 67.66,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_75",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2495,31 +2489,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_75",
                             "sample document": {
-                                "sample identifier": "Plate 1_G4",
                                 "location identifier": "G4",
+                                "sample identifier": "Plate 1_G4",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 2158.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_76",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2528,31 +2522,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_76",
                             "sample document": {
-                                "sample identifier": "Plate 1_G5",
                                 "location identifier": "G5",
+                                "sample identifier": "Plate 1_G5",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 11550.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_77",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2561,31 +2555,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_77",
                             "sample document": {
-                                "sample identifier": "Plate 1_G6",
                                 "location identifier": "G6",
+                                "sample identifier": "Plate 1_G6",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 24110.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_78",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2594,31 +2588,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_78",
                             "sample document": {
-                                "sample identifier": "Plate 1_G7",
                                 "location identifier": "G7",
+                                "sample identifier": "Plate 1_G7",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 49280.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_79",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2627,31 +2621,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_79",
                             "sample document": {
-                                "sample identifier": "Plate 1_G8",
                                 "location identifier": "G8",
+                                "sample identifier": "Plate 1_G8",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 230300.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_80",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2660,31 +2654,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_80",
                             "sample document": {
-                                "sample identifier": "Plate 1_G9",
                                 "location identifier": "G9",
+                                "sample identifier": "Plate 1_G9",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 445700.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_81",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2693,31 +2687,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_81",
                             "sample document": {
-                                "sample identifier": "Plate 1_G10",
                                 "location identifier": "G10",
+                                "sample identifier": "Plate 1_G10",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 551500.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_82",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2726,31 +2720,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_82",
                             "sample document": {
-                                "sample identifier": "Plate 1_G11",
                                 "location identifier": "G11",
+                                "sample identifier": "Plate 1_G11",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 701100.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_83",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2759,31 +2753,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_83",
                             "sample document": {
-                                "sample identifier": "Plate 1_G12",
                                 "location identifier": "G12",
+                                "sample identifier": "Plate 1_G12",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 2552.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_84",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2792,31 +2786,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_84",
                             "sample document": {
-                                "sample identifier": "Plate 1_H1",
                                 "location identifier": "H1",
+                                "sample identifier": "Plate 1_H1",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 48.28,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_85",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2825,31 +2819,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_85",
                             "sample document": {
-                                "sample identifier": "Plate 1_H2",
                                 "location identifier": "H2",
+                                "sample identifier": "Plate 1_H2",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 65.38,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_86",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2858,31 +2852,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_86",
                             "sample document": {
-                                "sample identifier": "Plate 1_H3",
                                 "location identifier": "H3",
+                                "sample identifier": "Plate 1_H3",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 94.27,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_87",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2891,31 +2885,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_87",
                             "sample document": {
-                                "sample identifier": "Plate 1_H4",
                                 "location identifier": "H4",
+                                "sample identifier": "Plate 1_H4",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 138.8,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_88",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2924,31 +2918,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_88",
                             "sample document": {
-                                "sample identifier": "Plate 1_H5",
                                 "location identifier": "H5",
+                                "sample identifier": "Plate 1_H5",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 201.6,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_89",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2957,31 +2951,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_89",
                             "sample document": {
-                                "sample identifier": "Plate 1_H6",
                                 "location identifier": "H6",
+                                "sample identifier": "Plate 1_H6",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 385.8,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_90",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2990,31 +2984,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_90",
                             "sample document": {
-                                "sample identifier": "Plate 1_H7",
                                 "location identifier": "H7",
+                                "sample identifier": "Plate 1_H7",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 752.4,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_91",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3023,31 +3017,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_91",
                             "sample document": {
-                                "sample identifier": "Plate 1_H8",
                                 "location identifier": "H8",
+                                "sample identifier": "Plate 1_H8",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 1608.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_92",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3056,31 +3050,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_92",
                             "sample document": {
-                                "sample identifier": "Plate 1_H9",
                                 "location identifier": "H9",
+                                "sample identifier": "Plate 1_H9",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 2491.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_93",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3089,31 +3083,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_93",
                             "sample document": {
-                                "sample identifier": "Plate 1_H10",
                                 "location identifier": "H10",
+                                "sample identifier": "Plate 1_H10",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 2786.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_94",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3122,31 +3116,31 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_94",
                             "sample document": {
-                                "sample identifier": "Plate 1_H11",
                                 "location identifier": "H11",
+                                "sample identifier": "Plate 1_H11",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 2487.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
                     "measurement time": "2024-08-23T15:02:30+00:00",
                     "plate well count": {
                         "value": 96,
                         "unit": "#"
                     },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "THERMO_SKANIT_TEST_ID_95",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -3155,31 +3149,39 @@
                                     }
                                 ]
                             },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_95",
                             "sample document": {
-                                "sample identifier": "Plate 1_H12",
                                 "location identifier": "H12",
+                                "sample identifier": "Plate 1_H12",
                                 "well plate identifier": "Plate 1"
                             },
+                            "experimental data identifier": "experiment",
                             "luminescence": {
                                 "value": 1043.0,
                                 "unit": "RLU"
                             }
                         }
                     ],
-                    "experimental data identifier": "experiment",
+                    "measurement time": "2024-08-23T15:02:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
                     "container type": "well plate"
                 }
             }
         ],
+        "data system document": {
+            "ASM file identifier": "luciferase_assay_example.json",
+            "data system instance identifier": "N/A",
+            "UNC path": "tests/parsers/thermo_skanit/testdata/luciferase_assay_example.xlsx",
+            "file name": "luciferase_assay_example.xlsx",
+            "ASM converter name": "allotropy_thermo_fisher_scientific_skanit",
+            "ASM converter version": "0.1.97"
+        },
         "device system document": {
             "device identifier": "N/A",
             "model number": "N/A"
-        },
-        "data system document": {
-            "file name": "luciferase_assay_example.xlsx",
-            "UNC path": "tests/parsers/thermo_skanit/testdata/luciferase_assay_example.xlsx",
-            "ASM converter name": "allotropy_thermo_fisher_scientific_skanit",
-            "ASM converter version": "0.1.74"
         }
     }
 }

@@ -3,6 +3,7 @@ import re
 import struct
 from typing import Any
 
+import numpy as np
 import olefile as ole
 import pandas as pd
 import xmltodict
@@ -372,6 +373,7 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
     streams = content.listdir()
     sensorgram_df_list = []
     report_point_data = {}
+
     for stream in streams:
         stream_content = content.openstream(stream).read()
         if stream == ["Environment"]:
@@ -428,7 +430,7 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                 indexed_xy_data_list = xy_data_list[3:]
                 length_of_xydata = len(xy_data_list[3:])
                 xy_result_list = indexed_xy_data_list[int(length_of_xydata / 2) :]
-                time = indexed_xy_data_list[: int(length_of_xydata / 2)]
+                time_values = indexed_xy_data_list[: int(length_of_xydata / 2)]
                 length_of_xy = len(xy_result_list)
 
                 xy_data_frame = pd.DataFrame(
@@ -438,7 +440,7 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                         "Curve Number": [curve_number] * length_of_xy,
                         "Window Number": [window_number] * length_of_xy,
                         "Sensorgram (RU)": xy_result_list,
-                        "Time (s)": time,
+                        "Time (s)": time_values,
                     }
                 )
 
@@ -460,40 +462,61 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                     }
                 )
                 sensorgram_df_list.append(segment_data_frame)
+
     combined_sensorgram_df = pd.concat(sensorgram_df_list, ignore_index=True)
+
     sensorgram_data = {}
-    for _name, group in combined_sensorgram_df.groupby("Cycle Number"):
+
+    data_collection_rate = None
+    if intermediate_json.get("application_template_details", {}).get(
+        "DataCollectionRate"
+    ):
+        data_collection_rate = intermediate_json["application_template_details"][
+            "DataCollectionRate"
+        ]["value"]
+
+    grouped_df = combined_sensorgram_df.groupby("Cycle Number")
+    for cycle_num, cycle_group in grouped_df:
+        group = cycle_group.copy()
+
         if "Time (s)" in group.columns:
-            max_new = group["Flow Cell Number"].max()
-            last_part = group[group["Flow Cell Number"] == max_new]
-            if pd.isna(last_part["Time (s)"]).any():
+            max_flow_cell = group["Flow Cell Number"].max()
+            max_flow_cell_mask = group["Flow Cell Number"] == max_flow_cell
+            max_flow_cell_times = group.loc[max_flow_cell_mask, "Time (s)"]
+
+            if pd.isna(max_flow_cell_times).any():
                 group["Time (s)"] = group.groupby("Flow Cell Number").cumcount() + 1
             else:
-                time_map = dict(
-                    zip(last_part.index, last_part["Time (s)"], strict=True)
-                )
-                for new_value in group["Flow Cell Number"].unique():
-                    if new_value != max_new:
-                        indices = group[group["Flow Cell Number"] == new_value].index
-                        for i, idx in enumerate(indices):
-                            group.at[idx, "Time (s)"] = time_map[
-                                list(time_map.keys())[i % len(time_map)]
-                            ]
-        # If the data collection rate is set, apply it to the time column
-        elif intermediate_json.get("application_template_details", {}).get(
-            "DataCollectionRate"
-        ):
+                unique_flow_cells = group["Flow Cell Number"].unique()
+
+                if len(unique_flow_cells) > 1:
+                    max_flow_cell_data = group[max_flow_cell_mask].reset_index(
+                        drop=True
+                    )
+                    reference_times = max_flow_cell_data["Time (s)"].values
+
+                    for flow_cell in unique_flow_cells:
+                        if flow_cell != max_flow_cell:
+                            flow_cell_mask = group["Flow Cell Number"] == flow_cell
+                            flow_cell_indices = group[flow_cell_mask].index
+
+                            num_points = len(flow_cell_indices)
+                            num_ref_times = len(reference_times)
+
+                            if num_ref_times > 0:
+                                time_values = reference_times[
+                                    np.arange(num_points) % num_ref_times
+                                ]
+                                group.loc[flow_cell_indices, "Time (s)"] = time_values
+
+        elif data_collection_rate:
             group["Time (s)"] = group.groupby("Flow Cell Number").cumcount() * (
-                1
-                / intermediate_json["application_template_details"][
-                    "DataCollectionRate"
-                ]["value"]
+                1 / data_collection_rate
             )
         else:
             group["Time (s)"] = group.groupby("Flow Cell Number").cumcount() + 1
 
-        cycle_number = group["Cycle Number"].iloc[0]
-        sensorgram_data[str(cycle_number)] = group[
+        sensorgram_data[str(cycle_num)] = group[
             [
                 "Flow Cell Number",
                 "Cycle Number",

@@ -6,6 +6,7 @@ from io import StringIO
 import math
 from pathlib import Path
 import re
+from typing import Any
 
 import pandas as pd
 
@@ -650,6 +651,34 @@ def get_results_section(reader: AgilentGen5Reader) -> list[str] | None:
     return None
 
 
+def get_concentrations(layout_lines: list[str] | None) -> dict[str, float | None]:
+    """Extract concentration/dilution values from the Layout section.
+
+    Returns a dictionary mapping well positions to their concentration/dilution values.
+    """
+    if not layout_lines:
+        return {}
+
+    # Create dataframe from tabular data and forward fill empty values in index
+    data = read_csv(StringIO("\n".join(layout_lines[1:])), sep="\t")
+    data = data.set_index(data.index.to_series().ffill(axis="index").values)
+
+    concentrations = {}
+    for row_name, row in data.iterrows():
+        label = row.iloc[-1]
+        if label == "Conc/Dil":
+            for col_index, col in enumerate(row.iloc[:-1]):
+                well_pos = f"{row_name}{col_index + 1}"
+                # Convert to float if possible
+                if not pd.isna(col):
+                    concentration_value = try_float_or_none(col)
+                    concentrations[well_pos] = concentration_value
+                else:
+                    concentrations[well_pos] = None
+
+    return concentrations
+
+
 def get_identifiers(layout_lines: list[str] | None) -> dict[str, str]:
     if not layout_lines:
         return {}
@@ -753,12 +782,22 @@ class MeasurementData:
     label: str
 
 
+def _get_label(row: pd.Series[Any], measurement_labels: set[str]) -> tuple[str, bool]:
+    raw_label = row.iloc[-1]
+    if str(raw_label) in measurement_labels:
+        return str(raw_label), True
+    if isinstance(raw_label, float) and str(int(raw_label)) in measurement_labels:
+        return str(int(raw_label)), True
+    return str(raw_label), False
+
+
 def create_results(
     result_lines: list[str],
     header_data: HeaderData,
     read_data: list[ReadData],
     sample_identifiers: dict[str, str],
     actual_temperature: float | None,
+    concentration_values: dict[str, float | None] | None = None,
 ) -> tuple[list[MeasurementGroup], list[CalculatedDocument]]:
     if result_lines[0].strip() != "Results":
         msg = f"Expected the first line of the results section '{result_lines[0]}' to be 'Results'."
@@ -767,22 +806,22 @@ def create_results(
     # Create dataframe from tabular data and forward fill empty values in index
     data = read_csv(StringIO("\n".join(result_lines[1:])), sep="\t")
     data = data.set_index(data.index.to_series().ffill(axis="index").values)
-
     well_to_measurements: defaultdict[str, list[MeasurementData]] = defaultdict(
         list[MeasurementData]
     )
     calculated_data: defaultdict[str, list[tuple[str, float]]] = defaultdict(
         list[tuple[str, float]]
     )
-    measurement_labels = [
+    measurement_labels = {
         label for r_data in read_data for label in r_data.measurement_labels
-    ]
+    }
     error_documents_per_well: defaultdict[str, list[ErrorDocument]] = defaultdict(
         list[ErrorDocument]
     )
+
     for row_name, row in data.iterrows():
-        label = str(row.iloc[-1])
-        is_measurement = label in measurement_labels
+        label, is_measurement = _get_label(row, measurement_labels)
+
         for col_index, value in enumerate(row.iloc[:-1]):
             well_pos = f"{row_name}{col_index + 1}"
             well_value = try_float_or_none(value)
@@ -802,7 +841,6 @@ def create_results(
                     )
                 )
             if is_measurement:
-
                 well_to_measurements[well_pos].append(
                     MeasurementData(
                         random_uuid_str(),
@@ -827,6 +865,9 @@ def create_results(
                     sample_identifiers.get(well_position),
                     actual_temperature,
                     error_documents=error_documents_per_well.get(well_position),
+                    concentration_value=concentration_values.get(well_position)
+                    if concentration_values
+                    else None,
                 )
                 for measurement in measurements
             ],
@@ -868,6 +909,7 @@ def create_kinetic_results(
     kinetic_measurements: dict[str, list[float | None]],
     kinetic_elapsed_time: list[float],
     kinetic_errors: dict[str, list[ErrorDocument]] | None = None,
+    concentration_values: dict[str, float | None] | None = None,
 ) -> tuple[list[MeasurementGroup], list[CalculatedDocument]]:
     if result_lines[0].strip() != "Results":
         msg = f"Expected the first line of the results section '{result_lines[0]}' to be 'Results'."
@@ -919,6 +961,9 @@ def create_kinetic_results(
                     kinetic_measurements[well_position],
                     kinetic_elapsed_time,
                     error_documents_per_well.get(well_position, []),
+                    concentration_value=concentration_values.get(well_position)
+                    if concentration_values
+                    else None,
                 )
             ],
         )
@@ -1080,6 +1125,7 @@ def create_spectrum_results(
     sample_identifiers: dict[str, str],
     actual_temperature: float | None,
     results_section: list[str] | None = None,
+    concentration_values: dict[str, float | None] | None = None,
 ) -> tuple[list[MeasurementGroup], list[CalculatedDocument]]:
     if not wavelengths_sections:
         return [], []
@@ -1240,6 +1286,11 @@ def create_spectrum_results(
             else None,
             detector_gain_setting=filter_set.gain if filter_set else None,
             error_document=error_documents_by_well.get(well_position),
+            sample_custom_info={
+                "Conc/Dil": concentration_values.get(well_position)
+                if concentration_values
+                else None,
+            },
             analytical_method_identifier=header_data.protocol_file_path
             if header_data.protocol_file_path
             else None,
@@ -1298,6 +1349,7 @@ def _create_measurement(
     kinetic_measurements: list[float | None] | None = None,
     kinetic_elapsed_time: list[float] | None = None,
     error_documents: list[ErrorDocument] | None = None,
+    concentration_value: float | None = None,
 ) -> Measurement:
     if read_data.read_mode == ReadMode.ABSORBANCE and not kinetic_data:
         measurement_type = MeasurementType.ULTRAVIOLET_ABSORBANCE
@@ -1408,7 +1460,8 @@ def _create_measurement(
             ),
         },
         sample_custom_info={
-            "Plate Number": header_data.additional_data.pop("Plate Number", None)
+            "Plate Number": header_data.additional_data.pop("Plate Number", None),
+            "Conc/Dil": concentration_value,
         },
         measurement_custom_info=header_data.additional_data,
         analytical_method_identifier=header_data.protocol_file_path

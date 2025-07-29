@@ -81,6 +81,10 @@ class ReadType(Enum):
     SPECTRUM = "Spectrum"
     WELL_SCAN = "Well Scan"
 
+    @property
+    def is_spectrum(self) -> bool:
+        return self is ReadType.SPECTRUM
+
 
 class ExportFormat(Enum):
     TIME_FORMAT = "TimeFormat"
@@ -346,8 +350,8 @@ class PlateHeader:
     name: str
     export_version: str
     export_format: str
-    read_type: str
-    data_type: str
+    read_type: ReadType
+    data_type: DataType
     kinetic_points: int
     num_wavelengths: int
     wavelengths: list[float]
@@ -373,7 +377,7 @@ class DataElement:
     temperature: float | None
     wavelength: float
     position: str
-    value: float
+    value: float | None
     error_document: list[ErrorDocument]
     custom_info: dict[str, str] = field(default_factory=dict)
     elapsed_time: list[float] = field(default_factory=list)
@@ -410,21 +414,19 @@ class PlateWavelengthData:
             for row_idx, *row_data in df_data.itertuples()
             for col, raw_value in zip(df_data.columns, row_data, strict=True)
         }
-
         data_elements = {}
         for position, raw_value in data.items():
             value = try_non_nan_float_or_none(raw_value)
             if value is None and elapsed_time is not None:
                 msg = f"Missing kinetic measurement for well position {position} at {elapsed_time}s."
                 raise AllotropeConversionError(msg)
-
             data_elements[str(position)] = DataElement(
                 uuid=random_uuid_str(),
                 plate=header.name,
                 temperature=temperature,
                 wavelength=wavelength,
                 position=str(position),
-                value=NEGATIVE_ZERO if value is None else value,
+                value=value,
                 error_document=(
                     [ErrorDocument(str(raw_value), header.read_mode)]
                     if value is None
@@ -475,6 +477,13 @@ class RawData:
             reader.lines_as_df(lines=lines, sep="\t"),
             msg="unable to find data from plate block.",
         )
+
+        # Truncate columns Series to match the actual number of data columns
+        if len(columns) >= data.shape[1]:
+            columns = columns.iloc[: data.shape[1]]
+        elif len(columns) < data.shape[1]:
+            data = data.loc[:, : len(columns) - 1]
+
         set_columns(data, columns)
         return data
 
@@ -483,12 +492,10 @@ class RawData:
 class PlateRawData(RawData):
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> PlateRawData:
-
         columns = assert_not_none(
             reader.pop_as_series(sep="\t"),
             msg="unable to find data columns for plate block raw data.",
         )
-
         # use plate dimensions to determine how many rows of plate block to read
         dimensions = assert_not_none(
             NUM_WELLS_TO_PLATE_DIMENSIONS.get(header.num_wells),
@@ -558,12 +565,9 @@ class PlateRawData(RawData):
 
 
 @dataclass(frozen=True)
-class SpectrumRawPlateData(RawData):
-    maximum_wavelength_signal: dict[str, float]
-
+class SpectrumPlateRawData(RawData):
     @staticmethod
-    def create(reader: CsvReader, header: PlateHeader) -> SpectrumRawPlateData:
-
+    def create(reader: CsvReader, header: PlateHeader) -> SpectrumPlateRawData:
         columns = assert_not_none(
             reader.pop_as_series(sep="\t"),
             msg="unable to find data columns for plate block raw data.",
@@ -588,25 +592,9 @@ class SpectrumRawPlateData(RawData):
                     df_data=data.iloc[:, 2:],
                 )
             )
-        reader.pop()
         reader.drop_empty()
-        max_wavelength_signal_data = RawData.get_measurement_section(
-            reader, columns, rows
-        ).iloc[:, 2:]
-        signal_data = {
-            f"{num_to_chars(row_idx)}{col}": try_float(
-                str(raw_value), "wavelength signal"
-            )
-            for row_idx, *row_data in max_wavelength_signal_data.itertuples()
-            for col, raw_value in zip(
-                max_wavelength_signal_data.columns, row_data, strict=True
-            )
-        }
 
-        return SpectrumRawPlateData(
-            wavelength_data=wavelength_data,
-            maximum_wavelength_signal=signal_data,
-        )
+        return SpectrumPlateRawData(wavelength_data=wavelength_data)
 
 
 @dataclass(frozen=True)
@@ -615,8 +603,6 @@ class PlateReducedData:
 
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> PlateReducedData:
-        if header.read_type == ReadType.SPECTRUM.value:
-            return PlateReducedData(data=[])
 
         raw_data = assert_not_none(
             reader.pop_csv_block_as_df(sep="\t", header=0),
@@ -642,7 +628,7 @@ class PlateReducedData:
 
 @dataclass(frozen=True)
 class PlateData:
-    raw_data: PlateRawData | SpectrumRawPlateData
+    raw_data: RawData
     reduced_data: PlateReducedData | None
 
     @staticmethod
@@ -650,9 +636,9 @@ class PlateData:
         reader: CsvReader,
         header: PlateHeader,
     ) -> PlateData:
-        raw_data: PlateRawData | SpectrumRawPlateData = (
-            SpectrumRawPlateData.create(reader, header)
-            if header.read_type == ReadType.SPECTRUM.value
+        raw_data: RawData = (
+            SpectrumPlateRawData.create(reader, header)
+            if header.read_type.is_spectrum
             else PlateRawData.create(reader, header)
         )
         return PlateData(
@@ -665,8 +651,14 @@ class PlateData:
         )
 
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
-        for wavelength_data in self.raw_data.wavelength_data:
-            yield wavelength_data.data_elements[position]
+        for plate_wavelength_data in self.raw_data.wavelength_data:
+            yield plate_wavelength_data.data_elements[position]
+
+    def position_exists(self, position: str) -> bool:
+        for plate_wavelength_data in self.raw_data.wavelength_data:
+            if position in plate_wavelength_data.data_elements:
+                return True
+        return False
 
 
 @dataclass(frozen=True)
@@ -693,7 +685,7 @@ class TimeMeasurementData:
                 temperature=temperature,
                 wavelength=wavelength,
                 position=str(position),
-                value=NEGATIVE_ZERO if value is None else value,
+                value=value,
                 error_document=error_document,
             )
 
@@ -712,11 +704,14 @@ class TimeWavelengthData:
         wavelength: float,
         columns: pd.Series[str],
     ) -> TimeWavelengthData:
-        data = assert_not_none(
-            reader.pop_csv_block_as_df(sep="\t"),
-            msg="unable to find raw data from time block.",
+        raw_data = (
+            reader.pop_line_as_df(sep="\t")
+            if header.read_type.is_spectrum
+            else reader.pop_csv_block_as_df(sep="\t")
         )
+        data = assert_not_none(raw_data, msg="unable to find raw data from time block.")
         set_columns(data, columns)
+
         return TimeWavelengthData(
             wavelength=wavelength,
             measurement_data=[
@@ -730,21 +725,15 @@ class TimeWavelengthData:
 class TimeRawData:
     wavelength_data: list[TimeWavelengthData]
 
-    @staticmethod
-    def create(reader: CsvReader, header: PlateHeader) -> TimeRawData:
+    @classmethod
+    def create(cls, reader: CsvReader, header: PlateHeader) -> TimeRawData:
         columns = assert_not_none(
             reader.pop_as_series(sep="\t"),
             msg="unable to find data columns for time block raw data.",
         )
-
         return TimeRawData(
             wavelength_data=[
-                TimeWavelengthData.create(
-                    reader,
-                    header,
-                    wavelength,
-                    columns,
-                )
+                TimeWavelengthData.create(reader, header, wavelength, columns)
                 for wavelength in header.wavelengths
             ]
         )
@@ -789,19 +778,85 @@ class TimeData:
         reader: CsvReader,
         header: PlateHeader,
     ) -> TimeData:
+        reduced_data = None
+        raw_data: TimeRawData | None = None
+
+        # Read raw data if data_type is RAW or BOTH
+        if header.data_type in (DataType.RAW, DataType.BOTH):
+            raw_data = TimeRawData.create(reader, header)
+        # For REDUCED only, create synthetic raw data with error message
+        else:
+            raw_data = TimeData._create_synthetic_raw_data(header)
+
+        # Read reduced data if available, regardless of data_type (RAW can have reduced data!)
+        if reader.current_line_exists():
+            reduced_data = TimeReducedData.create(reader, header)
+
         return TimeData(
-            raw_data=TimeRawData.create(reader, header),
-            reduced_data=(
-                TimeReducedData.create(reader, header)
-                if reader.current_line_exists()
-                else None
-            ),
+            raw_data=raw_data,
+            reduced_data=reduced_data,
         )
 
+    @staticmethod
+    def _create_synthetic_raw_data(header: PlateHeader) -> TimeRawData:
+        """Create synthetic raw data with error messages when only reduced data is available."""
+
+        synthetic_wavelength_data = []
+        for wavelength in header.wavelengths:
+            # For each position in the plate, create a data element with an error document
+            num_cols = header.num_columns
+            num_rows = header.num_rows
+
+            # Create synthetic data elements for all well positions
+            data_elements = {}
+            for row in range(1, num_rows + 1):
+                for col in range(1, num_cols + 1):
+                    position = f"{num_to_chars(row-1)}{col}"
+                    data_elements[position] = DataElement(
+                        uuid=random_uuid_str(),
+                        plate=header.name,
+                        temperature=None,
+                        wavelength=wavelength,
+                        position=position,
+                        value=NEGATIVE_ZERO,
+                        error_document=[
+                            ErrorDocument("Not reported", header.read_mode)
+                        ],
+                        elapsed_time=[
+                            0.0
+                        ],  # Add a dummy value to ensure array is not empty
+                        kinetic_measures=[
+                            NEGATIVE_ZERO
+                        ],  # Add a dummy value to ensure array is not empty
+                    )
+
+            # Create a single TimeMeasurementData with all positions
+            measurement_data = [TimeMeasurementData(data_elements=data_elements)]
+
+            # Add this wavelength data to our list
+            synthetic_wavelength_data.append(
+                TimeWavelengthData(
+                    wavelength=wavelength,
+                    measurement_data=measurement_data,
+                )
+            )
+
+        # Create TimeRawData with our synthetic wavelength data
+        return TimeRawData(wavelength_data=synthetic_wavelength_data)
+
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
-        for wavelength_data in self.raw_data.wavelength_data:
-            for measurement_data in wavelength_data.measurement_data:
+        for time_wavelength_data in self.raw_data.wavelength_data:
+            for measurement_data in time_wavelength_data.measurement_data:
                 yield measurement_data.data_elements[position]
+
+    def position_exists(self, position: str) -> bool:
+        for time_wavelength_data in self.raw_data.wavelength_data:
+            if any(
+                position in measurement.data_elements
+                for measurement in time_wavelength_data.measurement_data
+            ):
+                return True
+        return False
 
 
 @dataclass(frozen=True)
@@ -829,7 +884,7 @@ class PlateBlock(ABC, Block):
 
     @property
     def measurement_type(self) -> MeasurementType:
-        if self.header.read_type == ReadType.SPECTRUM.value:
+        if self.header.read_type is ReadType.SPECTRUM:
             if self.header.concept == "absorbance":
                 return MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM
             elif self.header.concept == "fluorescence":
@@ -849,7 +904,7 @@ class PlateBlock(ABC, Block):
         return read_mode_to_measurement_type[self.header.read_mode]
 
     @classmethod
-    def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
+    def parse_header(cls, _: pd.Series[str]) -> PlateHeader:
         raise NotImplementedError
 
     @classmethod
@@ -859,24 +914,30 @@ class PlateBlock(ABC, Block):
             raise AllotropeConversionError(msg)
 
     @classmethod
-    def check_read_type(cls, read_type: str) -> None:
-        if read_type not in (
+    def check_read_type(cls, read_type_raw: str) -> ReadType:
+        if read_type_raw not in (
             ReadType.ENDPOINT.value,
             ReadType.KINETIC.value,
             ReadType.SPECTRUM.value,
         ):
-            msg = f"Only Endpoint, Spectrum or Kinetic measurements can be processed at this time, got: {read_type}"
+            msg = f"Only Endpoint, Spectrum or Kinetic measurements can be processed at this time, got: {read_type_raw}"
             raise AllotropeConversionError(msg)
+        return ReadType(read_type_raw)
 
     @classmethod
-    def get_read_mode(cls, read_type: str, read_mode_raw: str) -> str:
-        return f"{'Kinetic ' if read_type == ReadType.KINETIC.value else ''}{read_mode_raw}"
+    def get_read_mode(cls, read_type: ReadType, read_mode_raw: str) -> str:
+        return f"{'Kinetic ' if read_type is ReadType.KINETIC else ''}{read_mode_raw}"
 
     @classmethod
-    def check_data_type(cls, data_type: str) -> None:
-        if data_type not in (DataType.RAW.value, DataType.BOTH.value):
-            msg = f"The SoftMax Pro file is required to include either 'Raw' or 'Both' (Raw and Reduced) data for all plates, got {data_type}."
+    def check_data_type(cls, data_type_raw: str) -> DataType:
+        if data_type_raw not in (
+            DataType.RAW.value,
+            DataType.BOTH.value,
+            DataType.REDUCED.value,
+        ):
+            msg = f"Unexpected data type: {data_type_raw}, supported values are RAW, REDUCED, or BOTH."
             raise AllotropeConversionError(msg)
+        return DataType(data_type_raw)
 
     @classmethod
     def check_num_wavelengths(
@@ -915,7 +976,9 @@ class PlateBlock(ABC, Block):
         cols, rows = NUM_WELLS_TO_PLATE_DIMENSIONS[self.header.num_wells]
         for row in range(rows):
             for col in range(1, cols + 1):
-                yield f"{num_to_chars(row)}{col}"
+                position = f"{num_to_chars(row)}{col}"
+                if self.block_data.position_exists(position):
+                    yield position
 
     def iter_data_elements(self, position: str | list[str]) -> Iterator[DataElement]:
         position = [position] if isinstance(position, str) else position
@@ -936,10 +999,10 @@ class FluorescencePlateBlock(PlateBlock):
             name,
             export_version,
             export_format,
-            read_type,
+            read_type_raw,
             read_mode_raw,
             raw_scan_position,
-            data_type,
+            data_type_raw,
             _,  # Pre-read, always FALSE
             kinetic_points_raw,
             read_time,  # read_time_or_scan_pattern
@@ -966,9 +1029,9 @@ class FluorescencePlateBlock(PlateBlock):
         ] = header[:31]
 
         cls.check_export_version(export_version)
-        cls.check_read_type(read_type)
-        cls.check_data_type(data_type)
-        if read_type == ReadType.SPECTRUM.value:
+        read_type = cls.check_read_type(read_type_raw)
+        data_type = cls.check_data_type(data_type_raw)
+        if read_type is ReadType.SPECTRUM:
             msg = (
                 "Spectrum read type is not currently supported for fluorescence plates."
             )
@@ -1057,9 +1120,9 @@ class LuminescencePlateBlock(PlateBlock):
             name,
             export_version,
             export_format,
-            read_type,
+            read_type_raw,
             read_mode_raw,
-            data_type,
+            data_type_raw,
             _,  # Pre-read, always FALSE
             kinetic_points_raw,
             read_time,  # read_time_or_scan_pattern
@@ -1086,9 +1149,9 @@ class LuminescencePlateBlock(PlateBlock):
         ] = header[:30]
 
         cls.check_export_version(export_version)
-        cls.check_read_type(read_type)
-        cls.check_data_type(data_type)
-        if read_type == ReadType.SPECTRUM.value:
+        read_type = cls.check_read_type(read_type_raw)
+        data_type = cls.check_data_type(data_type_raw)
+        if read_type is ReadType.SPECTRUM:
             msg = (
                 "Spectrum read type is not currently supported for luminescence plates."
             )
@@ -1135,9 +1198,9 @@ class AbsorbancePlateBlock(PlateBlock):
             name,
             export_version,
             export_format,
-            read_type,
+            read_type_raw,
             read_mode_raw,
-            data_type,
+            data_type_raw,
             _,  # Pre-read, always FALSE
             kinetic_points_raw,
             read_time,  # read_time_or_scan_pattern
@@ -1155,15 +1218,15 @@ class AbsorbancePlateBlock(PlateBlock):
         ] = header[:21]
 
         cls.check_export_version(export_version)
-        cls.check_read_type(read_type)
-        cls.check_data_type(data_type)
+        read_type = cls.check_read_type(read_type_raw)
+        data_type = cls.check_data_type(data_type_raw)
 
         num_wavelengths = cls.get_num_wavelengths(num_wavelengths_raw)
-        if read_type == ReadType.SPECTRUM.value:
+        if read_type is ReadType.SPECTRUM:
             num_wavelengths = try_int(kinetic_points_raw, "kinetic_points")
 
         wavelengths = cls.get_wavelengths(wavelengths_str)
-        if read_type == ReadType.SPECTRUM.value:
+        if read_type is ReadType.SPECTRUM:
             wavelengths = cls.get_wavelengths_from_start_end_step(
                 start_wavelength, end_wavelength, wavelength_step
             )
@@ -1279,12 +1342,23 @@ class StructureData:
                         # experiment, there is no way at the moment to link the group data with a plate.
                         continue
                     plate_block = block_list.plate_blocks[group_data_element.plate]
+                    processed_positions = set()
+
                     for data_element in plate_block.iter_data_elements(
                         group_data_element.positions
                     ):
                         data_element.group_id = group_block.group_data.name
                         data_element.sample_id = group_data_element.sample
-                        data_element.error_document += group_data_element.errors
+
+                        # For spectrum measurements, only add errors to the first DataElement per well
+                        if (
+                            not plate_block.header.read_type.is_spectrum
+                            or data_element.position not in processed_positions
+                        ):
+                            data_element.error_document += group_data_element.errors
+                            if plate_block.header.read_type.is_spectrum:
+                                processed_positions.add(data_element.position)
+
                         data_element.custom_info.update(group_data_element.custom_info)
 
         return StructureData(

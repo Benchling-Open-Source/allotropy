@@ -9,6 +9,7 @@ from allotropy.allotrope.schema_parser.path_util import (
     get_model_path_from_schema_path,
     get_rel_model_path,
     get_rel_schema_path,
+    get_schema_path_from_asm,
     get_schema_path_from_manifest,
     get_schema_path_from_model_path,
     get_schema_path_from_reference,
@@ -52,6 +53,10 @@ def test_get_manifest_from_model_path() -> None:
 
 def test_get_schema_path_from_manifest() -> None:
     assert get_schema_path_from_manifest(MANIFEST) == REL_SCHEMA_PATH
+
+
+def test_get_schema_path_from_asm() -> None:
+    assert get_schema_path_from_asm({"$asm.manifest": MANIFEST}) == REL_SCHEMA_PATH
 
 
 def test_get_schema_path_from_reference() -> None:

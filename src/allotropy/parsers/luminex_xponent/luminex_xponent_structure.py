@@ -1,31 +1,52 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import itertools
 from pathlib import Path
 import re
+from typing import Any
 
+from dateutil.parser import parse, ParserError
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    TStatisticDatumRole,
-)
-from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._01.multi_analyte_profiling import (
+from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
     Analyte,
     Calibration,
     Error,
     Measurement as MapperMeasurement,
     MeasurementGroup,
     Metadata,
+    StatisticDimension,
+    StatisticsDocument,
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NEGATIVE_ZERO
-from allotropy.parsers.luminex_xponent import constants
+from allotropy.parsers.luminex_xponent.constants import (
+    CALCULATED_DATA_SECTIONS,
+    DEFAULT_CONTAINER_TYPE,
+    DEFAULT_DEVICE_TYPE,
+    DEFAULT_SOFTWARE_NAME,
+    EXPECTED_CALIBRATION_RESULT_LEN,
+    MINIMUM_CALIBRATION_LINE_COLS,
+    REQUIRED_SECTIONS,
+    STATISTIC_SECTIONS_CONF,
+)
 from allotropy.parsers.luminex_xponent.luminex_xponent_reader import (
     LuminexXponentReader,
 )
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+    DataSource,
+    Referenceable,
+)
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import assert_not_none, try_float
+from allotropy.parsers.utils.values import (
+    assert_not_none,
+    try_float,
+    try_non_nan_float_or_negative_zero,
+    try_non_nan_float_or_none,
+)
 
 
 @dataclass(frozen=True)
@@ -39,8 +60,8 @@ class Header:
     sample_volume_setting: float | None
     plate_well_count: float
     measurement_time: str
+    data_system_instance_identifier: str
     detector_gain_setting: str | None
-    data_system_instance_identifier: str | None
     minimum_assay_bead_count_setting: float | None
     analyst: str | None
 
@@ -59,17 +80,17 @@ class Header:
             analytical_method_identifier=info_row.get(str, "ProtocolName"),
             method_version=info_row.get(str, "ProtocolVersion"),
             experimental_data_identifier=info_row.get(str, "Batch"),
-            sample_volume_setting=try_float(
-                sample_volume.split()[0], "sample volume setting"
-            )
-            if sample_volume
-            else None,
+            sample_volume_setting=(
+                try_float(sample_volume.split()[0], "sample volume setting")
+                if sample_volume
+                else None
+            ),
             plate_well_count=cls._get_plate_well_count(header_data),
             measurement_time=raw_datetime,
             detector_gain_setting=info_row.get(
                 str, ["ProtocolReporterGain", "ProtocolOperatingMode"]
             ),
-            data_system_instance_identifier=info_row.get(str, "ComputerName"),
+            data_system_instance_identifier=info_row[str, "ComputerName"],
             minimum_assay_bead_count_setting=minimum_assay_bead_count_setting,
             analyst=info_row.get(str, "Operator"),
         )
@@ -109,22 +130,43 @@ class Header:
 def create_calibration(calibration_data: SeriesData) -> Calibration:
     """Create a CalibrationItem from a calibration line.
 
-    Each line should follow the pattern "Last <calibration_name>,<calibration_report> <calibration_time><,,,,"
-    example: "Last F3DeCAL1 Calibration,Passed 05/17/2023 09:25:11,,,,,,"
+    Each line should follow one of these patterns:
+    - "Last <calibration_name>,<calibration_report> <calibration_time><,,,,"
+    - "Last <calibration_name>,<calibration_time><,,,,"
     """
-    if len(calibration_data.series.index) < constants.MINIMUM_CALIBRATION_LINE_COLS:
+    if len(calibration_data.series.index) < MINIMUM_CALIBRATION_LINE_COLS:
         msg = f"Expected at least two columns on the calibration line, got:\n{calibration_data.series}."
         raise AllotropeConversionError(msg)
 
-    calibration_result = calibration_data.series.iloc[1].split(maxsplit=1)
-    if len(calibration_result) != constants.EXPECTED_CALIBRATION_RESULT_LEN:
-        msg = f"Invalid calibration result format, expected to split into two values, got: {calibration_result}."
+    calibration_info = str(calibration_data.series.iloc[1]).strip()
+
+    # Check if the calibration info starts with a known status value
+    status_values = ["Passed", "Failed", "Calibrated", "Verified"]
+    first_word = calibration_info.split()[0] if calibration_info.split() else ""
+
+    report = None
+    time = None
+
+    if first_word in status_values:
+        calibration_result = calibration_info.split(maxsplit=1)
+        if len(calibration_result) == EXPECTED_CALIBRATION_RESULT_LEN:
+            report = calibration_result[0]
+            time = calibration_result[1]
+    else:
+        try:
+            parse(calibration_info)
+            time = calibration_info
+        except ParserError:
+            pass
+
+    if not time:
+        msg = f"Invalid calibration result format, got: ['{calibration_info}']."
         raise AllotropeConversionError(msg)
 
     return Calibration(
         name=calibration_data.series.iloc[0].replace("Last", "").strip(),
-        report=calibration_result[0],
-        time=calibration_result[1],
+        time=time,
+        report=report,
     )
 
 
@@ -136,23 +178,23 @@ class Measurement:
     dilution_factor_setting: float
     assay_bead_count: float
     analytes: list[Analyte]
+    calculated_data: list[CalculatedDocument]
     errors: list[Error] | None = None
 
     @classmethod
     def create(
         cls,
-        median_data: SeriesData,
-        count_data: pd.DataFrame,
+        results_data: dict[str, pd.DataFrame],
+        count_data: SeriesData,
         bead_ids_data: SeriesData,
-        dilution_factor_data: pd.DataFrame,
-        errors_data: pd.DataFrame | None,
     ) -> Measurement:
-        location = str(median_data.series.name)
+        location = str(count_data.series.name)
+        dilution_factor_data = results_data["Dilution Factor"]
+        errors_data = results_data.get("Warnings/Errors")
+        measurement_identifier = random_uuid_str()
+
         if location not in dilution_factor_data.index:
             msg = f"Could not find 'Dilution Factor' data for: '{location}'."
-            raise AllotropeConversionError(msg)
-        if location not in count_data.index:
-            msg = f"Could not find 'Count' data for: '{location}'."
             raise AllotropeConversionError(msg)
 
         # Keys in the median data that are not analyte data.
@@ -164,36 +206,98 @@ class Measurement:
         )
         errors: list[Error] = []
         data_errors = cls._get_errors(errors_data, well_location) or []
-        for error in data_errors:
-            errors.append(Error(error=error))
+        for data_error in data_errors:
+            errors.append(Error(error=data_error))
 
         if dilution_factor_setting == NEGATIVE_ZERO:
             errors.append(
                 Error(error="Not reported in file", feature="dilution factor setting")
             )
 
-        return Measurement(
-            identifier=random_uuid_str(),
-            sample_identifier=median_data[str, "Sample"],
-            location_identifier=location_id,
-            dilution_factor_setting=dilution_factor_setting,
-            assay_bead_count=median_data[float, "Total Events"],
-            analytes=[
+        def get_statistics_error(
+            raw_value: Any, analyte: str, role: str
+        ) -> Error | None:
+            """Check if the raw value is empty or NaN and return an Error if so."""
+            error = None
+            if raw_value == "":
+                error = "Not reported"
+            elif try_non_nan_float_or_none(raw_value) is None:
+                error = "NaN"
+            return Error(error=error, feature=f"{analyte} <{role}>") if error else None
+
+        def get_statistic_dimensions(analyte: str) -> list[StatisticDimension]:
+            statistic_dimensions = []
+            for section, statistic_conf in STATISTIC_SECTIONS_CONF.items():
+                if (statistic_table := results_data.get(section)) is None:
+                    continue
+                raw_value = statistic_table.at[location, analyte]
+                role = statistic_conf.role
+                if error := get_statistics_error(raw_value, analyte, role.value):
+                    errors.append(error)
+                statistic_dimensions.append(
+                    StatisticDimension(
+                        value=try_non_nan_float_or_negative_zero(raw_value),
+                        unit=statistic_conf.unit,
+                        statistic_datum_role=role,
+                    )
+                )
+            return statistic_dimensions
+
+        analytes = []
+        calculated_data = []
+        analyte_keys = [
+            key for key in count_data.series.index if key not in metadata_keys
+        ]
+        for analyte in analyte_keys:
+            analytes.append(
                 Analyte(
-                    identifier=random_uuid_str(),
+                    identifier=(analyte_identifier := random_uuid_str()),
                     name=analyte,
                     assay_bead_identifier=bead_ids_data[str, analyte],
-                    assay_bead_count=SeriesData(count_data.loc[location])[
-                        float, analyte
+                    assay_bead_count=count_data[float, analyte],
+                    statistics=[
+                        StatisticsDocument(
+                            statistical_feature="fluorescence",
+                            statistic_dimensions=get_statistic_dimensions(analyte),
+                        ),
                     ],
-                    value=median_data[float, analyte],
-                    statistic_datum_role=TStatisticDatumRole.median_role,
                 )
-                for analyte in [
-                    key for key in median_data.series.index if key not in metadata_keys
-                ]
-            ],
+            )
+
+            for section_name, unit in CALCULATED_DATA_SECTIONS.items():
+                calculated_data_section = results_data.get(section_name, pd.DataFrame())
+                # Some sections don't include the location as an index, in those cases we cannot associate
+                # the calculated data with the measurement.
+                if location not in calculated_data_section.index:
+                    continue
+                raw_value = calculated_data_section.at[location, analyte]
+                if error := get_statistics_error(raw_value, analyte, section_name):
+                    errors.append(error)
+                calculated_data_id = random_uuid_str()
+                calculated_data.append(
+                    CalculatedDocument(
+                        uuid=calculated_data_id,
+                        name=section_name,
+                        value=try_non_nan_float_or_negative_zero(raw_value),
+                        unit=unit,
+                        data_sources=[
+                            DataSource(
+                                feature="fluorescence",
+                                reference=Referenceable(uuid=analyte_identifier),
+                            )
+                        ],
+                    )
+                )
+
+        return Measurement(
+            identifier=measurement_identifier,
+            sample_identifier=count_data[str, "Sample"],
+            location_identifier=location_id,
+            dilution_factor_setting=dilution_factor_setting,
+            assay_bead_count=count_data[float, "Total Events"],
+            analytes=analytes,
             errors=errors,
+            calculated_data=calculated_data,
         )
 
     @classmethod
@@ -224,11 +328,16 @@ class MeasurementList:
     @classmethod
     def create(cls, results_data: dict[str, pd.DataFrame]) -> MeasurementList:
         if missing_sections := [
-            section
-            for section in constants.REQUIRED_SECTIONS
-            if section not in results_data
+            section for section in REQUIRED_SECTIONS if section not in results_data
         ]:
             msg = f"Unable to parse input file, missing expected sections: {missing_sections}."
+            raise AllotropeConversionError(msg)
+
+        # Validate that there's at least one statistic section in results_data
+        if not any(
+            section in results_data for section in STATISTIC_SECTIONS_CONF.keys()
+        ):
+            msg = f"Unable to parse input file, expecting at least one of the following sections: {STATISTIC_SECTIONS_CONF.keys()}."
             raise AllotropeConversionError(msg)
 
         if "BeadID:" not in results_data["Units"].index:
@@ -238,18 +347,14 @@ class MeasurementList:
             raise AllotropeConversionError()
         bead_ids_data = SeriesData(results_data["Units"].loc["BeadID:"])
 
-        def create_measurement(data: SeriesData) -> Measurement:
+        def create_measurement(count_data: SeriesData) -> Measurement:
             return Measurement.create(
-                median_data=data,
-                count_data=results_data["Count"],
+                results_data=results_data,
+                count_data=count_data,
                 bead_ids_data=bead_ids_data,
-                dilution_factor_data=results_data["Dilution Factor"],
-                errors_data=results_data["Warnings/Errors"]
-                if "Warnings/Errors" in results_data
-                else None,
             )
 
-        return MeasurementList(map_rows(results_data["Median"], create_measurement))
+        return MeasurementList(map_rows(results_data["Count"], create_measurement))
 
 
 @dataclass(frozen=True)
@@ -272,29 +377,31 @@ class Data:
 def create_metadata(
     header: Header, calibrations: list[Calibration], file_path: str
 ) -> Metadata:
+    path = Path(file_path)
     return Metadata(
-        file_name=Path(file_path).name,
+        file_name=path.name,
+        asm_file_identifier=path.with_suffix(".json").name,
         unc_path=file_path,
         equipment_serial_number=header.equipment_serial_number,
         model_number=header.model_number,
         calibrations=calibrations,
         data_system_instance_identifier=header.data_system_instance_identifier,
-        software_name=constants.DEFAULT_SOFTWARE_NAME,
+        software_name=DEFAULT_SOFTWARE_NAME,
         software_version=header.software_version,
-        device_type=constants.DEFAULT_DEVICE_TYPE,
+        device_type=DEFAULT_DEVICE_TYPE,
     )
 
 
 def create_measurement_groups(
     measurements: list[Measurement], header: Header
-) -> list[MeasurementGroup]:
-    return [
+) -> tuple[list[MeasurementGroup], list[CalculatedDocument] | None]:
+    measurement_groups = [
         MeasurementGroup(
             analyst=header.analyst,
             analytical_method_identifier=header.analytical_method_identifier,
             method_version=header.method_version,
             experimental_data_identifier=header.experimental_data_identifier,
-            container_type=constants.DEFAULT_CONTAINER_TYPE,
+            container_type=DEFAULT_CONTAINER_TYPE,
             plate_well_count=header.plate_well_count,
             measurements=[
                 MapperMeasurement(
@@ -314,3 +421,7 @@ def create_measurement_groups(
         )
         for measurement in measurements
     ]
+    calculated_documents = list(
+        itertools.chain(*[measurement.calculated_data for measurement in measurements])
+    )
+    return measurement_groups, calculated_documents

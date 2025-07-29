@@ -13,6 +13,7 @@ from allotropy.parsers.agilent_gen5.agilent_gen5_structure import (
     create_metadata,
     create_results,
     create_spectrum_results,
+    get_concentrations,
     get_identifiers,
     get_kinetic_measurements,
     get_results_section,
@@ -49,6 +50,7 @@ class AgilentGen5Parser(VendorParser[Data, Model]):
         kinetic_data = KineticData.create(reader.sections["Procedure Details"])
 
         sample_identifiers = get_identifiers(reader.sections.get("Layout"))
+        concentration_values = get_concentrations(reader.sections.get("Layout"))
         actual_temperature = get_temperature(reader.sections.get("Actual Temperature"))
         kinetic_result = get_kinetic_measurements(reader.sections.get("Time"))
         kinetic_measurements, kinetic_elapsed_time, kinetic_errors = kinetic_result or (
@@ -73,6 +75,7 @@ class AgilentGen5Parser(VendorParser[Data, Model]):
                 sample_identifiers=sample_identifiers,
                 actual_temperature=actual_temperature,
                 results_section=results_section,
+                concentration_values=concentration_values,
             )
 
             if not wavelength_measurements:
@@ -95,6 +98,7 @@ class AgilentGen5Parser(VendorParser[Data, Model]):
                 kinetic_measurements,
                 kinetic_elapsed_time,
                 kinetic_errors,
+                concentration_values,
             )
         else:
             measurement_groups, calculated_data = create_results(
@@ -103,6 +107,7 @@ class AgilentGen5Parser(VendorParser[Data, Model]):
                 read_data,
                 sample_identifiers,
                 actual_temperature,
+                concentration_values,
             )
 
         if not measurement_groups:

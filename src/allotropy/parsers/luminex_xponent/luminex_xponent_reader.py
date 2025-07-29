@@ -91,9 +91,15 @@ class LuminexXponentReader:
             result_title = match.groups()[0]
             table_data = assert_not_none(
                 reader.pop_csv_block_as_df(
-                    empty_pat=constants.LUMINEX_EMPTY_PATTERN, header=0, index_col=0
+                    empty_pat=constants.LUMINEX_EMPTY_PATTERN,
+                    header=0,
+                    index_col=0,
+                    na_values=["NaN", "nan", "-NaN", "-nan", "None", "null", "NULL"],
+                    keep_default_na=False,  # Prevent pandas from interpreting empty strings as NaN.
                 )
-            ).dropna(how="all", axis="columns")
+            )
+            # drop empty columns at the end of the table
+            table_data = table_data.loc[:, ~table_data.columns.str.contains("^Unnamed")]
             results[result_title] = table_data
             reader.drop_empty(constants.LUMINEX_EMPTY_PATTERN)
 
