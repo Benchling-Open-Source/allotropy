@@ -10,7 +10,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
+                                        }
                                     }
                                 ]
                             },
@@ -24,6 +28,22 @@
                                             "cell density dilution factor": {
                                                 "value": 1.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 5.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Decluster degree": "Medium",
+                                                "V. cell spot brightness (%)": 55.0,
+                                                "Brightness (%)": 85.0,
+                                                "Sharpness": 100.0,
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -53,15 +73,31 @@
                                         "average total cell circularity": {
                                             "value": 0.803,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. bg intensity": 201.2,
+                                            "Avg. cells / image": 179.0
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "JK TEST Count 2-13-2024"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 25.0
+                                        }
+                                    }
+                                ]
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "experimental data identifier": "JK TEST Count 2-13-2024.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             }
@@ -72,7 +108,7 @@
             "file name": "style_fill_incorrect.xlsx",
             "UNC path": "tests/parsers/beckman_vi_cell_xr/testdata/v2.06/style_fill_incorrect.xlsx",
             "ASM converter name": "allotropy_beckman_coulter_vi_cell_xr",
-            "ASM converter version": "0.1.69",
+            "ASM converter version": "0.1.101",
             "software name": "Vi-Cell XR",
             "software version": "2.06"
         },
