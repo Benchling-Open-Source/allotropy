@@ -193,7 +193,7 @@ def test_create_measurements_duplicate_measurements() -> None:
 
     with pytest.raises(
         AllotropyParserError,
-        match="Duplicate measurement for GLN2B in the same measurement group.",
+        match="Duplicate measurement for GLN2B in the same measurement group. 3.45 vs 4.35",
     ):
         create_measurements(data)
 

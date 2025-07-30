@@ -2605,10 +2605,10 @@
             }
         ],
         "data system document": {
-            "ASM file identifier": "CEDEX Archive 2_26_2025 - 2_27_2025.json",
+            "ASM file identifier": "roche_cedex_bioht_v5_example02.json",
             "data system instance identifier": "N/A",
-            "file name": "CEDEX Archive 2_26_2025 - 2_27_2025.txt",
-            "UNC path": "tests/parsers/roche_cedex_bioht/testdata/CEDEX Archive 2_26_2025 - 2_27_2025.txt",
+            "file name": "roche_cedex_bioht_v5_example02.txt",
+            "UNC path": "tests/parsers/roche_cedex_bioht/testdata/roche_cedex_bioht_v5_example02.txt",
             "ASM converter name": "allotropy_roche_cedex_bioht",
             "ASM converter version": "0.1.101",
             "software name": "CEDEX BIO HT",
@@ -2616,7 +2616,7 @@
         },
         "device system document": {
             "device identifier": "N/A",
-            "equipment serial number": "600086",
+            "equipment serial number": "123456",
             "model number": "CEDEX BIO HT"
         }
     }

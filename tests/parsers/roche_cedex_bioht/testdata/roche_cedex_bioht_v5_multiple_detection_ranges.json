@@ -27,8 +27,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit": "Standard",
-                                            "detection kit range": "0.25 - 38.9 mmol/L"
+                                            "detection kit range": "0.25 - 38.9 mmol/L",
+                                            "detection kit": "Standard"
                                         }
                                     },
                                     {
@@ -38,8 +38,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit": "Standard",
-                                            "detection kit range": "0.0009 - 0.179 mmol/L"
+                                            "detection kit range": "0.0009 - 0.179 mmol/L",
+                                            "detection kit": "Standard"
                                         }
                                     },
                                     {
@@ -49,8 +49,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit": "Standard",
-                                            "detection kit range": "0.0444 - 15.55 mmol/L"
+                                            "detection kit range": "0.0444 - 15.55 mmol/L",
+                                            "detection kit": "Standard"
                                         }
                                     },
                                     {
@@ -60,8 +60,8 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit": "Standard",
-                                            "detection kit range": "2 - 28 mmol/L"
+                                            "detection kit range": "2 - 28 mmol/L",
+                                            "detection kit": "Standard"
                                         }
                                     },
                                     {
@@ -71,8 +71,8 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit": "Standard",
-                                            "detection kit range": "50 - 275 mmol/L"
+                                            "detection kit range": "50 - 275 mmol/L",
+                                            "detection kit": "Standard"
                                         }
                                     }
                                 ]
@@ -85,10 +85,10 @@
             }
         ],
         "data system document": {
-            "ASM file identifier": "AMED146-009 CEDEX Archive 5_23_2025 - 5_23_2025 (2).json",
+            "ASM file identifier": "roche_cedex_bioht_v5_multiple_detection_ranges.json",
             "data system instance identifier": "N/A",
-            "file name": "AMED146-009 CEDEX Archive 5_23_2025 - 5_23_2025 (2).txt",
-            "UNC path": "tests/parsers/roche_cedex_bioht/testdata/AMED146-009 CEDEX Archive 5_23_2025 - 5_23_2025 (2).txt",
+            "file name": "roche_cedex_bioht_v5_multiple_detection_ranges.txt",
+            "UNC path": "tests/parsers/roche_cedex_bioht/testdata/roche_cedex_bioht_v5_multiple_detection_ranges.txt",
             "ASM converter name": "allotropy_roche_cedex_bioht",
             "ASM converter version": "0.1.101",
             "software name": "CEDEX BIO HT",
@@ -96,7 +96,7 @@
         },
         "device system document": {
             "device identifier": "N/A",
-            "equipment serial number": "600086",
+            "equipment serial number": "123456",
             "model number": "CEDEX BIO HT"
         }
     }

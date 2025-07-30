@@ -126,7 +126,7 @@ def create_measurements(data: pd.DataFrame) -> dict[str, dict[str, RawMeasuremen
                 groups[current_measurement_time][analyte_id].concentration_value
                 is not NaN
             ):
-                msg = f"Duplicate measurement for {analyte.analyte_code} in the same measurement group."
+                msg = f"Duplicate measurement for {analyte.analyte_code} in the same measurement group. {analyte.concentration_value} vs {groups[current_measurement_time][analyte_id].concentration_value}"
                 raise AllotropyParserError(msg)
         groups[current_measurement_time][analyte_id] = analyte
         previous_measurement_time = analyte.measurement_time

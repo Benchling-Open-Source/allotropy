@@ -14,65 +14,230 @@
                                 ]
                             },
                             "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_0",
-                            "measurement time": "2025-04-11T13:05:05+00:00",
+                            "measurement time": "2025-04-11T08:48:23+00:00",
                             "sample document": {
-                                "sample identifier": "AMED146-008"
+                                "sample identifier": "SAMPLE_01"
                             },
                             "analyte aggregate document": {
                                 "analyte document": [
                                     {
-                                        "analyte name": "acetate",
+                                        "analyte name": "IgG human",
                                         "mass concentration": {
-                                            "value": 0.023629999999999998,
+                                            "value": 1.637,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.25 - 38.9 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "0.002665 - 0.05335 mmol/L "
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "acetate",
+                                        "mass concentration": {
+                                            "value": 0.7971699999999999,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.25 - 38.9 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "ammonia",
+                                        "mass concentration": {
+                                            "value": 0.153453,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": " 0.278 - 13.89 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "asparagine",
+                                        "mass concentration": {
+                                            "value": 0.222,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Low",
+                                            "detection kit range": "0.1 - 1 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "aspartate",
+                                        "mass concentration": {
+                                            "value": 1.169,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 9 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "calcium",
+                                        "mass concentration": {
+                                            "value": 0.02427,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.2 - 5 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glucose",
+                                        "mass concentration": {
+                                            "value": 8.572,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.111 - 41.63 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glutamate",
+                                        "molar concentration": {
+                                            "value": 21.07,
+                                            "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.099 - 10.2 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glutamine",
+                                        "molar concentration": {
+                                            "value": 5.393,
+                                            "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 10.26 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glycerol",
+                                        "mass concentration": {
+                                            "value": 1.92803,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Low",
+                                            "detection kit range": "0.1 - 10 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glycerol",
+                                        "mass concentration": {
+                                            "value": 1.92122,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "1 - 100 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "iron",
                                         "mass concentration": {
-                                            "value": 9.6e-05,
+                                            "value": 0.03618,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.0009 - 0.179 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "0.009 - 1.79 mmol/L "
                                         }
                                     },
                                     {
                                         "analyte name": "lactate",
                                         "mass concentration": {
-                                            "value": 0.013,
+                                            "value": 1.107,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.0444 - 15.55 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.0444 - 15.55 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "ldh",
+                                        "molar concentration": {
+                                            "value": 77.234494,
+                                            "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "20 - 1000 U/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "ldh",
+                                        "molar concentration": {
+                                            "value": 76.628952,
+                                            "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "200 - 10000 U/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "magnesium",
+                                        "mass concentration": {
+                                            "value": 0.02933,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 2.5 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "phosphate",
+                                        "mass concentration": {
+                                            "value": 1.62154,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 8.37 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "potassium",
                                         "molar concentration": {
-                                            "value": 3.9,
+                                            "value": 16.44,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "2 - 28 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "2 - 28 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "sodium",
                                         "molar concentration": {
-                                            "value": 647.1,
+                                            "value": 120.0,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "50 - 275 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "50 - 275 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "total protein",
+                                        "mass concentration": {
+                                            "value": 5.51,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "4 - 120 g/L"
                                         }
                                     }
                                 ]
@@ -95,230 +260,230 @@
                                 ]
                             },
                             "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_1",
-                            "measurement time": "2025-04-11T13:12:56+00:00",
+                            "measurement time": "2025-04-11T08:53:54+00:00",
                             "sample document": {
-                                "sample identifier": "CP3116_D14_U1"
+                                "sample identifier": "SAMPLE_02"
                             },
                             "analyte aggregate document": {
                                 "analyte document": [
                                     {
                                         "analyte name": "IgG human",
                                         "mass concentration": {
-                                            "value": 1.643,
+                                            "value": 1.701,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.002665 - 0.05335 mmol/L ",
-                                            "detection kit": "High with Pre - Dilution"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "0.002665 - 0.05335 mmol/L "
                                         }
                                     },
                                     {
                                         "analyte name": "acetate",
                                         "mass concentration": {
-                                            "value": 0.84369,
+                                            "value": 0.84177,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.25 - 38.9 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.25 - 38.9 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "ammonia",
                                         "mass concentration": {
-                                            "value": 0.16253399999999998,
+                                            "value": 0.15456299999999998,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": " 0.278 - 13.89 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": " 0.278 - 13.89 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "asparagine",
                                         "mass concentration": {
-                                            "value": 0.159,
+                                            "value": 0.196,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 1 mmol/L",
-                                            "detection kit": "Low"
+                                            "detection kit": "Low",
+                                            "detection kit range": "0.1 - 1 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "aspartate",
                                         "mass concentration": {
-                                            "value": 1.158,
+                                            "value": 1.16,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 9 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 9 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "calcium",
                                         "mass concentration": {
-                                            "value": 0.02416,
+                                            "value": 0.02475,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.2 - 5 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.2 - 5 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glucose",
                                         "mass concentration": {
-                                            "value": 8.162,
+                                            "value": 8.406,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.111 - 41.63 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.111 - 41.63 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glutamate",
                                         "molar concentration": {
-                                            "value": 20.88,
+                                            "value": 21.23,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.099 - 10.2 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.099 - 10.2 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glutamine",
                                         "molar concentration": {
-                                            "value": 5.476,
+                                            "value": 5.306,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 10.26 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 10.26 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glycerol",
                                         "mass concentration": {
-                                            "value": 2.0194300000000003,
+                                            "value": 1.91423,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 10 mmol/L",
-                                            "detection kit": "Low"
+                                            "detection kit": "Low",
+                                            "detection kit range": "0.1 - 10 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glycerol",
                                         "mass concentration": {
-                                            "value": 1.98749,
+                                            "value": 1.91564,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "1 - 100 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "1 - 100 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "iron",
                                         "mass concentration": {
-                                            "value": 0.035886,
+                                            "value": 0.036317999999999996,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.009 - 1.79 mmol/L ",
-                                            "detection kit": "High with Pre - Dilution"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "0.009 - 1.79 mmol/L "
                                         }
                                     },
                                     {
                                         "analyte name": "lactate",
                                         "mass concentration": {
-                                            "value": 1.141,
+                                            "value": 1.072,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.0444 - 15.55 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.0444 - 15.55 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "ldh",
                                         "molar concentration": {
-                                            "value": 138.72489599999997,
+                                            "value": 77.59755200000001,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "20 - 1000 U/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "20 - 1000 U/L"
                                         }
                                     },
                                     {
                                         "analyte name": "ldh",
                                         "molar concentration": {
-                                            "value": 139.523657,
+                                            "value": 78.275071,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "200 - 10000 U/L",
-                                            "detection kit": "High with Pre - Dilution"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "200 - 10000 U/L"
                                         }
                                     },
                                     {
                                         "analyte name": "magnesium",
                                         "mass concentration": {
-                                            "value": 0.03023,
+                                            "value": 0.0281,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 2.5 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 2.5 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "phosphate",
                                         "mass concentration": {
-                                            "value": 1.5736199999999998,
+                                            "value": 1.60351,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 8.37 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 8.37 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "potassium",
                                         "molar concentration": {
-                                            "value": 17.94,
+                                            "value": 16.74,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "2 - 28 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "2 - 28 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "sodium",
                                         "molar concentration": {
-                                            "value": 112.0,
+                                            "value": 115.7,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "50 - 275 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "50 - 275 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "total protein",
                                         "mass concentration": {
-                                            "value": 6.19,
+                                            "value": 5.55,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "4 - 120 g/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "4 - 120 g/L"
                                         }
                                     }
                                 ]
@@ -341,230 +506,230 @@
                                 ]
                             },
                             "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_2",
-                            "measurement time": "2025-04-11T08:48:23+00:00",
+                            "measurement time": "2025-04-11T09:05:46+00:00",
                             "sample document": {
-                                "sample identifier": "CX3074_D14_U1"
+                                "sample identifier": "SAMPLE_03"
                             },
                             "analyte aggregate document": {
                                 "analyte document": [
                                     {
                                         "analyte name": "IgG human",
                                         "mass concentration": {
-                                            "value": 1.637,
+                                            "value": 1.668,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.002665 - 0.05335 mmol/L ",
-                                            "detection kit": "High with Pre - Dilution"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "0.002665 - 0.05335 mmol/L "
                                         }
                                     },
                                     {
                                         "analyte name": "acetate",
                                         "mass concentration": {
-                                            "value": 0.7971699999999999,
+                                            "value": 0.8980199999999999,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.25 - 38.9 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.25 - 38.9 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "ammonia",
                                         "mass concentration": {
-                                            "value": 0.153453,
+                                            "value": 0.153831,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": " 0.278 - 13.89 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": " 0.278 - 13.89 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "asparagine",
                                         "mass concentration": {
-                                            "value": 0.222,
+                                            "value": 0.2,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 1 mmol/L",
-                                            "detection kit": "Low"
+                                            "detection kit": "Low",
+                                            "detection kit range": "0.1 - 1 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "aspartate",
                                         "mass concentration": {
-                                            "value": 1.169,
+                                            "value": 1.171,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 9 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 9 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "calcium",
                                         "mass concentration": {
-                                            "value": 0.02427,
+                                            "value": 0.024059999999999998,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.2 - 5 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.2 - 5 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glucose",
                                         "mass concentration": {
-                                            "value": 8.572,
+                                            "value": 9.273,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.111 - 41.63 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.111 - 41.63 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glutamate",
                                         "molar concentration": {
-                                            "value": 21.07,
+                                            "value": 21.09,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.099 - 10.2 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.099 - 10.2 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glutamine",
                                         "molar concentration": {
-                                            "value": 5.393,
+                                            "value": 5.363,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 10.26 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 10.26 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glycerol",
                                         "mass concentration": {
-                                            "value": 1.92803,
+                                            "value": 2.03761,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 10 mmol/L",
-                                            "detection kit": "Low"
+                                            "detection kit": "Low",
+                                            "detection kit range": "0.1 - 10 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glycerol",
                                         "mass concentration": {
-                                            "value": 1.92122,
+                                            "value": 1.99908,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "1 - 100 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "1 - 100 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "iron",
                                         "mass concentration": {
-                                            "value": 0.03618,
+                                            "value": 0.034973,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.009 - 1.79 mmol/L ",
-                                            "detection kit": "High with Pre - Dilution"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "0.009 - 1.79 mmol/L "
                                         }
                                     },
                                     {
                                         "analyte name": "lactate",
                                         "mass concentration": {
-                                            "value": 1.107,
+                                            "value": 1.088,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.0444 - 15.55 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.0444 - 15.55 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "ldh",
                                         "molar concentration": {
-                                            "value": 77.234494,
+                                            "value": 84.90914599999999,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "20 - 1000 U/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "20 - 1000 U/L"
                                         }
                                     },
                                     {
                                         "analyte name": "ldh",
                                         "molar concentration": {
-                                            "value": 76.628952,
+                                            "value": 85.823304,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "200 - 10000 U/L",
-                                            "detection kit": "High with Pre - Dilution"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "200 - 10000 U/L"
                                         }
                                     },
                                     {
                                         "analyte name": "magnesium",
                                         "mass concentration": {
-                                            "value": 0.02933,
+                                            "value": 0.02832,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 2.5 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 2.5 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "phosphate",
                                         "mass concentration": {
-                                            "value": 1.62154,
+                                            "value": 1.5911600000000001,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 8.37 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 8.37 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "potassium",
                                         "molar concentration": {
-                                            "value": 16.44,
+                                            "value": 16.58,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "2 - 28 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "2 - 28 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "sodium",
                                         "molar concentration": {
-                                            "value": 120.0,
+                                            "value": 116.2,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "50 - 275 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "50 - 275 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "total protein",
                                         "mass concentration": {
-                                            "value": 5.51,
+                                            "value": 5.54,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "4 - 120 g/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "4 - 120 g/L"
                                         }
                                     }
                                 ]
@@ -587,230 +752,230 @@
                                 ]
                             },
                             "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_3",
-                            "measurement time": "2025-04-11T08:53:54+00:00",
+                            "measurement time": "2025-04-11T09:16:44+00:00",
                             "sample document": {
-                                "sample identifier": "CX3075_D14_U1"
+                                "sample identifier": "SAMPLE_04"
                             },
                             "analyte aggregate document": {
                                 "analyte document": [
                                     {
                                         "analyte name": "IgG human",
                                         "mass concentration": {
-                                            "value": 1.701,
+                                            "value": 1.614,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.002665 - 0.05335 mmol/L ",
-                                            "detection kit": "High with Pre - Dilution"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "0.002665 - 0.05335 mmol/L "
                                         }
                                     },
                                     {
                                         "analyte name": "acetate",
                                         "mass concentration": {
-                                            "value": 0.84177,
+                                            "value": 0.74906,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.25 - 38.9 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.25 - 38.9 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "ammonia",
                                         "mass concentration": {
-                                            "value": 0.15456299999999998,
+                                            "value": 0.16442199999999998,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": " 0.278 - 13.89 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": " 0.278 - 13.89 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "asparagine",
                                         "mass concentration": {
-                                            "value": 0.196,
+                                            "value": 0.212,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 1 mmol/L",
-                                            "detection kit": "Low"
+                                            "detection kit": "Low",
+                                            "detection kit range": "0.1 - 1 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "aspartate",
                                         "mass concentration": {
-                                            "value": 1.16,
+                                            "value": 1.174,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 9 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 9 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "calcium",
                                         "mass concentration": {
-                                            "value": 0.02475,
+                                            "value": 0.02426,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.2 - 5 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.2 - 5 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glucose",
                                         "mass concentration": {
-                                            "value": 8.406,
+                                            "value": 8.664,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.111 - 41.63 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.111 - 41.63 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glutamate",
                                         "molar concentration": {
-                                            "value": 21.23,
+                                            "value": 21.5,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.099 - 10.2 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.099 - 10.2 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glutamine",
                                         "molar concentration": {
-                                            "value": 5.306,
+                                            "value": 4.991,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 10.26 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 10.26 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glycerol",
                                         "mass concentration": {
-                                            "value": 1.91423,
+                                            "value": 1.84411,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 10 mmol/L",
-                                            "detection kit": "Low"
+                                            "detection kit": "Low",
+                                            "detection kit range": "0.1 - 10 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glycerol",
                                         "mass concentration": {
-                                            "value": 1.91564,
+                                            "value": 1.82981,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "1 - 100 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "1 - 100 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "iron",
                                         "mass concentration": {
-                                            "value": 0.036317999999999996,
+                                            "value": 0.038528,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.009 - 1.79 mmol/L ",
-                                            "detection kit": "High with Pre - Dilution"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "0.009 - 1.79 mmol/L "
                                         }
                                     },
                                     {
                                         "analyte name": "lactate",
                                         "mass concentration": {
-                                            "value": 1.072,
+                                            "value": 1.001,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.0444 - 15.55 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.0444 - 15.55 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "ldh",
                                         "molar concentration": {
-                                            "value": 77.59755200000001,
+                                            "value": 70.634487,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "20 - 1000 U/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "20 - 1000 U/L"
                                         }
                                     },
                                     {
                                         "analyte name": "ldh",
                                         "molar concentration": {
-                                            "value": 78.275071,
+                                            "value": 71.707295,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "200 - 10000 U/L",
-                                            "detection kit": "High with Pre - Dilution"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "200 - 10000 U/L"
                                         }
                                     },
                                     {
                                         "analyte name": "magnesium",
                                         "mass concentration": {
-                                            "value": 0.0281,
+                                            "value": 0.02901,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 2.5 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 2.5 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "phosphate",
                                         "mass concentration": {
-                                            "value": 1.60351,
+                                            "value": 1.62707,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 8.37 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 8.37 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "potassium",
                                         "molar concentration": {
-                                            "value": 16.74,
+                                            "value": 16.43,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "2 - 28 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "2 - 28 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "sodium",
                                         "molar concentration": {
-                                            "value": 115.7,
+                                            "value": 115.1,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "50 - 275 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "50 - 275 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "total protein",
                                         "mass concentration": {
-                                            "value": 5.55,
+                                            "value": 5.27,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "4 - 120 g/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "4 - 120 g/L"
                                         }
                                     }
                                 ]
@@ -833,230 +998,230 @@
                                 ]
                             },
                             "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_4",
-                            "measurement time": "2025-04-11T09:05:46+00:00",
+                            "measurement time": "2025-04-11T09:28:03+00:00",
                             "sample document": {
-                                "sample identifier": "CX3076_D14_U1"
+                                "sample identifier": "SAMPLE_05"
                             },
                             "analyte aggregate document": {
                                 "analyte document": [
                                     {
                                         "analyte name": "IgG human",
                                         "mass concentration": {
-                                            "value": 1.668,
+                                            "value": 1.611,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.002665 - 0.05335 mmol/L ",
-                                            "detection kit": "High with Pre - Dilution"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "0.002665 - 0.05335 mmol/L "
                                         }
                                     },
                                     {
                                         "analyte name": "acetate",
                                         "mass concentration": {
-                                            "value": 0.8980199999999999,
+                                            "value": 0.79802,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.25 - 38.9 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.25 - 38.9 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "ammonia",
                                         "mass concentration": {
-                                            "value": 0.153831,
+                                            "value": 0.16323500000000002,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": " 0.278 - 13.89 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": " 0.278 - 13.89 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "asparagine",
                                         "mass concentration": {
-                                            "value": 0.2,
+                                            "value": 0.206,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 1 mmol/L",
-                                            "detection kit": "Low"
+                                            "detection kit": "Low",
+                                            "detection kit range": "0.1 - 1 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "aspartate",
                                         "mass concentration": {
-                                            "value": 1.171,
+                                            "value": 1.21,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 9 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 9 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "calcium",
                                         "mass concentration": {
-                                            "value": 0.024059999999999998,
+                                            "value": 0.02569,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.2 - 5 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.2 - 5 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glucose",
                                         "mass concentration": {
-                                            "value": 9.273,
+                                            "value": 8.98,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.111 - 41.63 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.111 - 41.63 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glutamate",
                                         "molar concentration": {
-                                            "value": 21.09,
+                                            "value": 22.62,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.099 - 10.2 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.099 - 10.2 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glutamine",
                                         "molar concentration": {
-                                            "value": 5.363,
+                                            "value": 4.976,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 10.26 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 10.26 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glycerol",
                                         "mass concentration": {
-                                            "value": 2.03761,
+                                            "value": 1.93768,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 10 mmol/L",
-                                            "detection kit": "Low"
+                                            "detection kit": "Low",
+                                            "detection kit range": "0.1 - 10 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glycerol",
                                         "mass concentration": {
-                                            "value": 1.99908,
+                                            "value": 1.9705899999999998,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "1 - 100 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "1 - 100 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "iron",
                                         "mass concentration": {
-                                            "value": 0.034973,
+                                            "value": 0.038257,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.009 - 1.79 mmol/L ",
-                                            "detection kit": "High with Pre - Dilution"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "0.009 - 1.79 mmol/L "
                                         }
                                     },
                                     {
                                         "analyte name": "lactate",
                                         "mass concentration": {
-                                            "value": 1.088,
+                                            "value": 1.139,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.0444 - 15.55 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.0444 - 15.55 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "ldh",
                                         "molar concentration": {
-                                            "value": 84.90914599999999,
+                                            "value": 70.90803299999999,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "20 - 1000 U/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "20 - 1000 U/L"
                                         }
                                     },
                                     {
                                         "analyte name": "ldh",
                                         "molar concentration": {
-                                            "value": 85.823304,
+                                            "value": 71.459968,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "200 - 10000 U/L",
-                                            "detection kit": "High with Pre - Dilution"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "200 - 10000 U/L"
                                         }
                                     },
                                     {
                                         "analyte name": "magnesium",
                                         "mass concentration": {
-                                            "value": 0.02832,
+                                            "value": 0.02942,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 2.5 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 2.5 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "phosphate",
                                         "mass concentration": {
-                                            "value": 1.5911600000000001,
+                                            "value": 1.64078,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 8.37 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 8.37 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "potassium",
                                         "molar concentration": {
-                                            "value": 16.58,
+                                            "value": 16.61,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "2 - 28 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "2 - 28 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "sodium",
                                         "molar concentration": {
-                                            "value": 116.2,
+                                            "value": 118.6,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "50 - 275 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "50 - 275 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "total protein",
                                         "mass concentration": {
-                                            "value": 5.54,
+                                            "value": 5.51,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "4 - 120 g/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "4 - 120 g/L"
                                         }
                                     }
                                 ]
@@ -1079,230 +1244,230 @@
                                 ]
                             },
                             "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_5",
-                            "measurement time": "2025-04-11T09:16:44+00:00",
+                            "measurement time": "2025-04-11T09:38:19+00:00",
                             "sample document": {
-                                "sample identifier": "CX3077_D14_U1"
+                                "sample identifier": "SAMPLE_06"
                             },
                             "analyte aggregate document": {
                                 "analyte document": [
                                     {
                                         "analyte name": "IgG human",
                                         "mass concentration": {
-                                            "value": 1.614,
+                                            "value": 1.661,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.002665 - 0.05335 mmol/L ",
-                                            "detection kit": "High with Pre - Dilution"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "0.002665 - 0.05335 mmol/L "
                                         }
                                     },
                                     {
                                         "analyte name": "acetate",
                                         "mass concentration": {
-                                            "value": 0.74906,
+                                            "value": 0.91437,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.25 - 38.9 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.25 - 38.9 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "ammonia",
                                         "mass concentration": {
-                                            "value": 0.16442199999999998,
+                                            "value": 0.165146,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": " 0.278 - 13.89 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": " 0.278 - 13.89 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "asparagine",
                                         "mass concentration": {
-                                            "value": 0.212,
+                                            "value": 0.226,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 1 mmol/L",
-                                            "detection kit": "Low"
+                                            "detection kit": "Low",
+                                            "detection kit range": "0.1 - 1 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "aspartate",
                                         "mass concentration": {
-                                            "value": 1.174,
+                                            "value": 1.176,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 9 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 9 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "calcium",
                                         "mass concentration": {
-                                            "value": 0.02426,
+                                            "value": 0.0247,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.2 - 5 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.2 - 5 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glucose",
                                         "mass concentration": {
-                                            "value": 8.664,
+                                            "value": 8.39,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.111 - 41.63 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.111 - 41.63 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glutamate",
                                         "molar concentration": {
-                                            "value": 21.5,
+                                            "value": 21.82,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.099 - 10.2 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.099 - 10.2 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glutamine",
                                         "molar concentration": {
-                                            "value": 4.991,
+                                            "value": 5.025,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 10.26 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 10.26 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glycerol",
                                         "mass concentration": {
-                                            "value": 1.84411,
+                                            "value": 2.13895,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 10 mmol/L",
-                                            "detection kit": "Low"
+                                            "detection kit": "Low",
+                                            "detection kit range": "0.1 - 10 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glycerol",
                                         "mass concentration": {
-                                            "value": 1.82981,
+                                            "value": 2.14621,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "1 - 100 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "1 - 100 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "iron",
                                         "mass concentration": {
-                                            "value": 0.038528,
+                                            "value": 0.036948,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.009 - 1.79 mmol/L ",
-                                            "detection kit": "High with Pre - Dilution"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "0.009 - 1.79 mmol/L "
                                         }
                                     },
                                     {
                                         "analyte name": "lactate",
                                         "mass concentration": {
-                                            "value": 1.001,
+                                            "value": 1.214,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.0444 - 15.55 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.0444 - 15.55 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "ldh",
                                         "molar concentration": {
-                                            "value": 70.634487,
+                                            "value": 75.914192,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "20 - 1000 U/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "20 - 1000 U/L"
                                         }
                                     },
                                     {
                                         "analyte name": "ldh",
                                         "molar concentration": {
-                                            "value": 71.707295,
+                                            "value": 75.946757,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "200 - 10000 U/L",
-                                            "detection kit": "High with Pre - Dilution"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "200 - 10000 U/L"
                                         }
                                     },
                                     {
                                         "analyte name": "magnesium",
                                         "mass concentration": {
-                                            "value": 0.02901,
+                                            "value": 0.02828,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 2.5 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 2.5 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "phosphate",
                                         "mass concentration": {
-                                            "value": 1.62707,
+                                            "value": 1.55817,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 8.37 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 8.37 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "potassium",
                                         "molar concentration": {
-                                            "value": 16.43,
+                                            "value": 16.47,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "2 - 28 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "2 - 28 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "sodium",
                                         "molar concentration": {
-                                            "value": 115.1,
+                                            "value": 117.4,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "50 - 275 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "50 - 275 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "total protein",
                                         "mass concentration": {
-                                            "value": 5.27,
+                                            "value": 5.61,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "4 - 120 g/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "4 - 120 g/L"
                                         }
                                     }
                                 ]
@@ -1325,230 +1490,230 @@
                                 ]
                             },
                             "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_6",
-                            "measurement time": "2025-04-11T09:28:03+00:00",
+                            "measurement time": "2025-04-11T09:50:11+00:00",
                             "sample document": {
-                                "sample identifier": "CX3078_D14_U1"
+                                "sample identifier": "SAMPLE_07"
                             },
                             "analyte aggregate document": {
                                 "analyte document": [
                                     {
                                         "analyte name": "IgG human",
                                         "mass concentration": {
-                                            "value": 1.611,
+                                            "value": 1.686,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.002665 - 0.05335 mmol/L ",
-                                            "detection kit": "High with Pre - Dilution"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "0.002665 - 0.05335 mmol/L "
                                         }
                                     },
                                     {
                                         "analyte name": "acetate",
                                         "mass concentration": {
-                                            "value": 0.79802,
+                                            "value": 0.81832,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.25 - 38.9 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.25 - 38.9 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "ammonia",
                                         "mass concentration": {
-                                            "value": 0.16323500000000002,
+                                            "value": 0.152512,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": " 0.278 - 13.89 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": " 0.278 - 13.89 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "asparagine",
                                         "mass concentration": {
-                                            "value": 0.206,
+                                            "value": 0.18,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 1 mmol/L",
-                                            "detection kit": "Low"
+                                            "detection kit": "Low",
+                                            "detection kit range": "0.1 - 1 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "aspartate",
                                         "mass concentration": {
-                                            "value": 1.21,
+                                            "value": 1.135,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 9 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 9 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "calcium",
                                         "mass concentration": {
-                                            "value": 0.02569,
+                                            "value": 0.02438,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.2 - 5 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.2 - 5 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glucose",
                                         "mass concentration": {
-                                            "value": 8.98,
+                                            "value": 8.433,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.111 - 41.63 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.111 - 41.63 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glutamate",
                                         "molar concentration": {
-                                            "value": 22.62,
+                                            "value": 20.85,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.099 - 10.2 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.099 - 10.2 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glutamine",
                                         "molar concentration": {
-                                            "value": 4.976,
+                                            "value": 5.451,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 10.26 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 10.26 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glycerol",
                                         "mass concentration": {
-                                            "value": 1.93768,
+                                            "value": 1.8403900000000002,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 10 mmol/L",
-                                            "detection kit": "Low"
+                                            "detection kit": "Low",
+                                            "detection kit range": "0.1 - 10 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "glycerol",
                                         "mass concentration": {
-                                            "value": 1.9705899999999998,
+                                            "value": 1.8468499999999999,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "1 - 100 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "1 - 100 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "iron",
                                         "mass concentration": {
-                                            "value": 0.038257,
+                                            "value": 0.035601999999999995,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.009 - 1.79 mmol/L ",
-                                            "detection kit": "High with Pre - Dilution"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "0.009 - 1.79 mmol/L "
                                         }
                                     },
                                     {
                                         "analyte name": "lactate",
                                         "mass concentration": {
-                                            "value": 1.139,
+                                            "value": 1.03,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.0444 - 15.55 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.0444 - 15.55 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "ldh",
                                         "molar concentration": {
-                                            "value": 70.90803299999999,
+                                            "value": 80.011704,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "20 - 1000 U/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "20 - 1000 U/L"
                                         }
                                     },
                                     {
                                         "analyte name": "ldh",
                                         "molar concentration": {
-                                            "value": 71.459968,
+                                            "value": 80.673692,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "200 - 10000 U/L",
-                                            "detection kit": "High with Pre - Dilution"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "200 - 10000 U/L"
                                         }
                                     },
                                     {
                                         "analyte name": "magnesium",
                                         "mass concentration": {
-                                            "value": 0.02942,
+                                            "value": 0.028149999999999998,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 2.5 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 2.5 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "phosphate",
                                         "mass concentration": {
-                                            "value": 1.64078,
+                                            "value": 1.58851,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 8.37 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 8.37 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "potassium",
                                         "molar concentration": {
-                                            "value": 16.61,
+                                            "value": 16.58,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "2 - 28 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "2 - 28 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "sodium",
                                         "molar concentration": {
-                                            "value": 118.6,
+                                            "value": 113.7,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "50 - 275 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "50 - 275 mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "total protein",
                                         "mass concentration": {
-                                            "value": 5.51,
+                                            "value": 5.64,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "4 - 120 g/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "4 - 120 g/L"
                                         }
                                     }
                                 ]
@@ -1571,501 +1736,9 @@
                                 ]
                             },
                             "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_7",
-                            "measurement time": "2025-04-11T09:38:19+00:00",
-                            "sample document": {
-                                "sample identifier": "CX3079_D14_U1"
-                            },
-                            "analyte aggregate document": {
-                                "analyte document": [
-                                    {
-                                        "analyte name": "IgG human",
-                                        "mass concentration": {
-                                            "value": 1.661,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.002665 - 0.05335 mmol/L ",
-                                            "detection kit": "High with Pre - Dilution"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "acetate",
-                                        "mass concentration": {
-                                            "value": 0.91437,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.25 - 38.9 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "ammonia",
-                                        "mass concentration": {
-                                            "value": 0.165146,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": " 0.278 - 13.89 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "asparagine",
-                                        "mass concentration": {
-                                            "value": 0.226,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.1 - 1 mmol/L",
-                                            "detection kit": "Low"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "aspartate",
-                                        "mass concentration": {
-                                            "value": 1.176,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.1 - 9 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "calcium",
-                                        "mass concentration": {
-                                            "value": 0.0247,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.2 - 5 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "glucose",
-                                        "mass concentration": {
-                                            "value": 8.39,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.111 - 41.63 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "glutamate",
-                                        "molar concentration": {
-                                            "value": 21.82,
-                                            "unit": "mmol/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.099 - 10.2 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "glutamine",
-                                        "molar concentration": {
-                                            "value": 5.025,
-                                            "unit": "mmol/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.1 - 10.26 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "glycerol",
-                                        "mass concentration": {
-                                            "value": 2.13895,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.1 - 10 mmol/L",
-                                            "detection kit": "Low"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "glycerol",
-                                        "mass concentration": {
-                                            "value": 2.14621,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "1 - 100 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "iron",
-                                        "mass concentration": {
-                                            "value": 0.036948,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.009 - 1.79 mmol/L ",
-                                            "detection kit": "High with Pre - Dilution"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "lactate",
-                                        "mass concentration": {
-                                            "value": 1.214,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.0444 - 15.55 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "ldh",
-                                        "molar concentration": {
-                                            "value": 75.914192,
-                                            "unit": "mmol/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "20 - 1000 U/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "ldh",
-                                        "molar concentration": {
-                                            "value": 75.946757,
-                                            "unit": "mmol/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "200 - 10000 U/L",
-                                            "detection kit": "High with Pre - Dilution"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "magnesium",
-                                        "mass concentration": {
-                                            "value": 0.02828,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.1 - 2.5 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "phosphate",
-                                        "mass concentration": {
-                                            "value": 1.55817,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.1 - 8.37 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "potassium",
-                                        "molar concentration": {
-                                            "value": 16.47,
-                                            "unit": "mmol/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "2 - 28 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "sodium",
-                                        "molar concentration": {
-                                            "value": 117.4,
-                                            "unit": "mmol/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "50 - 275 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "total protein",
-                                        "mass concentration": {
-                                            "value": 5.61,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "4 - 120 g/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    }
-                                ]
-                            }
-                        }
-                    ],
-                    "data processing time": "2025-04-11T13:51:08+00:00"
-                },
-                "analyst": "ADMIN"
-            },
-            {
-                "measurement aggregate document": {
-                    "measurement document": [
-                        {
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "device type": "solution-analyzer"
-                                    }
-                                ]
-                            },
-                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_8",
-                            "measurement time": "2025-04-11T09:50:11+00:00",
-                            "sample document": {
-                                "sample identifier": "CX3080_D14_U1"
-                            },
-                            "analyte aggregate document": {
-                                "analyte document": [
-                                    {
-                                        "analyte name": "IgG human",
-                                        "mass concentration": {
-                                            "value": 1.686,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.002665 - 0.05335 mmol/L ",
-                                            "detection kit": "High with Pre - Dilution"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "acetate",
-                                        "mass concentration": {
-                                            "value": 0.81832,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.25 - 38.9 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "ammonia",
-                                        "mass concentration": {
-                                            "value": 0.152512,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": " 0.278 - 13.89 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "asparagine",
-                                        "mass concentration": {
-                                            "value": 0.18,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.1 - 1 mmol/L",
-                                            "detection kit": "Low"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "aspartate",
-                                        "mass concentration": {
-                                            "value": 1.135,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.1 - 9 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "calcium",
-                                        "mass concentration": {
-                                            "value": 0.02438,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.2 - 5 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "glucose",
-                                        "mass concentration": {
-                                            "value": 8.433,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.111 - 41.63 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "glutamate",
-                                        "molar concentration": {
-                                            "value": 20.85,
-                                            "unit": "mmol/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.099 - 10.2 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "glutamine",
-                                        "molar concentration": {
-                                            "value": 5.451,
-                                            "unit": "mmol/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.1 - 10.26 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "glycerol",
-                                        "mass concentration": {
-                                            "value": 1.8403900000000002,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.1 - 10 mmol/L",
-                                            "detection kit": "Low"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "glycerol",
-                                        "mass concentration": {
-                                            "value": 1.8468499999999999,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "1 - 100 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "iron",
-                                        "mass concentration": {
-                                            "value": 0.035601999999999995,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.009 - 1.79 mmol/L ",
-                                            "detection kit": "High with Pre - Dilution"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "lactate",
-                                        "mass concentration": {
-                                            "value": 1.03,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.0444 - 15.55 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "ldh",
-                                        "molar concentration": {
-                                            "value": 80.011704,
-                                            "unit": "mmol/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "20 - 1000 U/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "ldh",
-                                        "molar concentration": {
-                                            "value": 80.673692,
-                                            "unit": "mmol/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "200 - 10000 U/L",
-                                            "detection kit": "High with Pre - Dilution"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "magnesium",
-                                        "mass concentration": {
-                                            "value": 0.028149999999999998,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.1 - 2.5 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "phosphate",
-                                        "mass concentration": {
-                                            "value": 1.58851,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "0.1 - 8.37 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "potassium",
-                                        "molar concentration": {
-                                            "value": 16.58,
-                                            "unit": "mmol/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "2 - 28 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "sodium",
-                                        "molar concentration": {
-                                            "value": 113.7,
-                                            "unit": "mmol/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "50 - 275 mmol/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "total protein",
-                                        "mass concentration": {
-                                            "value": 5.64,
-                                            "unit": "g/L"
-                                        },
-                                        "custom information document": {
-                                            "detection kit range": "4 - 120 g/L",
-                                            "detection kit": "Standard"
-                                        }
-                                    }
-                                ]
-                            }
-                        }
-                    ],
-                    "data processing time": "2025-04-11T13:51:08+00:00"
-                },
-                "analyst": "ADMIN"
-            },
-            {
-                "measurement aggregate document": {
-                    "measurement document": [
-                        {
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "device type": "solution-analyzer"
-                                    }
-                                ]
-                            },
-                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_9",
                             "measurement time": "2025-04-11T10:01:30+00:00",
                             "sample document": {
-                                "sample identifier": "CX3081_D14_U1"
+                                "sample identifier": "SAMPLE_08"
                             },
                             "analyte aggregate document": {
                                 "analyte document": [
@@ -2076,8 +1749,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.002665 - 0.05335 mmol/L ",
-                                            "detection kit": "High with Pre - Dilution"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "0.002665 - 0.05335 mmol/L "
                                         }
                                     },
                                     {
@@ -2087,8 +1760,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.25 - 38.9 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.25 - 38.9 mmol/L"
                                         }
                                     },
                                     {
@@ -2098,8 +1771,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": " 0.278 - 13.89 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": " 0.278 - 13.89 mmol/L"
                                         }
                                     },
                                     {
@@ -2109,8 +1782,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 1 mmol/L",
-                                            "detection kit": "Low"
+                                            "detection kit": "Low",
+                                            "detection kit range": "0.1 - 1 mmol/L"
                                         }
                                     },
                                     {
@@ -2120,8 +1793,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 9 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 9 mmol/L"
                                         }
                                     },
                                     {
@@ -2131,8 +1804,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.2 - 5 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.2 - 5 mmol/L"
                                         }
                                     },
                                     {
@@ -2142,8 +1815,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.111 - 41.63 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.111 - 41.63 mmol/L"
                                         }
                                     },
                                     {
@@ -2153,8 +1826,8 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.099 - 10.2 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.099 - 10.2 mmol/L"
                                         }
                                     },
                                     {
@@ -2164,8 +1837,8 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 10.26 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 10.26 mmol/L"
                                         }
                                     },
                                     {
@@ -2175,8 +1848,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 10 mmol/L",
-                                            "detection kit": "Low"
+                                            "detection kit": "Low",
+                                            "detection kit range": "0.1 - 10 mmol/L"
                                         }
                                     },
                                     {
@@ -2186,8 +1859,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "1 - 100 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "1 - 100 mmol/L"
                                         }
                                     },
                                     {
@@ -2197,8 +1870,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.009 - 1.79 mmol/L ",
-                                            "detection kit": "High with Pre - Dilution"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "0.009 - 1.79 mmol/L "
                                         }
                                     },
                                     {
@@ -2208,8 +1881,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.0444 - 15.55 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.0444 - 15.55 mmol/L"
                                         }
                                     },
                                     {
@@ -2219,8 +1892,8 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "20 - 1000 U/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "20 - 1000 U/L"
                                         }
                                     },
                                     {
@@ -2230,8 +1903,8 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "200 - 10000 U/L",
-                                            "detection kit": "High with Pre - Dilution"
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "200 - 10000 U/L"
                                         }
                                     },
                                     {
@@ -2241,8 +1914,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 2.5 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 2.5 mmol/L"
                                         }
                                     },
                                     {
@@ -2252,8 +1925,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 8.37 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 8.37 mmol/L"
                                         }
                                     },
                                     {
@@ -2263,8 +1936,8 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "2 - 28 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "2 - 28 mmol/L"
                                         }
                                     },
                                     {
@@ -2274,8 +1947,8 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "50 - 275 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "50 - 275 mmol/L"
                                         }
                                     },
                                     {
@@ -2285,8 +1958,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "4 - 120 g/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "4 - 120 g/L"
                                         }
                                     }
                                 ]
@@ -2299,10 +1972,10 @@
             }
         ],
         "data system document": {
-            "ASM file identifier": "CEDEX Archive 4_11_2025 - 4_11_2025.json",
+            "ASM file identifier": "roche_cedex_bioht_v5_example01.json",
             "data system instance identifier": "N/A",
-            "file name": "CEDEX Archive 4_11_2025 - 4_11_2025.txt",
-            "UNC path": "tests/parsers/roche_cedex_bioht/testdata/CEDEX Archive 4_11_2025 - 4_11_2025.txt",
+            "file name": "roche_cedex_bioht_v5_example01.txt",
+            "UNC path": "tests/parsers/roche_cedex_bioht/testdata/roche_cedex_bioht_v5_example01.txt",
             "ASM converter name": "allotropy_roche_cedex_bioht",
             "ASM converter version": "0.1.101",
             "software name": "CEDEX BIO HT",
@@ -2310,7 +1983,7 @@
         },
         "device system document": {
             "device identifier": "N/A",
-            "equipment serial number": "600086",
+            "equipment serial number": "123456",
             "model number": "CEDEX BIO HT"
         }
     }

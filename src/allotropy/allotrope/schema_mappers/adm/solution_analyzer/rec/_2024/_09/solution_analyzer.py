@@ -57,7 +57,7 @@ class Analyte:
     value: float
     unit: str
 
-    # customer information document fields
+    # Custom information document fields
     custom_info: dict[str, Any] | None = None
 
     def __lt__(self, other: Any) -> bool:
