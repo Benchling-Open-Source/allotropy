@@ -38,12 +38,12 @@
                                                 "unit": "µm"
                                             },
                                             "custom information document": {
-                                                "Minimum circularity": 0.0,
-                                                "V. cell spot brightness (%)": 55.0,
+                                                "Viable cell spot area (%)": 5.0,
                                                 "Decluster degree": "Medium",
+                                                "V. cell spot brightness (%)": 55.0,
                                                 "Brightness (%)": 85.0,
                                                 "Sharpness": 100.0,
-                                                "Viable cell spot area (%)": 5.0
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -96,7 +96,7 @@
                         }
                     ],
                     "custom information document": {
-                        "File name": "JK TEST Count 2-13-2024.smp"
+                        "experimental data identifier": "JK TEST Count 2-13-2024.smp"
                     }
                 },
                 "analyst": "Vi-Cell XR"

@@ -32,10 +32,9 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
 
     custom_info_measurement_group = data.get_custom_keys(
         {
-            "File Name",
-            "File name",
-            "LogDate",
-            "FileDate",
+            "experimental data identifier": ["File Name", "File name"],
+            "log date": ["LogDate", "Log date"],
+            "file date": ["FileDate", "File date"],
         }
     )
 

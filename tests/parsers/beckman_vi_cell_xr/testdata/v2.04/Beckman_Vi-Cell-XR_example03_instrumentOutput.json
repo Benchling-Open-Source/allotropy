@@ -12,8 +12,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -30,12 +30,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -67,8 +67,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 203.0399932861328,
-                                            "Avg. cells / image": 35.040000915527344
+                                            "Avg. cells / image": 35.040000915527344,
+                                            "Avg. background intensity": 203.0399932861328
                                         }
                                     }
                                 ]
@@ -86,13 +86,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB001.txt"
+                        "experimental data identifier": "CLB001.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -107,8 +107,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -125,12 +125,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -162,8 +162,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 203.74000549316406,
-                                            "Avg. cells / image": 94.55999755859375
+                                            "Avg. cells / image": 94.55999755859375,
+                                            "Avg. background intensity": 203.74000549316406
                                         }
                                     }
                                 ]
@@ -181,13 +181,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB002.txt"
+                        "experimental data identifier": "CLB002.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -202,8 +202,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -220,12 +220,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -257,8 +257,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 203.16000366210938,
-                                            "Avg. cells / image": 90.80000305175781
+                                            "Avg. cells / image": 90.80000305175781,
+                                            "Avg. background intensity": 203.16000366210938
                                         }
                                     }
                                 ]
@@ -276,13 +276,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB003.txt"
+                        "experimental data identifier": "CLB003.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -297,8 +297,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -315,12 +315,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -352,8 +352,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 202.6999969482422,
-                                            "Avg. cells / image": 87.16000366210938
+                                            "Avg. cells / image": 87.16000366210938,
+                                            "Avg. background intensity": 202.6999969482422
                                         }
                                     }
                                 ]
@@ -371,13 +371,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB004.txt"
+                        "experimental data identifier": "CLB004.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -392,8 +392,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -410,12 +410,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -447,8 +447,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 202.97999572753906,
-                                            "Avg. cells / image": 81.13999938964844
+                                            "Avg. cells / image": 81.13999938964844,
+                                            "Avg. background intensity": 202.97999572753906
                                         }
                                     }
                                 ]
@@ -466,13 +466,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB005.txt"
+                        "experimental data identifier": "CLB005.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -487,8 +487,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -505,12 +505,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -542,8 +542,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 203.8800048828125,
-                                            "Avg. cells / image": 82.0199966430664
+                                            "Avg. cells / image": 82.0199966430664,
+                                            "Avg. background intensity": 203.8800048828125
                                         }
                                     }
                                 ]
@@ -561,13 +561,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB006.txt"
+                        "experimental data identifier": "CLB006.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -582,8 +582,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -600,12 +600,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -637,8 +637,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 202.89999389648438,
-                                            "Avg. cells / image": 98.22000122070312
+                                            "Avg. cells / image": 98.22000122070312,
+                                            "Avg. background intensity": 202.89999389648438
                                         }
                                     }
                                 ]
@@ -656,13 +656,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB007.txt"
+                        "experimental data identifier": "CLB007.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -677,8 +677,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -695,12 +695,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -732,8 +732,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 203.3000030517578,
-                                            "Avg. cells / image": 91.05999755859375
+                                            "Avg. cells / image": 91.05999755859375,
+                                            "Avg. background intensity": 203.3000030517578
                                         }
                                     }
                                 ]
@@ -751,13 +751,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB008.txt"
+                        "experimental data identifier": "CLB008.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -772,8 +772,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -790,12 +790,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -827,8 +827,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 203.10000610351562,
-                                            "Avg. cells / image": 63.20000076293945
+                                            "Avg. cells / image": 63.20000076293945,
+                                            "Avg. background intensity": 203.10000610351562
                                         }
                                     }
                                 ]
@@ -846,13 +846,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB009.txt"
+                        "experimental data identifier": "CLB009.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -867,8 +867,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -885,12 +885,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -922,8 +922,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 203.83999633789062,
-                                            "Avg. cells / image": 58.02000045776367
+                                            "Avg. cells / image": 58.02000045776367,
+                                            "Avg. background intensity": 203.83999633789062
                                         }
                                     }
                                 ]
@@ -941,13 +941,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB010.txt"
+                        "experimental data identifier": "CLB010.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -962,8 +962,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -980,12 +980,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1017,8 +1017,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 203.36000061035156,
-                                            "Avg. cells / image": 59.599998474121094
+                                            "Avg. cells / image": 59.599998474121094,
+                                            "Avg. background intensity": 203.36000061035156
                                         }
                                     }
                                 ]
@@ -1036,13 +1036,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB011.txt"
+                        "experimental data identifier": "CLB011.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -1057,8 +1057,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -1075,12 +1075,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1112,8 +1112,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 202.6199951171875,
-                                            "Avg. cells / image": 55.18000030517578
+                                            "Avg. cells / image": 55.18000030517578,
+                                            "Avg. background intensity": 202.6199951171875
                                         }
                                     }
                                 ]
@@ -1131,13 +1131,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB012.txt"
+                        "experimental data identifier": "CLB012.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -1152,8 +1152,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -1170,12 +1170,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1207,8 +1207,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 203.1999969482422,
-                                            "Avg. cells / image": 15.34000015258789
+                                            "Avg. cells / image": 15.34000015258789,
+                                            "Avg. background intensity": 203.1999969482422
                                         }
                                     }
                                 ]
@@ -1226,13 +1226,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB013.txt"
+                        "experimental data identifier": "CLB013.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -1247,8 +1247,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -1265,12 +1265,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1302,8 +1302,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 203.63999938964844,
-                                            "Avg. cells / image": 20.920000076293945
+                                            "Avg. cells / image": 20.920000076293945,
+                                            "Avg. background intensity": 203.63999938964844
                                         }
                                     }
                                 ]
@@ -1321,13 +1321,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB014.txt"
+                        "experimental data identifier": "CLB014.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -1342,8 +1342,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -1360,12 +1360,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1397,8 +1397,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 202.72000122070312,
-                                            "Avg. cells / image": 19.219999313354492
+                                            "Avg. cells / image": 19.219999313354492,
+                                            "Avg. background intensity": 202.72000122070312
                                         }
                                     }
                                 ]
@@ -1416,13 +1416,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB015.txt"
+                        "experimental data identifier": "CLB015.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -1437,8 +1437,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -1455,12 +1455,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1492,8 +1492,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 202.3000030517578,
-                                            "Avg. cells / image": 18.020000457763672
+                                            "Avg. cells / image": 18.020000457763672,
+                                            "Avg. background intensity": 202.3000030517578
                                         }
                                     }
                                 ]
@@ -1511,13 +1511,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB016.txt"
+                        "experimental data identifier": "CLB016.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -1532,8 +1532,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -1550,12 +1550,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1587,8 +1587,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 203.25999450683594,
-                                            "Avg. cells / image": 20.899999618530273
+                                            "Avg. cells / image": 20.899999618530273,
+                                            "Avg. background intensity": 203.25999450683594
                                         }
                                     }
                                 ]
@@ -1606,13 +1606,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB017.txt"
+                        "experimental data identifier": "CLB017.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -1627,8 +1627,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -1645,12 +1645,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1682,8 +1682,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 203.0800018310547,
-                                            "Avg. cells / image": 22.040000915527344
+                                            "Avg. cells / image": 22.040000915527344,
+                                            "Avg. background intensity": 203.0800018310547
                                         }
                                     }
                                 ]
@@ -1701,13 +1701,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB018.txt"
+                        "experimental data identifier": "CLB018.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -1722,8 +1722,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -1740,12 +1740,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1777,8 +1777,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 202.3000030517578,
-                                            "Avg. cells / image": 25.700000762939453
+                                            "Avg. cells / image": 25.700000762939453,
+                                            "Avg. background intensity": 202.3000030517578
                                         }
                                     }
                                 ]
@@ -1796,13 +1796,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB019.txt"
+                        "experimental data identifier": "CLB019.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -1817,8 +1817,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -1835,12 +1835,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1872,8 +1872,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 203.4600067138672,
-                                            "Avg. cells / image": 28.200000762939453
+                                            "Avg. cells / image": 28.200000762939453,
+                                            "Avg. background intensity": 203.4600067138672
                                         }
                                     }
                                 ]
@@ -1891,13 +1891,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB020.txt"
+                        "experimental data identifier": "CLB020.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -1912,8 +1912,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -1930,12 +1930,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -1967,8 +1967,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 202.89999389648438,
-                                            "Avg. cells / image": 23.219999313354492
+                                            "Avg. cells / image": 23.219999313354492,
+                                            "Avg. background intensity": 202.89999389648438
                                         }
                                     }
                                 ]
@@ -1986,13 +1986,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB021.txt"
+                        "experimental data identifier": "CLB021.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -2007,8 +2007,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -2025,12 +2025,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -2062,8 +2062,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 203.5399932861328,
-                                            "Avg. cells / image": 29.579999923706055
+                                            "Avg. cells / image": 29.579999923706055,
+                                            "Avg. background intensity": 203.5399932861328
                                         }
                                     }
                                 ]
@@ -2081,13 +2081,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB022.txt"
+                        "experimental data identifier": "CLB022.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -2102,8 +2102,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -2120,12 +2120,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -2157,8 +2157,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 203.89999389648438,
-                                            "Avg. cells / image": 25.260000228881836
+                                            "Avg. cells / image": 25.260000228881836,
+                                            "Avg. background intensity": 203.89999389648438
                                         }
                                     }
                                 ]
@@ -2176,13 +2176,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB023.txt"
+                        "experimental data identifier": "CLB023.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -2197,8 +2197,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -2215,12 +2215,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -2252,8 +2252,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 203.72000122070312,
-                                            "Avg. cells / image": 44.84000015258789
+                                            "Avg. cells / image": 44.84000015258789,
+                                            "Avg. background intensity": 203.72000122070312
                                         }
                                     }
                                 ]
@@ -2271,13 +2271,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB024.txt"
+                        "experimental data identifier": "CLB024.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -2292,8 +2292,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -2310,12 +2310,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -2347,8 +2347,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 203.3800048828125,
-                                            "Avg. cells / image": 62.720001220703125
+                                            "Avg. cells / image": 62.720001220703125,
+                                            "Avg. background intensity": 203.3800048828125
                                         }
                                     }
                                 ]
@@ -2366,13 +2366,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB025.txt"
+                        "experimental data identifier": "CLB025.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -2387,8 +2387,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -2405,12 +2405,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -2442,8 +2442,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 203.44000244140625,
-                                            "Avg. cells / image": 44.41999816894531
+                                            "Avg. cells / image": 44.41999816894531,
+                                            "Avg. background intensity": 203.44000244140625
                                         }
                                     }
                                 ]
@@ -2461,13 +2461,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB026.txt"
+                        "experimental data identifier": "CLB026.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -2482,8 +2482,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -2500,12 +2500,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -2537,8 +2537,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 203.39999389648438,
-                                            "Avg. cells / image": 42.040000915527344
+                                            "Avg. cells / image": 42.040000915527344,
+                                            "Avg. background intensity": 203.39999389648438
                                         }
                                     }
                                 ]
@@ -2556,13 +2556,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB027.txt"
+                        "experimental data identifier": "CLB027.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -2577,8 +2577,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -2595,12 +2595,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -2632,8 +2632,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 202.8000030517578,
-                                            "Avg. cells / image": 20.6200008392334
+                                            "Avg. cells / image": 20.6200008392334,
+                                            "Avg. background intensity": 202.8000030517578
                                         }
                                     }
                                 ]
@@ -2651,13 +2651,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB028.txt"
+                        "experimental data identifier": "CLB028.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -2672,8 +2672,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -2690,12 +2690,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -2727,8 +2727,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 203.13999938964844,
-                                            "Avg. cells / image": 81.91999816894531
+                                            "Avg. cells / image": 81.91999816894531,
+                                            "Avg. background intensity": 203.13999938964844
                                         }
                                     }
                                 ]
@@ -2746,13 +2746,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB029.txt"
+                        "experimental data identifier": "CLB029.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -2767,8 +2767,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -2785,12 +2785,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -2822,8 +2822,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 203.44000244140625,
-                                            "Avg. cells / image": 92.81999969482422
+                                            "Avg. cells / image": 92.81999969482422,
+                                            "Avg. background intensity": 203.44000244140625
                                         }
                                     }
                                 ]
@@ -2841,13 +2841,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB030.txt"
+                        "experimental data identifier": "CLB030.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -2862,8 +2862,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -2880,12 +2880,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -2917,8 +2917,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 202.52000427246094,
-                                            "Avg. cells / image": 35.060001373291016
+                                            "Avg. cells / image": 35.060001373291016,
+                                            "Avg. background intensity": 202.52000427246094
                                         }
                                     }
                                 ]
@@ -2936,13 +2936,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB031.txt"
+                        "experimental data identifier": "CLB031.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -2957,8 +2957,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -2975,12 +2975,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -3012,8 +3012,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 203.39999389648438,
-                                            "Avg. cells / image": 35.81999969482422
+                                            "Avg. cells / image": 35.81999969482422,
+                                            "Avg. background intensity": 203.39999389648438
                                         }
                                     }
                                 ]
@@ -3031,13 +3031,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB032.txt"
+                        "experimental data identifier": "CLB032.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -3052,8 +3052,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -3070,12 +3070,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -3107,8 +3107,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 204.10000610351562,
-                                            "Avg. cells / image": 46.119998931884766
+                                            "Avg. cells / image": 46.119998931884766,
+                                            "Avg. background intensity": 204.10000610351562
                                         }
                                     }
                                 ]
@@ -3126,13 +3126,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB033.txt"
+                        "experimental data identifier": "CLB033.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
@@ -3147,8 +3147,8 @@
                                         "device type": "brightfield imager (cell counter)",
                                         "detection type": "brightfield",
                                         "custom information document": {
-                                            "Trypan blue mixing cycles": 3.0,
-                                            "Aspirate cycles": 1.0
+                                            "Aspirate cycles": 1.0,
+                                            "Trypan blue mixing cycles": 3.0
                                         }
                                     }
                                 ]
@@ -3165,12 +3165,12 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Viable cell spot brightness (%)": 75.0,
+                                                "Minimum circularity": 0.0,
                                                 "Viable cell spot area (%)": 5.0,
-                                                "Cell sharpness": 100.0,
                                                 "Decluster degree": "Medium",
+                                                "Cell sharpness": 100.0,
                                                 "Cell brightness (%)": 85.0,
-                                                "Minimum circularity": 0.0
+                                                "Viable cell spot brightness (%)": 75.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -3202,8 +3202,8 @@
                                             "unit": "(unitless)"
                                         },
                                         "custom information document": {
-                                            "Avg. background intensity": 202.75999450683594,
-                                            "Avg. cells / image": 24.920000076293945
+                                            "Avg. cells / image": 24.920000076293945,
+                                            "Avg. background intensity": 202.75999450683594
                                         }
                                     }
                                 ]
@@ -3221,13 +3221,13 @@
                                 ]
                             },
                             "custom information document": {
-                                "Min. diam. (microns)": 6.0,
-                                "Max. diam. (microns)": 50.0
+                                "Max. diam. (microns)": 50.0,
+                                "Min. diam. (microns)": 6.0
                             }
                         }
                     ],
                     "custom information document": {
-                        "File name": "CLB034.txt"
+                        "experimental data identifier": "CLB034.txt"
                     }
                 },
                 "analyst": "Vi-Cell XR"
