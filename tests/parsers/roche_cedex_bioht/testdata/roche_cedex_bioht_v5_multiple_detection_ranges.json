@@ -16,7 +16,7 @@
                             "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_0",
                             "measurement time": "2025-05-23T11:21:18+00:00",
                             "sample document": {
-                                "sample identifier": "AMED146-009"
+                                "sample identifier": "SAMPLE_1"
                             },
                             "analyte aggregate document": {
                                 "analyte document": [
@@ -27,8 +27,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.25 - 38.9 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.25 - 38.9 mmol/L"
                                         }
                                     },
                                     {
@@ -38,8 +38,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.0009 - 0.179 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.0009 - 0.179 mmol/L"
                                         }
                                     },
                                     {
@@ -49,8 +49,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.0444 - 15.55 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.0444 - 15.55 mmol/L"
                                         }
                                     },
                                     {
@@ -60,8 +60,8 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "2 - 28 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "2 - 28 mmol/L"
                                         }
                                     },
                                     {
@@ -71,8 +71,8 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "50 - 275 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "50 - 275 mmol/L"
                                         }
                                     }
                                 ]
