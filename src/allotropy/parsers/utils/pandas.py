@@ -287,6 +287,29 @@ class SeriesData:
         }
 
     def get_custom_keys(
+        self, key_or_keys: str | set[str] | dict[str, list[str]]
+    ) -> dict[str, float | str | None]:
+        if isinstance(key_or_keys, dict):
+            return self._get_custom_keys_from_dict(key_or_keys)
+        return self._get_custom_keys_from_str_or_set(key_or_keys)
+
+    def _get_custom_keys_from_dict(
+        self, key_or_keys: dict[str, list[str]]
+    ) -> dict[str, float | str | None]:
+        if isinstance(key_or_keys, dict):
+            result = {}
+            for output_key, candidate_keys in key_or_keys.items():
+                for candidate_key in candidate_keys:
+                    value = self._validate_raw(
+                        self._get_custom_key(candidate_key), SeriesData.NOT_NAN
+                    )
+                    if value is not None:
+                        result[output_key] = value
+                        break  # Stop iteration once a value is found
+                # If no value was found for any candidate key, the output_key is excluded
+            return result
+
+    def _get_custom_keys_from_str_or_set(
         self, key_or_keys: str | set[str]
     ) -> dict[str, float | str | None]:
         return {

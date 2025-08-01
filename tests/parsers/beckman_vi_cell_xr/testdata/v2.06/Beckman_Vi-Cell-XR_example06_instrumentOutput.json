@@ -53,6 +53,9 @@
                                         "average total cell circularity": {
                                             "value": 0.709,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. bg intensity": 204.5
                                         }
                                     }
                                 ]
@@ -61,7 +64,10 @@
                                 "sample identifier": "LAC DG 046 T0 M1"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "experimental data identifier": "LAC DG 046 T0 M1.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -116,6 +122,9 @@
                                         "average total cell circularity": {
                                             "value": 0.76,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. bg intensity": 204.1
                                         }
                                     }
                                 ]
@@ -124,7 +133,10 @@
                                 "sample identifier": "LAC DG 046 T0 M2"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "experimental data identifier": "LAC DG 046 T0 M2.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -179,6 +191,9 @@
                                         "average total cell circularity": {
                                             "value": 0.777,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. bg intensity": 204.0
                                         }
                                     }
                                 ]
@@ -187,7 +202,10 @@
                                 "sample identifier": "LAC DG 046 T0 M3"
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "experimental data identifier": "LAC DG 046 T0 M3.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             }
@@ -198,7 +216,7 @@
             "file name": "Beckman_Vi-Cell-XR_example06_instrumentOutput.xlsx",
             "UNC path": "tests/parsers/beckman_vi_cell_xr/testdata/v2.06/Beckman_Vi-Cell-XR_example06_instrumentOutput.xlsx",
             "ASM converter name": "allotropy_beckman_coulter_vi_cell_xr",
-            "ASM converter version": "0.1.69",
+            "ASM converter version": "0.1.101",
             "software name": "Vi-Cell XR",
             "software version": "2.06"
         },
