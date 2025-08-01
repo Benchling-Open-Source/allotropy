@@ -55,7 +55,14 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "RNaseP",
-                                                "reference sample description": "800"
+                                                "reference sample description": "800",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "NOISE": "N",
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -115,14 +122,15 @@
                                                     [0.001]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false
                                         }
                                     }
                                 ]
                             },
-                            "target DNA description": "RNaseP"
+                            "target DNA description": "RNaseP",
+                            "custom information document": {
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example",
@@ -191,7 +199,14 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "RNaseP",
-                                                "reference sample description": "800"
+                                                "reference sample description": "800",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "NOISE": "N",
+                                                "CQCONF": "N",
+                                                "BADROX": "N",
+                                                "OUTLIERRG": "N",
+                                                "omit": false
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -253,14 +268,15 @@
                                                     ]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false
                                         }
                                     }
                                 ]
                             },
-                            "target DNA description": "RNaseP"
+                            "target DNA description": "RNaseP",
+                            "custom information document": {
+                                "RQ Min/Max Confidence Level": 95.0,
+                                "Analysis Type": "Singleplex"
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example",
@@ -607,7 +623,7 @@
             "file name": "appbio_quantstudio_minimal_test04.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test04.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.76",
+            "ASM converter version": "0.1.84",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },

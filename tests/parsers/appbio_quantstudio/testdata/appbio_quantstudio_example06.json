@@ -55,7 +55,14 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
-                                                "reference sample description": "Liver"
+                                                "reference sample description": "Liver",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -115,14 +122,15 @@
                                                     [0.001]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false
                                         }
                                     }
                                 ]
                             },
-                            "target DNA description": "TGF-B"
+                            "target DNA description": "TGF-B",
+                            "custom information document": {
+                                "Analysis Type": "Singleplex",
+                                "RQ Min/Max Confidence Level": 95.0
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -191,7 +199,14 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
-                                                "reference sample description": "Liver"
+                                                "reference sample description": "Liver",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -253,14 +268,15 @@
                                                     ]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false
                                         }
                                     }
                                 ]
                             },
-                            "target DNA description": "TGF-B"
+                            "target DNA description": "TGF-B",
+                            "custom information document": {
+                                "Analysis Type": "Singleplex",
+                                "RQ Min/Max Confidence Level": 95.0
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -329,7 +345,14 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
-                                                "reference sample description": "Liver"
+                                                "reference sample description": "Liver",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -389,14 +412,15 @@
                                                     [0.0]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false
                                         }
                                     }
                                 ]
                             },
-                            "target DNA description": "TGF-B"
+                            "target DNA description": "TGF-B",
+                            "custom information document": {
+                                "Analysis Type": "Singleplex",
+                                "RQ Min/Max Confidence Level": 95.0
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -465,7 +489,14 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
-                                                "reference sample description": "Liver"
+                                                "reference sample description": "Liver",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -525,14 +556,15 @@
                                                     [0.001]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false
                                         }
                                     }
                                 ]
                             },
-                            "target DNA description": "TGF-B"
+                            "target DNA description": "TGF-B",
+                            "custom information document": {
+                                "Analysis Type": "Singleplex",
+                                "RQ Min/Max Confidence Level": 95.0
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -601,7 +633,14 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
-                                                "reference sample description": "Liver"
+                                                "reference sample description": "Liver",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -661,14 +700,15 @@
                                                     [0.001]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false
                                         }
                                     }
                                 ]
                             },
-                            "target DNA description": "TGF-B"
+                            "target DNA description": "TGF-B",
+                            "custom information document": {
+                                "Analysis Type": "Singleplex",
+                                "RQ Min/Max Confidence Level": 95.0
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -737,7 +777,14 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
-                                                "reference sample description": "Liver"
+                                                "reference sample description": "Liver",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -797,14 +844,15 @@
                                                     [0.003]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false
                                         }
                                     }
                                 ]
                             },
-                            "target DNA description": "GAPDH"
+                            "target DNA description": "GAPDH",
+                            "custom information document": {
+                                "Analysis Type": "Singleplex",
+                                "RQ Min/Max Confidence Level": 95.0
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -873,7 +921,14 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
-                                                "reference sample description": "Liver"
+                                                "reference sample description": "Liver",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -933,14 +988,15 @@
                                                     [0.002]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false
                                         }
                                     }
                                 ]
                             },
-                            "target DNA description": "GAPDH"
+                            "target DNA description": "GAPDH",
+                            "custom information document": {
+                                "Analysis Type": "Singleplex",
+                                "RQ Min/Max Confidence Level": 95.0
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -1009,7 +1065,14 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
-                                                "reference sample description": "Liver"
+                                                "reference sample description": "Liver",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1069,14 +1132,15 @@
                                                     [0.003]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false
                                         }
                                     }
                                 ]
                             },
-                            "target DNA description": "GAPDH"
+                            "target DNA description": "GAPDH",
+                            "custom information document": {
+                                "Analysis Type": "Singleplex",
+                                "RQ Min/Max Confidence Level": 95.0
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -1145,7 +1209,14 @@
                                             },
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
-                                                "reference sample description": "Liver"
+                                                "reference sample description": "Liver",
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "CQCONF": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N",
+                                                "BADROX": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1205,14 +1276,15 @@
                                                     [0.002]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "omit": false
                                         }
                                     }
                                 ]
                             },
-                            "target DNA description": "GAPDH"
+                            "target DNA description": "GAPDH",
+                            "custom information document": {
+                                "Analysis Type": "Singleplex",
+                                "RQ Min/Max Confidence Level": 95.0
+                            }
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Comparative Ct Example",
@@ -1911,7 +1983,7 @@
             "file name": "appbio_quantstudio_example06.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_example06.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.76",
+            "ASM converter version": "0.1.84",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },

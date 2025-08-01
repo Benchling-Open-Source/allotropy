@@ -55,6 +55,17 @@
                                             "genotyping qPCR method setting (qPCR)": {
                                                 "value": 0.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "BADROX": "N",
+                                                "noamp": "N",
+                                                "expfail": "N",
+                                                "omit": false,
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N"
                                             }
                                         },
                                         "normalized reporter result": {
@@ -117,12 +128,7 @@
                                                 ]
                                             }
                                         },
-                                        "genotyping qPCR result": "Blocked IPC Control",
-                                        "custom information document": {
-                                            "omit": false,
-                                            "noamp": "N",
-                                            "expfail": "N"
-                                        }
+                                        "genotyping qPCR result": "Blocked IPC Control"
                                     }
                                 ]
                             },
@@ -233,6 +239,17 @@
                                             "genotyping qPCR method setting (qPCR)": {
                                                 "value": 0.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "custom information document": {
+                                                "Analysis Type": "SinglePlex",
+                                                "RQ Min/Max Confidence Level": 0.95,
+                                                "BADROX": "N",
+                                                "noamp": "N",
+                                                "expfail": "N",
+                                                "omit": false,
+                                                "NOISE": "N",
+                                                "OUTLIERRG": "N",
+                                                "CQCONF": "N"
                                             }
                                         },
                                         "normalized reporter result": {
@@ -295,12 +312,7 @@
                                                 ]
                                             }
                                         },
-                                        "genotyping qPCR result": "Negative Control",
-                                        "custom information document": {
-                                            "omit": false,
-                                            "noamp": "N",
-                                            "expfail": "N"
-                                        }
+                                        "genotyping qPCR result": "Negative Control"
                                     }
                                 ]
                             },
@@ -449,7 +461,7 @@
             "file name": "appbio_quantstudio_minimal_test01.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test01.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.76",
+            "ASM converter version": "0.1.84",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },
