@@ -7,7 +7,10 @@ import pandas as pd
 
 from allotropy.parsers.roche_cedex_bioht.constants import (
     ANALYTES_LOOKUP,
-    DATA_HEADER,
+    DATA_HEADER_V5,
+    DATA_HEADER_V6,
+    DETECTION_KIT_LOOKUP,
+    DETECTION_KIT_RANGE_LOOKUP,
     INFO_HEADER,
     SAMPLE_ROLE_TYPES,
 )
@@ -41,20 +44,43 @@ class RocheCedexBiohtReader:
         )
 
     def read_samples_data(self, contents: IOType) -> pd.DataFrame:
+        software_version = self.title_data[str, "software version"]
+        if software_version.startswith("5"):
+            data_header = DATA_HEADER_V5
+        elif software_version.startswith("6"):
+            data_header = DATA_HEADER_V6
+        else:
+            msg = f"Unsupported software version: {software_version}"
+            raise ValueError(msg)
+
         contents.seek(0)
         sample_rows = read_csv(
             contents,
             delimiter="\t",
-            usecols=DATA_HEADER,
-            names=DATA_HEADER,
+            usecols=data_header,
+            names=data_header,
             skiprows=[0],
         )
 
+        sample_rows = sample_rows.drop_duplicates()
+
+        sample_rows["analyte code"] = sample_rows["analyte name"]
+        sample_rows["detection kit"] = sample_rows["analyte name"]
+        sample_rows["detection kit range"] = sample_rows["analyte name"]
+
         sample_rows = sample_rows.replace(
-            {"analyte name": ANALYTES_LOOKUP, "sample role type": SAMPLE_ROLE_TYPES}
+            {
+                "analyte name": ANALYTES_LOOKUP,
+                "sample role type": SAMPLE_ROLE_TYPES,
+                "detection kit": DETECTION_KIT_LOOKUP,
+                "detection kit range": DETECTION_KIT_RANGE_LOOKUP,
+            }
         )
 
-        sample_rows["batch identifier"] = sample_rows["batch identifier"].fillna("")
+        if "batch identifier" in sample_rows.columns:
+            sample_rows["batch identifier"] = sample_rows["batch identifier"].fillna("")
+        else:
+            sample_rows["batch identifier"] = [""] * len(sample_rows)
 
         # concentration values under the test threshold will have a preceding < character
         # this will turn those values into NaN, which is the expected output

@@ -1,0 +1,103 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/solution-analyzer/REC/2024/09/solution-analyzer.manifest",
+    "solution analyzer aggregate document": {
+        "solution analyzer document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_0",
+                            "measurement time": "2025-05-23T11:21:18+00:00",
+                            "sample document": {
+                                "sample identifier": "SAMPLE_1"
+                            },
+                            "analyte aggregate document": {
+                                "analyte document": [
+                                    {
+                                        "analyte name": "acetate",
+                                        "mass concentration": {
+                                            "value": 0.02389,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.25 - 38.9 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "iron",
+                                        "mass concentration": {
+                                            "value": 0.00015099999999999998,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.0009 - 0.179 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "lactate",
+                                        "mass concentration": {
+                                            "value": 0.016,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.0444 - 15.55 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "potassium",
+                                        "molar concentration": {
+                                            "value": 3.63,
+                                            "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "2 - 28 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "sodium",
+                                        "molar concentration": {
+                                            "value": 609.7,
+                                            "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "50 - 275 mmol/L"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "data processing time": "2025-05-23T12:54:33+00:00"
+                },
+                "analyst": "ADMIN"
+            }
+        ],
+        "data system document": {
+            "ASM file identifier": "roche_cedex_bioht_v5_multiple_detection_ranges.json",
+            "data system instance identifier": "N/A",
+            "file name": "roche_cedex_bioht_v5_multiple_detection_ranges.txt",
+            "UNC path": "tests/parsers/roche_cedex_bioht/testdata/roche_cedex_bioht_v5_multiple_detection_ranges.txt",
+            "ASM converter name": "allotropy_roche_cedex_bioht",
+            "ASM converter version": "0.1.101",
+            "software name": "CEDEX BIO HT",
+            "software version": "5.0.0.1206 (1206.0)"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "equipment serial number": "123456",
+            "model number": "CEDEX BIO HT"
+        }
+    }
+}
