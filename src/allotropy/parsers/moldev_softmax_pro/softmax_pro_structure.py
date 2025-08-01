@@ -34,7 +34,7 @@ from allotropy.parsers.utils.values import (
     try_non_nan_float_or_none,
 )
 
-BLOCKS_LINE_REGEX = r"^##BLOCKS=\s*(\d+)$"
+BLOCKS_LINE_REGEX = r"^##BLOCKS=\s*(\d+)\s*$"
 END_LINE_REGEX = "~End"
 EXPORT_VERSION = "1.3"
 VALID_NAN_VALUES = ("Masked", "Range?", "Error")
