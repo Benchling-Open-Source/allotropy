@@ -104,6 +104,9 @@ def get_reader_samples() -> pd.DataFrame:
             "concentration value",
             "col12",
             "col13",
+            "analyte code",
+            "detection kit",
+            "detection kit range",
         ],
         data=[
             [
@@ -120,6 +123,9 @@ def get_reader_samples() -> pd.DataFrame:
                 2.45,
                 0.17138,
                 "R",
+                "GLN2B",
+                "Standard",
+                "0.1 - 10.26 mmol/L",
             ],
             [
                 40,
@@ -135,6 +141,9 @@ def get_reader_samples() -> pd.DataFrame:
                 1.846,
                 0,
                 "R",
+                "NH3LB",
+                "Low",
+                "0.0278 - 1.389 mmol/L",
             ],
             [
                 40,
@@ -150,6 +159,9 @@ def get_reader_samples() -> pd.DataFrame:
                 0.17138,
                 0,
                 "R",
+                "ODB",
+                "ODB",
+                "ODB",
             ],
         ],
     )

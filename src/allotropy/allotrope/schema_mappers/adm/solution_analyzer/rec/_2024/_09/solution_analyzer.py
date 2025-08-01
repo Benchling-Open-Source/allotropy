@@ -57,6 +57,9 @@ class Analyte:
     value: float
     unit: str
 
+    # Custom information document fields
+    custom_info: dict[str, Any] | None = None
+
     def __lt__(self, other: Any) -> bool:
         if not isinstance(other, Analyte):
             return False
@@ -327,19 +330,19 @@ class Mapper(SchemaMapper[Data, Model]):
 
     def _create_analyte_document(self, analyte: Analyte) -> AnalyteDocument:
         if analyte.unit == "g/L":
-            return AnalyteDocument(
+            output = AnalyteDocument(
                 analyte_name=analyte.name,
                 mass_concentration=TQuantityValueGramPerLiter(value=analyte.value),
             )
         elif analyte.unit == "mL/L":
-            return AnalyteDocument(
+            output = AnalyteDocument(
                 analyte_name=analyte.name,
                 volume_concentration=TQuantityValueMilliliterPerLiter(
                     value=analyte.value
                 ),
             )
         elif analyte.unit == "mmol/L":
-            return AnalyteDocument(
+            output = AnalyteDocument(
                 analyte_name=analyte.name,
                 molar_concentration=TQuantityValueMillimolePerLiter(
                     value=analyte.value
@@ -347,7 +350,7 @@ class Mapper(SchemaMapper[Data, Model]):
             )
         elif analyte.unit == "U/L":
             if analyte.name == "ldh":
-                return AnalyteDocument(
+                output = AnalyteDocument(
                     analyte_name=analyte.name,
                     molar_concentration=TQuantityValueMillimolePerLiter(
                         value=analyte.value * 0.0167
@@ -358,9 +361,13 @@ class Mapper(SchemaMapper[Data, Model]):
             else:
                 msg = f"Invalid unit for {analyte.name}: {analyte.unit}"
                 raise AllotropeConversionError(msg)
+        else:
+            msg = f"Invalid unit for analyte: {analyte.unit}, possible values are: g/L, mL/L, mmol/L"
+            raise AllotropeConversionError(msg)
 
-        msg = f"Invalid unit for analyte: {analyte.unit}, possible values are: g/L, mL/L, mmol/L"
-        raise AllotropeConversionError(msg)
+        output = add_custom_information_document(output, analyte.custom_info or {})
+
+        return output
 
     def _create_processed_data_document(
         self, measurement: Measurement

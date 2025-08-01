@@ -76,6 +76,7 @@ def test_create_raw_measurement() -> None:
                 "measurement time": "2021-05-20T16:55:51+00:00",
                 "concentration value": 2.45,
                 "concentration unit": "mmol/L",
+                "analyte code": "GLN2B",
             }
         )
     )
@@ -84,6 +85,7 @@ def test_create_raw_measurement() -> None:
     assert measurement.measurement_time == "2021-05-20T16:55:51+00:00"
     assert measurement.concentration_value == 2.45
     assert measurement.unit == "mmol/L"
+    assert measurement.analyte_code == "GLN2B"
 
 
 def test_create_measurements() -> None:
@@ -97,20 +99,33 @@ def test_create_measurements() -> None:
             ],
             "concentration unit": ["g/L", "mmol/L", "mosm/kg"],
             "concentration value": [2.45, 4.35, 3.7448],
+            "analyte code": ["LAC2B", "GLN2B", "OSM2B"],
         }
     )
     measurements = create_measurements(data)
 
     assert measurements == {
         "2021-05-20T16:55:51+00:00": {
-            "lactate": RawMeasurement(
-                "lactate", "2021-05-20T16:55:51+00:00", 2.45, "g/L"
+            "lactate_LAC2B": RawMeasurement(
+                "lactate", "2021-05-20T16:55:51+00:00", 2.45, "g/L", "LAC2B", None, {}
             ),
-            "glutamine": RawMeasurement(
-                "glutamine", "2021-05-20T16:56:51+00:00", 4.35, "mmol/L"
+            "glutamine_GLN2B": RawMeasurement(
+                "glutamine",
+                "2021-05-20T16:56:51+00:00",
+                4.35,
+                "mmol/L",
+                "GLN2B",
+                None,
+                {},
             ),
-            "osmolality": RawMeasurement(
-                "osmolality", "2021-05-20T16:57:51+00:00", 3.7448, "mosm/kg"
+            "osmolality_OSM2B": RawMeasurement(
+                "osmolality",
+                "2021-05-20T16:57:51+00:00",
+                3.7448,
+                "mosm/kg",
+                "OSM2B",
+                None,
+                {},
             ),
         }
     }
@@ -127,22 +142,35 @@ def test_create_measurements_more_than_one_measurement_docs() -> None:
             ],
             "concentration unit": ["g/L", "mmol/L", "mmol/L"],
             "concentration value": [2.45, 4.35, 3.45],
+            "analyte code": ["LAC2B", "GLN2B", "GLN2B"],
         },
     )
     measurements = create_measurements(data)
 
     assert measurements == {
         "2021-05-20T16:55:51+00:00": {
-            "lactate": RawMeasurement(
-                "lactate", "2021-05-20T16:55:51+00:00", 2.45, "g/L"
+            "lactate_LAC2B": RawMeasurement(
+                "lactate", "2021-05-20T16:55:51+00:00", 2.45, "g/L", "LAC2B", None, {}
             ),
-            "glutamine": RawMeasurement(
-                "glutamine", "2021-05-20T16:56:51+00:00", 4.35, "mmol/L"
+            "glutamine_GLN2B": RawMeasurement(
+                "glutamine",
+                "2021-05-20T16:56:51+00:00",
+                4.35,
+                "mmol/L",
+                "GLN2B",
+                None,
+                {},
             ),
         },
         "2021-05-21T16:57:51+00:00": {
-            "glutamine": RawMeasurement(
-                "glutamine", "2021-05-21T16:57:51+00:00", 3.45, "mmol/L"
+            "glutamine_GLN2B": RawMeasurement(
+                "glutamine",
+                "2021-05-21T16:57:51+00:00",
+                3.45,
+                "mmol/L",
+                "GLN2B",
+                None,
+                {},
             ),
         },
     }
@@ -159,12 +187,13 @@ def test_create_measurements_duplicate_measurements() -> None:
             ],
             "concentration unit": ["g/L", "mmol/L", "mmol/L"],
             "concentration value": [2.45, 4.35, 3.45],
+            "analyte code": ["LAC2B", "GLN2B", "GLN2B"],
         },
     )
 
     with pytest.raises(
         AllotropyParserError,
-        match="Duplicate measurement for glutamine in the same measurement group.",
+        match="Duplicate measurement for GLN2B in the same measurement group. 3.45 vs 4.35",
     ):
         create_measurements(data)
 
@@ -182,6 +211,7 @@ def test_create_sample() -> None:
                 "2021-05-20 16:56:51",
                 "2021-05-20 16:55:51",
             ],
+            "analyte code": ["GLN2B", "LAC2B"],
         }
     )
     sample = Sample.create(
@@ -193,9 +223,11 @@ def test_create_sample() -> None:
     assert sample.batch == "batch_id"
     assert sample.measurements == {
         "2021-05-20 16:55:51": {
-            "lactate": RawMeasurement("lactate", "2021-05-20 16:55:51", 2.45, "g/L"),
-            "glutamine": RawMeasurement(
-                "glutamine", "2021-05-20 16:56:51", 4.35, "mmol/L"
+            "lactate_LAC2B": RawMeasurement(
+                "lactate", "2021-05-20 16:55:51", 2.45, "g/L", "LAC2B", None, {}
+            ),
+            "glutamine_GLN2B": RawMeasurement(
+                "glutamine", "2021-05-20 16:56:51", 4.35, "mmol/L", "GLN2B", None, {}
             ),
         }
     }
