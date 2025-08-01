@@ -10,7 +10,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Trypan blue mixing cycles": 3.0,
+                                            "Aspirate cycles": 1.0
+                                        }
                                     }
                                 ]
                             },
@@ -24,6 +28,22 @@
                                             "cell density dilution factor": {
                                                 "value": 3.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Brightness (%)": 85.0,
+                                                "Sharpness": 100.0,
+                                                "Decluster degree": "Medium",
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -53,15 +73,31 @@
                                         "average total cell circularity": {
                                             "value": 0.88,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. bg intensity": 203.1,
+                                            "Avg. cells / image": 20.5
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB001"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "experimental data identifier": "CLB001.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -73,7 +109,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Trypan blue mixing cycles": 3.0,
+                                            "Aspirate cycles": 1.0
+                                        }
                                     }
                                 ]
                             },
@@ -87,6 +127,22 @@
                                             "cell density dilution factor": {
                                                 "value": 3.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Brightness (%)": 85.0,
+                                                "Sharpness": 100.0,
+                                                "Decluster degree": "Medium",
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -116,15 +172,31 @@
                                         "average total cell circularity": {
                                             "value": 0.88,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. bg intensity": 204.6,
+                                            "Avg. cells / image": 42.5
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB002"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "experimental data identifier": "CLB002.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -136,7 +208,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Trypan blue mixing cycles": 3.0,
+                                            "Aspirate cycles": 1.0
+                                        }
                                     }
                                 ]
                             },
@@ -150,6 +226,22 @@
                                             "cell density dilution factor": {
                                                 "value": 3.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Brightness (%)": 85.0,
+                                                "Sharpness": 100.0,
+                                                "Decluster degree": "Medium",
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -179,15 +271,31 @@
                                         "average total cell circularity": {
                                             "value": 0.883,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. bg intensity": 203.0,
+                                            "Avg. cells / image": 61.6
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB003"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "experimental data identifier": "CLB003.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             },
@@ -199,7 +307,11 @@
                                 "device control document": [
                                     {
                                         "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "detection type": "brightfield",
+                                        "custom information document": {
+                                            "Trypan blue mixing cycles": 3.0,
+                                            "Aspirate cycles": 1.0
+                                        }
                                     }
                                 ]
                             },
@@ -213,6 +325,22 @@
                                             "cell density dilution factor": {
                                                 "value": 3.0,
                                                 "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "µm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 50.0,
+                                                "unit": "µm"
+                                            },
+                                            "custom information document": {
+                                                "Brightness (%)": 85.0,
+                                                "Sharpness": 100.0,
+                                                "Decluster degree": "Medium",
+                                                "V. cell spot brightness (%)": 75.0,
+                                                "Viable cell spot area (%)": 5.0,
+                                                "Minimum circularity": 0.0
                                             }
                                         },
                                         "viability (cell counter)": {
@@ -242,15 +370,31 @@
                                         "average total cell circularity": {
                                             "value": 0.892,
                                             "unit": "(unitless)"
+                                        },
+                                        "custom information document": {
+                                            "Avg. bg intensity": 202.8,
+                                            "Avg. cells / image": 30.4
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "CLB004"
+                            },
+                            "image aggregate document": {
+                                "image document": [
+                                    {
+                                        "custom information document": {
+                                            "Images": 50.0
+                                        }
+                                    }
+                                ]
                             }
                         }
-                    ]
+                    ],
+                    "custom information document": {
+                        "experimental data identifier": "CLB004.smp"
+                    }
                 },
                 "analyst": "Vi-Cell XR"
             }
@@ -261,7 +405,7 @@
             "file name": "Beckman_Vi-Cell-XR_example05_instrumentOutput.xlsx",
             "UNC path": "tests/parsers/beckman_vi_cell_xr/testdata/v2.06/Beckman_Vi-Cell-XR_example05_instrumentOutput.xlsx",
             "ASM converter name": "allotropy_beckman_coulter_vi_cell_xr",
-            "ASM converter version": "0.1.69",
+            "ASM converter version": "0.1.101",
             "software name": "Vi-Cell XR",
             "software version": "2.06"
         },

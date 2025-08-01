@@ -1,0 +1,345 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/solution-analyzer/REC/2024/09/solution-analyzer.manifest",
+    "solution analyzer aggregate document": {
+        "solution analyzer document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_0",
+                            "measurement time": "2023-09-15T16:55:51+00:00",
+                            "sample document": {
+                                "sample identifier": "SMPL1"
+                            },
+                            "absorbance": {
+                                "value": 6.32,
+                                "unit": "mAU"
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_1",
+                            "measurement time": "2023-09-15T16:55:51+00:00",
+                            "sample document": {
+                                "sample identifier": "SMPL1"
+                            },
+                            "analyte aggregate document": {
+                                "analyte document": [
+                                    {
+                                        "analyte name": "ammonia",
+                                        "molar concentration": {
+                                            "value": 1.846,
+                                            "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": " 0.278 - 13.89 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glutamine",
+                                        "molar concentration": {
+                                            "value": 2.45,
+                                            "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 10.26 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "lactate",
+                                        "mass concentration": {
+                                            "value": 2e-05,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.0444 - 15.55 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "ldh",
+                                        "molar concentration": {
+                                            "value": 1.471103,
+                                            "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "20 - 1000 U/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "total protein",
+                                        "mass concentration": {
+                                            "value": 0.0046,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Low",
+                                            "detection kit range": "0.3 - 6.0 g/L"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "data processing time": "2023-09-17T13:04:06+00:00"
+                },
+                "analyst": "ADMIN"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_2",
+                            "measurement time": "2023-09-15T16:56:58+00:00",
+                            "sample document": {
+                                "sample identifier": "SMPL2"
+                            },
+                            "analyte aggregate document": {
+                                "analyte document": [
+                                    {
+                                        "analyte name": "ammonia",
+                                        "molar concentration": {
+                                            "value": 1.87,
+                                            "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": " 0.278 - 13.89 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glutamine",
+                                        "molar concentration": {
+                                            "value": 2.4,
+                                            "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 10.26 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "total protein",
+                                        "mass concentration": {
+                                            "value": 0.0047,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Low",
+                                            "detection kit range": "0.3 - 6.0 g/L"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "data processing time": "2023-09-17T13:04:06+00:00"
+                },
+                "analyst": "ADMIN"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_3",
+                            "measurement time": "2023-09-15T16:58:34+00:00",
+                            "sample document": {
+                                "sample identifier": "SMPL3"
+                            },
+                            "absorbance": {
+                                "value": 6.71,
+                                "unit": "mAU"
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_4",
+                            "measurement time": "2023-09-15T16:58:34+00:00",
+                            "sample document": {
+                                "sample identifier": "SMPL3"
+                            },
+                            "analyte aggregate document": {
+                                "analyte document": [
+                                    {
+                                        "analyte name": "ammonia",
+                                        "molar concentration": {
+                                            "value": 1.817,
+                                            "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": " 0.278 - 13.89 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glutamine",
+                                        "molar concentration": {
+                                            "value": 2.43,
+                                            "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 10.26 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "total protein",
+                                        "mass concentration": {
+                                            "value": 4.8,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Low",
+                                            "detection kit range": "0.3 - 6.0 g/L"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "data processing time": "2023-09-17T13:04:06+00:00"
+                },
+                "analyst": "ADMIN"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_5",
+                            "measurement time": "2023-09-16T10:12:10+00:00",
+                            "sample document": {
+                                "sample identifier": "SMPL4"
+                            },
+                            "absorbance": {
+                                "value": 4.09,
+                                "unit": "mAU"
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_6",
+                            "measurement time": "2023-09-16T10:12:10+00:00",
+                            "sample document": {
+                                "sample identifier": "SMPL4"
+                            },
+                            "analyte aggregate document": {
+                                "analyte document": [
+                                    {
+                                        "analyte name": "ammonia",
+                                        "molar concentration": {
+                                            "value": 3.788,
+                                            "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": " 0.278 - 13.89 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glutamine",
+                                        "molar concentration": {
+                                            "value": 2.07,
+                                            "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 10.26 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "lactate",
+                                        "mass concentration": {
+                                            "value": 0.00189,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.0444 - 15.55 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "ldh",
+                                        "molar concentration": {
+                                            "value": 5.591828,
+                                            "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "20 - 1000 U/L"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "data processing time": "2023-09-17T13:04:06+00:00"
+                },
+                "analyst": "ADMIN"
+            }
+        ],
+        "data system document": {
+            "ASM file identifier": "roche_cedex_bioht_example_with_mg_L.json",
+            "data system instance identifier": "N/A",
+            "file name": "roche_cedex_bioht_example_with_mg_L.txt",
+            "UNC path": "tests/parsers/roche_cedex_bioht/testdata/roche_cedex_bioht_example_with_mg_L.txt",
+            "ASM converter name": "allotropy_roche_cedex_bioht",
+            "ASM converter version": "0.1.101",
+            "software name": "CEDEX BIO HT",
+            "software version": "6.0.0.1905 (1905)"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "equipment serial number": "123456",
+            "model number": "CEDEX BIO HT"
+        }
+    }
+}

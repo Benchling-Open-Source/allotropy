@@ -1,3 +1,4 @@
+from functools import partial
 from pathlib import Path
 
 import pandas as pd
@@ -8,6 +9,7 @@ from allotropy.allotrope.schema_mappers.adm.liquid_handler.benchling._2024._11.l
     MeasurementGroup,
     Metadata,
 )
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.beckman_echo_plate_reformat import constants
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
@@ -36,17 +38,28 @@ def create_metadata(header_footer_data: SeriesData, file_path: str) -> Metadata:
     )
 
 
-def _create_measurement(row_data: SeriesData) -> Measurement:
+def _create_measurement(row_data: SeriesData, run_date_time: str | None) -> Measurement:
     def convert_echo_nl_to_ul(value: float | None) -> float | None:
         return (
             (value * constants.PLATE_REFORMAT_REPORT_VOLUME_CONVERSION_TO_UL)
-            if value
+            if value is not None
             else None
         )
 
+    # If the Date Time Point only contains time (no date) combine with Run Date/Time to create measurement time.
+    # We detect if there is a date in the timestamp by checking for a space, and if there is no space, add the date
+    # component of
+    date_time_point = row_data[str, "Date Time Point"]
+    if " " not in date_time_point.strip():
+        if not run_date_time or " " not in run_date_time:
+            msg = "Cannot parse timestamp for measurement, 'Date Time Point' does not contain a date (time only) and there is no valid 'Run Date/Time' in the header to infer date from."
+            raise AllotropeConversionError(msg)
+        run_date_time_date = run_date_time.split(" ")
+        date_time_point = f"{run_date_time_date[0]} {date_time_point}"
+
     return Measurement(
         identifier=random_uuid_str(),
-        measurement_time=row_data[str, "Date Time Point"],
+        measurement_time=date_time_point,
         sample_identifier=row_data.get(str, "Sample ID", NOT_APPLICABLE),
         source_plate=row_data[str, "Source Plate Barcode"],
         source_well=row_data[str, "Source Well"],
@@ -61,12 +74,12 @@ def _create_measurement(row_data: SeriesData) -> Measurement:
         ),
         device_control_custom_info={
             "sample name": row_data.get(str, "Sample Name"),
-            "survey fluid volume": convert_echo_nl_to_ul(
-                row_data.get(float, "Survey Fluid Volume")
-            ),
-            "current fluid volume": convert_echo_nl_to_ul(
-                row_data.get(float, "Current Fluid Volume")
-            ),
+            "survey fluid volume": row_data.get(
+                float, "Survey Fluid Volume"
+            ),  # This is already in uL, so don't convert to nL
+            "current fluid volume": row_data.get(
+                float, "Current Fluid Volume"
+            ),  # This is already in uL, so don't convert to nL
             "intended transfer volume": convert_echo_nl_to_ul(
                 row_data.get(float, "Transfer Volume")
             ),
@@ -92,15 +105,16 @@ def _create_measurement(row_data: SeriesData) -> Measurement:
 def create_measurement_groups(
     data: pd.DataFrame, header: SeriesData
 ) -> list[MeasurementGroup]:
-
+    run_date_time = header.get(str, "Run Date/Time")
+    create_measurement = partial(_create_measurement, run_date_time=run_date_time)
     return [
         MeasurementGroup(
             analyst=header[str, "User Name"],
             analytical_method_identifier=header.get(str, "Protocol Name"),
             experimental_data_identifier=header.get(str, "Run ID"),
-            measurements=map_rows(data, _create_measurement),
+            measurements=map_rows(data, create_measurement),
             custom_info={
-                "Run Date/Time": header.get(str, "Run Date/Time"),
+                "Run Date/Time": run_date_time,
             },
         )
     ]

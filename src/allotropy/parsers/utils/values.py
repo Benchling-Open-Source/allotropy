@@ -9,8 +9,10 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
     JsonFloat,
     TQuantityValue,
+    TStatisticDatumRole,
 )
 from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
+from allotropy.parsers.constants import NEGATIVE_ZERO
 from allotropy.parsers.utils.units import get_quantity_class
 
 PrimitiveValue = str | int | float
@@ -89,6 +91,11 @@ def try_non_nan_float(value: str) -> float:
     return float_value
 
 
+def try_non_nan_float_or_negative_zero(value: str) -> float:
+    float_value = try_non_nan_float_or_none(value)
+    return NEGATIVE_ZERO if float_value is None else float_value
+
+
 def try_int_or_nan(value: str | int | None) -> int | InvalidJsonFloat:
     if isinstance(value, int):
         return value
@@ -116,13 +123,14 @@ def quantity_or_none(
     value_cls: type[QuantityType],
     value: JsonFloat | list[JsonFloat] | list[int] | None,
     index: int | None = None,
+    has_statistic_datum_role: TStatisticDatumRole | None = None,
 ) -> QuantityType | None:
     if value is None:
         return None
     if isinstance(value, list):
         return value_cls(value=value[assert_not_none(index, msg="Cannot provide list to quantity_or_none without index")])  # type: ignore[call-arg]
     # Typing does not know that all subclasses of TQuantityValue have default value for unit set.
-    return value_cls(value=value)  # type: ignore[call-arg]
+    return value_cls(value=value, has_statistic_datum_role=has_statistic_datum_role)  # type: ignore[call-arg]
 
 
 def quantity_or_none_from_unit(

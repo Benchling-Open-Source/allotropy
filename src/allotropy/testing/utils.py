@@ -73,8 +73,21 @@ NON_UNIQUE_IDENTIFIERS = {
     "parent data region identifier",
     "parent population identifier",
     "dimension identifier",
+    "method identifier",
+    "experiment identifier",
+    "identifier",
 }
 
+VALID_CALC_DATA_SOURCES = {
+    "measurement identifier",
+    "calculated data identifier",
+    "report point identifier",
+    "analyte identifier",
+    "distribution identifier",
+    "identifier",
+    "data region identifier",
+    "experimental data identifier",
+}
 
 PATH_KEYS = {
     "POSIX path",
@@ -115,16 +128,20 @@ def _get_all_identifiers(asm: DictType) -> dict[str, list[str]]:
 
 
 def _get_all_with_key(target_key: str, item: Any) -> list[Any]:
+    return _get_all_with_keys({target_key}, item)
+
+
+def _get_all_with_keys(target_keys: set[str], item: Any) -> list[Any]:
     values = []
     if isinstance(item, dict):
         for key, value in item.items():
-            if key == target_key:
+            if key in target_keys:
                 values.append(value)
             else:
-                values.extend(_get_all_with_key(target_key, value))
+                values.extend(_get_all_with_keys(target_keys, value))
     elif isinstance(item, list):
         for value in item:
-            values.extend(_get_all_with_key(target_key, value))
+            values.extend(_get_all_with_keys(target_keys, value))
     return values
 
 
@@ -142,10 +159,10 @@ def _validate_identifiers(asm: DictType) -> None:
 
     # Validate that data source identifiers have a valid reference.
     data_source_ids = set(_get_all_with_key("data source identifier", asm))
-    for ids in identifiers.values():
-        data_source_ids -= set(ids)
-    if data_source_ids:
-        msg = f"data source identifiers {data_source_ids} do not have a valid identifier reference in the document."
+    source_ids = set(_get_all_with_keys(VALID_CALC_DATA_SOURCES, asm))
+    invalid_sources = data_source_ids - source_ids
+    if invalid_sources:
+        msg = f"data source identifiers {invalid_sources} do not have a valid identifier reference in the document."
         raise AssertionError(msg)
 
 

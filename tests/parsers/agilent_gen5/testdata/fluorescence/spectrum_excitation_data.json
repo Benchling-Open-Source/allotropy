@@ -1,0 +1,129 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2025/03/plate-reader.manifest",
+    "plate reader aggregate document": {
+        "plate reader document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Fluorescence",
+                                        "detector carriage speed setting": "Sweep",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 4.5,
+                                            "unit": "mm"
+                                        },
+                                        "detector gain setting": "100",
+                                        "number of averages": {
+                                            "value": 1.0,
+                                            "unit": "#"
+                                        },
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "detector bandwidth setting": {
+                                            "value": 20.0,
+                                            "unit": "nm"
+                                        },
+                                        "detector wavelength setting": {
+                                            "value": 300.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation bandwidth setting": {
+                                            "value": 20.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "AGILENT_GEN5_TEST_ID_0",
+                            "sample document": {
+                                "location identifier": "A1",
+                                "sample identifier": "Plate 1 A1",
+                                "well plate identifier": "Plate 1"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "OVRFLW",
+                                        "error feature": "480.0nm"
+                                    }
+                                ]
+                            },
+                            "fluorescence excitation spectrum data cube": {
+                                "label": "fluorescence-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [480.0, 490.0, 500.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.0, 0.2, 0.3]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2024-03-07T11:31:30+00:00",
+                    "plate well count": {
+                        "value": 96.0,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            }
+        ],
+        "calculated data aggregate document": {
+            "calculated data document": [
+                {
+                    "calculated data name": "Mean Max RFU [EX Spectrum]",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 0.123
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_1",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_0",
+                                "data source feature": "fluorescence"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "data system document": {
+            "ASM file identifier": "spectrum_excitation_data.json",
+            "data system instance identifier": "N/A",
+            "UNC path": "tests/parsers/agilent_gen5/testdata/fluorescence/spectrum_excitation_data.txt",
+            "file name": "spectrum_excitation_data.txt",
+            "ASM converter name": "allotropy_agilent_gen5",
+            "ASM converter version": "0.1.93",
+            "software name": "Gen5",
+            "software version": "3.12.08"
+        },
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "Synergy Neo2",
+            "equipment serial number": "Unknown"
+        }
+    }
+}

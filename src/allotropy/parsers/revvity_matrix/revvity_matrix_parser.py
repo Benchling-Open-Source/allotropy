@@ -1,3 +1,5 @@
+from functools import partial
+
 from allotropy.allotrope.models.adm.cell_counting.rec._2024._09.cell_counting import (
     Model,
 )
@@ -28,6 +30,8 @@ class RevvityMatrixParser(VendorParser[Data, Model]):
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = RevvityMatrixReader(named_file_contents)
         return Data(
-            create_metadata(named_file_contents.original_file_path),
-            map_rows(reader.data, create_measurement_group),
+            create_metadata(named_file_contents.original_file_path, reader.headers),
+            map_rows(
+                reader.data, partial(create_measurement_group, headers=reader.headers)
+            ),
         )

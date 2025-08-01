@@ -1178,6 +1178,68 @@
                                 "required": [
                                   "fraction document"
                                 ]
+                              },
+                              "log aggregate document": {
+                                "type": "object",
+                                "properties": {
+                                  "log document": {
+                                    "type": "array",
+                                    "items": {
+                                      "allOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "index": {
+                                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000928",
+                                              "$asm.pattern": "value datum",
+                                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                                            },
+                                            "retention time": {
+                                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001089",
+                                              "$asm.pattern": "quantity datum",
+                                              "allOf": [
+                                                {
+                                                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                                },
+                                                {
+                                                  "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/s"
+                                                }
+                                              ]
+                                            },
+                                            "retention volume": {
+                                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002521",
+                                              "$asm.pattern": "quantity datum",
+                                              "allOf": [
+                                                {
+                                                  "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                                },
+                                                {
+                                                  "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mL"
+                                                }
+                                              ]
+                                            },
+                                            "method identifier": {
+                                              "$asm.property-class": "http://purl.allotrope.org/ontologies/role#AFRL_0000563",
+                                              "$asm.pattern": "value datum",
+                                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                                            },
+                                            "log entry": {
+                                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002034",
+                                              "$asm.pattern": "value datum",
+                                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "log document"
+                                ]
                               }
                             }
                           }
@@ -1751,10 +1813,25 @@
                     "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002659",
                     "$asm.pattern": "aggregate datum",
                     "properties": {
-                      "data processing document": {
+                      "data processing aggregate document": {
                         "type": "object",
-                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002655",
-                        "$asm.pattern": "aggregate datum"
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002654",
+                        "$asm.pattern": "aggregate datum",
+                        "required": ["data processing document"],
+                        "properties": {
+                          "data processing document": {
+                            "type": "array",
+                            "$asm.array-ordered": true,
+                            "$asm.array-mixed": false,
+                            "$asm.pattern": "indexed datum",
+                            "items": {
+                              "type": "object",
+                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002655",
+                              "$asm.pattern": "aggregate datum"
+                            },
+                            "minItems": 1
+                          }
+                        }
                       },
                       "data source aggregate document": {
                         "allOf": [

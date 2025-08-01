@@ -403,8 +403,8 @@
                                     "dimensions": [
                                         {
                                             "@componentDatatype": "float",
-                                            "concept": "retention time",
-                                            "unit": "s"
+                                            "concept": "retention volume",
+                                            "unit": "mL"
                                         }
                                     ],
                                     "measures": [
@@ -417,7 +417,7 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [22.01019287109375, 22.02392578125, 22.03857421875]
+                                        [0.3668365478515625, 0.3670654296875, 0.3673095703125]
                                     ],
                                     "measures": [
                                         [0.19794297218322754, 0.19794535636901855, 0.19794775545597076]
@@ -473,8 +473,8 @@
                                     "dimensions": [
                                         {
                                             "@componentDatatype": "float",
-                                            "concept": "retention time",
-                                            "unit": "s"
+                                            "concept": "retention volume",
+                                            "unit": "mL"
                                         }
                                     ],
                                     "measures": [
@@ -487,7 +487,7 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [26.7938232421875, 27.1051025390625, 27.4163818359375]
+                                        [0.446563720703125, 0.451751708984375, 0.456939697265625]
                                     ],
                                     "measures": [
                                         [0.0, 0.0, 0.0]
@@ -543,8 +543,8 @@
                                     "dimensions": [
                                         {
                                             "@componentDatatype": "float",
-                                            "concept": "retention time",
-                                            "unit": "s"
+                                            "concept": "retention volume",
+                                            "unit": "mL"
                                         }
                                     ],
                                     "measures": [
@@ -557,7 +557,7 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [26.7938232421875, 27.1051025390625, 27.4163818359375]
+                                        [0.446563720703125, 0.451751708984375, 0.456939697265625]
                                     ],
                                     "measures": [
                                         [0.0, 0.0, 0.0]
@@ -608,8 +608,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -622,7 +622,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [32.54150390625, 33.3306884765625, 35.0408935546875]
+                                                    [0.5423583984375, 0.555511474609375, 0.584014892578125]
                                                 ],
                                                 "measures": [
                                                     [31.154701232910156, 31.13396453857422, 30.91810417175293]
@@ -646,8 +646,8 @@
                                     "dimensions": [
                                         {
                                             "@componentDatatype": "float",
-                                            "concept": "retention time",
-                                            "unit": "s"
+                                            "concept": "retention volume",
+                                            "unit": "mL"
                                         }
                                     ],
                                     "measures": [
@@ -660,7 +660,7 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [22.12738037109375, 22.17132568359375, 22.21527099609375]
+                                        [0.3687896728515625, 0.3695220947265625, 0.3702545166015625]
                                     ],
                                     "measures": [
                                         [3.1048166275024416, 3.104812431335449, 3.104808044433594]
@@ -716,8 +716,8 @@
                                     "dimensions": [
                                         {
                                             "@componentDatatype": "float",
-                                            "concept": "retention time",
-                                            "unit": "s"
+                                            "concept": "retention volume",
+                                            "unit": "mL"
                                         }
                                     ],
                                     "measures": [
@@ -730,7 +730,7 @@
                                 },
                                 "data": {
                                     "dimensions": [
-                                        [33.04046630859375, 33.3306884765625, 35.540771484375]
+                                        [0.5506744384765625, 0.555511474609375, 0.59234619140625]
                                     ],
                                     "measures": [
                                         [6.056291580200195, 0.0, 6.056750297546387]
@@ -750,8 +750,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -764,7 +764,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [33.3306884765625, 33.3306884765625, 37.540283203125]
+                                                    [0.555511474609375, 0.555511474609375, 0.62567138671875]
                                                 ],
                                                 "measures": [
                                                     [0.0, 0.0, 0.0]
@@ -820,8 +820,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -834,7 +834,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [31.04095458984375, 33.3306884765625, 33.54217529296875]
+                                                    [0.5173492431640625, 0.555511474609375, 0.5590362548828125]
                                                 ],
                                                 "measures": [
                                                     [0.03866715729236603, 0.19328080117702484, 0.20647241175174713]
@@ -847,8 +847,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -861,7 +861,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [33.3306884765625, 33.3306884765625, 38.2489013671875]
+                                                    [0.555511474609375, 0.555511474609375, 0.637481689453125]
                                                 ],
                                                 "measures": [
                                                     [0.13015341758728027, 0.14228571951389313, 0.06806576997041702]
@@ -874,8 +874,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -888,7 +888,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [22.66754150390625, 22.96051025390625, 23.25347900390625]
+                                                    [0.3777923583984375, 0.3826751708984375, 0.3875579833984375]
                                                 ],
                                                 "measures": [
                                                     [0.05315263196825981, 0.05314874276518822, 0.05314485356211662]
@@ -901,8 +901,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -915,7 +915,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [22.66754150390625, 22.96051025390625, 23.25347900390625]
+                                                    [0.3777923583984375, 0.3826751708984375, 0.3875579833984375]
                                                 ],
                                                 "measures": [
                                                     [0.1649095118045807, 0.13285210728645325, 0.10079468786716461]
@@ -959,8 +959,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -973,7 +973,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [33.3306884765625, 33.3306884765625, 38.2489013671875]
+                                                    [0.555511474609375, 0.555511474609375, 0.637481689453125]
                                                 ],
                                                 "measures": [
                                                     [0.06312736868858337, 0.06418673694133759, 0.03745259717106819]
@@ -1004,8 +1004,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -1018,7 +1018,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [37.540283203125, 47.24853515625, 57.24700927734375]
+                                                    [0.62567138671875, 0.7874755859375, 0.9541168212890625]
                                                 ],
                                                 "measures": [
                                                     [0.0, 7.460474014282227, 14.920948028564453]
@@ -1031,8 +1031,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -1045,7 +1045,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [50.2496337890625, 60.245361328125, 70.2410888671875]
+                                                    [0.837493896484375, 1.00408935546875, 1.170684814453125]
                                                 ],
                                                 "measures": [
                                                     [0.0, 0.0, 0.0]
@@ -1062,8 +1062,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -1076,7 +1076,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [33.3306884765625, 33.3306884765625, 37.540283203125]
+                                                    [0.555511474609375, 0.555511474609375, 0.62567138671875]
                                                 ],
                                                 "measures": [
                                                     [5.000010013580322, 2.3790595531463623, 0.0]
@@ -1089,8 +1089,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -1103,7 +1103,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [31.541748046875, 33.3306884765625, 34.0411376953125]
+                                                    [0.52569580078125, 0.555511474609375, 0.567352294921875]
                                                 ],
                                                 "measures": [
                                                     [0.0, 0.0, 0.0]
@@ -1120,8 +1120,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -1134,7 +1134,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [32.0416259765625, 33.3306884765625, 34.541015625]
+                                                    [0.534027099609375, 0.555511474609375, 0.57568359375]
                                                 ],
                                                 "measures": [
                                                     [0.0, 0.0, 0.0]
@@ -1190,8 +1190,8 @@
                                                 "dimensions": [
                                                     {
                                                         "@componentDatatype": "float",
-                                                        "concept": "retention time",
-                                                        "unit": "s"
+                                                        "concept": "retention volume",
+                                                        "unit": "mL"
                                                     }
                                                 ],
                                                 "measures": [
@@ -1204,7 +1204,7 @@
                                             },
                                             "data": {
                                                 "dimensions": [
-                                                    [69.24041748046875, 89.2327880859375, 109.23065185546875]
+                                                    [1.1540069580078125, 1.487213134765625, 1.8205108642578125]
                                                 ],
                                                 "measures": [
                                                     [27.713348388671875, 27.648590087890625, 27.536712646484375]
@@ -1351,6 +1351,1475 @@
                                 "@type": "Fraction"
                             }
                         ]
+                    },
+                    "log aggregate document": {
+                        "log document": [
+                            {
+                                "index": "Run Log Event 2",
+                                "retention time": {
+                                    "value": 4.3999098,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 0.3665924,
+                                    "unit": "mL"
+                                },
+                                "log entry": "Batch ID: "
+                            },
+                            {
+                                "index": "Run Log Event 83",
+                                "retention time": {
+                                    "value": 36.899988,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 4.948364,
+                                    "unit": "mL"
+                                },
+                                "log entry": ")"
+                            },
+                            {
+                                "index": "Run Log Event 91",
+                                "retention time": {
+                                    "value": 41.999933999999996,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 5.014816,
+                                    "unit": "mL"
+                                },
+                                "log entry": "Alarm air sensors Enabled Enabled Disabled (Completed) (Manual)"
+                            },
+                            {
+                                "index": "Run Log Event 92",
+                                "retention time": {
+                                    "value": 41.999933999999996,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 5.014816,
+                                    "unit": "mL"
+                                },
+                                "log entry": "Continue 2(Issued) (Manual)"
+                            },
+                            {
+                                "index": "Run Log Event 93",
+                                "retention time": {
+                                    "value": 41.999933999999996,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 5.014816,
+                                    "unit": "mL"
+                                },
+                                "log entry": "Continue  (Processing) (Manual)"
+                            },
+                            {
+                                "index": "Run Log Event 94",
+                                "retention time": {
+                                    "value": 41.999933999999996,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 5.014816,
+                                    "unit": "mL"
+                                },
+                                "log entry": "Continue 0 (Completed) (Manual)"
+                            },
+                            {
+                                "index": "Run Log Event 95",
+                                "retention time": {
+                                    "value": 464.89997999999997,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 73.47809,
+                                    "unit": "mL"
+                                },
+                                "log entry": "Peak start (System)"
+                            },
+                            {
+                                "index": "Run Log Event 96",
+                                "retention time": {
+                                    "value": 2214.0,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 364.9618,
+                                    "unit": "mL"
+                                },
+                                "log entry": "End_Block (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 97",
+                                "retention time": {
+                                    "value": 2214.0,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 364.9618,
+                                    "unit": "mL"
+                                },
+                                "log entry": "Block Finalize sample injection (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 98",
+                                "retention time": {
+                                    "value": 2214.0,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 364.9618,
+                                    "unit": "mL"
+                                },
+                                "log entry": "Base Volume, ColumnSameAsMain"
+                            },
+                            {
+                                "index": "Run Log Event 99",
+                                "retention time": {
+                                    "value": 2214.0,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 364.9618,
+                                    "unit": "mL"
+                                },
+                                "log entry": "Sample inlet Buffer (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 100",
+                                "retention time": {
+                                    "value": 2214.9,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 364.9884,
+                                    "unit": "mL"
+                                },
+                                "log entry": "Sample inlet Buffer (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 101",
+                                "retention time": {
+                                    "value": 2346.7998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 384.9723,
+                                    "unit": "mL"
+                                },
+                                "log entry": "End_Block (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 102",
+                                "retention time": {
+                                    "value": 2346.7998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 384.9723,
+                                    "unit": "mL"
+                                },
+                                "log entry": "Sample flow 0.00 {ml/min} Off (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 103",
+                                "retention time": {
+                                    "value": 2347.2,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.0173,
+                                    "unit": "mL"
+                                },
+                                "log entry": "Sample flow 0.00 {ml/min} Off (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 104",
+                                "retention time": {
+                                    "value": 2347.2,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.0173,
+                                    "unit": "mL"
+                                },
+                                "log entry": "Injection valve Manual load (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 105",
+                                "retention time": {
+                                    "value": 2348.4,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.0173,
+                                    "unit": "mL"
+                                },
+                                "log entry": "The method flow is now calculated based on the system flow. (System)"
+                            },
+                            {
+                                "index": "Run Log Event 106",
+                                "retention time": {
+                                    "value": 2348.4,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.0173,
+                                    "unit": "mL"
+                                },
+                                "log entry": "Injection valve Manual load (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 107",
+                                "retention time": {
+                                    "value": 2348.4,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.0173,
+                                    "unit": "mL"
+                                },
+                                "log entry": "Block Stop frac (Sample Appl) (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 108",
+                                "retention time": {
+                                    "value": 2348.4,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.0173,
+                                    "unit": "mL"
+                                },
+                                "log entry": "Base SameAsMain"
+                            },
+                            {
+                                "index": "Run Log Event 109",
+                                "retention time": {
+                                    "value": 2348.4,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.0173,
+                                    "unit": "mL"
+                                },
+                                "log entry": "Stop peak frac in outlet valve (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 110",
+                                "retention time": {
+                                    "value": 2348.5998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.0173,
+                                    "unit": "mL"
+                                },
+                                "log entry": "Stop peak frac in outlet valve (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 111",
+                                "retention time": {
+                                    "value": 2348.5998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.0173,
+                                    "unit": "mL"
+                                },
+                                "log entry": "End_Block (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 112",
+                                "retention time": {
+                                    "value": 2348.5998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.0173,
+                                    "unit": "mL"
+                                },
+                                "log entry": "End Phase (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 113",
+                                "retention time": {
+                                    "value": 2348.5998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.0173,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Phase Column Wash (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 114",
+                                "retention time": {
+                                    "value": 2348.5998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.0173,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Base SameAsMain"
+                            },
+                            {
+                                "index": "Run Log Event 115",
+                                "retention time": {
+                                    "value": 2348.5998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.0173,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Inlet A A2 (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 116",
+                                "retention time": {
+                                    "value": 2348.8002,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.0173,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Inlet A A2 (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 117",
+                                "retention time": {
+                                    "value": 2348.8002,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.0173,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Inlet B B1 (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 118",
+                                "retention time": {
+                                    "value": 2349.0,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.0173,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Inlet B B1 (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 119",
+                                "retention time": {
+                                    "value": 2349.0,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.0173,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Gradient 0.0 {%B} 0.00 {CV} (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 120",
+                                "retention time": {
+                                    "value": 2349.2004,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.0173,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Gradient 0.0 {%B} 0.00 {CV} (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 121",
+                                "retention time": {
+                                    "value": 2349.2004,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.0173,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "System flow 10.00 {ml/min} Off (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 122",
+                                "retention time": {
+                                    "value": 2349.7002,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.054,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "System flow 10.00 {ml/min} Off (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 123",
+                                "retention time": {
+                                    "value": 2349.7002,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.054,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Block Start frac (Column Wash) (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 124",
+                                "retention time": {
+                                    "value": 2349.7002,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.054,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Base SameAsMain"
+                            },
+                            {
+                                "index": "Run Log Event 125",
+                                "retention time": {
+                                    "value": 2349.7002,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.054,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Peak fractionation parameters Level 0.125 {min} 50.000 {mAU} 100.000 {mAU/min} 75.000 {mAU} 75.000 {mAU/min} (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 126",
+                                "retention time": {
+                                    "value": 2349.7998000000002,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.054,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Peak fractionation is performed using the UV1 signal. (System)"
+                            },
+                            {
+                                "index": "Run Log Event 127",
+                                "retention time": {
+                                    "value": 2349.9996,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.104,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Peak fractionation parameters Level 0.125 {min} 50.000 {mAU} 100.000 {mAU/min} 75.000 {mAU} 75.000 {mAU/min} (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 128",
+                                "retention time": {
+                                    "value": 2349.9996,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.104,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Peak frac in outlet valve Out 1 9 700.00 {ml} (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 129",
+                                "retention time": {
+                                    "value": 2350.2000000000003,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.1373,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Peak frac in outlet valve Out 1 9 700.00 {ml} (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 130",
+                                "retention time": {
+                                    "value": 2350.2000000000003,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.1373,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "End_Block (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 131",
+                                "retention time": {
+                                    "value": 2350.2000000000003,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.1373,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Block Wash (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 132",
+                                "retention time": {
+                                    "value": 2350.2000000000003,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.1373,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Base SameAsMain"
+                            },
+                            {
+                                "index": "Run Log Event 133",
+                                "retention time": {
+                                    "value": 2350.3998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 385.154,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Peak start (System)"
+                            },
+                            {
+                                "index": "Run Log Event 134",
+                                "retention time": {
+                                    "value": 2774.4,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 455.8084,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Peak end (System)"
+                            },
+                            {
+                                "index": "Run Log Event 135",
+                                "retention time": {
+                                    "value": 3556.8,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 586.2023,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "End_Block (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 136",
+                                "retention time": {
+                                    "value": 3556.8,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 586.2023,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Block Stop frac (Column Wash) (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 137",
+                                "retention time": {
+                                    "value": 3556.8,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 586.2023,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Base SameAsMain"
+                            },
+                            {
+                                "index": "Run Log Event 138",
+                                "retention time": {
+                                    "value": 3556.8,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 586.2023,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Stop peak frac in outlet valve (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 139",
+                                "retention time": {
+                                    "value": 3556.9998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 586.2357,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "Stop peak frac in outlet valve (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 140",
+                                "retention time": {
+                                    "value": 3556.9998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 586.2357,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "End_Block (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 141",
+                                "retention time": {
+                                    "value": 3556.9998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 586.2357,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "Column Wash",
+                                "log entry": "End Phase (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 142",
+                                "retention time": {
+                                    "value": 3556.9998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 586.2357,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Phase CIP & Storage (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 143",
+                                "retention time": {
+                                    "value": 3556.9998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 586.2357,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Base SameAsMain"
+                            },
+                            {
+                                "index": "Run Log Event 144",
+                                "retention time": {
+                                    "value": 3556.9998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 586.2357,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "pH valve Off-line Off-line (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 145",
+                                "retention time": {
+                                    "value": 3557.1,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 586.2357,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "The instruction 'pH valve' will be executed after the delay volume has been collected. (System)"
+                            },
+                            {
+                                "index": "Run Log Event 146",
+                                "retention time": {
+                                    "value": 3562.3998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 586.9971,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "pH valve Off-line Off-line (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 147",
+                                "retention time": {
+                                    "value": 3562.3998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 586.9971,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Block Column maintenance step_(1) (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 148",
+                                "retention time": {
+                                    "value": 3562.3998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 586.9971,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Base SameAsMain"
+                            },
+                            {
+                                "index": "Run Log Event 149",
+                                "retention time": {
+                                    "value": 3562.3998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 586.9971,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Message \"Maintenance solution: \" (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 150",
+                                "retention time": {
+                                    "value": 3562.3998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 586.9971,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Inlet A A4 (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 151",
+                                "retention time": {
+                                    "value": 3563.5998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 587.0172,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Inlet A A4 (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 152",
+                                "retention time": {
+                                    "value": 3563.5998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 587.0172,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Inlet B B1 (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 153",
+                                "retention time": {
+                                    "value": 3563.8002,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 587.0438,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Inlet B B1 (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 154",
+                                "retention time": {
+                                    "value": 3563.8002,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 587.0438,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Column position Position 3 Down flow (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 155",
+                                "retention time": {
+                                    "value": 3563.9994,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 587.0773,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Column position Position 3 Down flow (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 156",
+                                "retention time": {
+                                    "value": 3563.9994,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 587.0773,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Outlet valve Out-Waste (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 157",
+                                "retention time": {
+                                    "value": 3564.1998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 587.1106,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Outlet valve Out-Waste (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 158",
+                                "retention time": {
+                                    "value": 3564.1998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 587.1106,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "System flow 15.00 {ml/min} Off (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 159",
+                                "retention time": {
+                                    "value": 3564.7002,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 587.214,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "System flow 15.00 {ml/min} Off (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 160",
+                                "retention time": {
+                                    "value": 3564.7002,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 587.214,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Gradient 0.0 {%B} 0.00 {CV} (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 161",
+                                "retention time": {
+                                    "value": 3564.9,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 587.264,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Gradient 0.0 {%B} 0.00 {CV} (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 162",
+                                "retention time": {
+                                    "value": 3885.7001999999998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 667.4437,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "End_Block (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 163",
+                                "retention time": {
+                                    "value": 3885.7001999999998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 667.4437,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Block Column maintenance step_(2) (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 164",
+                                "retention time": {
+                                    "value": 3885.7001999999998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 667.4437,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Base SameAsMain"
+                            },
+                            {
+                                "index": "Run Log Event 165",
+                                "retention time": {
+                                    "value": 3885.7001999999998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 667.4437,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Message \"Maintenance solution: RODI\" (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 166",
+                                "retention time": {
+                                    "value": 3885.7001999999998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 667.4437,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Inlet A A6 (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 167",
+                                "retention time": {
+                                    "value": 3886.9998000000005,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 667.4962,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Inlet A A6 (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 168",
+                                "retention time": {
+                                    "value": 3886.9998000000005,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 667.4962,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Inlet B B1 (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 169",
+                                "retention time": {
+                                    "value": 3887.2002,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 667.5463,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Inlet B B1 (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 170",
+                                "retention time": {
+                                    "value": 3887.2002,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 667.5463,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Column position Position 3 Down flow (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 171",
+                                "retention time": {
+                                    "value": 3887.4000000000005,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 667.5962,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Column position Position 3 Down flow (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 172",
+                                "retention time": {
+                                    "value": 3887.4000000000005,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 667.5962,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Outlet valve Out-Waste (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 173",
+                                "retention time": {
+                                    "value": 3887.5998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 667.6461,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Outlet valve Out-Waste (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 174",
+                                "retention time": {
+                                    "value": 3887.5998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 667.6461,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "System flow 15.00 {ml/min} Off (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 175",
+                                "retention time": {
+                                    "value": 3888.1002,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 667.7711,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "System flow 15.00 {ml/min} Off (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 176",
+                                "retention time": {
+                                    "value": 3888.1002,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 667.7711,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Gradient 0.0 {%B} 0.00 {CV} (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 177",
+                                "retention time": {
+                                    "value": 3888.3,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 667.8212,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Gradient 0.0 {%B} 0.00 {CV} (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 178",
+                                "retention time": {
+                                    "value": 4530.3996,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 828.3049,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "End_Block (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 179",
+                                "retention time": {
+                                    "value": 4530.3996,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 828.3049,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Block Column maintenance step_(3) (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 180",
+                                "retention time": {
+                                    "value": 4530.3996,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 828.3049,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Base SameAsMain"
+                            },
+                            {
+                                "index": "Run Log Event 181",
+                                "retention time": {
+                                    "value": 4530.3996,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 828.3049,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Message \"Maintenance solution: 20% EtOH\" (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 182",
+                                "retention time": {
+                                    "value": 4530.3996,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 828.3049,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Inlet A A5 (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 183",
+                                "retention time": {
+                                    "value": 4531.3998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 828.3538,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Inlet A A5 (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 184",
+                                "retention time": {
+                                    "value": 4531.3998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 828.3538,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Inlet B B1 (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 185",
+                                "retention time": {
+                                    "value": 4531.5996000000005,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 828.4025,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Inlet B B1 (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 186",
+                                "retention time": {
+                                    "value": 4531.5996000000005,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 828.4025,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Column position Position 3 Down flow (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 187",
+                                "retention time": {
+                                    "value": 4531.8,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 828.4524,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Column position Position 3 Down flow (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 188",
+                                "retention time": {
+                                    "value": 4531.8,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 828.4524,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Outlet valve Fraction collector (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 189",
+                                "retention time": {
+                                    "value": 4532.499599999999,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 828.6274,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Outlet valve Fraction collector (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 190",
+                                "retention time": {
+                                    "value": 4532.499599999999,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 828.6274,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "System flow 8.00 {ml/min} Off (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 191",
+                                "retention time": {
+                                    "value": 4533.0,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 828.7247,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "System flow 8.00 {ml/min} Off (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 192",
+                                "retention time": {
+                                    "value": 4533.0,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 828.7247,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Gradient 0.0 {%B} 0.00 {CV} (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 193",
+                                "retention time": {
+                                    "value": 4533.1998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 828.7513,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Gradient 0.0 {%B} 0.00 {CV} (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 194",
+                                "retention time": {
+                                    "value": 5133.0,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 908.7145,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "End_Block (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 195",
+                                "retention time": {
+                                    "value": 5133.0,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 908.7145,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Column position Position 3 Down flow (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 196",
+                                "retention time": {
+                                    "value": 5133.1998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 908.7412,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Column position Position 3 Down flow (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 197",
+                                "retention time": {
+                                    "value": 5133.1998,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 908.7412,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Outlet valve Out-Waste (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 198",
+                                "retention time": {
+                                    "value": 5133.899399999999,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 908.8346,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "Outlet valve Out-Waste (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 199",
+                                "retention time": {
+                                    "value": 5133.899399999999,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 908.8346,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "pH valve In-line Off-line (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 200",
+                                "retention time": {
+                                    "value": 5134.9002,
+                                    "unit": "s"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "pH valve In-line Off-line (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 201",
+                                "retention time": {
+                                    "value": 5134.9002,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 908.8585,
+                                    "unit": "mL"
+                                },
+                                "method identifier": "CIP & Storage",
+                                "log entry": "End Phase (Issued) (Processing) (Completed)"
+                            },
+                            {
+                                "index": "Run Log Event 202",
+                                "retention time": {
+                                    "value": 5134.9002,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 908.8585,
+                                    "unit": "mL"
+                                },
+                                "log entry": "End  (Issued) (Processing)"
+                            },
+                            {
+                                "index": "Run Log Event 203",
+                                "retention time": {
+                                    "value": 5134.9002,
+                                    "unit": "s"
+                                },
+                                "retention volume": {
+                                    "value": 908.8585,
+                                    "unit": "mL"
+                                },
+                                "log entry": "End (Completed)"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Default"
@@ -1358,7 +2827,7 @@
         ],
         "data system document": {
             "ASM converter name": "allotropy_cytiva_unicorn",
-            "ASM converter version": "0.1.76",
+            "ASM converter version": "0.1.85",
             "file name": "unicorn_1.zip",
             "UNC path": "tests/parsers/cytiva_unicorn/testdata/unicorn_1.zip"
         },

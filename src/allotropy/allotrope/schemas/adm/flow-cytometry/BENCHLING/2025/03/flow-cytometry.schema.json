@@ -110,6 +110,12 @@
                                 "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                                 "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/tStringValue"
                               },
+                              "experiment identifier": {
+                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002009",
+                                "$asm.pattern": "value datum",
+                                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2025/03/core.schema#/$defs/tStringValue"
+                              },
                               "compartment temperature": {
                                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002549",
                                 "$asm.pattern": "quantity datum",
@@ -1534,7 +1540,8 @@
             "median absolute deviation role",
             "frequency of parent role",
             "frequency of grandparent role",
-            "frequency of total role"
+            "frequency of total role",
+            "sum of squares role"
           ],
           "type": "string"
         },

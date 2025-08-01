@@ -9,7 +9,6 @@ from allotropy.parsers.cytiva_unicorn.structure.data_cube.reader import (
     DataCubeReader,
 )
 from allotropy.parsers.cytiva_unicorn.structure.data_cube.transformations import (
-    Min2Sec,
     Transformation,
 )
 
@@ -25,8 +24,8 @@ def create_data_cube(
         structure_dimensions=[
             DataCubeComponent(
                 type_=FieldComponentDatatype.float,
-                concept="retention time",
-                unit="s",
+                concept="retention volume",
+                unit="mL",
             ),
         ],
         structure_measures=[data_cube_component],
@@ -35,7 +34,6 @@ def create_data_cube(
                 DataCubeReader(
                     handler=handler,
                     name="Volumes",
-                    transformation=Min2Sec(),
                 ).get_data()
             )
         ],

@@ -223,6 +223,26 @@ def test_get_custom_keys() -> None:
     assert data.get_custom_keys("custom_float") == {"custom_float": 4.5}
 
 
+def test_get_custom_keys_with_dict() -> None:
+    data = SeriesData(
+        pd.Series(
+            {
+                "custom_float": 4.5,
+                "custom_float_as_str": "5",
+                "custom_str": "hello!",
+                "unread": "skip",
+            }
+        )
+    )
+
+    assert data.get_custom_keys(
+        {
+            "custom_float": ["custom_float", "custom_float_as_str"],
+            "not_found": ["not_found", "not_found_2"],
+        }
+    ) == {"custom_float": 4.5}
+
+
 def test_get_custom_keys_with_regex() -> None:
     data = SeriesData(
         pd.Series(

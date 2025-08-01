@@ -5,9 +5,11 @@ from allotropy.allotrope.models.shared.components.plate_reader import SampleRole
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TStatisticDatumRole,
 )
-from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._01.multi_analyte_profiling import (
+from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
     Analyte,
     Error,
+    StatisticDimension,
+    StatisticsDocument,
 )
 from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_structure import (
     AnalyteMetadata,
@@ -89,13 +91,52 @@ def test_create_analyte_document_data() -> None:
             bead_xml,
             analyte_region_dict=analyte_region_dict,
         )
+
+    # Expected statistics from the XML
+    expected_statistics = [
+        StatisticsDocument(
+            statistical_feature="fluorescence",
+            statistic_dimensions=[
+                StatisticDimension(
+                    value=992.5,
+                    unit="RFU",
+                    statistic_datum_role=TStatisticDatumRole.median_role,
+                ),
+                StatisticDimension(
+                    value=983.391296386718750,
+                    unit="RFU",
+                    statistic_datum_role=TStatisticDatumRole.arithmetic_mean_role,
+                ),
+                StatisticDimension(
+                    value=0.223858922719955440,
+                    unit="(unitless)",
+                    statistic_datum_role=TStatisticDatumRole.coefficient_of_variation_role,
+                ),
+                StatisticDimension(
+                    value=220.140914916992190,
+                    unit="(unitless)",
+                    statistic_datum_role=TStatisticDatumRole.standard_deviation_role,
+                ),
+                StatisticDimension(
+                    value=974.904785156250000,
+                    unit="RFU",
+                    statistic_datum_role=TStatisticDatumRole.trimmed_arithmetic_mean_role,
+                ),
+                StatisticDimension(
+                    value=181.356109619140620,
+                    unit="(unitless)",
+                    statistic_datum_role=TStatisticDatumRole.trimmed_standard_deviation_role,
+                ),
+            ],
+        )
+    ]
+
     assert analyte_document_data == Analyte(
         identifier="dummy_id",
         name="Pn4",
-        value=992.5,
         assay_bead_count=46,
         assay_bead_identifier="62",
-        statistic_datum_role=TStatisticDatumRole.median_role,
+        statistics=expected_statistics,
     )
 
 

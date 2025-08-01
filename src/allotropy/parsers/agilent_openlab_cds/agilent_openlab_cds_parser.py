@@ -21,12 +21,12 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 class AgilentOpenLabCDSParser(VendorParser[Data, Model]):
     DISPLAY_NAME = constants.DISPLAY_NAME
-    RELEASE_STATE = ReleaseState.WORKING_DRAFT
+    RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "rslt"
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        structured_data = decode_data(named_file_contents.original_file_path)
+        structured_data = decode_data(named_file_contents.get_bytes_stream())
         return Data(
             metadata=create_metadata(structured_data, named_file_contents),
             measurement_groups=[create_measurement_groups(structured_data)],

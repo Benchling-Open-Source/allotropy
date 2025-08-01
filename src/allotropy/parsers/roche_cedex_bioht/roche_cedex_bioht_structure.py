@@ -3,6 +3,7 @@ from __future__ import annotations
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 from dateutil import parser
 import pandas as pd
@@ -51,7 +52,9 @@ class RawMeasurement:
     measurement_time: str
     concentration_value: JsonFloat
     unit: str
+    analyte_code: str
     error: str | None = None
+    custom_info: dict[str, Any] | None = None
 
     @staticmethod
     def create(data: SeriesData) -> RawMeasurement:
@@ -64,13 +67,35 @@ class RawMeasurement:
             if BELOW_TEST_RANGE in error
             else data.get(float, "concentration value", NaN)
         )
+
+        value, unit = RawMeasurement._get_value_and_unit(
+            concentration_value, data[str, "concentration unit"]
+        )
+
+        custom_info = data.get_custom_keys(
+            {
+                "detection kit",
+                "detection kit range",
+            }
+        )
+
         return RawMeasurement(
             data[str, "analyte name"],
             data[str, "measurement time"],
-            concentration_value,
-            data[str, "concentration unit"],
+            value,
+            unit,
+            data[str, "analyte code"],
             error or None,
+            custom_info,
         )
+
+    @staticmethod
+    def _get_value_and_unit(value: JsonFloat, unit: str) -> tuple[JsonFloat, str]:
+        if isinstance(value, int | float):
+            if unit == "mg/L":
+                return value / 1000, "g/L"
+
+        return value, unit
 
 
 def create_measurements(data: pd.DataFrame) -> dict[str, dict[str, RawMeasurement]]:
@@ -84,12 +109,13 @@ def create_measurements(data: pd.DataFrame) -> dict[str, dict[str, RawMeasuremen
     current_measurement_time = measurements[0].measurement_time
     previous_measurement_time = current_measurement_time
     for analyte in measurements:
+        analyte_id = f"{analyte.name}_{analyte.analyte_code}"
         time_diff = parser.parse(analyte.measurement_time) - parser.parse(
             previous_measurement_time
         )
         if time_diff > MAX_MEASUREMENT_TIME_GROUP_DIFFERENCE:
             current_measurement_time = analyte.measurement_time
-        if analyte.name in groups[current_measurement_time]:
+        if analyte_id in groups[current_measurement_time]:
             if analyte.concentration_value is NaN:
                 continue
             # NOTE: if this fails, it's probably because MAX_MEASUREMENT_TIME_GROUP_DIFFERENCE is too big
@@ -97,12 +123,12 @@ def create_measurements(data: pd.DataFrame) -> dict[str, dict[str, RawMeasuremen
             # We could potentially make this more robust by just splitting into a new group if a duplicate
             # measurement is found, but cross that bridge when we come to it.
             if (
-                groups[current_measurement_time][analyte.name].concentration_value
+                groups[current_measurement_time][analyte_id].concentration_value
                 is not NaN
             ):
-                msg = f"Duplicate measurement for {analyte.name} in the same measurement group: {analyte.concentration_value} vs {groups[current_measurement_time][analyte.name].concentration_value}"
+                msg = f"Duplicate measurement for {analyte.analyte_code} in the same measurement group. {analyte.concentration_value} vs {groups[current_measurement_time][analyte_id].concentration_value}"
                 raise AllotropyParserError(msg)
-        groups[current_measurement_time][analyte.name] = analyte
+        groups[current_measurement_time][analyte_id] = analyte
         previous_measurement_time = analyte.measurement_time
 
     return dict(groups)
@@ -139,14 +165,14 @@ def _create_measurements(
     measurements: list[Measurement] = []
 
     analytes: list[Analyte] = []
-    for name in sorted(raw_measurements):
-        measurement = raw_measurements[name]
+    for analyte_id in sorted(raw_measurements):
+        measurement = raw_measurements[analyte_id]
         value = measurement.concentration_value
         # TODO: report value and add error
         if value is NaN:
             continue
 
-        if name == OPTICAL_DENSITY:
+        if measurement.name == OPTICAL_DENSITY:
             measurements.append(
                 Measurement(
                     identifier=random_uuid_str(),
@@ -162,6 +188,7 @@ def _create_measurements(
                     name=measurement.name,
                     value=value if isinstance(value, float) else -1,
                     unit=measurement.unit,
+                    custom_info=measurement.custom_info,
                 )
             )
 

@@ -11532,6 +11532,34 @@
                             }
                         ]
                     }
+                },
+                {
+                    "calculated data name": "Example Calc",
+                    "calculated result": {
+                        "value": 1.1,
+                        "unit": "(unitless)"
+                    },
+                    "calculated data identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_384",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_0",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_1",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_2",
+                                "data source feature": "Absorbance"
+                            },
+                            {
+                                "data source identifier": "MOLDEV_SOFTMAX_PRO_TEST_ID_3",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    }
                 }
             ]
         },
