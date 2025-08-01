@@ -9,7 +9,6 @@ from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_gen5.agilent_gen5_reader import AgilentGen5Reader
 from allotropy.parsers.agilent_gen5.agilent_gen5_structure import (
     get_identifiers,
-    get_results_section,
     HeaderData,
 )
 from allotropy.parsers.agilent_gen5_image.agilent_gen5_image_structure import (
@@ -38,7 +37,7 @@ class AgilentGen5ImageParser(VendorParser[Data, Model]):
         return Data(
             metadata=create_metadata(header_data),
             measurement_groups=create_results(
-                get_results_section(reader),
+                reader.get_results_section(),
                 header_data,
                 read_data,
                 get_identifiers(reader.sections.get("Layout")),
