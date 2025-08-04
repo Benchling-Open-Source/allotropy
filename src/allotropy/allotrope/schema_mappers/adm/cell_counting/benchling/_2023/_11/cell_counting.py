@@ -86,7 +86,7 @@ class Measurement:
 
     errors: list[Error] | None = None
 
-    # customer information document fields
+    # Custom information document fields
     debris_index: float | None = None
     cell_aggregation_percentage: JsonFloat | None = None
 

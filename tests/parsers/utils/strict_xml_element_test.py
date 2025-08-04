@@ -248,3 +248,27 @@ def test_find_with_namespaces(
 
     ns2_element = strict_xml_element_with_namespaces.find("ns2:Element")
     assert ns2_element.get_text_or_none() == "ns2 element content"
+
+
+def test_simplified_attribute_skip() -> None:
+    """Test that simplified attribute names in skip parameter match namespaced attributes."""
+    xml_bytes = b"""
+    <Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://example.com/schema schema.xsd"
+          version="1.0"
+          otherAttr="value">
+    </Root>
+    """
+
+    element = fromstring(xml_bytes)
+    namespaces = {"xsi": "http://www.w3.org/2001/XMLSchema-instance"}
+    strict_element = StrictXmlElement(element, namespaces)
+
+    # Test that "schemaLocation" in skip matches the namespaced "xsi:schemaLocation"
+    unread = strict_element.get_unread(skip={"schemaLocation", "version"})
+
+    # Should only have "otherAttr" since schemaLocation and version were skipped
+    assert "otherAttr" in unread
+    assert "schemaLocation" not in unread
+    assert "version" not in unread
+    assert len(unread) == 1

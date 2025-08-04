@@ -45,6 +45,10 @@
                                         "molar concentration": {
                                             "value": 4.72,
                                             "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.25 - 38.9 mmol/L"
                                         }
                                     },
                                     {
@@ -52,6 +56,10 @@
                                         "molar concentration": {
                                             "value": 75.45,
                                             "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.111 - 41.63 mmol/L"
                                         }
                                     }
                                 ]
@@ -105,6 +113,10 @@
                                         "molar concentration": {
                                             "value": 4.88,
                                             "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.25 - 38.9 mmol/L"
                                         }
                                     },
                                     {
@@ -112,6 +124,10 @@
                                         "molar concentration": {
                                             "value": 78.4,
                                             "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.111 - 41.63 mmol/L"
                                         }
                                     }
                                 ]
@@ -165,6 +181,10 @@
                                         "molar concentration": {
                                             "value": 4.9,
                                             "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.25 - 38.9 mmol/L"
                                         }
                                     },
                                     {
@@ -172,6 +192,10 @@
                                         "molar concentration": {
                                             "value": 79.53,
                                             "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.111 - 41.63 mmol/L"
                                         }
                                     }
                                 ]
@@ -189,7 +213,7 @@
             "file name": "roche_cedex_bioht_example04.txt",
             "UNC path": "tests/parsers/roche_cedex_bioht/testdata/roche_cedex_bioht_example04.txt",
             "ASM converter name": "allotropy_roche_cedex_bioht",
-            "ASM converter version": "0.1.61",
+            "ASM converter version": "0.1.101",
             "software name": "CEDEX BIO HT",
             "software version": "6.0.0.1905 (1905)"
         },

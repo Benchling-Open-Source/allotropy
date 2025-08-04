@@ -89,6 +89,13 @@ class Header:
     software_version: str | None
     block_serial_number: str | None
     heated_cover_serial_number: str | None
+    run_duration: str | None = None
+    cover_temperature: float | None = None
+    run_start_datetime: str | None = None
+    sample_volume_setting: float | None = None
+    analysis_datetime: str | None = None
+    exported_on: str | None = None
+    extra_data: dict[str, Any] | None = None
 
     @staticmethod
     def create(header: SeriesData) -> Header:
@@ -141,6 +148,13 @@ class Header:
             software_name=software_name,
             software_version=software_version,
             well_volume=get_well_volume(block_type),
+            run_duration=header.get(str, "Run Duration"),
+            cover_temperature=header.get(float, "Cover Temperature"),
+            run_start_datetime=header.get(str, "Run Start Date/Time"),
+            sample_volume_setting=header.get(float, "Sample Volume"),
+            analysis_datetime=header.get(str, "Analysis Date/Time"),
+            exported_on=header.get(str, "Exported On"),
+            extra_data=header.get_unread(),
         )
 
 
@@ -208,6 +222,11 @@ class WellItem(Referenceable):
 
         result_class = cls.get_result_class()
         result = result_class.create(data, identifier)
+        quantity_custom_info = {
+            "quantity": result.quantity
+            if result.cycle_threshold_result is None and result.quantity is not None
+            else None
+        }
 
         return WellItem(
             uuid=random_uuid_str(),
@@ -224,11 +243,10 @@ class WellItem(Referenceable):
             amplification_data=amplification_data,
             melt_curve_data=melt_curve_data,
             result=result,
-            sample_custom_info=(
-                {"quantity": result.quantity}
-                if result.cycle_threshold_result is None and result.quantity is not None
-                else None
-            ),
+            sample_custom_info={
+                **data.get_unread(skip={"Dye", "Standard Deviation", "Standard Error"}),
+                **quantity_custom_info,
+            },
         )
 
 
@@ -257,13 +275,13 @@ class Well:
         identifier: int,
     ) -> Well:
         well_item_class = cls.get_well_item_class()
-        well_items = {
-            SeriesData(item_data)[str, "Target"]: well_item_class.create(
-                reader,
-                SeriesData(item_data),
-            )
-            for _, item_data in well_data.iterrows()
-        }
+        well_items = {}
+
+        for _, item_data in well_data.iterrows():
+            item_series = SeriesData(item_data)
+            target = item_series[str, "Target"]
+            well_items[target] = well_item_class.create(reader, item_series)
+
         multi_data = reader.get_non_empty_sheet_or_none("Multicomponent")
         return Well(
             identifier=identifier,
@@ -463,6 +481,8 @@ class Result:
     efficiency: float | None
     amp_score: float | None
     cq_conf: float | None
+    standard_deviation: float | None
+    standard_error: float | None
 
     @classmethod
     def get_genotyping_determination_result(cls, _: SeriesData) -> str | None:
@@ -565,6 +585,8 @@ class Result:
             efficiency=target_data.get(float, "Efficiency"),
             amp_score=target_data.get(float, "Amp Score"),
             cq_conf=target_data.get(float, "Cq Confidence"),
+            standard_deviation=target_data.get(float, "Standard Deviation"),
+            standard_error=target_data.get(float, "Standard Error"),
         )
 
 

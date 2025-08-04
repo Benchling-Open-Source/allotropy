@@ -42,6 +42,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser[Data, Model]):
         data.metadata.product_manufacturer = constants.PRODUCT_MANUFACTURER
         data.metadata.software_name = constants.RT_PCR_SOFTWARE_NAME
         data.metadata.software_version = constants.RT_PCR_SOFTWARE_VERSION
+        data.metadata.custom_info = reader.header.get_unread()
 
         return data
 
