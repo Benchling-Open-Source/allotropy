@@ -5,6 +5,19 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.102] - 2025-08-04
+
+### Added
+
+- AppBio QuantStudio Design & Analysis - get unread data (#968)
+- Roche Cedex BioHT - Support for roche v5 files and new fields in output (#1047)
+- Beckman Vi-Cell XR - Add unread data (#1044)
+- Flowjo - Add unread data (#1024)
+
+### Fixed
+
+- Molecular Devices SoftMax Pro - update blocks regex to handle trailing whitespace (#1048)
+
 ## [0.1.101] - 2025-07-23
 
 ### Added
