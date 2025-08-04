@@ -150,8 +150,9 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
     def get_peaks(cls, handler: UnicornZipHandler) -> list[Peak]:
         chrom_1 = handler.get_chrom_1()
         peaks = chrom_1.recursive_find_or_none(["PeakTables", "PeakTable", "Peaks"])
-        return [
-            Peak(
+        output = []
+        for idx, peak in enumerate(peaks.findall("Peak") if peaks else [], start=1):
+            peak_obj = Peak(
                 identifier=random_uuid_str(),
                 index=f"Peak {idx}",
                 end=peak.get_sub_float_or_none("EndPeakRetention"),
@@ -172,8 +173,10 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
                 chromatographic_asymmetry=peak.get_sub_float_or_none("Assymetry"),
                 custom_info=cls.get_peaks_custom_info(peak),
             )
-            for idx, peak in enumerate(peaks.findall("Peak") if peaks else [], start=1)
-        ]
+            if peak_obj.custom_info is not None:
+                peak_obj.custom_info.update(peak.get_unread())
+            output.append(peak_obj)
+        return output
 
 
 class AbsorbanceMeasurement2(AbsorbanceMeasurement):

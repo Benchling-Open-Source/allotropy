@@ -68,6 +68,7 @@ def create_measurement_groups(
             measurements=[measurement for measurement in measurements if measurement],
             fractions=create_fractions(event_curves) if event_curves else None,
             logs=create_logs(event_curves) if event_curves else None,
+            measurement_aggregate_custom_info=chrom_1.get_unread(),
         )
     ]
 
@@ -94,6 +95,7 @@ def create_fractions(event_curves: StrictXmlElement) -> list[Fraction]:
                     else t_min * 60
                 ),
                 retention_volume=event.get_sub_float_or_none("EventVolume"),
+                custom_info=event.get_unread(),
             )
             for idx, event in enumerate(events.findall("Event"), start=1)
             if event.get_attr_or_none("EventType") in ["Fraction", "Method"]
@@ -144,6 +146,7 @@ def create_logs(event_curves: StrictXmlElement) -> list[Log]:
                         else t_min * 60
                     ),
                     retention_volume=event.get_sub_float_or_none("EventVolume"),
+                    custom_info=event.get_unread(),
                 )
             )
 

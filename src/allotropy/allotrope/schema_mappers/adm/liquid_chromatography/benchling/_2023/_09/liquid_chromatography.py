@@ -146,6 +146,7 @@ class Fraction:
     field_type: str | None = None
     retention_time: float | None = None
     retention_volume: float | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -155,6 +156,7 @@ class Log:
     log_entry: str | None = None
     retention_time: float | None = None
     retention_volume: float | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -361,11 +363,12 @@ class Mapper(SchemaMapper[Data, Model]):
                         for device_control_doc in measurement.device_control_docs
                     ]
                 ),
-                chromatogram_data_cube=(
+                chromatogram_data_cube=add_custom_information_document(
                     get_data_cube(
                         measurement.chromatogram_data_cube,
                         ChromatogramDataCube,
-                    )
+                    ),
+                    getattr(measurement.chromatogram_data_cube, "custom_info", None),
                 ),
             ),
             measurement.measurement_custom_info,
@@ -548,8 +551,15 @@ class Mapper(SchemaMapper[Data, Model]):
                 else None
             )
             item = ProcessedDataDocumentItem(
-                chromatogram_data_cube=get_data_cube(
-                    measurement.processed_data_chromatogram_data_cube, TDatacube
+                chromatogram_data_cube=add_custom_information_document(
+                    get_data_cube(
+                        measurement.processed_data_chromatogram_data_cube, TDatacube
+                    ),
+                    getattr(
+                        measurement.processed_data_chromatogram_data_cube,
+                        "custom_info",
+                        None,
+                    ),
                 ),
                 derived_column_pressure_data_cube=get_data_cube(
                     measurement.derived_column_pressure_data_cube,
@@ -605,37 +615,87 @@ class Mapper(SchemaMapper[Data, Model]):
                     TQuantityValueNanometer,
                     device_control_doc.detector_bandwidth_setting,
                 ),
-                solvent_concentration_data_cube=get_data_cube(
-                    device_control_doc.solvent_conc_data_cube,
-                    SolventConcentrationDataCube,
+                solvent_concentration_data_cube=add_custom_information_document(
+                    get_data_cube(
+                        device_control_doc.solvent_conc_data_cube,
+                        SolventConcentrationDataCube,
+                    ),
+                    getattr(
+                        device_control_doc.solvent_conc_data_cube, "custom_info", None
+                    ),
                 ),
-                pre_column_pressure_data_cube=get_data_cube(
-                    device_control_doc.pre_column_pressure_data_cube,
-                    PreColumnPressureDataCube,
+                pre_column_pressure_data_cube=add_custom_information_document(
+                    get_data_cube(
+                        device_control_doc.pre_column_pressure_data_cube,
+                        PreColumnPressureDataCube,
+                    ),
+                    getattr(
+                        device_control_doc.pre_column_pressure_data_cube,
+                        "custom_info",
+                        None,
+                    ),
                 ),
-                sample_pressure_data_cube=get_data_cube(
-                    device_control_doc.sample_pressure_data_cube,
-                    SamplePressureDataCube,
+                sample_pressure_data_cube=add_custom_information_document(
+                    get_data_cube(
+                        device_control_doc.sample_pressure_data_cube,
+                        SamplePressureDataCube,
+                    ),
+                    getattr(
+                        device_control_doc.sample_pressure_data_cube,
+                        "custom_info",
+                        None,
+                    ),
                 ),
-                system_pressure_data_cube=get_data_cube(
-                    device_control_doc.system_pressure_data_cube,
-                    SystemPressureDataCube,
+                system_pressure_data_cube=add_custom_information_document(
+                    get_data_cube(
+                        device_control_doc.system_pressure_data_cube,
+                        SystemPressureDataCube,
+                    ),
+                    getattr(
+                        device_control_doc.system_pressure_data_cube,
+                        "custom_info",
+                        None,
+                    ),
                 ),
-                post_column_pressure_data_cube=get_data_cube(
-                    device_control_doc.post_column_pressure_data_cube,
-                    PostColumnPressureDataCube,
+                post_column_pressure_data_cube=add_custom_information_document(
+                    get_data_cube(
+                        device_control_doc.post_column_pressure_data_cube,
+                        PostColumnPressureDataCube,
+                    ),
+                    getattr(
+                        device_control_doc.post_column_pressure_data_cube,
+                        "custom_info",
+                        None,
+                    ),
                 ),
-                sample_flow_rate_data_cube=get_data_cube(
-                    device_control_doc.sample_flow_data_cube,
-                    SampleFlowRateDataCube,
+                sample_flow_rate_data_cube=add_custom_information_document(
+                    get_data_cube(
+                        device_control_doc.sample_flow_data_cube,
+                        SampleFlowRateDataCube,
+                    ),
+                    getattr(
+                        device_control_doc.sample_flow_data_cube, "custom_info", None
+                    ),
                 ),
-                system_flow_rate_data_cube=get_data_cube(
-                    device_control_doc.system_flow_data_cube,
-                    SystemFlowRateDataCube,
+                system_flow_rate_data_cube=add_custom_information_document(
+                    get_data_cube(
+                        device_control_doc.system_flow_data_cube,
+                        SystemFlowRateDataCube,
+                    ),
+                    getattr(
+                        device_control_doc.system_flow_data_cube, "custom_info", None
+                    ),
                 ),
-                temperature_profile_data_cube=get_data_cube(
-                    device_control_doc.temperature_profile_data_cube,
-                    TemperatureProfileDataCube,
+                temperature_profile_data_cube=add_custom_information_document(
+                    get_data_cube(
+                        device_control_doc.temperature_profile_data_cube,
+                        TemperatureProfileDataCube,
+                    ),
+                    getattr(
+                        device_control_doc.temperature_profile_data_cube,
+                        "custom_info",
+                        None,
+                    ),
                 ),
                 detector_offset_setting=quantity_or_none(
                     TQuantityValueUnitless, device_control_doc.detector_offset_setting
@@ -670,7 +730,7 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_fraction_document(self, fraction_doc: Fraction) -> FractionDocumentItem:
-        return FractionDocumentItem(
+        fraction_doc_item = FractionDocumentItem(
             index=fraction_doc.index,
             fraction_role=fraction_doc.fraction_role,
             field_type=fraction_doc.field_type,
@@ -680,6 +740,10 @@ class Mapper(SchemaMapper[Data, Model]):
             retention_volume=quantity_or_none(
                 TQuantityValueMilliliter, fraction_doc.retention_volume
             ),
+        )
+
+        return add_custom_information_document(
+            fraction_doc_item, fraction_doc.custom_info
         )
 
     def _get_log_aggregate_document(
@@ -693,7 +757,7 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_log_document(self, log_doc: Log) -> LogDocumentItem:
-        return LogDocumentItem(
+        log_doc_item = LogDocumentItem(
             index=log_doc.index,
             method_identifier=log_doc.method_identifier,
             log_entry=log_doc.log_entry,
@@ -704,3 +768,4 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueMilliliter, log_doc.retention_volume
             ),
         )
+        return add_custom_information_document(log_doc_item, log_doc.custom_info)

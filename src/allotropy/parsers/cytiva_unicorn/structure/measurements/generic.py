@@ -61,13 +61,21 @@ class UnicornMeasurement(Measurement):
 
         if data_cube_handler := cls.get_data_cube_handler_or_none(handler, curve):
             name_element = curve.find("Name")
+
             if name := name_element.get_text_or_none():
-                return create_data_cube(
+                data_cube = create_data_cube(
                     data_cube_handler,
                     name,
                     data_cube_component,
                     transformation,
                 )
+                if data_cube.custom_info is not None:
+                    # Filter out None values to match expected dict[str, str] type
+                    unread_data = {
+                        k: v for k, v in curve.get_unread().items() if v is not None
+                    }
+                    data_cube.custom_info.update(unread_data)
+                return data_cube
         return None
 
     @classmethod
