@@ -16,7 +16,6 @@ from allotropy.parsers.agilent_gen5.constants import (
     NO_MEASUREMENTS_ERROR,
 )
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.vendor_parser import VendorParser
 
 
