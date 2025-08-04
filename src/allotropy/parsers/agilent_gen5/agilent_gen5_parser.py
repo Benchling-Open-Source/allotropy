@@ -26,9 +26,6 @@ class AgilentGen5Parser(VendorParser[Data, Model]):
     SUPPORTED_EXTENSIONS = AgilentGen5Reader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
 
-    def __init__(self, timestamp_parser: TimestampParser | None = None):
-        super().__init__(timestamp_parser)
-
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = AgilentGen5Reader(named_file_contents)
         context = reader.extract_data_context(named_file_contents.original_file_path)
