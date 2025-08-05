@@ -444,6 +444,9 @@ class SeriesData:
                 ),
                 key,
             )
+        elif not isinstance(key, str):
+            msg = f"Unexpected key type ({type(key)}): {key}"
+            raise ValueError(msg)
         self.read_keys.add(key)
 
         # Handle duplicate keys if needed
