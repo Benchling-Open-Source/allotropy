@@ -144,6 +144,7 @@ def create_calibration(calibration_data: SeriesData) -> Calibration:
     # Read the calibration data using SeriesData methods
     calibration_name = calibration_data.series.iloc[0]
     calibration_info = str(calibration_data.series.iloc[1]).strip()
+    calibration_data.get_unread()
 
     # Check if the calibration info starts with a known status value
     status_values = ["Passed", "Failed", "Calibrated", "Verified"]
