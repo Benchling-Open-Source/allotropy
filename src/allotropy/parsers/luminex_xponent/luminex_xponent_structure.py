@@ -180,6 +180,7 @@ class Measurement:
     analytes: list[Analyte]
     calculated_data: list[CalculatedDocument]
     errors: list[Error] | None = None
+    custom_info: dict[str, Any] | None = None
 
     @classmethod
     def create(
@@ -298,6 +299,8 @@ class Measurement:
             analytes=analytes,
             errors=errors,
             calculated_data=calculated_data,
+            # Get unread data after all keys have been read
+            custom_info=count_data.get_unread() if count_data.get_unread() else None,
         )
 
     @classmethod
@@ -416,6 +419,7 @@ def create_measurement_groups(
                     assay_bead_count=measurement.assay_bead_count,
                     analytes=measurement.analytes,
                     errors=measurement.errors if measurement.errors else None,
+                    custom_info=measurement.custom_info,
                 )
             ],
         )
