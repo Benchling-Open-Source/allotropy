@@ -63,14 +63,22 @@ def create_measurement_groups(
         TemperatureMeasurement.create_or_none(handler, elements, static_docs),
     ]
 
-    return [
+    measurement_group = [
         MeasurementGroup(
             measurements=[measurement for measurement in measurements if measurement],
             fractions=create_fractions(event_curves) if event_curves else None,
             logs=create_logs(event_curves) if event_curves else None,
-            measurement_aggregate_custom_info=chrom_1.get_unread(),
+            measurement_aggregate_custom_info={},
         )
     ]
+    custom_info = chrom_1.get_unread()
+
+    if measurement_group[0].measurement_aggregate_custom_info is not None:
+        custom_info["software version"] = custom_info["UNICORNVersion"]
+        custom_info.pop("UNICORNVersion")
+        measurement_group[0].measurement_aggregate_custom_info.update(custom_info)
+
+    return measurement_group
 
 
 def create_fractions(event_curves: StrictXmlElement) -> list[Fraction]:

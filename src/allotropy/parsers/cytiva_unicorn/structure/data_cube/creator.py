@@ -46,5 +46,4 @@ def create_data_cube(
                 ).get_data()
             )
         ],
-        custom_info={},
     )

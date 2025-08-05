@@ -57,7 +57,7 @@ class AbsorbanceMeasurement(UnicornMeasurement):
         elements: list[StrictXmlElement],
         static_docs: StaticDocs,
     ) -> UnicornMeasurement:
-        return cls.get_measurement(
+        measurement = cls.get_measurement(
             static_docs=static_docs,
             chromatogram_data_cube=assert_not_none(
                 cls.get_data_cube_or_none(
@@ -75,10 +75,15 @@ class AbsorbanceMeasurement(UnicornMeasurement):
                 DeviceControlDoc(
                     device_type=DEVICE_TYPE,
                     start_time=static_docs.start_time,
+                    device_control_custom_info={},
                 )
             ],
             peaks=cls.get_peaks(handler),
         )
+        cls.add_custom_info(
+            measurement, cls.filter_curve_or_none(elements, cls.get_curve_regex())
+        )
+        return measurement
 
 
 class AbsorbanceMeasurement1(AbsorbanceMeasurement):

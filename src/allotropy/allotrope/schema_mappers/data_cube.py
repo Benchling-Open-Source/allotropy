@@ -30,7 +30,6 @@ class DataCube:
     measures: Sequence[
         Sequence[float | None] | Sequence[str | None] | Sequence[bool | None]
     ]
-    custom_info: dict[str, str] | None = None
 
 
 class DataCubeProtocol(Protocol):

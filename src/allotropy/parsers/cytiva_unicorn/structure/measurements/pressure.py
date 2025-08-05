@@ -79,8 +79,12 @@ class PressureMeasurement(UnicornMeasurement):
                             unit="MPa",
                         ),
                     ),
+                    device_control_custom_info={},
                 ),
             ],
+        )
+        cls.add_custom_info(
+            measurement, cls.filter_curve_or_none(elements, r"^DeltaC pressure$")
         )
         return measurement if cls.is_valid(cls.get_data_cubes(measurement)) else None
 

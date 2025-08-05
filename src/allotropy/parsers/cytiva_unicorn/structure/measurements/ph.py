@@ -43,9 +43,11 @@ class PhMeasurement(UnicornMeasurement):
                 DeviceControlDoc(
                     device_type=DEVICE_TYPE,
                     start_time=static_docs.start_time,
+                    device_control_custom_info={},
                 )
             ],
         )
+        cls.add_custom_info(measurement, cls.filter_curve_or_none(elements, r"^pH$"))
         return measurement if cls.is_valid(cls.get_data_cubes(measurement)) else None
 
     @classmethod

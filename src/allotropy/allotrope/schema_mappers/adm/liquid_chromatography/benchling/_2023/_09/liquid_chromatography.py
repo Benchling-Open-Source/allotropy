@@ -238,6 +238,7 @@ class Measurement:
     injection_custom_info: dict[str, Any] | None = None
     column_custom_info: dict[str, Any] | None = None
     measurement_custom_info: dict[str, Any] | None = None
+    processed_data_custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -363,12 +364,9 @@ class Mapper(SchemaMapper[Data, Model]):
                         for device_control_doc in measurement.device_control_docs
                     ]
                 ),
-                chromatogram_data_cube=add_custom_information_document(
-                    get_data_cube(
-                        measurement.chromatogram_data_cube,
-                        ChromatogramDataCube,
-                    ),
-                    getattr(measurement.chromatogram_data_cube, "custom_info", None),
+                chromatogram_data_cube=get_data_cube(
+                    measurement.chromatogram_data_cube,
+                    ChromatogramDataCube,
                 ),
             ),
             measurement.measurement_custom_info,
@@ -550,24 +548,27 @@ class Mapper(SchemaMapper[Data, Model]):
                 if pdd and get_data_processing_documents(pdd)
                 else None
             )
-            item = ProcessedDataDocumentItem(
-                chromatogram_data_cube=add_custom_information_document(
-                    get_data_cube(
-                        measurement.processed_data_chromatogram_data_cube, TDatacube
+            item = add_custom_information_document(
+                ProcessedDataDocumentItem(
+                    chromatogram_data_cube=add_custom_information_document(
+                        get_data_cube(
+                            measurement.processed_data_chromatogram_data_cube, TDatacube
+                        ),
+                        getattr(
+                            measurement.processed_data_chromatogram_data_cube,
+                            "custom_info",
+                            None,
+                        ),
                     ),
-                    getattr(
-                        measurement.processed_data_chromatogram_data_cube,
-                        "custom_info",
-                        None,
+                    derived_column_pressure_data_cube=get_data_cube(
+                        measurement.derived_column_pressure_data_cube,
+                        DerivedColumnPressureDataCube,
                     ),
+                    processed_data_identifier=measurement.processed_data_identifier,
+                    peak_list=build_peak_list(),
+                    data_processing_aggregate_document=data_processing,
                 ),
-                derived_column_pressure_data_cube=get_data_cube(
-                    measurement.derived_column_pressure_data_cube,
-                    DerivedColumnPressureDataCube,
-                ),
-                processed_data_identifier=measurement.processed_data_identifier,
-                peak_list=build_peak_list(),
-                data_processing_aggregate_document=data_processing,
+                measurement.processed_data_custom_info,
             )
             return (
                 add_custom_information_document(item, pdd.custom_info) if pdd else item
@@ -615,87 +616,37 @@ class Mapper(SchemaMapper[Data, Model]):
                     TQuantityValueNanometer,
                     device_control_doc.detector_bandwidth_setting,
                 ),
-                solvent_concentration_data_cube=add_custom_information_document(
-                    get_data_cube(
-                        device_control_doc.solvent_conc_data_cube,
-                        SolventConcentrationDataCube,
-                    ),
-                    getattr(
-                        device_control_doc.solvent_conc_data_cube, "custom_info", None
-                    ),
+                solvent_concentration_data_cube=get_data_cube(
+                    device_control_doc.solvent_conc_data_cube,
+                    SolventConcentrationDataCube,
                 ),
-                pre_column_pressure_data_cube=add_custom_information_document(
-                    get_data_cube(
-                        device_control_doc.pre_column_pressure_data_cube,
-                        PreColumnPressureDataCube,
-                    ),
-                    getattr(
-                        device_control_doc.pre_column_pressure_data_cube,
-                        "custom_info",
-                        None,
-                    ),
+                pre_column_pressure_data_cube=get_data_cube(
+                    device_control_doc.pre_column_pressure_data_cube,
+                    PreColumnPressureDataCube,
                 ),
-                sample_pressure_data_cube=add_custom_information_document(
-                    get_data_cube(
-                        device_control_doc.sample_pressure_data_cube,
-                        SamplePressureDataCube,
-                    ),
-                    getattr(
-                        device_control_doc.sample_pressure_data_cube,
-                        "custom_info",
-                        None,
-                    ),
+                sample_pressure_data_cube=get_data_cube(
+                    device_control_doc.sample_pressure_data_cube,
+                    SamplePressureDataCube,
                 ),
-                system_pressure_data_cube=add_custom_information_document(
-                    get_data_cube(
-                        device_control_doc.system_pressure_data_cube,
-                        SystemPressureDataCube,
-                    ),
-                    getattr(
-                        device_control_doc.system_pressure_data_cube,
-                        "custom_info",
-                        None,
-                    ),
+                system_pressure_data_cube=get_data_cube(
+                    device_control_doc.system_pressure_data_cube,
+                    SystemPressureDataCube,
                 ),
-                post_column_pressure_data_cube=add_custom_information_document(
-                    get_data_cube(
-                        device_control_doc.post_column_pressure_data_cube,
-                        PostColumnPressureDataCube,
-                    ),
-                    getattr(
-                        device_control_doc.post_column_pressure_data_cube,
-                        "custom_info",
-                        None,
-                    ),
+                post_column_pressure_data_cube=get_data_cube(
+                    device_control_doc.post_column_pressure_data_cube,
+                    PostColumnPressureDataCube,
                 ),
-                sample_flow_rate_data_cube=add_custom_information_document(
-                    get_data_cube(
-                        device_control_doc.sample_flow_data_cube,
-                        SampleFlowRateDataCube,
-                    ),
-                    getattr(
-                        device_control_doc.sample_flow_data_cube, "custom_info", None
-                    ),
+                sample_flow_rate_data_cube=get_data_cube(
+                    device_control_doc.sample_flow_data_cube,
+                    SampleFlowRateDataCube,
                 ),
-                system_flow_rate_data_cube=add_custom_information_document(
-                    get_data_cube(
-                        device_control_doc.system_flow_data_cube,
-                        SystemFlowRateDataCube,
-                    ),
-                    getattr(
-                        device_control_doc.system_flow_data_cube, "custom_info", None
-                    ),
+                system_flow_rate_data_cube=get_data_cube(
+                    device_control_doc.system_flow_data_cube,
+                    SystemFlowRateDataCube,
                 ),
-                temperature_profile_data_cube=add_custom_information_document(
-                    get_data_cube(
-                        device_control_doc.temperature_profile_data_cube,
-                        TemperatureProfileDataCube,
-                    ),
-                    getattr(
-                        device_control_doc.temperature_profile_data_cube,
-                        "custom_info",
-                        None,
-                    ),
+                temperature_profile_data_cube=get_data_cube(
+                    device_control_doc.temperature_profile_data_cube,
+                    TemperatureProfileDataCube,
                 ),
                 detector_offset_setting=quantity_or_none(
                     TQuantityValueUnitless, device_control_doc.detector_offset_setting

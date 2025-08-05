@@ -10,7 +10,11 @@
                                 "device control document": [
                                     {
                                         "device type": "HPLC",
-                                        "start time setting": "2024-01-02T11:00:00+00:00"
+                                        "start time setting": "2024-01-02T11:00:00+00:00",
+                                        "custom information document": {
+                                            "ColumnVolume": "4",
+                                            "ScanInterval": "0"
+                                        }
                                     }
                                 ]
                             },
@@ -125,8 +129,8 @@
                                                             "unit": "S/m"
                                                         },
                                                         "StartPeakLimitType": "BaseLine",
-                                                        "IsStandardPeak": "false",
-                                                        "EndPeakLimitType": "DropLine"
+                                                        "EndPeakLimitType": "DropLine",
+                                                        "IsStandardPeak": "false"
                                                     }
                                                 },
                                                 {
@@ -214,8 +218,8 @@
                                                             "unit": "S/m"
                                                         },
                                                         "StartPeakLimitType": "DropLine",
-                                                        "IsStandardPeak": "false",
-                                                        "EndPeakLimitType": "DropLine"
+                                                        "EndPeakLimitType": "DropLine",
+                                                        "IsStandardPeak": "false"
                                                     }
                                                 },
                                                 {
@@ -303,8 +307,8 @@
                                                             "unit": "S/m"
                                                         },
                                                         "StartPeakLimitType": "DropLine",
-                                                        "IsStandardPeak": "false",
-                                                        "EndPeakLimitType": "DropLine"
+                                                        "EndPeakLimitType": "DropLine",
+                                                        "IsStandardPeak": "false"
                                                     }
                                                 },
                                                 {
@@ -392,11 +396,30 @@
                                                             "unit": "S/m"
                                                         },
                                                         "StartPeakLimitType": "DropLine",
-                                                        "IsStandardPeak": "false",
-                                                        "EndPeakLimitType": "DropLine"
+                                                        "EndPeakLimitType": "DropLine",
+                                                        "IsStandardPeak": "false"
                                                     }
                                                 }
                                             ]
+                                        },
+                                        "custom information document": {
+                                            "IsOriginalData": "true",
+                                            "MethodStartTime": "2024-01-02T11:00:00.000",
+                                            "AmplitudeUnit": "mAU",
+                                            "ChromatogramStartTimeUtcOffsetMinutes": "-300",
+                                            "AmplitudePrecision": "3",
+                                            "CurveDataType": "UV",
+                                            "IsReadOnly": "false",
+                                            "MethodStartTimeUtcOffsetMinutes": "-300",
+                                            "ColumnVolumeUnitName": "ml",
+                                            "IsoChroneType": "Time",
+                                            "CurveNumber": "1",
+                                            "ChromatogramStartTime": "2024-01-02T11:00:00.000",
+                                            "TimeUnit": "min",
+                                            "VolumeUnit": "ml",
+                                            "IsExternal": "false",
+                                            "DistanceBetweenPoints": "0.001666667",
+                                            "DistanceToStartPoint": "0.06833267"
                                         }
                                     }
                                 ]
@@ -434,27 +457,6 @@
                                     "measures": [
                                         [0.19794297218322754, 0.19794535636901855, 0.19794775545597076]
                                     ]
-                                },
-                                "custom information document": {
-                                    "IsOriginalData": "true",
-                                    "MethodStartTime": "2024-01-02T11:00:00.000",
-                                    "AmplitudeUnit": "mAU",
-                                    "ChromatogramStartTimeUtcOffsetMinutes": "-300",
-                                    "AmplitudePrecision": "3",
-                                    "CurveDataType": "UV",
-                                    "IsReadOnly": "false",
-                                    "MethodStartTimeUtcOffsetMinutes": "-300",
-                                    "ColumnVolumeUnitName": "ml",
-                                    "IsoChroneType": "Time",
-                                    "DistanceToStartPoint": "0.06833267",
-                                    "CurveNumber": "1",
-                                    "ColumnVolume": "4",
-                                    "ScanInterval": "0",
-                                    "DistanceBetweenPoints": "0.001666667",
-                                    "ChromatogramStartTime": "2024-01-02T11:00:00.000",
-                                    "TimeUnit": "min",
-                                    "VolumeUnit": "ml",
-                                    "IsExternal": "false"
                                 }
                             }
                         },
@@ -463,7 +465,11 @@
                                 "device control document": [
                                     {
                                         "device type": "HPLC",
-                                        "start time setting": "2024-01-02T11:00:00+00:00"
+                                        "start time setting": "2024-01-02T11:00:00+00:00",
+                                        "custom information document": {
+                                            "ColumnVolume": "4",
+                                            "ScanInterval": "0"
+                                        }
                                     }
                                 ]
                             },
@@ -525,27 +531,6 @@
                                     "measures": [
                                         [0.0, 0.0, 0.0]
                                     ]
-                                },
-                                "custom information document": {
-                                    "IsOriginalData": "true",
-                                    "MethodStartTime": "2024-01-02T11:00:00.000",
-                                    "AmplitudeUnit": "mAU",
-                                    "ChromatogramStartTimeUtcOffsetMinutes": "-300",
-                                    "AmplitudePrecision": "3",
-                                    "CurveDataType": "UV",
-                                    "IsReadOnly": "false",
-                                    "MethodStartTimeUtcOffsetMinutes": "-300",
-                                    "ColumnVolumeUnitName": "ml",
-                                    "IsoChroneType": "Time",
-                                    "DistanceToStartPoint": "0.08499908",
-                                    "CurveNumber": "2",
-                                    "ColumnVolume": "4",
-                                    "ScanInterval": "0",
-                                    "DistanceBetweenPoints": "0.008333334",
-                                    "ChromatogramStartTime": "2024-01-02T11:00:00.000",
-                                    "TimeUnit": "min",
-                                    "VolumeUnit": "ml",
-                                    "IsExternal": "false"
                                 }
                             }
                         },
@@ -554,7 +539,11 @@
                                 "device control document": [
                                     {
                                         "device type": "HPLC",
-                                        "start time setting": "2024-01-02T11:00:00+00:00"
+                                        "start time setting": "2024-01-02T11:00:00+00:00",
+                                        "custom information document": {
+                                            "ColumnVolume": "4",
+                                            "ScanInterval": "0"
+                                        }
                                     }
                                 ]
                             },
@@ -616,27 +605,6 @@
                                     "measures": [
                                         [0.0, 0.0, 0.0]
                                     ]
-                                },
-                                "custom information document": {
-                                    "IsOriginalData": "true",
-                                    "MethodStartTime": "2024-01-02T11:00:00.000",
-                                    "AmplitudeUnit": "mAU",
-                                    "ChromatogramStartTimeUtcOffsetMinutes": "-300",
-                                    "AmplitudePrecision": "3",
-                                    "CurveDataType": "UV",
-                                    "IsReadOnly": "false",
-                                    "MethodStartTimeUtcOffsetMinutes": "-300",
-                                    "ColumnVolumeUnitName": "ml",
-                                    "IsoChroneType": "Time",
-                                    "DistanceToStartPoint": "0.08499908",
-                                    "CurveNumber": "3",
-                                    "ColumnVolume": "4",
-                                    "ScanInterval": "0",
-                                    "DistanceBetweenPoints": "0.008333334",
-                                    "ChromatogramStartTime": "2024-01-02T11:00:00.000",
-                                    "TimeUnit": "min",
-                                    "VolumeUnit": "ml",
-                                    "IsExternal": "false"
                                 }
                             }
                         },
@@ -645,7 +613,11 @@
                                 "device control document": [
                                     {
                                         "device type": "HPLC",
-                                        "start time setting": "2024-01-02T11:00:00+00:00"
+                                        "start time setting": "2024-01-02T11:00:00+00:00",
+                                        "custom information document": {
+                                            "ColumnVolume": "4",
+                                            "ScanInterval": "0"
+                                        }
                                     }
                                 ]
                             },
@@ -702,28 +674,26 @@
                                                 "measures": [
                                                     [31.154701232910156, 31.13396453857422, 30.91810417175293]
                                                 ]
-                                            },
-                                            "custom information document": {
-                                                "IsOriginalData": "true",
-                                                "MethodStartTime": "2024-01-02T11:00:00.000",
-                                                "AmplitudeUnit": "%",
-                                                "ChromatogramStartTimeUtcOffsetMinutes": "-300",
-                                                "AmplitudePrecision": "1",
-                                                "CurveDataType": "Conduction",
-                                                "IsReadOnly": "false",
-                                                "MethodStartTimeUtcOffsetMinutes": "-300",
-                                                "ColumnVolumeUnitName": "ml",
-                                                "IsoChroneType": "Time",
-                                                "DistanceToStartPoint": "0",
-                                                "CurveNumber": "5",
-                                                "ColumnVolume": "4",
-                                                "ScanInterval": "0",
-                                                "DistanceBetweenPoints": "0",
-                                                "ChromatogramStartTime": "2024-01-02T11:00:00.000",
-                                                "TimeUnit": "min",
-                                                "VolumeUnit": "ml",
-                                                "IsExternal": "false"
                                             }
+                                        },
+                                        "custom information document": {
+                                            "IsOriginalData": "true",
+                                            "MethodStartTime": "2024-01-02T11:00:00.000",
+                                            "AmplitudeUnit": "mS/cm",
+                                            "ChromatogramStartTimeUtcOffsetMinutes": "-300",
+                                            "AmplitudePrecision": "2",
+                                            "CurveDataType": "Conduction",
+                                            "IsReadOnly": "false",
+                                            "MethodStartTimeUtcOffsetMinutes": "-300",
+                                            "ColumnVolumeUnitName": "ml",
+                                            "IsoChroneType": "Time",
+                                            "CurveNumber": "4",
+                                            "ChromatogramStartTime": "2024-01-02T11:00:00.000",
+                                            "TimeUnit": "min",
+                                            "VolumeUnit": "ml",
+                                            "IsExternal": "false",
+                                            "DistanceBetweenPoints": "0.003333333",
+                                            "DistanceToStartPoint": "0"
                                         }
                                     }
                                 ]
@@ -761,27 +731,6 @@
                                     "measures": [
                                         [3.1048166275024416, 3.104812431335449, 3.104808044433594]
                                     ]
-                                },
-                                "custom information document": {
-                                    "IsOriginalData": "true",
-                                    "MethodStartTime": "2024-01-02T11:00:00.000",
-                                    "AmplitudeUnit": "mS/cm",
-                                    "ChromatogramStartTimeUtcOffsetMinutes": "-300",
-                                    "AmplitudePrecision": "2",
-                                    "CurveDataType": "Conduction",
-                                    "IsReadOnly": "false",
-                                    "MethodStartTimeUtcOffsetMinutes": "-300",
-                                    "ColumnVolumeUnitName": "ml",
-                                    "IsoChroneType": "Time",
-                                    "DistanceToStartPoint": "0",
-                                    "CurveNumber": "4",
-                                    "ColumnVolume": "4",
-                                    "ScanInterval": "0",
-                                    "DistanceBetweenPoints": "0.003333333",
-                                    "ChromatogramStartTime": "2024-01-02T11:00:00.000",
-                                    "TimeUnit": "min",
-                                    "VolumeUnit": "ml",
-                                    "IsExternal": "false"
                                 }
                             }
                         },
@@ -790,7 +739,11 @@
                                 "device control document": [
                                     {
                                         "device type": "HPLC",
-                                        "start time setting": "2024-01-02T11:00:00+00:00"
+                                        "start time setting": "2024-01-02T11:00:00+00:00",
+                                        "custom information document": {
+                                            "ColumnVolume": "4",
+                                            "ScanInterval": "0"
+                                        }
                                     }
                                 ]
                             },
@@ -852,26 +805,6 @@
                                     "measures": [
                                         [6.056291580200195, 0.0, 6.056750297546387]
                                     ]
-                                },
-                                "custom information document": {
-                                    "IsOriginalData": "true",
-                                    "MethodStartTime": "2024-01-02T11:00:00.000",
-                                    "ChromatogramStartTimeUtcOffsetMinutes": "-300",
-                                    "AmplitudePrecision": "2",
-                                    "CurveDataType": "pH",
-                                    "IsReadOnly": "false",
-                                    "MethodStartTimeUtcOffsetMinutes": "-300",
-                                    "ColumnVolumeUnitName": "ml",
-                                    "IsoChroneType": "Time",
-                                    "DistanceToStartPoint": "0.09333229",
-                                    "CurveNumber": "7",
-                                    "ColumnVolume": "4",
-                                    "ScanInterval": "0",
-                                    "DistanceBetweenPoints": "0.01666667",
-                                    "ChromatogramStartTime": "2024-01-02T11:00:00.000",
-                                    "TimeUnit": "min",
-                                    "VolumeUnit": "ml",
-                                    "IsExternal": "false"
                                 }
                             }
                         },
@@ -906,28 +839,11 @@
                                                 "measures": [
                                                     [0.0, 0.0, 0.0]
                                                 ]
-                                            },
-                                            "custom information document": {
-                                                "IsOriginalData": "true",
-                                                "MethodStartTime": "2024-01-02T11:00:00.000",
-                                                "AmplitudeUnit": "%",
-                                                "ChromatogramStartTimeUtcOffsetMinutes": "-300",
-                                                "AmplitudePrecision": "1",
-                                                "CurveDataType": "Other",
-                                                "IsReadOnly": "false",
-                                                "MethodStartTimeUtcOffsetMinutes": "-300",
-                                                "ColumnVolumeUnitName": "ml",
-                                                "IsoChroneType": "Time",
-                                                "DistanceToStartPoint": "0.07666588",
-                                                "CurveNumber": "6",
-                                                "ColumnVolume": "4",
-                                                "ScanInterval": "0",
-                                                "DistanceBetweenPoints": "0.0",
-                                                "ChromatogramStartTime": "2024-01-02T11:00:00.000",
-                                                "TimeUnit": "min",
-                                                "VolumeUnit": "ml",
-                                                "IsExternal": "false"
                                             }
+                                        },
+                                        "custom information document": {
+                                            "ColumnVolume": "4",
+                                            "ScanInterval": "0"
                                         }
                                     }
                                 ]
@@ -997,27 +913,6 @@
                                                 "measures": [
                                                     [0.03866715729236603, 0.19328080117702484, 0.20647241175174713]
                                                 ]
-                                            },
-                                            "custom information document": {
-                                                "IsOriginalData": "true",
-                                                "MethodStartTime": "2024-01-02T11:00:00.000",
-                                                "AmplitudeUnit": "MPa",
-                                                "ChromatogramStartTimeUtcOffsetMinutes": "-300",
-                                                "AmplitudePrecision": "3",
-                                                "CurveDataType": "Pressure",
-                                                "IsReadOnly": "false",
-                                                "MethodStartTimeUtcOffsetMinutes": "-300",
-                                                "ColumnVolumeUnitName": "ml",
-                                                "IsoChroneType": "Time",
-                                                "DistanceToStartPoint": "0.08666611",
-                                                "CurveNumber": "26",
-                                                "ColumnVolume": "4",
-                                                "ScanInterval": "0",
-                                                "DistanceBetweenPoints": "0.01666667",
-                                                "ChromatogramStartTime": "2024-01-02T11:00:00.000",
-                                                "TimeUnit": "min",
-                                                "VolumeUnit": "ml",
-                                                "IsExternal": "false"
                                             }
                                         },
                                         "post column pressure data cube": {
@@ -1045,27 +940,6 @@
                                                 "measures": [
                                                     [0.13015341758728027, 0.14228571951389313, 0.06806576997041702]
                                                 ]
-                                            },
-                                            "custom information document": {
-                                                "IsOriginalData": "true",
-                                                "MethodStartTime": "2024-01-02T11:00:00.000",
-                                                "AmplitudeUnit": "MPa",
-                                                "ChromatogramStartTimeUtcOffsetMinutes": "-300",
-                                                "AmplitudePrecision": "3",
-                                                "CurveDataType": "Pressure",
-                                                "IsReadOnly": "false",
-                                                "MethodStartTimeUtcOffsetMinutes": "-300",
-                                                "ColumnVolumeUnitName": "ml",
-                                                "IsoChroneType": "Time",
-                                                "DistanceToStartPoint": "0.08499908",
-                                                "CurveNumber": "28",
-                                                "ColumnVolume": "4",
-                                                "ScanInterval": "0",
-                                                "DistanceBetweenPoints": "0.01666667",
-                                                "ChromatogramStartTime": "2024-01-02T11:00:00.000",
-                                                "TimeUnit": "min",
-                                                "VolumeUnit": "ml",
-                                                "IsExternal": "false"
                                             }
                                         },
                                         "sample pressure data cube": {
@@ -1093,27 +967,6 @@
                                                 "measures": [
                                                     [0.05315263196825981, 0.05314874276518822, 0.05314485356211662]
                                                 ]
-                                            },
-                                            "custom information document": {
-                                                "IsOriginalData": "true",
-                                                "MethodStartTime": "2024-01-02T11:00:00.000",
-                                                "AmplitudeUnit": "MPa",
-                                                "ChromatogramStartTimeUtcOffsetMinutes": "-300",
-                                                "AmplitudePrecision": "3",
-                                                "CurveDataType": "Pressure",
-                                                "IsReadOnly": "false",
-                                                "MethodStartTimeUtcOffsetMinutes": "-300",
-                                                "ColumnVolumeUnitName": "ml",
-                                                "IsoChroneType": "Time",
-                                                "DistanceToStartPoint": "0.07166481",
-                                                "CurveNumber": "25",
-                                                "ColumnVolume": "4",
-                                                "ScanInterval": "0",
-                                                "DistanceBetweenPoints": "0.008333334",
-                                                "ChromatogramStartTime": "2024-01-02T11:00:00.000",
-                                                "TimeUnit": "min",
-                                                "VolumeUnit": "ml",
-                                                "IsExternal": "false"
                                             }
                                         },
                                         "system pressure data cube": {
@@ -1141,28 +994,11 @@
                                                 "measures": [
                                                     [0.1649095118045807, 0.13285210728645325, 0.10079468786716461]
                                                 ]
-                                            },
-                                            "custom information document": {
-                                                "IsOriginalData": "true",
-                                                "MethodStartTime": "2024-01-02T11:00:00.000",
-                                                "AmplitudeUnit": "MPa",
-                                                "ChromatogramStartTimeUtcOffsetMinutes": "-300",
-                                                "AmplitudePrecision": "3",
-                                                "CurveDataType": "Pressure",
-                                                "IsReadOnly": "false",
-                                                "MethodStartTimeUtcOffsetMinutes": "-300",
-                                                "ColumnVolumeUnitName": "ml",
-                                                "IsoChroneType": "Time",
-                                                "DistanceToStartPoint": "0.07166481",
-                                                "CurveNumber": "10",
-                                                "ColumnVolume": "4",
-                                                "ScanInterval": "0",
-                                                "DistanceBetweenPoints": "0.008333334",
-                                                "ChromatogramStartTime": "2024-01-02T11:00:00.000",
-                                                "TimeUnit": "min",
-                                                "VolumeUnit": "ml",
-                                                "IsExternal": "false"
                                             }
+                                        },
+                                        "custom information document": {
+                                            "ColumnVolume": "4",
+                                            "ScanInterval": "0"
                                         }
                                     }
                                 ]
@@ -1221,6 +1057,25 @@
                                                     [0.06312736868858337, 0.06418673694133759, 0.03745259717106819]
                                                 ]
                                             }
+                                        },
+                                        "custom information document": {
+                                            "IsOriginalData": "true",
+                                            "MethodStartTime": "2024-01-02T11:00:00.000",
+                                            "AmplitudeUnit": "MPa",
+                                            "ChromatogramStartTimeUtcOffsetMinutes": "-300",
+                                            "AmplitudePrecision": "3",
+                                            "CurveDataType": "Pressure",
+                                            "IsReadOnly": "false",
+                                            "MethodStartTimeUtcOffsetMinutes": "-300",
+                                            "ColumnVolumeUnitName": "ml",
+                                            "IsoChroneType": "Time",
+                                            "CurveNumber": "27",
+                                            "ChromatogramStartTime": "2024-01-02T11:00:00.000",
+                                            "TimeUnit": "min",
+                                            "VolumeUnit": "ml",
+                                            "IsExternal": "false",
+                                            "DistanceBetweenPoints": "0.01666667",
+                                            "DistanceToStartPoint": "0.08499908"
                                         }
                                     }
                                 ]
@@ -1265,27 +1120,6 @@
                                                 "measures": [
                                                     [0.0, 7.460474014282227, 14.920948028564453]
                                                 ]
-                                            },
-                                            "custom information document": {
-                                                "IsOriginalData": "true",
-                                                "MethodStartTime": "2024-01-02T11:00:00.000",
-                                                "AmplitudeUnit": "CV/h",
-                                                "ChromatogramStartTimeUtcOffsetMinutes": "-300",
-                                                "AmplitudePrecision": "2",
-                                                "CurveDataType": "Other",
-                                                "IsReadOnly": "false",
-                                                "MethodStartTimeUtcOffsetMinutes": "-300",
-                                                "ColumnVolumeUnitName": "ml",
-                                                "IsoChroneType": "Time",
-                                                "DistanceToStartPoint": "0.07666588",
-                                                "CurveNumber": "90",
-                                                "ColumnVolume": "4",
-                                                "ScanInterval": "0",
-                                                "DistanceBetweenPoints": "0.01666667",
-                                                "ChromatogramStartTime": "2024-01-02T11:00:00.000",
-                                                "TimeUnit": "min",
-                                                "VolumeUnit": "ml",
-                                                "IsExternal": "false"
                                             }
                                         },
                                         "sample flow rate data cube": {
@@ -1313,27 +1147,6 @@
                                                 "measures": [
                                                     [0.0, 0.0, 0.0]
                                                 ]
-                                            },
-                                            "custom information document": {
-                                                "IsOriginalData": "true",
-                                                "MethodStartTime": "2024-01-02T11:00:00.000",
-                                                "AmplitudeUnit": "CV/h",
-                                                "ChromatogramStartTimeUtcOffsetMinutes": "-300",
-                                                "AmplitudePrecision": "2",
-                                                "CurveDataType": "Other",
-                                                "IsReadOnly": "false",
-                                                "MethodStartTimeUtcOffsetMinutes": "-300",
-                                                "ColumnVolumeUnitName": "ml",
-                                                "IsoChroneType": "Time",
-                                                "DistanceToStartPoint": "0.08833313",
-                                                "CurveNumber": "89",
-                                                "ColumnVolume": "4",
-                                                "ScanInterval": "0",
-                                                "DistanceBetweenPoints": "0.01666667",
-                                                "ChromatogramStartTime": "2024-01-02T11:00:00.000",
-                                                "TimeUnit": "min",
-                                                "VolumeUnit": "ml",
-                                                "IsExternal": "false"
                                             }
                                         }
                                     },
@@ -1365,27 +1178,6 @@
                                                 "measures": [
                                                     [5.000010013580322, 2.3790595531463623, 0.0]
                                                 ]
-                                            },
-                                            "custom information document": {
-                                                "IsOriginalData": "true",
-                                                "MethodStartTime": "2024-01-02T11:00:00.000",
-                                                "AmplitudeUnit": "ml/min",
-                                                "ChromatogramStartTimeUtcOffsetMinutes": "-300",
-                                                "AmplitudePrecision": "2",
-                                                "CurveDataType": "Other",
-                                                "IsReadOnly": "false",
-                                                "MethodStartTimeUtcOffsetMinutes": "-300",
-                                                "ColumnVolumeUnitName": "ml",
-                                                "IsoChroneType": "Time",
-                                                "DistanceToStartPoint": "0.07666588",
-                                                "CurveNumber": "8",
-                                                "ColumnVolume": "4",
-                                                "ScanInterval": "0",
-                                                "DistanceBetweenPoints": "0.01666667",
-                                                "ChromatogramStartTime": "2024-01-02T11:00:00.000",
-                                                "TimeUnit": "min",
-                                                "VolumeUnit": "ml",
-                                                "IsExternal": "false"
                                             }
                                         },
                                         "sample flow rate data cube": {
@@ -1413,27 +1205,6 @@
                                                 "measures": [
                                                     [0.0, 0.0, 0.0]
                                                 ]
-                                            },
-                                            "custom information document": {
-                                                "IsOriginalData": "true",
-                                                "MethodStartTime": "2024-01-02T11:00:00.000",
-                                                "AmplitudeUnit": "ml/min",
-                                                "ChromatogramStartTimeUtcOffsetMinutes": "-300",
-                                                "AmplitudePrecision": "2",
-                                                "CurveDataType": "Other",
-                                                "IsReadOnly": "false",
-                                                "MethodStartTimeUtcOffsetMinutes": "-300",
-                                                "ColumnVolumeUnitName": "ml",
-                                                "IsoChroneType": "Time",
-                                                "DistanceToStartPoint": "0.08833313",
-                                                "CurveNumber": "14",
-                                                "ColumnVolume": "4",
-                                                "ScanInterval": "0",
-                                                "DistanceBetweenPoints": "0.01666667",
-                                                "ChromatogramStartTime": "2024-01-02T11:00:00.000",
-                                                "TimeUnit": "min",
-                                                "VolumeUnit": "ml",
-                                                "IsExternal": "false"
                                             }
                                         }
                                     },
@@ -1465,27 +1236,6 @@
                                                 "measures": [
                                                     [0.0, 0.0, 0.0]
                                                 ]
-                                            },
-                                            "custom information document": {
-                                                "IsOriginalData": "true",
-                                                "MethodStartTime": "2024-01-02T11:00:00.000",
-                                                "AmplitudeUnit": "cm/h",
-                                                "ChromatogramStartTimeUtcOffsetMinutes": "-300",
-                                                "AmplitudePrecision": "0",
-                                                "CurveDataType": "Other",
-                                                "IsReadOnly": "false",
-                                                "MethodStartTimeUtcOffsetMinutes": "-300",
-                                                "ColumnVolumeUnitName": "ml",
-                                                "IsoChroneType": "Time",
-                                                "DistanceToStartPoint": "0.08999825",
-                                                "CurveNumber": "15",
-                                                "ColumnVolume": "4",
-                                                "ScanInterval": "0",
-                                                "DistanceBetweenPoints": "0.01666667",
-                                                "ChromatogramStartTime": "2024-01-02T11:00:00.000",
-                                                "TimeUnit": "min",
-                                                "VolumeUnit": "ml",
-                                                "IsExternal": "false"
                                             }
                                         }
                                     }
@@ -1556,28 +1306,11 @@
                                                 "measures": [
                                                     [27.713348388671875, 27.648590087890625, 27.536712646484375]
                                                 ]
-                                            },
-                                            "custom information document": {
-                                                "IsOriginalData": "true",
-                                                "MethodStartTime": "2024-01-02T11:00:00.000",
-                                                "AmplitudeUnit": "°C",
-                                                "ChromatogramStartTimeUtcOffsetMinutes": "-300",
-                                                "AmplitudePrecision": "1",
-                                                "CurveDataType": "Temperature",
-                                                "IsReadOnly": "false",
-                                                "MethodStartTimeUtcOffsetMinutes": "-300",
-                                                "ColumnVolumeUnitName": "ml",
-                                                "IsoChroneType": "Time",
-                                                "DistanceToStartPoint": "0.1033325",
-                                                "CurveNumber": "13",
-                                                "ColumnVolume": "4",
-                                                "ScanInterval": "0",
-                                                "DistanceBetweenPoints": "0.03333334",
-                                                "ChromatogramStartTime": "2024-01-02T11:00:00.000",
-                                                "TimeUnit": "min",
-                                                "VolumeUnit": "ml",
-                                                "IsExternal": "false"
                                             }
+                                        },
+                                        "custom information document": {
+                                            "ColumnVolume": "4",
+                                            "ScanInterval": "0"
                                         }
                                     }
                                 ]
@@ -1632,8 +1365,8 @@
                                 "fraction role": "Out-Waste",
                                 "@type": "Fraction",
                                 "custom information document": {
-                                    "EventSubType": "Undefined",
-                                    "InstructionFeedback": "0"
+                                    "InstructionFeedback": "0",
+                                    "EventSubType": "Undefined"
                                 }
                             },
                             {
@@ -1648,8 +1381,8 @@
                                 },
                                 "@type": "Method",
                                 "custom information document": {
-                                    "EventSubType": "Undefined",
-                                    "InstructionFeedback": "0"
+                                    "InstructionFeedback": "0",
+                                    "EventSubType": "Undefined"
                                 }
                             },
                             {
@@ -1664,8 +1397,8 @@
                                 },
                                 "@type": "Method",
                                 "custom information document": {
-                                    "EventSubType": "Undefined",
-                                    "InstructionFeedback": "0"
+                                    "InstructionFeedback": "0",
+                                    "EventSubType": "Undefined"
                                 }
                             },
                             {
@@ -1680,8 +1413,8 @@
                                 },
                                 "@type": "Method",
                                 "custom information document": {
-                                    "EventSubType": "Undefined",
-                                    "InstructionFeedback": "0"
+                                    "InstructionFeedback": "0",
+                                    "EventSubType": "Undefined"
                                 }
                             },
                             {
@@ -1696,8 +1429,8 @@
                                 },
                                 "@type": "Method",
                                 "custom information document": {
-                                    "EventSubType": "Undefined",
-                                    "InstructionFeedback": "0"
+                                    "InstructionFeedback": "0",
+                                    "EventSubType": "Undefined"
                                 }
                             },
                             {
@@ -1712,8 +1445,8 @@
                                 },
                                 "@type": "Method",
                                 "custom information document": {
-                                    "EventSubType": "Undefined",
-                                    "InstructionFeedback": "0"
+                                    "InstructionFeedback": "0",
+                                    "EventSubType": "Undefined"
                                 }
                             },
                             {
@@ -1729,8 +1462,8 @@
                                 "fraction role": "Frac",
                                 "@type": "Fraction",
                                 "custom information document": {
-                                    "EventSubType": "Undefined",
-                                    "InstructionFeedback": "0"
+                                    "InstructionFeedback": "0",
+                                    "EventSubType": "Undefined"
                                 }
                             },
                             {
@@ -1746,8 +1479,8 @@
                                 "fraction role": "Out-Waste",
                                 "@type": "Fraction",
                                 "custom information document": {
-                                    "EventSubType": "Undefined",
-                                    "InstructionFeedback": "0"
+                                    "InstructionFeedback": "0",
+                                    "EventSubType": "Undefined"
                                 }
                             }
                         ]
@@ -3567,15 +3300,15 @@
                         ]
                     },
                     "custom information document": {
-                        "ChromatogramName": "Chrom.1",
-                        "CreatedUtcOffsetMinutes": "-300",
-                        "Created": "2024-01-01T10:00:00.000",
-                        "UNICORNVersion": "7.7.0.4016",
-                        "IsReadonly": "false",
-                        "ChromatogramID": "100",
                         "FormatVersion": "9",
+                        "CreatedUtcOffsetMinutes": "-300",
                         "TimeUnit": "min",
-                        "VolumeUnit": "ml"
+                        "IsReadonly": "false",
+                        "VolumeUnit": "ml",
+                        "Created": "2024-01-01T10:00:00.000",
+                        "ChromatogramName": "Chrom.1",
+                        "ChromatogramID": "100",
+                        "software version": "7.7.0.4016"
                     }
                 },
                 "analyst": "Default"
@@ -3585,7 +3318,22 @@
             "ASM converter name": "allotropy_cytiva_unicorn",
             "ASM converter version": "0.1.102",
             "file name": "unicorn_1.zip",
-            "UNC path": "tests/parsers/cytiva_unicorn/testdata/unicorn_1.zip"
+            "UNC path": "tests/parsers/cytiva_unicorn/testdata/unicorn_1.zip",
+            "custom information document": {
+                "IsArchived": "false",
+                "FormatVersion": "100",
+                "SystemTypeName": "NEXTAKTAchromatography",
+                "ResultState": "Evaluated",
+                "IsReadOnly": "false",
+                "BatchId": "f65ef0a9-7240-434e-aac1-44cb8e8faa08",
+                "ResultPurpose": "100",
+                "RunIndex": "100",
+                "Name": "Capto Adhere Polishing 100ppm Sample",
+                "RunType": "Method",
+                "FolderPath": "/DefaultHome",
+                "ResultFormatVersion": "100",
+                "software version": "100.100.100.100"
+            }
         },
         "device system document": {
             "asset management identifier": "AKTA avant",

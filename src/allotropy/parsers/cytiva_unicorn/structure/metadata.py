@@ -37,7 +37,7 @@ def create_metadata(
     system_name = results.find_or_none("SystemName")
     firmware_version = instrument_config_data.find_or_none("FirmwareVersion")
 
-    return Metadata(
+    metadata = Metadata(
         asset_management_identifier=instrument_config.get_attr("Description"),
         product_manufacturer="Cytiva Life Sciences",
         device_identifier=system_name.get_text_or_none() if system_name else None,
@@ -47,4 +47,14 @@ def create_metadata(
         analyst=get_audit_trail_entry_user(handler),
         file_name=Path(file_path).name,
         unc_path=file_path,
+        data_system_custom_info={},
     )
+
+    if metadata.data_system_custom_info is not None:
+        data_system_custom_info = results.get_unread()
+        data_system_custom_info["software version"] = data_system_custom_info[
+            "UNICORNVersion"
+        ]
+        data_system_custom_info.pop("UNICORNVersion")
+        metadata.data_system_custom_info.update(data_system_custom_info)
+    return metadata
