@@ -334,9 +334,7 @@ class Measurement:
             data.get_unread()
             return message
 
-        return map_rows(
-            errors_data.loc[[well_location]], extract_message
-        )
+        return map_rows(errors_data.loc[[well_location]], extract_message)
 
 
 @dataclass(frozen=True)
