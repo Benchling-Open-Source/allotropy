@@ -77,6 +77,25 @@ EXCLUDED_CHANNELS = [
     "Time",
 ]
 
+FIELDS_TO_SKIP = {
+    "$OP",  # Already captured as analyst
+}
+
+# Fields for device control document
+DEVICE_CONTROL_FIELDS = {
+    "CST SETUP STATUS",
+    "CST BEADS LOT ID",
+    "CYTOMETER CONFIG NAME",
+    "CYTOMETER CONFIG CREATE DATE",
+    "CST SETUP DATE",
+    "CST BASELINE DATE",
+    "CST BEADS EXPIRED",
+}
+
+MEASUREMENT_AGGREGATE_FIELDS = {
+    "$BTIM",
+}
+
 
 def _filter_unread_data(unread_data: dict[str, str | None]) -> dict[str, str | None]:
     """Filter out empty, null, or whitespace-only values from unread data."""
@@ -89,6 +108,26 @@ def _filter_unread_data(unread_data: dict[str, str | None]) -> dict[str, str | N
             or (isinstance(value, str) and value.strip() == "")
         )
     }
+
+
+def _separate_custom_fields(
+    custom_info: dict[str, str]
+) -> tuple[dict[str, str], dict[str, str], dict[str, str]]:
+    device_control_info = {}
+    measurement_aggregate_info = {}
+    other_info = {}
+
+    for key, value in custom_info.items():
+        if key in FIELDS_TO_SKIP:
+            continue
+        elif key in DEVICE_CONTROL_FIELDS:
+            device_control_info[key] = value
+        elif key in MEASUREMENT_AGGREGATE_FIELDS:
+            measurement_aggregate_info[key] = value
+        else:
+            other_info[key] = value
+
+    return device_control_info, measurement_aggregate_info, other_info
 
 
 class RegionType(Enum):
@@ -533,7 +572,7 @@ def _create_compensation_matrix_groups(
 
 def _process_tube(
     tube: StrictXmlElement, specimen_name: str | None, data_processing_time: str | None
-) -> list[Measurement]:
+) -> tuple[list[Measurement], dict[str, str]]:
     """
     Process a tube element to create measurements.
 
@@ -541,7 +580,7 @@ def _process_tube(
         tube: The tube element to process
 
     Returns:
-        list[Measurement]: List containing a single Measurement
+        tuple: (measurements, measurement_aggregate_custom_info)
     """
     tube_name = tube.get_attr("name")
 
@@ -562,6 +601,12 @@ def _process_tube(
                     if keyword_value:
                         custom_info[keyword_name] = keyword_value
 
+    (
+        device_control_info,
+        measurement_aggregate_info,
+        other_info,
+    ) = _separate_custom_fields(custom_info)
+
     # Create populations and data regions
     populations = _create_populations(tube)
     data_regions = _create_data_regions(tube)
@@ -574,10 +619,11 @@ def _process_tube(
         processed_data_identifier=processed_data_id,
         populations=populations,
         data_regions=data_regions,
-        custom_info=custom_info if custom_info else None,
+        device_control_custom_info=device_control_info if device_control_info else None,
+        custom_info=other_info if other_info else None,
     )
 
-    return [measurement]
+    return [measurement], measurement_aggregate_info
 
 
 def create_measurement_groups(root_element: StrictXmlElement) -> list[MeasurementGroup]:
@@ -608,7 +654,7 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
         tubes = specimen.findall("tube")
         for tube in tubes:
             experimental_data_identifier = tube.find_or_none("data_filename")
-            measurements = _process_tube(
+            measurements, measurement_aggregate_custom_info = _process_tube(
                 tube,
                 specimen_name,
                 export_time.get_text_or_none() if export_time else None,
@@ -626,6 +672,9 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
                 compensation_matrix_groups=compensation_matrix_groups,
                 measurements=measurements,
                 experiment_identifier=experiment_identifier,
+                measurement_aggregate_custom_info=measurement_aggregate_custom_info
+                if measurement_aggregate_custom_info
+                else None,
             )
 
             result.append(measurement_group)

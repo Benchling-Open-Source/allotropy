@@ -9,7 +9,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Flow Cytometer"
+                                        "device type": "Flow Cytometer",
+                                        "custom information document": {
+                                            "CST SETUP STATUS": "SUCCESS",
+                                            "CST BEADS LOT ID": "80998",
+                                            "CYTOMETER CONFIG NAME": "Copy of SORP Aria, 5 laser (3b-3r-5v-2uv-5yg) 85µm",
+                                            "CYTOMETER CONFIG CREATE DATE": "10/13/2009 05:00:43 AM",
+                                            "CST SETUP DATE": "04/10/2014 12:41:18 PM",
+                                            "CST BASELINE DATE": "04/10/2014 12:30:44 PM",
+                                            "CST BEADS EXPIRED": "2"
+                                        }
                                     }
                                 ]
                             },
@@ -1009,23 +1018,17 @@
                                 ]
                             },
                             "custom information document": {
-                                "$OP": "Administrator",
-                                "GUID": "35113c70-66ff-4860-906c-755c55065296",
-                                "CST SETUP STATUS": "SUCCESS",
-                                "CST BEADS LOT ID": "80998",
-                                "CYTOMETER CONFIG NAME": "Copy of SORP Aria, 5 laser (3b-3r-5v-2uv-5yg) 85µm",
-                                "CYTOMETER CONFIG CREATE DATE": "10/13/2009 05:00:43 AM",
-                                "CST SETUP DATE": "04/10/2014 12:41:18 PM",
-                                "CST BASELINE DATE": "04/10/2014 12:30:44 PM",
-                                "CST BEADS EXPIRED": "2",
-                                "$BTIM": "13:03:13"
+                                "GUID": "35113c70-66ff-4860-906c-755c55065296"
                             }
                         }
                     ],
                     "analyst": "Administrator",
                     "measurement time": "2019-05-03T13:03:25+00:00",
                     "experimental data identifier": "20190503_1 Gfp Bfp Cherry ToPro3.fcs",
-                    "experiment identifier": "20190503 TOPRO GFP BFP mCherry PECy7 BV510"
+                    "experiment identifier": "20190503 TOPRO GFP BFP mCherry PECy7 BV510",
+                    "custom information document": {
+                        "$BTIM": "13:03:13"
+                    }
                 },
                 "compensation matrix aggregate document": {
                     "compensation matrix document": [
@@ -2943,7 +2946,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Flow Cytometer"
+                                        "device type": "Flow Cytometer",
+                                        "custom information document": {
+                                            "CST SETUP STATUS": "SUCCESS",
+                                            "CST BEADS LOT ID": "80998",
+                                            "CYTOMETER CONFIG NAME": "Copy of SORP Aria, 5 laser (3b-3r-5v-2uv-5yg) 85µm",
+                                            "CYTOMETER CONFIG CREATE DATE": "10/13/2009 05:00:43 AM",
+                                            "CST SETUP DATE": "04/10/2014 12:41:18 PM",
+                                            "CST BASELINE DATE": "04/10/2014 12:30:44 PM",
+                                            "CST BEADS EXPIRED": "2"
+                                        }
                                     }
                                 ]
                             },
@@ -3943,23 +3955,17 @@
                                 ]
                             },
                             "custom information document": {
-                                "$OP": "Administrator",
-                                "GUID": "e796d73d-789c-48ee-a8b3-e42dfa62ee92",
-                                "CST SETUP STATUS": "SUCCESS",
-                                "CST BEADS LOT ID": "80998",
-                                "CYTOMETER CONFIG NAME": "Copy of SORP Aria, 5 laser (3b-3r-5v-2uv-5yg) 85µm",
-                                "CYTOMETER CONFIG CREATE DATE": "10/13/2009 05:00:43 AM",
-                                "CST SETUP DATE": "04/10/2014 12:41:18 PM",
-                                "CST BASELINE DATE": "04/10/2014 12:30:44 PM",
-                                "CST BEADS EXPIRED": "2",
-                                "$BTIM": "13:11:39"
+                                "GUID": "e796d73d-789c-48ee-a8b3-e42dfa62ee92"
                             }
                         }
                     ],
                     "analyst": "Administrator",
                     "measurement time": "2019-05-03T13:03:25+00:00",
                     "experimental data identifier": "20190503_2 Gfp Bfp Cherry CD19 ToPro3.fcs",
-                    "experiment identifier": "20190503 TOPRO GFP BFP mCherry PECy7 BV510"
+                    "experiment identifier": "20190503 TOPRO GFP BFP mCherry PECy7 BV510",
+                    "custom information document": {
+                        "$BTIM": "13:11:39"
+                    }
                 },
                 "compensation matrix aggregate document": {
                     "compensation matrix document": [
@@ -5877,7 +5883,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Flow Cytometer"
+                                        "device type": "Flow Cytometer",
+                                        "custom information document": {
+                                            "CST SETUP STATUS": "SUCCESS",
+                                            "CST BEADS LOT ID": "80998",
+                                            "CYTOMETER CONFIG NAME": "Copy of SORP Aria, 5 laser (3b-3r-5v-2uv-5yg) 85µm",
+                                            "CYTOMETER CONFIG CREATE DATE": "10/13/2009 05:00:43 AM",
+                                            "CST SETUP DATE": "04/10/2014 12:41:18 PM",
+                                            "CST BASELINE DATE": "04/10/2014 12:30:44 PM",
+                                            "CST BEADS EXPIRED": "2"
+                                        }
                                     }
                                 ]
                             },
@@ -6877,23 +6892,17 @@
                                 ]
                             },
                             "custom information document": {
-                                "$OP": "Administrator",
-                                "GUID": "da1515a7-80a9-4ca5-a24f-360dfd22569c",
-                                "CST SETUP STATUS": "SUCCESS",
-                                "CST BEADS LOT ID": "80998",
-                                "CYTOMETER CONFIG NAME": "Copy of SORP Aria, 5 laser (3b-3r-5v-2uv-5yg) 85µm",
-                                "CYTOMETER CONFIG CREATE DATE": "10/13/2009 05:00:43 AM",
-                                "CST SETUP DATE": "04/10/2014 12:41:18 PM",
-                                "CST BASELINE DATE": "04/10/2014 12:30:44 PM",
-                                "CST BEADS EXPIRED": "2",
-                                "$BTIM": "13:14:23"
+                                "GUID": "da1515a7-80a9-4ca5-a24f-360dfd22569c"
                             }
                         }
                     ],
                     "analyst": "Administrator",
                     "measurement time": "2019-05-03T13:03:25+00:00",
                     "experimental data identifier": "20190503_3 Gfp Bfp Cherry Mac1 ToPro3.fcs",
-                    "experiment identifier": "20190503 TOPRO GFP BFP mCherry PECy7 BV510"
+                    "experiment identifier": "20190503 TOPRO GFP BFP mCherry PECy7 BV510",
+                    "custom information document": {
+                        "$BTIM": "13:14:23"
+                    }
                 },
                 "compensation matrix aggregate document": {
                     "compensation matrix document": [
@@ -8811,7 +8820,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Flow Cytometer"
+                                        "device type": "Flow Cytometer",
+                                        "custom information document": {
+                                            "CST SETUP STATUS": "SUCCESS",
+                                            "CST BEADS LOT ID": "80998",
+                                            "CYTOMETER CONFIG NAME": "Copy of SORP Aria, 5 laser (3b-3r-5v-2uv-5yg) 85µm",
+                                            "CYTOMETER CONFIG CREATE DATE": "10/13/2009 05:00:43 AM",
+                                            "CST SETUP DATE": "04/10/2014 12:41:18 PM",
+                                            "CST BASELINE DATE": "04/10/2014 12:30:44 PM",
+                                            "CST BEADS EXPIRED": "2"
+                                        }
                                     }
                                 ]
                             },
@@ -9811,23 +9829,17 @@
                                 ]
                             },
                             "custom information document": {
-                                "$OP": "Administrator",
-                                "GUID": "193f8a21-f917-420a-a4ed-89fdcf6799ec",
-                                "CST SETUP STATUS": "SUCCESS",
-                                "CST BEADS LOT ID": "80998",
-                                "CYTOMETER CONFIG NAME": "Copy of SORP Aria, 5 laser (3b-3r-5v-2uv-5yg) 85µm",
-                                "CYTOMETER CONFIG CREATE DATE": "10/13/2009 05:00:43 AM",
-                                "CST SETUP DATE": "04/10/2014 12:41:18 PM",
-                                "CST BASELINE DATE": "04/10/2014 12:30:44 PM",
-                                "CST BEADS EXPIRED": "2",
-                                "$BTIM": "13:20:08"
+                                "GUID": "193f8a21-f917-420a-a4ed-89fdcf6799ec"
                             }
                         }
                     ],
                     "analyst": "Administrator",
                     "measurement time": "2019-05-03T13:03:25+00:00",
                     "experimental data identifier": "20190503_4 Scramble T0.fcs",
-                    "experiment identifier": "20190503 TOPRO GFP BFP mCherry PECy7 BV510"
+                    "experiment identifier": "20190503 TOPRO GFP BFP mCherry PECy7 BV510",
+                    "custom information document": {
+                        "$BTIM": "13:20:08"
+                    }
                 },
                 "compensation matrix aggregate document": {
                     "compensation matrix document": [
@@ -11745,7 +11757,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Flow Cytometer"
+                                        "device type": "Flow Cytometer",
+                                        "custom information document": {
+                                            "CST SETUP STATUS": "SUCCESS",
+                                            "CST BEADS LOT ID": "80998",
+                                            "CYTOMETER CONFIG NAME": "Copy of SORP Aria, 5 laser (3b-3r-5v-2uv-5yg) 85µm",
+                                            "CYTOMETER CONFIG CREATE DATE": "10/13/2009 05:00:43 AM",
+                                            "CST SETUP DATE": "04/10/2014 12:41:18 PM",
+                                            "CST BASELINE DATE": "04/10/2014 12:30:44 PM",
+                                            "CST BEADS EXPIRED": "2"
+                                        }
                                     }
                                 ]
                             },
@@ -12745,23 +12766,17 @@
                                 ]
                             },
                             "custom information document": {
-                                "$OP": "Administrator",
-                                "GUID": "85665ccc-e100-4250-ad7c-cdc1b95d4595",
-                                "CST SETUP STATUS": "SUCCESS",
-                                "CST BEADS LOT ID": "80998",
-                                "CYTOMETER CONFIG NAME": "Copy of SORP Aria, 5 laser (3b-3r-5v-2uv-5yg) 85µm",
-                                "CYTOMETER CONFIG CREATE DATE": "10/13/2009 05:00:43 AM",
-                                "CST SETUP DATE": "04/10/2014 12:41:18 PM",
-                                "CST BASELINE DATE": "04/10/2014 12:30:44 PM",
-                                "CST BEADS EXPIRED": "2",
-                                "$BTIM": "13:21:24"
+                                "GUID": "85665ccc-e100-4250-ad7c-cdc1b95d4595"
                             }
                         }
                     ],
                     "analyst": "Administrator",
                     "measurement time": "2019-05-03T13:03:25+00:00",
                     "experimental data identifier": "20190503_5 Scramble T3.fcs",
-                    "experiment identifier": "20190503 TOPRO GFP BFP mCherry PECy7 BV510"
+                    "experiment identifier": "20190503 TOPRO GFP BFP mCherry PECy7 BV510",
+                    "custom information document": {
+                        "$BTIM": "13:21:24"
+                    }
                 },
                 "compensation matrix aggregate document": {
                     "compensation matrix document": [
@@ -14679,7 +14694,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Flow Cytometer"
+                                        "device type": "Flow Cytometer",
+                                        "custom information document": {
+                                            "CST SETUP STATUS": "SUCCESS",
+                                            "CST BEADS LOT ID": "80998",
+                                            "CYTOMETER CONFIG NAME": "Copy of SORP Aria, 5 laser (3b-3r-5v-2uv-5yg) 85µm",
+                                            "CYTOMETER CONFIG CREATE DATE": "10/13/2009 05:00:43 AM",
+                                            "CST SETUP DATE": "04/10/2014 12:41:18 PM",
+                                            "CST BASELINE DATE": "04/10/2014 12:30:44 PM",
+                                            "CST BEADS EXPIRED": "2"
+                                        }
                                     }
                                 ]
                             },
@@ -15679,23 +15703,17 @@
                                 ]
                             },
                             "custom information document": {
-                                "$OP": "Administrator",
-                                "GUID": "bae42443-a2b1-4f4f-ad49-b49f03276dd8",
-                                "CST SETUP STATUS": "SUCCESS",
-                                "CST BEADS LOT ID": "80998",
-                                "CYTOMETER CONFIG NAME": "Copy of SORP Aria, 5 laser (3b-3r-5v-2uv-5yg) 85µm",
-                                "CYTOMETER CONFIG CREATE DATE": "10/13/2009 05:00:43 AM",
-                                "CST SETUP DATE": "04/10/2014 12:41:18 PM",
-                                "CST BASELINE DATE": "04/10/2014 12:30:44 PM",
-                                "CST BEADS EXPIRED": "2",
-                                "$BTIM": "13:24:27"
+                                "GUID": "bae42443-a2b1-4f4f-ad49-b49f03276dd8"
                             }
                         }
                     ],
                     "analyst": "Administrator",
                     "measurement time": "2019-05-03T13:03:25+00:00",
                     "experimental data identifier": "20190503_6 Furin T0.fcs",
-                    "experiment identifier": "20190503 TOPRO GFP BFP mCherry PECy7 BV510"
+                    "experiment identifier": "20190503 TOPRO GFP BFP mCherry PECy7 BV510",
+                    "custom information document": {
+                        "$BTIM": "13:24:27"
+                    }
                 },
                 "compensation matrix aggregate document": {
                     "compensation matrix document": [
@@ -17613,7 +17631,16 @@
                             "device control aggregate document": {
                                 "device control document": [
                                     {
-                                        "device type": "Flow Cytometer"
+                                        "device type": "Flow Cytometer",
+                                        "custom information document": {
+                                            "CST SETUP STATUS": "SUCCESS",
+                                            "CST BEADS LOT ID": "80998",
+                                            "CYTOMETER CONFIG NAME": "Copy of SORP Aria, 5 laser (3b-3r-5v-2uv-5yg) 85µm",
+                                            "CYTOMETER CONFIG CREATE DATE": "10/13/2009 05:00:43 AM",
+                                            "CST SETUP DATE": "04/10/2014 12:41:18 PM",
+                                            "CST BASELINE DATE": "04/10/2014 12:30:44 PM",
+                                            "CST BEADS EXPIRED": "2"
+                                        }
                                     }
                                 ]
                             },
@@ -18613,23 +18640,17 @@
                                 ]
                             },
                             "custom information document": {
-                                "$OP": "Administrator",
-                                "GUID": "0ba413ba-4e1f-45e3-ad50-4afeefdffcfd",
-                                "CST SETUP STATUS": "SUCCESS",
-                                "CST BEADS LOT ID": "80998",
-                                "CYTOMETER CONFIG NAME": "Copy of SORP Aria, 5 laser (3b-3r-5v-2uv-5yg) 85µm",
-                                "CYTOMETER CONFIG CREATE DATE": "10/13/2009 05:00:43 AM",
-                                "CST SETUP DATE": "04/10/2014 12:41:18 PM",
-                                "CST BASELINE DATE": "04/10/2014 12:30:44 PM",
-                                "CST BEADS EXPIRED": "2",
-                                "$BTIM": "14:27:20"
+                                "GUID": "0ba413ba-4e1f-45e3-ad50-4afeefdffcfd"
                             }
                         }
                     ],
                     "analyst": "Administrator",
                     "measurement time": "2019-05-03T13:03:25+00:00",
                     "experimental data identifier": "20190503_7 Furin T3.fcs",
-                    "experiment identifier": "20190503 TOPRO GFP BFP mCherry PECy7 BV510"
+                    "experiment identifier": "20190503 TOPRO GFP BFP mCherry PECy7 BV510",
+                    "custom information document": {
+                        "$BTIM": "14:27:20"
+                    }
                 },
                 "compensation matrix aggregate document": {
                     "compensation matrix document": [
@@ -20547,7 +20568,7 @@
             "UNC path": "tests/parsers/bd_biosciences_facsdiva/testdata/facsdiva_example_2.xml",
             "file name": "facsdiva_example_2.xml",
             "ASM converter name": "allotropy_bd_biosciences_facsdiva",
-            "ASM converter version": "0.1.93",
+            "ASM converter version": "0.1.101",
             "software name": "BD FACSDiva",
             "software version": "Version 8.0.2"
         },
