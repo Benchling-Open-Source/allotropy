@@ -73,6 +73,9 @@ class Header:
         raw_datetime = info_row[str, "BatchStartTime"]
         sample_volume = info_row.get(str, ["SampleVolume", "MaxSampleUptakeVolume"])
 
+        # Capture unread header data to prevent warnings
+        info_row.get_unread()
+
         return Header(
             model_number=cls._get_model_number(header_data),
             software_version=info_row.get(str, "Build"),
@@ -138,6 +141,8 @@ def create_calibration(calibration_data: SeriesData) -> Calibration:
         msg = f"Expected at least two columns on the calibration line, got:\n{calibration_data.series}."
         raise AllotropeConversionError(msg)
 
+    # Read the calibration data using SeriesData methods
+    calibration_name = calibration_data.series.iloc[0]
     calibration_info = str(calibration_data.series.iloc[1]).strip()
 
     # Check if the calibration info starts with a known status value
@@ -164,7 +169,7 @@ def create_calibration(calibration_data: SeriesData) -> Calibration:
         raise AllotropeConversionError(msg)
 
     return Calibration(
-        name=calibration_data.series.iloc[0].replace("Last", "").strip(),
+        name=calibration_name.replace("Last", "").strip(),
         time=time,
         report=report,
     )
@@ -202,9 +207,12 @@ class Measurement:
         metadata_keys = ["Sample", "Total Events"]
 
         well_location, location_id = cls._get_location_details(location)
-        dilution_factor_setting = SeriesData(dilution_factor_data.loc[location]).get(
+        dilution_factor_series = SeriesData(dilution_factor_data.loc[location])
+        dilution_factor_setting = dilution_factor_series.get(
             float, "Dilution Factor", NEGATIVE_ZERO, validate=SeriesData.NOT_NAN
         )
+        # Capture unread dilution factor data to prevent warnings
+        dilution_factor_series.get_unread()
         errors: list[Error] = []
         data_errors = cls._get_errors(errors_data, well_location) or []
         for data_error in data_errors:
@@ -319,8 +327,15 @@ class Measurement:
     ) -> list[str] | None:
         if errors_data is None or well_location not in errors_data.index:
             return None
+
+        def extract_message(data: SeriesData) -> str:
+            message = data[str, "Message"]
+            # Capture unread error data to prevent warnings
+            data.get_unread()
+            return message
+
         return map_rows(
-            errors_data.loc[[well_location]], lambda data: data[str, "Message"]
+            errors_data.loc[[well_location]], extract_message
         )
 
 
@@ -356,6 +371,9 @@ class MeasurementList:
                 count_data=count_data,
                 bead_ids_data=bead_ids_data,
             )
+
+        # Capture unread bead IDs data to prevent warnings
+        bead_ids_data.get_unread()
 
         return MeasurementList(map_rows(results_data["Count"], create_measurement))
 
