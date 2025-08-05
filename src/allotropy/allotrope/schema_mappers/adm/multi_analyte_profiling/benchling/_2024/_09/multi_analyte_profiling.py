@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Any
 
 from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
     AnalyteAggregateDocument,
@@ -100,6 +101,9 @@ class Measurement:
     dilution_factor_setting: float | None = None
     minimum_assay_bead_count_setting: float | None = None
     detector_gain_setting: str | None = None
+
+    # custom
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
