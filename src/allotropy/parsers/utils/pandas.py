@@ -433,7 +433,7 @@ class SeriesData:
             return get_first_not_none(
                 lambda k: self.get(type_, k, validate=validate), key
             )
-        elif not isinstance(key, str):
+        elif not isinstance(key, str | int):
             msg = f"Unexpected key type ({type(key)}): {key}"
             raise ValueError(msg)
         self.read_keys.add(key)
