@@ -77,6 +77,58 @@ EXCLUDED_CHANNELS = [
     "Time",
 ]
 
+FIELDS_TO_SKIP = {
+    "$OP",  # Already captured as analyst
+}
+
+# Fields for device control document
+DEVICE_CONTROL_FIELDS = {
+    "CST SETUP STATUS",
+    "CST BEADS LOT ID",
+    "CYTOMETER CONFIG NAME",
+    "CYTOMETER CONFIG CREATE DATE",
+    "CST SETUP DATE",
+    "CST BASELINE DATE",
+    "CST BEADS EXPIRED",
+}
+
+MEASUREMENT_AGGREGATE_FIELDS = {
+    "$BTIM",
+}
+
+
+def _filter_unread_data(unread_data: dict[str, str | None]) -> dict[str, str | None]:
+    """Filter out empty, null, or whitespace-only values from unread data."""
+    return {
+        key: value
+        for key, value in unread_data.items()
+        if not (
+            (value == "")
+            or (value is None)
+            or (isinstance(value, str) and value.strip() == "")
+        )
+    }
+
+
+def _separate_custom_fields(
+    custom_info: dict[str, str]
+) -> tuple[dict[str, str], dict[str, str], dict[str, str]]:
+    device_control_info = {}
+    measurement_aggregate_info = {}
+    other_info = {}
+
+    for key, value in custom_info.items():
+        if key in FIELDS_TO_SKIP:
+            continue
+        elif key in DEVICE_CONTROL_FIELDS:
+            device_control_info[key] = value
+        elif key in MEASUREMENT_AGGREGATE_FIELDS:
+            measurement_aggregate_info[key] = value
+        else:
+            other_info[key] = value
+
+    return device_control_info, measurement_aggregate_info, other_info
+
 
 class RegionType(Enum):
     POLYGON = "POLYGON"
@@ -87,13 +139,26 @@ class RegionType(Enum):
 def create_metadata(root_element: StrictXmlElement, file_path: str) -> Metadata:
     equipment_serial_number = None
     model_number = None
+    all_custom_info = {}
 
     tube = root_element.recursive_find_or_none(["experiment", "specimen", "tube"])
     if tube:
         equipment_serial_number = tube.find_or_none("data_instrument_serial_number")
         model_number = tube.find_or_none("data_instrument_name")
+        tube.mark_read("name")
 
     software_version = root_element.get_attr_or_none("version")
+
+    # Collect unread data from root element
+    root_unread = root_element.get_unread(
+        skip={
+            "version",
+            "release_version",
+        }
+    )
+    if root_unread:
+        filtered_root_unread = _filter_unread_data(root_unread)
+        all_custom_info.update(filtered_root_unread)
 
     return Metadata(
         file_name=Path(file_path).name,
@@ -107,6 +172,7 @@ def create_metadata(root_element: StrictXmlElement, file_path: str) -> Metadata:
         software_name=constants.SOFTWARE_NAME,
         software_version=software_version,
         asm_file_identifier=Path(file_path).with_suffix(".json").name,
+        custom_info=all_custom_info if all_custom_info else None,
     )
 
 
@@ -134,6 +200,7 @@ def _extract_statistics_from_calculations(
     for calc_schedule in statistics_element.findall("calculation_schedule"):
         gate = calc_schedule.get_attr_or_none("gate")
         if gate != gate_name:
+            calc_schedule.get_unread()
             continue
 
         parameter = calc_schedule.get_attr_or_none("parameter")
@@ -208,14 +275,16 @@ def _create_data_regions(tube: StrictXmlElement) -> list[DataRegion]:
     # First pass: collect gate information
     for gate in gates_element.findall("gate"):
         # Skip All Events full name (no region)
-        if gate.get_attr_or_none("type") == "EventSource_Classifier":
+        gate_type = gate.get_attr_or_none("type")
+        fullname = gate.get_attr_or_none("fullname")
+
+        if gate_type == "EventSource_Classifier":
             continue
 
         region = gate.find_or_none("region")
         if not region:
             continue
 
-        fullname = gate.get_attr_or_none("fullname")
         if not fullname:
             continue
 
@@ -223,16 +292,26 @@ def _create_data_regions(tube: StrictXmlElement) -> list[DataRegion]:
         if region_name:
             fullname_to_region[fullname] = region_name
 
+        region.mark_read(
+            {
+                "type",
+                "xparm",
+                "yparm",
+            }
+        )
+
     # Second pass: create data regions
     for gate in gates_element.findall("gate"):
-        if gate.get_attr_or_none("type") == "EventSource_Classifier":
+        gate_type = gate.get_attr_or_none("type")
+        fullname = gate.get_attr_or_none("fullname")
+
+        if gate_type == "EventSource_Classifier":
             continue
 
         region = gate.find_or_none("region")
         if not region:
             continue
 
-        fullname = gate.get_attr_or_none("fullname")
         if not fullname:
             continue
 
@@ -348,6 +427,20 @@ def _create_populations(tube: StrictXmlElement) -> list[Population]:
         region = _gate.find_or_none("region")
         region_id = region.get_attr_or_none("name") if region else None
 
+        if region:
+            region.mark_read(
+                {
+                    "type",
+                    "xparm",
+                    "yparm",
+                }
+            )
+        _gate.mark_read(
+            {
+                "type",
+            }
+        )
+
         sub_populations = []
         if full_name in gate_to_children:
             for child_fullname in gate_to_children[full_name]:
@@ -378,11 +471,16 @@ def _create_populations(tube: StrictXmlElement) -> list[Population]:
         )
 
     # Find the root population (All Events) and build the tree
-    root_gates = [
-        gate
-        for gate in gates_element.findall("gate")
-        if gate.get_attr_or_none("type") == "EventSource_Classifier"
-    ]
+    root_gates = []
+    for gate in gates_element.findall("gate"):
+        gate_type = gate.get_attr_or_none("type")
+        if gate_type == "EventSource_Classifier":
+            root_gates.append(gate)
+        gate.mark_read(
+            {
+                "fullname",
+            }
+        )
 
     if not root_gates:
         return []
@@ -416,6 +514,8 @@ def _create_compensation_matrix_groups(
         name = param.get_attr_or_none("name")
         if name and name not in EXCLUDED_CHANNELS:
             parameters.append(param)
+        else:
+            param.get_unread()
 
     if not parameters:
         return None
@@ -450,6 +550,9 @@ def _create_compensation_matrix_groups(
                     compensation_value=coef_value,
                 )
             )
+        param.mark_read(
+            "type",
+        )
 
         result.append(
             CompensationMatrixGroup(
@@ -457,13 +560,19 @@ def _create_compensation_matrix_groups(
                 compensation_matrices=matrices if matrices else None,
             )
         )
+    instrument_settings.mark_read(
+        {
+            "name",
+            "template",
+        }
+    )
 
     return result if result else None
 
 
 def _process_tube(
     tube: StrictXmlElement, specimen_name: str | None, data_processing_time: str | None
-) -> list[Measurement]:
+) -> tuple[list[Measurement], dict[str, str]]:
     """
     Process a tube element to create measurements.
 
@@ -471,16 +580,36 @@ def _process_tube(
         tube: The tube element to process
 
     Returns:
-        list[Measurement]: List containing a single Measurement
+        tuple: (measurements, measurement_aggregate_custom_info)
     """
     tube_name = tube.get_attr("name")
 
     processed_data_id = random_uuid_str()
 
+    # Extract custom info from keywords
+    custom_info = {}
+    keywords_element = tube.find_or_none("keywords")
+    if keywords_element:
+        for keyword in keywords_element.findall("keyword"):
+            keyword_name = keyword.get_attr_or_none("name")
+            keyword.mark_read("type")
+
+            if keyword_name:
+                value_element = keyword.find_or_none("value")
+                if value_element:
+                    keyword_value = value_element.get_text_or_none()
+                    if keyword_value:
+                        custom_info[keyword_name] = keyword_value
+
+    (
+        device_control_info,
+        measurement_aggregate_info,
+        other_info,
+    ) = _separate_custom_fields(custom_info)
+
     # Create populations and data regions
     populations = _create_populations(tube)
     data_regions = _create_data_regions(tube)
-
     measurement = Measurement(
         measurement_identifier=random_uuid_str(),
         sample_identifier=tube_name,
@@ -490,9 +619,11 @@ def _process_tube(
         processed_data_identifier=processed_data_id,
         populations=populations,
         data_regions=data_regions,
+        device_control_custom_info=device_control_info if device_control_info else None,
+        custom_info=other_info if other_info else None,
     )
 
-    return [measurement]
+    return [measurement], measurement_aggregate_info
 
 
 def create_measurement_groups(root_element: StrictXmlElement) -> list[MeasurementGroup]:
@@ -511,6 +642,7 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
     if not experiment:
         msg = "No experiment found in the XML file."
         raise AllotropeParsingError(msg)
+
     measurement_time = experiment.recursive_find_or_none(["specimen", "tube", "date"])
     experiment_identifier = experiment.get_attr_or_none("name")
     analyst = experiment.recursive_find_or_none(["owner_name"])
@@ -522,7 +654,7 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
         tubes = specimen.findall("tube")
         for tube in tubes:
             experimental_data_identifier = tube.find_or_none("data_filename")
-            measurements = _process_tube(
+            measurements, measurement_aggregate_custom_info = _process_tube(
                 tube,
                 specimen_name,
                 export_time.get_text_or_none() if export_time else None,
@@ -540,6 +672,9 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
                 compensation_matrix_groups=compensation_matrix_groups,
                 measurements=measurements,
                 experiment_identifier=experiment_identifier,
+                measurement_aggregate_custom_info=measurement_aggregate_custom_info
+                if measurement_aggregate_custom_info
+                else None,
             )
 
             result.append(measurement_group)

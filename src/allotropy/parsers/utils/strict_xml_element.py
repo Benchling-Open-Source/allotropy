@@ -437,6 +437,10 @@ class StrictXmlElement:
             return self
         name, *sub_names = names
         if element := self.find_or_none(name):
+            # Mark all attributes as read for intermediate elements
+            # (not for the final element since that's the one we want to return)
+            if sub_names:
+                element.get_unread()
             return element.recursive_find_or_none(sub_names)
         return None
 
@@ -444,7 +448,10 @@ class StrictXmlElement:
         if len(names) == 0:
             return self
         name, *sub_names = names
-        return self.find(name).recursive_find(sub_names)
+        element = self.find(name)
+        if sub_names:
+            element.get_unread()
+        return element.recursive_find(sub_names)
 
     def findall(self, name: str) -> list[StrictXmlElement]:
         self.read_keys.add(f"element:{name}")
