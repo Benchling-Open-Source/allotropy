@@ -225,12 +225,8 @@ class Mapper(SchemaMapper[Data, Model]):
                         sample_volume_setting=quantity_or_none(
                             TQuantityValueMicroliter, measurement.sample_volume_setting
                         ),
-                        dilution_factor_setting=add_custom_information_document(
-                            quantity_or_none(
-                                TQuantityValueUnitless,
-                                measurement.dilution_factor_setting,
-                            ),
-                            custom_info_doc=measurement.custom_info,
+                        dilution_factor_setting=quantity_or_none(
+                            TQuantityValueUnitless, measurement.dilution_factor_setting
                         ),
                         detector_gain_setting=measurement.detector_gain_setting,
                         minimum_assay_bead_count_threshold_setting=quantity_or_none(
@@ -240,10 +236,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     )
                 ]
             ),
-            assay_bead_count=add_custom_information_document(
-                TQuantityValueNumber(value=measurement.assay_bead_count),
-                custom_info_doc=measurement.custom_info,
-            ),
+            assay_bead_count=TQuantityValueNumber(value=measurement.assay_bead_count),
             analyte_aggregate_document=AnalyteAggregateDocument(
                 analyte_document=[
                     AnalyteDocumentItem(
