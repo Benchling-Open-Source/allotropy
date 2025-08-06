@@ -128,9 +128,9 @@
                                                             "value": 1.691657,
                                                             "unit": "S/m"
                                                         },
-                                                        "StartPeakLimitType": "BaseLine",
                                                         "EndPeakLimitType": "DropLine",
-                                                        "IsStandardPeak": "false"
+                                                        "IsStandardPeak": "false",
+                                                        "StartPeakLimitType": "BaseLine"
                                                     }
                                                 },
                                                 {
@@ -217,9 +217,9 @@
                                                             "value": 1.700847,
                                                             "unit": "S/m"
                                                         },
-                                                        "StartPeakLimitType": "DropLine",
                                                         "EndPeakLimitType": "DropLine",
-                                                        "IsStandardPeak": "false"
+                                                        "IsStandardPeak": "false",
+                                                        "StartPeakLimitType": "DropLine"
                                                     }
                                                 },
                                                 {
@@ -306,9 +306,9 @@
                                                             "value": 1.701128,
                                                             "unit": "S/m"
                                                         },
-                                                        "StartPeakLimitType": "DropLine",
                                                         "EndPeakLimitType": "DropLine",
-                                                        "IsStandardPeak": "false"
+                                                        "IsStandardPeak": "false",
+                                                        "StartPeakLimitType": "DropLine"
                                                     }
                                                 },
                                                 {
@@ -395,30 +395,30 @@
                                                             "value": 1.701361,
                                                             "unit": "S/m"
                                                         },
-                                                        "StartPeakLimitType": "DropLine",
                                                         "EndPeakLimitType": "DropLine",
-                                                        "IsStandardPeak": "false"
+                                                        "IsStandardPeak": "false",
+                                                        "StartPeakLimitType": "DropLine"
                                                     }
                                                 }
                                             ]
                                         },
                                         "custom information document": {
-                                            "IsOriginalData": "true",
-                                            "MethodStartTime": "2024-01-02T11:00:00.000",
-                                            "AmplitudeUnit": "mAU",
-                                            "ChromatogramStartTimeUtcOffsetMinutes": "-300",
                                             "AmplitudePrecision": "3",
-                                            "CurveDataType": "UV",
-                                            "IsReadOnly": "false",
-                                            "MethodStartTimeUtcOffsetMinutes": "-300",
-                                            "ColumnVolumeUnitName": "ml",
-                                            "IsoChroneType": "Time",
-                                            "CurveNumber": "1",
+                                            "AmplitudeUnit": "mAU",
                                             "ChromatogramStartTime": "2024-01-02T11:00:00.000",
+                                            "ChromatogramStartTimeUtcOffsetMinutes": "-300",
+                                            "ColumnVolumeUnitName": "ml",
+                                            "CurveDataType": "UV",
+                                            "CurveNumber": "1",
+                                            "DistanceBetweenPoints": "0.001666667",
+                                            "IsExternal": "false",
+                                            "IsOriginalData": "true",
+                                            "IsReadOnly": "false",
+                                            "IsoChroneType": "Time",
+                                            "MethodStartTime": "2024-01-02T11:00:00.000",
+                                            "MethodStartTimeUtcOffsetMinutes": "-300",
                                             "TimeUnit": "min",
                                             "VolumeUnit": "ml",
-                                            "IsExternal": "false",
-                                            "DistanceBetweenPoints": "0.001666667",
                                             "DistanceToStartPoint": "0.06833267"
                                         }
                                     }
@@ -677,22 +677,22 @@
                                             }
                                         },
                                         "custom information document": {
-                                            "IsOriginalData": "true",
-                                            "MethodStartTime": "2024-01-02T11:00:00.000",
-                                            "AmplitudeUnit": "mS/cm",
-                                            "ChromatogramStartTimeUtcOffsetMinutes": "-300",
                                             "AmplitudePrecision": "2",
-                                            "CurveDataType": "Conduction",
-                                            "IsReadOnly": "false",
-                                            "MethodStartTimeUtcOffsetMinutes": "-300",
-                                            "ColumnVolumeUnitName": "ml",
-                                            "IsoChroneType": "Time",
-                                            "CurveNumber": "4",
+                                            "AmplitudeUnit": "mS/cm",
                                             "ChromatogramStartTime": "2024-01-02T11:00:00.000",
+                                            "ChromatogramStartTimeUtcOffsetMinutes": "-300",
+                                            "ColumnVolumeUnitName": "ml",
+                                            "CurveDataType": "Conduction",
+                                            "CurveNumber": "4",
+                                            "DistanceBetweenPoints": "0.003333333",
+                                            "IsExternal": "false",
+                                            "IsOriginalData": "true",
+                                            "IsReadOnly": "false",
+                                            "IsoChroneType": "Time",
+                                            "MethodStartTime": "2024-01-02T11:00:00.000",
+                                            "MethodStartTimeUtcOffsetMinutes": "-300",
                                             "TimeUnit": "min",
                                             "VolumeUnit": "ml",
-                                            "IsExternal": "false",
-                                            "DistanceBetweenPoints": "0.003333333",
                                             "DistanceToStartPoint": "0"
                                         }
                                     }
@@ -1059,22 +1059,22 @@
                                             }
                                         },
                                         "custom information document": {
-                                            "IsOriginalData": "true",
-                                            "MethodStartTime": "2024-01-02T11:00:00.000",
-                                            "AmplitudeUnit": "MPa",
-                                            "ChromatogramStartTimeUtcOffsetMinutes": "-300",
                                             "AmplitudePrecision": "3",
-                                            "CurveDataType": "Pressure",
-                                            "IsReadOnly": "false",
-                                            "MethodStartTimeUtcOffsetMinutes": "-300",
-                                            "ColumnVolumeUnitName": "ml",
-                                            "IsoChroneType": "Time",
-                                            "CurveNumber": "27",
+                                            "AmplitudeUnit": "MPa",
                                             "ChromatogramStartTime": "2024-01-02T11:00:00.000",
+                                            "ChromatogramStartTimeUtcOffsetMinutes": "-300",
+                                            "ColumnVolumeUnitName": "ml",
+                                            "CurveDataType": "Pressure",
+                                            "CurveNumber": "27",
+                                            "DistanceBetweenPoints": "0.01666667",
+                                            "IsExternal": "false",
+                                            "IsOriginalData": "true",
+                                            "IsReadOnly": "false",
+                                            "IsoChroneType": "Time",
+                                            "MethodStartTime": "2024-01-02T11:00:00.000",
+                                            "MethodStartTimeUtcOffsetMinutes": "-300",
                                             "TimeUnit": "min",
                                             "VolumeUnit": "ml",
-                                            "IsExternal": "false",
-                                            "DistanceBetweenPoints": "0.01666667",
                                             "DistanceToStartPoint": "0.08499908"
                                         }
                                     }
@@ -1365,8 +1365,8 @@
                                 "fraction role": "Out-Waste",
                                 "@type": "Fraction",
                                 "custom information document": {
-                                    "InstructionFeedback": "0",
-                                    "EventSubType": "Undefined"
+                                    "EventSubType": "Undefined",
+                                    "InstructionFeedback": "0"
                                 }
                             },
                             {
@@ -1381,8 +1381,8 @@
                                 },
                                 "@type": "Method",
                                 "custom information document": {
-                                    "InstructionFeedback": "0",
-                                    "EventSubType": "Undefined"
+                                    "EventSubType": "Undefined",
+                                    "InstructionFeedback": "0"
                                 }
                             },
                             {
@@ -1397,8 +1397,8 @@
                                 },
                                 "@type": "Method",
                                 "custom information document": {
-                                    "InstructionFeedback": "0",
-                                    "EventSubType": "Undefined"
+                                    "EventSubType": "Undefined",
+                                    "InstructionFeedback": "0"
                                 }
                             },
                             {
@@ -1413,8 +1413,8 @@
                                 },
                                 "@type": "Method",
                                 "custom information document": {
-                                    "InstructionFeedback": "0",
-                                    "EventSubType": "Undefined"
+                                    "EventSubType": "Undefined",
+                                    "InstructionFeedback": "0"
                                 }
                             },
                             {
@@ -1429,8 +1429,8 @@
                                 },
                                 "@type": "Method",
                                 "custom information document": {
-                                    "InstructionFeedback": "0",
-                                    "EventSubType": "Undefined"
+                                    "EventSubType": "Undefined",
+                                    "InstructionFeedback": "0"
                                 }
                             },
                             {
@@ -1445,8 +1445,8 @@
                                 },
                                 "@type": "Method",
                                 "custom information document": {
-                                    "InstructionFeedback": "0",
-                                    "EventSubType": "Undefined"
+                                    "EventSubType": "Undefined",
+                                    "InstructionFeedback": "0"
                                 }
                             },
                             {
@@ -1462,8 +1462,8 @@
                                 "fraction role": "Frac",
                                 "@type": "Fraction",
                                 "custom information document": {
-                                    "InstructionFeedback": "0",
-                                    "EventSubType": "Undefined"
+                                    "EventSubType": "Undefined",
+                                    "InstructionFeedback": "0"
                                 }
                             },
                             {
@@ -1479,8 +1479,8 @@
                                 "fraction role": "Out-Waste",
                                 "@type": "Fraction",
                                 "custom information document": {
-                                    "InstructionFeedback": "0",
-                                    "EventSubType": "Undefined"
+                                    "EventSubType": "Undefined",
+                                    "InstructionFeedback": "0"
                                 }
                             }
                         ]
@@ -3300,15 +3300,13 @@
                         ]
                     },
                     "custom information document": {
-                        "FormatVersion": "9",
-                        "CreatedUtcOffsetMinutes": "-300",
-                        "TimeUnit": "min",
-                        "IsReadonly": "false",
-                        "VolumeUnit": "ml",
-                        "Created": "2024-01-01T10:00:00.000",
-                        "ChromatogramName": "Chrom.1",
                         "ChromatogramID": "100",
-                        "software version": "7.7.0.4016"
+                        "ChromatogramName": "Chrom.1",
+                        "Created": "2024-01-01T10:00:00.000",
+                        "CreatedUtcOffsetMinutes": "-300",
+                        "FormatVersion": "9",
+                        "RunIndex": "100",
+                        "RunType": "Method"
                     }
                 },
                 "analyst": "Default"
@@ -3318,28 +3316,28 @@
             "ASM converter name": "allotropy_cytiva_unicorn",
             "ASM converter version": "0.1.102",
             "file name": "unicorn_1.zip",
+            "software version": "100.100.100.100",
             "UNC path": "tests/parsers/cytiva_unicorn/testdata/unicorn_1.zip",
             "custom information document": {
-                "IsArchived": "false",
-                "FormatVersion": "100",
-                "SystemTypeName": "NEXTAKTAchromatography",
-                "ResultState": "Evaluated",
-                "IsReadOnly": "false",
                 "BatchId": "f65ef0a9-7240-434e-aac1-44cb8e8faa08",
-                "ResultPurpose": "100",
-                "RunIndex": "100",
-                "Name": "Capto Adhere Polishing 100ppm Sample",
-                "RunType": "Method",
                 "FolderPath": "/DefaultHome",
+                "FormatVersion": "100",
+                "IsArchived": "false",
+                "IsReadOnly": "false",
+                "Name": "Capto Adhere Polishing 100ppm Sample",
                 "ResultFormatVersion": "100",
-                "software version": "100.100.100.100"
+                "ResultPurpose": "100",
+                "ResultState": "Evaluated"
             }
         },
         "device system document": {
             "asset management identifier": "AKTA avant",
             "product manufacturer": "Cytiva Life Sciences",
             "device identifier": "Avant1",
-            "firmware version": "100.100.100.100"
+            "firmware version": "100.100.100.100",
+            "custom information document": {
+                "SystemTypeName": "NEXTAKTAchromatography"
+            }
         }
     }
 }

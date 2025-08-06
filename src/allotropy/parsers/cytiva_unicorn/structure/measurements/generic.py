@@ -38,41 +38,41 @@ class UnicornMeasurement(Measurement):
             }
 
             processed_data_custom_info = {
-                "IsOriginalData": base_element.get_sub_text_or_none("IsOriginalData"),
-                "MethodStartTime": base_element.get_sub_text_or_none("MethodStartTime"),
-                "AmplitudeUnit": base_element.get_sub_text_or_none("AmplitudeUnit"),
-                "ChromatogramStartTimeUtcOffsetMinutes": base_element.get_sub_text_or_none(
-                    "ChromatogramStartTimeUtcOffsetMinutes"
-                ),
                 "AmplitudePrecision": base_element.get_sub_text_or_none(
                     "AmplitudePrecision"
                 ),
-                "CurveDataType": base_element.get_sub_text_or_none("CurveDataType"),
-                "IsReadOnly": base_element.get_sub_text_or_none("IsReadOnly"),
-                "MethodStartTimeUtcOffsetMinutes": base_element.get_sub_text_or_none(
-                    "MethodStartTimeUtcOffsetMinutes"
+                "AmplitudeUnit": base_element.get_sub_text_or_none("AmplitudeUnit"),
+                "ChromatogramID": base_element.get_sub_text_or_none("ChromatogramID"),
+                "ChromatogramName": base_element.get_sub_text_or_none(
+                    "ChromatogramName"
+                ),
+                "ChromatogramStartTime": base_element.get_sub_text_or_none(
+                    "ChromatogramStartTime"
+                ),
+                "ChromatogramStartTimeUtcOffsetMinutes": base_element.get_sub_text_or_none(
+                    "ChromatogramStartTimeUtcOffsetMinutes"
                 ),
                 "ColumnVolumeUnitName": base_element.get_sub_text_or_none(
                     "ColumnVolumeUnitName"
                 ),
-                "IsoChroneType": base_element.get_sub_text_or_none("IsoChroneType"),
+                "CurveDataType": base_element.get_sub_text_or_none("CurveDataType"),
                 "CurveNumber": base_element.get_sub_text_or_none("CurveNumber"),
-                "ChromatogramStartTime": base_element.get_sub_text_or_none(
-                    "ChromatogramStartTime"
-                ),
-                "TimeUnit": base_element.get_sub_text_or_none("TimeUnit"),
-                "VolumeUnit": base_element.get_sub_text_or_none("VolumeUnit"),
-                "IsExternal": base_element.get_sub_text_or_none("IsExternal"),
-                "DistancetoStartPoints": base_element.get_sub_text_or_none(
-                    "DistancetoStartPoints"
-                ),
                 "DistanceBetweenPoints": base_element.get_sub_text_or_none(
                     "DistanceBetweenPoints"
                 ),
-                "ChromatogramName": base_element.get_sub_text_or_none(
-                    "ChromatogramName"
+                "DistancetoStartPoints": base_element.get_sub_text_or_none(
+                    "DistancetoStartPoints"
                 ),
-                "ChromatogramID": base_element.get_sub_text_or_none("ChromatogramID"),
+                "IsExternal": base_element.get_sub_text_or_none("IsExternal"),
+                "IsOriginalData": base_element.get_sub_text_or_none("IsOriginalData"),
+                "IsReadOnly": base_element.get_sub_text_or_none("IsReadOnly"),
+                "IsoChroneType": base_element.get_sub_text_or_none("IsoChroneType"),
+                "MethodStartTime": base_element.get_sub_text_or_none("MethodStartTime"),
+                "MethodStartTimeUtcOffsetMinutes": base_element.get_sub_text_or_none(
+                    "MethodStartTimeUtcOffsetMinutes"
+                ),
+                "TimeUnit": base_element.get_sub_text_or_none("TimeUnit"),
+                "VolumeUnit": base_element.get_sub_text_or_none("VolumeUnit"),
             }
             if (
                 measurement.device_control_docs[0].device_control_custom_info

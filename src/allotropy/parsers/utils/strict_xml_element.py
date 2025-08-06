@@ -231,7 +231,8 @@ class StrictXmlElement:
                     continue
 
         self._mark_processed_keys_as_read(matching_keys, unread_keys)
-        return unread_keys
+
+        return dict(sorted(unread_keys.items()))
 
     def _get_all_attribute_keys(self) -> set[str]:
         """Get all attribute keys with appropriate prefixes."""

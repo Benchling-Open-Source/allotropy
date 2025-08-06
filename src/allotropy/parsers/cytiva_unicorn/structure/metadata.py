@@ -36,6 +36,7 @@ def create_metadata(
 
     system_name = results.find_or_none("SystemName")
     firmware_version = instrument_config_data.find_or_none("FirmwareVersion")
+    results.mark_read({"element:RunIndex", "element:RunType"})
 
     metadata = Metadata(
         asset_management_identifier=instrument_config.get_attr("Description"),
@@ -48,13 +49,12 @@ def create_metadata(
         file_name=Path(file_path).name,
         unc_path=file_path,
         data_system_custom_info={},
+        software_version=results.get_attr("UNICORNVersion"),
+        device_system_custom_info={
+            "SystemTypeName": results.get_sub_text_or_none("SystemTypeName")
+        },
     )
 
     if metadata.data_system_custom_info is not None:
-        data_system_custom_info = results.get_unread()
-        data_system_custom_info["software version"] = data_system_custom_info[
-            "UNICORNVersion"
-        ]
-        data_system_custom_info.pop("UNICORNVersion")
-        metadata.data_system_custom_info.update(data_system_custom_info)
+        metadata.data_system_custom_info.update(results.get_unread())
     return metadata

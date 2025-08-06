@@ -71,12 +71,22 @@ def create_measurement_groups(
             measurement_aggregate_custom_info={},
         )
     ]
+
+    chrom_1.mark_read({"element:TimeUnit", "element:VolumeUnit", "element:IsReadonly"})
     custom_info = chrom_1.get_unread()
 
     if measurement_group[0].measurement_aggregate_custom_info is not None:
-        custom_info["software version"] = custom_info["UNICORNVersion"]
         custom_info.pop("UNICORNVersion")
-        measurement_group[0].measurement_aggregate_custom_info.update(custom_info)
+        custom_info.update(
+            {
+                "RunIndex": results.get_sub_text_or_none("RunIndex"),
+                "RunType": results.get_sub_text_or_none("RunType"),
+            }
+        )
+        custom_info_sorted = dict(sorted(custom_info.items()))
+        measurement_group[0].measurement_aggregate_custom_info.update(
+            custom_info_sorted
+        )
 
     return measurement_group
 
