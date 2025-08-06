@@ -64,6 +64,7 @@ class Header:
     detector_gain_setting: str | None
     minimum_assay_bead_count_setting: float | None
     analyst: str | None
+    custom_info: dict[str, Any] | None = None
 
     @classmethod
     def create(
@@ -96,6 +97,7 @@ class Header:
             data_system_instance_identifier=info_row[str, "ComputerName"],
             minimum_assay_bead_count_setting=minimum_assay_bead_count_setting,
             analyst=info_row.get(str, "Operator"),
+            custom_info=info_row.get_unread() if info_row.get_unread() else None,
         )
 
     @classmethod
