@@ -74,16 +74,35 @@ class Header:
         raw_datetime = info_row[str, "BatchStartTime"]
         sample_volume = info_row.get(str, ["SampleVolume", "MaxSampleUptakeVolume"])
 
-        # Capture unread header data to prevent warnings
-        info_row.get_unread()
+        # Read all the keys first
+        software_version = info_row.get(str, "Build")
+        equipment_serial_number = info_row.get(str, "SN")
+        analytical_method_identifier = info_row.get(str, "ProtocolName")
+        method_version = info_row.get(str, "ProtocolVersion")
+        experimental_data_identifier = info_row.get(str, "Batch")
+        detector_gain_setting = info_row.get(
+            str, ["ProtocolReporterGain", "ProtocolOperatingMode"]
+        )
+        data_system_instance_identifier = info_row[str, "ComputerName"]
+        analyst = info_row.get(str, "Operator")
 
+        # Mark keys that are accessed directly in helper methods
+        if "Program" in header_data:
+            info_row.mark_read("Program")
+        if "ProtocolPlate" in header_data:
+            info_row.mark_read("ProtocolPlate")
+
+        # Get unread keys after all keys have been read. It can only be called once.
+        custom_info = info_row.get_unread()
+
+        # Build parameters dictionary
         return Header(
             model_number=cls._get_model_number(header_data),
-            software_version=info_row.get(str, "Build"),
-            equipment_serial_number=info_row.get(str, "SN"),
-            analytical_method_identifier=info_row.get(str, "ProtocolName"),
-            method_version=info_row.get(str, "ProtocolVersion"),
-            experimental_data_identifier=info_row.get(str, "Batch"),
+            software_version=software_version,
+            equipment_serial_number=equipment_serial_number,
+            analytical_method_identifier=analytical_method_identifier,
+            method_version=method_version,
+            experimental_data_identifier=experimental_data_identifier,
             sample_volume_setting=(
                 try_float(sample_volume.split()[0], "sample volume setting")
                 if sample_volume
@@ -91,13 +110,11 @@ class Header:
             ),
             plate_well_count=cls._get_plate_well_count(header_data),
             measurement_time=raw_datetime,
-            detector_gain_setting=info_row.get(
-                str, ["ProtocolReporterGain", "ProtocolOperatingMode"]
-            ),
-            data_system_instance_identifier=info_row[str, "ComputerName"],
+            detector_gain_setting=detector_gain_setting,
+            data_system_instance_identifier=data_system_instance_identifier,
             minimum_assay_bead_count_setting=minimum_assay_bead_count_setting,
-            analyst=info_row.get(str, "Operator"),
-            custom_info=info_row.get_unread() if info_row.get_unread() else None,
+            analyst=analyst,
+            custom_info=custom_info if custom_info else None,
         )
 
     @classmethod
@@ -301,16 +318,23 @@ class Measurement:
                     )
                 )
 
+        # Read the remaining keys from count_data
+        sample_identifier = count_data[str, "Sample"]
+        assay_bead_count = count_data[float, "Total Events"]
+
+        # Get unread keys after all keys have been read
+        custom_info = count_data.get_unread()
+
         return Measurement(
             identifier=measurement_identifier,
-            sample_identifier=count_data[str, "Sample"],
+            sample_identifier=sample_identifier,
             location_identifier=location_id,
             dilution_factor_setting=dilution_factor_setting,
-            assay_bead_count=count_data[float, "Total Events"],
+            assay_bead_count=assay_bead_count,
             analytes=analytes,
             errors=errors,
             calculated_data=calculated_data,
-            custom_info=count_data.get_unread() if count_data.get_unread() else None,
+            custom_info=custom_info if custom_info else None,
         )
 
     @classmethod
@@ -410,6 +434,7 @@ def create_metadata(
         software_name=DEFAULT_SOFTWARE_NAME,
         software_version=header.software_version,
         device_type=DEFAULT_DEVICE_TYPE,
+        custom_info=header.custom_info,
     )
 
 
