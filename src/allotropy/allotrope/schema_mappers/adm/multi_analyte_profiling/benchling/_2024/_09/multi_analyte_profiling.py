@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import Any
 
+from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
     AnalyteAggregateDocument,
     AnalyteDocumentItem,
@@ -140,6 +141,7 @@ class Metadata:
     product_manufacturer: str | None = None
 
     calibrations: list[Calibration] | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -164,15 +166,18 @@ class Mapper(SchemaMapper[Data, Model]):
                         data.metadata.calibrations
                     ),
                 ),
-                data_system_document=DataSystemDocument(
-                    data_system_instance_identifier=data.metadata.data_system_instance_identifier,
-                    file_name=data.metadata.file_name,
-                    UNC_path=data.metadata.unc_path,
-                    software_name=data.metadata.software_name,
-                    software_version=data.metadata.software_version,
-                    ASM_file_identifier=data.metadata.asm_file_identifier,
-                    ASM_converter_name=self.converter_name,
-                    ASM_converter_version=ASM_CONVERTER_VERSION,
+                data_system_document=add_custom_information_document(
+                    DataSystemDocument(
+                        data_system_instance_identifier=data.metadata.data_system_instance_identifier,
+                        file_name=data.metadata.file_name,
+                        UNC_path=data.metadata.unc_path,
+                        software_name=data.metadata.software_name,
+                        software_version=data.metadata.software_version,
+                        ASM_file_identifier=data.metadata.asm_file_identifier,
+                        ASM_converter_name=self.converter_name,
+                        ASM_converter_version=ASM_CONVERTER_VERSION,
+                    ),
+                    custom_info_doc=data.metadata.custom_info,
                 ),
                 multi_analyte_profiling_document=[
                     self._get_technique_document(measurement_group, data.metadata)
@@ -209,7 +214,7 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocumentItem:
-        return MeasurementDocumentItem(
+        measurement_document = MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             measurement_time=self.get_date_time(measurement.measurement_time),
             sample_document=self._get_sample_document(measurement),
@@ -220,8 +225,12 @@ class Mapper(SchemaMapper[Data, Model]):
                         sample_volume_setting=quantity_or_none(
                             TQuantityValueMicroliter, measurement.sample_volume_setting
                         ),
-                        dilution_factor_setting=quantity_or_none(
-                            TQuantityValueUnitless, measurement.dilution_factor_setting
+                        dilution_factor_setting=add_custom_information_document(
+                            quantity_or_none(
+                                TQuantityValueUnitless,
+                                measurement.dilution_factor_setting,
+                            ),
+                            custom_info_doc=measurement.custom_info,
                         ),
                         detector_gain_setting=measurement.detector_gain_setting,
                         minimum_assay_bead_count_threshold_setting=quantity_or_none(
@@ -231,7 +240,10 @@ class Mapper(SchemaMapper[Data, Model]):
                     )
                 ]
             ),
-            assay_bead_count=TQuantityValueNumber(value=measurement.assay_bead_count),
+            assay_bead_count=add_custom_information_document(
+                TQuantityValueNumber(value=measurement.assay_bead_count),
+                custom_info_doc=measurement.custom_info,
+            ),
             analyte_aggregate_document=AnalyteAggregateDocument(
                 analyte_document=[
                     AnalyteDocumentItem(
@@ -277,6 +289,11 @@ class Mapper(SchemaMapper[Data, Model]):
             error_aggregate_document=self._get_error_aggregate_document(
                 measurement.errors
             ),
+        )
+
+        return add_custom_information_document(
+            measurement_document,
+            custom_info_doc=measurement.custom_info,
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
