@@ -308,7 +308,6 @@ class Measurement:
             analytes=analytes,
             errors=errors,
             calculated_data=calculated_data,
-            # Get unread data after all keys have been read
             custom_info=count_data.get_unread() if count_data.get_unread() else None,
         )
 
