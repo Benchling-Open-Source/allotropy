@@ -81,6 +81,7 @@ def create_measurement_groups(
             {
                 "RunIndex": results.get_sub_text_or_none("RunIndex"),
                 "RunType": results.get_sub_text_or_none("RunType"),
+                "Name": results.get_sub_text_or_none("Name"),
             }
         )
         custom_info_sorted = dict(sorted(custom_info.items()))

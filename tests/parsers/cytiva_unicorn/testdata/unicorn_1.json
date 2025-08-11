@@ -3305,6 +3305,7 @@
                         "Created": "2024-01-01T10:00:00.000",
                         "CreatedUtcOffsetMinutes": "-300",
                         "FormatVersion": "9",
+                        "Name": "Capto Adhere Polishing 100ppm Sample",
                         "RunIndex": "100",
                         "RunType": "Method"
                     }
@@ -3319,12 +3320,10 @@
             "software version": "100.100.100.100",
             "UNC path": "tests/parsers/cytiva_unicorn/testdata/unicorn_1.zip",
             "custom information document": {
-                "BatchId": "f65ef0a9-7240-434e-aac1-44cb8e8faa08",
                 "FolderPath": "/DefaultHome",
                 "FormatVersion": "100",
                 "IsArchived": "false",
                 "IsReadOnly": "false",
-                "Name": "Capto Adhere Polishing 100ppm Sample",
                 "ResultFormatVersion": "100",
                 "ResultPurpose": "100",
                 "ResultState": "Evaluated"

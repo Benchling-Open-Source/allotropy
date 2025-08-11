@@ -36,7 +36,9 @@ def create_metadata(
 
     system_name = results.find_or_none("SystemName")
     firmware_version = instrument_config_data.find_or_none("FirmwareVersion")
-    results.mark_read({"element:RunIndex", "element:RunType"})
+    results.mark_read(
+        {"element:RunIndex", "element:RunType", "element:BatchId", "element:Name"}
+    )
 
     metadata = Metadata(
         asset_management_identifier=instrument_config.get_attr("Description"),
