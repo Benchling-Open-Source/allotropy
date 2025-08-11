@@ -11,6 +11,7 @@ import pandas as pd
 from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat, NaN
 from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._09.solution_analyzer import (
     Analyte,
+    Error,
     Measurement,
     MeasurementGroup,
     Metadata,
@@ -18,7 +19,7 @@ from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._09.solu
 from allotropy.exceptions import AllotropyParserError
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.roche_cedex_bioht.constants import (
-    BELOW_TEST_RANGE,
+    FLAG_TO_ERROR,
     MAX_MEASUREMENT_TIME_GROUP_DIFFERENCE,
     OPTICAL_DENSITY,
     SOLUTION_ANALYZER,
@@ -58,26 +59,19 @@ class RawMeasurement:
 
     @staticmethod
     def create(data: SeriesData) -> RawMeasurement:
-        error = data.get(str, "flag", "").strip()
-        # TODO: handle other errors
-        if BELOW_TEST_RANGE not in error:
-            error = ""
-        concentration_value = (
-            NaN
-            if BELOW_TEST_RANGE in error
-            else data.get(float, "concentration value", NaN)
-        )
+        flag = data.get(str, "flag", "").strip()
+        error = FLAG_TO_ERROR[flag] if flag else None
+
+        concentration_value = data.get(float, "concentration value", NaN)
 
         value, unit = RawMeasurement._get_value_and_unit(
             concentration_value, data[str, "concentration unit"]
         )
 
-        custom_info = data.get_custom_keys(
-            {
-                "detection kit",
-                "detection kit range",
-            }
-        )
+        custom_info = data.get_custom_keys({"detection kit", "detection kit range"})
+
+        if error:
+            custom_info["flag"] = error
 
         return RawMeasurement(
             data[str, "analyte name"],
@@ -85,15 +79,19 @@ class RawMeasurement:
             value,
             unit,
             data[str, "analyte code"],
-            error or None,
+            error,
             custom_info,
         )
 
     @staticmethod
     def _get_value_and_unit(value: JsonFloat, unit: str) -> tuple[JsonFloat, str]:
+        multiplier = 1.0
+        if unit == "mg/L":
+            unit = "g/L"
+            multiplier = 1 / 1000
+
         if isinstance(value, int | float):
-            if unit == "mg/L":
-                return value / 1000, "g/L"
+            value = value * multiplier
 
         return value, unit
 
@@ -165,12 +163,13 @@ def _create_measurements(
     measurements: list[Measurement] = []
 
     analytes: list[Analyte] = []
+    errors: list[Error] = []
     for analyte_id in sorted(raw_measurements):
         measurement = raw_measurements[analyte_id]
         value = measurement.concentration_value
-        # TODO: report value and add error
-        if value is NaN:
-            continue
+
+        if value is NaN and measurement.error is not None:
+            errors.append(Error(error=measurement.error, feature=measurement.name))
 
         if measurement.name == OPTICAL_DENSITY:
             measurements.append(
@@ -200,6 +199,7 @@ def _create_measurements(
                 sample_identifier=sample.name,
                 batch_identifier=sample.batch,
                 analytes=analytes,
+                errors=errors,
             )
         )
 

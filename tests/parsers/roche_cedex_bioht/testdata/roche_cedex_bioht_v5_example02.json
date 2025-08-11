@@ -18,6 +18,14 @@
                             "sample document": {
                                 "sample identifier": "SAMPLE_1"
                             },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "< TEST RNG",
+                                        "error feature": "pyruvate"
+                                    }
+                                ]
+                            },
                             "analyte aggregate document": {
                                 "analyte document": [
                                     {
@@ -45,7 +53,7 @@
                                     {
                                         "analyte name": "ammonia",
                                         "mass concentration": {
-                                            "value": 0.121277,
+                                            "value": 0.12127700000000001,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
@@ -61,7 +69,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Low",
-                                            "detection kit range": "0.1 - 1 mmol/L"
+                                            "detection kit range": "0.1 - 1 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -83,7 +92,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.2 - 5 mmol/L"
+                                            "detection kit range": "0.2 - 5 mmol/L",
+                                            "flag": "calibration"
                                         }
                                     },
                                     {
@@ -105,7 +115,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.099 - 10.2 mmol/L"
+                                            "detection kit range": "0.099 - 10.2 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -127,13 +138,14 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Low",
-                                            "detection kit range": "0.1 - 10 mmol/L"
+                                            "detection kit range": "0.1 - 10 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
                                         "analyte name": "glycerol",
                                         "mass concentration": {
-                                            "value": 1.50545,
+                                            "value": 1.5054500000000002,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
@@ -144,7 +156,7 @@
                                     {
                                         "analyte name": "iron",
                                         "mass concentration": {
-                                            "value": 0.030522999999999998,
+                                            "value": 0.030523,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
@@ -160,7 +172,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.0444 - 15.55 mmol/L"
+                                            "detection kit range": "0.0444 - 15.55 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -171,7 +184,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "20 - 1000 U/L"
+                                            "detection kit range": "20 - 1000 U/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -204,7 +218,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.1 - 8.37 mmol/L"
+                                            "detection kit range": "0.1 - 8.37 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -216,6 +231,18 @@
                                         "custom information document": {
                                             "detection kit": "Standard",
                                             "detection kit range": "2 - 28 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "pyruvate",
+                                        "mass concentration": {
+                                            "value": -1,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.2 - 8 mmol/L",
+                                            "flag": "< TEST RNG"
                                         }
                                     },
                                     {
@@ -408,6 +435,14 @@
                             "sample document": {
                                 "sample identifier": "SAMPLE_13"
                             },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "< TEST RNG",
+                                        "error feature": "glucose"
+                                    }
+                                ]
+                            },
                             "analyte aggregate document": {
                                 "analyte document": [
                                     {
@@ -419,6 +454,18 @@
                                         "custom information document": {
                                             "detection kit": "Standard",
                                             "detection kit range": "0.000533 - 0.01067 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glucose",
+                                        "mass concentration": {
+                                            "value": -1,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.111 - 41.63 mmol/L",
+                                            "flag": "< TEST RNG"
                                         }
                                     }
                                 ]
@@ -546,7 +593,7 @@
                                     {
                                         "analyte name": "IgG human",
                                         "mass concentration": {
-                                            "value": 0.411,
+                                            "value": 0.41100000000000003,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
@@ -776,7 +823,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Low",
-                                            "detection kit range": "0.1 - 1 mmol/L"
+                                            "detection kit range": "0.1 - 1 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -798,7 +846,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.2 - 5 mmol/L"
+                                            "detection kit range": "0.2 - 5 mmol/L",
+                                            "flag": "calibration"
                                         }
                                     },
                                     {
@@ -809,7 +858,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.111 - 41.63 mmol/L"
+                                            "detection kit range": "0.111 - 41.63 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -820,7 +870,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.099 - 10.2 mmol/L"
+                                            "detection kit range": "0.099 - 10.2 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -842,7 +893,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Low",
-                                            "detection kit range": "0.1 - 10 mmol/L"
+                                            "detection kit range": "0.1 - 10 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -875,7 +927,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.0444 - 15.55 mmol/L"
+                                            "detection kit range": "0.0444 - 15.55 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -886,7 +939,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "High with Pre - Dilution",
-                                            "detection kit range": "200 - 10000 U/L"
+                                            "detection kit range": "200 - 10000 U/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -903,12 +957,13 @@
                                     {
                                         "analyte name": "phosphate",
                                         "mass concentration": {
-                                            "value": 1.7245,
+                                            "value": 1.7245000000000001,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.1 - 8.37 mmol/L"
+                                            "detection kit range": "0.1 - 8.37 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -1315,6 +1370,14 @@
                             "sample document": {
                                 "sample identifier": "SAMPLE_3"
                             },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "< TEST RNG",
+                                        "error feature": "pyruvate"
+                                    }
+                                ]
+                            },
                             "analyte aggregate document": {
                                 "analyte document": [
                                     {
@@ -1358,7 +1421,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Low",
-                                            "detection kit range": "0.1 - 1 mmol/L"
+                                            "detection kit range": "0.1 - 1 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -1369,7 +1433,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.1 - 9 mmol/L"
+                                            "detection kit range": "0.1 - 9 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -1380,7 +1445,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.2 - 5 mmol/L"
+                                            "detection kit range": "0.2 - 5 mmol/L",
+                                            "flag": "calibration"
                                         }
                                     },
                                     {
@@ -1391,7 +1457,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.111 - 41.63 mmol/L"
+                                            "detection kit range": "0.111 - 41.63 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -1402,7 +1469,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.099 - 10.2 mmol/L"
+                                            "detection kit range": "0.099 - 10.2 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -1424,7 +1492,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Low",
-                                            "detection kit range": "0.1 - 10 mmol/L"
+                                            "detection kit range": "0.1 - 10 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -1457,7 +1526,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.0444 - 15.55 mmol/L"
+                                            "detection kit range": "0.0444 - 15.55 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -1468,13 +1538,14 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "High with Pre - Dilution",
-                                            "detection kit range": "200 - 10000 U/L"
+                                            "detection kit range": "200 - 10000 U/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
                                         "analyte name": "magnesium",
                                         "mass concentration": {
-                                            "value": 0.030629999999999998,
+                                            "value": 0.03063,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
@@ -1490,7 +1561,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.1 - 8.37 mmol/L"
+                                            "detection kit range": "0.1 - 8.37 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -1502,6 +1574,18 @@
                                         "custom information document": {
                                             "detection kit": "Standard",
                                             "detection kit range": "2 - 28 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "pyruvate",
+                                        "mass concentration": {
+                                            "value": -1,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.2 - 8 mmol/L",
+                                            "flag": "< TEST RNG"
                                         }
                                     },
                                     {
@@ -1593,7 +1677,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Low",
-                                            "detection kit range": "0.1 - 1 mmol/L"
+                                            "detection kit range": "0.1 - 1 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -1615,7 +1700,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.2 - 5 mmol/L"
+                                            "detection kit range": "0.2 - 5 mmol/L",
+                                            "flag": "calibration"
                                         }
                                     },
                                     {
@@ -1637,7 +1723,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.099 - 10.2 mmol/L"
+                                            "detection kit range": "0.099 - 10.2 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -1659,7 +1746,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Low",
-                                            "detection kit range": "0.1 - 10 mmol/L"
+                                            "detection kit range": "0.1 - 10 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -1692,7 +1780,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.0444 - 15.55 mmol/L"
+                                            "detection kit range": "0.0444 - 15.55 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -1703,7 +1792,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "High with Pre - Dilution",
-                                            "detection kit range": "200 - 10000 U/L"
+                                            "detection kit range": "200 - 10000 U/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -1725,7 +1815,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.1 - 8.37 mmol/L"
+                                            "detection kit range": "0.1 - 8.37 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -1839,7 +1930,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Low",
-                                            "detection kit range": "0.1 - 1 mmol/L"
+                                            "detection kit range": "0.1 - 1 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -1850,7 +1942,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.1 - 9 mmol/L"
+                                            "detection kit range": "0.1 - 9 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -1861,7 +1954,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.2 - 5 mmol/L"
+                                            "detection kit range": "0.2 - 5 mmol/L",
+                                            "flag": "calibration"
                                         }
                                     },
                                     {
@@ -1872,7 +1966,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.111 - 41.63 mmol/L"
+                                            "detection kit range": "0.111 - 41.63 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -1883,7 +1978,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.099 - 10.2 mmol/L"
+                                            "detection kit range": "0.099 - 10.2 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -1900,12 +1996,13 @@
                                     {
                                         "analyte name": "glycerol",
                                         "mass concentration": {
-                                            "value": 1.3431099999999998,
+                                            "value": 1.34311,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
                                             "detection kit": "Low",
-                                            "detection kit range": "0.1 - 10 mmol/L"
+                                            "detection kit range": "0.1 - 10 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -1922,7 +2019,7 @@
                                     {
                                         "analyte name": "iron",
                                         "mass concentration": {
-                                            "value": 0.026719999999999997,
+                                            "value": 0.02672,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
@@ -1938,7 +2035,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.0444 - 15.55 mmol/L"
+                                            "detection kit range": "0.0444 - 15.55 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -1949,7 +2047,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "High with Pre - Dilution",
-                                            "detection kit range": "200 - 10000 U/L"
+                                            "detection kit range": "200 - 10000 U/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -1971,7 +2070,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.1 - 8.37 mmol/L"
+                                            "detection kit range": "0.1 - 8.37 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -2085,7 +2185,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Low",
-                                            "detection kit range": "0.1 - 1 mmol/L"
+                                            "detection kit range": "0.1 - 1 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -2096,7 +2197,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.1 - 9 mmol/L"
+                                            "detection kit range": "0.1 - 9 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -2107,7 +2209,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.2 - 5 mmol/L"
+                                            "detection kit range": "0.2 - 5 mmol/L",
+                                            "flag": "calibration"
                                         }
                                     },
                                     {
@@ -2118,7 +2221,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.111 - 41.63 mmol/L"
+                                            "detection kit range": "0.111 - 41.63 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -2129,7 +2233,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.099 - 10.2 mmol/L"
+                                            "detection kit range": "0.099 - 10.2 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -2151,7 +2256,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Low",
-                                            "detection kit range": "0.1 - 10 mmol/L"
+                                            "detection kit range": "0.1 - 10 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -2184,7 +2290,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.0444 - 15.55 mmol/L"
+                                            "detection kit range": "0.0444 - 15.55 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -2195,7 +2302,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "High with Pre - Dilution",
-                                            "detection kit range": "200 - 10000 U/L"
+                                            "detection kit range": "200 - 10000 U/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -2217,7 +2325,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.1 - 8.37 mmol/L"
+                                            "detection kit range": "0.1 - 8.37 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -2331,7 +2440,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Low",
-                                            "detection kit range": "0.1 - 1 mmol/L"
+                                            "detection kit range": "0.1 - 1 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -2353,7 +2463,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.2 - 5 mmol/L"
+                                            "detection kit range": "0.2 - 5 mmol/L",
+                                            "flag": "calibration"
                                         }
                                     },
                                     {
@@ -2364,7 +2475,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.111 - 41.63 mmol/L"
+                                            "detection kit range": "0.111 - 41.63 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -2375,7 +2487,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.099 - 10.2 mmol/L"
+                                            "detection kit range": "0.099 - 10.2 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -2397,13 +2510,14 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Low",
-                                            "detection kit range": "0.1 - 10 mmol/L"
+                                            "detection kit range": "0.1 - 10 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
                                         "analyte name": "glycerol",
                                         "mass concentration": {
-                                            "value": 1.24766,
+                                            "value": 1.2476600000000002,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
@@ -2430,7 +2544,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.0444 - 15.55 mmol/L"
+                                            "detection kit range": "0.0444 - 15.55 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -2441,7 +2556,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "High with Pre - Dilution",
-                                            "detection kit range": "200 - 10000 U/L"
+                                            "detection kit range": "200 - 10000 U/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -2463,7 +2579,8 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.1 - 8.37 mmol/L"
+                                            "detection kit range": "0.1 - 8.37 mmol/L",
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -2534,6 +2651,14 @@
                             "sample document": {
                                 "sample identifier": "SAMPLE_8"
                             },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "< TEST RNG",
+                                        "error feature": "glucose"
+                                    }
+                                ]
+                            },
                             "analyte aggregate document": {
                                 "analyte document": [
                                     {
@@ -2545,6 +2670,18 @@
                                         "custom information document": {
                                             "detection kit": "Standard",
                                             "detection kit range": "0.000533 - 0.01067 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glucose",
+                                        "mass concentration": {
+                                            "value": -1,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.111 - 41.63 mmol/L",
+                                            "flag": "< TEST RNG"
                                         }
                                     }
                                 ]
@@ -2610,7 +2747,7 @@
             "file name": "roche_cedex_bioht_v5_example02.txt",
             "UNC path": "tests/parsers/roche_cedex_bioht/testdata/roche_cedex_bioht_v5_example02.txt",
             "ASM converter name": "allotropy_roche_cedex_bioht",
-            "ASM converter version": "0.1.101",
+            "ASM converter version": "0.1.102",
             "software name": "CEDEX BIO HT",
             "software version": "5.0.0.1206 (1206.0)"
         },
