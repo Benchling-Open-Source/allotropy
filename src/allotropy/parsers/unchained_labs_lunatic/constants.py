@@ -2,7 +2,8 @@ import re
 
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 
-DETECTION_TYPE = "Absorbance"
+DEFAULT_DETECTION_TYPE = "Absorbance"
+DYNAMIC_LIGHT_SCATTERING_DETECTION_TYPE = "Dynamic Light Scattering"
 DEVICE_TYPE = "plate reader"
 MODEL_NUMBER = "Lunatic"
 PRODUCT_MANUFACTURER = "Unchained Labs"
@@ -73,6 +74,151 @@ CALCULATED_DATA_LOOKUP = {
             "name": "A260/A280",
             "feature": "absorbance",
             "unit": UNITLESS,
+        },
+        {
+            "column": "e1%",
+            "name": "E1%",
+            "feature": "absorbance",
+            "unit": UNITLESS,
+        },
+        # Dynamic Light Scattering related calculations
+        {
+            "column": "kc/r (mol/g)",
+            "name": "KC/R (mol/g)",
+            "feature": "dynamic light scattering",
+            "unit": UNITLESS,
+        },
+        {
+            "column": "kd (ml/g)",
+            "name": "kD (ml/g)",
+            "feature": "dynamic light scattering",
+            "unit": UNITLESS,
+        },
+        {
+            "column": "b22 (ml.mol/g^2)",
+            "name": "B22",
+            "feature": "dynamic light scattering",
+            "unit": UNITLESS,
+        },
+        {
+            "column": "optical contrast constant k (m^2 mol kg^-2)",
+            "name": "Optical contrast constant K",
+            "feature": "dynamic light scattering",
+            "unit": UNITLESS,
+        },
+        {
+            "column": "z ave. dia (nm)",
+            "name": "Z Average Diameter",
+            "feature": "dynamic light scattering",
+            "unit": "nm",
+        },
+        {
+            "column": "pdi",
+            "name": "Polydispersity Index",
+            "feature": "dynamic light scattering",
+            "unit": UNITLESS,
+        },
+        {
+            "column": "sd dia (nm)",
+            "name": "Diameter Standard Deviation",
+            "feature": "dynamic light scattering",
+            "unit": "nm",
+        },
+        {
+            "column": "diffusion coefficient (um^2/s)",
+            "name": "Diffusion coefficient",
+            "feature": "dynamic light scattering",
+            "unit": UNITLESS,
+        },
+        {
+            "column": "peak of interest mean dia (nm)",
+            "name": "Peak of Interest Mean Diameter",
+            "feature": "dynamic light scattering",
+            "unit": "nm",
+        },
+        {
+            "column": "peak of interest mode dia (nm)",
+            "name": "Peak of Interest Mode Diameter",
+            "feature": "dynamic light scattering",
+            "unit": "nm",
+        },
+        {
+            "column": "peak of interest est. mw (kda)",
+            "name": "Peak of Interest Est. MW",
+            "feature": "dynamic light scattering",
+            "unit": "kDa",
+        },
+        {
+            "column": "peak of interest intensity (%)",
+            "name": "Peak of Interest Intensity",
+            "feature": "dynamic light scattering",
+            "unit": "%",
+        },
+        {
+            "column": "peak of interest mass (%)",
+            "name": "Peak of Interest Mass",
+            "feature": "dynamic light scattering",
+            "unit": "%",
+        },
+        {
+            "column": "peak of interest diffusion coefficient (um^2/s)",
+            "name": "Peak of Interest Diffusion coefficient",
+            "feature": "dynamic light scattering",
+            "unit": UNITLESS,
+        },
+        {
+            "column": "derived intensity (cps)",
+            "name": "Derived intensity",
+            "feature": "dynamic light scattering",
+            "unit": UNITLESS,
+        },
+        {
+            "column": "rayleigh ratio r (cm^-1)",
+            "name": "Rayleigh ratio R",
+            "feature": "dynamic light scattering",
+            "unit": UNITLESS,
+        },
+        {
+            "column": "kd goodness of fit",
+            "name": "kD goodness of fit",
+            "feature": "dynamic light scattering",
+            "unit": UNITLESS,
+        },
+        {
+            "column": "b22 goodness of fit",
+            "name": "B22 goodness of fit",
+            "feature": "dynamic light scattering",
+            "unit": UNITLESS,
+        },
+        {
+            "column": "viscosity at t (cp)",
+            "name": "Viscosity at T (cP)",
+            "feature": "dynamic light scattering",
+            "unit": UNITLESS,
+        },
+        {
+            "column": "viscosity at 20°c (cp)",
+            "name": "Viscosity at 20°C (cP)",
+            "feature": "dynamic light scattering",
+            "unit": UNITLESS,
+        },
+        {
+            "column": "ri at t",
+            "name": "RI at T",
+            "feature": "dynamic light scattering",
+            "unit": UNITLESS,
+        },
+        {
+            "column": "ri at 20°c",
+            "name": "RI at 20°C",
+            "feature": "dynamic light scattering",
+            "unit": UNITLESS,
+        },
+        {
+            "column": "diameter @ c=0 (nm)",
+            "name": "Diameter @ C=0",
+            "feature": "dynamic light scattering",
+            "unit": "nm",
         },
     ],
 }

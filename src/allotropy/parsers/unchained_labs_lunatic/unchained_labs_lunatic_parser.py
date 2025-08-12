@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.models.adm.plate_reader.rec._2025._03.plate_reader import (
     Model,
 )
-from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
     Data,
     Mapper,
 )
@@ -20,7 +20,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class UnchainedLabsLunaticParser(VendorParser[Data, Model]):
-    DISPLAY_NAME = "Unchained Labs Lunatic"
+    DISPLAY_NAME = "Unchained Labs Lunatic & Stunner"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = UnchainedLabsLunaticReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper

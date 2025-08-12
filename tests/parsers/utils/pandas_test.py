@@ -180,6 +180,30 @@ def test_index() -> None:
         data[int, "MISSING", "This is an error"]
 
 
+def test_get_duplicate_strategy() -> None:
+    # Create a Series with duplicate indices
+    data = SeriesData(
+        pd.Series(["first", "middle", "last"], index=["dup", "dup", "dup"])
+    )
+
+    # Test default behavior (all) - should return concatenated result
+    result_all = data.get(str, "dup")
+    assert isinstance(result_all, str)
+    assert "first" in result_all and "middle" in result_all and "last" in result_all
+
+    # Test first strategy
+    assert data.get(str, "dup", duplicate_strategy="first") == "first"
+
+    # Test last strategy
+    assert data.get(str, "dup", duplicate_strategy="last") == "last"
+
+    # Test with non-duplicate key
+    data_no_dup = SeriesData(pd.Series({"unique": "value"}))
+    assert data_no_dup.get(str, "unique", duplicate_strategy="first") == "value"
+    assert data_no_dup.get(str, "unique", duplicate_strategy="last") == "value"
+    assert data_no_dup.get(str, "unique", duplicate_strategy="all") == "value"
+
+
 def test_index_multikey() -> None:
     data = SeriesData(
         pd.Series(

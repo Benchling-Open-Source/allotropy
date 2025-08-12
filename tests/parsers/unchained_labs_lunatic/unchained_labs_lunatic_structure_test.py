@@ -160,7 +160,10 @@ def test_create_well_plate() -> None:
     well_plate = _create_measurement_group(
         SeriesData(pd.Series(plate_data)), ["a250"], SeriesData(pd.Series())
     )
-    assert well_plate.analytical_method_identifier == analytical_method_identifier
+    assert (
+        well_plate.measurements[0].analytical_method_identifier
+        == analytical_method_identifier
+    )
     assert well_plate.measurement_time == f"{date} {time}"
     assert well_plate.measurements[0].absorbance == 23.45
 
@@ -297,7 +300,10 @@ batch_id,Plate1,dummyApp,2021-05-20,16:55:51,14,23.4
     assert metadata.device_identifier == "123456"
     assert metadata.software_version == "8.2.0.259"
     assert measurement_groups[0].analyst == "ImmuneMed"
-    assert measurement_groups[0].experimental_data_identifier == "BENCHLING_TEST"
+    assert (
+        measurement_groups[0].measurements[0].experimental_data_identifier
+        == "BENCHLING_TEST"
+    )
     assert measurement_groups[0].measurements[0].firmware_version == "8.3.0.305"
 
 

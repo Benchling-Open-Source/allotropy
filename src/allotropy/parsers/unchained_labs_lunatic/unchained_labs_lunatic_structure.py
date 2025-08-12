@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 from pathlib import Path
+import re
+from typing import Any
 
 import pandas as pd
 
-from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
     ErrorDocument,
     Measurement,
     MeasurementGroup,
@@ -16,8 +18,9 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
 from allotropy.parsers.unchained_labs_lunatic.constants import (
     CALCULATED_DATA_LOOKUP,
-    DETECTION_TYPE,
+    DEFAULT_DETECTION_TYPE,
     DEVICE_TYPE,
+    DYNAMIC_LIGHT_SCATTERING_DETECTION_TYPE,
     INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG,
     MODEL_NUMBER,
     NO_DATE_OR_TIME_ERROR_MSG,
@@ -42,6 +45,49 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
 )
+
+
+def _extract_peak_data(well_plate_data: SeriesData) -> list[dict[str, Any]]:
+    """Extract peak data from well plate data and return as list of peak info dictionaries."""
+    peak_data = []
+
+    peak_pattern = re.compile(r"peak (\d+) ")
+    peak_numbers = set()
+
+    for column in well_plate_data.series.index:
+        match = peak_pattern.match(str(column).lower())
+        if match:
+            peak_numbers.add(int(match.group(1)))
+
+    for peak_num in sorted(peak_numbers):
+        peak_info = {}
+
+        mean_dia = well_plate_data.get(float, f"peak {peak_num} mean dia (nm)")
+        if mean_dia is not None:
+            peak_info["peak mean diameter"] = mean_dia
+
+        mode_dia = well_plate_data.get(float, f"peak {peak_num} mode dia (nm)")
+        if mode_dia is not None:
+            peak_info["peak mode diameter"] = mode_dia
+
+        est_mw = well_plate_data.get(float, f"peak {peak_num} est. mw (kda)")
+        if est_mw is not None:
+            peak_info["peak est. MW"] = est_mw
+
+        intensity = well_plate_data.get(float, f"peak {peak_num} intensity (%)")
+        if intensity is not None:
+            peak_info["peak intensity"] = intensity
+
+        mass = well_plate_data.get(float, f"peak {peak_num} mass (%)")
+        if mass is not None:
+            peak_info["peak mass"] = mass
+
+        peak_info["peak index"] = str(peak_num)
+
+        if len(peak_info) > 1:
+            peak_data.append(peak_info)
+
+    return peak_data
 
 
 def _create_measurement(
@@ -70,6 +116,7 @@ def _create_measurement(
         )
 
     measurement_identifier = random_uuid_str()
+    peak_data = _extract_peak_data(well_plate_data)
 
     error_documents = _get_error_documents(well_plate_data, wavelength_column)
     absorbance = well_plate_data.get(float, wavelength_column)
@@ -78,15 +125,25 @@ def _create_measurement(
         error_documents.append(
             ErrorDocument(
                 error=NOT_APPLICABLE,
-                error_feature=DETECTION_TYPE.lower(),
+                error_feature=DEFAULT_DETECTION_TYPE.lower(),
             )
         )
     concentration_factor = well_plate_data.get(float, "concentration factor (ng/ul)")
+    application = header.get(str, "application")
+    analytical_method_identifier = (
+        well_plate_data.get(str, "application") or application
+    )
+    experimental_data_identifier = header.get(str, "experiment name")
+    detection_type = DEFAULT_DETECTION_TYPE
+    if application and "B22 & kD" in application:
+        detection_type = DYNAMIC_LIGHT_SCATTERING_DETECTION_TYPE
     return Measurement(
         type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
         device_type=DEVICE_TYPE,
-        detection_type=DETECTION_TYPE,
+        detection_type=detection_type,
         identifier=measurement_identifier,
+        analytical_method_identifier=analytical_method_identifier,
+        experimental_data_identifier=experimental_data_identifier,
         detector_wavelength_setting=float(wavelength),
         electronic_absorbance_reference_wavelength_setting=background_wavelength,
         absorbance=absorbance if absorbance is not None else NEGATIVE_ZERO,
@@ -95,19 +152,28 @@ def _create_measurement(
         well_plate_identifier=well_plate_data.get(str, "plate id"),
         batch_identifier=well_plate_data.get(str, "sample group"),
         firmware_version=header.get(str, "client version"),
+        number_of_averages=well_plate_data.get(float, "number of acquisitions"),
+        integration_time=well_plate_data.get(float, "acquisition time (s)"),
+        compartment_temperature=well_plate_data.get(float, "temperature (°c)"),
         sample_custom_info={
             "path length": float(path_length) if path_length is not None else None,
             "plate type": header.get(str, "plate type")
             or well_plate_data.get(str, "plate type"),
             "nr of plates": header.get(str, "nr of plates"),
             "blanks": header.get(str, "blanks"),
-            "plate description": header.get(str, "nan"),
+            "plate description": header.get(str, "nan", duplicate_strategy="last"),
             "molar attenuation coefficient setting": well_plate_data.get(float, "e1%"),
+            "analyte": well_plate_data.get(str, "analyte", "N/A"),
+            "buffer": well_plate_data.get(str, "buffer"),
         },
         device_control_custom_info={
             "path length mode": well_plate_data.get(str, "path length mode"),
             "pump": well_plate_data.get(str, "pump"),
             "column": header.get(str, "column") or well_plate_data.get(str, "column"),
+            "Number of acquisitions used": well_plate_data.get(
+                str, "number of acquisitions used"
+            ),
+            "Acquisition filtering": well_plate_data.get(str, "acquisition filtering"),
         },
         measurement_custom_info={
             "electronic_absorbance_reference_absorbance": background_absorbance,
@@ -137,9 +203,11 @@ def _create_measurement(
         },
         error_document=error_documents,
         processed_data_document=ProcessedDataDocument(
-            identifier=random_uuid_str(), concentration_factor=concentration_factor
+            identifier=random_uuid_str(),
+            concentration_factor=concentration_factor,
+            peak_list_custom_info=peak_data,
         )
-        if concentration_factor is not None
+        if concentration_factor is not None or peak_data
         else None,
         wavelength_identifier=wavelength_column,
         calc_docs_custom_info={
@@ -181,9 +249,6 @@ def _create_measurement_group(
     return MeasurementGroup(
         measurement_time=assert_not_none(timestamp, msg=NO_DATE_OR_TIME_ERROR_MSG),
         analyst=header.get(str, "test performed by"),
-        analytical_method_identifier=data.get(str, "application")
-        or header.get(str, "application"),
-        experimental_data_identifier=header.get(str, "experiment name"),
         plate_well_count=96,
         measurements=[
             _create_measurement(data, header, wavelength_column)
