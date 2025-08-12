@@ -138,20 +138,20 @@
                             "error aggregate document": {
                                 "error document": [
                                     {
-                                        "error": "< TEST RNG",
-                                        "error feature": "lactate"
+                                        "error": "< 0.00",
+                                        "error feature": "lactate - Standard"
                                     },
                                     {
-                                        "error": "< TEST RNG",
-                                        "error feature": "ldh"
+                                        "error": "< 20.00",
+                                        "error feature": "ldh - Standard"
                                     },
                                     {
-                                        "error": "< TEST RNG",
-                                        "error feature": "total protein"
+                                        "error": "< 4.0",
+                                        "error feature": "total protein - Standard"
                                     },
                                     {
-                                        "error": "< TEST RNG",
-                                        "error feature": "total protein"
+                                        "error": "< 40.0",
+                                        "error feature": "total protein - High with Pre - Dilution"
                                     }
                                 ]
                             },
@@ -182,7 +182,7 @@
                                     {
                                         "analyte name": "lactate",
                                         "mass concentration": {
-                                            "value": -1,
+                                            "value": -0.0,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
@@ -194,7 +194,7 @@
                                     {
                                         "analyte name": "ldh",
                                         "molar concentration": {
-                                            "value": -1,
+                                            "value": -0.0,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
@@ -206,7 +206,7 @@
                                     {
                                         "analyte name": "total protein",
                                         "mass concentration": {
-                                            "value": -1,
+                                            "value": -0.0,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
@@ -218,7 +218,7 @@
                                     {
                                         "analyte name": "total protein",
                                         "mass concentration": {
-                                            "value": -1,
+                                            "value": -0.0,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
@@ -283,16 +283,16 @@
                             "error aggregate document": {
                                 "error document": [
                                     {
-                                        "error": "< TEST RNG",
-                                        "error feature": "lactate"
+                                        "error": "< 0.00",
+                                        "error feature": "lactate - Standard"
                                     },
                                     {
-                                        "error": "< TEST RNG",
-                                        "error feature": "ldh"
+                                        "error": "< 20.00",
+                                        "error feature": "ldh - Standard"
                                     },
                                     {
-                                        "error": "< TEST RNG",
-                                        "error feature": "total protein"
+                                        "error": "< 40.0",
+                                        "error feature": "total protein - High with Pre - Dilution"
                                     }
                                 ]
                             },
@@ -323,7 +323,7 @@
                                     {
                                         "analyte name": "lactate",
                                         "mass concentration": {
-                                            "value": -1,
+                                            "value": -0.0,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
@@ -335,7 +335,7 @@
                                     {
                                         "analyte name": "ldh",
                                         "molar concentration": {
-                                            "value": -1,
+                                            "value": -0.0,
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
@@ -347,7 +347,7 @@
                                     {
                                         "analyte name": "total protein",
                                         "mass concentration": {
-                                            "value": -1,
+                                            "value": -0.0,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {

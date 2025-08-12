@@ -19,6 +19,7 @@ from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._09.solu
 from allotropy.exceptions import AllotropyParserError
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.roche_cedex_bioht.constants import (
+    BELOW_TEST_RANGE,
     FLAG_TO_ERROR,
     MAX_MEASUREMENT_TIME_GROUP_DIFFERENCE,
     OPTICAL_DENSITY,
@@ -73,6 +74,13 @@ class RawMeasurement:
         if error:
             custom_info["flag"] = error
 
+        custom_info_sorted = dict(sorted(custom_info.items()))
+
+        # Instead of reporting '< TEST RNG' as the error, we report the original concentration value,
+        # as the error, which comes as a string like '< 8.706'
+        if error == BELOW_TEST_RANGE:
+            error = data.get(str, "original concentration value", error)
+
         return RawMeasurement(
             data[str, "analyte name"],
             data[str, "measurement time"],
@@ -80,7 +88,7 @@ class RawMeasurement:
             unit,
             data[str, "analyte code"],
             error,
-            custom_info,
+            custom_info_sorted,
         )
 
     @staticmethod
@@ -168,8 +176,15 @@ def _create_measurements(
         measurement = raw_measurements[analyte_id]
         value = measurement.concentration_value
 
+        # This case should only happen if the flag column in the original data is '< TEST RNG'
         if value is NaN and measurement.error is not None:
-            errors.append(Error(error=measurement.error, feature=measurement.name))
+            detection_kit = (
+                measurement.custom_info["detection kit"]
+                if measurement.custom_info
+                else None
+            )
+            feature = f"{measurement.name} - {detection_kit}"
+            errors.append(Error(error=measurement.error, feature=feature))
 
         if measurement.name == OPTICAL_DENSITY:
             measurements.append(
@@ -178,14 +193,14 @@ def _create_measurements(
                     measurement_time=measurement_time,
                     sample_identifier=sample.name,
                     batch_identifier=sample.batch,
-                    absorbance=value if isinstance(value, float) else -1,
+                    absorbance=value if isinstance(value, float) else -0.0,
                 )
             )
         else:
             analytes.append(
                 Analyte(
                     name=measurement.name,
-                    value=value if isinstance(value, float) else -1,
+                    value=value if isinstance(value, float) else -0.0,
                     unit=measurement.unit,
                     custom_info=measurement.custom_info,
                 )
