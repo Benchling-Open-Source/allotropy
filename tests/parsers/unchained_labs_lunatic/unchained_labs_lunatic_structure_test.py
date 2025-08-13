@@ -4,7 +4,7 @@ import re
 import pandas as pd
 import pytest
 
-from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
     MeasurementGroup,
 )
 from allotropy.exceptions import AllotropeConversionError

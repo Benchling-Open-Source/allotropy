@@ -17,14 +17,14 @@ from allotropy.allotrope.models.adm.plate_reader.rec._2025._03.plate_reader impo
     MeasurementAggregateDocument,
     MeasurementDocument,
     Model,
+    PeakItem,
+    PeakList,
     PlateReaderAggregateDocument,
     PlateReaderDocumentItem,
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
     TQuantityValueModel,
-    PeakItem,
-    PeakList,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.models.shared.definitions.custom import (
@@ -195,6 +195,7 @@ class Measurement:
     processed_data_document: ProcessedDataDocument | None = None
 
     calc_docs_custom_info: dict[str, Any] | None = None
+
 
 @dataclass(frozen=True)
 class MeasurementGroup:
@@ -393,18 +394,22 @@ class Mapper(SchemaMapper[Data, Model]):
                 processed_data_document=[
                     ProcessedDataDocumentItem(
                         processed_data_identifier=measurement.processed_data_document.identifier,
-                        **({
-                            "data_processing_document": {
+                        data_processing_document=(
+                            {
                                 "concentration factor": quantity_or_none(
                                     TQuantityValueNanogramPerMicroliter,
                                     measurement.processed_data_document.concentration_factor,
                                 )
                             }
-                        } if measurement.processed_data_document.concentration_factor is not None else {}),
+                            if measurement.processed_data_document.concentration_factor
+                            is not None
+                            else None
+                        ),
                         peak_list=PeakList(
                             peak=[
                                 add_custom_information_document(
-                                    PeakItem(), self._process_peak_custom_info(peak_custom_info)
+                                    PeakItem(),
+                                    self._process_peak_custom_info(peak_custom_info),
                                 )
                                 for peak_custom_info in (
                                     measurement.processed_data_document.peak_list_custom_info
@@ -856,9 +861,11 @@ class Mapper(SchemaMapper[Data, Model]):
             else None
         )
 
-    def _process_peak_custom_info(self, peak_custom_info: dict[str, Any]) -> dict[str, Any]:
+    def _process_peak_custom_info(
+        self, peak_custom_info: dict[str, Any]
+    ) -> dict[str, Any]:
         """Process peak custom info by applying proper units to measured values."""
-        processed_info = {}
+        processed_info: dict[str, Any] = {}
 
         for key, value in peak_custom_info.items():
             if key == "peak mean diameter":

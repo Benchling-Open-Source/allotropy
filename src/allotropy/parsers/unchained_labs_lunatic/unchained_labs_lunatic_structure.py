@@ -60,7 +60,7 @@ def _extract_peak_data(well_plate_data: SeriesData) -> list[dict[str, Any]]:
             peak_numbers.add(int(match.group(1)))
 
     for peak_num in sorted(peak_numbers):
-        peak_info = {}
+        peak_info: dict[str, Any] = {}
 
         mean_dia = well_plate_data.get(float, f"peak {peak_num} mean dia (nm)")
         if mean_dia is not None:
