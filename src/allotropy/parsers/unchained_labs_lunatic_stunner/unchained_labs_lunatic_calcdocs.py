@@ -7,8 +7,11 @@ from allotropy.calcdocs.config import (
     CalculatedDataConfig,
     MeasurementConfig,
 )
-from allotropy.calcdocs.unchained_labs_lunatic.extractor import LunaticExtractor
-from allotropy.calcdocs.unchained_labs_lunatic.views import DetectionTypeView, UuidView
+from allotropy.calcdocs.unchained_labs_lunatic_stunner.extractor import LunaticExtractor
+from allotropy.calcdocs.unchained_labs_lunatic_stunner.views import (
+    DetectionTypeView,
+    UuidView,
+)
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
 )

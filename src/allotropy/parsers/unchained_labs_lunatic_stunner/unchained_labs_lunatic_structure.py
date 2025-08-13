@@ -16,7 +16,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_rea
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
-from allotropy.parsers.unchained_labs_lunatic.constants import (
+from allotropy.parsers.unchained_labs_lunatic_stunner.constants import (
     CALCULATED_DATA_LOOKUP,
     DEFAULT_DETECTION_TYPE,
     DEVICE_TYPE,
@@ -31,7 +31,7 @@ from allotropy.parsers.unchained_labs_lunatic.constants import (
     SOFTWARE_NAME,
     WAVELENGTH_COLUMNS_RE,
 )
-from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_calcdocs import (
+from allotropy.parsers.unchained_labs_lunatic_stunner.unchained_labs_lunatic_calcdocs import (
     create_calculated_data,
 )
 from allotropy.parsers.utils.calculated_data_documents.definition import (

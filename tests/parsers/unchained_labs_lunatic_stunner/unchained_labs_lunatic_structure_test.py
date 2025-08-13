@@ -9,19 +9,19 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_rea
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.unchained_labs_lunatic.constants import (
+from allotropy.parsers.unchained_labs_lunatic_stunner.constants import (
     CALCULATED_DATA_LOOKUP,
     INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG,
     NO_DATE_OR_TIME_ERROR_MSG,
     NO_MEASUREMENT_IN_PLATE_ERROR_MSG,
 )
-from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_calcdocs import (
+from allotropy.parsers.unchained_labs_lunatic_stunner.unchained_labs_lunatic_calcdocs import (
     create_calculated_data,
 )
-from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_reader import (
+from allotropy.parsers.unchained_labs_lunatic_stunner.unchained_labs_lunatic_reader import (
     UnchainedLabsLunaticReader,
 )
-from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_structure import (
+from allotropy.parsers.unchained_labs_lunatic_stunner.unchained_labs_lunatic_structure import (
     _create_measurement,
     _create_measurement_group,
     create_measurement_groups,
