@@ -1,3 +1,4 @@
+from collections import defaultdict
 from datetime import timedelta
 
 from allotropy.allotrope.models.shared.definitions.custom import (
@@ -317,3 +318,12 @@ SAMPLE_ROLE_TYPES = {"SAM": "Sample"}
 SOLUTION_ANALYZER = "solution-analyzer"
 OPTICAL_DENSITY = "optical_density"
 BELOW_TEST_RANGE = "< TEST RNG"
+
+FLAG_TO_ERROR = defaultdict(
+    lambda: "unknown",
+    {
+        "v": "verification",
+        "c": "calibration",
+        BELOW_TEST_RANGE: BELOW_TEST_RANGE,
+    },
+)

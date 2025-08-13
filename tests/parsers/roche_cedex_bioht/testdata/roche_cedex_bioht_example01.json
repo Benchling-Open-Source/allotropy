@@ -45,8 +45,8 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": " 0.278 - 13.89 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": " 0.278 - 13.89 mmol/L"
                                         }
                                     },
                                     {
@@ -56,8 +56,8 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 10.26 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 10.26 mmol/L"
                                         }
                                     },
                                     {
@@ -67,8 +67,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.0444 - 15.55 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.0444 - 15.55 mmol/L"
                                         }
                                     },
                                     {
@@ -78,8 +78,8 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "20 - 1000 U/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "20 - 1000 U/L"
                                         }
                                     },
                                     {
@@ -89,8 +89,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.3 - 6.0 g/L",
-                                            "detection kit": "Low"
+                                            "detection kit": "Low",
+                                            "detection kit range": "0.3 - 6.0 g/L"
                                         }
                                     }
                                 ]
@@ -117,6 +117,44 @@
                             "sample document": {
                                 "sample identifier": "SMPL2"
                             },
+                            "absorbance": {
+                                "value": 6.71,
+                                "unit": "mAU"
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "solution-analyzer"
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_3",
+                            "measurement time": "2023-09-15T16:56:58+00:00",
+                            "sample document": {
+                                "sample identifier": "SMPL2"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "< 0.00",
+                                        "error feature": "lactate - Standard"
+                                    },
+                                    {
+                                        "error": "< 20.00",
+                                        "error feature": "ldh - Standard"
+                                    },
+                                    {
+                                        "error": "< 4.0",
+                                        "error feature": "total protein - Standard"
+                                    },
+                                    {
+                                        "error": "< 40.0",
+                                        "error feature": "total protein - High with Pre - Dilution"
+                                    }
+                                ]
+                            },
                             "analyte aggregate document": {
                                 "analyte document": [
                                     {
@@ -126,8 +164,8 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": " 0.278 - 13.89 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": " 0.278 - 13.89 mmol/L"
                                         }
                                     },
                                     {
@@ -137,8 +175,56 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 10.26 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 10.26 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "lactate",
+                                        "mass concentration": {
+                                            "value": -0.0,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.0444 - 15.55 mmol/L",
+                                            "flag": "< TEST RNG"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "ldh",
+                                        "molar concentration": {
+                                            "value": -0.0,
+                                            "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "20 - 1000 U/L",
+                                            "flag": "< TEST RNG"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "total protein",
+                                        "mass concentration": {
+                                            "value": -0.0,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "4 - 120 g/L",
+                                            "flag": "< TEST RNG"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "total protein",
+                                        "mass concentration": {
+                                            "value": -0.0,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "40 - 1200 g/L",
+                                            "flag": "< TEST RNG"
                                         }
                                     },
                                     {
@@ -148,8 +234,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.3 - 6.0 g/L",
-                                            "detection kit": "Low"
+                                            "detection kit": "Low",
+                                            "detection kit range": "0.3 - 6.0 g/L"
                                         }
                                     }
                                 ]
@@ -171,7 +257,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_3",
+                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_4",
                             "measurement time": "2023-09-15T16:58:34+00:00",
                             "sample document": {
                                 "sample identifier": "SMPL3"
@@ -189,10 +275,26 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_4",
+                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_5",
                             "measurement time": "2023-09-15T16:58:34+00:00",
                             "sample document": {
                                 "sample identifier": "SMPL3"
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "< 0.00",
+                                        "error feature": "lactate - Standard"
+                                    },
+                                    {
+                                        "error": "< 20.00",
+                                        "error feature": "ldh - Standard"
+                                    },
+                                    {
+                                        "error": "< 40.0",
+                                        "error feature": "total protein - High with Pre - Dilution"
+                                    }
+                                ]
                             },
                             "analyte aggregate document": {
                                 "analyte document": [
@@ -203,8 +305,8 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": " 0.278 - 13.89 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": " 0.278 - 13.89 mmol/L"
                                         }
                                     },
                                     {
@@ -214,8 +316,44 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 10.26 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 10.26 mmol/L"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "lactate",
+                                        "mass concentration": {
+                                            "value": -0.0,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.0444 - 15.55 mmol/L",
+                                            "flag": "< TEST RNG"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "ldh",
+                                        "molar concentration": {
+                                            "value": -0.0,
+                                            "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "20 - 1000 U/L",
+                                            "flag": "< TEST RNG"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "total protein",
+                                        "mass concentration": {
+                                            "value": -0.0,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "High with Pre - Dilution",
+                                            "detection kit range": "40 - 1200 g/L",
+                                            "flag": "< TEST RNG"
                                         }
                                     },
                                     {
@@ -225,8 +363,8 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.3 - 6.0 g/L",
-                                            "detection kit": "Low"
+                                            "detection kit": "Low",
+                                            "detection kit range": "0.3 - 6.0 g/L"
                                         }
                                     }
                                 ]
@@ -248,7 +386,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_5",
+                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_6",
                             "measurement time": "2023-09-16T10:12:10+00:00",
                             "sample document": {
                                 "sample identifier": "SMPL4"
@@ -266,7 +404,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_6",
+                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_7",
                             "measurement time": "2023-09-16T10:12:10+00:00",
                             "sample document": {
                                 "sample identifier": "SMPL4"
@@ -280,8 +418,8 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": " 0.278 - 13.89 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": " 0.278 - 13.89 mmol/L"
                                         }
                                     },
                                     {
@@ -291,8 +429,8 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "0.1 - 10.26 mmol/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 10.26 mmol/L"
                                         }
                                     },
                                     {
@@ -302,8 +440,9 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "detection kit": "Standard",
                                             "detection kit range": "0.0444 - 15.55 mmol/L",
-                                            "detection kit": "Standard"
+                                            "flag": "verification"
                                         }
                                     },
                                     {
@@ -313,8 +452,8 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
-                                            "detection kit range": "20 - 1000 U/L",
-                                            "detection kit": "Standard"
+                                            "detection kit": "Standard",
+                                            "detection kit range": "20 - 1000 U/L"
                                         }
                                     }
                                 ]
@@ -332,7 +471,7 @@
             "file name": "roche_cedex_bioht_example01.txt",
             "UNC path": "tests/parsers/roche_cedex_bioht/testdata/roche_cedex_bioht_example01.txt",
             "ASM converter name": "allotropy_roche_cedex_bioht",
-            "ASM converter version": "0.1.101",
+            "ASM converter version": "0.1.102",
             "software name": "CEDEX BIO HT",
             "software version": "6.0.0.1905 (1905)"
         },
