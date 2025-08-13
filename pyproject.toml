@@ -12,8 +12,10 @@ keywords = ["allotropy", "allotrope", "asm", "benchling", "converters"]
 authors = [
   { name = "Benchling Open Source", email = "opensource@benchling.com" },
   { name = "Lukas Boelling", email = "lukas.boelling@deepgenomics.com" },
+  { name = "Oscar Castro", email = "oscar.castro@benchling.com" },
   { name = "Nick Collins", email = "nick.collins@benchling.com" },
   { name = "Danielle Chou", email = "danielle.chou@benchling.com" },
+  { name = "Jane Dance", email = "jane.dance@abcellera.com" },
   { name = "Chris Friedline", email = "chris.friedline@benchling.com" },
   { name = "Kathy Garcia", email = "kathy@benchling.com" },
   { name = "Trevor Halum", email = "trevor.halum@deepgenomics.com" },
@@ -22,8 +24,10 @@ authors = [
   { name = "James Leinas", email = "james.leinas@benchling.com" },
   { name = "Mindren Lu", email = "mindren.lu@benchling.com" },
   { name = "Keith Macaulay", email = "keith.macaulay@benchling.com" },
+  { name = "Felipe Narvaez", email = "felipe.narvaez@benchling.com" },
   { name = "Joe Negri", email = "joe.negri@benchling.com" },
   { name = "Preston Olinger", email = "preston.olinger@benchling.com" },
+  { name = "Alex Reis", email = "alex@manifold.bio" },
   { name = "Alejando Salgado", email = "alejando.salgado@benchling.com" },
   { name = "Erik Snow", email = "esnow@cellinobio.com" },
   { name = "Nathan Stender", email = "nathan.stender@benchling.com" },
@@ -33,8 +37,6 @@ authors = [
   { name = "Ben Wolfe", email = "bwolfe@benchling.com" },
   { name = "Stephen Worlow", email = "stephen.worlow@benchling.com" },
   { name = "Brian Worth", email = "brian@benchling.com" },
-  { name = "Alex Reis", email = "alex@manifold.bio" },
-  { name = "Jane Dance", email = "jane.dance@abcellera.com" },
 ]
 classifiers = [
   "License :: OSI Approved :: MIT License",
