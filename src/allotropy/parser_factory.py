@@ -57,7 +57,9 @@ from allotropy.parsers.chemometec_nucleoview.nucleoview_parser import (
     ChemometecNucleoviewParser,
 )
 from allotropy.parsers.ctl_immunospot.ctl_immunospot_parser import CtlImmunospotParser
-from allotropy.parsers.cytiva_biacore_insight.cytiva_biacore_insight_parser import CytivaBiacoreInsightParser
+from allotropy.parsers.cytiva_biacore_insight.cytiva_biacore_insight_parser import (
+    CytivaBiacoreInsightParser,
+)
 from allotropy.parsers.cytiva_biacore_t200_control.cytiva_biacore_t200_control_parser import (
     CytivaBiacoreT200ControlParser,
 )

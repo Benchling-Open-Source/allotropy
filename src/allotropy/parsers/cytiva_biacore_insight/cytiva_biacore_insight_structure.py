@@ -1,7 +1,11 @@
 from __future__ import annotations
+
+from pathlib import Path
 import re
+
 from attr import dataclass
 import pandas as pd
+
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueHertz,
     TQuantityValueNumber,
@@ -9,21 +13,24 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling._2024._12.binding_affinity_analyzer import (
     Measurement,
     MeasurementGroup,
+    MeasurementType,
     Metadata,
 )
-from pathlib import Path
+from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.cytiva_biacore_insight import constants
 from allotropy.parsers.cytiva_biacore_insight.cytiva_biacore_insight_reader import (
     CytivaBiacoreInsightReader,
 )
 from allotropy.parsers.utils.pandas import (
-    SeriesData,
     df_to_series_data,
     parse_header_row,
+    SeriesData,
     split_dataframe,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import quantity_or_none, try_float
+from allotropy.parsers.utils.values import assert_not_none
+from allotropy.types import DictType
 
 
 @dataclass(frozen=True)
@@ -52,6 +59,9 @@ class RunMetadata:
         while rest is not None:
             run, rest = split_dataframe(rest, lambda row: str(row[0]).startswith("Run"))
             runs.append(run)
+        if len(runs) > 1:
+            msg = "Instrument file contains multiple runs. Only single runs are supported at the moment."
+            raise AllotropeConversionError(msg)
         return [RunMetadata.create(run) for run in runs if not run.empty]
 
     @staticmethod
@@ -68,7 +78,8 @@ class RunMetadata:
         run_information = SeriesData()
         run_table = pd.DataFrame()
         compartment_temperature = None
-        for idx, row in run_data.iterrows():
+        for index, row in run_data.iterrows():
+            idx = int(str(index))
             if row[0] == "Chip information":
                 chip_data = df_to_series_data(
                     parse_header_row(run_data.loc[idx + 1 : idx + 4][[0, 1]].T)
@@ -106,7 +117,6 @@ class RunMetadata:
 
 @dataclass(frozen=True)
 class BiacoreInsightMetadata:
-    product_manufacturer: str
     file_name: str
     unc_path: str
     software_name: str
@@ -114,36 +124,32 @@ class BiacoreInsightMetadata:
     analyst: str
     analytical_method_id: str
     runs: list[RunMetadata]
+    data_processing_document: DictType | None = None
 
     @staticmethod
     def create(reader: CytivaBiacoreInsightReader) -> BiacoreInsightMetadata:
+
         properties = reader.data["Properties"]
         properties, runs_data = split_dataframe(
             properties, lambda row: str(row[0]).startswith("Run")
         )
-        for idx, row in properties.iterrows():
+        if runs_data is None or runs_data.empty:
+            msg = "No run data found in the properties section of instrument file."
+            raise AllotropeConversionError(msg)
+        for index, row in properties.iterrows():
+            idx = int(str(index))
             if row[0] == "Evaluation":
                 evaluation_data = df_to_series_data(
                     parse_header_row(properties.loc[idx + 1 : idx + 4][[0, 1]].T)
-                )
-                # If the "Name" column is not at index 3, it indicates that there are multiple runs
-                # the data for the first run starts at index 4. We only need the first run's data.
-                # Since the "created by" property is the same for all runs,
-                if properties.at[idx + 1, 3] == "Name":
-                    ncol, vcol = 3, 4
-                else:
-                    ncol, vcol = 4, 5
-                runs_this_evaluation = df_to_series_data(
-                    parse_header_row(properties.loc[idx + 1 : idx + 4][[ncol, vcol]].T)
                 )
             elif row[0] == "Software":
                 software_data = df_to_series_data(
                     parse_header_row(properties.loc[idx + 1 : idx + 2][[0, 1]].T)
                 )
 
+        data_processing_doc = BiacoreInsightMetadata.get_data_processing_doc(reader)
+
         return BiacoreInsightMetadata(
-            # TODO: validate this is the correct way to get the product manufacturer (and not the constants.PRODUCT_MANUFACTURER)
-            product_manufacturer=runs_this_evaluation[str, "Created by"],
             file_name=evaluation_data[str, "Name"],
             unc_path=evaluation_data[str, "Path"],
             software_name=software_data[str, "Name"],
@@ -151,47 +157,110 @@ class BiacoreInsightMetadata:
             analyst=evaluation_data[str, "Modified by"],
             analytical_method_id=evaluation_data[str, "Name"],
             runs=RunMetadata.create_runs(runs_data),
+            data_processing_document=data_processing_doc,
         )
+
+    @staticmethod
+    def get_data_processing_doc(reader: CytivaBiacoreInsightReader) -> DictType | None:
+        table_names = [
+            "QC - Capture baseline",
+            "QC - Capture level",
+            "QC - Binding to reference",
+        ]
+        qc_tables = [table for table in table_names if table in reader.data]
+        qc_df = None
+        while qc_df is None and qc_tables:
+            qc_table = qc_tables.pop(0)
+            _, qc_df = split_dataframe(
+                reader.data[qc_table],
+                lambda row: row[0] == "Blank subtraction",
+                include_split_row=True,
+            )
+
+        if qc_df is None or qc_df.empty:
+            return None
+
+        qc_metadata = df_to_series_data(
+            parse_header_row(qc_df.dropna(how="all", axis=0).T[0:2])
+        )
+        metadata_keys = [
+            "Blank subtraction",
+            "Molecular weight adjustment",
+            "Capture/ligand adjustment",
+            "Adjustment for controls",
+            "Curve analysis",
+        ]
+        return {key: qc_metadata.get(str, key) for key in metadata_keys}
 
 
 @dataclass(frozen=True)
-class Measurement:
+class MeasurementItem:
     measurement_identifier: str
     sample_identifier: str
-    viability: float
+    ligand_identifier: str
+
+
+@dataclass(frozen=True)
+class MeasurementList:
+    measurements: list[MeasurementItem]
+
+    @staticmethod
+    def create(reader: CytivaBiacoreInsightReader) -> MeasurementList:
+        # Report point table is the entry point
+        _, report_point_table = split_dataframe(
+            reader.data["Report point table"],
+            lambda row: row[0] == "Run",
+            include_split_row=True,
+        )
+        report_point_table = parse_header_row(
+            assert_not_none(report_point_table, msg="Missing report point table.")
+        ).reset_index(drop=True)
+
+        return MeasurementList(
+            [
+                MeasurementItem(
+                    measurement_identifier=random_uuid_str(),
+                    sample_identifier="123",
+                    ligand_identifier="ligand1d",
+                )
+            ]
+        )
 
 
 @dataclass(frozen=True)
 class Data:
     metadata: BiacoreInsightMetadata
-    measurements: list[Measurement]
+    measurements: list[MeasurementItem]
 
     @staticmethod
     def create(reader: CytivaBiacoreInsightReader) -> Data:
+        metadata = BiacoreInsightMetadata.create(reader)
 
         return Data(
-            metadata=BiacoreInsightMetadata.create(reader),
+            metadata=metadata,
+            measurements=MeasurementList.create(reader).measurements,
         )
 
 
 def create_metadata(metadata: BiacoreInsightMetadata, file_path: str) -> Metadata:
     path = Path(file_path)
-    first_run = metadata.runs[0]
+    run_metadata = metadata.runs[0]
     return Metadata(
         device_identifier=constants.DEVICE_IDENTIFIER,
         asm_file_identifier=path.with_suffix(".json").name,
-        model_number=metadata.model_number,
-        sensor_chip_identifier=first_run.sensor_chip_id,
+        data_system_instance_identifier=NOT_APPLICABLE,
+        model_number=run_metadata.model_number,
+        sensor_chip_identifier=run_metadata.sensor_chip_id,
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
         software_name=metadata.software_name,
         software_version=metadata.software_version,
         file_name=metadata.file_name,
         unc_path=metadata.unc_path,
         detection_type=constants.DETECTION_TYPE,
-        equipment_serial_number=metadata.equipment_serial_number,
-        compartment_temperature=first_run.compartment_temperature,
-        sensor_chip_type=first_run.sensor_chip_type,
-        lot_number=first_run.lot_number,
+        equipment_serial_number=run_metadata.equipment_serial_number,
+        compartment_temperature=run_metadata.compartment_temperature,
+        sensor_chip_type=run_metadata.sensor_chip_type,
+        lot_number=run_metadata.lot_number,
     )
 
 
@@ -210,16 +279,18 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
                 "data_collection_rate": TQuantityValueHertz(
                     value=run_metadata.data_collection_rate
                 ),
-                "running_buffer": TQuantityValueHertz(
-                    value=run_metadata.running_buffer
-                ),
+                "running_buffer": run_metadata.running_buffer,
                 "measurement_end_time": run_metadata.measurement_end_time,
             },
             measurements=[
                 Measurement(
-                    measurement_identifier=random_uuid_str(),
-                    sample_identifier=data[str, "Sample ID"],
-                    viability=data[float, "Viability"],
+                    identifier=measurement.measurement_identifier,
+                    sample_identifier=measurement.sample_identifier,
+                    device_type=constants.DEVICE_TYPE,
+                    type_=MeasurementType.SURFACE_PLASMON_RESONANCE,
+                    method_name=run_metadata.method_name,
+                    ligand_identifier=measurement.ligand_identifier,
+                    data_processing_document=data.metadata.data_processing_document,
                 )
                 for measurement in data.measurements
             ],

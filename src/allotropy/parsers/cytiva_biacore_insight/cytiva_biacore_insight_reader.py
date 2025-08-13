@@ -4,10 +4,9 @@ import pandas as pd
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.roche_cedex_hires import constants
 from allotropy.parsers.utils.pandas import read_multisheet_excel
 
-REQUIRED_SHEETS = ("Properties", "Evaluation - Kinetics")
+REQUIRED_SHEETS = ("Properties", "Report point table", "Evaluation - Kinetics")
 
 
 class CytivaBiacoreInsightReader:

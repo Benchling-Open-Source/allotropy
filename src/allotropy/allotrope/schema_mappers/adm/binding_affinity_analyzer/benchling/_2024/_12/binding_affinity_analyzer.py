@@ -107,12 +107,16 @@ class Measurement:
     dilution: float | None = None
     device_control_custom_info: DictType | None = None
     sample_custom_info: DictType | None = None
+    sample_temperature_setting: float | None = None
 
     # Sensorgram
     sensorgram_data_cube: DataCube | None = None
 
     # Report point
     report_point_data: list[ReportPoint] | None = None
+
+    # Data processing
+    data_processing_document: DictType | None = None
 
 
 @dataclass(frozen=True)
@@ -153,6 +157,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     model_number=data.metadata.model_number,
                     brand_name=data.metadata.brand_name,
                     product_manufacturer=data.metadata.product_manufacturer,
+                    equipment_serial_number=data.metadata.equipment_serial_number,
                     device_document=(
                         [
                             DeviceDocumentItem(
@@ -245,6 +250,10 @@ class Mapper(SchemaMapper[Data, Model]):
                 device_control_document=[
                     add_custom_information_document(
                         DeviceControlDocumentItem(
+                            sample_temperature_setting=quantity_or_none(
+                                TQuantityValueDegreeCelsius,
+                                measurement.sample_temperature_setting,
+                            ),
                             flow_cell_identifier=measurement.flow_cell_identifier,
                             flow_path=measurement.flow_path,
                             flow_rate=quantity_or_none(
@@ -267,6 +276,11 @@ class Mapper(SchemaMapper[Data, Model]):
                 ProcessedDataAggregateDocument(
                     processed_data_document=[
                         ProcessedDataDocumentItem(
+                            data_processing_document=(
+                                dict(measurement.data_processing_document)
+                                if measurement.data_processing_document
+                                else None
+                            ),
                             report_point_aggregate_document=ReportPointAggregateDocument(
                                 report_point_document=[
                                     add_custom_information_document(
@@ -289,7 +303,7 @@ class Mapper(SchemaMapper[Data, Model]):
                                     )
                                     for report_point in measurement.report_point_data
                                 ]
-                            )
+                            ),
                         ),
                     ]
                 )
