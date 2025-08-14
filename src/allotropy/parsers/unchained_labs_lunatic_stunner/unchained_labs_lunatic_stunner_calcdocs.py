@@ -224,6 +224,7 @@ def create_calculated_data(
                 unit=UNITLESS,
                 view_data=detection_type_view,
                 source_configs=(dynamic_light_scattering_conf,),
+                description_value_key="kd linear fit",
             ),
             CalculatedDataConfig(
                 name="B22 goodness of fit",
@@ -231,6 +232,7 @@ def create_calculated_data(
                 unit=UNITLESS,
                 view_data=detection_type_view,
                 source_configs=(dynamic_light_scattering_conf,),
+                description_value_key="b22 linear fit",
             ),
             CalculatedDataConfig(
                 name="Viscosity at T (cP)",

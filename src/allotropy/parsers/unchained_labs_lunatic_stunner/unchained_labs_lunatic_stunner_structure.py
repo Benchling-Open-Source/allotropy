@@ -31,7 +31,7 @@ from allotropy.parsers.unchained_labs_lunatic_stunner.constants import (
     SOFTWARE_NAME,
     WAVELENGTH_COLUMNS_RE,
 )
-from allotropy.parsers.unchained_labs_lunatic_stunner.unchained_labs_lunatic_calcdocs import (
+from allotropy.parsers.unchained_labs_lunatic_stunner.unchained_labs_lunatic_stunner_calcdocs import (
     create_calculated_data,
 )
 from allotropy.parsers.utils.calculated_data_documents.definition import (
@@ -175,6 +175,25 @@ def _create_measurement(
             ),
             "Acquisition filtering": well_plate_data.get(str, "acquisition filtering"),
         },
+        error_document=error_documents,
+        processed_data_document=ProcessedDataDocument(
+            identifier=random_uuid_str(),
+            concentration_factor=concentration_factor,
+            peak_list_custom_info=peak_data,
+        )
+        if concentration_factor is not None or peak_data
+        else None,
+        wavelength_identifier=wavelength_column,
+        calc_docs_custom_info={
+            **{
+                item["column"]: well_plate_data.get(float, item["column"])
+                for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, [])
+            },
+            **{
+                "b22 linear fit": well_plate_data.get(str, "b22 linear fit"),
+                "kd linear fit": well_plate_data.get(str, "kd linear fit"),
+            },
+        },
         measurement_custom_info={
             "electronic_absorbance_reference_absorbance": background_absorbance,
             **well_plate_data.get_unread(
@@ -200,19 +219,6 @@ def _create_measurement(
                     r"^a\d{3}$",
                 },
             ),
-        },
-        error_document=error_documents,
-        processed_data_document=ProcessedDataDocument(
-            identifier=random_uuid_str(),
-            concentration_factor=concentration_factor,
-            peak_list_custom_info=peak_data,
-        )
-        if concentration_factor is not None or peak_data
-        else None,
-        wavelength_identifier=wavelength_column,
-        calc_docs_custom_info={
-            item["column"]: well_plate_data.get(float, item["column"])
-            for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, [])
         },
     )
 

@@ -9,10 +9,10 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_rea
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.unchained_labs_lunatic_stunner.unchained_labs_lunatic_reader import (
+from allotropy.parsers.unchained_labs_lunatic_stunner.unchained_labs_lunatic_stunner_reader import (
     UnchainedLabsLunaticReader,
 )
-from allotropy.parsers.unchained_labs_lunatic_stunner.unchained_labs_lunatic_structure import (
+from allotropy.parsers.unchained_labs_lunatic_stunner.unchained_labs_lunatic_stunner_structure import (
     create_measurement_groups,
     create_metadata,
 )
