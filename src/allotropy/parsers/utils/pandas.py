@@ -282,7 +282,7 @@ class SeriesData:
             for matched in [
                 k
                 for k in self.series.index
-                if k == regex_key or re.fullmatch(regex_key, k)
+                if k == regex_key or re.fullmatch(str(regex_key), str(k))
             ]
         }
 
@@ -429,10 +429,13 @@ class SeriesData:
         Returns:
         type: A value of the type provided or default value.
         """
-        if not isinstance(key, str):
+        if isinstance(key, tuple | list | set):
             return get_first_not_none(
                 lambda k: self.get(type_, k, validate=validate), key
             )
+        elif not isinstance(key, str | int):
+            msg = f"Unexpected key type ({type(key)}): {key}"
+            raise ValueError(msg)
         self.read_keys.add(key)
         raw_value = self._validate_raw(self.series.get(key), validate)
         try:

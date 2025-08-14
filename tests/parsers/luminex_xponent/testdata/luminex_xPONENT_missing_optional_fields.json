@@ -6673,9 +6673,23 @@
             "file name": "luminex_xPONENT_missing_optional_fields.csv",
             "UNC path": "tests/parsers/luminex_xponent/testdata/luminex_xPONENT_missing_optional_fields.csv",
             "ASM converter name": "allotropy_luminex_xponent",
-            "ASM converter version": "0.1.98",
+            "ASM converter version": "0.1.102",
             "software name": "xPONENT",
-            "software version": "2.1.1015"
+            "software version": "2.1.1015",
+            "custom information document": {
+                "BeadType": "MagPlex",
+                "Version": 1.0,
+                "PanelName": "Panel-12345678910 [v1]",
+                "ProtocolHeater": "Off",
+                "BatchStopTime": "2024-10-18 12:15",
+                "PlateReadDirection": "Horizontal",
+                "ProtocolAnalysis": "Off",
+                "DDGate": "7000 to 17000",
+                "Date": "2024-10-19",
+                "SampleTimeout": "50 sec",
+                "ProtocolMicrosphere": "Map",
+                "Country Code": 409.0
+            }
         },
         "device system document": {
             "equipment serial number": "SERIAL_12345",

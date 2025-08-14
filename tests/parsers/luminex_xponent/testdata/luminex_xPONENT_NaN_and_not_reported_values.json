@@ -20553,9 +20553,22 @@
             "file name": "luminex_xPONENT_NaN_and_not_reported_values.csv",
             "UNC path": "tests/parsers/luminex_xponent/testdata/luminex_xPONENT_NaN_and_not_reported_values.csv",
             "ASM converter name": "allotropy_luminex_xponent",
-            "ASM converter version": "0.1.99",
+            "ASM converter version": "0.1.102",
             "software name": "xPONENT",
-            "software version": "4.3.309.1"
+            "software version": "4.3.309.1",
+            "custom information document": {
+                "DDGate": "7500 to 15000",
+                "ProtocolAnalysis": "Off",
+                "SampleTimeout": "1 sec",
+                "ProtocolDescription": "1 second timeout, no plate layout assignment",
+                "ProtocolMicrosphere": "Map",
+                "Country Code": 0.0,
+                "ProtocolHeater": "Off",
+                "Version": 1.0,
+                "Date": "01/01/2025",
+                "BatchStopTime": "1/1/2025 1:00:00 AM",
+                "BatchDescription": "<None>"
+            }
         },
         "device system document": {
             "equipment serial number": "1234",
