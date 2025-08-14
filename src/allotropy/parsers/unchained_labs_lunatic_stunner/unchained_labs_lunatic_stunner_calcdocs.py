@@ -98,13 +98,6 @@ def create_calculated_data(
                 view_data=lunatic_view_data,
                 source_configs=(absorbance_conf,),
             ),
-            CalculatedDataConfig(
-                name="E1%",
-                value="e1%",
-                unit=UNITLESS,
-                view_data=lunatic_view_data,
-                source_configs=(absorbance_conf,),
-            ),
             # Dynamic Light Scattering related calculations
             CalculatedDataConfig(
                 name="KC/R (mol/g)",

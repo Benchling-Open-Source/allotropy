@@ -163,8 +163,11 @@ def _create_measurement(
             "blanks": header.get(str, "blanks"),
             "plate description": header.get(str, "nan", duplicate_strategy="last"),
             "molar attenuation coefficient setting": well_plate_data.get(float, "e1%"),
-            "analyte": well_plate_data.get(str, "analyte", "N/A"),
+            "analyte": well_plate_data.get(str, "analyte"),
             "buffer": well_plate_data.get(str, "buffer"),
+            "molecular weight (kda)": well_plate_data.get(
+                float, "molecular weight (kda)"
+            ),
         },
         device_control_custom_info={
             "path length mode": well_plate_data.get(str, "path length mode"),

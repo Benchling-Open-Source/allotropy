@@ -75,12 +75,6 @@ CALCULATED_DATA_LOOKUP = {
             "feature": "absorbance",
             "unit": UNITLESS,
         },
-        {
-            "column": "e1%",
-            "name": "E1%",
-            "feature": "absorbance",
-            "unit": UNITLESS,
-        },
         # Dynamic Light Scattering related calculations
         {
             "column": "kc/r (mol/g)",
