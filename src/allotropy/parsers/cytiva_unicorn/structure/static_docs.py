@@ -131,9 +131,8 @@ class StaticDocs:
                     {"attr:FormatVersion", "attr:UNICORNVersion"}
                 )
 
-        curve.mark_read(
-            "attr:CurveDataType"
-        )  # CurveDataType is read in add_custom_info
+        # CurveDataType is read in add_custom_info
+        curve.mark_read("attr:CurveDataType")
         return StaticDocs(
             chromatography_serial_num=(
                 article_number.get_text_or_none()
