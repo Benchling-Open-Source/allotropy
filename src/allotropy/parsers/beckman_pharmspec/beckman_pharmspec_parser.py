@@ -25,6 +25,7 @@ class PharmSpecParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = BeckmanPharmspecReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
+    UNREAD_DATA_HANDLED = False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = BeckmanPharmspecReader(named_file_contents)

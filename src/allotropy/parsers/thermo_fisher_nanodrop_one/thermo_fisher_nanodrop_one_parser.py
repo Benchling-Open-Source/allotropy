@@ -25,6 +25,7 @@ class ThermoFisherNanodropOneParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "csv,xlsx"
     SCHEMA_MAPPER = Mapper
+    UNREAD_DATA_HANDLED = False
 
     def read_data(
         self, named_file_contents: NamedFileContents

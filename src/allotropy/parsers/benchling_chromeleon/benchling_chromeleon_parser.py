@@ -23,6 +23,7 @@ class BenchlingChromeleonParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = BenchlingChromeleonReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
+    UNREAD_DATA_HANDLED = False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = BenchlingChromeleonReader(named_file_contents)

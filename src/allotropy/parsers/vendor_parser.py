@@ -25,6 +25,8 @@ class VendorParser(ABC, Generic[Data, Model]):
     SUPPORTED_EXTENSIONS: str
     # The schema mapper to use for mapping to ASM
     SCHEMA_MAPPER: Callable[..., SchemaMapper[Data, Model]]
+    # Marks if the parser has already been migrated to handle unread data and should warn if data is unread
+    UNREAD_DATA_HANDLED: bool = False
 
     timestamp_parser: TimestampParser
 

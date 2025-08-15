@@ -27,6 +27,7 @@ class TecanMagellanParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = TecanMagellanReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
+    UNREAD_DATA_HANDLED = False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = TecanMagellanReader(named_file_contents)

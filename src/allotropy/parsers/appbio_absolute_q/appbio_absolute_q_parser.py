@@ -25,6 +25,7 @@ class AppbioAbsoluteQParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = AppbioAbsoluteQReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
+    UNREAD_DATA_HANDLED = True
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = AppbioAbsoluteQReader(named_file_contents)

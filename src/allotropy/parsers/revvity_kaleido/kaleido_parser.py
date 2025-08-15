@@ -21,6 +21,7 @@ class KaleidoParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SCHEMA_MAPPER = Mapper
     SUPPORTED_EXTENSIONS = "csv"
+    UNREAD_DATA_HANDLED = False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         data = create_data(CsvReader(read_to_lines(named_file_contents)))

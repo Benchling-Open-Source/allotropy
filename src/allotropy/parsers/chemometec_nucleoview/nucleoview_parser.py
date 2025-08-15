@@ -21,6 +21,7 @@ class ChemometecNucleoviewParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = NucleoviewReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
+    UNREAD_DATA_HANDLED = True
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         df = NucleoviewReader.read(named_file_contents.contents)

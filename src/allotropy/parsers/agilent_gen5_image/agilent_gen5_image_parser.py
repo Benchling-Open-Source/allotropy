@@ -25,6 +25,7 @@ class AgilentGen5ImageParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = AgilentGen5Reader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
+    UNREAD_DATA_HANDLED = True
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = AgilentGen5Reader(named_file_contents)

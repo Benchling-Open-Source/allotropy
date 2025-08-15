@@ -23,6 +23,7 @@ class ThermoFisherGenesys30Parser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = ThermoFisherGenesys30Reader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
+    UNREAD_DATA_HANDLED = False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = ThermoFisherGenesys30Reader(named_file_contents)

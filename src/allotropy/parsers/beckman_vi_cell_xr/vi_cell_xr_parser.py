@@ -23,6 +23,7 @@ class ViCellXRParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "txt,xls,xlsx"
     SCHEMA_MAPPER = Mapper
+    UNREAD_DATA_HANDLED = True
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader_data = create_reader_data(named_file_contents)
