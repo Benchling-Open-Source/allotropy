@@ -84,7 +84,7 @@ def create_measurement_groups(
                 "RunIndex": results.get_sub_text_or_none("RunIndex"),
                 "RunType": results.get_sub_text_or_none("RunType"),
                 "Name": results.get_sub_text_or_none("Name"),
-                **dict(sorted(chrom_1.get_unread().items()))
+                **dict(sorted(chrom_1.get_unread().items())),
             },
         )
     ]
