@@ -154,6 +154,7 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
     @classmethod
     def get_peaks(cls, handler: UnicornZipHandler) -> list[Peak]:
         chrom_1 = handler.get_chrom_1()
+        chrom_1.get_unread()  # chrom_1 data is read in create_measurement_groups
         peaks = chrom_1.recursive_find_or_none(["PeakTables", "PeakTable", "Peaks"])
         output = []
         for idx, peak in enumerate(peaks.findall("Peak") if peaks else [], start=1):

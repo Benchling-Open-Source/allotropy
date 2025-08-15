@@ -127,7 +127,13 @@ class StaticDocs:
                 void_volume = chromatogram_analysis_settings.recursive_find_or_none(
                     ["IntegrationSettings", "ColumnProperties", "ColumnVolume"]
                 )
+                chromatogram_analysis_settings.mark_read(
+                    {"attr:FormatVersion", "attr:UNICORNVersion"}
+                )
 
+        curve.mark_read(
+            "attr:CurveDataType"
+        )  # CurveDataType is read in add_custom_info
         return StaticDocs(
             chromatography_serial_num=(
                 article_number.get_text_or_none()
