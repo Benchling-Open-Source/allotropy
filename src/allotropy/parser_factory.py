@@ -183,7 +183,7 @@ class Vendor(Enum):
         return self.get_parser().DISPLAY_NAME
 
     @property
-    def unread_data_handled(self) -> str:
+    def unread_data_handled(self) -> bool:
         return self.get_parser().UNREAD_DATA_HANDLED
 
     @property
