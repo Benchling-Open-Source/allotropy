@@ -30,6 +30,8 @@ class CalculatedDataConfig:
     source_configs: tuple[CalculatedDataConfig | MeasurementConfig, ...]
     unit: str | None = None
     description: str | None = None
+    # Optional key to pull a dynamic description from the element data
+    description_value_key: str | None = None
     required: bool = False
 
     def iter_data_sources(
@@ -71,13 +73,23 @@ class CalculatedDataConfig:
         if not data_sources:
             return None
 
+        if self.name == "B22 goodness of fit":
+            pass
         return CalculatedDocument(
             uuid=random_uuid_str(),
             name=self.name,
             value=value,
             data_sources=data_sources,
             unit=self.unit,
-            description=self.description,
+            description=(
+                self.description
+                if self.description is not None
+                else (
+                    elements[0].get_str_or_none(self.description_value_key)
+                    if self.description_value_key
+                    else None
+                )
+            ),
         )
 
     def get_cache_key(self, keys: Keys) -> str:

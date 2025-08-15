@@ -1,26 +1,26 @@
 from __future__ import annotations
 
-from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.models.adm.plate_reader.rec._2025._03.plate_reader import (
     Model,
 )
-from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
     Data,
     Mapper,
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_reader import (
+from allotropy.parsers.unchained_labs_lunatic_stunner.unchained_labs_lunatic_stunner_reader import (
     UnchainedLabsLunaticReader,
 )
-from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_structure import (
+from allotropy.parsers.unchained_labs_lunatic_stunner.unchained_labs_lunatic_stunner_structure import (
     create_measurement_groups,
     create_metadata,
 )
 from allotropy.parsers.vendor_parser import VendorParser
 
 
-class UnchainedLabsLunaticParser(VendorParser[Data, Model]):
-    DISPLAY_NAME = "Unchained Labs Lunatic"
+class UnchainedLabsLunaticStunnerParser(VendorParser[Data, Model]):
+    DISPLAY_NAME = "Unchained Labs Lunatic & Stunner"
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = UnchainedLabsLunaticReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper

@@ -17,6 +17,8 @@ from allotropy.allotrope.models.adm.plate_reader.rec._2025._03.plate_reader impo
     MeasurementAggregateDocument,
     MeasurementDocument,
     Model,
+    PeakItem,
+    PeakList,
     PlateReaderAggregateDocument,
     PlateReaderDocumentItem,
     ProcessedDataAggregateDocument,
@@ -27,6 +29,7 @@ from allotropy.allotrope.models.adm.plate_reader.rec._2025._03.plate_reader impo
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDegreeCelsius,
+    TQuantityValueKiloDalton,
     TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMillimeter,
     TQuantityValueMilliSecond,
@@ -120,6 +123,7 @@ class ErrorDocument:
 class ProcessedDataDocument:
     identifier: str | None = None
     concentration_factor: float | None = None
+    peak_list_custom_info: list[dict[str, Any]] | None = None
 
 
 @dataclass
@@ -164,6 +168,7 @@ class Measurement:
     wavelength_identifier: str | None = None
     analytical_method_identifier: str | None = None
     experimental_data_identifier: str | None = None
+    integration_time: float | None = None
 
     auto_focus_enabled_setting: bool | None = None
     exposure_duration_setting: float | None = None
@@ -323,6 +328,9 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueNanometer,
                 measurement.electronic_absorbance_reference_wavelength_setting,
             ),
+            integration_time=quantity_or_none(
+                TQuantityValueSecondTime, measurement.integration_time
+            ),
             device_type=measurement.device_type,
             detection_type=measurement.detection_type,
             detector_wavelength_setting=quantity_or_none(
@@ -386,12 +394,30 @@ class Mapper(SchemaMapper[Data, Model]):
                 processed_data_document=[
                     ProcessedDataDocumentItem(
                         processed_data_identifier=measurement.processed_data_document.identifier,
-                        data_processing_document={
-                            "concentration factor": quantity_or_none(
-                                TQuantityValueNanogramPerMicroliter,
-                                measurement.processed_data_document.concentration_factor,
-                            )
-                        },
+                        data_processing_document=(
+                            {
+                                "concentration factor": quantity_or_none(
+                                    TQuantityValueNanogramPerMicroliter,
+                                    measurement.processed_data_document.concentration_factor,
+                                )
+                            }
+                            if measurement.processed_data_document.concentration_factor
+                            is not None
+                            else None
+                        ),
+                        peak_list=PeakList(
+                            peak=[
+                                add_custom_information_document(
+                                    PeakItem(),
+                                    self._process_peak_custom_info(peak_custom_info),
+                                )
+                                for peak_custom_info in (
+                                    measurement.processed_data_document.peak_list_custom_info
+                                )
+                            ]
+                        )
+                        if measurement.processed_data_document.peak_list_custom_info
+                        else None,
                     )
                 ]
             )
@@ -834,3 +860,25 @@ class Mapper(SchemaMapper[Data, Model]):
             if error_documents
             else None
         )
+
+    def _process_peak_custom_info(
+        self, peak_custom_info: dict[str, Any]
+    ) -> dict[str, Any]:
+        """Process peak custom info by applying proper units to measured values."""
+        processed_info: dict[str, Any] = {}
+
+        for key, value in peak_custom_info.items():
+            if key == "peak mean diameter":
+                processed_info[key] = quantity_or_none(TQuantityValueNanometer, value)
+            elif key == "peak mode diameter":
+                processed_info[key] = quantity_or_none(TQuantityValueNanometer, value)
+            elif key == "peak est. MW":
+                processed_info[key] = quantity_or_none(TQuantityValueKiloDalton, value)
+            elif key == "peak intensity":
+                processed_info[key] = quantity_or_none(TQuantityValuePercent, value)
+            elif key == "peak mass":
+                processed_info[key] = quantity_or_none(TQuantityValuePercent, value)
+            else:
+                processed_info[key] = value
+
+        return processed_info

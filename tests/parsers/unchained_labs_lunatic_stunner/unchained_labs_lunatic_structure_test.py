@@ -4,24 +4,24 @@ import re
 import pandas as pd
 import pytest
 
-from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
     MeasurementGroup,
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.unchained_labs_lunatic.constants import (
+from allotropy.parsers.unchained_labs_lunatic_stunner.constants import (
     CALCULATED_DATA_LOOKUP,
     INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG,
     NO_DATE_OR_TIME_ERROR_MSG,
     NO_MEASUREMENT_IN_PLATE_ERROR_MSG,
 )
-from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_calcdocs import (
+from allotropy.parsers.unchained_labs_lunatic_stunner.unchained_labs_lunatic_stunner_calcdocs import (
     create_calculated_data,
 )
-from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_reader import (
+from allotropy.parsers.unchained_labs_lunatic_stunner.unchained_labs_lunatic_stunner_reader import (
     UnchainedLabsLunaticReader,
 )
-from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_structure import (
+from allotropy.parsers.unchained_labs_lunatic_stunner.unchained_labs_lunatic_stunner_structure import (
     _create_measurement,
     _create_measurement_group,
     create_measurement_groups,
@@ -160,7 +160,10 @@ def test_create_well_plate() -> None:
     well_plate = _create_measurement_group(
         SeriesData(pd.Series(plate_data)), ["a250"], SeriesData(pd.Series())
     )
-    assert well_plate.analytical_method_identifier == analytical_method_identifier
+    assert (
+        well_plate.measurements[0].analytical_method_identifier
+        == analytical_method_identifier
+    )
     assert well_plate.measurement_time == f"{date} {time}"
     assert well_plate.measurements[0].absorbance == 23.45
 
@@ -297,7 +300,10 @@ batch_id,Plate1,dummyApp,2021-05-20,16:55:51,14,23.4
     assert metadata.device_identifier == "123456"
     assert metadata.software_version == "8.2.0.259"
     assert measurement_groups[0].analyst == "ImmuneMed"
-    assert measurement_groups[0].experimental_data_identifier == "BENCHLING_TEST"
+    assert (
+        measurement_groups[0].measurements[0].experimental_data_identifier
+        == "BENCHLING_TEST"
+    )
     assert measurement_groups[0].measurements[0].firmware_version == "8.3.0.305"
 
 
