@@ -28,6 +28,7 @@ class ConcentrationMeasurement(UnicornMeasurement):
         elements: list[StrictXmlElement],
         static_docs: StaticDocs,
     ) -> UnicornMeasurement | None:
+        element = cls.filter_curve_or_none(elements, r"^Conc B$")
         measurement = cls.get_measurement(
             static_docs=static_docs,
             device_control_docs=[
@@ -36,19 +37,19 @@ class ConcentrationMeasurement(UnicornMeasurement):
                     start_time=static_docs.start_time,
                     solvent_conc_data_cube=cls.get_data_cube_or_none(
                         handler,
-                        cls.filter_curve_or_none(elements, r"^Conc B$"),
+                        element,
                         DataCubeComponent(
                             type_=FieldComponentDatatype.float,
                             concept="solvent concentration",
                             unit="%",
                         ),
                     ),
-                    device_control_custom_info={},
+                    device_control_custom_info=cls.get_device_control_custom_info(
+                        element
+                    ),
                 ),
             ],
-        )
-        cls.add_custom_info(
-            measurement, cls.filter_curve_or_none(elements, r"^Conc B$")
+            processed_data_custom_info=cls.get_processed_data_custom_info(element),
         )
         return measurement if cls.is_valid(cls.get_data_cubes(measurement)) else None
 

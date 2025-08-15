@@ -31,11 +31,12 @@ class ConductivityMeasurement(UnicornMeasurement):
         elements: list[StrictXmlElement],
         static_docs: StaticDocs,
     ) -> UnicornMeasurement | None:
+        element = cls.filter_curve_or_none(elements, r"^Cond$")
         measurement = cls.get_measurement(
             static_docs=static_docs,
             chromatogram_data_cube=cls.get_data_cube_or_none(
                 handler,
-                cls.filter_curve_or_none(elements, r"^Cond$"),
+                element,
                 DataCubeComponent(
                     type_=FieldComponentDatatype.float,
                     concept="electric conductivity",
@@ -56,11 +57,13 @@ class ConductivityMeasurement(UnicornMeasurement):
                 DeviceControlDoc(
                     device_type=DEVICE_TYPE,
                     start_time=static_docs.start_time,
-                    device_control_custom_info={},
+                    device_control_custom_info=cls.get_device_control_custom_info(
+                        element
+                    ),
                 )
             ],
+            processed_data_custom_info=cls.get_processed_data_custom_info(element),
         )
-        cls.add_custom_info(measurement, cls.filter_curve_or_none(elements, r"^Cond$"))
         return measurement if cls.is_valid(cls.get_data_cubes(measurement)) else None
 
     @classmethod

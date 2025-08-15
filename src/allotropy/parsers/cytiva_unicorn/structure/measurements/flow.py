@@ -36,7 +36,6 @@ class FlowMeasurement(UnicornMeasurement):
             start_time=start_time,
             sample_flow_data_cube=sample_flow_data_cube,
             system_flow_data_cube=system_flow_data_cube,
-            device_control_custom_info={},
         )
 
     @classmethod
