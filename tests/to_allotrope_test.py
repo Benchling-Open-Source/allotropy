@@ -46,7 +46,7 @@ class ParserTest:
     def test_positive_cases(
         self, test_file_path: Path, *, overwrite: bool, warn_unread_keys: bool
     ) -> None:
-        if warn_unread_keys:
+        if warn_unread_keys or self.VENDOR.unread_data_handled:
             os.environ["WARN_UNUSED_KEYS"] = "1"
         # Special case when input files are json, the are placed in an input/ folder and the results are put
         # in a corresponding output/ folder.
