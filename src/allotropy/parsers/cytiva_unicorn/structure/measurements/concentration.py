@@ -43,8 +43,12 @@ class ConcentrationMeasurement(UnicornMeasurement):
                             unit="%",
                         ),
                     ),
+                    device_control_custom_info={},
                 ),
             ],
+        )
+        cls.add_custom_info(
+            measurement, cls.filter_curve_or_none(elements, r"^Conc B$")
         )
         return measurement if cls.is_valid(cls.get_data_cubes(measurement)) else None
 
