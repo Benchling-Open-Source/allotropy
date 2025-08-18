@@ -9,8 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Migrate cytiva_unicorn to use get_unread (#1051)
-- Roche Cedex BioHT - Add custom information field Flag for sample flags and error document for < TEST RANGE (#1053)
+- Cytiva Unicorn - get get_unread data (#1051)
+- Roche Cedex BioHT - add custom information field Flag for sample flags and error document for < TEST RANGE (#1053)
 - BD Biosciences FACSDiva - add get unread data (#1049)
 
 ### Changed
