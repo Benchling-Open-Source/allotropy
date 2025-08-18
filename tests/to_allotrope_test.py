@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 import re
+import warnings
 
 import pytest
 
@@ -46,8 +47,6 @@ class ParserTest:
     def test_positive_cases(
         self, test_file_path: Path, *, overwrite: bool, warn_unread_keys: bool
     ) -> None:
-        if warn_unread_keys or self.VENDOR.unread_data_handled:
-            os.environ["WARN_UNUSED_KEYS"] = "1"
         # Special case when input files are json, the are placed in an input/ folder and the results are put
         # in a corresponding output/ folder.
         if test_file_path.parts[-2] == "input":
@@ -56,9 +55,24 @@ class ParserTest:
             ).with_suffix(".json")
         else:
             expected_filepath = test_file_path.with_suffix(".json")
-        allotrope_dict = from_file(
-            str(test_file_path), self.VENDOR, encoding=CHARDET_ENCODING
-        )
+
+        if warn_unread_keys or self.VENDOR.unread_data_handled:
+            print("HERE")
+            print(warn_unread_keys)
+            print(self.VENDOR.unread_data_handled)
+            assert False
+            allotrope_dict = from_file(
+                str(test_file_path), self.VENDOR, encoding=CHARDET_ENCODING
+            )
+        else:
+            with warnings.catch_warnings(record=True):
+                warnings.filterwarnings("ignore")
+                # warnings.filterwarnings("ignore", "StrictXmlElement went out of scope without reading all keys")
+                # warnings.filterwarnings("ignore", "JsonData went out of scope without reading all keys")
+                allotrope_dict = from_file(
+                    str(test_file_path), self.VENDOR, encoding=CHARDET_ENCODING
+                )
+
         # If expected output does not exist, assume this is a new file and write it.
         overwrite = overwrite or not expected_filepath.exists()
         validate_contents(

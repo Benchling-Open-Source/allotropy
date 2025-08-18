@@ -64,12 +64,7 @@ def create_measurement_group(
             set(constants.PROCESSED_DATA_DOCUMENT_CUSTOM_KEYS)
         )
         # these fields are not need in the asm
-        data.mark_read(
-            {
-                "Cq Mean",
-                "Unnamed: 0",
-            }
-        )
+        data.mark_read({"Cq Mean", "Unnamed: 0"})
         measurements.append(
             Measurement(
                 # Measurement metadata

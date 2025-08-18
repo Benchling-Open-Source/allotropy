@@ -124,7 +124,9 @@ class ViCellXRReader:
             usecols=[0],
         ).squeeze()
         info.index = pd.Index(["model", "filepath", "serial"])
-        return SeriesData(info)
+        data = SeriesData(info)
+        data.mark_read("filepath")
+        return data
 
 
 class ViCellXRTXTReader:

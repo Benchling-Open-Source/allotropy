@@ -29,7 +29,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = DesignQuantstudioReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
-    UNREAD_DATA_HANDLED = False
+    UNREAD_DATA_HANDLED = True
 
     def parse_rt_pcr(
         self, reader: DesignQuantstudioReader, original_file_path: str

@@ -262,11 +262,10 @@ class SeriesData:
             return
         # NOTE: this will be turned on by default when all callers have been updated to pass the warning.
         if unread_keys := set(self.series.index.to_list()) - self.read_keys:
-            if os.getenv("WARN_UNUSED_KEYS"):
-                warnings.warn(
-                    f"SeriesData went out of scope without reading all keys, unread: {sorted(unread_keys)}.",
-                    stacklevel=2,
-                )
+            warnings.warn(
+                f"SeriesData went out of scope without reading all keys, unread: {sorted(unread_keys)}.",
+                stacklevel=2,
+            )
 
     def _get_custom_key(self, key: str) -> float | str | None:
         if (float_value := self.get(float, key)) is not None:
