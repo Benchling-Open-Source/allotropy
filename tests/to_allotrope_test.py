@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 import re
 import warnings
@@ -60,7 +59,7 @@ class ParserTest:
             print("HERE")
             print(warn_unread_keys)
             print(self.VENDOR.unread_data_handled)
-            assert False
+            raise AssertionError()
             allotrope_dict = from_file(
                 str(test_file_path), self.VENDOR, encoding=CHARDET_ENCODING
             )

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from collections.abc import Callable, Iterable
 from enum import Enum
-import os
 import re
 from typing import Any, IO, Literal, overload, TypeVar
 import unicodedata

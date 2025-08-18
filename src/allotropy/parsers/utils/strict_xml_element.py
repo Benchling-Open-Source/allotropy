@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import os
 import re
 import traceback
 import warnings
@@ -89,14 +88,10 @@ class StrictXmlElement:
                     frame.name != "__init__"
                     or "strict_xml_element.py" not in frame.filename
                 ):
-                    creation_point = (
-                        f"{frame.filename}:{frame.lineno} in {frame.name}"
-                    )
+                    creation_point = f"{frame.filename}:{frame.lineno} in {frame.name}"
                     break
 
-            creation_info = (
-                f" (created at {creation_point})" if creation_point else ""
-            )
+            creation_info = f" (created at {creation_point})" if creation_point else ""
 
             warnings.warn(
                 f"StrictXmlElement went out of scope without reading all keys {creation_info}, unread: {sorted(unread_keys)}.",
