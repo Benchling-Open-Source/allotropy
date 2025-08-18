@@ -5,6 +5,18 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.103] - 2025-08-18
+
+### Added
+
+- Migrate cytiva_unicorn to use get_unread (#1051)
+- Roche Cedex BioHT - Add custom information field Flag for sample flags and error document for < TEST RANGE (#1053)
+- BD Biosciences FACSDiva - add get unread data (#1049)
+
+### Changed
+
+- Agilent gen5 - refactor adapter (#1038)
+
 ## [0.1.102] - 2025-08-04
 
 ### Added
