@@ -63,13 +63,33 @@ def create_measurement_groups(
         TemperatureMeasurement.create_or_none(handler, elements, static_docs),
     ]
 
-    return [
+    measurement_group = [
         MeasurementGroup(
             measurements=[measurement for measurement in measurements if measurement],
             fractions=create_fractions(event_curves) if event_curves else None,
             logs=create_logs(event_curves) if event_curves else None,
+            measurement_aggregate_custom_info={},
         )
     ]
+
+    chrom_1.mark_read({"element:TimeUnit", "element:VolumeUnit", "element:IsReadonly"})
+    custom_info = chrom_1.get_unread()
+
+    if measurement_group[0].measurement_aggregate_custom_info is not None:
+        custom_info.pop("UNICORNVersion")
+        custom_info.update(
+            {
+                "RunIndex": results.get_sub_text_or_none("RunIndex"),
+                "RunType": results.get_sub_text_or_none("RunType"),
+                "Name": results.get_sub_text_or_none("Name"),
+            }
+        )
+        custom_info_sorted = dict(sorted(custom_info.items()))
+        measurement_group[0].measurement_aggregate_custom_info.update(
+            custom_info_sorted
+        )
+
+    return measurement_group
 
 
 def create_fractions(event_curves: StrictXmlElement) -> list[Fraction]:
@@ -94,6 +114,7 @@ def create_fractions(event_curves: StrictXmlElement) -> list[Fraction]:
                     else t_min * 60
                 ),
                 retention_volume=event.get_sub_float_or_none("EventVolume"),
+                custom_info=event.get_unread(),
             )
             for idx, event in enumerate(events.findall("Event"), start=1)
             if event.get_attr_or_none("EventType") in ["Fraction", "Method"]
@@ -144,6 +165,7 @@ def create_logs(event_curves: StrictXmlElement) -> list[Log]:
                         else t_min * 60
                     ),
                     retention_volume=event.get_sub_float_or_none("EventVolume"),
+                    custom_info=event.get_unread(),
                 )
             )
 

@@ -28,6 +28,66 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 
 class UnicornMeasurement(Measurement):
     @classmethod
+    def add_custom_info(
+        cls, measurement: Measurement, base_element: StrictXmlElement | None
+    ) -> None:
+        if base_element:
+            device_control_custom_info = {
+                "ColumnVolume": base_element.get_sub_text_or_none("ColumnVolume"),
+                "ScanInterval": base_element.get_sub_text_or_none("ScanInterval"),
+            }
+
+            processed_data_custom_info = {
+                "AmplitudePrecision": base_element.get_sub_text_or_none(
+                    "AmplitudePrecision"
+                ),
+                "AmplitudeUnit": base_element.get_sub_text_or_none("AmplitudeUnit"),
+                "ChromatogramID": base_element.get_sub_text_or_none("ChromatogramID"),
+                "ChromatogramName": base_element.get_sub_text_or_none(
+                    "ChromatogramName"
+                ),
+                "ChromatogramStartTime": base_element.get_sub_text_or_none(
+                    "ChromatogramStartTime"
+                ),
+                "ChromatogramStartTimeUtcOffsetMinutes": base_element.get_sub_text_or_none(
+                    "ChromatogramStartTimeUtcOffsetMinutes"
+                ),
+                "ColumnVolumeUnitName": base_element.get_sub_text_or_none(
+                    "ColumnVolumeUnitName"
+                ),
+                "CurveDataType": base_element.get_sub_text_or_none("CurveDataType"),
+                "CurveNumber": base_element.get_sub_text_or_none("CurveNumber"),
+                "DistanceBetweenPoints": base_element.get_sub_text_or_none(
+                    "DistanceBetweenPoints"
+                ),
+                "DistancetoStartPoints": base_element.get_sub_text_or_none(
+                    "DistancetoStartPoints"
+                ),
+                "IsExternal": base_element.get_sub_text_or_none("IsExternal"),
+                "IsOriginalData": base_element.get_sub_text_or_none("IsOriginalData"),
+                "IsReadOnly": base_element.get_sub_text_or_none("IsReadOnly"),
+                "IsoChroneType": base_element.get_sub_text_or_none("IsoChroneType"),
+                "MethodStartTime": base_element.get_sub_text_or_none("MethodStartTime"),
+                "MethodStartTimeUtcOffsetMinutes": base_element.get_sub_text_or_none(
+                    "MethodStartTimeUtcOffsetMinutes"
+                ),
+                "TimeUnit": base_element.get_sub_text_or_none("TimeUnit"),
+                "VolumeUnit": base_element.get_sub_text_or_none("VolumeUnit"),
+            }
+            if (
+                measurement.device_control_docs[0].device_control_custom_info
+                is not None
+            ):
+                measurement.device_control_docs[0].device_control_custom_info.update(
+                    device_control_custom_info
+                )
+            if measurement.processed_data_custom_info is not None:
+                processed_data_custom_info.update(base_element.get_unread())
+                measurement.processed_data_custom_info.update(
+                    processed_data_custom_info
+                )
+
+    @classmethod
     def filter_curve_or_none(
         cls, curve_elements: list[StrictXmlElement], pattern: str
     ) -> StrictXmlElement | None:
@@ -61,13 +121,15 @@ class UnicornMeasurement(Measurement):
 
         if data_cube_handler := cls.get_data_cube_handler_or_none(handler, curve):
             name_element = curve.find("Name")
+
             if name := name_element.get_text_or_none():
-                return create_data_cube(
+                data_cube = create_data_cube(
                     data_cube_handler,
                     name,
                     data_cube_component,
                     transformation,
                 )
+                return data_cube
         return None
 
     @classmethod
@@ -104,6 +166,7 @@ class UnicornMeasurement(Measurement):
                 "sample_volume_3": static_docs.sample_volume_3,
             },
             peaks=peaks,
+            processed_data_custom_info={},
         )
 
     @classmethod

@@ -57,7 +57,7 @@ class AbsorbanceMeasurement(UnicornMeasurement):
         elements: list[StrictXmlElement],
         static_docs: StaticDocs,
     ) -> UnicornMeasurement:
-        return cls.get_measurement(
+        measurement = cls.get_measurement(
             static_docs=static_docs,
             chromatogram_data_cube=assert_not_none(
                 cls.get_data_cube_or_none(
@@ -75,10 +75,15 @@ class AbsorbanceMeasurement(UnicornMeasurement):
                 DeviceControlDoc(
                     device_type=DEVICE_TYPE,
                     start_time=static_docs.start_time,
+                    device_control_custom_info={},
                 )
             ],
             peaks=cls.get_peaks(handler),
         )
+        cls.add_custom_info(
+            measurement, cls.filter_curve_or_none(elements, cls.get_curve_regex())
+        )
+        return measurement
 
 
 class AbsorbanceMeasurement1(AbsorbanceMeasurement):
@@ -150,8 +155,9 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
     def get_peaks(cls, handler: UnicornZipHandler) -> list[Peak]:
         chrom_1 = handler.get_chrom_1()
         peaks = chrom_1.recursive_find_or_none(["PeakTables", "PeakTable", "Peaks"])
-        return [
-            Peak(
+        output = []
+        for idx, peak in enumerate(peaks.findall("Peak") if peaks else [], start=1):
+            peak_obj = Peak(
                 identifier=random_uuid_str(),
                 index=f"Peak {idx}",
                 end=peak.get_sub_float_or_none("EndPeakRetention"),
@@ -172,8 +178,10 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
                 chromatographic_asymmetry=peak.get_sub_float_or_none("Assymetry"),
                 custom_info=cls.get_peaks_custom_info(peak),
             )
-            for idx, peak in enumerate(peaks.findall("Peak") if peaks else [], start=1)
-        ]
+            if peak_obj.custom_info is not None:
+                peak_obj.custom_info.update(peak.get_unread())
+            output.append(peak_obj)
+        return output
 
 
 class AbsorbanceMeasurement2(AbsorbanceMeasurement):

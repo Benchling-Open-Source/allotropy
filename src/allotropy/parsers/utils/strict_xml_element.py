@@ -205,9 +205,16 @@ class StrictXmlElement:
         - attribute names without "attr:" prefix
         - namespaced attribute names without "ns_attr:" prefix
         """
+        all_keys = self._get_all_available_keys()
         attribute_keys = self._get_all_attribute_keys()
+        non_attribute_keys = all_keys - attribute_keys
         self._handle_skip_keys(skip)
-        matching_keys = self._apply_regex_filter(attribute_keys, regex)
+
+        matching_keys_attribute = self._apply_regex_filter(attribute_keys, regex)
+        matching_keys_non_attribute = self._apply_regex_filter(
+            non_attribute_keys, regex
+        )
+        matching_keys = matching_keys_attribute | matching_keys_non_attribute
 
         unread_keys: dict[str, str | None] = {}
         processed_attrs: set[str] = set()
@@ -217,9 +224,15 @@ class StrictXmlElement:
                 self._process_attr_key(key, matching_keys, unread_keys, processed_attrs)
             elif key.startswith("ns_attr:"):
                 self._process_ns_attr_key(key, unread_keys, processed_attrs)
+            elif key.startswith("element:"):
+                if self.should_process_element_key(key):
+                    self._process_element_key(key, unread_keys)
+                else:
+                    continue
 
         self._mark_processed_keys_as_read(matching_keys, unread_keys)
-        return unread_keys
+
+        return dict(sorted(unread_keys.items()))
 
     def _get_all_attribute_keys(self) -> set[str]:
         """Get all attribute keys with appropriate prefixes."""
@@ -298,6 +311,57 @@ class StrictXmlElement:
         clean_key = f"{namespace_key}:{field}"
         unread_keys[clean_key] = self.element.get(full_attr_name)
         processed_attrs.add(full_attr_name)
+
+    def _process_element_key(
+        self, key: str, unread_keys: dict[str, str | None]
+    ) -> None:
+        """Process an 'element:' prefixed key."""
+        element_name = key.replace("element:", "")  # Remove "element:" prefix
+        element = getattr(self.find_or_none(element_name), "element", None)
+        if element is None:
+            return
+        value_for_key = element.text
+        if value_for_key is not None:
+            unread_keys[element_name] = value_for_key
+
+    def should_process_element_key(self, key: str) -> bool:
+        """
+        Check if an XML element key should be processed.
+
+        Returns False if:
+        - The element has children
+        - The element's text content appears to be XML formatted
+
+        Returns True otherwise.
+        """
+        # Extract element name from key
+        element_name = key.replace("element:", "")
+
+        # Find the element
+        element_wrapper = self.find_or_none(element_name)
+        element = getattr(element_wrapper, "element", None)
+        if element is None:
+            return False
+
+        # Check if element has children
+        if len(element) > 0:
+            return False
+
+        # Check if element text looks like XML
+        text = element.text
+        if text:
+            text = text.strip()
+            if text:
+                # Check for basic XML patterns
+                if text.startswith("<") and text.endswith(">"):
+                    return False
+
+                # Check for XML-like patterns with regex
+                xml_pattern = re.compile(r"<[^>]+>.*</[^>]+>", re.DOTALL)
+                if xml_pattern.search(text):
+                    return False
+
+        return True
 
     def _is_attr_already_processed(
         self, attr_name: str, processed_attrs: set[str]

@@ -18,6 +18,54 @@
                             "sample document": {
                                 "sample identifier": "SAMPLE_1"
                             },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "< 4.734",
+                                        "error feature": "ammonia - Standard"
+                                    },
+                                    {
+                                        "error": "< 0.066",
+                                        "error feature": "asparagine - Standard"
+                                    },
+                                    {
+                                        "error": "< 0.013",
+                                        "error feature": "aspartate - Standard"
+                                    },
+                                    {
+                                        "error": "< 8.02",
+                                        "error feature": "calcium - Standard"
+                                    },
+                                    {
+                                        "error": "< 0.020",
+                                        "error feature": "glucose - Standard"
+                                    },
+                                    {
+                                        "error": "< 0.10",
+                                        "error feature": "glutamate - Standard"
+                                    },
+                                    {
+                                        "error": "< 0.100",
+                                        "error feature": "glutamine - Standard"
+                                    },
+                                    {
+                                        "error": "< 2.43",
+                                        "error feature": "magnesium - Standard"
+                                    },
+                                    {
+                                        "error": "< 9.50",
+                                        "error feature": "phosphate - Standard"
+                                    },
+                                    {
+                                        "error": "< 8.706",
+                                        "error feature": "pyruvate - Standard"
+                                    },
+                                    {
+                                        "error": "< 2.00",
+                                        "error feature": "total protein - Standard"
+                                    }
+                                ]
+                            },
                             "analyte aggregate document": {
                                 "analyte document": [
                                     {
@@ -32,9 +80,93 @@
                                         }
                                     },
                                     {
+                                        "analyte name": "ammonia",
+                                        "mass concentration": {
+                                            "value": -0.0,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": " 0.278 - 13.89 mmol/L",
+                                            "flag": "< TEST RNG"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "asparagine",
+                                        "mass concentration": {
+                                            "value": -0.0,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.5 - 9 mmol/L",
+                                            "flag": "< TEST RNG"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "aspartate",
+                                        "mass concentration": {
+                                            "value": -0.0,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 9 mmol/L",
+                                            "flag": "< TEST RNG"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "calcium",
+                                        "mass concentration": {
+                                            "value": -0.0,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.2 - 5 mmol/L",
+                                            "flag": "< TEST RNG"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glucose",
+                                        "mass concentration": {
+                                            "value": -0.0,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.111 - 41.63 mmol/L",
+                                            "flag": "< TEST RNG"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glutamate",
+                                        "molar concentration": {
+                                            "value": -0.0,
+                                            "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.099 - 10.2 mmol/L",
+                                            "flag": "< TEST RNG"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "glutamine",
+                                        "molar concentration": {
+                                            "value": -0.0,
+                                            "unit": "mmol/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 10.26 mmol/L",
+                                            "flag": "< TEST RNG"
+                                        }
+                                    },
+                                    {
                                         "analyte name": "iron",
                                         "mass concentration": {
-                                            "value": 0.00015099999999999998,
+                                            "value": 0.000151,
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
@@ -54,6 +186,30 @@
                                         }
                                     },
                                     {
+                                        "analyte name": "magnesium",
+                                        "mass concentration": {
+                                            "value": -0.0,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 2.5 mmol/L",
+                                            "flag": "< TEST RNG"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "phosphate",
+                                        "mass concentration": {
+                                            "value": -0.0,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.1 - 8.37 mmol/L",
+                                            "flag": "< TEST RNG"
+                                        }
+                                    },
+                                    {
                                         "analyte name": "potassium",
                                         "molar concentration": {
                                             "value": 3.63,
@@ -61,7 +217,20 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "2 - 28 mmol/L"
+                                            "detection kit range": "2 - 28 mmol/L",
+                                            "flag": "unknown"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "pyruvate",
+                                        "mass concentration": {
+                                            "value": -0.0,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "0.2 - 8 mmol/L",
+                                            "flag": "< TEST RNG"
                                         }
                                     },
                                     {
@@ -72,7 +241,20 @@
                                         },
                                         "custom information document": {
                                             "detection kit": "Standard",
-                                            "detection kit range": "50 - 275 mmol/L"
+                                            "detection kit range": "50 - 275 mmol/L",
+                                            "flag": "verification"
+                                        }
+                                    },
+                                    {
+                                        "analyte name": "total protein",
+                                        "mass concentration": {
+                                            "value": -0.0,
+                                            "unit": "g/L"
+                                        },
+                                        "custom information document": {
+                                            "detection kit": "Standard",
+                                            "detection kit range": "4 - 120 g/L",
+                                            "flag": "< TEST RNG"
                                         }
                                     }
                                 ]
@@ -90,7 +272,7 @@
             "file name": "roche_cedex_bioht_v5_multiple_detection_ranges.txt",
             "UNC path": "tests/parsers/roche_cedex_bioht/testdata/roche_cedex_bioht_v5_multiple_detection_ranges.txt",
             "ASM converter name": "allotropy_roche_cedex_bioht",
-            "ASM converter version": "0.1.101",
+            "ASM converter version": "0.1.102",
             "software name": "CEDEX BIO HT",
             "software version": "5.0.0.1206 (1206.0)"
         },

@@ -43,8 +43,12 @@ class TemperatureMeasurement(UnicornMeasurement):
                             unit="degC",
                         ),
                     ),
+                    device_control_custom_info={},
                 ),
             ],
+        )
+        cls.add_custom_info(
+            measurement, cls.filter_curve_or_none(elements, r"^Cond temp$")
         )
         return measurement if cls.is_valid(cls.get_data_cubes(measurement)) else None
 
