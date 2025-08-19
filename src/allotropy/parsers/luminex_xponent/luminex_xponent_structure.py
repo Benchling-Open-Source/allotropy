@@ -64,7 +64,7 @@ class Header:
     detector_gain_setting: str | None
     minimum_assay_bead_count_setting: float | None
     analyst: str | None
-    custom_info: dict[str, Any] | None = None
+    custom_info: dict[str, Any]
 
     @classmethod
     def create(
@@ -92,8 +92,14 @@ class Header:
         if "ProtocolPlate" in header_data:
             info_row.mark_read("ProtocolPlate")
 
-        # Get unread keys after all keys have been read. It can only be called once.
-        custom_info = info_row.get_unread()
+        custom_info = {
+            "Country Code": info_row.get(str, "Country Code"),
+            "ProtocolDevelopingCompany": info_row.get(str, "ProtocolDevelopingCompany"),
+            "Version": info_row.get(str, "Version"),
+            # These properties will be used by the mapper to create the measurement groups.
+            "BatchStopTime": info_row.get(str, "BatchStopTime"),
+            "ProtocolDescription": info_row.get(str, "ProtocolDescription"),
+        }
 
         # Build parameters dictionary
         return Header(
@@ -114,7 +120,7 @@ class Header:
             data_system_instance_identifier=data_system_instance_identifier,
             minimum_assay_bead_count_setting=minimum_assay_bead_count_setting,
             analyst=analyst,
-            custom_info=custom_info if custom_info else None,
+            custom_info=custom_info,
         )
 
     @classmethod
@@ -205,7 +211,9 @@ class Measurement:
     analytes: list[Analyte]
     calculated_data: list[CalculatedDocument]
     errors: list[Error] | None = None
-    custom_info: dict[str, Any] | None = None
+    measurement_custom_info: dict[str, Any] | None = None
+    sample_custom_info: dict[str, Any] | None = None
+    device_control_custom_info: dict[str, Any] | None = None
 
     @classmethod
     def create(
@@ -213,11 +221,13 @@ class Measurement:
         results_data: dict[str, pd.DataFrame],
         count_data: SeriesData,
         bead_ids_data: SeriesData,
+        header_data: pd.DataFrame,
     ) -> Measurement:
         location = str(count_data.series.name)
         dilution_factor_data = results_data["Dilution Factor"]
         errors_data = results_data.get("Warnings/Errors")
         measurement_identifier = random_uuid_str()
+        header_row = SeriesData(header_data.iloc[0])
 
         if location not in dilution_factor_data.index:
             msg = f"Could not find 'Dilution Factor' data for: '{location}'."
@@ -323,7 +333,26 @@ class Measurement:
         assay_bead_count = count_data[float, "Total Events"]
 
         # Get unread keys after all keys have been read
-        custom_info = count_data.get_unread()
+        count_data.get_unread()
+
+        device_control_custom_info = {
+            "ProtocolHeater": header_row.get(str, "ProtocolHeater"),
+            "DDGate": header_row.get(str, "DDGate"),
+            "SampleTimeout": header_row.get(str, "SampleTimeout"),
+            "ProtocolAnalysis": header_row.get(str, "ProtocolAnalysis"),
+            "ProtocolMicrosphere": header_row.get(str, "ProtocolMicrosphere"),
+            "PlateReadDirection": header_row.get(str, "PlateReadDirection"),  # Pending
+        }
+        sample_custom_info = {
+            "BatchDescription": header_row.get(str, "BatchDescription"),
+            "PanelName": header_row.get(str, "PanelName"),  # Pending
+            "BeadType": header_row.get(str, "BeadType"),  # Pending
+        }
+        header_row.get_unread(
+            skip={
+                "Date",
+            },
+        )
 
         return Measurement(
             identifier=measurement_identifier,
@@ -334,7 +363,9 @@ class Measurement:
             analytes=analytes,
             errors=errors,
             calculated_data=calculated_data,
-            custom_info=custom_info if custom_info else None,
+            device_control_custom_info=device_control_custom_info,
+            sample_custom_info=sample_custom_info,
+            measurement_custom_info=count_data.get_unread(),
         )
 
     @classmethod
@@ -368,7 +399,9 @@ class MeasurementList:
     measurements: list[Measurement]
 
     @classmethod
-    def create(cls, results_data: dict[str, pd.DataFrame]) -> MeasurementList:
+    def create(
+        cls, results_data: dict[str, pd.DataFrame], header_data: pd.DataFrame
+    ) -> MeasurementList:
         if missing_sections := [
             section for section in REQUIRED_SECTIONS if section not in results_data
         ]:
@@ -394,6 +427,7 @@ class MeasurementList:
                 results_data=results_data,
                 count_data=count_data,
                 bead_ids_data=bead_ids_data,
+                header_data=header_data,
             )
 
         # Capture unread bead IDs data to prevent warnings
@@ -415,7 +449,9 @@ class Data:
                 reader.header_data, reader.minimum_assay_bead_count_setting
             ),
             calibrations=map_rows(reader.calibration_data, create_calibration),
-            measurement_list=MeasurementList.create(reader.results_data),
+            measurement_list=MeasurementList.create(
+                reader.results_data, reader.header_data
+            ),
         )
 
 
@@ -462,12 +498,24 @@ def create_measurement_groups(
                     assay_bead_count=measurement.assay_bead_count,
                     analytes=measurement.analytes,
                     errors=measurement.errors if measurement.errors else None,
-                    custom_info=measurement.custom_info,
+                    measurement_custom_info=measurement.measurement_custom_info,
+                    sample_custom_info=measurement.sample_custom_info,
+                    device_control_custom_info=measurement.device_control_custom_info,
                 )
             ],
+            custom_info={
+                "BatchStopTime": header.custom_info.get("BatchStopTime", None),
+                "ProtocolDescription": header.custom_info.get(
+                    "ProtocolDescription", None
+                ),
+            },
         )
         for measurement in measurements
     ]
+    # Remove the custom info that was used to create the measurement groups.
+    header.custom_info.pop("BatchStopTime", None)
+    header.custom_info.pop("ProtocolDescription", None)
+
     calculated_documents = list(
         itertools.chain(*[measurement.calculated_data for measurement in measurements])
     )
