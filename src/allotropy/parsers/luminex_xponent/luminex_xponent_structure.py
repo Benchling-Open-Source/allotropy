@@ -338,24 +338,22 @@ class Measurement:
         sample_identifier = count_data[str, "Sample"]
         assay_bead_count = count_data[float, "Total Events"]
 
-        # Get unread keys after all keys have been read
-        count_data.get_unread()
-
         device_control_custom_info = {
             "ProtocolHeater": header_row.get(str, "ProtocolHeater"),
             "DDGate": header_row.get(str, "DDGate"),
             "SampleTimeout": header_row.get(str, "SampleTimeout"),
             "ProtocolAnalysis": header_row.get(str, "ProtocolAnalysis"),
             "ProtocolMicrosphere": header_row.get(str, "ProtocolMicrosphere"),
-            "PlateReadDirection": header_row.get(str, "PlateReadDirection"),  # Pending
+            "PlateReadDirection": header_row.get(str, "PlateReadDirection"),
         }
         sample_custom_info = {
             "BatchDescription": header_row.get(str, "BatchDescription"),
-            "PanelName": header_row.get(str, "PanelName"),  # Pending
-            "BeadType": header_row.get(str, "BeadType"),  # Pending
+            "PanelName": header_row.get(str, "PanelName"),
+            "BeadType": header_row.get(str, "BeadType"),
         }
 
         # Get unread keys after all keys have been read
+        count_data.get_unread()
         header_row.get_unread(
             skip={
                 "Date",
