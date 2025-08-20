@@ -139,16 +139,8 @@ def _create_measurement(
     measurement_identifier = random_uuid_str()
     peak_data = _extract_peak_data(well_plate_data)
 
-    error_documents = _get_error_documents(well_plate_data, wavelength_column)
+    error_documents: list[ErrorDocument] = []
     absorbance = well_plate_data.get(float, wavelength_column)
-
-    if absorbance is None:
-        error_documents.append(
-            ErrorDocument(
-                error=NOT_APPLICABLE,
-                error_feature=DEFAULT_DETECTION_TYPE.lower(),
-            )
-        )
     concentration_factor = well_plate_data.get(float, "concentration factor (ng/ul)")
     application = header.get(str, "application")
     analytical_method_identifier = (
@@ -162,8 +154,24 @@ def _create_measurement(
     calculated_data_values: dict[str, float] = {}
     for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
         value = _get_calculated_value(well_plate_data, item["column"])
+        if value == NEGATIVE_ZERO:
+            error_documents.append(
+                ErrorDocument(
+                    error=NOT_APPLICABLE,
+                    error_feature=item["name"],
+                )
+            )
         if value is not None:
             calculated_data_values[item["column"]] = value
+
+    # Append absorbance error last to preserve historical ordering (calculated-data errors first)
+    if absorbance is None:
+        error_documents.append(
+            ErrorDocument(
+                error=NOT_APPLICABLE,
+                error_feature=DEFAULT_DETECTION_TYPE.lower(),
+            )
+        )
 
     return Measurement(
         type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
@@ -251,23 +259,6 @@ def _create_measurement(
             ),
         },
     )
-
-
-def _get_error_documents(
-    well_plate_data: SeriesData,
-    wavelength_column: str,
-) -> list[ErrorDocument]:
-    error_documents = []
-    for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
-        value = _get_calculated_value(well_plate_data, item["column"])
-        if value == NEGATIVE_ZERO:
-            error_documents.append(
-                ErrorDocument(
-                    error=NOT_APPLICABLE,
-                    error_feature=item["name"],
-                )
-            )
-    return error_documents
 
 
 def _create_measurement_group(

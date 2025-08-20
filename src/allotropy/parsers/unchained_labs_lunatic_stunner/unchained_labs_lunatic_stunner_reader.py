@@ -48,19 +48,17 @@ class UnchainedLabsLunaticReader:
         # Clean typical NA-like strings in header only so metadata parsing behaves as before
         header_block = data[:table_header_index].copy()
         if not header_block.empty:
-            # Normalize header empties/NA markers to NaN so transpose+dropna collapses to 2 rows (labels+values)
+            # Normalize header empties/NA-like strings to NaN so transpose+dropna collapses to 2 rows (labels+values)
             header_block = header_block.astype(object)
-            previous_downcast_setting = pd.get_option("future.no_silent_downcasting")
-            try:
-                new_downcast_setting: bool = True
-                pd.set_option("future.no_silent_downcasting", new_downcast_setting)
-                header_block = header_block.replace(
-                    to_replace=[r"^\s*$", r"(?i)^\s*N/?A\s*$"],
-                    value=np.nan,
-                    regex=True,
-                ).infer_objects()
-            finally:
-                pd.set_option("future.no_silent_downcasting", previous_downcast_setting)
+            empty_pattern = r"\s*"
+            na_pattern = r"\s*N/?A\s*"
+            empty_mask = header_block.apply(
+                lambda s: s.astype(str).str.fullmatch(empty_pattern, na=False)
+            )
+            na_mask = header_block.apply(
+                lambda s: s.astype(str).str.fullmatch(na_pattern, case=False, na=False)
+            )
+            header_block[empty_mask | na_mask] = np.nan
         header_data = header_block.dropna(how="all").T.dropna(how="all")
         data = parse_header_row(data[table_header_index:])
 
