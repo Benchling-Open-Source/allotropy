@@ -14,24 +14,30 @@ from allotropy.parsers.utils.values import assert_not_none, try_float_or_none
 
 class StrictXmlElement:
     @classmethod
-    def create_from_bytes(cls, data: bytes) -> StrictXmlElement:
-        return StrictXmlElement(fromstring(data))
+    def create_from_bytes(
+        cls, data: bytes, mark_read: set[str] | None = None
+    ) -> StrictXmlElement:
+        return StrictXmlElement(fromstring(data), mark_read=mark_read)
 
     def __init__(
-        self, element: ElementTree.Element, namespaces: dict[str, str] | None = None
+        self,
+        element: ElementTree.Element,
+        namespaces: dict[str, str] | None = None,
+        mark_read: set[str] | None = None,
     ):
         self.element = element
         self.namespaces = namespaces or {}
         self.read_keys: set[str] = set()
         self.errored = False
         self.creation_stack = traceback.extract_stack()
+        self.mark_read(mark_read or set())
 
     def __del__(self) -> None:
         if self.errored:
             return
         # NOTE: this will be turned on by default when all callers have been updated to pass the warning.
         # Only consider attributes as available keys, not child elements
-        attribute_keys = set()
+        attribute_keys: set[str] = set()
 
         # Add attributes with "attr:" prefix
         for attr_name in self.element.attrib.keys():
@@ -44,10 +50,10 @@ class StrictXmlElement:
                     attribute_keys.add(f"ns_attr:{namespace_key}:{field_name}")
 
         # Filter out attributes that have been read in either form (attr: or ns_attr:)
-        unread_keys = set()
+        unread_keys: set[str] = set()
         for key in attribute_keys:
             if key.startswith("attr:"):
-                attr_name = key[5:]  # Remove "attr:" prefix
+                attr_name = key.removeprefix("attr:")
 
                 # Check if this is a namespaced attribute that has been read via ns_attr
                 is_namespaced_and_read = False
@@ -100,7 +106,7 @@ class StrictXmlElement:
                 )
 
                 warnings.warn(
-                    f"StrictXmlElement went out of scope without reading all keys{creation_info}, unread: {sorted(unread_keys)}.",
+                    f"StrictXmlElement '{self.element.tag}' went out of scope without reading all keys{creation_info}, unread: {sorted(unread_keys)}.",
                     stacklevel=2,
                 )
 
@@ -205,9 +211,16 @@ class StrictXmlElement:
         - attribute names without "attr:" prefix
         - namespaced attribute names without "ns_attr:" prefix
         """
+        all_keys = self._get_all_available_keys()
         attribute_keys = self._get_all_attribute_keys()
+        non_attribute_keys = all_keys - attribute_keys
         self._handle_skip_keys(skip)
-        matching_keys = self._apply_regex_filter(attribute_keys, regex)
+
+        matching_keys_attribute = self._apply_regex_filter(attribute_keys, regex)
+        matching_keys_non_attribute = self._apply_regex_filter(
+            non_attribute_keys, regex
+        )
+        matching_keys = matching_keys_attribute | matching_keys_non_attribute
 
         unread_keys: dict[str, str | None] = {}
         processed_attrs: set[str] = set()
@@ -217,9 +230,15 @@ class StrictXmlElement:
                 self._process_attr_key(key, matching_keys, unread_keys, processed_attrs)
             elif key.startswith("ns_attr:"):
                 self._process_ns_attr_key(key, unread_keys, processed_attrs)
+            elif key.startswith("element:"):
+                if self.should_process_element_key(key):
+                    self._process_element_key(key, unread_keys)
+                else:
+                    continue
 
         self._mark_processed_keys_as_read(matching_keys, unread_keys)
-        return unread_keys
+
+        return dict(sorted(unread_keys.items()))
 
     def _get_all_attribute_keys(self) -> set[str]:
         """Get all attribute keys with appropriate prefixes."""
@@ -299,6 +318,57 @@ class StrictXmlElement:
         unread_keys[clean_key] = self.element.get(full_attr_name)
         processed_attrs.add(full_attr_name)
 
+    def _process_element_key(
+        self, key: str, unread_keys: dict[str, str | None]
+    ) -> None:
+        """Process an 'element:' prefixed key."""
+        element_name = key.replace("element:", "")  # Remove "element:" prefix
+        element = getattr(self.find_or_none(element_name), "element", None)
+        if element is None:
+            return
+        value_for_key = element.text
+        if value_for_key is not None:
+            unread_keys[element_name] = value_for_key
+
+    def should_process_element_key(self, key: str) -> bool:
+        """
+        Check if an XML element key should be processed.
+
+        Returns False if:
+        - The element has children
+        - The element's text content appears to be XML formatted
+
+        Returns True otherwise.
+        """
+        # Extract element name from key
+        element_name = key.replace("element:", "")
+
+        # Find the element
+        element_wrapper = self.find_or_none(element_name)
+        element = getattr(element_wrapper, "element", None)
+        if element is None:
+            return False
+
+        # Check if element has children
+        if len(element) > 0:
+            return False
+
+        # Check if element text looks like XML
+        text = element.text
+        if text:
+            text = text.strip()
+            if text:
+                # Check for basic XML patterns
+                if text.startswith("<") and text.endswith(">"):
+                    return False
+
+                # Check for XML-like patterns with regex
+                xml_pattern = re.compile(r"<[^>]+>.*</[^>]+>", re.DOTALL)
+                if xml_pattern.search(text):
+                    return False
+
+        return True
+
     def _is_attr_already_processed(
         self, attr_name: str, processed_attrs: set[str]
     ) -> bool:
@@ -373,6 +443,10 @@ class StrictXmlElement:
             return self
         name, *sub_names = names
         if element := self.find_or_none(name):
+            # Mark all attributes as read for intermediate elements
+            # (not for the final element since that's the one we want to return)
+            if sub_names:
+                element.get_unread()
             return element.recursive_find_or_none(sub_names)
         return None
 
@@ -380,7 +454,10 @@ class StrictXmlElement:
         if len(names) == 0:
             return self
         name, *sub_names = names
-        return self.find(name).recursive_find(sub_names)
+        element = self.find(name)
+        if sub_names:
+            element.get_unread()
+        return element.recursive_find(sub_names)
 
     def findall(self, name: str) -> list[StrictXmlElement]:
         self.read_keys.add(f"element:{name}")

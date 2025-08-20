@@ -84,6 +84,7 @@ class RocheCedexBiohtReader:
 
         # concentration values under the test threshold will have a preceding < character
         # this will turn those values into NaN, which is the expected output
+        sample_rows["original concentration value"] = sample_rows["concentration value"]
         sample_rows["concentration value"] = to_num(sample_rows["concentration value"])
 
         return sample_rows

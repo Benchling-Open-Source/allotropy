@@ -29,13 +29,17 @@ def create_metadata(
 ) -> Metadata:
     system_data = handler.get_system_data()
     instrument_config_data = handler.get_instrument_config_data()
-
     instrument_config = system_data.recursive_find(
         ["System", "InstrumentConfiguration"]
     )
-
+    instrument_config.mark_read(
+        {"attr:FormatVersion", "attr:UNICORNVersion", "attr:Version"}
+    )
     system_name = results.find_or_none("SystemName")
     firmware_version = instrument_config_data.find_or_none("FirmwareVersion")
+    results.mark_read(
+        {"element:RunIndex", "element:RunType", "element:BatchId", "element:Name"}
+    )
 
     return Metadata(
         asset_management_identifier=instrument_config.get_attr("Description"),
@@ -47,4 +51,9 @@ def create_metadata(
         analyst=get_audit_trail_entry_user(handler),
         file_name=Path(file_path).name,
         unc_path=file_path,
+        software_version=results.get_attr("UNICORNVersion"),
+        device_system_custom_info={
+            "SystemTypeName": results.get_sub_text_or_none("SystemTypeName")
+        },
+        data_system_custom_info=results.get_unread(),
     )

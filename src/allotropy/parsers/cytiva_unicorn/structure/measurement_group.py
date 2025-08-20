@@ -62,12 +62,30 @@ def create_measurement_groups(
         FlowMeasurement.create_or_none(handler, elements, static_docs),
         TemperatureMeasurement.create_or_none(handler, elements, static_docs),
     ]
+    # Some curves may not be read due not matching any supported measurement type, mark these as read.
+    for element in elements:
+        element.mark_read("attr:CurveDataType")
+
+    chrom_1.mark_read(
+        {
+            "element:TimeUnit",
+            "element:VolumeUnit",
+            "element:IsReadonly",
+            "attr:UNICORNVersion",
+        }
+    )
 
     return [
         MeasurementGroup(
             measurements=[measurement for measurement in measurements if measurement],
             fractions=create_fractions(event_curves) if event_curves else None,
             logs=create_logs(event_curves) if event_curves else None,
+            measurement_aggregate_custom_info={
+                "RunIndex": results.get_sub_text_or_none("RunIndex"),
+                "RunType": results.get_sub_text_or_none("RunType"),
+                "Name": results.get_sub_text_or_none("Name"),
+                **dict(sorted(chrom_1.get_unread().items())),
+            },
         )
     ]
 
@@ -94,6 +112,7 @@ def create_fractions(event_curves: StrictXmlElement) -> list[Fraction]:
                     else t_min * 60
                 ),
                 retention_volume=event.get_sub_float_or_none("EventVolume"),
+                custom_info=event.get_unread(),
             )
             for idx, event in enumerate(events.findall("Event"), start=1)
             if event.get_attr_or_none("EventType") in ["Fraction", "Method"]
@@ -121,10 +140,12 @@ def create_logs(event_curves: StrictXmlElement) -> list[Log]:
                 "Method",
                 "Manual",
             ]:
+                event.get_unread()
                 continue
 
             event_text = event.get_sub_text_or_none("EventText")
             if event_text is None:
+                event.get_unread()
                 continue
 
             event_subtype = event.get_attr_or_none("EventSubType")
@@ -144,6 +165,7 @@ def create_logs(event_curves: StrictXmlElement) -> list[Log]:
                         else t_min * 60
                     ),
                     retention_volume=event.get_sub_float_or_none("EventVolume"),
+                    custom_info=event.get_unread(),
                 )
             )
 

@@ -28,11 +28,12 @@ class PressureMeasurement(UnicornMeasurement):
         elements: list[StrictXmlElement],
         static_docs: StaticDocs,
     ) -> UnicornMeasurement | None:
+        element = cls.filter_curve_or_none(elements, r"^DeltaC pressure$")
         measurement = cls.get_measurement(
             static_docs=static_docs,
             derived_column_pressure_data_cube=cls.get_data_cube_or_none(
                 handler,
-                cls.filter_curve_or_none(elements, r"^DeltaC pressure$"),
+                element,
                 DataCubeComponent(
                     type_=FieldComponentDatatype.float,
                     concept="delta column pressure",
@@ -79,8 +80,12 @@ class PressureMeasurement(UnicornMeasurement):
                             unit="MPa",
                         ),
                     ),
+                    device_control_custom_info=cls.get_device_control_custom_info(
+                        element
+                    ),
                 ),
             ],
+            processed_data_custom_info=cls.get_processed_data_custom_info(element),
         )
         return measurement if cls.is_valid(cls.get_data_cubes(measurement)) else None
 
