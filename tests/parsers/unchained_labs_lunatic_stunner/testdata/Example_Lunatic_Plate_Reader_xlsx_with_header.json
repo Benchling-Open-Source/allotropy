@@ -37,18 +37,6 @@
                                 "unit": "mAU"
                             },
                             "analytical method identifier": "dsDNA (Turbidity)",
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    },
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Background (A260)"
-                                    }
-                                ]
-                            },
                             "experimental data identifier": "BENCHLING_TEST"
                         }
                     ],
@@ -96,18 +84,6 @@
                                 "unit": "mAU"
                             },
                             "analytical method identifier": "dsDNA (Turbidity)",
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    },
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Background (A260)"
-                                    }
-                                ]
-                            },
                             "experimental data identifier": "BENCHLING_TEST"
                         }
                     ],

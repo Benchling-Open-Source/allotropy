@@ -90,6 +90,27 @@ def _extract_peak_data(well_plate_data: SeriesData) -> list[dict[str, Any]]:
     return peak_data
 
 
+def _get_calculated_value(series: SeriesData, key: str) -> float | None:
+    """Return numeric value for calculated data with special handling.
+
+    - If the raw cell value is the string literal "N/A"
+      return NEGATIVE_ZERO.
+    - If the cell is empty/NaN, return None so the caller can skip adding the key.
+    - Otherwise, attempt to convert to float using the standard SeriesData conversion.
+    """
+    # Read as string first to inspect literal content without coercing to float/None
+    raw_string = series.get(str, key, validate=SeriesData.NOT_NAN)
+    if raw_string is None:
+        return None
+    stripped = str(raw_string).strip()
+    if stripped == "":
+        return None
+    if stripped.upper() == NOT_APPLICABLE:
+        return NEGATIVE_ZERO
+    # Otherwise convert using the standard float handling
+    return series.get(float, key)
+
+
 def _create_measurement(
     well_plate_data: SeriesData,
     header: SeriesData,
@@ -137,6 +158,13 @@ def _create_measurement(
     detection_type = DEFAULT_DETECTION_TYPE
     if application and "B22 & kD" in application:
         detection_type = DYNAMIC_LIGHT_SCATTERING_DETECTION_TYPE
+    # Build calculated data values with special handling for N/A and empty cells
+    calculated_data_values: dict[str, float] = {}
+    for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
+        value = _get_calculated_value(well_plate_data, item["column"])
+        if value is not None:
+            calculated_data_values[item["column"]] = value
+
     return Measurement(
         type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
         device_type=DEVICE_TYPE,
@@ -188,10 +216,7 @@ def _create_measurement(
         else None,
         wavelength_identifier=wavelength_column,
         calc_docs_custom_info={
-            **{
-                item["column"]: well_plate_data.get(float, item["column"])
-                for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, [])
-            },
+            **calculated_data_values,
             **{
                 "b22 linear fit": well_plate_data.get(str, "b22 linear fit"),
                 "kd linear fit": well_plate_data.get(str, "kd linear fit"),
@@ -199,28 +224,30 @@ def _create_measurement(
         },
         measurement_custom_info={
             "electronic_absorbance_reference_absorbance": background_absorbance,
-            **well_plate_data.get_unread(
-                # Skip already mapped columns from well plate data (repeated in CSV no header cases)
-                skip={
-                    "time",
-                    "row",
-                    "concentration factor (ng/ul)",
-                    "application",
-                    "concentration (ng/ul)",
-                    "background wvl. (nm)",
-                    "plate id",
-                    "plate position",
-                    "plate type",
-                    "instrument id",
-                    "column",
-                    # Strings to skip since these are already captured as measurements/calculated data
-                    # Skip absorbance measurements with a### (10mm) -- spectral scans
-                    r"^a\d{3} \(10mm\)$",
-                    # a###/a### -- calculated purity values
-                    r"^a\d{3}/a\d{3}$",
-                    # a### -- raw absorbance measurement
-                    r"^a\d{3}$",
-                },
+            **_filter_empty_string_values(
+                well_plate_data.get_unread(
+                    # Skip already mapped columns from well plate data (repeated in CSV no header cases)
+                    skip={
+                        "time",
+                        "row",
+                        "concentration factor (ng/ul)",
+                        "application",
+                        "concentration (ng/ul)",
+                        "background wvl. (nm)",
+                        "plate id",
+                        "plate position",
+                        "plate type",
+                        "instrument id",
+                        "column",
+                        # Strings to skip since these are already captured as measurements/calculated data
+                        # Skip absorbance measurements with a### (10mm) -- spectral scans
+                        r"^a\d{3} \(10mm\)$",
+                        # a###/a### -- calculated purity values
+                        r"^a\d{3}/a\d{3}$",
+                        # a### -- raw absorbance measurement
+                        r"^a\d{3}$",
+                    },
+                )
             ),
         },
     )
@@ -232,8 +259,8 @@ def _get_error_documents(
 ) -> list[ErrorDocument]:
     error_documents = []
     for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
-        value = well_plate_data.get(float, item["column"])
-        if value is None:
+        value = _get_calculated_value(well_plate_data, item["column"])
+        if value == NEGATIVE_ZERO:
             error_documents.append(
                 ErrorDocument(
                     error=NOT_APPLICABLE,
@@ -283,35 +310,47 @@ def create_metadata(header: SeriesData, file_path: str) -> Metadata:
         unc_path=file_path,
         asm_file_identifier=asm_file_identifier.name,
         data_system_instance_id=NOT_APPLICABLE,
-        custom_info_doc=header.get_unread(
-            # Skip already mapped columns from well plate data (repeated in CSV no header cases)
-            skip={
-                "time",
-                "row",
-                "path length mode",
-                "sample group",
-                "pump",
-                "concentration factor (ng/ul)",
-                "sample name",
-                "application",
-                "concentration (ng/ul)",
-                "background wvl. (nm)",
-                "plate id",
-                "plate position",
-                # Strings to skip since these are already captured as measurements/calculated data
-                # Skip absorbance spectrum measurements with a### (10mm)
-                r"^a\d{3} \(10mm\)$",
-                # a###/a###
-                r"^a\d{3}/a\d{3}$",
-                # a###
-                r"^a\d{3}$",
-                # background a###
-                r"^background \(a\d{3}\)$",
-                # a### concentration (ng/uL)
-                r"^a\d{3} concentration \(ng/ul\)$",
-            },
+        custom_info_doc=_filter_empty_string_values(
+            header.get_unread(
+                # Skip already mapped columns from well plate data (repeated in CSV no header cases)
+                skip={
+                    "time",
+                    "row",
+                    "path length mode",
+                    "sample group",
+                    "pump",
+                    "concentration factor (ng/ul)",
+                    "sample name",
+                    "application",
+                    "concentration (ng/ul)",
+                    "e1%",
+                    "concentration (mg/ml)",
+                    "background wvl. (nm)",
+                    "plate id",
+                    "plate position",
+                    # Strings to skip since these are already captured as measurements/calculated data
+                    # Skip absorbance spectrum measurements with a### (10mm)
+                    r"^a\d{3} \(10mm\)$",
+                    # a###/a###
+                    r"^a\d{3}/a\d{3}$",
+                    # a###
+                    r"^a\d{3}$",
+                    # background a###
+                    r"^background \(a\d{3}\)$",
+                    # a### concentration (ng/uL)
+                    r"^a\d{3} concentration \(ng/ul\)$",
+                },
+            )
         ),
     )
+
+
+def _filter_empty_string_values(unread: dict[str, Any]) -> dict[str, Any]:
+    return {
+        key: value
+        for key, value in unread.items()
+        if not (isinstance(value, str) and value.strip() == "")
+    }
 
 
 def create_measurement_groups(

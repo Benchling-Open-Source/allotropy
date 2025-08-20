@@ -5124,18 +5124,6 @@
                                 "unit": "mAU"
                             },
                             "analytical method identifier": "dsDNA (Single point)",
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    },
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Background (A260)"
-                                    }
-                                ]
-                            },
                             "custom information document": {
                                 "electronic absorbance reference absorbance": 0.16
                             }
@@ -10271,18 +10259,6 @@
                                 "unit": "mAU"
                             },
                             "analytical method identifier": "dsDNA (Single point)",
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    },
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Background (A260)"
-                                    }
-                                ]
-                            },
                             "custom information document": {
                                 "electronic absorbance reference absorbance": 0.0
                             }
@@ -15426,10 +15402,6 @@
                                     },
                                     {
                                         "error": "N/A",
-                                        "error feature": "Background (A260)"
-                                    },
-                                    {
-                                        "error": "N/A",
                                         "error feature": "A260/A230"
                                     },
                                     {
@@ -15535,12 +15507,28 @@
                     }
                 },
                 {
+                    "calculated data name": "A260/A230",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -0.0
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_371",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_365",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
                     "calculated data name": "A260/A280",
                     "calculated result": {
                         "unit": "(unitless)",
                         "value": 1.65
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_371",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_372",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -15556,11 +15544,27 @@
                         "unit": "(unitless)",
                         "value": 1.28
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_372",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_373",
                     "data source aggregate document": {
                         "data source document": [
                             {
                                 "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_243",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": -0.0
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_374",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_365",
                                 "data source feature": "absorbance"
                             }
                         ]
