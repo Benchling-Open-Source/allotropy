@@ -2,6 +2,7 @@ import inspect
 from pathlib import Path
 import re
 from typing import Any
+import warnings
 
 import pytest
 from pytest import FixtureRequest, Parser
@@ -12,6 +13,16 @@ from allotropy.testing.utils import get_testdata_dir
 EXCLUDE_KEYWORDS = {"error", "exclude", "invalid"}
 # Only the folders included in this will be treated as folders for parsing
 PARSE_FOLDER = [".rslt"]
+
+
+# We only want to raise unread data warnings in to_allotrope_test, so ignore by default.
+@pytest.fixture(autouse=True)
+def ignore_unread_warnings(request):
+    behavior = (
+        "default" if "skip_ignore_unread_warnings" in request.keywords else "ignore"
+    )
+    warnings.filterwarnings(behavior, ".*went out of scope without reading all keys.*")
+    yield
 
 
 def pytest_addoption(parser: Parser) -> None:

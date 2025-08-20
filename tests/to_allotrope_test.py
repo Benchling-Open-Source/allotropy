@@ -43,6 +43,7 @@ class ParserTest:
     VENDOR: Vendor
 
     # test_file_path is automatically populated with all files in testdata folder next to the test file.
+    @pytest.mark.skip_ignore_unread_warnings
     def test_positive_cases(
         self, test_file_path: Path, *, overwrite: bool, warn_unread_keys: bool
     ) -> None:
@@ -55,22 +56,12 @@ class ParserTest:
         else:
             expected_filepath = test_file_path.with_suffix(".json")
 
-        with warnings.catch_warnings(record=True) as captured_warnings:
+        with warnings.catch_warnings(
+            record=self.VENDOR.unread_data_handled
+        ) as captured_warnings:
             if not (warn_unread_keys or self.VENDOR.unread_data_handled):
                 warnings.filterwarnings(
-                    "ignore",
-                    category=UserWarning,
-                    message="JsonData went out of scope without reading all keys",
-                )
-                warnings.filterwarnings(
-                    "ignore",
-                    category=UserWarning,
-                    message="SeriesData went out of scope without reading all keys",
-                )
-                warnings.filterwarnings(
-                    "ignore",
-                    category=UserWarning,
-                    message="StrictXmlElement went out of scope without reading all keys",
+                    "ignore", ".*went out of scope without reading all keys.*"
                 )
             allotrope_dict = from_file(
                 str(test_file_path), self.VENDOR, encoding=CHARDET_ENCODING
