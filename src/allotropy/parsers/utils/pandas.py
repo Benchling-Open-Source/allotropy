@@ -265,7 +265,7 @@ class SeriesData:
         # NOTE: this will be turned on by default when all callers have been updated to pass the warning.
         if unread_keys := set(self.series.index.to_list()) - self.read_keys:
             warnings.warn(
-                f"SeriesData went out of scope without reading all keys, unread: {sorted(unread_keys)}.",
+                f"SeriesData went out of scope without reading all keys, unread: {sorted(str(k) for k in unread_keys)}.",
                 stacklevel=2,
             )
 

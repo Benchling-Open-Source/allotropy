@@ -1,7 +1,8 @@
+from collections.abc import Generator
 import inspect
 from pathlib import Path
 import re
-from typing import Any
+from typing import Any, Literal
 import warnings
 
 import pytest
@@ -17,8 +18,10 @@ PARSE_FOLDER = [".rslt"]
 
 # We only want to raise unread data warnings in to_allotrope_test, so ignore by default.
 @pytest.fixture(autouse=True)
-def ignore_unread_warnings(request):
-    behavior = (
+def ignore_unread_warnings(
+    request: pytest.FixtureRequest,
+) -> Generator[None, None, None]:
+    behavior: Literal["default", "ignore"] = (
         "default" if "skip_ignore_unread_warnings" in request.keywords else "ignore"
     )
     warnings.filterwarnings(behavior, ".*went out of scope without reading all keys.*")
