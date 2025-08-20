@@ -172,18 +172,15 @@ class Mapper(SchemaMapper[Data, Model]):
                     ),
                     custom_info_doc=data.metadata.custom_info,
                 ),
-                data_system_document=add_custom_information_document(
-                    DataSystemDocument(
-                        data_system_instance_identifier=data.metadata.data_system_instance_identifier,
-                        file_name=data.metadata.file_name,
-                        UNC_path=data.metadata.unc_path,
-                        software_name=data.metadata.software_name,
-                        software_version=data.metadata.software_version,
-                        ASM_file_identifier=data.metadata.asm_file_identifier,
-                        ASM_converter_name=self.converter_name,
-                        ASM_converter_version=ASM_CONVERTER_VERSION,
-                    ),
-                    custom_info_doc=data.metadata.custom_info,
+                data_system_document=DataSystemDocument(
+                    data_system_instance_identifier=data.metadata.data_system_instance_identifier,
+                    file_name=data.metadata.file_name,
+                    UNC_path=data.metadata.unc_path,
+                    software_name=data.metadata.software_name,
+                    software_version=data.metadata.software_version,
+                    ASM_file_identifier=data.metadata.asm_file_identifier,
+                    ASM_converter_name=self.converter_name,
+                    ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 multi_analyte_profiling_document=[
                     self._get_technique_document(measurement_group, data.metadata)
