@@ -57,12 +57,16 @@ class AbsorbanceMeasurement(UnicornMeasurement):
         elements: list[StrictXmlElement],
         static_docs: StaticDocs,
     ) -> UnicornMeasurement:
+        element = assert_not_none(
+            cls.filter_curve_or_none(elements, cls.get_curve_regex()),
+            "Unable to find curve data for absorbance measurement.",
+        )
         measurement = cls.get_measurement(
             static_docs=static_docs,
             chromatogram_data_cube=assert_not_none(
                 cls.get_data_cube_or_none(
                     handler,
-                    cls.filter_curve_or_none(elements, cls.get_curve_regex()),
+                    element,
                     DataCubeComponent(
                         type_=FieldComponentDatatype.float,
                         concept="absorbance",
@@ -75,13 +79,13 @@ class AbsorbanceMeasurement(UnicornMeasurement):
                 DeviceControlDoc(
                     device_type=DEVICE_TYPE,
                     start_time=static_docs.start_time,
-                    device_control_custom_info={},
+                    device_control_custom_info=cls.get_device_control_custom_info(
+                        element
+                    ),
                 )
             ],
             peaks=cls.get_peaks(handler),
-        )
-        cls.add_custom_info(
-            measurement, cls.filter_curve_or_none(elements, cls.get_curve_regex())
+            processed_data_custom_info=cls.get_processed_data_custom_info(element),
         )
         return measurement
 
@@ -154,6 +158,7 @@ class AbsorbanceMeasurement1(AbsorbanceMeasurement):
     @classmethod
     def get_peaks(cls, handler: UnicornZipHandler) -> list[Peak]:
         chrom_1 = handler.get_chrom_1()
+        chrom_1.get_unread()  # chrom_1 data is read in create_measurement_groups
         peaks = chrom_1.recursive_find_or_none(["PeakTables", "PeakTable", "Peaks"])
         output = []
         for idx, peak in enumerate(peaks.findall("Peak") if peaks else [], start=1):

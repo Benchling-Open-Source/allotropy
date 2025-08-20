@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from re import search
+from typing import Any
 
 from allotropy.allotrope.schema_mappers.adm.liquid_chromatography.benchling._2023._09.liquid_chromatography import (
     DeviceControlDoc,
@@ -28,64 +29,58 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 
 class UnicornMeasurement(Measurement):
     @classmethod
-    def add_custom_info(
-        cls, measurement: Measurement, base_element: StrictXmlElement | None
-    ) -> None:
-        if base_element:
-            device_control_custom_info = {
-                "ColumnVolume": base_element.get_sub_text_or_none("ColumnVolume"),
-                "ScanInterval": base_element.get_sub_text_or_none("ScanInterval"),
-            }
+    def get_device_control_custom_info(
+        cls, base_element: StrictXmlElement | None
+    ) -> dict[str, Any]:
+        if not base_element:
+            return {}
+        return {
+            "ColumnVolume": base_element.get_sub_text_or_none("ColumnVolume"),
+            "ScanInterval": base_element.get_sub_text_or_none("ScanInterval"),
+        }
 
-            processed_data_custom_info = {
-                "AmplitudePrecision": base_element.get_sub_text_or_none(
-                    "AmplitudePrecision"
-                ),
-                "AmplitudeUnit": base_element.get_sub_text_or_none("AmplitudeUnit"),
-                "ChromatogramID": base_element.get_sub_text_or_none("ChromatogramID"),
-                "ChromatogramName": base_element.get_sub_text_or_none(
-                    "ChromatogramName"
-                ),
-                "ChromatogramStartTime": base_element.get_sub_text_or_none(
-                    "ChromatogramStartTime"
-                ),
-                "ChromatogramStartTimeUtcOffsetMinutes": base_element.get_sub_text_or_none(
-                    "ChromatogramStartTimeUtcOffsetMinutes"
-                ),
-                "ColumnVolumeUnitName": base_element.get_sub_text_or_none(
-                    "ColumnVolumeUnitName"
-                ),
-                "CurveDataType": base_element.get_sub_text_or_none("CurveDataType"),
-                "CurveNumber": base_element.get_sub_text_or_none("CurveNumber"),
-                "DistanceBetweenPoints": base_element.get_sub_text_or_none(
-                    "DistanceBetweenPoints"
-                ),
-                "DistancetoStartPoints": base_element.get_sub_text_or_none(
-                    "DistancetoStartPoints"
-                ),
-                "IsExternal": base_element.get_sub_text_or_none("IsExternal"),
-                "IsOriginalData": base_element.get_sub_text_or_none("IsOriginalData"),
-                "IsReadOnly": base_element.get_sub_text_or_none("IsReadOnly"),
-                "IsoChroneType": base_element.get_sub_text_or_none("IsoChroneType"),
-                "MethodStartTime": base_element.get_sub_text_or_none("MethodStartTime"),
-                "MethodStartTimeUtcOffsetMinutes": base_element.get_sub_text_or_none(
-                    "MethodStartTimeUtcOffsetMinutes"
-                ),
-                "TimeUnit": base_element.get_sub_text_or_none("TimeUnit"),
-                "VolumeUnit": base_element.get_sub_text_or_none("VolumeUnit"),
-            }
-            if (
-                measurement.device_control_docs[0].device_control_custom_info
-                is not None
-            ):
-                measurement.device_control_docs[0].device_control_custom_info.update(
-                    device_control_custom_info
-                )
-            if measurement.processed_data_custom_info is not None:
-                processed_data_custom_info.update(base_element.get_unread())
-                measurement.processed_data_custom_info.update(
-                    processed_data_custom_info
-                )
+    @classmethod
+    def get_processed_data_custom_info(
+        cls, base_element: StrictXmlElement | None
+    ) -> dict[str, Any]:
+        if not base_element:
+            return {}
+        return {
+            "AmplitudePrecision": base_element.get_sub_text_or_none(
+                "AmplitudePrecision"
+            ),
+            "AmplitudeUnit": base_element.get_sub_text_or_none("AmplitudeUnit"),
+            "ChromatogramID": base_element.get_sub_text_or_none("ChromatogramID"),
+            "ChromatogramName": base_element.get_sub_text_or_none("ChromatogramName"),
+            "ChromatogramStartTime": base_element.get_sub_text_or_none(
+                "ChromatogramStartTime"
+            ),
+            "ChromatogramStartTimeUtcOffsetMinutes": base_element.get_sub_text_or_none(
+                "ChromatogramStartTimeUtcOffsetMinutes"
+            ),
+            "ColumnVolumeUnitName": base_element.get_sub_text_or_none(
+                "ColumnVolumeUnitName"
+            ),
+            "CurveDataType": base_element.get_attr_or_none("CurveDataType"),
+            "CurveNumber": base_element.get_sub_text_or_none("CurveNumber"),
+            "DistanceBetweenPoints": base_element.get_sub_text_or_none(
+                "DistanceBetweenPoints"
+            ),
+            "DistancetoStartPoints": base_element.get_sub_text_or_none(
+                "DistancetoStartPoints"
+            ),
+            "IsExternal": base_element.get_sub_text_or_none("IsExternal"),
+            "IsOriginalData": base_element.get_sub_text_or_none("IsOriginalData"),
+            "IsReadOnly": base_element.get_sub_text_or_none("IsReadOnly"),
+            "IsoChroneType": base_element.get_sub_text_or_none("IsoChroneType"),
+            "MethodStartTime": base_element.get_sub_text_or_none("MethodStartTime"),
+            "MethodStartTimeUtcOffsetMinutes": base_element.get_sub_text_or_none(
+                "MethodStartTimeUtcOffsetMinutes"
+            ),
+            "TimeUnit": base_element.get_sub_text_or_none("TimeUnit"),
+            "VolumeUnit": base_element.get_sub_text_or_none("VolumeUnit"),
+            **base_element.get_unread(),
+        }
 
     @classmethod
     def filter_curve_or_none(
@@ -141,6 +136,7 @@ class UnicornMeasurement(Measurement):
         processed_data_chromatogram_data_cube: DataCube | None = None,
         derived_column_pressure_data_cube: DataCube | None = None,
         peaks: list[Peak] | None = None,
+        processed_data_custom_info: dict[str, Any] | None = None,
     ) -> UnicornMeasurement:
         return UnicornMeasurement(
             measurement_identifier=random_uuid_str(),
@@ -166,7 +162,7 @@ class UnicornMeasurement(Measurement):
                 "sample_volume_3": static_docs.sample_volume_3,
             },
             peaks=peaks,
-            processed_data_custom_info={},
+            processed_data_custom_info=processed_data_custom_info,
         )
 
     @classmethod

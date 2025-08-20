@@ -13,24 +13,30 @@ from allotropy.parsers.utils.values import assert_not_none, try_float_or_none
 
 class StrictXmlElement:
     @classmethod
-    def create_from_bytes(cls, data: bytes) -> StrictXmlElement:
-        return StrictXmlElement(fromstring(data))
+    def create_from_bytes(
+        cls, data: bytes, mark_read: set[str] | None = None
+    ) -> StrictXmlElement:
+        return StrictXmlElement(fromstring(data), mark_read=mark_read)
 
     def __init__(
-        self, element: ElementTree.Element, namespaces: dict[str, str] | None = None
+        self,
+        element: ElementTree.Element,
+        namespaces: dict[str, str] | None = None,
+        mark_read: set[str] | None = None,
     ):
         self.element = element
         self.namespaces = namespaces or {}
         self.read_keys: set[str] = set()
         self.errored = False
         self.creation_stack = traceback.extract_stack()
+        self.mark_read(mark_read or set())
 
     def __del__(self) -> None:
         if self.errored:
             return
         # NOTE: this will be turned on by default when all callers have been updated to pass the warning.
         # Only consider attributes as available keys, not child elements
-        attribute_keys = set()
+        attribute_keys: set[str] = set()
 
         # Add attributes with "attr:" prefix
         for attr_name in self.element.attrib.keys():
@@ -43,10 +49,10 @@ class StrictXmlElement:
                     attribute_keys.add(f"ns_attr:{namespace_key}:{field_name}")
 
         # Filter out attributes that have been read in either form (attr: or ns_attr:)
-        unread_keys = set()
+        unread_keys: set[str] = set()
         for key in attribute_keys:
             if key.startswith("attr:"):
-                attr_name = key[5:]  # Remove "attr:" prefix
+                attr_name = key.removeprefix("attr:")
 
                 # Check if this is a namespaced attribute that has been read via ns_attr
                 is_namespaced_and_read = False
@@ -94,7 +100,7 @@ class StrictXmlElement:
             creation_info = f" (created at {creation_point})" if creation_point else ""
 
             warnings.warn(
-                f"StrictXmlElement went out of scope without reading all keys{creation_info}, unread: {sorted(unread_keys)}.",
+                f"StrictXmlElement '{self.element.tag}' went out of scope without reading all keys {creation_info}, unread: {sorted(unread_keys)}.",
                 stacklevel=2,
             )
 
