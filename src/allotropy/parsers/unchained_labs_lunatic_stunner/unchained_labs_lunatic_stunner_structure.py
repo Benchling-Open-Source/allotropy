@@ -90,25 +90,32 @@ def _extract_peak_data(well_plate_data: SeriesData) -> list[dict[str, Any]]:
     return peak_data
 
 
-def _get_calculated_value(series: SeriesData, key: str) -> float | None:
-    """Return numeric value for calculated data with special handling.
+def _get_calculated_value_and_is_na(
+    series: SeriesData, key: str
+) -> tuple[float | None, bool]:
+    """Return value and whether the source cell is literal N/A.
 
-    - If the raw cell value is the string literal "N/A"
-      return NEGATIVE_ZERO.
-    - If the cell is empty/NaN, return None so the caller can skip adding the key.
-    - Otherwise, attempt to convert to float using the standard SeriesData conversion.
+    - If the raw cell value is the string literal "N/A", returns (NEGATIVE_ZERO, True).
+    - If the cell is empty/NaN, returns (None, False) so caller can skip the key.
+    - Otherwise, returns (float value, False).
     """
-    # Read as string first to inspect literal content without coercing to float/None
     raw_string = series.get(str, key, validate=SeriesData.NOT_NAN)
     if raw_string is None:
-        return None
+        return None, False
     stripped = str(raw_string).strip()
     if stripped == "":
-        return None
+        return None, False
     if stripped.upper() == NOT_APPLICABLE:
-        return NEGATIVE_ZERO
-    # Otherwise convert using the standard float handling
-    return series.get(float, key)
+        return NEGATIVE_ZERO, True
+    return series.get(float, key), False
+
+
+def _is_literal_not_applicable(series: SeriesData, key: str) -> bool:
+    """Return True if the source cell is the literal string N/A (case-insensitive)."""
+    raw_string = series.get(str, key, validate=SeriesData.NOT_NAN)
+    if raw_string is None:
+        return False
+    return str(raw_string).strip().upper() == NOT_APPLICABLE
 
 
 def _create_measurement(
@@ -141,6 +148,7 @@ def _create_measurement(
 
     error_documents: list[ErrorDocument] = []
     absorbance = well_plate_data.get(float, wavelength_column)
+    absorbance_is_na = _is_literal_not_applicable(well_plate_data, wavelength_column)
     concentration_factor = well_plate_data.get(float, "concentration factor (ng/ul)")
     application = header.get(str, "application")
     analytical_method_identifier = (
@@ -153,19 +161,21 @@ def _create_measurement(
     # Build calculated data values with special handling for N/A and empty cells
     calculated_data_values: dict[str, float] = {}
     for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
-        value = _get_calculated_value(well_plate_data, item["column"])
-        if value == NEGATIVE_ZERO:
+        value, is_na = _get_calculated_value_and_is_na(well_plate_data, item["column"])
+        # Only create error docs when the cell is the literal "N/A"
+        if is_na:
             error_documents.append(
                 ErrorDocument(
                     error=NOT_APPLICABLE,
                     error_feature=item["name"],
                 )
             )
+        # Skip missing cells entirely; include numeric values
         if value is not None:
             calculated_data_values[item["column"]] = value
 
     # Append absorbance error last to preserve historical ordering (calculated-data errors first)
-    if absorbance is None:
+    if absorbance_is_na:
         error_documents.append(
             ErrorDocument(
                 error=NOT_APPLICABLE,
