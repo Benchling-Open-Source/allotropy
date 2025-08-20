@@ -27,7 +27,6 @@ from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
     MeasurementList,
 )
 from allotropy.parsers.utils.pandas import SeriesData
-from tests.to_allotrope_test import suppress_unread_warn
 
 
 def get_result_lines() -> list[str]:
@@ -59,7 +58,6 @@ def get_result_lines() -> list[str]:
     ]
 
 
-@suppress_unread_warn()
 def test_create_header() -> None:
     data = pd.DataFrame.from_dict(
         {
@@ -103,7 +101,6 @@ def test_create_header() -> None:
         "ProtocolPlate",
     ],
 )
-@suppress_unread_warn()
 def test_create_heder_without_required_col(required_col: str) -> None:
     data = pd.DataFrame.from_dict(
         {
@@ -134,7 +131,6 @@ def test_create_heder_without_required_col(required_col: str) -> None:
         )
 
 
-@suppress_unread_warn()
 def test_create_calibration_item() -> None:
     name = "Device Calibration"
     report = "Passed"
@@ -145,7 +141,6 @@ def test_create_calibration_item() -> None:
     ) == Calibration(name, time, report)
 
 
-@suppress_unread_warn()
 def test_create_calibration_item_invalid_line_format() -> None:
     bad_line = "Bad line."
     data = SeriesData(pd.Series([bad_line]))
@@ -156,7 +151,6 @@ def test_create_calibration_item_invalid_line_format() -> None:
         create_calibration(data)
 
 
-@suppress_unread_warn()
 def test_create_calibration_item_invalid_calibration_result() -> None:
     bad_result = "bad_result"
     error = f"Invalid calibration result format, got: ['{bad_result}']"
@@ -164,7 +158,6 @@ def test_create_calibration_item_invalid_calibration_result() -> None:
         create_calibration(SeriesData(pd.Series(["Last CalReport", bad_result])))
 
 
-@suppress_unread_warn()
 def test_create_measurement_list() -> None:
     results_data = LuminexXponentReader._get_results(CsvReader(get_result_lines()))
     with mock.patch(

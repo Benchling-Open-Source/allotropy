@@ -9,6 +9,7 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
 from allotropy.testing.utils import from_file, validate_contents
 from allotropy.to_allotrope import allotrope_from_file, allotrope_model_from_file
+from scripts.check_warn_unread import _check_warn_unread
 
 INVALID_FILE_PATH = "not/a/path"
 EXPECTED_ERROR_MESSAGE = f"File not found: {INVALID_FILE_PATH}"
@@ -46,7 +47,7 @@ class ParserTest:
     def test_positive_cases(
         self, test_file_path: Path, *, overwrite: bool, warn_unread_keys: bool
     ) -> None:
-        if warn_unread_keys:
+        if warn_unread_keys or self.VENDOR.unread_data_handled:
             os.environ["WARN_UNUSED_KEYS"] = "1"
         # Special case when input files are json, the are placed in an input/ folder and the results are put
         # in a corresponding output/ folder.
@@ -66,3 +67,7 @@ class ParserTest:
             expected_filepath,
             write_actual_to_expected_on_fail=overwrite,
         )
+
+    def test_no_unread_warnings(self) -> None:
+        parser = str(self.__class__).split(".")[2]
+        assert _check_warn_unread(parser)
