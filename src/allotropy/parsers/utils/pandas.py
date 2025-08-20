@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from collections.abc import Callable, Iterable
 from enum import Enum
-import os
 import re
 from typing import Any, IO, Literal, overload, TypeVar
 import unicodedata
@@ -252,21 +251,23 @@ class SeriesData:
             return None if (v is None or pd.isna(v)) else v
         return v
 
-    def __init__(self, series: pd.Series[Any] | None = None) -> None:
+    def __init__(
+        self, series: pd.Series[Any] | None = None, ignore_unread: bool | None = None
+    ) -> None:
         self.series = pd.Series() if series is None else series
         self.read_keys: set[str] = set()
         self.errored = False
+        self.ignore_unread = ignore_unread or False
 
     def __del__(self) -> None:
-        if self.errored:
+        if self.errored or self.ignore_unread:
             return
         # NOTE: this will be turned on by default when all callers have been updated to pass the warning.
         if unread_keys := set(self.series.index.to_list()) - self.read_keys:
-            if os.getenv("WARN_UNUSED_KEYS"):
-                warnings.warn(
-                    f"SeriesData went out of scope without reading all keys, unread: {sorted(unread_keys)}.",
-                    stacklevel=2,
-                )
+            warnings.warn(
+                f"SeriesData went out of scope without reading all keys, unread: {sorted(unread_keys)}.",
+                stacklevel=2,
+            )
 
     def _get_custom_key(self, key: str) -> float | str | None:
         if (float_value := self.get(float, key)) is not None:

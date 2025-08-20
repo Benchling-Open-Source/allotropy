@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import os
 import re
 import traceback
 import warnings
@@ -82,27 +81,22 @@ class StrictXmlElement:
         # Only warn if we've read at least one key but haven't read all keys
         # This avoids warnings for elements that were never accessed at all
         if unread_keys and self.read_keys:
-            if os.getenv("WARN_UNUSED_KEYS"):
-                # Find the creation point in the stack (skip the StrictXmlElement.__init__ frame)
-                creation_point = None
-                for frame in reversed(self.creation_stack):
-                    if (
-                        frame.name != "__init__"
-                        or "strict_xml_element.py" not in frame.filename
-                    ):
-                        creation_point = (
-                            f"{frame.filename}:{frame.lineno} in {frame.name}"
-                        )
-                        break
+            # Find the creation point in the stack (skip the StrictXmlElement.__init__ frame)
+            creation_point = None
+            for frame in reversed(self.creation_stack):
+                if (
+                    frame.name != "__init__"
+                    or "strict_xml_element.py" not in frame.filename
+                ):
+                    creation_point = f"{frame.filename}:{frame.lineno} in {frame.name}"
+                    break
 
-                creation_info = (
-                    f" (created at {creation_point})" if creation_point else ""
-                )
+            creation_info = f" (created at {creation_point})" if creation_point else ""
 
-                warnings.warn(
-                    f"StrictXmlElement went out of scope without reading all keys{creation_info}, unread: {sorted(unread_keys)}.",
-                    stacklevel=2,
-                )
+            warnings.warn(
+                f"StrictXmlElement went out of scope without reading all keys{creation_info}, unread: {sorted(unread_keys)}.",
+                stacklevel=2,
+            )
 
     def _get_all_available_keys(self) -> set[str]:
         """Get all available keys (attributes and child elements) from the XML element."""

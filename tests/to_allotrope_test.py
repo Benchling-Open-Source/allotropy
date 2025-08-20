@@ -1,6 +1,6 @@
-import os
 from pathlib import Path
 import re
+import warnings
 
 import pytest
 
@@ -9,7 +9,6 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
 from allotropy.testing.utils import from_file, validate_contents
 from allotropy.to_allotrope import allotrope_from_file, allotrope_model_from_file
-from scripts.check_warn_unread import _check_warn_unread
 
 INVALID_FILE_PATH = "not/a/path"
 EXPECTED_ERROR_MESSAGE = f"File not found: {INVALID_FILE_PATH}"
@@ -47,8 +46,6 @@ class ParserTest:
     def test_positive_cases(
         self, test_file_path: Path, *, overwrite: bool, warn_unread_keys: bool
     ) -> None:
-        if warn_unread_keys or self.VENDOR.unread_data_handled:
-            os.environ["WARN_UNUSED_KEYS"] = "1"
         # Special case when input files are json, the are placed in an input/ folder and the results are put
         # in a corresponding output/ folder.
         if test_file_path.parts[-2] == "input":
@@ -57,9 +54,45 @@ class ParserTest:
             ).with_suffix(".json")
         else:
             expected_filepath = test_file_path.with_suffix(".json")
-        allotrope_dict = from_file(
-            str(test_file_path), self.VENDOR, encoding=CHARDET_ENCODING
-        )
+
+        with warnings.catch_warnings(record=True) as captured_warnings:
+            if not (warn_unread_keys or self.VENDOR.unread_data_handled):
+                warnings.filterwarnings(
+                    "ignore",
+                    category=UserWarning,
+                    message="JsonData went out of scope without reading all keys",
+                )
+                warnings.filterwarnings(
+                    "ignore",
+                    category=UserWarning,
+                    message="SeriesData went out of scope without reading all keys",
+                )
+                warnings.filterwarnings(
+                    "ignore",
+                    category=UserWarning,
+                    message="StrictXmlElement went out of scope without reading all keys",
+                )
+            allotrope_dict = from_file(
+                str(test_file_path), self.VENDOR, encoding=CHARDET_ENCODING
+            )
+
+        # If parser is marked as having unread data handled, error on any unread data warnings.
+        if self.VENDOR.unread_data_handled and captured_warnings:
+            for captured_warning in captured_warnings:
+                warnings.warn_explicit(
+                    message=captured_warning.message,
+                    category=captured_warning.category,
+                    filename=captured_warning.filename,
+                    lineno=captured_warning.lineno,
+                    source=captured_warning.source,
+                )
+                warning = captured_warning.message
+                if isinstance(
+                    warning, UserWarning
+                ) and "went out of scope without reading all keys" in str(warning):
+                    msg = "Parser is marked as UNREAD_DATA_HANDLED, but had unread data warnings!"
+                    raise AssertionError(msg)
+
         # If expected output does not exist, assume this is a new file and write it.
         overwrite = overwrite or not expected_filepath.exists()
         validate_contents(
@@ -67,7 +100,3 @@ class ParserTest:
             expected_filepath,
             write_actual_to_expected_on_fail=overwrite,
         )
-
-    def test_no_unread_warnings(self) -> None:
-        parser = str(self.__class__).split(".")[2]
-        assert _check_warn_unread(parser)

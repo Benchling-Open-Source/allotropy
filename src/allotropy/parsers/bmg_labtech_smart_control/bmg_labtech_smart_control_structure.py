@@ -181,7 +181,7 @@ def create_calculated_data_documents(
     measurements = [group.measurements[0] for group in measurement_groups]
     calc_data_measurements = []
     for idx, measurement in enumerate(measurements):
-        corrected_value = SeriesData(reader.data.iloc[idx]).get(
+        corrected_value = SeriesData(reader.data.iloc[idx], ignore_unread=True).get(
             float, "Blank corrected based on Raw Data (480-14/520-30)"
         )
         calc_data_measurements.append(
