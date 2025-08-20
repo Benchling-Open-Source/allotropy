@@ -96,10 +96,16 @@ class Header:
             "Country Code": info_row.get(str, "Country Code"),
             "ProtocolDevelopingCompany": info_row.get(str, "ProtocolDevelopingCompany"),
             "Version": info_row.get(str, "Version"),
-            # These properties will be used by the mapper to create the measurement groups.
+            # These properties will be used by the measurement groups down below.
             "BatchStopTime": info_row.get(str, "BatchStopTime"),
             "ProtocolDescription": info_row.get(str, "ProtocolDescription"),
         }
+
+        info_row.get_unread(
+            skip={
+                "Date",
+            },
+        )
 
         # Build parameters dictionary
         return Header(
@@ -348,6 +354,8 @@ class Measurement:
             "PanelName": header_row.get(str, "PanelName"),  # Pending
             "BeadType": header_row.get(str, "BeadType"),  # Pending
         }
+
+        # Get unread keys after all keys have been read
         header_row.get_unread(
             skip={
                 "Date",
