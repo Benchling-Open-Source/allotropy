@@ -75,6 +75,7 @@ class Header:
     ) -> Header:
         sample_volume = header_row.get(str, ["SampleVolume", "MaxSampleUptakeVolume"])
 
+        # Mark the header row as read to prevent warnings, skip Date as it's not used in the header.
         header_row.mark_read({"Program", "ProtocolPlate", "Date"})
 
         return Header(
