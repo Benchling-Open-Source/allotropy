@@ -88,10 +88,21 @@ class ReportPoint:
 
 
 @dataclass(frozen=True)
+class DeviceControlDocument:
+    device_type: str
+    flow_cell_identifier: str | None = None
+    flow_path: str | None = None
+    flow_rate: float | None = None
+    contact_time: float | None = None
+    dilution: float | None = None
+    sample_temperature_setting: float | None = None
+    device_control_custom_info: DictType | None = None
+
+
+@dataclass(frozen=True)
 class Measurement:
     identifier: str
     sample_identifier: str
-    device_type: str
     type_: MeasurementType
     location_identifier: str | None = None
     batch_identifier: str | None = None
@@ -100,14 +111,8 @@ class Measurement:
     concentration: float | None = None
     method_name: str | None = None
     ligand_identifier: str | None = None
-    flow_cell_identifier: str | None = None
-    flow_path: str | None = None
-    flow_rate: float | None = None
-    contact_time: float | None = None
-    dilution: float | None = None
-    device_control_custom_info: DictType | None = None
+    device_control_document: list[DeviceControlDocument] | None = None
     sample_custom_info: DictType | None = None
-    sample_temperature_setting: float | None = None
 
     # Sensorgram
     sensorgram_data_cube: DataCube | None = None
@@ -137,7 +142,9 @@ class Data:
 
 
 class Mapper(SchemaMapper[Data, Model]):
-    MANIFEST: str = "http://purl.allotrope.org/manifests/binding-affinity-analyzer/WD/2024/12/binding-affinity-analyzer.manifest"
+    MANIFEST: str = (
+        "http://purl.allotrope.org/manifests/binding-affinity-analyzer/WD/2024/12/binding-affinity-analyzer.manifest"
+    )
 
     def map_model(self, data: Data) -> Model:
         return Model(
@@ -252,24 +259,25 @@ class Mapper(SchemaMapper[Data, Model]):
                         DeviceControlDocumentItem(
                             sample_temperature_setting=quantity_or_none(
                                 TQuantityValueDegreeCelsius,
-                                measurement.sample_temperature_setting,
+                                device_control.sample_temperature_setting,
                             ),
-                            flow_cell_identifier=measurement.flow_cell_identifier,
-                            flow_path=measurement.flow_path,
+                            flow_cell_identifier=device_control.flow_cell_identifier,
+                            flow_path=device_control.flow_path,
                             flow_rate=quantity_or_none(
                                 TQuantityValueMicroliterPerMinute,
-                                measurement.flow_rate,
+                                device_control.flow_rate,
                             ),
                             contact_time=quantity_or_none(
-                                TQuantityValueSecondTime, measurement.contact_time
+                                TQuantityValueSecondTime, device_control.contact_time
                             ),
                             dilution_factor=quantity_or_none(
-                                TQuantityValuePercent, measurement.dilution
+                                TQuantityValuePercent, device_control.dilution
                             ),
-                            device_type=measurement.device_type,
+                            device_type=device_control.device_type,
                         ),
-                        custom_info_doc=measurement.device_control_custom_info,
+                        custom_info_doc=device_control.device_control_custom_info,
                     )
+                    for device_control in measurement.device_control_document
                 ]
             ),
             processed_data_aggregate_document=(
