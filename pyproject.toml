@@ -230,6 +230,7 @@ cov = [
 pythonpath = "src"
 markers = [
   "long: mark a test that takes a long time to run",
+  "skip_ignore_unread_warnings: mark a test should warn for unread data - only intended to be used in to_allotrope_test.py",
 ]
 
 [tool.ruff]

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from collections.abc import Callable, Iterable
 from enum import Enum
-import os
 import re
 import traceback
 from typing import Any, Literal, overload, TypeVar
@@ -49,24 +48,19 @@ class JsonData:
             return
         # NOTE: this will be turned on by default when all callers have been updated to pass the warning.
         if unread_keys := set(self.data.keys()) - self.read_keys:
-            if os.getenv("WARN_UNUSED_KEYS"):
-                # Find the creation point in the stack (skip the JsonData.__init__ frame)
-                creation_point = None
-                for frame in reversed(self.creation_stack):
-                    if frame.name != "__init__" or "json.py" not in frame.filename:
-                        creation_point = (
-                            f"{frame.filename}:{frame.lineno} in {frame.name}"
-                        )
-                        break
+            # Find the creation point in the stack (skip the JsonData.__init__ frame)
+            creation_point = None
+            for frame in reversed(self.creation_stack):
+                if frame.name != "__init__" or "json.py" not in frame.filename:
+                    creation_point = f"{frame.filename}:{frame.lineno} in {frame.name}"
+                    break
 
-                creation_info = (
-                    f" (created at {creation_point})" if creation_point else ""
-                )
+            creation_info = f" (created at {creation_point})" if creation_point else ""
 
-                warnings.warn(
-                    f"JsonData went out of scope without reading all keys{creation_info}, unread: {sorted(unread_keys)}.",
-                    stacklevel=2,
-                )
+            warnings.warn(
+                f"JsonData went out of scope without reading all keys{creation_info}, unread: {sorted(unread_keys)}.",
+                stacklevel=2,
+            )
 
     def _get_custom_key(self, key: str) -> float | str | None:
         if (float_value := self.get(float, key)) is not None:

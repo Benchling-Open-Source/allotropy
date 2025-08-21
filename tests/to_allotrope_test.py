@@ -1,6 +1,6 @@
-import os
 from pathlib import Path
 import re
+import warnings
 
 import pytest
 
@@ -43,11 +43,10 @@ class ParserTest:
     VENDOR: Vendor
 
     # test_file_path is automatically populated with all files in testdata folder next to the test file.
+    @pytest.mark.skip_ignore_unread_warnings
     def test_positive_cases(
         self, test_file_path: Path, *, overwrite: bool, warn_unread_keys: bool
     ) -> None:
-        if warn_unread_keys:
-            os.environ["WARN_UNUSED_KEYS"] = "1"
         # Special case when input files are json, the are placed in an input/ folder and the results are put
         # in a corresponding output/ folder.
         if test_file_path.parts[-2] == "input":
@@ -56,9 +55,35 @@ class ParserTest:
             ).with_suffix(".json")
         else:
             expected_filepath = test_file_path.with_suffix(".json")
-        allotrope_dict = from_file(
-            str(test_file_path), self.VENDOR, encoding=CHARDET_ENCODING
-        )
+
+        with warnings.catch_warnings(
+            record=self.VENDOR.unread_data_handled
+        ) as captured_warnings:
+            if not (warn_unread_keys or self.VENDOR.unread_data_handled):
+                warnings.filterwarnings(
+                    "ignore", ".*went out of scope without reading all keys.*"
+                )
+            allotrope_dict = from_file(
+                str(test_file_path), self.VENDOR, encoding=CHARDET_ENCODING
+            )
+
+        # If parser is marked as having unread data handled, error on any unread data warnings.
+        if self.VENDOR.unread_data_handled and captured_warnings:
+            for captured_warning in captured_warnings:
+                warnings.warn_explicit(
+                    message=captured_warning.message,
+                    category=captured_warning.category,
+                    filename=captured_warning.filename,
+                    lineno=captured_warning.lineno,
+                    source=captured_warning.source,
+                )
+                warning = captured_warning.message
+                if isinstance(
+                    warning, UserWarning
+                ) and "went out of scope without reading all keys" in str(warning):
+                    msg = "Parser is marked as UNREAD_DATA_HANDLED, but had unread data warnings!"
+                    raise AssertionError(msg)
+
         # If expected output does not exist, assume this is a new file and write it.
         overwrite = overwrite or not expected_filepath.exists()
         validate_contents(
