@@ -75,7 +75,8 @@ def test_create_header() -> None:
         },
         orient="index",
     ).T
-    header = Header.create(data, minimum_assay_bead_count_setting=10)
+    header_row = SeriesData(data.iloc[0])
+    header = Header.create(data, header_row, minimum_assay_bead_count_setting=10)
 
     assert header == Header(
         model_number="Model",  # Program, col 4
@@ -91,6 +92,13 @@ def test_create_header() -> None:
         analyst=None,  # Operator row
         data_system_instance_identifier="AAA000",  # ComputerName
         minimum_assay_bead_count_setting=10,
+        custom_info={
+            "Country Code": None,
+            "ProtocolDevelopingCompany": None,
+            "Version": None,
+            "BatchStopTime": None,
+            "ProtocolDescription": None,
+        },
     )
 
 
@@ -126,8 +134,10 @@ def test_create_heder_without_required_col(required_col: str) -> None:
         )
 
     with pytest.raises(AllotropeConversionError, match=error_msg):
+        data_without_col = data.drop(columns=[required_col])
+        header_row = SeriesData(data_without_col.iloc[0])
         Header.create(
-            data.drop(columns=[required_col]), minimum_assay_bead_count_setting=100
+            data_without_col, header_row, minimum_assay_bead_count_setting=100
         )
 
 
@@ -160,11 +170,32 @@ def test_create_calibration_item_invalid_calibration_result() -> None:
 
 def test_create_measurement_list() -> None:
     results_data = LuminexXponentReader._get_results(CsvReader(get_result_lines()))
+
+    # Create a mock header_data DataFrame for testing
+    mock_header_data = pd.DataFrame.from_dict(
+        {
+            "Program": ["xPonent", None, "Model"],
+            "Build": ["1.1.0"],
+            "SN": ["SN1234"],
+            "Batch": ["ABC_0000"],
+            "ComputerName": ["AAA000"],
+            "ProtocolName": ["Order66"],
+            "ProtocolVersion": ["5"],
+            "SampleVolume": ["1 uL"],
+            "BatchStartTime": ["1/17/2024 7:41:29 AM"],
+            "ProtocolPlate": [None, None, "Type", 10],
+            "ProtocolReporterGain": ["Pro MAP"],
+            "BatchDescription": ["Test Batch Description"],
+        },
+        orient="index",
+    ).T
+
     with mock.patch(
         "allotropy.parsers.luminex_xponent.luminex_xponent_structure.random_uuid_str",
         return_value="dummy_id",
     ):
-        measurement_list = MeasurementList.create(results_data)
+        header_row = SeriesData(mock_header_data.iloc[0])
+        measurement_list = MeasurementList.create(results_data, header_row)
 
     assert measurement_list == MeasurementList(
         measurements=[
@@ -172,14 +203,14 @@ def test_create_measurement_list() -> None:
                 identifier="dummy_id",
                 sample_identifier="Unknown1",
                 location_identifier="A1",
-                dilution_factor_setting=1,
-                assay_bead_count=881,
+                dilution_factor_setting=1.0,
+                assay_bead_count=881.0,
                 analytes=[
                     Analyte(
                         identifier="dummy_id",
                         name="alpha",
                         assay_bead_identifier="28",
-                        assay_bead_count=30,
+                        assay_bead_count=30.0,
                         statistics=[
                             StatisticsDocument(
                                 statistical_feature="fluorescence",
@@ -197,13 +228,13 @@ def test_create_measurement_list() -> None:
                         identifier="dummy_id",
                         name="bravo",
                         assay_bead_identifier="35",
-                        assay_bead_count=42,
+                        assay_bead_count=42.0,
                         statistics=[
                             StatisticsDocument(
                                 statistical_feature="fluorescence",
                                 statistic_dimensions=[
                                     StatisticDimension(
-                                        value=37214,
+                                        value=37214.0,
                                         unit="RFU",
                                         statistic_datum_role=TStatisticDatumRole.median_role,
                                     )
@@ -217,6 +248,31 @@ def test_create_measurement_list() -> None:
                     Error(error="Another Warning."),
                 ],
                 calculated_data=[],
+                measurement_custom_info={
+                    "ProtocolName": "Order66",
+                    "ProtocolVersion": 5.0,
+                    "ProtocolReporterGain": "Pro MAP",
+                    "SampleVolume": "1 uL",
+                    "Build": "1.1.0",
+                    "Program": "xPonent",
+                    "SN": "SN1234",
+                    "ComputerName": "AAA000",
+                    "Batch": "ABC_0000",
+                    "BatchStartTime": "1/17/2024 7:41:29 AM",
+                },
+                sample_custom_info={
+                    "BatchDescription": "Test Batch Description",
+                    "PanelName": None,
+                    "BeadType": None,
+                },
+                device_control_custom_info={
+                    "ProtocolHeater": None,
+                    "DDGate": None,
+                    "SampleTimeout": None,
+                    "ProtocolAnalysis": None,
+                    "ProtocolMicrosphere": None,
+                    "PlateReadDirection": None,
+                },
             )
         ]
     )
@@ -235,10 +291,30 @@ def test_create_measurement_list_without_required_table_then_raise(
         if section != table_name
     }
 
+    # Create a mock header_data DataFrame for testing
+    mock_header_data = pd.DataFrame.from_dict(
+        {
+            "Program": ["xPonent", None, "Model"],
+            "Build": ["1.1.0"],
+            "SN": ["SN1234"],
+            "Batch": ["ABC_0000"],
+            "ComputerName": ["AAA000"],
+            "ProtocolName": ["Order66"],
+            "ProtocolVersion": ["5"],
+            "SampleVolume": ["1 uL"],
+            "BatchStartTime": ["1/17/2024 7:41:29 AM"],
+            "ProtocolPlate": [None, None, "Type", 10],
+            "ProtocolReporterGain": ["Pro MAP"],
+            "BatchDescription": ["Test Batch Description"],
+        },
+        orient="index",
+    ).T
+
     with pytest.raises(
         AllotropeConversionError,
         match=re.escape(
             f"Unable to parse input file, missing expected sections: ['{table_name}']."
         ),
     ):
-        MeasurementList.create(results_data)
+        header_row = SeriesData(mock_header_data.iloc[0])
+        MeasurementList.create(results_data, header_row)
