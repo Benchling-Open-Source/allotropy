@@ -20,10 +20,17 @@ class UnchainedLabsLunaticReader:
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
         if named_file_contents.extension == "csv":
-            data = read_csv(named_file_contents.contents, header=None)
+            data = read_csv(
+                named_file_contents.contents,
+                header=None,
+                keep_default_na=False,
+            )
         else:
             data = read_excel(
-                named_file_contents.contents, header=None, engine="calamine"
+                named_file_contents.contents,
+                header=None,
+                engine="calamine",
+                keep_default_na=False,
             )
 
         assert_not_empty_df(data, "Unable to parse data from empty dataset.")
@@ -38,7 +45,21 @@ class UnchainedLabsLunaticReader:
             msg = "Unable to find a table header row with 'Sample Name'."
             raise AllotropeConversionError(msg)
 
-        header_data = data[:table_header_index].dropna(how="all").T.dropna(how="all")
+        # Clean typical NA-like strings in header only so metadata parsing behaves as before
+        header_block = data[:table_header_index].copy()
+        if not header_block.empty:
+            # Normalize header empties/NA-like strings to NaN so transpose+dropna collapses to 2 rows (labels+values)
+            header_block = header_block.astype(object)
+            empty_pattern = r"\s*"
+            na_pattern = r"\s*N/?A\s*"
+            empty_mask = header_block.apply(
+                lambda s: s.astype(str).str.fullmatch(empty_pattern, na=False)
+            )
+            na_mask = header_block.apply(
+                lambda s: s.astype(str).str.fullmatch(na_pattern, case=False, na=False)
+            )
+            header_block[empty_mask | na_mask] = np.nan
+        header_data = header_block.dropna(how="all").T.dropna(how="all")
         data = parse_header_row(data[table_header_index:])
 
         # Fix column names in excel sheets with newlines/other whitespace.
@@ -56,7 +77,7 @@ class UnchainedLabsLunaticReader:
             self.header = df_to_series_data(data, index=0)
         else:
             self.header = df_to_series_data(
-                parse_header_row(header_data).dropna(axis="columns")
+                parse_header_row(header_data).dropna(axis="columns", how="all")
             )
             self.header.series.index = self.header.series.index.astype(str).str.lower()
 
