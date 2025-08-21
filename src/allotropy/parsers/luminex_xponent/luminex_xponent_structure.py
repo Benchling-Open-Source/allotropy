@@ -64,35 +64,49 @@ class Header:
     detector_gain_setting: str | None
     minimum_assay_bead_count_setting: float | None
     analyst: str | None
+    custom_info: dict[str, Any]
 
     @classmethod
     def create(
-        cls, header_data: pd.DataFrame, minimum_assay_bead_count_setting: float | None
+        cls,
+        header_data: pd.DataFrame,
+        header_row: SeriesData,
+        minimum_assay_bead_count_setting: float | None,
     ) -> Header:
-        info_row = SeriesData(header_data.iloc[0])
-        raw_datetime = info_row[str, "BatchStartTime"]
-        sample_volume = info_row.get(str, ["SampleVolume", "MaxSampleUptakeVolume"])
+        sample_volume = header_row.get(str, ["SampleVolume", "MaxSampleUptakeVolume"])
+
+        header_row.mark_read({"Program", "ProtocolPlate", "Date"})
 
         return Header(
             model_number=cls._get_model_number(header_data),
-            software_version=info_row.get(str, "Build"),
-            equipment_serial_number=info_row.get(str, "SN"),
-            analytical_method_identifier=info_row.get(str, "ProtocolName"),
-            method_version=info_row.get(str, "ProtocolVersion"),
-            experimental_data_identifier=info_row.get(str, "Batch"),
+            software_version=header_row.get(str, "Build"),
+            equipment_serial_number=header_row.get(str, "SN"),
+            analytical_method_identifier=header_row.get(str, "ProtocolName"),
+            method_version=header_row.get(str, "ProtocolVersion"),
+            experimental_data_identifier=header_row.get(str, "Batch"),
             sample_volume_setting=(
                 try_float(sample_volume.split()[0], "sample volume setting")
                 if sample_volume
                 else None
             ),
             plate_well_count=cls._get_plate_well_count(header_data),
-            measurement_time=raw_datetime,
-            detector_gain_setting=info_row.get(
+            measurement_time=header_row[str, "BatchStartTime"],
+            detector_gain_setting=header_row.get(
                 str, ["ProtocolReporterGain", "ProtocolOperatingMode"]
             ),
-            data_system_instance_identifier=info_row[str, "ComputerName"],
+            data_system_instance_identifier=header_row[str, "ComputerName"],
             minimum_assay_bead_count_setting=minimum_assay_bead_count_setting,
-            analyst=info_row.get(str, "Operator"),
+            analyst=header_row.get(str, "Operator"),
+            custom_info={
+                "Country Code": header_row.get(str, "Country Code"),
+                "ProtocolDevelopingCompany": header_row.get(
+                    str, "ProtocolDevelopingCompany"
+                ),
+                "Version": header_row.get(str, "Version"),
+                # Used for the measurement groups
+                "BatchStopTime": header_row.get(str, "BatchStopTime"),
+                "ProtocolDescription": header_row.get(str, "ProtocolDescription"),
+            },
         )
 
     @classmethod
@@ -138,7 +152,10 @@ def create_calibration(calibration_data: SeriesData) -> Calibration:
         msg = f"Expected at least two columns on the calibration line, got:\n{calibration_data.series}."
         raise AllotropeConversionError(msg)
 
+    # Read the calibration data using SeriesData methods
+    calibration_name = calibration_data.series.iloc[0]
     calibration_info = str(calibration_data.series.iloc[1]).strip()
+    calibration_data.get_unread()
 
     # Check if the calibration info starts with a known status value
     status_values = ["Passed", "Failed", "Calibrated", "Verified"]
@@ -164,7 +181,7 @@ def create_calibration(calibration_data: SeriesData) -> Calibration:
         raise AllotropeConversionError(msg)
 
     return Calibration(
-        name=calibration_data.series.iloc[0].replace("Last", "").strip(),
+        name=calibration_name.replace("Last", "").strip(),
         time=time,
         report=report,
     )
@@ -180,6 +197,9 @@ class Measurement:
     analytes: list[Analyte]
     calculated_data: list[CalculatedDocument]
     errors: list[Error] | None = None
+    measurement_custom_info: dict[str, Any] | None = None
+    sample_custom_info: dict[str, Any] | None = None
+    device_control_custom_info: dict[str, Any] | None = None
 
     @classmethod
     def create(
@@ -187,6 +207,7 @@ class Measurement:
         results_data: dict[str, pd.DataFrame],
         count_data: SeriesData,
         bead_ids_data: SeriesData,
+        header_row: SeriesData,
     ) -> Measurement:
         location = str(count_data.series.name)
         dilution_factor_data = results_data["Dilution Factor"]
@@ -201,9 +222,12 @@ class Measurement:
         metadata_keys = ["Sample", "Total Events"]
 
         well_location, location_id = cls._get_location_details(location)
-        dilution_factor_setting = SeriesData(dilution_factor_data.loc[location]).get(
+        dilution_factor_series = SeriesData(dilution_factor_data.loc[location])
+        dilution_factor_setting = dilution_factor_series.get(
             float, "Dilution Factor", NEGATIVE_ZERO, validate=SeriesData.NOT_NAN
         )
+        # Capture unread dilution factor data to prevent warnings
+        dilution_factor_series.get_unread()
         errors: list[Error] = []
         data_errors = cls._get_errors(errors_data, well_location) or []
         for data_error in data_errors:
@@ -289,6 +313,20 @@ class Measurement:
                     )
                 )
 
+        device_control_custom_info = {
+            "ProtocolHeater": header_row.get(str, "ProtocolHeater"),
+            "DDGate": header_row.get(str, "DDGate"),
+            "SampleTimeout": header_row.get(str, "SampleTimeout"),
+            "ProtocolAnalysis": header_row.get(str, "ProtocolAnalysis"),
+            "ProtocolMicrosphere": header_row.get(str, "ProtocolMicrosphere"),
+            "PlateReadDirection": header_row.get(str, "PlateReadDirection"),
+        }
+        sample_custom_info = {
+            "BatchDescription": header_row.get(str, "BatchDescription"),
+            "PanelName": header_row.get(str, "PanelName"),
+            "BeadType": header_row.get(str, "BeadType"),
+        }
+
         return Measurement(
             identifier=measurement_identifier,
             sample_identifier=count_data[str, "Sample"],
@@ -298,6 +336,9 @@ class Measurement:
             analytes=analytes,
             errors=errors,
             calculated_data=calculated_data,
+            device_control_custom_info=device_control_custom_info,
+            sample_custom_info=sample_custom_info,
+            measurement_custom_info=count_data.get_unread() | header_row.get_unread(),
         )
 
     @classmethod
@@ -316,9 +357,14 @@ class Measurement:
     ) -> list[str] | None:
         if errors_data is None or well_location not in errors_data.index:
             return None
-        return map_rows(
-            errors_data.loc[[well_location]], lambda data: data[str, "Message"]
-        )
+
+        def extract_message(data: SeriesData) -> str:
+            message = data[str, "Message"]
+            # Capture unread error data to prevent warnings
+            data.get_unread()
+            return message
+
+        return map_rows(errors_data.loc[[well_location]], extract_message)
 
 
 @dataclass(frozen=True)
@@ -326,7 +372,9 @@ class MeasurementList:
     measurements: list[Measurement]
 
     @classmethod
-    def create(cls, results_data: dict[str, pd.DataFrame]) -> MeasurementList:
+    def create(
+        cls, results_data: dict[str, pd.DataFrame], header_row: SeriesData
+    ) -> MeasurementList:
         if missing_sections := [
             section for section in REQUIRED_SECTIONS if section not in results_data
         ]:
@@ -352,6 +400,7 @@ class MeasurementList:
                 results_data=results_data,
                 count_data=count_data,
                 bead_ids_data=bead_ids_data,
+                header_row=header_row,
             )
 
         return MeasurementList(map_rows(results_data["Count"], create_measurement))
@@ -365,12 +414,14 @@ class Data:
 
     @classmethod
     def create(cls, reader: LuminexXponentReader) -> Data:
+        header_row = SeriesData(reader.header_data.iloc[0])
+
         return Data(
             header=Header.create(
-                reader.header_data, reader.minimum_assay_bead_count_setting
+                reader.header_data, header_row, reader.minimum_assay_bead_count_setting
             ),
             calibrations=map_rows(reader.calibration_data, create_calibration),
-            measurement_list=MeasurementList.create(reader.results_data),
+            measurement_list=MeasurementList.create(reader.results_data, header_row),
         )
 
 
@@ -389,6 +440,7 @@ def create_metadata(
         software_name=DEFAULT_SOFTWARE_NAME,
         software_version=header.software_version,
         device_type=DEFAULT_DEVICE_TYPE,
+        custom_info=header.custom_info,
     )
 
 
@@ -416,11 +468,24 @@ def create_measurement_groups(
                     assay_bead_count=measurement.assay_bead_count,
                     analytes=measurement.analytes,
                     errors=measurement.errors if measurement.errors else None,
+                    measurement_custom_info=measurement.measurement_custom_info,
+                    sample_custom_info=measurement.sample_custom_info,
+                    device_control_custom_info=measurement.device_control_custom_info,
                 )
             ],
+            custom_info={
+                "BatchStopTime": header.custom_info.get("BatchStopTime", None),
+                "ProtocolDescription": header.custom_info.get(
+                    "ProtocolDescription", None
+                ),
+            },
         )
         for measurement in measurements
     ]
+    # Remove the header custom info that was used to create the measurement groups.
+    header.custom_info.pop("BatchStopTime", None)
+    header.custom_info.pop("ProtocolDescription", None)
+
     calculated_documents = list(
         itertools.chain(*[measurement.calculated_data for measurement in measurements])
     )
