@@ -23,7 +23,7 @@ class LuminexXponentParser(VendorParser[MapperData, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = LuminexXponentReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
-    UNREAD_DATA_HANDLED = False
+    UNREAD_DATA_HANDLED = True
 
     def create_data(self, named_file_contents: NamedFileContents) -> MapperData:
         reader = LuminexXponentReader(named_file_contents)
