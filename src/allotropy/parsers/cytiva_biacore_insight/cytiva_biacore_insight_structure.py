@@ -11,6 +11,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
 )
 from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling._2024._12.binding_affinity_analyzer import (
+    DeviceControlDocument,
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -23,7 +24,9 @@ from allotropy.parsers.cytiva_biacore_insight.cytiva_biacore_insight_reader impo
     CytivaBiacoreInsightReader,
 )
 from allotropy.parsers.utils.pandas import (
+    df_to_series,
     df_to_series_data,
+    map_rows,
     parse_header_row,
     SeriesData,
     split_dataframe,
@@ -194,51 +197,19 @@ class BiacoreInsightMetadata:
 
 
 @dataclass(frozen=True)
-class MeasurementItem:
-    measurement_identifier: str
-    sample_identifier: str
-    ligand_identifier: str
-
-
-@dataclass(frozen=True)
-class MeasurementList:
-    measurements: list[MeasurementItem]
-
-    @staticmethod
-    def create(reader: CytivaBiacoreInsightReader) -> MeasurementList:
-        # Report point table is the entry point
-        _, report_point_table = split_dataframe(
-            reader.data["Report point table"],
-            lambda row: row[0] == "Run",
-            include_split_row=True,
-        )
-        report_point_table = parse_header_row(
-            assert_not_none(report_point_table, msg="Missing report point table.")
-        ).reset_index(drop=True)
-
-        return MeasurementList(
-            [
-                MeasurementItem(
-                    measurement_identifier=random_uuid_str(),
-                    sample_identifier="123",
-                    ligand_identifier="ligand1d",
-                )
-            ]
-        )
-
-
-@dataclass(frozen=True)
 class Data:
     metadata: BiacoreInsightMetadata
-    measurements: list[MeasurementItem]
+    cycles: dict[int, list[Measurement]]
 
     @staticmethod
     def create(reader: CytivaBiacoreInsightReader) -> Data:
         metadata = BiacoreInsightMetadata.create(reader)
-
         return Data(
             metadata=metadata,
-            measurements=MeasurementList.create(reader).measurements,
+            cycles={
+                cycle: create_measurements_for_cycle(cycle, metadata, reader)
+                for cycle in range(1, int(metadata.runs[0].number_of_cycles) + 1)
+            },
         )
 
 
@@ -282,17 +253,82 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
                 "running_buffer": run_metadata.running_buffer,
                 "measurement_end_time": run_metadata.measurement_end_time,
             },
-            measurements=[
-                Measurement(
-                    identifier=measurement.measurement_identifier,
-                    sample_identifier=measurement.sample_identifier,
-                    device_type=constants.DEVICE_TYPE,
-                    type_=MeasurementType.SURFACE_PLASMON_RESONANCE,
-                    method_name=run_metadata.method_name,
-                    ligand_identifier=measurement.ligand_identifier,
-                    data_processing_document=data.metadata.data_processing_document,
-                )
-                for measurement in data.measurements
-            ],
+            measurements=measurements,
         )
+        for measurements in data.cycles.values()
     ]
+
+
+def create_measurements_for_cycle(
+    cycle_number: int,
+    metadata: BiacoreInsightMetadata,
+    reader: CytivaBiacoreInsightReader,
+) -> list[Measurement]:
+    # Report point table is the entry point
+    _, report_point_table = split_dataframe(
+        reader.data["Report point table"],
+        lambda row: row[0] == "Run",
+        include_split_row=True,
+    )
+    report_point_table = parse_header_row(
+        assert_not_none(report_point_table, msg="Missing report point table.")
+    ).reset_index(drop=True)
+    cycle_data = report_point_table[report_point_table["Cycle"] == cycle_number]
+
+    return [
+        create_measurement(channel_data, metadata)
+        for _, channel_data in cycle_data.groupby("Channel")
+    ]
+
+
+def create_measurement(
+    channel_data: pd.DataFrame, metadata: BiacoreInsightMetadata
+) -> Measurement:
+    run_metadata = metadata.runs[0]
+    first_row_data = SeriesData(channel_data.iloc[0])
+    run = first_row_data[int, "Run"]
+    cycle_number = first_row_data[int, "Cycle"]
+    channel = first_row_data[int, "Channel"]
+
+    run_table = run_metadata.run_table
+    device_control_document = []
+    for flow_cell, flow_cell_data in channel_data.groupby("Flow cell"):
+        run_data = run_table[
+            (run_table["Flow cell"].astype(str) == str(flow_cell))
+            & (run_table["Channel"] == channel)
+        ]
+        run_info = SeriesData() if run_data.empty else df_to_series_data(run_data)
+        device_control_document.append(
+            DeviceControlDocument(
+                device_type=constants.DEVICE_TYPE,
+                flow_cell_identifier=str(flow_cell),
+                flow_path=run_info.get(str, "Flow path"),
+                flow_rate=run_info.get(float, "Flow rate"),
+                contact_time=run_info.get(float, "Contact time"),
+                dilution=run_info.get(float, "Dilution"),
+                sample_temperature_setting=run_info.get(
+                    float, "Sample temperature setting"
+                ),
+                device_control_custom_info={
+                    "Included": run_info.get(str, "Included"),
+                    "Sensorgram type": first_row_data.get(
+                        str, "Sensorgram type", run_info.get(str, "Sensorgram type")
+                    ),
+                },
+            )
+        )
+
+    return Measurement(
+        identifier=random_uuid_str(),
+        sample_identifier=f"Run{run}_Cycle{cycle_number}_Channel{channel}",
+        type_=MeasurementType.SURFACE_PLASMON_RESONANCE,
+        method_name=run_metadata.method_name,
+        ligand_identifier=run_info.get(str, "Ligand"),
+        device_control_document=device_control_document,
+        sample_custom_info={
+            "Run": run,
+            "Cycle": cycle_number,
+            "Channel": channel,
+        },
+        data_processing_document=metadata.data_processing_document,
+    )
