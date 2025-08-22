@@ -6,6 +6,7 @@ from enum import Enum
 import logging
 from pathlib import Path
 import re
+from typing import Any
 
 import pandas as pd
 
@@ -235,6 +236,7 @@ class MeasurementInfo:
     measurement_time: str
     protocol_signature: str
     measurement_signature: str
+    custom_info: dict[str, Any] | None = None
 
     @staticmethod
     def create(
@@ -261,6 +263,7 @@ class MeasurementInfo:
             measurement_time=data[str, "Measurement Started"],
             protocol_signature=data[str, "Protocol Signature"],
             measurement_signature=data[str, "Measurement Signature"],
+            custom_info=data.get_unread(),
         )
 
 
@@ -355,6 +358,7 @@ class Measurements:
     emission_wavelength: float | None
     excitation_wavelength: float | None
     focus_height: float | None
+    custom_info: dict[str, Any] | None = None
 
     @staticmethod
     def create(
@@ -400,6 +404,7 @@ class Measurements:
                 else try_float_or_none(excitation_wavelength.removesuffix("nm"))
             ),
             focus_height=data.get(float, "focus height [µm]"),
+            custom_info=data.get_unread(),
         )
 
     @staticmethod
@@ -479,6 +484,7 @@ def create_metadata(data: Data, file_path: str) -> Metadata:
         model_number=constants.MODEL_NUMBER,
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
         equipment_serial_number=data.measurement_info.instrument_serial_number,
+        custom_info=data.measurement_info.custom_info,
     )
 
 
@@ -526,6 +532,7 @@ def _create_measurement(data: Data, well_position: str, well_value: str) -> Meas
         luminescence=measurement_value
         if experiment_type is ExperimentType.LUMINESCENCE
         else None,
+        custom_info=data.measurements.custom_info,
     )
 
 
@@ -550,6 +557,7 @@ def _create_optical_measurement(
         illumination_setting_unit="%",
         transmitted_light_setting=channel.transmitted_light,
         fluorescent_tag_setting=channel.fluorescent_tag,
+        custom_info=data.measurements.custom_info,
     )
 
 
