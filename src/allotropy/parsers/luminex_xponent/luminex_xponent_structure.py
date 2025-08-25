@@ -138,7 +138,8 @@ class Header:
             msg = "Unable to find plate well count in ProtocolPlate row, expected value at index 3."
             raise AllotropeConversionError(msg) from e
 
-        return try_float(str(plate_well_count), "plate well count")
+        plate_well_count = try_non_nan_float_or_none(str(plate_well_count))
+        return plate_well_count or -0.0
 
 
 def create_calibration(calibration_data: SeriesData) -> Calibration:
@@ -273,11 +274,18 @@ class Measurement:
             key for key in count_data.series.index if key not in metadata_keys
         ]
         for analyte in analyte_keys:
+            assay_bead_identifier = bead_ids_data.get(str, analyte, "")
+            if not assay_bead_identifier:
+                errors.append(
+                    Error(
+                        error="Not reported", feature=f"{analyte} assay bead identifier"
+                    )
+                )
             analytes.append(
                 Analyte(
                     identifier=(analyte_identifier := random_uuid_str()),
                     name=analyte,
-                    assay_bead_identifier=bead_ids_data[str, analyte],
+                    assay_bead_identifier=assay_bead_identifier,
                     assay_bead_count=count_data[float, analyte],
                     statistics=[
                         StatisticsDocument(
