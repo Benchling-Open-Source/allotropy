@@ -28,7 +28,10 @@ from allotropy.allotrope.models.adm.binding_affinity_analyzer.wd._2024._12.bindi
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDegreeCelsius,
     TQuantityValueMicroliterPerMinute,
+    TQuantityValueMolar,
     TQuantityValueNanomolar,
+    TQuantityValuePerMolarPerSecond,
+    TQuantityValuePerSecond,
     TQuantityValuePercent,
     TQuantityValueResonanceUnits,
     TQuantityValueSecondTime,
@@ -116,6 +119,12 @@ class Measurement:
 
     # Sensorgram
     sensorgram_data_cube: DataCube | None = None
+
+    # Processed Data
+    binding_on_rate_measurement_datum__kon_: str | None = None
+    binding_off_rate_measurement_datum__koff_: str | None = None
+    equilibrium_dissociation_constant__KD_: str | None = None
+    maximum_binding_capacity__Rmax_: str | None = None
 
     # Report point
     report_point_data: list[ReportPoint] | None = None
@@ -289,6 +298,22 @@ class Mapper(SchemaMapper[Data, Model]):
                                 if measurement.data_processing_document
                                 else None
                             ),
+                            binding_on_rate_measurement_datum__kon_=quantity_or_none(
+                                TQuantityValuePerMolarPerSecond,
+                                measurement.binding_on_rate_measurement_datum__kon_,
+                            ),
+                            binding_off_rate_measurement_datum__koff_=quantity_or_none(
+                                TQuantityValuePerSecond,
+                                measurement.binding_off_rate_measurement_datum__koff_,
+                            ),
+                            equilibrium_dissociation_constant__KD_=quantity_or_none(
+                                TQuantityValueMolar,
+                                measurement.equilibrium_dissociation_constant__KD_,
+                            ),
+                            maximum_binding_capacity__Rmax_=quantity_or_none(
+                                TQuantityValueResonanceUnits,
+                                measurement.maximum_binding_capacity__Rmax_,
+                            ),
                             report_point_aggregate_document=ReportPointAggregateDocument(
                                 report_point_document=[
                                     add_custom_information_document(
@@ -306,7 +331,6 @@ class Mapper(SchemaMapper[Data, Model]):
                                                 value=report_point.time_setting
                                             ),
                                         ),
-                                        # TODO: probably this should be at the processed document level.
                                         custom_info_doc=report_point.custom_info,
                                     )
                                     for report_point in measurement.report_point_data

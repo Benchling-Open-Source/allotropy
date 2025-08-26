@@ -2,13 +2,20 @@ from __future__ import annotations
 
 from pathlib import Path
 import re
+from typing import Any
 
 from attr import dataclass
+import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueDalton,
     TQuantityValueHertz,
+    TQuantityValueMicroliterPerMinute,
+    TQuantityValueNanomolar,
     TQuantityValueNumber,
+    TQuantityValueResonanceUnits,
+    TQuantityValueSecondTime,
 )
 from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling._2024._12.binding_affinity_analyzer import (
     DeviceControlDocument,
@@ -24,15 +31,17 @@ from allotropy.parsers.cytiva_biacore_insight.cytiva_biacore_insight_reader impo
     CytivaBiacoreInsightReader,
 )
 from allotropy.parsers.utils.pandas import (
-    df_to_series,
     df_to_series_data,
-    map_rows,
+    drop_df_rows_while,
     parse_header_row,
     SeriesData,
     split_dataframe,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import assert_not_none
+from allotropy.parsers.utils.values import (
+    assert_not_none,
+    quantity_or_none,
+)
 from allotropy.types import DictType
 
 
@@ -265,24 +274,31 @@ def create_measurements_for_cycle(
     reader: CytivaBiacoreInsightReader,
 ) -> list[Measurement]:
     # Report point table is the entry point
-    _, report_point_table = split_dataframe(
-        reader.data["Report point table"],
-        lambda row: row[0] == "Run",
-        include_split_row=True,
+    report_point_table = _get_table_from_dataframe(
+        reader.data["Report point table"], split_on="Run"
     )
-    report_point_table = parse_header_row(
-        assert_not_none(report_point_table, msg="Missing report point table.")
-    ).reset_index(drop=True)
     cycle_data = report_point_table[report_point_table["Cycle"] == cycle_number]
+    kinetics_data = _get_table_from_dataframe(
+        reader.data["Evaluation - Kinetics"], split_on="Group"
+    )
 
     return [
-        create_measurement(channel_data, metadata)
+        create_measurement(channel_data, metadata, kinetics_data)
         for _, channel_data in cycle_data.groupby("Channel")
     ]
 
 
+def _get_table_from_dataframe(df: pd.DataFrame, split_on: str) -> pd.DataFrame:
+    data_table = drop_df_rows_while(df, lambda row: row[0] != split_on)
+    return parse_header_row(
+        assert_not_none(data_table).replace(np.nan, None)
+    ).reset_index(drop=True)
+
+
 def create_measurement(
-    channel_data: pd.DataFrame, metadata: BiacoreInsightMetadata
+    channel_data: pd.DataFrame,
+    metadata: BiacoreInsightMetadata,
+    kinetics_data: pd.DataFrame,
 ) -> Measurement:
     run_metadata = metadata.runs[0]
     first_row_data = SeriesData(channel_data.iloc[0])
@@ -298,25 +314,49 @@ def create_measurement(
             & (run_table["Channel"] == channel)
         ]
         run_info = SeriesData() if run_data.empty else df_to_series_data(run_data)
+        # All the info needed in the device control document is the same for all flow cell data
+        flow_cell_info = SeriesData(flow_cell_data.iloc[0])
         device_control_document.append(
             DeviceControlDocument(
                 device_type=constants.DEVICE_TYPE,
                 flow_cell_identifier=str(flow_cell),
-                flow_path=run_info.get(str, "Flow path"),
-                flow_rate=run_info.get(float, "Flow rate"),
-                contact_time=run_info.get(float, "Contact time"),
-                dilution=run_info.get(float, "Dilution"),
-                sample_temperature_setting=run_info.get(
-                    float, "Sample temperature setting"
+                sample_temperature_setting=quantity_or_none(
+                    TQuantityValueNumber, flow_cell_info.get(float, "Temperature")
                 ),
                 device_control_custom_info={
+                    "Analyte 1 Contact time": quantity_or_none(
+                        TQuantityValueSecondTime,
+                        flow_cell_info.get(float, "Analyte 1 Contact time (s)"),
+                    ),
+                    "Analyte 1 Dissociation time": quantity_or_none(
+                        TQuantityValueSecondTime,
+                        flow_cell_info.get(float, "Analyte 1 Dissociation time (s)"),
+                    ),
+                    "Analyte 1 Flow rate": quantity_or_none(
+                        TQuantityValueMicroliterPerMinute,
+                        flow_cell_info.get(float, "Analyte 1 Flow rate (µl/min)"),
+                    ),
+                    "Regeneration 1 Contact time": quantity_or_none(
+                        TQuantityValueSecondTime,
+                        flow_cell_info.get(float, "Regeneration 1 Contact time (s)"),
+                    ),
+                    "Regeneration 1 Flow rate": quantity_or_none(
+                        TQuantityValueMicroliterPerMinute,
+                        flow_cell_info.get(float, "Regeneration 1 Flow rate (µl/min)"),
+                    ),
                     "Included": run_info.get(str, "Included"),
                     "Sensorgram type": first_row_data.get(
                         str, "Sensorgram type", run_info.get(str, "Sensorgram type")
                     ),
+                    "Level": quantity_or_none(
+                        TQuantityValueResonanceUnits, run_info.get(float, "Level (RU)")
+                    ),
                 },
             )
         )
+
+    analyte_solution = first_row_data.get(str, "Analyte 1 Solution")
+    capture_solution = _first_not_null_or_none(channel_data["Capture 1 Solution"])
 
     return Measurement(
         identifier=random_uuid_str(),
@@ -329,6 +369,47 @@ def create_measurement(
             "Run": run,
             "Cycle": cycle_number,
             "Channel": channel,
+            "Analyte 1 Solution": analyte_solution,
+            "Analyte 1 Plate id": first_row_data.get(str, "Analyte 1 Plate id"),
+            "Analyte 1 Position": first_row_data.get(str, "Analyte 1 Position"),
+            "Analyte 1 Control type": first_row_data.get(str, "Analyte 1 Control type"),
+            "Regeneration 1 Solution": first_row_data.get(
+                str, "Regeneration 1 Solution"
+            ),
+            "Regeneration 1 Plate id": first_row_data.get(
+                str, "Regeneration 1 Plate id"
+            ),
+            "Regeneration 1 Position": first_row_data.get(
+                str, "Regeneration 1 Position"
+            ),
+            "Regeneration 1 Control type": first_row_data.get(
+                str, "Regeneration 1 Control type"
+            ),
+            # Capture data is not reported for the Reference flow cell,
+            # so we have to look for the first non-null value
+            "Capture 1 Solution": capture_solution,
+            "Capture 1 Plate id": _first_not_null_or_none(
+                channel_data["Capture 1 Plate id"]
+            ),
+            "Capture 1 Position": _first_not_null_or_none(
+                channel_data["Capture 1 Position"]
+            ),
+            "Capture 1 Control type": _first_not_null_or_none(
+                channel_data["Capture 1 Control type"]
+            ),
+            "Analyte 1 Concentration": quantity_or_none(
+                TQuantityValueNanomolar,
+                first_row_data.get(float, "Analyte 1 Concentration (nM)"),
+            ),
+            "Analyte 1 Molecular weight": quantity_or_none(
+                TQuantityValueDalton,
+                first_row_data.get(float, "Analyte 1 Molecular weight (Da)"),
+            ),
         },
         data_processing_document=metadata.data_processing_document,
     )
+
+
+def _first_not_null_or_none(series: pd.Series) -> str | None:
+    """Get the first non-null value from a Series or None."""
+    return str(series[idx]) if (idx := series.first_valid_index()) is not None else None
