@@ -125,6 +125,7 @@ class Measurement:
     binding_off_rate_measurement_datum__koff_: str | None = None
     equilibrium_dissociation_constant__KD_: str | None = None
     maximum_binding_capacity__Rmax_: str | None = None
+    processed_data_custom_info: DictType | None = None
 
     # Report point
     report_point_data: list[ReportPoint] | None = None
@@ -234,6 +235,60 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_surface_plasmon_resonance_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocument:
+        processed_data_document = ProcessedDataDocumentItem(
+            data_processing_document=(
+                {
+                    key: value
+                    for key, value in measurement.data_processing_document.items()
+                    if value is not None
+                }
+                if measurement.data_processing_document
+                else None
+            ),
+            binding_on_rate_measurement_datum__kon_=quantity_or_none(
+                TQuantityValuePerMolarPerSecond,
+                measurement.binding_on_rate_measurement_datum__kon_,
+            ),
+            binding_off_rate_measurement_datum__koff_=quantity_or_none(
+                TQuantityValuePerSecond,
+                measurement.binding_off_rate_measurement_datum__koff_,
+            ),
+            equilibrium_dissociation_constant__KD_=quantity_or_none(
+                TQuantityValueMolar,
+                measurement.equilibrium_dissociation_constant__KD_,
+            ),
+            maximum_binding_capacity__Rmax_=quantity_or_none(
+                TQuantityValueResonanceUnits,
+                measurement.maximum_binding_capacity__Rmax_,
+            ),
+            report_point_aggregate_document=(
+                ReportPointAggregateDocument(
+                    report_point_document=[
+                        add_custom_information_document(
+                            ReportPointDocumentItem(
+                                report_point_identifier=report_point.identifier,
+                                identifier_role=report_point.identifier_role,
+                                absolute_resonance=TQuantityValueResonanceUnits(
+                                    value=report_point.absolute_resonance
+                                ),
+                                relative_resonance=quantity_or_none(
+                                    TQuantityValueResonanceUnits,
+                                    report_point.relative_resonance,
+                                ),
+                                time_setting=TQuantityValueSecondTime(
+                                    value=report_point.time_setting
+                                ),
+                            ),
+                            custom_info_doc=report_point.custom_info,
+                        )
+                        for report_point in measurement.report_point_data
+                    ]
+                )
+                if measurement.report_point_data
+                else None
+            ),
+        )
+
         return MeasurementDocument(
             measurement_identifier=measurement.identifier,
             sample_document=add_custom_information_document(
@@ -292,55 +347,12 @@ class Mapper(SchemaMapper[Data, Model]):
             processed_data_aggregate_document=(
                 ProcessedDataAggregateDocument(
                     processed_data_document=[
-                        ProcessedDataDocumentItem(
-                            data_processing_document=(
-                                dict(measurement.data_processing_document)
-                                if measurement.data_processing_document
-                                else None
-                            ),
-                            binding_on_rate_measurement_datum__kon_=quantity_or_none(
-                                TQuantityValuePerMolarPerSecond,
-                                measurement.binding_on_rate_measurement_datum__kon_,
-                            ),
-                            binding_off_rate_measurement_datum__koff_=quantity_or_none(
-                                TQuantityValuePerSecond,
-                                measurement.binding_off_rate_measurement_datum__koff_,
-                            ),
-                            equilibrium_dissociation_constant__KD_=quantity_or_none(
-                                TQuantityValueMolar,
-                                measurement.equilibrium_dissociation_constant__KD_,
-                            ),
-                            maximum_binding_capacity__Rmax_=quantity_or_none(
-                                TQuantityValueResonanceUnits,
-                                measurement.maximum_binding_capacity__Rmax_,
-                            ),
-                            report_point_aggregate_document=ReportPointAggregateDocument(
-                                report_point_document=[
-                                    add_custom_information_document(
-                                        ReportPointDocumentItem(
-                                            report_point_identifier=report_point.identifier,
-                                            identifier_role=report_point.identifier_role,
-                                            absolute_resonance=TQuantityValueResonanceUnits(
-                                                value=report_point.absolute_resonance
-                                            ),
-                                            relative_resonance=quantity_or_none(
-                                                TQuantityValueResonanceUnits,
-                                                report_point.relative_resonance,
-                                            ),
-                                            time_setting=TQuantityValueSecondTime(
-                                                value=report_point.time_setting
-                                            ),
-                                        ),
-                                        custom_info_doc=report_point.custom_info,
-                                    )
-                                    for report_point in measurement.report_point_data
-                                ]
-                            ),
-                        ),
+                        add_custom_information_document(
+                            processed_data_document,
+                            custom_info_doc=measurement.processed_data_custom_info,
+                        )
                     ]
                 )
-                if measurement.report_point_data
-                else None
             ),
         )
 

@@ -16,6 +16,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
     TQuantityValueResonanceUnits,
     TQuantityValueSecondTime,
+    TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling._2024._12.binding_affinity_analyzer import (
     DeviceControlDocument,
@@ -216,7 +217,7 @@ class Data:
         return Data(
             metadata=metadata,
             cycles={
-                cycle: create_measurements_for_cycle(cycle, metadata, reader)
+                cycle: _create_measurements_for_cycle(cycle, metadata, reader)
                 for cycle in range(1, int(metadata.runs[0].number_of_cycles) + 1)
             },
         )
@@ -268,7 +269,53 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
     ]
 
 
-def create_measurements_for_cycle(
+@dataclass(frozen=True)
+class KineticsData:
+    acceptance_state: str | None
+    curve_markers: str | None
+    kinetics_model: str | None
+    binding_on_rate_measurement_datum: float | None
+    binding_off_rate_measurement_datum: float | None
+    equilibrium_dissociation_constant: float | None
+    maximum_binding_capacity: float | None
+    kinetics_chi_squared: float | None
+    tc: float | None
+
+    @staticmethod
+    def create(kinetics_data: SeriesData) -> KineticsData:
+        return KineticsData(
+            acceptance_state=kinetics_data.get(str, "Acceptance state"),
+            curve_markers=kinetics_data.get(str, "Curve markers"),
+            kinetics_model=kinetics_data.get(str, "Kinetics model"),
+            binding_on_rate_measurement_datum=kinetics_data.get(float, "ka (1/Ms)"),
+            binding_off_rate_measurement_datum=kinetics_data.get(float, "kd (1/s)"),
+            equilibrium_dissociation_constant=kinetics_data.get(float, "KD (M)"),
+            maximum_binding_capacity=kinetics_data.get(float, "Rmax (RU)"),
+            kinetics_chi_squared=kinetics_data.get(float, "Kinetics Chi² (RU²)"),
+            tc=kinetics_data.get(float, "tc"),
+        )
+
+
+class EvaluationKinetics:
+    _data: dict[str, KineticsData]
+
+    def __init__(self, kinetics_table: pd.DataFrame) -> None:
+        self._data = {
+            (
+                row["Channel"],
+                row["Capture 1 Solution"],
+                row["Analyte 1 Solution"],
+            ): KineticsData.create(SeriesData(row))
+            for _, row in kinetics_table.iterrows()
+        }
+
+    def get_data(
+        self, channel: int, capture_solution: str, analyte_solution: str
+    ) -> KineticsData | None:
+        return self._data.get((channel, capture_solution, analyte_solution))
+
+
+def _create_measurements_for_cycle(
     cycle_number: int,
     metadata: BiacoreInsightMetadata,
     reader: CytivaBiacoreInsightReader,
@@ -278,12 +325,13 @@ def create_measurements_for_cycle(
         reader.data["Report point table"], split_on="Run"
     )
     cycle_data = report_point_table[report_point_table["Cycle"] == cycle_number]
-    kinetics_data = _get_table_from_dataframe(
+    evaluation_kinetics_table = _get_table_from_dataframe(
         reader.data["Evaluation - Kinetics"], split_on="Group"
     )
+    evaluation_kinetics = EvaluationKinetics(evaluation_kinetics_table)
 
     return [
-        create_measurement(channel_data, metadata, kinetics_data)
+        create_measurement(channel_data, metadata, evaluation_kinetics)
         for _, channel_data in cycle_data.groupby("Channel")
     ]
 
@@ -298,7 +346,7 @@ def _get_table_from_dataframe(df: pd.DataFrame, split_on: str) -> pd.DataFrame:
 def create_measurement(
     channel_data: pd.DataFrame,
     metadata: BiacoreInsightMetadata,
-    kinetics_data: pd.DataFrame,
+    evaluation_kinetics: EvaluationKinetics,
 ) -> Measurement:
     run_metadata = metadata.runs[0]
     first_row_data = SeriesData(channel_data.iloc[0])
@@ -355,8 +403,21 @@ def create_measurement(
             )
         )
 
-    analyte_solution = first_row_data.get(str, "Analyte 1 Solution")
     capture_solution = _first_not_null_or_none(channel_data["Capture 1 Solution"])
+    analyte_solution = first_row_data.get(str, "Analyte 1 Solution")
+    kinetics_data = evaluation_kinetics.get_data(
+        channel, capture_solution, analyte_solution
+    )
+    data_processing_document = dict(metadata.data_processing_document or {})
+    data_processing_document.update(
+        {
+            "Acceptance State": kinetics_data.acceptance_state,
+            "Curve Markers": kinetics_data.curve_markers,
+            "Kinetics Model": kinetics_data.kinetics_model,
+        }
+        if kinetics_data is not None
+        else {}
+    )
 
     return Measurement(
         identifier=random_uuid_str(),
@@ -406,7 +467,36 @@ def create_measurement(
                 first_row_data.get(float, "Analyte 1 Molecular weight (Da)"),
             ),
         },
-        data_processing_document=metadata.data_processing_document,
+        binding_on_rate_measurement_datum__kon_=(
+            kinetics_data.binding_on_rate_measurement_datum
+            if kinetics_data is not None
+            else None
+        ),
+        binding_off_rate_measurement_datum__koff_=(
+            kinetics_data.binding_off_rate_measurement_datum
+            if kinetics_data is not None
+            else None
+        ),
+        equilibrium_dissociation_constant__KD_=(
+            kinetics_data.equilibrium_dissociation_constant
+            if kinetics_data is not None
+            else None
+        ),
+        maximum_binding_capacity__Rmax_=(
+            kinetics_data.maximum_binding_capacity
+            if kinetics_data is not None
+            else None
+        ),
+        processed_data_custom_info=(
+            {
+                # TODO: add units to Chi_sq (RU^2)
+                "Kinetics Chi squared": (kinetics_data.kinetics_chi_squared),
+                "tc": (quantity_or_none(TQuantityValueUnitless, kinetics_data.tc)),
+            }
+            if kinetics_data is not None
+            else None
+        ),
+        data_processing_document=data_processing_document,
     )
 
 
