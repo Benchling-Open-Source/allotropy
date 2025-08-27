@@ -25,6 +25,7 @@ from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling.
     MeasurementGroup,
     MeasurementType,
     Metadata,
+    ReportPoint,
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NOT_APPLICABLE
@@ -35,6 +36,7 @@ from allotropy.parsers.cytiva_biacore_insight.cytiva_biacore_insight_reader impo
 from allotropy.parsers.utils.pandas import (
     df_to_series_data,
     drop_df_rows_while,
+    map_rows,
     parse_header_row,
     SeriesData,
     split_dataframe,
@@ -394,6 +396,7 @@ def create_measurement(
                         flow_cell_info.get(float, "Regeneration 1 Flow rate (µl/min)"),
                     ),
                     "Included": run_info.get(str, "Included"),
+                    # TODO: replace with flow_cell_info an test!
                     "Sensorgram type": first_row_data.get(
                         str, "Sensorgram type", run_info.get(str, "Sensorgram type")
                     ),
@@ -499,7 +502,20 @@ def create_measurement(
             if kinetics_data is not None
             else None
         ),
+        report_point_data=map_rows(channel_data, _get_report_point),
         data_processing_document=data_processing_document,
+    )
+
+
+def _get_report_point(row: SeriesData) -> ReportPoint:
+    """Extract report point data from the channel data."""
+    return ReportPoint(
+        identifier=f"Run{row[int, 'Run']}_Channel{row[int, 'Channel']}_Cycle{row[int, 'Cycle']}_FlowCell{row[str, 'Flow cell']}_Name{row[str, 'Name']}",
+        identifier_role=row[str, "Name"],
+        absolute_resonance=row[float, "Absolute response (RU)"],
+        time_setting=row[float, "Time (s)"],
+        relative_resonance=row.get(float, "Relative response (RU)"),
+        # custom_info={},
     )
 
 
