@@ -369,8 +369,8 @@ def create_measurement(
             DeviceControlDocument(
                 device_type=constants.DEVICE_TYPE,
                 flow_cell_identifier=str(flow_cell),
-                sample_temperature_setting=quantity_or_none(
-                    TQuantityValueNumber, flow_cell_info.get(float, "Temperature")
+                sample_temperature_setting=flow_cell_info.get(
+                    float, "Temperature (°C)"
                 ),
                 device_control_custom_info={
                     "Analyte 1 Contact time": quantity_or_none(
