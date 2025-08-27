@@ -174,7 +174,7 @@ extra-dependencies = [
   "pandas-stubs == 2.1.4.231227",
   "types-olefile",
   # For pytest types
-  "pytest >= 7.4.0",
+  "pytest >= 8.4.1",
   # For check graph generation
   "networkx-stubs",
 ]
@@ -207,9 +207,10 @@ extra-dependencies = [
   "coverage[toml] >= 6.5",
   "deepdiff >= 6.5.0",
   "more-itertools >= 10.1.0",
-  "pytest >= 7.4.0",
-  "pytest-xdist >= 3.6.1",
-  "types-olefile"
+  "pluggy >= 1.6.0",
+  "pytest >= 8.4.1",
+  "pytest-xdist >= 3.8.0",
+  "types-olefile",
 ]
 
 [tool.hatch.envs.test.scripts]
