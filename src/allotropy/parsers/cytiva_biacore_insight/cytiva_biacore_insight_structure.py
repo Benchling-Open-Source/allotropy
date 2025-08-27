@@ -16,6 +16,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
     TQuantityValueResonanceUnits,
     TQuantityValueSecondTime,
+    TQuantityValueSquareResonanceUnits,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling._2024._12.binding_affinity_analyzer import (
@@ -489,9 +490,11 @@ def create_measurement(
         ),
         processed_data_custom_info=(
             {
-                # TODO: add units to Chi_sq (RU^2)
-                "Kinetics Chi squared": (kinetics_data.kinetics_chi_squared),
-                "tc": (quantity_or_none(TQuantityValueUnitless, kinetics_data.tc)),
+                "Kinetics Chi squared": quantity_or_none(
+                    TQuantityValueSquareResonanceUnits,
+                    kinetics_data.kinetics_chi_squared,
+                ),
+                "tc": quantity_or_none(TQuantityValueUnitless, kinetics_data.tc),
             }
             if kinetics_data is not None
             else None
