@@ -27,6 +27,7 @@ class CytivaBiacoreT200ControlParser(VendorParser[MapperData, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "blr"
     SCHEMA_MAPPER = Mapper
+    UNREAD_DATA_HANDLED = False
 
     def create_data(self, named_file_contents: NamedFileContents) -> MapperData:
         data = Data.create(decode_data(named_file_contents))
