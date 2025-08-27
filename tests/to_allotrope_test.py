@@ -56,33 +56,30 @@ class ParserTest:
         else:
             expected_filepath = test_file_path.with_suffix(".json")
 
-        with warnings.catch_warnings(
-            record=self.VENDOR.unread_data_handled
-        ) as captured_warnings:
-            if not (warn_unread_keys or self.VENDOR.unread_data_handled):
-                warnings.filterwarnings(
-                    "ignore", ".*went out of scope without reading all keys.*"
-                )
+        with warnings.catch_warnings(record=True) as captured_warnings:
             allotrope_dict = from_file(
                 str(test_file_path), self.VENDOR, encoding=CHARDET_ENCODING
             )
 
         # If parser is marked as having unread data handled, error on any unread data warnings.
-        if self.VENDOR.unread_data_handled and captured_warnings:
-            for captured_warning in captured_warnings:
-                warnings.warn_explicit(
-                    message=captured_warning.message,
-                    category=captured_warning.category,
-                    filename=captured_warning.filename,
-                    lineno=captured_warning.lineno,
-                    source=captured_warning.source,
-                )
-                warning = captured_warning.message
-                if isinstance(
-                    warning, UserWarning
-                ) and "went out of scope without reading all keys" in str(warning):
+        for captured_warning in captured_warnings:
+            if isinstance(
+                captured_warning.message, UserWarning
+            ) and "went out of scope without reading all keys" in str(
+                captured_warning.message
+            ):
+                if self.VENDOR.unread_data_handled:
                     msg = "Parser is marked as UNREAD_DATA_HANDLED, but had unread data warnings!"
                     raise AssertionError(msg)
+                if not warn_unread_keys:
+                    continue
+            warnings.warn_explicit(
+                message=captured_warning.message,
+                category=captured_warning.category,
+                filename=captured_warning.filename,
+                lineno=captured_warning.lineno,
+                source=captured_warning.source,
+            )
 
         # If expected output does not exist, assume this is a new file and write it.
         overwrite = overwrite or not expected_filepath.exists()
