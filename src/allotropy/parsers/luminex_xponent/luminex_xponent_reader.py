@@ -8,6 +8,7 @@ import pandas as pd
 
 from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.constants import round_to_nearest_well_count
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.luminex_xponent import constants
 from allotropy.parsers.utils.pandas import read_csv
@@ -222,6 +223,17 @@ class SingleDatasetParser:
             )
             results["Units"] = units_df
 
+    @staticmethod
+    def _get_well_count(df: pd.DataFrame) -> int:
+        # Count unique values in WELL LOCATION matching Excel-like cell ids: Letter(s) + Number(s)
+        # Example matches: A1, B12, AA3
+        pattern = r"^[A-Za-z]+\d+$"
+        values = df["WELL LOCATION"].astype(str).str.strip()
+        matching = values[values.str.match(pattern)]
+        unique_count = int(matching.str.upper().nunique())
+        nearest = round_to_nearest_well_count(unique_count)
+        return int(nearest or 0)
+
     @classmethod
     def parse(
         cls, lines: list[str]
@@ -295,7 +307,7 @@ class SingleDatasetParser:
                     ],
                     2: ["", "", "", "", "", "", ""],
                     3: ["", "", "", "", "", "", ""],
-                    4: ["", "", "", "", "", "", ""],
+                    4: ["", "", "", "", cls._get_well_count(df), "", ""],
                     5: ["", "", "", "", "", "", ""],
                 }
             )
