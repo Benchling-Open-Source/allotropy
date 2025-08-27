@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Callable, Iterable
 from enum import Enum
+import os
 import re
 from typing import Any, IO, Literal, overload, TypeVar
 import unicodedata
@@ -260,12 +261,12 @@ class SeriesData:
         self.ignore_unread = ignore_unread or False
 
     def __del__(self) -> None:
-        if self.errored or self.ignore_unread:
+        if self.errored or self.ignore_unread or not os.getenv("WARN_UNUSED_KEYS"):
             return
         # NOTE: this will be turned on by default when all callers have been updated to pass the warning.
         if unread_keys := set(self.series.index.to_list()) - self.read_keys:
             warnings.warn(
-                f"SeriesData went out of scope without reading all keys, unread: {sorted(str(k) for k in unread_keys)}.",
+                f"SeriesData went out of scope without reading all keys with UNREAD_DATA_HANDLED={bool(os.getenv('UNREAD_DATA_HANDLED'))} for {os.getenv('VENDOR')}, unread: {sorted(str(k) for k in unread_keys)}.",
                 stacklevel=2,
             )
 

@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 import re
 import warnings
@@ -47,6 +48,14 @@ class ParserTest:
     def test_positive_cases(
         self, test_file_path: Path, *, overwrite: bool, warn_unread_keys: bool
     ) -> None:
+        os.environ["VENDOR"] = self.VENDOR.value
+        os.environ.pop("WARN_UNUSED_KEYS", None)
+        os.environ.pop("UNREAD_DATA_HANDLED", None)
+        if warn_unread_keys or self.VENDOR.unread_data_handled:
+            os.environ["WARN_UNUSED_KEYS"] = "1"
+        if self.VENDOR.unread_data_handled:
+            os.environ["UNREAD_DATA_HANDLED"] = "1"
+
         # Special case when input files are json, the are placed in an input/ folder and the results are put
         # in a corresponding output/ folder.
         if test_file_path.parts[-2] == "input":
@@ -63,16 +72,6 @@ class ParserTest:
 
         # If parser is marked as having unread data handled, error on any unread data warnings.
         for captured_warning in captured_warnings:
-            if isinstance(
-                captured_warning.message, UserWarning
-            ) and "went out of scope without reading all keys" in str(
-                captured_warning.message
-            ):
-                if self.VENDOR.unread_data_handled:
-                    msg = "Parser is marked as UNREAD_DATA_HANDLED, but had unread data warnings!"
-                    raise AssertionError(msg)
-                if not warn_unread_keys:
-                    continue
             warnings.warn_explicit(
                 message=captured_warning.message,
                 category=captured_warning.category,
@@ -80,6 +79,11 @@ class ParserTest:
                 lineno=captured_warning.lineno,
                 source=captured_warning.source,
             )
+            if isinstance(
+                captured_warning.message, UserWarning
+            ) and "UNREAD_DATA_HANDLED=True" in str(captured_warning.message):
+                msg = "Parser is marked as UNREAD_DATA_HANDLED, but had unread data warnings!"
+                raise AssertionError(msg)
 
         # If expected output does not exist, assume this is a new file and write it.
         overwrite = overwrite or not expected_filepath.exists()

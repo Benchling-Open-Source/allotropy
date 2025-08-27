@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import re
 import traceback
 import warnings
@@ -32,7 +33,7 @@ class StrictXmlElement:
         self.mark_read(mark_read or set())
 
     def __del__(self) -> None:
-        if self.errored:
+        if self.errored or not os.getenv("WARN_UNUSED_KEYS"):
             return
         # NOTE: this will be turned on by default when all callers have been updated to pass the warning.
         # Only consider attributes as available keys, not child elements
@@ -100,7 +101,7 @@ class StrictXmlElement:
             creation_info = f" (created at {creation_point})" if creation_point else ""
 
             warnings.warn(
-                f"StrictXmlElement '{self.element.tag}' went out of scope without reading all keys {creation_info}, unread: {sorted(unread_keys)}.",
+                f"StrictXmlElement '{self.element.tag}' went out of scope without reading all keys with UNREAD_DATA_HANDLED={bool(os.getenv('UNREAD_DATA_HANDLED'))} for {os.getenv('VENDOR')}{creation_info}, unread: {sorted(unread_keys)}.",
                 stacklevel=2,
             )
 
