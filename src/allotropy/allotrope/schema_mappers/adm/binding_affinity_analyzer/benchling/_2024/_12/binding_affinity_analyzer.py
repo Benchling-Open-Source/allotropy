@@ -353,6 +353,8 @@ class Mapper(SchemaMapper[Data, Model]):
                         )
                     ]
                 )
+                if has_value(processed_data_document)
+                else None
             ),
         )
 
@@ -385,3 +387,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 for calculated_data_item in calculated_data_items
             ]
         )
+
+
+def has_value(model: object) -> bool:
+    return any(value is not None for value in model.__dict__.values())
