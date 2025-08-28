@@ -515,7 +515,14 @@ def _get_report_point(row: SeriesData) -> ReportPoint:
         absolute_resonance=row[float, "Absolute response (RU)"],
         time_setting=row[float, "Time (s)"],
         relative_resonance=row.get(float, "Relative response (RU)"),
-        # custom_info={},
+        custom_info={
+            "Step name": row.get(str, "Name"),
+            "Step purpose": row.get(str, "Step purpose"),
+            "Window": quantity_or_none(
+                TQuantityValueSecondTime, row.get(float, "Window (s)")
+            ),
+            "Baseline": row.get(str, "Baseline"),
+        },
     )
 
 
