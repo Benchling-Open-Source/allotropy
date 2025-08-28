@@ -227,11 +227,12 @@ class SingleDatasetParser:
     def _get_well_count(df: pd.DataFrame) -> int:
         # Count unique values in WELL LOCATION matching Excel-like cell ids: Letter(s) + Number(s)
         # Example matches: A1, B12, AA3
+        accepted_well_counts = [96, 384]
         pattern = r"^[A-Za-z]+\d+$"
         values = df["WELL LOCATION"].astype(str).str.strip()
         matching = values[values.str.match(pattern)]
         unique_count = int(matching.str.upper().nunique())
-        nearest = round_to_nearest_well_count(unique_count)
+        nearest = round_to_nearest_well_count(unique_count, accepted_well_counts)
         return int(nearest or 0)
 
     @classmethod
