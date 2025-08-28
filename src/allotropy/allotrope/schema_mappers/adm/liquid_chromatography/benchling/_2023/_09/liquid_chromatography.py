@@ -146,6 +146,7 @@ class Fraction:
     field_type: str | None = None
     retention_time: float | None = None
     retention_volume: float | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -155,6 +156,7 @@ class Log:
     log_entry: str | None = None
     retention_time: float | None = None
     retention_volume: float | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -236,6 +238,7 @@ class Measurement:
     injection_custom_info: dict[str, Any] | None = None
     column_custom_info: dict[str, Any] | None = None
     measurement_custom_info: dict[str, Any] | None = None
+    processed_data_custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -361,11 +364,9 @@ class Mapper(SchemaMapper[Data, Model]):
                         for device_control_doc in measurement.device_control_docs
                     ]
                 ),
-                chromatogram_data_cube=(
-                    get_data_cube(
-                        measurement.chromatogram_data_cube,
-                        ChromatogramDataCube,
-                    )
+                chromatogram_data_cube=get_data_cube(
+                    measurement.chromatogram_data_cube,
+                    ChromatogramDataCube,
                 ),
             ),
             measurement.measurement_custom_info,
@@ -547,17 +548,27 @@ class Mapper(SchemaMapper[Data, Model]):
                 if pdd and get_data_processing_documents(pdd)
                 else None
             )
-            item = ProcessedDataDocumentItem(
-                chromatogram_data_cube=get_data_cube(
-                    measurement.processed_data_chromatogram_data_cube, TDatacube
+            item = add_custom_information_document(
+                ProcessedDataDocumentItem(
+                    chromatogram_data_cube=add_custom_information_document(
+                        get_data_cube(
+                            measurement.processed_data_chromatogram_data_cube, TDatacube
+                        ),
+                        getattr(
+                            measurement.processed_data_chromatogram_data_cube,
+                            "custom_info",
+                            None,
+                        ),
+                    ),
+                    derived_column_pressure_data_cube=get_data_cube(
+                        measurement.derived_column_pressure_data_cube,
+                        DerivedColumnPressureDataCube,
+                    ),
+                    processed_data_identifier=measurement.processed_data_identifier,
+                    peak_list=build_peak_list(),
+                    data_processing_aggregate_document=data_processing,
                 ),
-                derived_column_pressure_data_cube=get_data_cube(
-                    measurement.derived_column_pressure_data_cube,
-                    DerivedColumnPressureDataCube,
-                ),
-                processed_data_identifier=measurement.processed_data_identifier,
-                peak_list=build_peak_list(),
-                data_processing_aggregate_document=data_processing,
+                measurement.processed_data_custom_info,
             )
             return (
                 add_custom_information_document(item, pdd.custom_info) if pdd else item
@@ -670,7 +681,7 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_fraction_document(self, fraction_doc: Fraction) -> FractionDocumentItem:
-        return FractionDocumentItem(
+        fraction_doc_item = FractionDocumentItem(
             index=fraction_doc.index,
             fraction_role=fraction_doc.fraction_role,
             field_type=fraction_doc.field_type,
@@ -680,6 +691,10 @@ class Mapper(SchemaMapper[Data, Model]):
             retention_volume=quantity_or_none(
                 TQuantityValueMilliliter, fraction_doc.retention_volume
             ),
+        )
+
+        return add_custom_information_document(
+            fraction_doc_item, fraction_doc.custom_info
         )
 
     def _get_log_aggregate_document(
@@ -693,7 +708,7 @@ class Mapper(SchemaMapper[Data, Model]):
         )
 
     def _get_log_document(self, log_doc: Log) -> LogDocumentItem:
-        return LogDocumentItem(
+        log_doc_item = LogDocumentItem(
             index=log_doc.index,
             method_identifier=log_doc.method_identifier,
             log_entry=log_doc.log_entry,
@@ -704,3 +719,4 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueMilliliter, log_doc.retention_volume
             ),
         )
+        return add_custom_information_document(log_doc_item, log_doc.custom_info)

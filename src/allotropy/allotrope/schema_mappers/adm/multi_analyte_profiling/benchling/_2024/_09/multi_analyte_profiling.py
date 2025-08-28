@@ -1,5 +1,7 @@
 from dataclasses import dataclass
+from typing import Any
 
+from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._09.multi_analyte_profiling import (
     AnalyteAggregateDocument,
     AnalyteDocumentItem,
@@ -101,6 +103,11 @@ class Measurement:
     minimum_assay_bead_count_setting: float | None = None
     detector_gain_setting: str | None = None
 
+    # custom
+    measurement_custom_info: dict[str, Any] | None = None
+    sample_custom_info: dict[str, Any] | None = None
+    device_control_custom_info: dict[str, Any] | None = None
+
 
 @dataclass(frozen=True)
 class MeasurementGroup:
@@ -112,6 +119,7 @@ class MeasurementGroup:
     method_version: str | None = None
     container_type: str | None = None
     experiment_type: str | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -136,6 +144,7 @@ class Metadata:
     product_manufacturer: str | None = None
 
     calibrations: list[Calibration] | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -151,14 +160,17 @@ class Mapper(SchemaMapper[Data, Model]):
     def map_model(self, data: Data) -> Model:
         return Model(
             multi_analyte_profiling_aggregate_document=MultiAnalyteProfilingAggregateDocument(
-                device_system_document=DeviceSystemDocument(
-                    model_number=data.metadata.model_number,
-                    product_manufacturer=data.metadata.product_manufacturer,
-                    firmware_version=data.metadata.firmware_version,
-                    equipment_serial_number=data.metadata.equipment_serial_number,
-                    calibration_aggregate_document=self._get_calibration_aggregate_document(
-                        data.metadata.calibrations
+                device_system_document=add_custom_information_document(
+                    DeviceSystemDocument(
+                        model_number=data.metadata.model_number,
+                        product_manufacturer=data.metadata.product_manufacturer,
+                        firmware_version=data.metadata.firmware_version,
+                        equipment_serial_number=data.metadata.equipment_serial_number,
+                        calibration_aggregate_document=self._get_calibration_aggregate_document(
+                            data.metadata.calibrations
+                        ),
                     ),
+                    custom_info_doc=data.metadata.custom_info,
                 ),
                 data_system_document=DataSystemDocument(
                     data_system_instance_identifier=data.metadata.data_system_instance_identifier,
@@ -186,44 +198,55 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> MultiAnalyteProfilingDocumentItem:
         return MultiAnalyteProfilingDocumentItem(
             analyst=measurement_group.analyst,
-            measurement_aggregate_document=MeasurementAggregateDocument(
-                experiment_type=measurement_group.experiment_type,
-                analytical_method_identifier=measurement_group.analytical_method_identifier,
-                method_version=measurement_group.method_version,
-                experimental_data_identifier=measurement_group.experimental_data_identifier,
-                container_type=measurement_group.container_type,
-                plate_well_count=quantity_or_none(
-                    TQuantityValueNumber, measurement_group.plate_well_count
+            measurement_aggregate_document=add_custom_information_document(
+                MeasurementAggregateDocument(
+                    experiment_type=measurement_group.experiment_type,
+                    analytical_method_identifier=measurement_group.analytical_method_identifier,
+                    method_version=measurement_group.method_version,
+                    experimental_data_identifier=measurement_group.experimental_data_identifier,
+                    container_type=measurement_group.container_type,
+                    plate_well_count=quantity_or_none(
+                        TQuantityValueNumber, measurement_group.plate_well_count
+                    ),
+                    measurement_document=[
+                        self._get_measurement_document(measurement, metadata)
+                        for measurement in measurement_group.measurements
+                    ],
                 ),
-                measurement_document=[
-                    self._get_measurement_document(measurement, metadata)
-                    for measurement in measurement_group.measurements
-                ],
+                custom_info_doc=measurement_group.custom_info,
             ),
         )
 
     def _get_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocumentItem:
-        return MeasurementDocumentItem(
+        measurement_document = MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             measurement_time=self.get_date_time(measurement.measurement_time),
-            sample_document=self._get_sample_document(measurement),
+            sample_document=add_custom_information_document(
+                self._get_sample_document(measurement),
+                custom_info_doc=measurement.sample_custom_info,
+            ),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
-                    DeviceControlDocumentItem(
-                        device_type=metadata.device_type,
-                        sample_volume_setting=quantity_or_none(
-                            TQuantityValueMicroliter, measurement.sample_volume_setting
+                    add_custom_information_document(
+                        DeviceControlDocumentItem(
+                            device_type=metadata.device_type,
+                            sample_volume_setting=quantity_or_none(
+                                TQuantityValueMicroliter,
+                                measurement.sample_volume_setting,
+                            ),
+                            dilution_factor_setting=quantity_or_none(
+                                TQuantityValueUnitless,
+                                measurement.dilution_factor_setting,
+                            ),
+                            detector_gain_setting=measurement.detector_gain_setting,
+                            minimum_assay_bead_count_threshold_setting=quantity_or_none(
+                                TQuantityValueNumber,
+                                measurement.minimum_assay_bead_count_setting,
+                            ),
                         ),
-                        dilution_factor_setting=quantity_or_none(
-                            TQuantityValueUnitless, measurement.dilution_factor_setting
-                        ),
-                        detector_gain_setting=measurement.detector_gain_setting,
-                        minimum_assay_bead_count_threshold_setting=quantity_or_none(
-                            TQuantityValueNumber,
-                            measurement.minimum_assay_bead_count_setting,
-                        ),
+                        custom_info_doc=measurement.device_control_custom_info,
                     )
                 ]
             ),
@@ -273,6 +296,11 @@ class Mapper(SchemaMapper[Data, Model]):
             error_aggregate_document=self._get_error_aggregate_document(
                 measurement.errors
             ),
+        )
+
+        return add_custom_information_document(
+            measurement_document,
+            custom_info_doc=measurement.measurement_custom_info,
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:

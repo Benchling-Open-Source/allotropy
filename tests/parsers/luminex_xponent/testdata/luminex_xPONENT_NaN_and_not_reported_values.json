@@ -22,6 +22,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -30,7 +37,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown1",
-                                "location identifier": "A1"
+                                "location identifier": "A1",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -160,6 +170,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -184,6 +198,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -192,7 +213,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown2",
-                                "location identifier": "B1"
+                                "location identifier": "B1",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -326,6 +350,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -350,6 +378,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -358,7 +393,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown3",
-                                "location identifier": "C1"
+                                "location identifier": "C1",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -492,6 +530,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -516,6 +558,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -524,7 +573,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown4",
-                                "location identifier": "D1"
+                                "location identifier": "D1",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -658,6 +710,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -682,6 +738,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -690,7 +753,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown5",
-                                "location identifier": "E1"
+                                "location identifier": "E1",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -824,6 +890,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -848,6 +918,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -856,7 +933,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown6",
-                                "location identifier": "F1"
+                                "location identifier": "F1",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -990,6 +1070,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -1014,6 +1098,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -1022,7 +1113,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown7",
-                                "location identifier": "G1"
+                                "location identifier": "G1",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -1156,6 +1250,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -1180,6 +1278,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -1188,7 +1293,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown8",
-                                "location identifier": "H1"
+                                "location identifier": "H1",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -1322,6 +1430,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -1346,6 +1458,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -1354,7 +1473,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown9",
-                                "location identifier": "A2"
+                                "location identifier": "A2",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -1488,6 +1610,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -1512,6 +1638,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -1520,7 +1653,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown10",
-                                "location identifier": "B2"
+                                "location identifier": "B2",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -1654,6 +1790,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -1678,6 +1818,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -1686,7 +1833,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown11",
-                                "location identifier": "C2"
+                                "location identifier": "C2",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -1820,6 +1970,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -1844,6 +1998,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -1852,7 +2013,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown12",
-                                "location identifier": "D2"
+                                "location identifier": "D2",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -1986,6 +2150,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -2010,6 +2178,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -2018,7 +2193,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown13",
-                                "location identifier": "E2"
+                                "location identifier": "E2",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -2152,6 +2330,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -2176,6 +2358,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -2184,7 +2373,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown14",
-                                "location identifier": "F2"
+                                "location identifier": "F2",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -2318,6 +2510,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -2342,6 +2538,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -2350,7 +2553,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown15",
-                                "location identifier": "G2"
+                                "location identifier": "G2",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -2484,6 +2690,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -2508,6 +2718,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -2516,7 +2733,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown16",
-                                "location identifier": "H2"
+                                "location identifier": "H2",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -2650,6 +2870,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -2674,6 +2898,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -2682,7 +2913,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown17",
-                                "location identifier": "A3"
+                                "location identifier": "A3",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -2816,6 +3050,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -2840,6 +3078,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -2848,7 +3093,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown18",
-                                "location identifier": "B3"
+                                "location identifier": "B3",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -2982,6 +3230,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -3006,6 +3258,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -3014,7 +3273,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown19",
-                                "location identifier": "C3"
+                                "location identifier": "C3",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -3148,6 +3410,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -3172,6 +3438,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -3180,7 +3453,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown20",
-                                "location identifier": "D3"
+                                "location identifier": "D3",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -3314,6 +3590,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -3338,6 +3618,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -3346,7 +3633,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown21",
-                                "location identifier": "E3"
+                                "location identifier": "E3",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -3480,6 +3770,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -3504,6 +3798,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -3512,7 +3813,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown22",
-                                "location identifier": "F3"
+                                "location identifier": "F3",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -3646,6 +3950,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -3670,6 +3978,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -3678,7 +3993,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown23",
-                                "location identifier": "G3"
+                                "location identifier": "G3",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -3812,6 +4130,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -3836,6 +4158,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -3844,7 +4173,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown24",
-                                "location identifier": "H3"
+                                "location identifier": "H3",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -3978,6 +4310,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -4002,6 +4338,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -4010,7 +4353,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown25",
-                                "location identifier": "A4"
+                                "location identifier": "A4",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4144,6 +4490,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -4168,6 +4518,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -4176,7 +4533,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown26",
-                                "location identifier": "B4"
+                                "location identifier": "B4",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4310,6 +4670,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -4334,6 +4698,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -4342,7 +4713,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown27",
-                                "location identifier": "C4"
+                                "location identifier": "C4",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4476,6 +4850,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -4500,6 +4878,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -4508,7 +4893,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown28",
-                                "location identifier": "D4"
+                                "location identifier": "D4",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4642,6 +5030,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -4666,6 +5058,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -4674,7 +5073,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown29",
-                                "location identifier": "E4"
+                                "location identifier": "E4",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4808,6 +5210,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -4832,6 +5238,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -4840,7 +5253,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown30",
-                                "location identifier": "F4"
+                                "location identifier": "F4",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4974,6 +5390,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -4998,6 +5418,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -5006,7 +5433,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown31",
-                                "location identifier": "G4"
+                                "location identifier": "G4",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -5140,6 +5570,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -5164,6 +5598,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -5172,7 +5613,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown32",
-                                "location identifier": "H4"
+                                "location identifier": "H4",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -5306,6 +5750,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -5330,6 +5778,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -5338,7 +5793,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown33",
-                                "location identifier": "A5"
+                                "location identifier": "A5",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -5472,6 +5930,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -5496,6 +5958,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -5504,7 +5973,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown34",
-                                "location identifier": "B5"
+                                "location identifier": "B5",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -5638,6 +6110,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -5662,6 +6138,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -5670,7 +6153,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown35",
-                                "location identifier": "C5"
+                                "location identifier": "C5",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -5804,6 +6290,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -5828,6 +6318,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -5836,7 +6333,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown36",
-                                "location identifier": "D5"
+                                "location identifier": "D5",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -5970,6 +6470,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -5994,6 +6498,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -6002,7 +6513,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown37",
-                                "location identifier": "E5"
+                                "location identifier": "E5",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -6136,6 +6650,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -6160,6 +6678,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -6168,7 +6693,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown38",
-                                "location identifier": "F5"
+                                "location identifier": "F5",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -6302,6 +6830,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -6326,6 +6858,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -6334,7 +6873,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown39",
-                                "location identifier": "G5"
+                                "location identifier": "G5",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -6468,6 +7010,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -6492,6 +7038,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -6500,7 +7053,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown40",
-                                "location identifier": "H5"
+                                "location identifier": "H5",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -6634,6 +7190,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -6658,6 +7218,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -6666,7 +7233,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown41",
-                                "location identifier": "A6"
+                                "location identifier": "A6",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -6800,6 +7370,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -6824,6 +7398,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -6832,7 +7413,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown42",
-                                "location identifier": "B6"
+                                "location identifier": "B6",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -6966,6 +7550,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -6990,6 +7578,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -6998,7 +7593,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown43",
-                                "location identifier": "C6"
+                                "location identifier": "C6",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -7132,6 +7730,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -7156,6 +7758,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -7164,7 +7773,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown44",
-                                "location identifier": "D6"
+                                "location identifier": "D6",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -7298,6 +7910,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -7322,6 +7938,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -7330,7 +7953,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown45",
-                                "location identifier": "E6"
+                                "location identifier": "E6",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -7464,6 +8090,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -7488,6 +8118,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -7496,7 +8133,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown46",
-                                "location identifier": "F6"
+                                "location identifier": "F6",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -7630,6 +8270,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -7654,6 +8298,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -7662,7 +8313,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown47",
-                                "location identifier": "G6"
+                                "location identifier": "G6",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -7796,6 +8450,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -7820,6 +8478,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -7828,7 +8493,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown48",
-                                "location identifier": "H6"
+                                "location identifier": "H6",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -7962,6 +8630,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -7986,6 +8658,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -7994,7 +8673,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown49",
-                                "location identifier": "A7"
+                                "location identifier": "A7",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -8128,6 +8810,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -8152,6 +8838,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -8160,7 +8853,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown50",
-                                "location identifier": "B7"
+                                "location identifier": "B7",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -8294,6 +8990,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -8318,6 +9018,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -8326,7 +9033,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown51",
-                                "location identifier": "C7"
+                                "location identifier": "C7",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -8460,6 +9170,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -8484,6 +9198,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -8492,7 +9213,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown52",
-                                "location identifier": "D7"
+                                "location identifier": "D7",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -8626,6 +9350,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -8650,6 +9378,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -8658,7 +9393,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown53",
-                                "location identifier": "E7"
+                                "location identifier": "E7",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -8792,6 +9530,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -8816,6 +9558,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -8824,7 +9573,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown54",
-                                "location identifier": "F7"
+                                "location identifier": "F7",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -8958,6 +9710,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -8982,6 +9738,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -8990,7 +9753,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown55",
-                                "location identifier": "G7"
+                                "location identifier": "G7",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -9124,6 +9890,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -9148,6 +9918,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -9156,7 +9933,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown56",
-                                "location identifier": "H7"
+                                "location identifier": "H7",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -9290,6 +10070,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -9314,6 +10098,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -9322,7 +10113,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown57",
-                                "location identifier": "A8"
+                                "location identifier": "A8",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -9456,6 +10250,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -9480,6 +10278,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -9488,7 +10293,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown58",
-                                "location identifier": "B8"
+                                "location identifier": "B8",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -9622,6 +10430,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -9646,6 +10458,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -9654,7 +10473,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown59",
-                                "location identifier": "C8"
+                                "location identifier": "C8",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -9788,6 +10610,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -9812,6 +10638,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -9820,7 +10653,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown60",
-                                "location identifier": "D8"
+                                "location identifier": "D8",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -9954,6 +10790,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -9978,6 +10818,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -9986,7 +10833,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown61",
-                                "location identifier": "E8"
+                                "location identifier": "E8",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -10120,6 +10970,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -10144,6 +10998,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -10152,7 +11013,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown62",
-                                "location identifier": "F8"
+                                "location identifier": "F8",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -10286,6 +11150,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -10310,6 +11178,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -10318,7 +11193,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown63",
-                                "location identifier": "G8"
+                                "location identifier": "G8",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -10452,6 +11330,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -10476,6 +11358,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -10484,7 +11373,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown64",
-                                "location identifier": "H8"
+                                "location identifier": "H8",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -10618,6 +11510,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -10642,6 +11538,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -10650,7 +11553,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown65",
-                                "location identifier": "A9"
+                                "location identifier": "A9",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -10784,6 +11690,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -10808,6 +11718,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -10816,7 +11733,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown66",
-                                "location identifier": "B9"
+                                "location identifier": "B9",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -10950,6 +11870,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -10974,6 +11898,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -10982,7 +11913,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown67",
-                                "location identifier": "C9"
+                                "location identifier": "C9",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -11116,6 +12050,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -11140,6 +12078,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -11148,7 +12093,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown68",
-                                "location identifier": "D9"
+                                "location identifier": "D9",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -11282,6 +12230,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -11306,6 +12258,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -11314,7 +12273,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown69",
-                                "location identifier": "E9"
+                                "location identifier": "E9",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -11448,6 +12410,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -11472,6 +12438,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -11480,7 +12453,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown70",
-                                "location identifier": "F9"
+                                "location identifier": "F9",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -11614,6 +12590,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -11638,6 +12618,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -11646,7 +12633,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown71",
-                                "location identifier": "G9"
+                                "location identifier": "G9",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -11780,6 +12770,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -11804,6 +12798,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -11812,7 +12813,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown72",
-                                "location identifier": "H9"
+                                "location identifier": "H9",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -11946,6 +12950,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -11970,6 +12978,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -11978,7 +12993,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown73",
-                                "location identifier": "A10"
+                                "location identifier": "A10",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -12112,6 +13130,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -12136,6 +13158,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -12144,7 +13173,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown74",
-                                "location identifier": "B10"
+                                "location identifier": "B10",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -12278,6 +13310,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -12302,6 +13338,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -12310,7 +13353,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown75",
-                                "location identifier": "C10"
+                                "location identifier": "C10",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -12444,6 +13490,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -12468,6 +13518,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -12476,7 +13533,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown76",
-                                "location identifier": "D10"
+                                "location identifier": "D10",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -12610,6 +13670,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -12634,6 +13698,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -12642,7 +13713,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown77",
-                                "location identifier": "E10"
+                                "location identifier": "E10",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -12776,6 +13850,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -12800,6 +13878,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -12808,7 +13893,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown78",
-                                "location identifier": "F10"
+                                "location identifier": "F10",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -12942,6 +14030,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -12966,6 +14058,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -12974,7 +14073,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown79",
-                                "location identifier": "G10"
+                                "location identifier": "G10",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -13108,6 +14210,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -13132,6 +14238,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -13140,7 +14253,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown80",
-                                "location identifier": "H10"
+                                "location identifier": "H10",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -13274,6 +14390,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -13298,6 +14418,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -13306,7 +14433,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown81",
-                                "location identifier": "A11"
+                                "location identifier": "A11",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -13440,6 +14570,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -13464,6 +14598,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -13472,7 +14613,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown82",
-                                "location identifier": "B11"
+                                "location identifier": "B11",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -13606,6 +14750,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -13630,6 +14778,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -13638,7 +14793,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown83",
-                                "location identifier": "C11"
+                                "location identifier": "C11",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -13772,6 +14930,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -13796,6 +14958,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -13804,7 +14973,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown84",
-                                "location identifier": "D11"
+                                "location identifier": "D11",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -13938,6 +15110,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -13962,6 +15138,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -13970,7 +15153,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown85",
-                                "location identifier": "E11"
+                                "location identifier": "E11",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -14104,6 +15290,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -14128,6 +15318,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -14136,7 +15333,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown86",
-                                "location identifier": "F11"
+                                "location identifier": "F11",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -14270,6 +15470,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -14294,6 +15498,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -14302,7 +15513,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown87",
-                                "location identifier": "G11"
+                                "location identifier": "G11",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -14436,6 +15650,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -14460,6 +15678,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -14468,7 +15693,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown88",
-                                "location identifier": "H11"
+                                "location identifier": "H11",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -14602,6 +15830,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -14626,6 +15858,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -14634,7 +15873,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown89",
-                                "location identifier": "A12"
+                                "location identifier": "A12",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -14768,6 +16010,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -14792,6 +16038,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -14800,7 +16053,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown90",
-                                "location identifier": "B12"
+                                "location identifier": "B12",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -14934,6 +16190,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -14958,6 +16218,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -14966,7 +16233,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown91",
-                                "location identifier": "C12"
+                                "location identifier": "C12",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -15100,6 +16370,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -15124,6 +16398,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -15132,7 +16413,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown92",
-                                "location identifier": "D12"
+                                "location identifier": "D12",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -15266,6 +16550,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -15290,6 +16578,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -15298,7 +16593,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown93",
-                                "location identifier": "E12"
+                                "location identifier": "E12",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -15432,6 +16730,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -15456,6 +16758,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -15464,7 +16773,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown94",
-                                "location identifier": "F12"
+                                "location identifier": "F12",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -15598,6 +16910,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -15622,6 +16938,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -15630,7 +16953,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown95",
-                                "location identifier": "G12"
+                                "location identifier": "G12",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -15764,6 +17090,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -15788,6 +17118,13 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
+                                        },
+                                        "custom information document": {
+                                            "ProtocolHeater": "Off",
+                                            "DDGate": "7500 to 15000",
+                                            "SampleTimeout": "1 sec",
+                                            "ProtocolAnalysis": "Off",
+                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -15796,7 +17133,10 @@
                             "measurement time": "2025-01-01T01:00:00+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown96",
-                                "location identifier": "H12"
+                                "location identifier": "H12",
+                                "custom information document": {
+                                    "BatchDescription": "<None>"
+                                }
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -15930,6 +17270,10 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
+                    },
+                    "custom information document": {
+                        "BatchStopTime": "1/1/2025 1:00:00 AM",
+                        "ProtocolDescription": "1 second timeout, no plate layout assignment"
                     }
                 },
                 "analyst": "user"
@@ -20553,7 +21897,7 @@
             "file name": "luminex_xPONENT_NaN_and_not_reported_values.csv",
             "UNC path": "tests/parsers/luminex_xponent/testdata/luminex_xPONENT_NaN_and_not_reported_values.csv",
             "ASM converter name": "allotropy_luminex_xponent",
-            "ASM converter version": "0.1.99",
+            "ASM converter version": "0.1.103",
             "software name": "xPONENT",
             "software version": "4.3.309.1"
         },
@@ -20587,6 +21931,10 @@
                         "calibration time": "2025-01-01T01:00:00+00:00"
                     }
                 ]
+            },
+            "custom information document": {
+                "Country Code": "0",
+                "Version": "1"
             }
         }
     }

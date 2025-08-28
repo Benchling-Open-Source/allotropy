@@ -122,8 +122,8 @@ from allotropy.parsers.thermo_fisher_visionlite.thermo_fisher_visionlite_parser 
     ThermoFisherVisionliteParser,
 )
 from allotropy.parsers.thermo_skanit.thermo_skanit_parser import ThermoSkanItParser
-from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_parser import (
-    UnchainedLabsLunaticParser,
+from allotropy.parsers.unchained_labs_lunatic_stunner.unchained_labs_lunatic_stunner_parser import (
+    UnchainedLabsLunaticStunnerParser,
 )
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.vendor_parser import VendorParser
@@ -278,7 +278,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.THERMO_FISHER_QUBIT_FLEX: ThermoFisherQubitFlexParser,
     Vendor.THERMO_FISHER_VISIONLITE: ThermoFisherVisionliteParser,
     Vendor.THERMO_SKANIT: ThermoSkanItParser,
-    Vendor.UNCHAINED_LABS_LUNATIC: UnchainedLabsLunaticParser,
+    Vendor.UNCHAINED_LABS_LUNATIC: UnchainedLabsLunaticStunnerParser,
 }
 
 

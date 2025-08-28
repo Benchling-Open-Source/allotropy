@@ -140,6 +140,7 @@ class MeasurementGroup:
     measurement_time: str | None = None
     experimental_data_identifier: str | None = None
     experiment_identifier: str | None = None
+    measurement_aggregate_custom_info: dict[str, Any] | None = None
     custom_info: dict[str, Any] | None = None
 
 
@@ -201,19 +202,22 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> FlowCytometryDocumentItem:
         return add_custom_information_document(
             FlowCytometryDocumentItem(
-                measurement_aggregate_document=MeasurementAggregateDocument(
-                    measurement_document=[
-                        self._get_measurement_document(measurement)
-                        for measurement in measurement_group.measurements
-                    ],
-                    analyst=measurement_group.analyst,
-                    measurement_time=self.get_date_time(
-                        measurement_group.measurement_time
-                    )
-                    if measurement_group.measurement_time
-                    else None,
-                    experimental_data_identifier=measurement_group.experimental_data_identifier,
-                    experiment_identifier=measurement_group.experiment_identifier,
+                measurement_aggregate_document=add_custom_information_document(
+                    MeasurementAggregateDocument(
+                        measurement_document=[
+                            self._get_measurement_document(measurement)
+                            for measurement in measurement_group.measurements
+                        ],
+                        analyst=measurement_group.analyst,
+                        measurement_time=self.get_date_time(
+                            measurement_group.measurement_time
+                        )
+                        if measurement_group.measurement_time
+                        else None,
+                        experimental_data_identifier=measurement_group.experimental_data_identifier,
+                        experiment_identifier=measurement_group.experiment_identifier,
+                    ),
+                    measurement_group.measurement_aggregate_custom_info,
                 ),
                 compensation_matrix_aggregate_document=CompensationMatrixAggregateDocument(
                     compensation_matrix_document=[

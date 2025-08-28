@@ -282,7 +282,7 @@ class SeriesData:
             for matched in [
                 k
                 for k in self.series.index
-                if k == regex_key or re.fullmatch(regex_key, k)
+                if k == regex_key or re.fullmatch(str(regex_key), str(k))
             ]
         }
 
@@ -382,6 +382,7 @@ class SeriesData:
         key: KeyOrKeys,
         default: Literal[None] = None,
         validate: ValidateRawMode | None = None,
+        duplicate_strategy: Literal["first", "last", "all"] = "all",
     ) -> T | None:
         ...
 
@@ -393,6 +394,7 @@ class SeriesData:
         key: KeyOrKeys,
         default: InvalidJsonFloat,
         validate: ValidateRawMode | None = None,
+        duplicate_strategy: Literal["first", "last", "all"] = "all",
     ) -> float | InvalidJsonFloat:
         ...
 
@@ -404,6 +406,7 @@ class SeriesData:
         key: KeyOrKeys,
         default: T,
         validate: ValidateRawMode | None = None,
+        duplicate_strategy: Literal["first", "last", "all"] = "all",
     ) -> T:
         ...
 
@@ -413,6 +416,7 @@ class SeriesData:
         key: KeyOrKeys,
         default: T | InvalidJsonFloat | None = None,
         validate: ValidateRawMode | None = None,
+        duplicate_strategy: Literal["first", "last", "all"] = "all",
     ) -> T | InvalidJsonFloat | None:
         """
         Get a value of the specified type with the specified key, returning a default value if the
@@ -425,16 +429,46 @@ class SeriesData:
         key (str | Iterable[str]): The key (or iterable of keys) to use to lookup.
         default (type | InvalidJsonFloat | None): The value to return if lookup or conversion fails (default=None).
         validate (ValidateRawMode): The method to use for validating raw value. Defaults to (value is not None).
+        duplicate_strategy (str): How to handle duplicate keys:
+            - "all": Return concatenated result (default behavior)
+            - "first": Return first occurrence
+            - "last": Return last occurrence
 
         Returns:
         type: A value of the type provided or default value.
         """
-        if not isinstance(key, str):
+        if isinstance(key, tuple | list | set):
             return get_first_not_none(
-                lambda k: self.get(type_, k, validate=validate), key
+                lambda k: self.get(
+                    type_, k, validate=validate, duplicate_strategy=duplicate_strategy
+                ),
+                key,
             )
+        elif not isinstance(key, str | int):
+            msg = f"Unexpected key type ({type(key)}): {key}"
+            raise ValueError(msg)
         self.read_keys.add(key)
-        raw_value = self._validate_raw(self.series.get(key), validate)
+
+        # Handle duplicate keys if needed
+        if duplicate_strategy != "all" and key in self.series.index:
+            # Check if there are duplicate keys and we have multiple matches
+            key_matches = self.series.index == key
+            if key_matches.sum() > 1:
+                matching_series = self.series[key_matches]
+                if duplicate_strategy == "first":
+                    raw_value = self._validate_raw(matching_series.iloc[0], validate)
+                elif duplicate_strategy == "last":
+                    raw_value = self._validate_raw(matching_series.iloc[-1], validate)
+                else:
+                    # This shouldn't happen due to type hints, but fallback to default behavior
+                    raw_value = self._validate_raw(self.series.get(key), validate)
+            else:
+                # No duplicates, use normal behavior
+                raw_value = self._validate_raw(self.series.get(key), validate)
+        else:
+            # Default behavior for "all" or when no duplicates
+            raw_value = self._validate_raw(self.series.get(key), validate)
+
         try:
             # bool needs special handling to convert
             if type_ is bool:

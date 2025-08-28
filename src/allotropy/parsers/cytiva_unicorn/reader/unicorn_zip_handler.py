@@ -65,7 +65,9 @@ class UnicornZipHandler(ZipHandler):
         system_data = self.get_zip_from_pattern("SystemData(.zip)?$")
         b_stream = system_data.get_file_from_pattern("^Xml$")
         raw_content = self.filter_xml_metadata(b_stream).read()
-        return StrictXmlElement.create_from_bytes(raw_content)
+        return StrictXmlElement.create_from_bytes(
+            raw_content, mark_read={"attr:FormatVersion", "attr:UNICORNVersion"}
+        )
 
     def get_results(self) -> StrictXmlElement:
         b_stream = self.get_file_from_pattern("Result.xml$")
@@ -77,12 +79,16 @@ class UnicornZipHandler(ZipHandler):
         instrument_config_data = self.get_zip_from_pattern(instrument_regex)
         b_stream = instrument_config_data.get_file_from_pattern("^Xml$")
         raw_content = self.filter_xml_metadata(b_stream).read()
-        return StrictXmlElement.create_from_bytes(raw_content)
+        return StrictXmlElement.create_from_bytes(
+            raw_content, mark_read={"attr:FormatVersion", "attr:UNICORNVersion"}
+        )
 
     def get_evaluation_log(self) -> StrictXmlElement:
         b_stream = self.get_file_from_pattern("EvaluationLog.xml$")
         raw_content = self.filter_xml_metadata(b_stream).read()
-        return StrictXmlElement.create_from_bytes(raw_content)
+        return StrictXmlElement.create_from_bytes(
+            raw_content, mark_read={"attr:FormatVersion", "attr:UNICORNVersion"}
+        )
 
     def get_chrom_1(self) -> StrictXmlElement:
         b_stream = self.get_file_from_pattern("Chrom.1.Xml$")
@@ -93,4 +99,6 @@ class UnicornZipHandler(ZipHandler):
         column_type_data = self.get_zip_from_pattern("ColumnTypeData(.zip)?$")
         b_stream = column_type_data.get_file_from_pattern("^Xml$")
         raw_content = self.filter_xml_metadata(b_stream).read()
-        return StrictXmlElement.create_from_bytes(raw_content)
+        return StrictXmlElement.create_from_bytes(
+            raw_content, mark_read={"attr:FormatVersion", "attr:UNICORNVersion"}
+        )

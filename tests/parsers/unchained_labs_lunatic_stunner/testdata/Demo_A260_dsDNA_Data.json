@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2025/03/plate-reader.manifest",
     "plate reader aggregate document": {
         "plate reader document": [
             {
@@ -25,8 +25,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_0",
                             "sample document": {
-                                "sample identifier": "H2O",
                                 "location identifier": "A1",
+                                "sample identifier": "H2O",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -37,12 +37,9 @@
                                 "value": -0.0,
                                 "unit": "mAU"
                             },
+                            "analytical method identifier": "A260 dsDNA",
                             "error aggregate document": {
                                 "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    },
                                     {
                                         "error": "N/A",
                                         "error feature": "A260/A230"
@@ -73,7 +70,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -100,8 +96,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_2",
                             "sample document": {
-                                "sample identifier": "Sample 4",
                                 "location identifier": "B1",
+                                "sample identifier": "Sample 4",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -112,12 +108,9 @@
                                 "value": -0.0,
                                 "unit": "mAU"
                             },
+                            "analytical method identifier": "A260 dsDNA",
                             "error aggregate document": {
                                 "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    },
                                     {
                                         "error": "N/A",
                                         "error feature": "absorbance"
@@ -144,7 +137,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -171,8 +163,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_4",
                             "sample document": {
-                                "sample identifier": "Sample 3",
                                 "location identifier": "C1",
+                                "sample identifier": "Sample 3",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -183,14 +175,7 @@
                                 "value": 2.03,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -211,7 +196,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -238,8 +222,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_6",
                             "sample document": {
-                                "sample identifier": "Sample 7",
                                 "location identifier": "D1",
+                                "sample identifier": "Sample 7",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -250,14 +234,7 @@
                                 "value": 0.49,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -278,7 +255,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -305,8 +281,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_8",
                             "sample document": {
-                                "sample identifier": "Sample 2",
                                 "location identifier": "E1",
+                                "sample identifier": "Sample 2",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -317,14 +293,7 @@
                                 "value": 5.01,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -345,7 +314,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -372,8 +340,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_10",
                             "sample document": {
-                                "sample identifier": "Sample 6",
                                 "location identifier": "F1",
+                                "sample identifier": "Sample 6",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -384,14 +352,7 @@
                                 "value": 0.6,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -412,7 +373,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -439,8 +399,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_12",
                             "sample document": {
-                                "sample identifier": "Sample 1",
                                 "location identifier": "G1",
+                                "sample identifier": "Sample 1",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -451,14 +411,7 @@
                                 "value": 10.04,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -479,7 +432,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -506,8 +458,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_14",
                             "sample document": {
-                                "sample identifier": "Sample 5",
                                 "location identifier": "H1",
+                                "sample identifier": "Sample 5",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -518,14 +470,7 @@
                                 "value": 0.79,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -546,7 +491,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -573,8 +517,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_16",
                             "sample document": {
-                                "sample identifier": "Sample 1",
                                 "location identifier": "A2",
+                                "sample identifier": "Sample 1",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -585,14 +529,7 @@
                                 "value": 10.19,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -613,7 +550,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -640,8 +576,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_18",
                             "sample document": {
-                                "sample identifier": "Sample 5",
                                 "location identifier": "B2",
+                                "sample identifier": "Sample 5",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -652,14 +588,7 @@
                                 "value": 0.77,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -680,7 +609,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -707,8 +635,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_20",
                             "sample document": {
-                                "sample identifier": "H2O",
                                 "location identifier": "C2",
+                                "sample identifier": "H2O",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -719,12 +647,9 @@
                                 "value": -0.0,
                                 "unit": "mAU"
                             },
+                            "analytical method identifier": "A260 dsDNA",
                             "error aggregate document": {
                                 "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    },
                                     {
                                         "error": "N/A",
                                         "error feature": "A260/A230"
@@ -755,7 +680,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -782,8 +706,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_22",
                             "sample document": {
-                                "sample identifier": "Sample 4",
                                 "location identifier": "D2",
+                                "sample identifier": "Sample 4",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -794,14 +718,7 @@
                                 "value": 0.99,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -822,7 +739,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -849,8 +765,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_24",
                             "sample document": {
-                                "sample identifier": "Sample 3",
                                 "location identifier": "E2",
+                                "sample identifier": "Sample 3",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -861,14 +777,7 @@
                                 "value": 2.02,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -889,7 +798,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -916,8 +824,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_26",
                             "sample document": {
-                                "sample identifier": "Sample 7",
                                 "location identifier": "F2",
+                                "sample identifier": "Sample 7",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -928,14 +836,7 @@
                                 "value": 0.49,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -956,7 +857,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -983,8 +883,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_28",
                             "sample document": {
-                                "sample identifier": "Sample 2",
                                 "location identifier": "G2",
+                                "sample identifier": "Sample 2",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -995,14 +895,7 @@
                                 "value": 5.01,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -1023,7 +916,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -1050,8 +942,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_30",
                             "sample document": {
-                                "sample identifier": "Sample 6",
                                 "location identifier": "H2",
+                                "sample identifier": "Sample 6",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -1062,14 +954,7 @@
                                 "value": 0.6,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -1090,7 +975,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -1117,8 +1001,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_32",
                             "sample document": {
-                                "sample identifier": "Sample 2",
                                 "location identifier": "A3",
+                                "sample identifier": "Sample 2",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -1129,14 +1013,7 @@
                                 "value": 5.03,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -1157,7 +1034,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -1184,8 +1060,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_34",
                             "sample document": {
-                                "sample identifier": "Sample 6",
                                 "location identifier": "B3",
+                                "sample identifier": "Sample 6",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -1196,14 +1072,7 @@
                                 "value": 0.59,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -1224,7 +1093,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -1251,8 +1119,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_36",
                             "sample document": {
-                                "sample identifier": "Sample 1",
                                 "location identifier": "C3",
+                                "sample identifier": "Sample 1",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -1263,14 +1131,7 @@
                                 "value": 10.09,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -1291,7 +1152,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -1318,8 +1178,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_38",
                             "sample document": {
-                                "sample identifier": "Sample 5",
                                 "location identifier": "D3",
+                                "sample identifier": "Sample 5",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -1330,14 +1190,7 @@
                                 "value": 0.81,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -1358,7 +1211,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -1385,8 +1237,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_40",
                             "sample document": {
-                                "sample identifier": "H2O",
                                 "location identifier": "E3",
+                                "sample identifier": "H2O",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -1397,12 +1249,9 @@
                                 "value": -0.0,
                                 "unit": "mAU"
                             },
+                            "analytical method identifier": "A260 dsDNA",
                             "error aggregate document": {
                                 "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    },
                                     {
                                         "error": "N/A",
                                         "error feature": "A260/A230"
@@ -1433,7 +1282,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -1460,8 +1308,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_42",
                             "sample document": {
-                                "sample identifier": "Sample 4",
                                 "location identifier": "F3",
+                                "sample identifier": "Sample 4",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -1472,14 +1320,7 @@
                                 "value": 0.98,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -1500,7 +1341,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -1527,8 +1367,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_44",
                             "sample document": {
-                                "sample identifier": "Sample 3",
                                 "location identifier": "G3",
+                                "sample identifier": "Sample 3",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -1539,14 +1379,7 @@
                                 "value": 1.98,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -1567,7 +1400,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -1594,8 +1426,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_46",
                             "sample document": {
-                                "sample identifier": "Sample 7",
                                 "location identifier": "H3",
+                                "sample identifier": "Sample 7",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -1606,14 +1438,7 @@
                                 "value": 0.49,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -1634,7 +1459,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -1661,8 +1485,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_48",
                             "sample document": {
-                                "sample identifier": "Sample 3",
                                 "location identifier": "A4",
+                                "sample identifier": "Sample 3",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -1673,14 +1497,7 @@
                                 "value": 2.02,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -1701,7 +1518,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -1728,8 +1544,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_50",
                             "sample document": {
-                                "sample identifier": "Sample 7",
                                 "location identifier": "B4",
+                                "sample identifier": "Sample 7",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -1740,14 +1556,7 @@
                                 "value": 0.49,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -1768,7 +1577,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -1795,8 +1603,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_52",
                             "sample document": {
-                                "sample identifier": "Sample 2",
                                 "location identifier": "C4",
+                                "sample identifier": "Sample 2",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -1807,14 +1615,7 @@
                                 "value": 5.02,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -1835,7 +1636,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -1862,8 +1662,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_54",
                             "sample document": {
-                                "sample identifier": "Sample 6",
                                 "location identifier": "D4",
+                                "sample identifier": "Sample 6",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -1874,14 +1674,7 @@
                                 "value": 0.6,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -1902,7 +1695,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -1929,8 +1721,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_56",
                             "sample document": {
-                                "sample identifier": "Sample 1",
                                 "location identifier": "E4",
+                                "sample identifier": "Sample 1",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -1941,14 +1733,7 @@
                                 "value": 10.05,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -1969,7 +1754,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -1996,8 +1780,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_58",
                             "sample document": {
-                                "sample identifier": "Sample 5",
                                 "location identifier": "F4",
+                                "sample identifier": "Sample 5",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -2008,14 +1792,7 @@
                                 "value": 0.78,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -2036,7 +1813,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -2063,8 +1839,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_60",
                             "sample document": {
-                                "sample identifier": "H2O",
                                 "location identifier": "G4",
+                                "sample identifier": "H2O",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -2075,12 +1851,9 @@
                                 "value": -0.01,
                                 "unit": "mAU"
                             },
+                            "analytical method identifier": "A260 dsDNA",
                             "error aggregate document": {
                                 "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    },
                                     {
                                         "error": "N/A",
                                         "error feature": "A260/A230"
@@ -2111,7 +1884,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             },
@@ -2138,8 +1910,8 @@
                             },
                             "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_62",
                             "sample document": {
-                                "sample identifier": "Sample 4",
                                 "location identifier": "H4",
+                                "sample identifier": "Sample 4",
                                 "batch identifier": "Sample Group 1",
                                 "well plate identifier": "Plate 1",
                                 "custom information document": {
@@ -2150,14 +1922,7 @@
                                 "value": 0.98,
                                 "unit": "mAU"
                             },
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    }
-                                ]
-                            },
+                            "analytical method identifier": "A260 dsDNA",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -2178,7 +1943,6 @@
                         "value": 96,
                         "unit": "#"
                     },
-                    "analytical method identifier": "A260 dsDNA",
                     "container type": "well plate"
                 }
             }
@@ -2188,8 +1952,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": -0.1,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": -0.1
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_64",
                     "data source aggregate document": {
@@ -2204,8 +1968,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 49.8,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 49.8
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_65",
                     "data source aggregate document": {
@@ -2220,8 +1984,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 101.3,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 101.3
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_66",
                     "data source aggregate document": {
@@ -2236,8 +2000,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 24.7,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 24.7
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_67",
                     "data source aggregate document": {
@@ -2252,8 +2016,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 250.7,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 250.7
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_68",
                     "data source aggregate document": {
@@ -2268,8 +2032,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 29.8,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 29.8
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_69",
                     "data source aggregate document": {
@@ -2284,8 +2048,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 501.8,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 501.8
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_70",
                     "data source aggregate document": {
@@ -2300,8 +2064,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 39.5,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 39.5
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_71",
                     "data source aggregate document": {
@@ -2316,8 +2080,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 509.3,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 509.3
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_72",
                     "data source aggregate document": {
@@ -2332,8 +2096,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 38.5,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 38.5
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_73",
                     "data source aggregate document": {
@@ -2348,8 +2112,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": -0.1,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": -0.1
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_74",
                     "data source aggregate document": {
@@ -2364,8 +2128,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 49.6,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 49.6
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_75",
                     "data source aggregate document": {
@@ -2380,8 +2144,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 100.8,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 100.8
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_76",
                     "data source aggregate document": {
@@ -2396,8 +2160,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 24.3,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 24.3
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_77",
                     "data source aggregate document": {
@@ -2412,8 +2176,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 250.3,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 250.3
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_78",
                     "data source aggregate document": {
@@ -2428,8 +2192,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 29.9,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 29.9
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_79",
                     "data source aggregate document": {
@@ -2444,8 +2208,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 251.6,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 251.6
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_80",
                     "data source aggregate document": {
@@ -2460,8 +2224,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 29.7,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 29.7
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_81",
                     "data source aggregate document": {
@@ -2476,8 +2240,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 504.3,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 504.3
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_82",
                     "data source aggregate document": {
@@ -2492,8 +2256,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 40.3,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 40.3
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_83",
                     "data source aggregate document": {
@@ -2508,8 +2272,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": -0.2,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": -0.2
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_84",
                     "data source aggregate document": {
@@ -2524,8 +2288,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 49.1,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 49.1
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_85",
                     "data source aggregate document": {
@@ -2540,8 +2304,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 99.2,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 99.2
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_86",
                     "data source aggregate document": {
@@ -2556,8 +2320,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 24.4,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 24.4
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_87",
                     "data source aggregate document": {
@@ -2572,8 +2336,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 100.8,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 100.8
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_88",
                     "data source aggregate document": {
@@ -2588,8 +2352,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 24.5,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 24.5
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_89",
                     "data source aggregate document": {
@@ -2604,8 +2368,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 250.9,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 250.9
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_90",
                     "data source aggregate document": {
@@ -2620,8 +2384,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 30.0,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 30.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_91",
                     "data source aggregate document": {
@@ -2636,8 +2400,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 502.3,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 502.3
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_92",
                     "data source aggregate document": {
@@ -2652,8 +2416,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 39.1,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 39.1
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_93",
                     "data source aggregate document": {
@@ -2668,8 +2432,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": -0.4,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": -0.4
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_94",
                     "data source aggregate document": {
@@ -2684,8 +2448,8 @@
                 {
                     "calculated data name": "Concentration",
                     "calculated result": {
-                        "value": 49.2,
-                        "unit": "ng/µL"
+                        "unit": "ng/µL",
+                        "value": 49.2
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_95",
                     "data source aggregate document": {
@@ -2700,8 +2464,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.05,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.05
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_96",
                     "data source aggregate document": {
@@ -2716,8 +2480,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_97",
                     "data source aggregate document": {
@@ -2732,8 +2496,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.07,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.07
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_98",
                     "data source aggregate document": {
@@ -2748,8 +2512,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.03,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.03
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_99",
                     "data source aggregate document": {
@@ -2764,8 +2528,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_100",
                     "data source aggregate document": {
@@ -2780,8 +2544,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_101",
                     "data source aggregate document": {
@@ -2796,8 +2560,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.02,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.02
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_102",
                     "data source aggregate document": {
@@ -2812,8 +2576,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_103",
                     "data source aggregate document": {
@@ -2828,8 +2592,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_104",
                     "data source aggregate document": {
@@ -2844,8 +2608,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.06,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.06
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_105",
                     "data source aggregate document": {
@@ -2860,8 +2624,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_106",
                     "data source aggregate document": {
@@ -2876,8 +2640,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_107",
                     "data source aggregate document": {
@@ -2892,8 +2656,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.15,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.15
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_108",
                     "data source aggregate document": {
@@ -2908,8 +2672,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_109",
                     "data source aggregate document": {
@@ -2924,8 +2688,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_110",
                     "data source aggregate document": {
@@ -2940,8 +2704,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.02,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.02
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_111",
                     "data source aggregate document": {
@@ -2956,8 +2720,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_112",
                     "data source aggregate document": {
@@ -2972,8 +2736,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_113",
                     "data source aggregate document": {
@@ -2988,8 +2752,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_114",
                     "data source aggregate document": {
@@ -3004,8 +2768,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_115",
                     "data source aggregate document": {
@@ -3020,8 +2784,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_116",
                     "data source aggregate document": {
@@ -3036,8 +2800,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.12,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.12
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_117",
                     "data source aggregate document": {
@@ -3052,8 +2816,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_118",
                     "data source aggregate document": {
@@ -3068,8 +2832,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_119",
                     "data source aggregate document": {
@@ -3084,8 +2848,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.01,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.01
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_120",
                     "data source aggregate document": {
@@ -3100,8 +2864,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.07,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.07
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_121",
                     "data source aggregate document": {
@@ -3116,8 +2880,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_122",
                     "data source aggregate document": {
@@ -3132,8 +2896,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.02,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.02
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_123",
                     "data source aggregate document": {
@@ -3148,8 +2912,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_124",
                     "data source aggregate document": {
@@ -3164,8 +2928,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_125",
                     "data source aggregate document": {
@@ -3180,8 +2944,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_126",
                     "data source aggregate document": {
@@ -3196,8 +2960,8 @@
                 {
                     "calculated data name": "Background (A260)",
                     "calculated result": {
-                        "value": 0.0,
-                        "unit": "mAU"
+                        "unit": "mAU",
+                        "value": 0.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_127",
                     "data source aggregate document": {
@@ -3212,10 +2976,26 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.51,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": -0.0
                     },
                     "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_128",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_0",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "A260/A230",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 2.51
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_129",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3228,10 +3008,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.46,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.46
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_129",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_130",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3244,10 +3024,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.74,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.74
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_130",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_131",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3260,10 +3040,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.45,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.45
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_131",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_132",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3276,10 +3056,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.56,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.56
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_132",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_133",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3292,10 +3072,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.43,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.43
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_133",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_134",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3308,10 +3088,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.64,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.64
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_134",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_135",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3324,10 +3104,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.42,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.42
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_135",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_136",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3340,10 +3120,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.72,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.72
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_136",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_137",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3356,10 +3136,26 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.52,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": -0.0
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_137",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_138",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_20",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "A260/A230",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 2.52
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_139",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3372,10 +3168,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.49,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.49
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_138",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_140",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3388,10 +3184,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 3.13,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 3.13
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_139",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_141",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3404,10 +3200,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.44,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.44
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_140",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_142",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3420,10 +3216,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.56,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.56
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_141",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_143",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3436,10 +3232,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.43,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.43
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_142",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_144",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3452,10 +3248,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.74,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.74
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_143",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_145",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3468,10 +3264,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.43,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.43
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_144",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_146",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3484,10 +3280,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.51,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.51
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_145",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_147",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3500,10 +3296,26 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.74,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": -0.0
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_146",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_148",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_40",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "A260/A230",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 2.74
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_149",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3516,10 +3328,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.6,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.6
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_147",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_150",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3532,10 +3344,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.72,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.72
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_148",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_151",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3548,10 +3360,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.47,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.47
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_149",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_152",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3564,10 +3376,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.89,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.89
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_150",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_153",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3580,10 +3392,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.43,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.43
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_151",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_154",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3596,10 +3408,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.71,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.71
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_152",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_155",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3612,10 +3424,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.42,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.42
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_153",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_156",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3628,10 +3440,10 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.66,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 2.66
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_154",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_157",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3644,10 +3456,26 @@
                 {
                     "calculated data name": "A260/A230",
                     "calculated result": {
-                        "value": 2.63,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": -0.0
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_155",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_158",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_60",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "A260/A230",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 2.63
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_159",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3660,10 +3488,26 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.84,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": -0.0
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_156",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_160",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_0",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.84
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_161",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3676,10 +3520,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.85,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.85
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_157",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_162",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3692,10 +3536,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.84,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.84
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_158",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_163",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3708,10 +3552,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.85,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.85
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_159",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_164",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3724,10 +3568,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.85,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.85
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_160",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_165",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3740,10 +3584,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.85,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.85
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_161",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_166",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3756,10 +3600,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.84,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.84
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_162",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_167",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3772,10 +3616,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.85,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.85
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_163",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_168",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3788,10 +3632,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.86,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.86
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_164",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_169",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3804,10 +3648,26 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.84,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": -0.0
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_165",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_170",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_20",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.84
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_171",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3820,10 +3680,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.85,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.85
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_166",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_172",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3836,10 +3696,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.85,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.85
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_167",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_173",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3852,10 +3712,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.85,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.85
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_168",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_174",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3868,10 +3728,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.81,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.81
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_169",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_175",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3884,10 +3744,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.85,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.85
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_170",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_176",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3900,10 +3760,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.87,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.87
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_171",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_177",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3916,10 +3776,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.85,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.85
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_172",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_178",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3932,10 +3792,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.87,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.87
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_173",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_179",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3948,10 +3808,26 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.84,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": -0.0
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_174",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_180",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_40",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.84
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_181",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3964,10 +3840,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.86,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.86
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_175",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_182",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3980,10 +3856,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.83,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.83
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_176",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_183",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -3996,10 +3872,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.84,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.84
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_177",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_184",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -4012,10 +3888,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.86,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.86
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_178",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_185",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -4028,10 +3904,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.85,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.85
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_179",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_186",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -4044,10 +3920,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.84,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.84
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_180",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_187",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -4060,10 +3936,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.85,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.85
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_181",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_188",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -4076,10 +3952,10 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.83,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": 1.83
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_182",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_189",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -4092,10 +3968,26 @@
                 {
                     "calculated data name": "A260/A280",
                     "calculated result": {
-                        "value": 1.87,
-                        "unit": "(unitless)"
+                        "unit": "(unitless)",
+                        "value": -0.0
                     },
-                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_183",
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_190",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_60",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.87
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_191",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -4110,10 +4002,10 @@
         "data system document": {
             "ASM file identifier": "Demo_A260_dsDNA_Data.json",
             "data system instance identifier": "N/A",
+            "UNC path": "tests/parsers/unchained_labs_lunatic_stunner/testdata/Demo_A260_dsDNA_Data.csv",
             "file name": "Demo_A260_dsDNA_Data.csv",
-            "UNC path": "tests/parsers/unchained_labs_lunatic/testdata/Demo_A260_dsDNA_Data.csv",
-            "ASM converter name": "allotropy_unchained_labs_lunatic",
-            "ASM converter version": "0.1.87",
+            "ASM converter name": "allotropy_unchained_labs_lunatic_&_stunner",
+            "ASM converter version": "0.1.102",
             "software name": "Lunatic and Stunner Analysis"
         },
         "device system document": {

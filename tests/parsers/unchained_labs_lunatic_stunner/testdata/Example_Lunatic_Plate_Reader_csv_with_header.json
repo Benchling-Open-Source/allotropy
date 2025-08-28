@@ -1,0 +1,216 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2025/03/plate-reader.manifest",
+    "plate reader aggregate document": {
+        "plate reader document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "firmware version": "8.3.0.305",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_0",
+                            "sample document": {
+                                "location identifier": "A1",
+                                "sample identifier": "SAMPLE_1",
+                                "batch identifier": "GROUP_1",
+                                "well plate identifier": "PLATE_1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate",
+                                    "nr of plates": "1",
+                                    "blanks": "Sample group 'GROUP_1': On Plate/Chip:  (2x)",
+                                    "plate description": "- Lunatic_test_BE_31JUL2024"
+                                }
+                            },
+                            "absorbance": {
+                                "value": 3.65,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "dsDNA (Turbidity)",
+                            "experimental data identifier": "BENCHLING_TEST"
+                        }
+                    ],
+                    "measurement time": "2024-01-08T10:15:59+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "ImmuneMed"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "firmware version": "8.3.0.305",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_1",
+                            "sample document": {
+                                "location identifier": "B1",
+                                "sample identifier": "",
+                                "batch identifier": "GROUP_1",
+                                "well plate identifier": "PLATE_2",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate",
+                                    "nr of plates": "1",
+                                    "blanks": "Sample group 'GROUP_1': On Plate/Chip:  (2x)",
+                                    "plate description": "- Lunatic_test_BE_31JUL2024"
+                                }
+                            },
+                            "absorbance": {
+                                "value": 3.66,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "dsDNA (Turbidity)",
+                            "experimental data identifier": "BENCHLING_TEST"
+                        }
+                    ],
+                    "measurement time": "2024-01-08T10:15:59+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                },
+                "analyst": "ImmuneMed"
+            }
+        ],
+        "calculated data aggregate document": {
+            "calculated data document": [
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "unit": "ng/µL",
+                        "value": 182.6
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_2",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_0",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "unit": "ng/µL",
+                        "value": 182.8
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_3",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_1",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "A260/A230",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 2.55
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_4",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_0",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "A260/A230",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 2.52
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_5",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_1",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.94
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_6",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_0",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "unit": "(unitless)",
+                        "value": 1.94
+                    },
+                    "calculated data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_7",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_1",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "data system document": {
+            "ASM file identifier": "Example_Lunatic_Plate_Reader_csv_with_header.json",
+            "data system instance identifier": "N/A",
+            "UNC path": "tests/parsers/unchained_labs_lunatic_stunner/testdata/Example_Lunatic_Plate_Reader_csv_with_header.csv",
+            "file name": "Example_Lunatic_Plate_Reader_csv_with_header.csv",
+            "ASM converter name": "allotropy_unchained_labs_lunatic_&_stunner",
+            "ASM converter version": "0.1.102",
+            "software name": "Lunatic and Stunner Analysis",
+            "software version": "8.2.0.259"
+        },
+        "device system document": {
+            "device identifier": "123456",
+            "model number": "Lunatic",
+            "product manufacturer": "Unchained Labs"
+        }
+    }
+}

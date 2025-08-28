@@ -1,4 +1,4 @@
-from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
     Measurement,
 )
 from allotropy.calcdocs.extractor import Element, Extractor
@@ -19,6 +19,7 @@ class LunaticExtractor(Extractor[Measurement]):
                 "uuid": measurement.identifier,
                 "wavelength id": measurement.wavelength_identifier,
                 "absorbance": measurement.absorbance,
+                "detection type": measurement.detection_type,
                 **custom_info,
             },
         )
