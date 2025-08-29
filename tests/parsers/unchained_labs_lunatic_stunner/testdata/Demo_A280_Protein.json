@@ -11,10 +11,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -32,10 +28,6 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": -0.0,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "Protein (Turbidity)",
                             "error aggregate document": {
                                 "error document": [
@@ -48,6 +40,35 @@
                                         "error feature": "A260/A280"
                                     }
                                 ]
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.0
+                                        ]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -68,10 +89,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -90,11 +107,34 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.84,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [0.84]
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -114,10 +154,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -136,11 +172,34 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 1.04,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [1.04]
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -160,10 +219,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -182,11 +237,34 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.18,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [0.18]
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -206,10 +284,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -228,11 +302,34 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 2.07,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [2.07]
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -252,10 +349,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -274,11 +367,34 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.39,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [0.39]
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -298,10 +414,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -320,11 +432,34 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 4.22,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [4.22]
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -344,10 +479,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -366,11 +497,34 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.61,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [0.61]
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -390,10 +544,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -412,11 +562,34 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 4.22,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [4.22]
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -436,10 +609,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -458,67 +627,33 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.61,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
-                        }
-                    ],
-                    "measurement time": "2016-10-17T07:28:30+00:00",
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
-                    "measurement document": [
-                        {
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
-                                        }
-                                    }
-                                ]
-                            },
-                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_10",
-                            "sample document": {
-                                "location identifier": "C2",
-                                "sample identifier": "H2O",
-                                "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate"
-                                }
-                            },
-                            "absorbance": {
-                                "value": 0.0,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "Protein (Turbidity)",
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    },
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "A260/A280"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [0.61]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -539,10 +674,82 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
+                                        "custom information document": {
+                                            "pump": "0",
+                                            "column": "1"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_10",
+                            "sample document": {
+                                "location identifier": "C2",
+                                "sample identifier": "H2O",
+                                "batch identifier": "Sample Group 1",
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
+                            },
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "Concentration"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "A260/A280"
+                                    }
+                                ]
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
                                             "unit": "nm"
-                                        },
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [0.0]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -561,11 +768,34 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.82,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [0.82]
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -585,10 +815,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -607,11 +833,34 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 1.03,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [1.03]
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -631,10 +880,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -653,11 +898,34 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.18,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [0.18]
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -677,10 +945,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -699,11 +963,34 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 2.05,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [2.05]
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -723,10 +1010,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -745,11 +1028,34 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.4,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [0.4]
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -769,10 +1075,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -791,11 +1093,34 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 2.08,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [2.08]
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -815,10 +1140,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -837,11 +1158,34 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.4,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [0.4]
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -861,10 +1205,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -883,11 +1223,34 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 4.23,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [4.23]
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -907,10 +1270,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -929,67 +1288,33 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.6,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
-                        }
-                    ],
-                    "measurement time": "2016-10-17T07:28:30+00:00",
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
-                    "measurement document": [
-                        {
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
-                                        }
-                                    }
-                                ]
-                            },
-                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_20",
-                            "sample document": {
-                                "location identifier": "E3",
-                                "sample identifier": "H2O",
-                                "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate"
-                                }
-                            },
-                            "absorbance": {
-                                "value": -0.0,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "Protein (Turbidity)",
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    },
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "A260/A280"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [0.6]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1010,10 +1335,84 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
+                                        "custom information document": {
+                                            "pump": "0",
+                                            "column": "1"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_20",
+                            "sample document": {
+                                "location identifier": "E3",
+                                "sample identifier": "H2O",
+                                "batch identifier": "Sample Group 1",
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
+                            },
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "Concentration"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "A260/A280"
+                                    }
+                                ]
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
                                             "unit": "nm"
-                                        },
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.0
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -1032,435 +1431,33 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.83,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
-                        }
-                    ],
-                    "measurement time": "2016-10-17T07:28:30+00:00",
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
-                    "measurement document": [
-                        {
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
-                                        }
-                                    }
-                                ]
-                            },
-                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_22",
-                            "sample document": {
-                                "location identifier": "G3",
-                                "sample identifier": "Sample 3",
-                                "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
-                            },
-                            "absorbance": {
-                                "value": 1.03,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
-                        }
-                    ],
-                    "measurement time": "2016-10-17T07:28:30+00:00",
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
-                    "measurement document": [
-                        {
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
-                                        }
-                                    }
-                                ]
-                            },
-                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_23",
-                            "sample document": {
-                                "location identifier": "H3",
-                                "sample identifier": "Sample 7",
-                                "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
-                            },
-                            "absorbance": {
-                                "value": 0.19,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
-                        }
-                    ],
-                    "measurement time": "2016-10-17T07:28:30+00:00",
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
-                    "measurement document": [
-                        {
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
-                                        }
-                                    }
-                                ]
-                            },
-                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_24",
-                            "sample document": {
-                                "location identifier": "A4",
-                                "sample identifier": "Sample 3",
-                                "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
-                            },
-                            "absorbance": {
-                                "value": 1.04,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
-                        }
-                    ],
-                    "measurement time": "2016-10-17T07:28:30+00:00",
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
-                    "measurement document": [
-                        {
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
-                                        }
-                                    }
-                                ]
-                            },
-                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_25",
-                            "sample document": {
-                                "location identifier": "B4",
-                                "sample identifier": "Sample 7",
-                                "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
-                            },
-                            "absorbance": {
-                                "value": 0.18,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
-                        }
-                    ],
-                    "measurement time": "2016-10-17T07:28:30+00:00",
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
-                    "measurement document": [
-                        {
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
-                                        }
-                                    }
-                                ]
-                            },
-                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_26",
-                            "sample document": {
-                                "location identifier": "C4",
-                                "sample identifier": "Sample 2",
-                                "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
-                            },
-                            "absorbance": {
-                                "value": 2.07,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
-                        }
-                    ],
-                    "measurement time": "2016-10-17T07:28:30+00:00",
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
-                    "measurement document": [
-                        {
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
-                                        }
-                                    }
-                                ]
-                            },
-                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_27",
-                            "sample document": {
-                                "location identifier": "D4",
-                                "sample identifier": "Sample 6",
-                                "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
-                            },
-                            "absorbance": {
-                                "value": 0.38,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
-                        }
-                    ],
-                    "measurement time": "2016-10-17T07:28:30+00:00",
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
-                    "measurement document": [
-                        {
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
-                                        }
-                                    }
-                                ]
-                            },
-                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_28",
-                            "sample document": {
-                                "location identifier": "E4",
-                                "sample identifier": "Sample 1",
-                                "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
-                            },
-                            "absorbance": {
-                                "value": 4.22,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
-                        }
-                    ],
-                    "measurement time": "2016-10-17T07:28:30+00:00",
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
-                    "measurement document": [
-                        {
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
-                                        }
-                                    }
-                                ]
-                            },
-                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_29",
-                            "sample document": {
-                                "location identifier": "F4",
-                                "sample identifier": "Sample 5",
-                                "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate",
-                                    "molar attenuation coefficient setting": 10.0
-                                }
-                            },
-                            "absorbance": {
-                                "value": 0.62,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
-                        }
-                    ],
-                    "measurement time": "2016-10-17T07:28:30+00:00",
-                    "plate well count": {
-                        "value": 96,
-                        "unit": "#"
-                    },
-                    "container type": "well plate"
-                }
-            },
-            {
-                "measurement aggregate document": {
-                    "measurement document": [
-                        {
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "device type": "plate reader",
-                                        "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "pump": "0",
-                                            "column": "1"
-                                        }
-                                    }
-                                ]
-                            },
-                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_30",
-                            "sample document": {
-                                "location identifier": "G4",
-                                "sample identifier": "H2O",
-                                "batch identifier": "Sample Group 1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "plate type": "Lunatic Plate"
-                                }
-                            },
-                            "absorbance": {
-                                "value": -0.01,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "Protein (Turbidity)",
-                            "error aggregate document": {
-                                "error document": [
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "Concentration"
-                                    },
-                                    {
-                                        "error": "N/A",
-                                        "error feature": "A260/A280"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [0.83]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1481,10 +1478,604 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
+                                        "custom information document": {
+                                            "pump": "0",
+                                            "column": "1"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_22",
+                            "sample document": {
+                                "location identifier": "G3",
+                                "sample identifier": "Sample 3",
+                                "batch identifier": "Sample Group 1",
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate",
+                                    "molar attenuation coefficient setting": 10.0
+                                }
+                            },
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
                                             "unit": "nm"
-                                        },
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [1.03]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "custom information document": {
+                                            "pump": "0",
+                                            "column": "1"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_23",
+                            "sample document": {
+                                "location identifier": "H3",
+                                "sample identifier": "Sample 7",
+                                "batch identifier": "Sample Group 1",
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate",
+                                    "molar attenuation coefficient setting": 10.0
+                                }
+                            },
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [0.19]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "custom information document": {
+                                            "pump": "0",
+                                            "column": "1"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_24",
+                            "sample document": {
+                                "location identifier": "A4",
+                                "sample identifier": "Sample 3",
+                                "batch identifier": "Sample Group 1",
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate",
+                                    "molar attenuation coefficient setting": 10.0
+                                }
+                            },
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [1.04]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "custom information document": {
+                                            "pump": "0",
+                                            "column": "1"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_25",
+                            "sample document": {
+                                "location identifier": "B4",
+                                "sample identifier": "Sample 7",
+                                "batch identifier": "Sample Group 1",
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate",
+                                    "molar attenuation coefficient setting": 10.0
+                                }
+                            },
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [0.18]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "custom information document": {
+                                            "pump": "0",
+                                            "column": "1"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_26",
+                            "sample document": {
+                                "location identifier": "C4",
+                                "sample identifier": "Sample 2",
+                                "batch identifier": "Sample Group 1",
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate",
+                                    "molar attenuation coefficient setting": 10.0
+                                }
+                            },
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [2.07]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "custom information document": {
+                                            "pump": "0",
+                                            "column": "1"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_27",
+                            "sample document": {
+                                "location identifier": "D4",
+                                "sample identifier": "Sample 6",
+                                "batch identifier": "Sample Group 1",
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate",
+                                    "molar attenuation coefficient setting": 10.0
+                                }
+                            },
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [0.38]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "custom information document": {
+                                            "pump": "0",
+                                            "column": "1"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_28",
+                            "sample document": {
+                                "location identifier": "E4",
+                                "sample identifier": "Sample 1",
+                                "batch identifier": "Sample Group 1",
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate",
+                                    "molar attenuation coefficient setting": 10.0
+                                }
+                            },
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [4.22]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "custom information document": {
+                                            "pump": "0",
+                                            "column": "1"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_29",
+                            "sample document": {
+                                "location identifier": "F4",
+                                "sample identifier": "Sample 5",
+                                "batch identifier": "Sample Group 1",
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate",
+                                    "molar attenuation coefficient setting": 10.0
+                                }
+                            },
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [0.62]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "custom information document": {
+                                            "pump": "0",
+                                            "column": "1"
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_30",
+                            "sample document": {
+                                "location identifier": "G4",
+                                "sample identifier": "H2O",
+                                "batch identifier": "Sample Group 1",
+                                "well plate identifier": "Plate 1",
+                                "custom information document": {
+                                    "plate type": "Lunatic Plate"
+                                }
+                            },
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "Concentration"
+                                    },
+                                    {
+                                        "error": "N/A",
+                                        "error feature": "A260/A280"
+                                    }
+                                ]
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.01
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -1503,11 +2094,34 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.83,
-                                "unit": "mAU"
-                            },
-                            "analytical method identifier": "Protein (Turbidity)"
+                            "analytical method identifier": "Protein (Turbidity)",
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [0.83]
+                                    ]
+                                }
+                            }
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -3065,7 +3679,7 @@
             "UNC path": "tests/parsers/unchained_labs_lunatic_stunner/testdata/Demo_A280_Protein.csv",
             "file name": "Demo_A280_Protein.csv",
             "ASM converter name": "allotropy_unchained_labs_lunatic_&_stunner",
-            "ASM converter version": "0.1.102",
+            "ASM converter version": "0.1.103",
             "software name": "Lunatic and Stunner Analysis"
         },
         "device system document": {

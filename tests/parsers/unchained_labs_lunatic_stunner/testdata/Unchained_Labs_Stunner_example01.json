@@ -11,18 +11,9 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Dynamic Light Scattering",
-                                        "firmware version": "8.2.1.278",
-                                        "integration time": {
-                                            "value": 5.0,
-                                            "unit": "s"
-                                        },
                                         "number of averages": {
                                             "value": 4.0,
                                             "unit": "#"
-                                        },
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
                                         },
                                         "custom information document": {
                                             "pump": "0",
@@ -46,10 +37,6 @@
                                     "analyte": "N/A",
                                     "buffer": "PBS"
                                 }
-                            },
-                            "absorbance": {
-                                "value": 0.0,
-                                "unit": "mAU"
                             },
                             "analytical method identifier": "B22 & kD (8.2.0.3)",
                             "error aggregate document": {
@@ -104,6 +91,33 @@
                             "compartment temperature": {
                                 "value": 27.4,
                                 "unit": "degC"
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [0.0]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -125,18 +139,9 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Dynamic Light Scattering",
-                                        "firmware version": "8.2.1.278",
-                                        "integration time": {
-                                            "value": 5.0,
-                                            "unit": "s"
-                                        },
                                         "number of averages": {
                                             "value": 4.0,
                                             "unit": "#"
-                                        },
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
                                         },
                                         "custom information document": {
                                             "pump": "0",
@@ -162,10 +167,6 @@
                                     "buffer": "PBS"
                                 }
                             },
-                            "absorbance": {
-                                "value": 15.92,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "B22 & kD (8.2.0.3)",
                             "error aggregate document": {
                                 "error document": [
@@ -192,70 +193,36 @@
                                 ]
                             },
                             "experimental data identifier": "method",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_2",
-                                        "peak list": {
-                                            "peak": [
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 11.31,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 11.23,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 173.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 78.3,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 100.0,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "1"
-                                                    }
-                                                },
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 721.08,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 724.71,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 4620000.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 21.7,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 0.00104,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "2"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            },
                             "compartment temperature": {
                                 "value": 27.39,
                                 "unit": "degC"
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [15.92]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -277,18 +244,9 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Dynamic Light Scattering",
-                                        "firmware version": "8.2.1.278",
-                                        "integration time": {
-                                            "value": 5.0,
-                                            "unit": "s"
-                                        },
                                         "number of averages": {
                                             "value": 4.0,
                                             "unit": "#"
-                                        },
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
                                         },
                                         "custom information document": {
                                             "pump": "0",
@@ -312,10 +270,6 @@
                                     "analyte": "N/A",
                                     "buffer": "PBS"
                                 }
-                            },
-                            "absorbance": {
-                                "value": -0.01,
-                                "unit": "mAU"
                             },
                             "analytical method identifier": "B22 & kD (8.2.0.3)",
                             "error aggregate document": {
@@ -370,6 +324,35 @@
                             "compartment temperature": {
                                 "value": 27.4,
                                 "unit": "degC"
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.01
+                                        ]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -391,18 +374,9 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Dynamic Light Scattering",
-                                        "firmware version": "8.2.1.278",
-                                        "integration time": {
-                                            "value": 5.0,
-                                            "unit": "s"
-                                        },
                                         "number of averages": {
                                             "value": 4.0,
                                             "unit": "#"
-                                        },
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
                                         },
                                         "custom information document": {
                                             "pump": "0",
@@ -427,10 +401,6 @@
                                     "analyte": "1",
                                     "buffer": "PBS"
                                 }
-                            },
-                            "absorbance": {
-                                "value": 15.89,
-                                "unit": "mAU"
                             },
                             "analytical method identifier": "B22 & kD (8.2.0.3)",
                             "error aggregate document": {
@@ -458,70 +428,36 @@
                                 ]
                             },
                             "experimental data identifier": "method",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_5",
-                                        "peak list": {
-                                            "peak": [
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 10.72,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 10.66,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 149.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 74.3,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 100.0,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "1"
-                                                    }
-                                                },
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 481.85,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 483.5,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 1710000.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 25.7,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 0.00301,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "2"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            },
                             "compartment temperature": {
                                 "value": 27.39,
                                 "unit": "degC"
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [15.89]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -543,18 +479,9 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Dynamic Light Scattering",
-                                        "firmware version": "8.2.1.278",
-                                        "integration time": {
-                                            "value": 5.0,
-                                            "unit": "s"
-                                        },
                                         "number of averages": {
                                             "value": 4.0,
                                             "unit": "#"
-                                        },
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
                                         },
                                         "custom information document": {
                                             "pump": "0",
@@ -578,10 +505,6 @@
                                     "analyte": "N/A",
                                     "buffer": "PBS"
                                 }
-                            },
-                            "absorbance": {
-                                "value": 0.0,
-                                "unit": "mAU"
                             },
                             "analytical method identifier": "B22 & kD (8.2.0.3)",
                             "error aggregate document": {
@@ -636,6 +559,33 @@
                             "compartment temperature": {
                                 "value": 27.37,
                                 "unit": "degC"
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [0.0]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -657,18 +607,9 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Dynamic Light Scattering",
-                                        "firmware version": "8.2.1.278",
-                                        "integration time": {
-                                            "value": 5.0,
-                                            "unit": "s"
-                                        },
                                         "number of averages": {
                                             "value": 4.0,
                                             "unit": "#"
-                                        },
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
                                         },
                                         "custom information document": {
                                             "pump": "0",
@@ -695,76 +636,38 @@
                                     "molecular weight (kda)": 129.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 2.66,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "B22 & kD (8.2.0.3)",
                             "experimental data identifier": "method",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_8",
-                                        "peak list": {
-                                            "peak": [
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 13.3,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 13.23,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 254.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 67.8,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 100.0,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "1"
-                                                    }
-                                                },
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 462.71,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 460.88,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 1540000.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 32.2,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 0.00782,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "2"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            },
                             "compartment temperature": {
                                 "value": 27.37,
                                 "unit": "degC"
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [2.66]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -786,18 +689,9 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Dynamic Light Scattering",
-                                        "firmware version": "8.2.1.278",
-                                        "integration time": {
-                                            "value": 5.0,
-                                            "unit": "s"
-                                        },
                                         "number of averages": {
                                             "value": 4.0,
                                             "unit": "#"
-                                        },
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
                                         },
                                         "custom information document": {
                                             "pump": "0",
@@ -824,76 +718,38 @@
                                     "molecular weight (kda)": 129.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 5.41,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "B22 & kD (8.2.0.3)",
                             "experimental data identifier": "method",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_10",
-                                        "peak list": {
-                                            "peak": [
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 13.28,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 13.25,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 254.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 74.2,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 100.0,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "1"
-                                                    }
-                                                },
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 625.2,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 624.69,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 3240000.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 25.8,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 0.00272,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "2"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            },
                             "compartment temperature": {
                                 "value": 27.39,
                                 "unit": "degC"
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [5.41]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -915,18 +771,9 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Dynamic Light Scattering",
-                                        "firmware version": "8.2.1.278",
-                                        "integration time": {
-                                            "value": 5.0,
-                                            "unit": "s"
-                                        },
                                         "number of averages": {
                                             "value": 4.0,
                                             "unit": "#"
-                                        },
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
                                         },
                                         "custom information document": {
                                             "pump": "0",
@@ -953,76 +800,38 @@
                                     "molecular weight (kda)": 129.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 8.26,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "B22 & kD (8.2.0.3)",
                             "experimental data identifier": "method",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_12",
-                                        "peak list": {
-                                            "peak": [
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 13.65,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 13.14,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 255.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 91.4,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 99.9,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "1"
-                                                    }
-                                                },
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 79.75,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 79.69,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 20500.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 8.64,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 0.118,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "2"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            },
                             "compartment temperature": {
                                 "value": 27.36,
                                 "unit": "degC"
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [8.26]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1044,18 +853,9 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Dynamic Light Scattering",
-                                        "firmware version": "8.2.1.278",
-                                        "integration time": {
-                                            "value": 5.0,
-                                            "unit": "s"
-                                        },
                                         "number of averages": {
                                             "value": 4.0,
                                             "unit": "#"
-                                        },
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
                                         },
                                         "custom information document": {
                                             "pump": "0",
@@ -1082,51 +882,38 @@
                                     "molecular weight (kda)": 129.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 10.95,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "B22 & kD (8.2.0.3)",
                             "experimental data identifier": "method",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_14",
-                                        "peak list": {
-                                            "peak": [
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 15.28,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 14.83,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 295.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 100.0,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 100.0,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "1"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            },
                             "compartment temperature": {
                                 "value": 27.36,
                                 "unit": "degC"
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [10.95]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1148,18 +935,9 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Dynamic Light Scattering",
-                                        "firmware version": "8.2.1.278",
-                                        "integration time": {
-                                            "value": 5.0,
-                                            "unit": "s"
-                                        },
                                         "number of averages": {
                                             "value": 4.0,
                                             "unit": "#"
-                                        },
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
                                         },
                                         "custom information document": {
                                             "pump": "0",
@@ -1186,51 +964,38 @@
                                     "molecular weight (kda)": 129.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 14.02,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "B22 & kD (8.2.0.3)",
                             "experimental data identifier": "method",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_16",
-                                        "peak list": {
-                                            "peak": [
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 15.37,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 14.05,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 285.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 100.0,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 100.0,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "1"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            },
                             "compartment temperature": {
                                 "value": 27.37,
                                 "unit": "degC"
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [14.02]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1252,18 +1017,9 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Dynamic Light Scattering",
-                                        "firmware version": "8.2.1.278",
-                                        "integration time": {
-                                            "value": 5.0,
-                                            "unit": "s"
-                                        },
                                         "number of averages": {
                                             "value": 4.0,
                                             "unit": "#"
-                                        },
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
                                         },
                                         "custom information document": {
                                             "pump": "0",
@@ -1290,51 +1046,38 @@
                                     "molecular weight (kda)": 129.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 16.62,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "B22 & kD (8.2.0.3)",
                             "experimental data identifier": "method",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_18",
-                                        "peak list": {
-                                            "peak": [
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 16.4,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 13.87,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 317.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 100.0,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 100.0,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "1"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            },
                             "compartment temperature": {
                                 "value": 27.38,
                                 "unit": "degC"
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [16.62]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1356,18 +1099,9 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Dynamic Light Scattering",
-                                        "firmware version": "8.2.1.278",
-                                        "integration time": {
-                                            "value": 5.0,
-                                            "unit": "s"
-                                        },
                                         "number of averages": {
                                             "value": 4.0,
                                             "unit": "#"
-                                        },
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
                                         },
                                         "custom information document": {
                                             "pump": "0",
@@ -1394,76 +1128,38 @@
                                     "molecular weight (kda)": 129.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 19.55,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "B22 & kD (8.2.0.3)",
                             "experimental data identifier": "method",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_20",
-                                        "peak list": {
-                                            "peak": [
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 14.96,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 14.57,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 309.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 93.8,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 100.0,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "1"
-                                                    }
-                                                },
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 1486.98,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 1481.1,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 26400000.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 6.19,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 7.74e-05,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "2"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            },
                             "compartment temperature": {
                                 "value": 27.38,
                                 "unit": "degC"
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [19.55]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1485,18 +1181,9 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Dynamic Light Scattering",
-                                        "firmware version": "8.2.1.278",
-                                        "integration time": {
-                                            "value": 5.0,
-                                            "unit": "s"
-                                        },
                                         "number of averages": {
                                             "value": 4.0,
                                             "unit": "#"
-                                        },
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
                                         },
                                         "custom information document": {
                                             "pump": "0",
@@ -1520,10 +1207,6 @@
                                     "analyte": "N/A",
                                     "buffer": "PBS"
                                 }
-                            },
-                            "absorbance": {
-                                "value": -0.01,
-                                "unit": "mAU"
                             },
                             "analytical method identifier": "B22 & kD (8.2.0.3)",
                             "error aggregate document": {
@@ -1578,6 +1261,35 @@
                             "compartment temperature": {
                                 "value": 27.38,
                                 "unit": "degC"
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.01
+                                        ]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1599,18 +1311,9 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Dynamic Light Scattering",
-                                        "firmware version": "8.2.1.278",
-                                        "integration time": {
-                                            "value": 5.0,
-                                            "unit": "s"
-                                        },
                                         "number of averages": {
                                             "value": 4.0,
                                             "unit": "#"
-                                        },
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
                                         },
                                         "custom information document": {
                                             "pump": "0",
@@ -1637,76 +1340,38 @@
                                     "molecular weight (kda)": 129.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 2.7,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "B22 & kD (8.2.0.3)",
                             "experimental data identifier": "method",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_23",
-                                        "peak list": {
-                                            "peak": [
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 13.46,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 13.32,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 251.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 93.8,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 100.0,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "1"
-                                                    }
-                                                },
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 1168.56,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 1164.32,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 14900000.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 6.19,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 0.000111,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "2"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            },
                             "compartment temperature": {
                                 "value": 27.36,
                                 "unit": "degC"
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [2.7]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1728,18 +1393,9 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Dynamic Light Scattering",
-                                        "firmware version": "8.2.1.278",
-                                        "integration time": {
-                                            "value": 5.0,
-                                            "unit": "s"
-                                        },
                                         "number of averages": {
                                             "value": 4.0,
                                             "unit": "#"
-                                        },
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
                                         },
                                         "custom information document": {
                                             "pump": "0",
@@ -1766,51 +1422,38 @@
                                     "molecular weight (kda)": 129.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 5.5,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "B22 & kD (8.2.0.3)",
                             "experimental data identifier": "method",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_25",
-                                        "peak list": {
-                                            "peak": [
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 14.39,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 14.3,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 265.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 100.0,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 100.0,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "1"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            },
                             "compartment temperature": {
                                 "value": 27.36,
                                 "unit": "degC"
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [5.5]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1832,18 +1475,9 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Dynamic Light Scattering",
-                                        "firmware version": "8.2.1.278",
-                                        "integration time": {
-                                            "value": 5.0,
-                                            "unit": "s"
-                                        },
                                         "number of averages": {
                                             "value": 4.0,
                                             "unit": "#"
-                                        },
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
                                         },
                                         "custom information document": {
                                             "pump": "0",
@@ -1870,76 +1504,38 @@
                                     "molecular weight (kda)": 129.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 8.33,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "B22 & kD (8.2.0.3)",
                             "experimental data identifier": "method",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_27",
-                                        "peak list": {
-                                            "peak": [
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 13.76,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 13.58,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 265.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 94.7,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 100.0,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "1"
-                                                    }
-                                                },
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 498.08,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 496.4,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 1840000.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 5.31,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 0.000808,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "2"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            },
                             "compartment temperature": {
                                 "value": 27.37,
                                 "unit": "degC"
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [8.33]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1961,18 +1557,9 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Dynamic Light Scattering",
-                                        "firmware version": "8.2.1.278",
-                                        "integration time": {
-                                            "value": 5.0,
-                                            "unit": "s"
-                                        },
                                         "number of averages": {
                                             "value": 4.0,
                                             "unit": "#"
-                                        },
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
                                         },
                                         "custom information document": {
                                             "pump": "0",
@@ -1999,51 +1586,38 @@
                                     "molecular weight (kda)": 129.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 11.06,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "B22 & kD (8.2.0.3)",
                             "experimental data identifier": "method",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_29",
-                                        "peak list": {
-                                            "peak": [
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 15.07,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 13.52,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 266.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 100.0,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 100.0,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "1"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            },
                             "compartment temperature": {
                                 "value": 27.37,
                                 "unit": "degC"
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [11.06]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -2065,18 +1639,9 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Dynamic Light Scattering",
-                                        "firmware version": "8.2.1.278",
-                                        "integration time": {
-                                            "value": 5.0,
-                                            "unit": "s"
-                                        },
                                         "number of averages": {
                                             "value": 4.0,
                                             "unit": "#"
-                                        },
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
                                         },
                                         "custom information document": {
                                             "pump": "1",
@@ -2101,10 +1666,6 @@
                                     "analyte": "1",
                                     "buffer": "PBS"
                                 }
-                            },
-                            "absorbance": {
-                                "value": 14.2,
-                                "unit": "mAU"
                             },
                             "analytical method identifier": "B22 & kD (8.2.0.3)",
                             "error aggregate document": {
@@ -2135,6 +1696,33 @@
                             "compartment temperature": {
                                 "value": 27.36,
                                 "unit": "degC"
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [14.2]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -2156,18 +1744,9 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Dynamic Light Scattering",
-                                        "firmware version": "8.2.1.278",
-                                        "integration time": {
-                                            "value": 5.0,
-                                            "unit": "s"
-                                        },
                                         "number of averages": {
                                             "value": 4.0,
                                             "unit": "#"
-                                        },
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
                                         },
                                         "custom information document": {
                                             "pump": "0",
@@ -2194,51 +1773,38 @@
                                     "molecular weight (kda)": 129.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 16.76,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "B22 & kD (8.2.0.3)",
                             "experimental data identifier": "method",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_32",
-                                        "peak list": {
-                                            "peak": [
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 15.11,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 14.95,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 289.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 100.0,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 100.0,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "1"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            },
                             "compartment temperature": {
                                 "value": 27.36,
                                 "unit": "degC"
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [16.76]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -2260,18 +1826,9 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Dynamic Light Scattering",
-                                        "firmware version": "8.2.1.278",
-                                        "integration time": {
-                                            "value": 5.0,
-                                            "unit": "s"
-                                        },
                                         "number of averages": {
                                             "value": 4.0,
                                             "unit": "#"
-                                        },
-                                        "detector wavelength setting": {
-                                            "value": 280.0,
-                                            "unit": "nm"
                                         },
                                         "custom information document": {
                                             "pump": "0",
@@ -2298,51 +1855,38 @@
                                     "molecular weight (kda)": 129.0
                                 }
                             },
-                            "absorbance": {
-                                "value": 19.75,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "B22 & kD (8.2.0.3)",
                             "experimental data identifier": "method",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_34",
-                                        "peak list": {
-                                            "peak": [
-                                                {
-                                                    "custom information document": {
-                                                        "peak mean diameter": {
-                                                            "value": 14.68,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak mode diameter": {
-                                                            "value": 14.16,
-                                                            "unit": "nm"
-                                                        },
-                                                        "peak est. MW": {
-                                                            "value": 291.0,
-                                                            "unit": "kDa"
-                                                        },
-                                                        "peak intensity": {
-                                                            "value": 100.0,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak mass": {
-                                                            "value": 100.0,
-                                                            "unit": "%"
-                                                        },
-                                                        "peak index": "1"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            },
                             "compartment temperature": {
                                 "value": 27.38,
                                 "unit": "degC"
+                            },
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [280.0]
+                                    ],
+                                    "measures": [
+                                        [19.75]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -10406,7 +9950,7 @@
             "UNC path": "tests/parsers/unchained_labs_lunatic_stunner/testdata/Unchained_Labs_Stunner_example01.xlsx",
             "file name": "Unchained_Labs_Stunner_example01.xlsx",
             "ASM converter name": "allotropy_unchained_labs_lunatic_&_stunner",
-            "ASM converter version": "0.1.102",
+            "ASM converter version": "0.1.103",
             "software name": "Lunatic and Stunner Analysis",
             "software version": "8.2.0.259"
         },

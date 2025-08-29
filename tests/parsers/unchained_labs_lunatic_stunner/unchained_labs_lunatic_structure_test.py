@@ -54,11 +54,13 @@ def test__create_measurement(
     }
     header = SeriesData(pd.Series())
     measurement = _create_measurement(
-        SeriesData(pd.Series(well_plate_data)), header, wavelength_column
+        SeriesData(pd.Series(well_plate_data)), header, [wavelength_column]
     )
 
-    assert measurement.detector_wavelength_setting == wavelength
-    assert measurement.absorbance == absorbance_value
+    assert measurement.spectrum_data_cube is not None
+    spectrum = measurement.spectrum_data_cube
+    assert spectrum.dimensions[0][0] == wavelength
+    assert spectrum.measures[0][0] == absorbance_value
     assert measurement.sample_identifier == sample_identifier
     assert measurement.location_identifier == location_identifier
     assert measurement.well_plate_identifier == well_plate_identifier
@@ -78,7 +80,7 @@ def test__create_measurement_with_no_wavelength_column() -> None:
     wavelength_column = "a250"
     msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelength_column)
     with pytest.raises(AllotropeConversionError, match=msg):
-        _create_measurement(well_plate_data, header, wavelength_column)
+        _create_measurement(well_plate_data, header, [wavelength_column])
 
 
 def test__create_measurement_with_incorrect_wavelength_column_format() -> None:
@@ -86,7 +88,7 @@ def test__create_measurement_with_incorrect_wavelength_column_format() -> None:
     well_plate_data = SeriesData(pd.Series({"sample name": "dummy name"}))
     header = SeriesData(pd.Series())
     with pytest.raises(AllotropeConversionError, match=re.escape(msg)):
-        _create_measurement(well_plate_data, header, "sample name")
+        _create_measurement(well_plate_data, header, ["sample name"])
 
 
 def test__get_calculated_data_from_measurement_for_unknown_wavelength() -> None:
@@ -101,7 +103,7 @@ def test__get_calculated_data_from_measurement_for_unknown_wavelength() -> None:
     }
     header = SeriesData(pd.Series())
     measurement = _create_measurement(
-        SeriesData(pd.Series(well_plate_data)), header, "a240"
+        SeriesData(pd.Series(well_plate_data)), header, ["a240"]
     )
 
     measurement_group = MeasurementGroup(
@@ -127,7 +129,7 @@ def test__get_calculated_data_from_measurement_for_A260() -> None:  # noqa: N802
     header = SeriesData(pd.Series())
     wavelength = "a260"
     measurement = _create_measurement(
-        SeriesData(pd.Series(well_plate_data)), header, wavelength
+        SeriesData(pd.Series(well_plate_data)), header, [wavelength]
     )
 
     measurement_group = MeasurementGroup(
@@ -165,7 +167,9 @@ def test_create_well_plate() -> None:
         == analytical_method_identifier
     )
     assert well_plate.measurement_time == f"{date} {time}"
-    assert well_plate.measurements[0].absorbance == 23.45
+    spectrum = well_plate.measurements[0].spectrum_data_cube
+    assert spectrum is not None
+    assert spectrum.measures[0][0] == 23.45
 
 
 def test_create_well_plate_with_two_measurements() -> None:
@@ -181,7 +185,7 @@ def test_create_well_plate_with_two_measurements() -> None:
         SeriesData(pd.Series(plate_data)), ["a452", "a280"], SeriesData(pd.Series())
     )
 
-    assert len(well_plate.measurements) == 2
+    assert len(well_plate.measurements) == 1
 
 
 def test_create_well_plate_use_datetime_from_data_over_header() -> None:
@@ -244,6 +248,7 @@ batch_id,Plate1,dummyApp,2021-05-20,16:55:51,14,23.4,4.5
     )
     reader = UnchainedLabsLunaticReader(NamedFileContents(contents, "filename.csv"))
     _, calculated_data = create_measurement_groups(reader.header, reader.data)
+
     assert calculated_data
     calculated_data_item = calculated_data[0]
 

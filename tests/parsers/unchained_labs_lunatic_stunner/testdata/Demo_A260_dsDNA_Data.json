@@ -11,10 +11,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -33,10 +29,6 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": -0.0,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
                             "error aggregate document": {
                                 "error document": [
@@ -50,18 +42,34 @@
                                     }
                                 ]
                             },
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_1"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.0
+                                        ]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -82,10 +90,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -104,31 +108,43 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": -0.0,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
                             "error aggregate document": {
                                 "error document": [
                                     {
                                         "error": "N/A",
-                                        "error feature": "absorbance"
+                                        "error feature": "absorbance-a260"
                                     }
                                 ]
                             },
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_3"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            null
+                                        ]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -149,10 +165,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -171,23 +183,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 2.03,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_5"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [2.03]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -208,10 +230,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -230,23 +248,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.49,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_7"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [0.49]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -267,10 +295,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -289,23 +313,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 5.01,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_9"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [5.01]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -326,10 +360,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -348,23 +378,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.6,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_11"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [0.6]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -385,10 +425,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -407,23 +443,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 10.04,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_13"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [10.04]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -444,10 +490,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -466,23 +508,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.79,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_15"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [0.79]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -503,10 +555,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -525,23 +573,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 10.19,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_17"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [10.19]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -562,10 +620,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -584,23 +638,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.77,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_19"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [0.77]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -621,10 +685,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -643,10 +703,6 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": -0.0,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
                             "error aggregate document": {
                                 "error document": [
@@ -660,18 +716,34 @@
                                     }
                                 ]
                             },
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_21"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.0
+                                        ]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -692,10 +764,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -714,23 +782,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.99,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_23"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [0.99]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -751,10 +829,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -773,23 +847,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 2.02,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_25"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [2.02]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -810,10 +894,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -832,23 +912,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.49,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_27"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [0.49]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -869,10 +959,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -891,23 +977,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 5.01,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_29"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [5.01]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -928,10 +1024,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -950,23 +1042,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.6,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_31"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [0.6]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -987,10 +1089,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -1009,23 +1107,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 5.03,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_33"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [5.03]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1046,10 +1154,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -1068,23 +1172,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.59,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_35"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [0.59]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1105,10 +1219,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -1127,23 +1237,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 10.09,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_37"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [10.09]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1164,10 +1284,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -1186,23 +1302,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.81,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_39"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [0.81]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1223,10 +1349,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -1245,10 +1367,6 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": -0.0,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
                             "error aggregate document": {
                                 "error document": [
@@ -1262,18 +1380,34 @@
                                     }
                                 ]
                             },
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_41"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.0
+                                        ]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1294,10 +1428,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -1316,23 +1446,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.98,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_43"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [0.98]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1353,10 +1493,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -1375,23 +1511,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 1.98,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_45"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [1.98]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1412,10 +1558,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -1434,23 +1576,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.49,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_47"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [0.49]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1471,10 +1623,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -1493,23 +1641,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 2.02,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_49"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [2.02]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1530,10 +1688,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -1552,23 +1706,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.49,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_51"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [0.49]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1589,10 +1753,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -1611,23 +1771,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 5.02,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_53"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [5.02]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1648,10 +1818,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -1670,23 +1836,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.6,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_55"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [0.6]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1707,10 +1883,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -1729,23 +1901,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 10.05,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_57"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [10.05]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1766,10 +1948,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -1788,23 +1966,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.78,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_59"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [0.78]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1825,10 +2013,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -1847,10 +2031,6 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": -0.01,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
                             "error aggregate document": {
                                 "error document": [
@@ -1864,18 +2044,34 @@
                                     }
                                 ]
                             },
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_61"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [
+                                            -0.01
+                                        ]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -1896,10 +2092,6 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
-                                        "detector wavelength setting": {
-                                            "value": 260.0,
-                                            "unit": "nm"
-                                        },
                                         "custom information document": {
                                             "path length mode": "single",
                                             "pump": "0",
@@ -1918,23 +2110,33 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
-                            "absorbance": {
-                                "value": 0.98,
-                                "unit": "mAU"
-                            },
                             "analytical method identifier": "A260 dsDNA",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "data processing document": {
-                                            "concentration factor": {
-                                                "value": 50.0,
-                                                "unit": "ng/µL"
-                                            }
-                                        },
-                                        "processed data identifier": "UNCHAINED_LABS_LUNATIC_TEST_ID_63"
-                                    }
-                                ]
+                            "absorption spectrum data cube": {
+                                "label": "absorvance-spectrum",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "wavelength",
+                                            "unit": "nm"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "absorbance",
+                                            "unit": "mAU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [260.0]
+                                    ],
+                                    "measures": [
+                                        [0.98]
+                                    ]
+                                }
                             }
                         }
                     ],
@@ -4005,7 +4207,7 @@
             "UNC path": "tests/parsers/unchained_labs_lunatic_stunner/testdata/Demo_A260_dsDNA_Data.csv",
             "file name": "Demo_A260_dsDNA_Data.csv",
             "ASM converter name": "allotropy_unchained_labs_lunatic_&_stunner",
-            "ASM converter version": "0.1.102",
+            "ASM converter version": "0.1.103",
             "software name": "Lunatic and Stunner Analysis"
         },
         "device system document": {
