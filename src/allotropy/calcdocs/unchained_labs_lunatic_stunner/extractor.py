@@ -17,8 +17,8 @@ class LunaticExtractor(Extractor[Measurement]):
             uuid=measurement.identifier,
             data={
                 "uuid": measurement.identifier,
-                "wavelength id": measurement.wavelength_identifier,
-                "absorbance": measurement.absorbance,
+                "wavelength id": "NA",
+                "absorbance": 0.0,
                 "detection type": measurement.detection_type,
                 **custom_info,
             },
