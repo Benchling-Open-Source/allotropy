@@ -30,9 +30,9 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMicroliterPerMinute,
     TQuantityValueMolar,
     TQuantityValueNanomolar,
+    TQuantityValuePercent,
     TQuantityValuePerMolarPerSecond,
     TQuantityValuePerSecond,
-    TQuantityValuePercent,
     TQuantityValueResonanceUnits,
     TQuantityValueSecondTime,
 )
@@ -107,6 +107,7 @@ class Measurement:
     identifier: str
     sample_identifier: str
     type_: MeasurementType
+    device_control_document: list[DeviceControlDocument]
     location_identifier: str | None = None
     batch_identifier: str | None = None
     well_plate_identifier: str | None = None
@@ -114,17 +115,16 @@ class Measurement:
     concentration: float | None = None
     method_name: str | None = None
     ligand_identifier: str | None = None
-    device_control_document: list[DeviceControlDocument] | None = None
     sample_custom_info: DictType | None = None
 
     # Sensorgram
     sensorgram_data_cube: DataCube | None = None
 
     # Processed Data
-    binding_on_rate_measurement_datum__kon_: str | None = None
-    binding_off_rate_measurement_datum__koff_: str | None = None
-    equilibrium_dissociation_constant__KD_: str | None = None
-    maximum_binding_capacity__Rmax_: str | None = None
+    binding_on_rate_measurement_datum__kon_: float | None = None
+    binding_off_rate_measurement_datum__koff_: float | None = None
+    equilibrium_dissociation_constant__kd_: float | None = None
+    maximum_binding_capacity__rmax_: float | None = None
     processed_data_custom_info: DictType | None = None
 
     # Report point
@@ -152,9 +152,7 @@ class Data:
 
 
 class Mapper(SchemaMapper[Data, Model]):
-    MANIFEST: str = (
-        "http://purl.allotrope.org/manifests/binding-affinity-analyzer/WD/2024/12/binding-affinity-analyzer.manifest"
-    )
+    MANIFEST: str = "http://purl.allotrope.org/manifests/binding-affinity-analyzer/WD/2024/12/binding-affinity-analyzer.manifest"
 
     def map_model(self, data: Data) -> Model:
         return Model(
@@ -255,11 +253,11 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
             equilibrium_dissociation_constant__KD_=quantity_or_none(
                 TQuantityValueMolar,
-                measurement.equilibrium_dissociation_constant__KD_,
+                measurement.equilibrium_dissociation_constant__kd_,
             ),
             maximum_binding_capacity__Rmax_=quantity_or_none(
                 TQuantityValueResonanceUnits,
-                measurement.maximum_binding_capacity__Rmax_,
+                measurement.maximum_binding_capacity__rmax_,
             ),
             report_point_aggregate_document=(
                 ReportPointAggregateDocument(

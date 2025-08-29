@@ -304,18 +304,16 @@ class EvaluationKinetics:
 
     def __init__(self, kinetics_table: pd.DataFrame) -> None:
         self._data = {
-            (
-                row["Channel"],
-                row["Capture 1 Solution"],
-                row["Analyte 1 Solution"],
-            ): KineticsData.create(SeriesData(row))
+            f'{row["Channel"]} {row["Capture 1 Solution"]} {row["Analyte 1 Solution"]}': KineticsData.create(
+                SeriesData(row)
+            )
             for _, row in kinetics_table.iterrows()
         }
 
     def get_data(
         self, channel: int, capture_solution: str, analyte_solution: str
     ) -> KineticsData | None:
-        return self._data.get((channel, capture_solution, analyte_solution))
+        return self._data.get(f"{channel} {capture_solution} {analyte_solution}")
 
 
 def _create_measurements_for_cycle(
@@ -409,8 +407,10 @@ def create_measurement(
 
     capture_solution = _first_not_null_or_none(channel_data["Capture 1 Solution"])
     analyte_solution = first_row_data.get(str, "Analyte 1 Solution")
-    kinetics_data = evaluation_kinetics.get_data(
-        channel, capture_solution, analyte_solution
+    kinetics_data = (
+        evaluation_kinetics.get_data(channel, capture_solution, analyte_solution)
+        if capture_solution and analyte_solution
+        else None
     )
     data_processing_document = dict(metadata.data_processing_document or {})
     data_processing_document.update(
@@ -481,12 +481,12 @@ def create_measurement(
             if kinetics_data is not None
             else None
         ),
-        equilibrium_dissociation_constant__KD_=(
+        equilibrium_dissociation_constant__kd_=(
             kinetics_data.equilibrium_dissociation_constant
             if kinetics_data is not None
             else None
         ),
-        maximum_binding_capacity__Rmax_=(
+        maximum_binding_capacity__rmax_=(
             kinetics_data.maximum_binding_capacity
             if kinetics_data is not None
             else None
@@ -526,6 +526,6 @@ def _get_report_point(row: SeriesData) -> ReportPoint:
     )
 
 
-def _first_not_null_or_none(series: pd.Series) -> str | None:
+def _first_not_null_or_none(series: pd.Series[Any]) -> str | None:
     """Get the first non-null value from a Series or None."""
     return str(series[idx]) if (idx := series.first_valid_index()) is not None else None
