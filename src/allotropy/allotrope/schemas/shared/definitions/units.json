@@ -779,6 +779,18 @@
       "unit"
     ]
   },
+  "SquareResonanceUnits": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "RU^2",
+        "$asm.unit-iri": "TODO"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "TODO": {
     "properties": {
       "unit": {
