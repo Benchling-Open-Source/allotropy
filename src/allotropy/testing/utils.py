@@ -45,6 +45,7 @@ NON_UNIQUE_IDENTIFIERS = {
     "batch identifier",
     "data source identifier",
     "device identifier",
+    "device method identifier",
     "experimental data identifier",
     "flow cell identifier",
     "group identifier",

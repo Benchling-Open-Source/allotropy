@@ -135,11 +135,11 @@ def test_custom_information_document() -> None:
                 cycle_threshold_value_setting=TQuantityValueUnitless(value=1.0),
             ),
         ),
-        {"extra key": "Value", "weird-key/(value)°": "Other value"},
+        {"extra key": "Value", "$w.e\\ir:[d]-k'e~y/(v^a=l@ue)°#": "Other value"},
     )
 
     assert item.custom_information_document.extra_key == "Value"  # type: ignore
-    assert item.custom_information_document.weird_DASH_key_SLASH__OPAREN_value_CPAREN__DEG_ == "Other value"  # type: ignore
+    assert item.custom_information_document._DOLLAR_w_POINT_e_BSLASH_ir_COLON__OBRACKET_d_CBRACKET__DASH_k_QUOTE_e_TILDE_y_SLASH__OPAREN_v_CARET_a_EQUALS_l_AT_ue_CPAREN__DEG__NUMBER_ == "Other value"  # type: ignore
     asm_dict = unstructure(item)
     assert asm_dict == {
         "cycle threshold result": {"value": None, "unit": "(unitless)"},
@@ -148,7 +148,7 @@ def test_custom_information_document() -> None:
         },
         "custom information document": {
             "extra key": "Value",
-            "weird-key/(value)°": "Other value",
+            "$w.e\\ir:[d]-k'e~y/(v^a=l@ue)°#": "Other value",
         },
     }
     assert structure(asm_dict, ProcessedDataDocumentItem) == item

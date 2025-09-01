@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 from typing import Any
 
 import jsonschema
@@ -10,6 +11,12 @@ from allotropy.exceptions import (
     AllotropeSerializationError,
     AllotropeValidationError,
 )
+
+# Override format checker to remove "uri-reference" check, which ASM schemas fail against.
+FORMAT_CHECKER = copy.deepcopy(
+    jsonschema.validators.Draft202012Validator.FORMAT_CHECKER
+)
+FORMAT_CHECKER.checkers.pop("uri-reference", None)
 
 
 def serialize_and_validate_allotrope(model: Any) -> dict[str, Any]:
@@ -26,11 +33,11 @@ def serialize_and_validate_allotrope(model: Any) -> dict[str, Any]:
         raise AllotropeSerializationError(msg) from e
 
     try:
-        jsonschema.validate(
-            allotrope_dict,
-            allotrope_schema,
-            cls=jsonschema.validators.Draft202012Validator,
+        jsonschema.validators.Draft202012Validator.check_schema(
+            allotrope_schema, format_checker=FORMAT_CHECKER
         )
+        validator = jsonschema.validators.Draft202012Validator(allotrope_schema)
+        validator.validate(allotrope_dict)
     except Exception as e:
         msg = f"Failed to validate allotrope model against schema: {e}"
         raise AllotropeValidationError(msg) from e
