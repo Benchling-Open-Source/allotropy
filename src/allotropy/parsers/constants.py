@@ -18,9 +18,7 @@ def round_to_nearest_well_count(
     of possible well counts is not provided, use the default list of possible well counts.
     If the well count is not in the list of possible well counts, return None.
     """
-    well_counts = (
-        POSSIBLE_WELL_COUNTS if possible_well_counts is None else possible_well_counts
-    )
+    well_counts = possible_well_counts or POSSIBLE_WELL_COUNTS
     well_counts.sort()
     for possible_count in well_counts:
         if well_count > possible_count:

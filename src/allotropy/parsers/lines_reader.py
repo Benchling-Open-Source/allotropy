@@ -40,9 +40,6 @@ class LinesReader:
     def line_exists(self, line: int) -> bool:
         return 0 <= line < len(self.lines)
 
-    def line_with_pattern_exists(self, pattern: str) -> bool:
-        return any(search(pattern, line) for line in self.lines)
-
     def current_line_exists(self) -> bool:
         return self.line_exists(self.current_line)
 
