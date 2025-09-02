@@ -44,7 +44,7 @@ from allotropy.exceptions import AllotropyParserError
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
 )
-from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
+from allotropy.parsers.utils.values import assert_not_none, has_value, quantity_or_none
 from allotropy.types import DictType
 
 
@@ -385,7 +385,3 @@ class Mapper(SchemaMapper[Data, Model]):
                 for calculated_data_item in calculated_data_items
             ]
         )
-
-
-def has_value(model: object) -> bool:
-    return any(value is not None for value in model.__dict__.values())

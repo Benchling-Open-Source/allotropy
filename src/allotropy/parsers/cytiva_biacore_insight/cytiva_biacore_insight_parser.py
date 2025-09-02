@@ -7,12 +7,15 @@ from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling.
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.cytiva_biacore_insight.constants import DISPLAY_NAME
+from allotropy.parsers.cytiva_biacore_insight.cytiva_biacore_insight_data_creator import (
+    create_calculated_data,
+    create_measurement_groups,
+    create_metadata,
+)
 from allotropy.parsers.cytiva_biacore_insight.cytiva_biacore_insight_reader import (
     CytivaBiacoreInsightReader,
 )
 from allotropy.parsers.cytiva_biacore_insight.cytiva_biacore_insight_structure import (
-    create_measurement_groups,
-    create_metadata,
     Data,
 )
 from allotropy.parsers.release_state import ReleaseState
@@ -31,4 +34,5 @@ class CytivaBiacoreInsightParser(VendorParser[MapperData, Model]):
         return MapperData(
             create_metadata(data.metadata, named_file_contents.original_file_path),
             create_measurement_groups(data),
+            create_calculated_data(data),
         )
