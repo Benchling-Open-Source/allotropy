@@ -57,10 +57,8 @@ def test__create_measurement(
         SeriesData(pd.Series(well_plate_data)), header, [wavelength_column]
     )
 
-    assert measurement.spectrum_data_cube is not None
-    spectrum = measurement.spectrum_data_cube
-    assert spectrum.dimensions[0][0] == wavelength
-    assert spectrum.measures[0][0] == absorbance_value
+    assert measurement.detector_wavelength_setting == wavelength
+    assert measurement.absorbance == absorbance_value
     assert measurement.sample_identifier == sample_identifier
     assert measurement.location_identifier == location_identifier
     assert measurement.well_plate_identifier == well_plate_identifier
@@ -167,9 +165,7 @@ def test_create_well_plate() -> None:
         == analytical_method_identifier
     )
     assert well_plate.measurement_time == f"{date} {time}"
-    spectrum = well_plate.measurements[0].spectrum_data_cube
-    assert spectrum is not None
-    assert spectrum.measures[0][0] == 23.45
+    assert well_plate.measurements[0].absorbance == 23.45
 
 
 def test_create_well_plate_with_two_measurements() -> None:

@@ -10,7 +10,12 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance"
+                                        "detection type": "Absorbance",
+                                        "firmware version": "8.3.0.305",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        }
                                     }
                                 ]
                             },
@@ -27,35 +32,12 @@
                                     "plate description": "- Lunatic_test_BE_31JUL2024"
                                 }
                             },
+                            "absorbance": {
+                                "value": 3.65,
+                                "unit": "mAU"
+                            },
                             "analytical method identifier": "dsDNA (Turbidity)",
-                            "experimental data identifier": "BENCHLING_TEST",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [260.0]
-                                    ],
-                                    "measures": [
-                                        [3.65]
-                                    ]
-                                }
-                            }
+                            "experimental data identifier": "BENCHLING_TEST"
                         }
                     ],
                     "measurement time": "2024-01-08T10:15:59+00:00",
@@ -75,7 +57,12 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
-                                        "detection type": "Absorbance"
+                                        "detection type": "Absorbance",
+                                        "firmware version": "8.3.0.305",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        }
                                     }
                                 ]
                             },
@@ -92,35 +79,12 @@
                                     "plate description": "- Lunatic_test_BE_31JUL2024"
                                 }
                             },
+                            "absorbance": {
+                                "value": 3.66,
+                                "unit": "mAU"
+                            },
                             "analytical method identifier": "dsDNA (Turbidity)",
-                            "experimental data identifier": "BENCHLING_TEST",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [260.0]
-                                    ],
-                                    "measures": [
-                                        [3.66]
-                                    ]
-                                }
-                            }
+                            "experimental data identifier": "BENCHLING_TEST"
                         }
                     ],
                     "measurement time": "2024-01-08T10:15:59+00:00",
@@ -239,7 +203,7 @@
             "UNC path": "tests/parsers/unchained_labs_lunatic_stunner/testdata/Example_Lunatic_Plate_Reader_csv_with_header.csv",
             "file name": "Example_Lunatic_Plate_Reader_csv_with_header.csv",
             "ASM converter name": "allotropy_unchained_labs_lunatic_&_stunner",
-            "ASM converter version": "0.1.103",
+            "ASM converter version": "0.1.102",
             "software name": "Lunatic and Stunner Analysis",
             "software version": "8.2.0.259"
         },

@@ -11,6 +11,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -28,6 +32,10 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
                             "analytical method identifier": "Protein (Turbidity)",
                             "error aggregate document": {
                                 "error document": [
@@ -40,35 +48,6 @@
                                         "error feature": "A260/A280"
                                     }
                                 ]
-                            },
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [
-                                            -0.0
-                                        ]
-                                    ]
-                                }
                             }
                         }
                     ],
@@ -89,6 +68,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -107,34 +90,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [0.84]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 0.84,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -154,6 +114,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -172,34 +136,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [1.04]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 1.04,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -219,6 +160,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -237,34 +182,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [0.18]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 0.18,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -284,6 +206,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -302,34 +228,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [2.07]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 2.07,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -349,6 +252,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -367,34 +274,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [0.39]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 0.39,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -414,6 +298,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -432,34 +320,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [4.22]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 4.22,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -479,6 +344,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -497,34 +366,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [0.61]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 0.61,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -544,6 +390,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -562,34 +412,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [4.22]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 4.22,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -609,6 +436,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -627,34 +458,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [0.61]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 0.61,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -674,6 +482,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -691,6 +503,10 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
+                            "absorbance": {
+                                "value": 0.0,
+                                "unit": "mAU"
+                            },
                             "analytical method identifier": "Protein (Turbidity)",
                             "error aggregate document": {
                                 "error document": [
@@ -703,33 +519,6 @@
                                         "error feature": "A260/A280"
                                     }
                                 ]
-                            },
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [0.0]
-                                    ]
-                                }
                             }
                         }
                     ],
@@ -750,6 +539,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -768,34 +561,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [0.82]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 0.82,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -815,6 +585,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -833,34 +607,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [1.03]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 1.03,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -880,6 +631,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -898,34 +653,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [0.18]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 0.18,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -945,6 +677,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -963,34 +699,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [2.05]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 2.05,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -1010,6 +723,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -1028,34 +745,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [0.4]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 0.4,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -1075,6 +769,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -1093,34 +791,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [2.08]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 2.08,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -1140,6 +815,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -1158,34 +837,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [0.4]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 0.4,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -1205,6 +861,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -1223,34 +883,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [4.23]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 4.23,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -1270,6 +907,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -1288,34 +929,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [0.6]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 0.6,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -1335,6 +953,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -1352,6 +974,10 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            },
                             "analytical method identifier": "Protein (Turbidity)",
                             "error aggregate document": {
                                 "error document": [
@@ -1364,35 +990,6 @@
                                         "error feature": "A260/A280"
                                     }
                                 ]
-                            },
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [
-                                            -0.0
-                                        ]
-                                    ]
-                                }
                             }
                         }
                     ],
@@ -1413,6 +1010,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -1431,34 +1032,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [0.83]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 0.83,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -1478,6 +1056,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -1496,34 +1078,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [1.03]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 1.03,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -1543,6 +1102,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -1561,34 +1124,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [0.19]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 0.19,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -1608,6 +1148,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -1626,34 +1170,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [1.04]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 1.04,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -1673,6 +1194,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -1691,34 +1216,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [0.18]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 0.18,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -1738,6 +1240,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -1756,34 +1262,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [2.07]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 2.07,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -1803,6 +1286,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -1821,34 +1308,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [0.38]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 0.38,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -1868,6 +1332,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -1886,34 +1354,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [4.22]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 4.22,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -1933,6 +1378,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -1951,34 +1400,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [0.62]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 0.62,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -1998,6 +1424,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -2015,6 +1445,10 @@
                                     "plate type": "Lunatic Plate"
                                 }
                             },
+                            "absorbance": {
+                                "value": -0.01,
+                                "unit": "mAU"
+                            },
                             "analytical method identifier": "Protein (Turbidity)",
                             "error aggregate document": {
                                 "error document": [
@@ -2027,35 +1461,6 @@
                                         "error feature": "A260/A280"
                                     }
                                 ]
-                            },
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [
-                                            -0.01
-                                        ]
-                                    ]
-                                }
                             }
                         }
                     ],
@@ -2076,6 +1481,10 @@
                                     {
                                         "device type": "plate reader",
                                         "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        },
                                         "custom information document": {
                                             "pump": "0",
                                             "column": "1"
@@ -2094,34 +1503,11 @@
                                     "molar attenuation coefficient setting": 10.0
                                 }
                             },
-                            "analytical method identifier": "Protein (Turbidity)",
-                            "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
-                                "cube-structure": {
-                                    "dimensions": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "wavelength",
-                                            "unit": "nm"
-                                        }
-                                    ],
-                                    "measures": [
-                                        {
-                                            "@componentDatatype": "double",
-                                            "concept": "absorbance",
-                                            "unit": "mAU"
-                                        }
-                                    ]
-                                },
-                                "data": {
-                                    "dimensions": [
-                                        [280.0]
-                                    ],
-                                    "measures": [
-                                        [0.83]
-                                    ]
-                                }
-                            }
+                            "absorbance": {
+                                "value": 0.83,
+                                "unit": "mAU"
+                            },
+                            "analytical method identifier": "Protein (Turbidity)"
                         }
                     ],
                     "measurement time": "2016-10-17T07:28:30+00:00",
@@ -3679,7 +3065,7 @@
             "UNC path": "tests/parsers/unchained_labs_lunatic_stunner/testdata/Demo_A280_Protein.csv",
             "file name": "Demo_A280_Protein.csv",
             "ASM converter name": "allotropy_unchained_labs_lunatic_&_stunner",
-            "ASM converter version": "0.1.103",
+            "ASM converter version": "0.1.102",
             "software name": "Lunatic and Stunner Analysis"
         },
         "device system document": {
