@@ -10,8 +10,17 @@ DEFAULT_EPOCH_TIMESTAMP = "1970-01-01"
 POSSIBLE_WELL_COUNTS = [1, 2, 4, 6, 8, 12, 24, 48, 72, 96, 384, 1536, 3456]
 
 
-def round_to_nearest_well_count(well_count: int) -> int | None:
-    for possible_count in POSSIBLE_WELL_COUNTS:
+def round_to_nearest_well_count(
+    well_count: int, possible_well_counts: list[int] | None = None
+) -> int | None:
+    """
+    Round the well count to the nearest well count in the list of possible well counts. If a list
+    of possible well counts is not provided, use the default list of possible well counts.
+    If the well count is not in the list of possible well counts, return None.
+    """
+    well_counts = possible_well_counts or POSSIBLE_WELL_COUNTS
+    well_counts.sort()
+    for possible_count in well_counts:
         if well_count > possible_count:
             continue
         return possible_count

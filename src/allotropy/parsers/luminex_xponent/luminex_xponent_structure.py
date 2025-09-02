@@ -273,11 +273,12 @@ class Measurement:
             key for key in count_data.series.index if key not in metadata_keys
         ]
         for analyte in analyte_keys:
+            assay_bead_identifier = bead_ids_data.get(str, analyte, "N/A")
             analytes.append(
                 Analyte(
                     identifier=(analyte_identifier := random_uuid_str()),
                     name=analyte,
-                    assay_bead_identifier=bead_ids_data[str, analyte],
+                    assay_bead_identifier=assay_bead_identifier,
                     assay_bead_count=count_data[float, analyte],
                     statistics=[
                         StatisticsDocument(
