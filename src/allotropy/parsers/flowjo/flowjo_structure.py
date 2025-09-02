@@ -147,12 +147,18 @@ def _extract_general_custom_keywords(
     )
 
 
-def _extract_device_control_keywords_from_map(mapping: dict[str, str]) -> dict[str, str]:
+def _extract_device_control_keywords_from_map(
+    mapping: dict[str, str]
+) -> dict[str, str]:
     """Filter device control keywords using a pre-built mapping."""
-    return {name: value for name, value in mapping.items() if _is_device_control_field(name)}
+    return {
+        name: value for name, value in mapping.items() if _is_device_control_field(name)
+    }
 
 
-def _extract_general_custom_keywords_from_map(mapping: dict[str, str]) -> dict[str, str]:
+def _extract_general_custom_keywords_from_map(
+    mapping: dict[str, str]
+) -> dict[str, str]:
     """Filter general custom keywords using a pre-built mapping."""
     result: dict[str, str] = {}
     for name, value in mapping.items():
@@ -569,7 +575,9 @@ def _get_keyword_value_by_name_from_sample(
     return found_value
 
 
-def _build_keyword_map(sample: StrictXmlElement) -> tuple[dict[str, str], StrictXmlElement | None]:
+def _build_keyword_map(
+    sample: StrictXmlElement,
+) -> tuple[dict[str, str], StrictXmlElement | None]:
     """
     Build a name->value map from the sample's Keywords block once.
 
@@ -1120,11 +1128,15 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
         keyword_map, keywords_element = _build_keyword_map(sample)
 
         # Helper uses the prebuilt map first, falling back to XML lookup if needed
-        def get_keyword_value(name: str) -> str | None:
-            value = keyword_map.get(name)
+        def get_keyword_value(
+            name: str,
+            _map: dict[str, str] = keyword_map,
+            _sample: StrictXmlElement = sample,
+        ) -> str | None:
+            value = _map.get(name)
             if value is not None:
                 return value
-            return _get_keyword_value_by_name_from_sample(sample, name)
+            return _get_keyword_value_by_name_from_sample(_sample, name)
 
         # Extract measurement-level metadata fields
         measurement_custom_info = {}
@@ -1198,7 +1210,9 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
         for field, value in pre_cytometer_processing_fields.items():
             data_processing_custom_info.setdefault(field, value)
 
-        device_control_custom_info = _extract_device_control_keywords_from_map(keyword_map)
+        device_control_custom_info = _extract_device_control_keywords_from_map(
+            keyword_map
+        )
 
         keywords_custom_info = _extract_general_custom_keywords_from_map(keyword_map)
 
