@@ -5,6 +5,13 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.104] - 2025-08-29
+
+### Added
+
+- Luminex xPONENT - get unread data (#1059)
+- Unchained Labs Lunatic & Stunner - Add support for Stunner files (#1054)
+
 ## [0.1.103] - 2025-08-18
 
 ### Added
