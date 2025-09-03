@@ -19,7 +19,22 @@
                             "sample document": {
                                 "sample identifier": "Test1",
                                 "batch identifier": "1.0",
-                                "description": "Default"
+                                "description": "Default",
+                                "custom information document": {
+                                    "Chemistry Flow Time": 1.0,
+                                    "Pre-Dilution Multiplier": 1.0,
+                                    "Cell Inspection Type": "StandardCHO",
+                                    "PCO2 @ Temp": "mmHg",
+                                    "Vessel Pressure (psi)": 1.0,
+                                    "PO2 @ Temp": "mmHg",
+                                    "Sparging O2%": 1.0,
+                                    "Chemistry Dilution Ratio": "1:01",
+                                    "pH / Gas Flow Time": 1.0,
+                                    "Vessel ID": 1.0,
+                                    "Sample Time": "1/1/2020 16:20",
+                                    "pH @ Temp": 1.0,
+                                    "Osm": "mOsm/kg"
+                                }
                             },
                             "analyte aggregate document": {
                                 "analyte document": [
@@ -103,7 +118,22 @@
                             "sample document": {
                                 "sample identifier": "Test1",
                                 "batch identifier": "1.0",
-                                "description": "Default"
+                                "description": "Default",
+                                "custom information document": {
+                                    "Chemistry Flow Time": 1.0,
+                                    "Pre-Dilution Multiplier": 1.0,
+                                    "Cell Inspection Type": "StandardCHO",
+                                    "PCO2 @ Temp": "mmHg",
+                                    "Vessel Pressure (psi)": 1.0,
+                                    "PO2 @ Temp": "mmHg",
+                                    "Sparging O2%": 1.0,
+                                    "Chemistry Dilution Ratio": "1:01",
+                                    "pH / Gas Flow Time": 1.0,
+                                    "Vessel ID": 1.0,
+                                    "Sample Time": "1/1/2020 16:20",
+                                    "pH @ Temp": 1.0,
+                                    "Osm": "mOsm/kg"
+                                }
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -145,7 +175,22 @@
                             "sample document": {
                                 "sample identifier": "Test1",
                                 "batch identifier": "1.0",
-                                "description": "Default"
+                                "description": "Default",
+                                "custom information document": {
+                                    "Chemistry Flow Time": 1.0,
+                                    "Pre-Dilution Multiplier": 1.0,
+                                    "Cell Inspection Type": "StandardCHO",
+                                    "PCO2 @ Temp": "mmHg",
+                                    "Vessel Pressure (psi)": 1.0,
+                                    "PO2 @ Temp": "mmHg",
+                                    "Sparging O2%": 1.0,
+                                    "Chemistry Dilution Ratio": "1:01",
+                                    "pH / Gas Flow Time": 1.0,
+                                    "Vessel ID": 1.0,
+                                    "Sample Time": "1/1/2020 16:20",
+                                    "pH @ Temp": 1.0,
+                                    "Osm": "mOsm/kg"
+                                }
                             },
                             "pO2": {
                                 "value": 1.0,
@@ -178,7 +223,22 @@
                             "sample document": {
                                 "sample identifier": "Test1",
                                 "batch identifier": "1.0",
-                                "description": "Default"
+                                "description": "Default",
+                                "custom information document": {
+                                    "Chemistry Flow Time": 1.0,
+                                    "Pre-Dilution Multiplier": 1.0,
+                                    "Cell Inspection Type": "StandardCHO",
+                                    "PCO2 @ Temp": "mmHg",
+                                    "Vessel Pressure (psi)": 1.0,
+                                    "PO2 @ Temp": "mmHg",
+                                    "Sparging O2%": 1.0,
+                                    "Chemistry Dilution Ratio": "1:01",
+                                    "pH / Gas Flow Time": 1.0,
+                                    "Vessel ID": 1.0,
+                                    "Sample Time": "1/1/2020 16:20",
+                                    "pH @ Temp": 1.0,
+                                    "Osm": "mOsm/kg"
+                                }
                             },
                             "osmolality": {
                                 "value": 1.0,
@@ -199,7 +259,22 @@
                             "sample document": {
                                 "sample identifier": "Test1",
                                 "batch identifier": "1.0",
-                                "description": "Default"
+                                "description": "Default",
+                                "custom information document": {
+                                    "Chemistry Flow Time": 1.0,
+                                    "Pre-Dilution Multiplier": 1.0,
+                                    "Cell Inspection Type": "StandardCHO",
+                                    "PCO2 @ Temp": "mmHg",
+                                    "Vessel Pressure (psi)": 1.0,
+                                    "PO2 @ Temp": "mmHg",
+                                    "Sparging O2%": 1.0,
+                                    "Chemistry Dilution Ratio": "1:01",
+                                    "pH / Gas Flow Time": 1.0,
+                                    "Vessel ID": 1.0,
+                                    "Sample Time": "1/1/2020 16:20",
+                                    "pH @ Temp": 1.0,
+                                    "Osm": "mOsm/kg"
+                                }
                             },
                             "pH": {
                                 "value": 1.0,
@@ -222,7 +297,7 @@
             "file name": "SampleResultsT123456789C2020-01-01_162647.csv",
             "UNC path": "tests/parsers/novabio_flex2/testdata/SampleResultsT123456789C2020-01-01_162647.csv",
             "ASM converter name": "allotropy_novabio_flex2",
-            "ASM converter version": "0.1.79",
+            "ASM converter version": "0.1.104",
             "software name": "NovaBio Flex"
         },
         "device system document": {

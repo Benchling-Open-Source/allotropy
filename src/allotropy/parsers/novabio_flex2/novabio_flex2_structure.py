@@ -78,6 +78,7 @@ class Sample:
     viable_cell_count: float | None = None
     cell_type_processing_method: str | None = None
     cell_density_dilution_factor: float | None = None
+    custom_info: dict[str, Any] | None = None
 
     @classmethod
     def create(cls, units: SeriesData, data: SeriesData) -> Sample:
@@ -122,6 +123,7 @@ class Sample:
             if cell_density_dilution
             else None,
             cell_density_dilution_factor=try_float_or_none(str(cell_density_dilution)),
+            custom_info={**data.get_unread(), **units.get_unread()},
         )
 
 
@@ -178,6 +180,7 @@ class SampleData:
             return SeriesData(), sample_data
 
         first_row = sample_data[0]
+        first_row.get_unread()
         date_time_regex = r"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}"
         if re.match(date_time_regex, first_row[str, "Date & Time"]) is None:
             return SampleData.parse_units(first_row), sample_data[1:]
@@ -198,6 +201,7 @@ def _create_measurement(sample: Sample, **kwargs: Any) -> Measurement:
         sample_identifier=sample.identifier,
         description=sample.sample_type,
         batch_identifier=sample.batch_identifier,
+        custom_info=sample.custom_info,
         **kwargs,
     )
 

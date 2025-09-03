@@ -19,7 +19,20 @@
                             "sample document": {
                                 "sample identifier": "SMPL_1234",
                                 "batch identifier": "BATCH_123",
-                                "description": "Spent Media"
+                                "description": "Spent Media",
+                                "custom information document": {
+                                    "Sparging O2%": 20.9,
+                                    "Cell Type": "Workhog",
+                                    "Sample Time": "24-6-2022  14:34:52",
+                                    "pH / Gas Flow Time": 3.65,
+                                    "Vessel ID": "3L Bioreactor",
+                                    "PCO2 @ Temp": 46.8,
+                                    "Vessel Pressure (psi)": 0.0,
+                                    "Chemistry Dilution Ratio": "1:1",
+                                    "Chemistry Flow Time": 6.67,
+                                    "pH @ Temp": 7.4,
+                                    "PO2 @ Temp": 191.6
+                                }
                             },
                             "analyte aggregate document": {
                                 "analyte document": [
@@ -103,7 +116,20 @@
                             "sample document": {
                                 "sample identifier": "SMPL_1234",
                                 "batch identifier": "BATCH_123",
-                                "description": "Spent Media"
+                                "description": "Spent Media",
+                                "custom information document": {
+                                    "Sparging O2%": 20.9,
+                                    "Cell Type": "Workhog",
+                                    "Sample Time": "24-6-2022  14:34:52",
+                                    "pH / Gas Flow Time": 3.65,
+                                    "Vessel ID": "3L Bioreactor",
+                                    "PCO2 @ Temp": 46.8,
+                                    "Vessel Pressure (psi)": 0.0,
+                                    "Chemistry Dilution Ratio": "1:1",
+                                    "Chemistry Flow Time": 6.67,
+                                    "pH @ Temp": 7.4,
+                                    "PO2 @ Temp": 191.6
+                                }
                             },
                             "pO2": {
                                 "value": 191.6,
@@ -136,7 +162,20 @@
                             "sample document": {
                                 "sample identifier": "SMPL_1234",
                                 "batch identifier": "BATCH_123",
-                                "description": "Spent Media"
+                                "description": "Spent Media",
+                                "custom information document": {
+                                    "Sparging O2%": 20.9,
+                                    "Cell Type": "Workhog",
+                                    "Sample Time": "24-6-2022  14:34:52",
+                                    "pH / Gas Flow Time": 3.65,
+                                    "Vessel ID": "3L Bioreactor",
+                                    "PCO2 @ Temp": 46.8,
+                                    "Vessel Pressure (psi)": 0.0,
+                                    "Chemistry Dilution Ratio": "1:1",
+                                    "Chemistry Flow Time": 6.67,
+                                    "pH @ Temp": 7.4,
+                                    "PO2 @ Temp": 191.6
+                                }
                             },
                             "pH": {
                                 "value": 7.4,
@@ -159,7 +198,7 @@
             "file name": "SampleResults2022-06-28_142558.csv",
             "UNC path": "tests/parsers/novabio_flex2/testdata/SampleResults2022-06-28_142558.csv",
             "ASM converter name": "allotropy_novabio_flex2",
-            "ASM converter version": "0.1.79",
+            "ASM converter version": "0.1.104",
             "software name": "NovaBio Flex"
         },
         "device system document": {
