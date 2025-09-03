@@ -20,6 +20,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -34,17 +38,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -65,6 +71,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -79,17 +89,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -110,6 +122,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -124,17 +140,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -155,6 +173,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -169,17 +191,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -200,6 +224,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -214,17 +242,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -245,6 +275,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -259,17 +293,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -290,6 +326,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -304,17 +344,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -335,6 +377,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -349,17 +395,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -380,6 +428,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -394,17 +446,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -425,6 +479,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -439,17 +497,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -470,6 +530,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -484,17 +548,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -515,6 +581,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -529,17 +599,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -560,6 +632,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -574,17 +650,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -605,6 +683,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -619,17 +701,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -650,6 +734,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -664,17 +752,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -695,6 +785,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -709,17 +803,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -740,6 +836,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -754,17 +854,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -785,6 +887,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -799,17 +905,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -830,6 +938,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -844,17 +956,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -875,6 +989,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -889,17 +1007,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -920,6 +1040,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -934,17 +1058,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -965,6 +1091,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -979,17 +1109,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1010,6 +1142,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1024,17 +1160,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1055,6 +1193,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1069,17 +1211,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1100,6 +1244,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1114,17 +1262,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1145,6 +1295,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1159,17 +1313,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1190,6 +1346,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1204,17 +1364,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1235,6 +1397,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1249,17 +1415,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1280,6 +1448,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1294,17 +1466,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1325,6 +1499,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1339,17 +1517,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1370,6 +1550,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1384,17 +1568,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1415,6 +1601,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1429,17 +1619,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1460,6 +1652,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1474,17 +1670,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1505,6 +1703,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1519,17 +1721,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1550,6 +1754,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1564,17 +1772,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1595,6 +1805,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1609,17 +1823,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1640,6 +1856,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1654,17 +1874,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1685,6 +1907,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1699,17 +1925,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1730,6 +1958,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1744,17 +1976,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1775,6 +2009,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1789,17 +2027,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1820,6 +2060,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1834,17 +2078,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1865,6 +2111,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1879,17 +2129,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1910,6 +2162,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1924,17 +2180,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1955,6 +2213,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1969,17 +2231,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2000,6 +2264,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2014,17 +2282,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2045,6 +2315,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2059,17 +2333,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2090,6 +2366,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2104,17 +2384,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2135,6 +2417,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2149,17 +2435,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2180,6 +2468,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2194,17 +2486,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2225,6 +2519,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2239,17 +2537,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2270,6 +2570,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2284,17 +2588,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2315,6 +2621,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2329,17 +2639,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2360,6 +2672,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2374,17 +2690,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2405,6 +2723,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2419,17 +2741,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2450,6 +2774,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2464,17 +2792,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2495,6 +2825,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2509,17 +2843,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2540,6 +2876,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2554,17 +2894,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2585,6 +2927,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2599,17 +2945,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2630,6 +2978,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2644,17 +2996,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2675,6 +3029,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2689,17 +3047,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2720,6 +3080,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2734,17 +3098,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2765,6 +3131,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2779,17 +3149,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2810,6 +3182,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2824,17 +3200,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2855,6 +3233,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2869,17 +3251,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2900,6 +3284,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2914,17 +3302,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2945,6 +3335,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2959,17 +3353,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2990,6 +3386,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3004,17 +3404,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3035,6 +3437,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3049,17 +3455,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3080,6 +3488,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3094,17 +3506,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3125,6 +3539,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3139,17 +3557,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3170,6 +3590,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3184,17 +3608,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3215,6 +3641,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3229,17 +3659,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3260,6 +3692,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3274,17 +3710,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3305,6 +3743,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3319,17 +3761,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3350,6 +3794,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3364,17 +3812,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3395,6 +3845,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3409,17 +3863,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3440,6 +3896,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3454,17 +3914,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3485,6 +3947,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3499,17 +3965,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3530,6 +3998,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3544,17 +4016,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3575,6 +4049,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3589,17 +4067,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3620,6 +4100,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3634,17 +4118,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3665,6 +4151,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3679,17 +4169,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3710,6 +4202,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3724,17 +4220,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3755,6 +4253,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3769,17 +4271,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3800,6 +4304,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3814,17 +4322,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3845,6 +4355,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3859,17 +4373,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3890,6 +4406,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3904,17 +4424,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3935,6 +4457,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3949,17 +4475,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3980,6 +4508,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3994,17 +4526,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -4025,6 +4559,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4039,17 +4577,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -4070,6 +4610,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4084,17 +4628,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -4115,6 +4661,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4129,17 +4679,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -4160,6 +4712,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4174,17 +4730,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -4205,6 +4763,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4219,17 +4781,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -4250,6 +4814,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4264,17 +4832,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -4295,6 +4865,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4309,17 +4883,19 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "measurement time [s]": 0.1,
-                                "measurement mode": "Single",
-                                "operation": "Luminescence 1",
-                                "nan": "0\nnan    NaN\nnan    NaN\nName: 3, dtype: object"
+                                "measurement time [s]": 0.1
                             }
                         }
                     ],
                     "analytical method identifier": "PROTOCOL UUID",
                     "experimental data identifier": "SIGNATURE_UUID",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "PROTOCOL OWNER 1",
+                        "measurement finished": "10/16/2024 13:39",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             }
         ],
@@ -4335,15 +4911,15 @@
             "software name": "Kaleido",
             "software version": "3.5.3082.227",
             "ASM converter name": "allotropy_revvity_kaleido",
-            "ASM converter version": "0.1.103"
+            "ASM converter version": "0.1.104"
         },
         "custom information document": {
-            "Barcode": "BARCODE_1 13:39:01",
-            "Software Version": "Kaleido 3.5.3082.227",
-            "Protocol Owner": "PROTOCOL OWNER 1",
-            "Sequence Executed By": "Plate",
-            "Measurement Finished": "10/16/2024 13:39",
-            "Protocol Name": "EXAMPLE PROTOCOL 1",
+            "sequence executed by": "Plate",
+            "software version": "Kaleido 3.5.3082.227",
+            "measurement finished": "10/16/2024 13:39",
+            "protocol owner": "PROTOCOL OWNER 1",
+            "barcode": "BARCODE_1 13:39:01",
+            "protocol name": "EXAMPLE PROTOCOL 1",
             "nan": "0\nnan    NaN\nnan    NaN\nnan    NaN\nName: 2, dtype: object"
         }
     }

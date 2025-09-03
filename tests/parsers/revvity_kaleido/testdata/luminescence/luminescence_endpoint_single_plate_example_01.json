@@ -20,6 +20,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -34,18 +38,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -66,6 +73,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -80,18 +91,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -112,6 +126,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -126,18 +144,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -158,6 +179,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -172,18 +197,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -204,6 +232,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -218,18 +250,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -250,6 +285,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -264,18 +303,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -296,6 +338,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -310,18 +356,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -342,6 +391,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -356,18 +409,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -388,6 +444,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -402,18 +462,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -434,6 +497,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -448,18 +515,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -480,6 +550,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -494,18 +568,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -526,6 +603,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -540,18 +621,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -572,6 +656,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -586,18 +674,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -618,6 +709,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -632,18 +727,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -664,6 +762,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -678,18 +780,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -710,6 +815,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -724,18 +833,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -756,6 +868,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -770,18 +886,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -802,6 +921,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -816,18 +939,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -848,6 +974,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -862,18 +992,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -894,6 +1027,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -908,18 +1045,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -940,6 +1080,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -954,18 +1098,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -986,6 +1133,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1000,18 +1151,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -1032,6 +1186,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1046,18 +1204,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -1078,6 +1239,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1092,18 +1257,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -1124,6 +1292,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1138,18 +1310,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -1170,6 +1345,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1184,18 +1363,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -1216,6 +1398,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1230,18 +1416,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -1262,6 +1451,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1276,18 +1469,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -1308,6 +1504,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1322,18 +1522,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -1354,6 +1557,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1368,18 +1575,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -1400,6 +1610,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1414,18 +1628,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -1446,6 +1663,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1460,18 +1681,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -1492,6 +1716,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1506,18 +1734,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -1538,6 +1769,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1552,18 +1787,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -1584,6 +1822,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1598,18 +1840,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -1630,6 +1875,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1644,18 +1893,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -1676,6 +1928,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1690,18 +1946,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -1722,6 +1981,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1736,18 +1999,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -1768,6 +2034,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1782,18 +2052,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -1814,6 +2087,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1828,18 +2105,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -1860,6 +2140,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1874,18 +2158,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -1906,6 +2193,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1920,18 +2211,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -1952,6 +2246,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1966,18 +2264,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -1998,6 +2299,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2012,18 +2317,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -2044,6 +2352,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2058,18 +2370,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -2090,6 +2405,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2104,18 +2423,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -2136,6 +2458,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2150,18 +2476,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -2182,6 +2511,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2196,18 +2529,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -2228,6 +2564,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2242,18 +2582,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -2274,6 +2617,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2288,18 +2635,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -2320,6 +2670,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2334,18 +2688,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -2366,6 +2723,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2380,18 +2741,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -2412,6 +2776,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2426,18 +2794,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -2458,6 +2829,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2472,18 +2847,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -2504,6 +2882,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2518,18 +2900,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -2550,6 +2935,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2564,18 +2953,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -2596,6 +2988,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2610,18 +3006,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -2642,6 +3041,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2656,18 +3059,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -2688,6 +3094,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2702,18 +3112,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -2734,6 +3147,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2748,18 +3165,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -2780,6 +3200,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2794,18 +3218,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -2826,6 +3253,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2840,18 +3271,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -2872,6 +3306,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2886,18 +3324,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -2918,6 +3359,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2932,18 +3377,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -2964,6 +3412,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2978,18 +3430,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -3010,6 +3465,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3024,18 +3483,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -3056,6 +3518,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3070,18 +3536,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -3102,6 +3571,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3116,18 +3589,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -3148,6 +3624,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3162,18 +3642,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -3194,6 +3677,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3208,18 +3695,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -3240,6 +3730,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3254,18 +3748,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -3286,6 +3783,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3300,18 +3801,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -3332,6 +3836,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3346,18 +3854,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -3378,6 +3889,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3392,18 +3907,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -3424,6 +3942,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3438,18 +3960,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -3470,6 +3995,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3484,18 +4013,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -3516,6 +4048,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3530,18 +4066,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -3562,6 +4101,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3576,18 +4119,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -3608,6 +4154,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3622,18 +4172,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -3654,6 +4207,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3668,18 +4225,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -3700,6 +4260,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3714,18 +4278,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -3746,6 +4313,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3760,18 +4331,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -3792,6 +4366,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3806,18 +4384,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -3838,6 +4419,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3852,18 +4437,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -3884,6 +4472,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3898,18 +4490,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -3930,6 +4525,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3944,18 +4543,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -3976,6 +4578,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3990,18 +4596,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -4022,6 +4631,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4036,18 +4649,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -4068,6 +4684,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4082,18 +4702,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -4114,6 +4737,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4128,18 +4755,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -4160,6 +4790,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4174,18 +4808,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -4206,6 +4843,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4220,18 +4861,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -4252,6 +4896,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4266,18 +4914,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -4298,6 +4949,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4312,18 +4967,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -4344,6 +5002,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4358,18 +5020,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             },
             {
@@ -4390,6 +5055,10 @@
                                         "detector distance setting (plate reader)": {
                                             "value": 0.1,
                                             "unit": "mm"
+                                        },
+                                        "custom information document": {
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4404,18 +5073,21 @@
                                 "unit": "RLU"
                             },
                             "custom information document": {
-                                "plate location": "INSIDE",
+                                "measurement time [s]": 0.2,
                                 "duration [hh:ss:mm.sss]": "00:00:10.000",
-                                "operation": "0\noperation    Luminescence 1\noperation           Delay 1\nName: 3, dtype: object",
-                                "measurement mode": "Single",
-                                "measurement time [s]": 0.2
+                                "plate location": "INSIDE"
                             }
                         }
                     ],
                     "analytical method identifier": "ee5bd9fd-5d6f-491d-8791-d01ba03222bc",
                     "experimental data identifier": "2f305f44-3d4d-42b4-bbbf-f0de3de98057",
                     "experiment type": "Luminescence",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "bar",
+                        "measurement finished": "2023-05-17 16:22:38",
+                        "protocol name": "foo"
+                    }
                 }
             }
         ],
@@ -4431,15 +5103,15 @@
             "software name": "Kaleido",
             "software version": "3.0.3067.117",
             "ASM converter name": "allotropy_revvity_kaleido",
-            "ASM converter version": "0.1.103"
+            "ASM converter version": "0.1.104"
         },
         "custom information document": {
-            "Barcode": "V-2023-05-17 16:21:29",
-            "Software Version": "Kaleido 3.0.3067.117",
-            "Protocol Name": "foo",
-            "Protocol Owner": "bar",
-            "Measurement Finished": "2023-05-17 16:22:38",
-            "Sequence Executed By": "Plate"
+            "barcode": "V-2023-05-17 16:21:29",
+            "measurement finished": "2023-05-17 16:22:38",
+            "software version": "Kaleido 3.0.3067.117",
+            "protocol owner": "bar",
+            "sequence executed by": "Plate",
+            "protocol name": "foo"
         }
     }
 }

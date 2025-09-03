@@ -236,7 +236,7 @@ class MeasurementInfo:
     measurement_time: str
     protocol_signature: str
     measurement_signature: str
-    custom_info: dict[str, Any] | None = None
+    custom_info: dict[str, Any]
 
     @staticmethod
     def create(
@@ -255,14 +255,14 @@ class MeasurementInfo:
             reader.lines_as_df(lines, index_col=0, names=range(max_num_cols)),
             msg=f"Unable to parser data for {section_name} section.",
         ).T.dropna(how="all")
-        df.columns = df.columns.astype(str).str.strip(":")
+        df.columns = df.columns.astype(str).str.lower().str.strip(":")
         data = df_to_series_data(df, index=0)
 
         return MeasurementInfo(
-            instrument_serial_number=data[str, "Instrument Serial Number"],
-            measurement_time=data[str, "Measurement Started"],
-            protocol_signature=data[str, "Protocol Signature"],
-            measurement_signature=data[str, "Measurement Signature"],
+            instrument_serial_number=data[str, "instrument serial number"],
+            measurement_time=data[str, "measurement started"],
+            protocol_signature=data[str, "protocol signature"],
+            measurement_signature=data[str, "measurement signature"],
             custom_info=data.get_unread(),
         )
 
@@ -353,16 +353,18 @@ class Channel:
 class Measurements:
     channels: list[Channel]
     number_of_averages: float | None
+    detector_distance_luminiscence: float | None
     detector_distance: float | None
     scan_position: ScanPositionSettingPlateReader | None
     emission_wavelength: float | None
     excitation_wavelength: float | None
     focus_height: float | None
+    device_control_custom_info: dict[str, Any] | None = None
     custom_info: dict[str, Any] | None = None
 
     @staticmethod
     def create(
-        reader: CsvReader, section_title: str, next_section_title: str
+        reader: CsvReader, section_title: str, next_section_title: str, measurement_info: MeasurementInfo
     ) -> Measurements:
         assert_not_none(
             reader.drop_until_inclusive(f"^{section_title}"),
@@ -386,7 +388,8 @@ class Measurements:
         return Measurements(
             channels=Measurements.create_channels(data),
             number_of_averages=data.get(float, "number of flashes"),
-            detector_distance=data.get(
+            detector_distance=data.get(float, "measurement height [mm]"),
+            detector_distance_luminiscence=data.get(
                 float, "distance between plate and detector [mm]"
             ),
             scan_position=(
@@ -404,7 +407,15 @@ class Measurements:
                 else try_float_or_none(excitation_wavelength.removesuffix("nm"))
             ),
             focus_height=data.get(float, "focus height [µm]"),
-            custom_info=data.get_unread(),
+            device_control_custom_info={
+                "number of flashes integrated": data.get(float, "number of flashes integrated"),
+                "flash power": data.get(float, "flash power"),
+                "measurement mode setting": data.get(str, "measurement mode"),
+                "start plate repeat each [s]": measurement_info.custom_info.get("start plate repeat each [s]", None),
+                "number of plate repeats": measurement_info.custom_info.get("number of plate repeats", None),
+                "sequence executed by": measurement_info.custom_info.get("sequence executed by", None),
+            },
+            custom_info=data.get_unread(skip={"tech", "software version", "barcode", "operation", "nan"}),
         )
 
     @staticmethod
@@ -519,7 +530,9 @@ def _create_measurement(data: Data, well_position: str, well_value: str) -> Meas
         well_plate_identifier=data.results.barcode,
         sample_role_type=data.platemap.get_sample_role_type(well_position),
         number_of_averages=data.measurements.number_of_averages,
-        detector_distance_setting=data.measurements.detector_distance,
+        detector_distance_setting=data.measurements.detector_distance_luminiscence
+        if experiment_type is ExperimentType.LUMINESCENCE
+        else data.measurements.detector_distance,
         scan_position_setting=data.measurements.scan_position,
         detector_wavelength_setting=detector_wavelength_setting,
         excitation_wavelength_setting=data.measurements.excitation_wavelength,
@@ -532,6 +545,7 @@ def _create_measurement(data: Data, well_position: str, well_value: str) -> Meas
         luminescence=measurement_value
         if experiment_type is ExperimentType.LUMINESCENCE
         else None,
+        device_control_custom_info=data.measurements.device_control_custom_info,
         custom_info=data.measurements.custom_info,
     )
 
@@ -557,6 +571,7 @@ def _create_optical_measurement(
         illumination_setting_unit="%",
         transmitted_light_setting=channel.transmitted_light,
         fluorescent_tag_setting=channel.fluorescent_tag,
+        device_control_custom_info=data.measurements.device_control_custom_info,
         custom_info=data.measurements.custom_info,
     )
 
@@ -604,6 +619,11 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
             ]
             if data.background_info.experiment_type is ExperimentType.OPTICAL_IMAGING
             else None,
+            custom_info={
+                "protocol owner": data.measurement_info.custom_info.get("protocol owner", None),
+                "measurement finished": data.measurement_info.custom_info.get("measurement finished", None),
+                "protocol name": data.measurement_info.custom_info.get("protocol name", None),
+            },
         )
         for well_position, well_value in data.iter_wells()
     ]
