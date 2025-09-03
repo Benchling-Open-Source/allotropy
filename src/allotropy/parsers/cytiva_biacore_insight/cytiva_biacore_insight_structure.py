@@ -363,8 +363,7 @@ class MeasurementData:
                             ),
                         ),
                         "Included": run_info.get(str, "Included"),
-                        # TODO: replace with flow_cell_info an test!
-                        "Sensorgram type": first_row_data.get(
+                        "Sensorgram type": flow_cell_info.get(
                             str, "Sensorgram type", run_info.get(str, "Sensorgram type")
                         ),
                         "Level": quantity_or_none(
