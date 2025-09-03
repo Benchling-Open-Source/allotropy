@@ -125,6 +125,9 @@ class Measurement:
     # Errors
     errors: list[Error] | None = None
 
+    # Custom information
+    custom_info: dict[str, Any] | None = None
+
 
 @dataclass(frozen=True)
 class MeasurementGroup:
@@ -355,7 +358,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 batch_identifier=measurement.batch_identifier,
                 description=measurement.description,
             ),
-            None,
+            measurement.custom_info,
         )
 
     def _create_analyte_document(self, analyte: Analyte) -> AnalyteDocument:
