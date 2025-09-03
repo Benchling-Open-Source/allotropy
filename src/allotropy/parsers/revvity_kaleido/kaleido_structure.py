@@ -432,12 +432,16 @@ class Measurements:
             },
             custom_info=data.get_unread(
                 skip={
-                    "tech", "software version", "barcode", "operation", "nan",
+                    "tech",
+                    "software version",
+                    "barcode",
+                    "operation",
+                    "nan",
                     "excitation power [%]",
                     "channel",
                     "exposure time [ms]",
                     "additional focus offset [mm]",
-                    }
+                }
             ),
         )
 
@@ -584,7 +588,6 @@ def _create_optical_measurement(
         to_remove = ["generate bright field", "digital phase contrast", "generate dpc"]
         for key in to_remove:
             device_control_custom_info.pop(key, None)
-
 
     return Measurement(
         type_=data.background_info.experiment_type.measurement_type,
