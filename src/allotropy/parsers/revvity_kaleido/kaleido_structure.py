@@ -359,7 +359,7 @@ class Measurements:
     emission_wavelength: float | None
     excitation_wavelength: float | None
     focus_height: float | None
-    device_control_custom_info: dict[str, Any] | None = None
+    device_control_custom_info: dict[str, Any]
     custom_info: dict[str, Any] | None = None
 
     @staticmethod
@@ -425,9 +425,19 @@ class Measurements:
                 "sequence executed by": measurement_info.custom_info.get(
                     "sequence executed by", None
                 ),
+                "filter set": data.get(str, "filter set"),
+                "generate bright field": data.get(bool, "generate bright field"),
+                "digital phase contrast": data.get(bool, "digital phase contrast"),
+                "generate dpc": data.get(bool, "generate dpc"),
             },
             custom_info=data.get_unread(
-                skip={"tech", "software version", "barcode", "operation", "nan"}
+                skip={
+                    "tech", "software version", "barcode", "operation", "nan",
+                    "excitation power [%]",
+                    "channel",
+                    "exposure time [ms]",
+                    "additional focus offset [mm]",
+                    }
             ),
         )
 
@@ -566,6 +576,16 @@ def _create_measurement(data: Data, well_position: str, well_value: str) -> Meas
 def _create_optical_measurement(
     data: Data, well_position: str, channel: Channel
 ) -> Measurement:
+    device_control_custom_info = {
+        **data.measurements.device_control_custom_info,
+        "additional focus offset [mm]": channel.additional_focus_offset,
+    }
+    if channel.name != "BRIGHTFIELD":
+        to_remove = ["generate bright field", "digital phase contrast", "generate dpc"]
+        for key in to_remove:
+            device_control_custom_info.pop(key, None)
+
+
     return Measurement(
         type_=data.background_info.experiment_type.measurement_type,
         identifier=random_uuid_str(),
@@ -584,7 +604,7 @@ def _create_optical_measurement(
         illumination_setting_unit="%",
         transmitted_light_setting=channel.transmitted_light,
         fluorescent_tag_setting=channel.fluorescent_tag,
-        device_control_custom_info=data.measurements.device_control_custom_info,
+        device_control_custom_info=device_control_custom_info,
         custom_info=data.measurements.custom_info,
     )
 
