@@ -364,7 +364,10 @@ class Measurements:
 
     @staticmethod
     def create(
-        reader: CsvReader, section_title: str, next_section_title: str, measurement_info: MeasurementInfo
+        reader: CsvReader,
+        section_title: str,
+        next_section_title: str,
+        measurement_info: MeasurementInfo,
     ) -> Measurements:
         assert_not_none(
             reader.drop_until_inclusive(f"^{section_title}"),
@@ -408,14 +411,24 @@ class Measurements:
             ),
             focus_height=data.get(float, "focus height [µm]"),
             device_control_custom_info={
-                "number of flashes integrated": data.get(float, "number of flashes integrated"),
+                "number of flashes integrated": data.get(
+                    float, "number of flashes integrated"
+                ),
                 "flash power": data.get(float, "flash power"),
                 "measurement mode setting": data.get(str, "measurement mode"),
-                "start plate repeat each [s]": measurement_info.custom_info.get("start plate repeat each [s]", None),
-                "number of plate repeats": measurement_info.custom_info.get("number of plate repeats", None),
-                "sequence executed by": measurement_info.custom_info.get("sequence executed by", None),
+                "start plate repeat each [s]": measurement_info.custom_info.get(
+                    "start plate repeat each [s]", None
+                ),
+                "number of plate repeats": measurement_info.custom_info.get(
+                    "number of plate repeats", None
+                ),
+                "sequence executed by": measurement_info.custom_info.get(
+                    "sequence executed by", None
+                ),
             },
-            custom_info=data.get_unread(skip={"tech", "software version", "barcode", "operation", "nan"}),
+            custom_info=data.get_unread(
+                skip={"tech", "software version", "barcode", "operation", "nan"}
+            ),
         )
 
     @staticmethod
@@ -620,9 +633,15 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
             if data.background_info.experiment_type is ExperimentType.OPTICAL_IMAGING
             else None,
             custom_info={
-                "protocol owner": data.measurement_info.custom_info.get("protocol owner", None),
-                "measurement finished": data.measurement_info.custom_info.get("measurement finished", None),
-                "protocol name": data.measurement_info.custom_info.get("protocol name", None),
+                "protocol owner": data.measurement_info.custom_info.get(
+                    "protocol owner", None
+                ),
+                "measurement finished": data.measurement_info.custom_info.get(
+                    "measurement finished", None
+                ),
+                "protocol name": data.measurement_info.custom_info.get(
+                    "protocol name", None
+                ),
             },
         )
         for well_position, well_value in data.iter_wells()

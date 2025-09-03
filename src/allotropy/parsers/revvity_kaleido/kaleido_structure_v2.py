@@ -29,8 +29,12 @@ class ResultsV2(Results):
 def create_data_v2(version: str, reader: CsvReader) -> Data:
     background_info = BackgroundInfo.create(reader)
     results = ResultsV2.create(reader)
-    analysis_result = AnalysisResult.create_results(reader, "Measurement Basic Information")
-    measurement_info = MeasurementInfo.create(reader, "Measurement Basic Information", "Plate Type")
+    analysis_result = AnalysisResult.create_results(
+        reader, "Measurement Basic Information"
+    )
+    measurement_info = MeasurementInfo.create(
+        reader, "Measurement Basic Information", "Plate Type"
+    )
     return Data(
         version,
         background_info,
