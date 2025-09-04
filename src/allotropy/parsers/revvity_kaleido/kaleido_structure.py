@@ -266,6 +266,10 @@ class MeasurementInfo:
             custom_info=data.get_unread(),
         )
 
+    def clean_custom_info(self) -> None:
+        self.custom_info.clear()
+
+
 
 @dataclass(frozen=True)
 class Platemap:
@@ -625,6 +629,11 @@ def _create_measurements(
 
 
 def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
+    protocol_owner = data.measurement_info.custom_info.get("protocol owner", None)
+    measurement_finished = data.measurement_info.custom_info.get("measurement finished", None)
+    protocol_name = data.measurement_info.custom_info.get("protocol name", None)
+    data.measurement_info.clean_custom_info()
+
     return [
         MeasurementGroup(
             measurement_time=data.measurement_info.measurement_time,
@@ -656,15 +665,9 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
             if data.background_info.experiment_type is ExperimentType.OPTICAL_IMAGING
             else None,
             custom_info={
-                "protocol owner": data.measurement_info.custom_info.get(
-                    "protocol owner", None
-                ),
-                "measurement finished": data.measurement_info.custom_info.get(
-                    "measurement finished", None
-                ),
-                "protocol name": data.measurement_info.custom_info.get(
-                    "protocol name", None
-                ),
+                "protocol owner": protocol_owner,
+                "measurement finished": measurement_finished,
+                "protocol name": protocol_name,
             },
         )
         for well_position, well_value in data.iter_wells()
