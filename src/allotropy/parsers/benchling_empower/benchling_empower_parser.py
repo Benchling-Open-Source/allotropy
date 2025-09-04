@@ -23,6 +23,7 @@ class BenchlingEmpowerParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = BenchlingEmpowerReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
+    UNREAD_DATA_HANDLED = True
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = BenchlingEmpowerReader(named_file_contents)

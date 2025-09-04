@@ -26,6 +26,7 @@ class ExampleWeylandYutaniParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.WORKING_DRAFT
     SUPPORTED_EXTENSIONS = ExampleWeylandYutaniReader.SUPPORTED_EXTENSIONS
     SCHEMA_MAPPER = Mapper
+    UNREAD_DATA_HANDLED = False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = ExampleWeylandYutaniReader(named_file_contents)
