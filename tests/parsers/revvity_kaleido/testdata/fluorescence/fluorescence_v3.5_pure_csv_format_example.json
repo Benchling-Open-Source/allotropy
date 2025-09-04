@@ -17,6 +17,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -29,6 +33,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -47,7 +57,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -65,6 +80,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -77,6 +96,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -95,7 +120,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -113,6 +143,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -125,6 +159,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -143,7 +183,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -161,6 +206,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -173,6 +222,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -191,7 +246,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -209,6 +269,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -221,6 +285,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -239,7 +309,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -257,6 +332,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -269,6 +348,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -287,7 +372,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -305,6 +395,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -317,6 +411,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -335,7 +435,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -353,6 +458,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -365,6 +474,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -383,7 +498,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -401,6 +521,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -413,6 +537,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -431,7 +561,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -449,6 +584,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -461,6 +600,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -479,7 +624,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -497,6 +647,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -509,6 +663,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -527,7 +687,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -545,6 +710,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -557,6 +726,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -575,7 +750,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -593,6 +773,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -605,6 +789,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -623,7 +813,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -641,6 +836,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -653,6 +852,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -671,7 +876,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -689,6 +899,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -701,6 +915,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -719,7 +939,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -737,6 +962,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -749,6 +978,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -767,7 +1002,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -785,6 +1025,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -797,6 +1041,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -815,7 +1065,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -833,6 +1088,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -845,6 +1104,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -863,7 +1128,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -881,6 +1151,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -893,6 +1167,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -911,7 +1191,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -929,6 +1214,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -941,6 +1230,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -959,7 +1254,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -977,6 +1277,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -989,6 +1293,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1007,7 +1317,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1025,6 +1340,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -1037,6 +1356,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1055,7 +1380,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1073,6 +1403,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -1085,6 +1419,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1103,7 +1443,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1121,6 +1466,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -1133,6 +1482,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1151,7 +1506,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1169,6 +1529,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -1181,6 +1545,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1199,7 +1569,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1217,6 +1592,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -1229,6 +1608,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1247,7 +1632,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1265,6 +1655,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -1277,6 +1671,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1295,7 +1695,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1313,6 +1718,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -1325,6 +1734,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1343,7 +1758,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1361,6 +1781,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -1373,6 +1797,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1391,7 +1821,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1409,6 +1844,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -1421,6 +1860,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1439,7 +1884,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1457,6 +1907,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -1469,6 +1923,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1487,7 +1947,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1505,6 +1970,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -1517,6 +1986,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1535,7 +2010,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1553,6 +2033,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -1565,6 +2049,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1583,7 +2073,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1601,6 +2096,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -1613,6 +2112,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1631,7 +2136,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1649,6 +2159,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -1661,6 +2175,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1679,7 +2199,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1697,6 +2222,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -1709,6 +2238,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1727,7 +2262,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1745,6 +2285,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -1757,6 +2301,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1775,7 +2325,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1793,6 +2348,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -1805,6 +2364,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1823,7 +2388,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1841,6 +2411,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -1853,6 +2427,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1871,7 +2451,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1889,6 +2474,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -1901,6 +2490,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1919,7 +2514,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1937,6 +2537,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -1949,6 +2553,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -1967,7 +2577,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -1985,6 +2600,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -1997,6 +2616,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2015,7 +2640,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2033,6 +2663,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -2045,6 +2679,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2063,7 +2703,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2081,6 +2726,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -2093,6 +2742,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2111,7 +2766,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2129,6 +2789,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -2141,6 +2805,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2159,7 +2829,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2177,6 +2852,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -2189,6 +2868,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2207,7 +2892,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2225,6 +2915,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -2237,6 +2931,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2255,7 +2955,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2273,6 +2978,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -2285,6 +2994,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2303,7 +3018,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2321,6 +3041,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -2333,6 +3057,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2351,7 +3081,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2369,6 +3104,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -2381,6 +3120,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2399,7 +3144,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2417,6 +3167,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -2429,6 +3183,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2447,7 +3207,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2465,6 +3230,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -2477,6 +3246,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2495,7 +3270,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2513,6 +3293,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -2525,6 +3309,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2543,7 +3333,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2561,6 +3356,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -2573,6 +3372,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2591,7 +3396,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2609,6 +3419,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -2621,6 +3435,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2639,7 +3459,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2657,6 +3482,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -2669,6 +3498,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2687,7 +3522,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2705,6 +3545,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -2717,6 +3561,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2735,7 +3585,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2753,6 +3608,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -2765,6 +3624,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2783,7 +3648,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2801,6 +3671,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -2813,6 +3687,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2831,7 +3711,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2849,6 +3734,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -2861,6 +3750,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2879,7 +3774,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2897,6 +3797,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -2909,6 +3813,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2927,7 +3837,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2945,6 +3860,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -2957,6 +3876,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -2975,7 +3900,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -2993,6 +3923,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -3005,6 +3939,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3023,7 +3963,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3041,6 +3986,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -3053,6 +4002,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3071,7 +4026,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3089,6 +4049,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -3101,6 +4065,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3119,7 +4089,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3137,6 +4112,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -3149,6 +4128,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3167,7 +4152,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3185,6 +4175,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -3197,6 +4191,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3215,7 +4215,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3233,6 +4238,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -3245,6 +4254,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3263,7 +4278,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3281,6 +4301,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -3293,6 +4317,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3311,7 +4341,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3329,6 +4364,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -3341,6 +4380,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3359,7 +4404,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3377,6 +4427,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -3389,6 +4443,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3407,7 +4467,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3425,6 +4490,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -3437,6 +4506,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3455,7 +4530,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3473,6 +4553,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -3485,6 +4569,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3503,7 +4593,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3521,6 +4616,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -3533,6 +4632,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3551,7 +4656,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3569,6 +4679,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -3581,6 +4695,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3599,7 +4719,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3617,6 +4742,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -3629,6 +4758,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3647,7 +4782,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3665,6 +4805,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -3677,6 +4821,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3695,7 +4845,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3713,6 +4868,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -3725,6 +4884,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3743,7 +4908,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3761,6 +4931,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -3773,6 +4947,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3791,7 +4971,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3809,6 +4994,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -3821,6 +5010,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3839,7 +5034,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3857,6 +5057,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -3869,6 +5073,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3887,7 +5097,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3905,6 +5120,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -3917,6 +5136,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3935,7 +5160,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -3953,6 +5183,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -3965,6 +5199,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -3983,7 +5223,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -4001,6 +5246,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -4013,6 +5262,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4031,7 +5286,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -4049,6 +5309,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -4061,6 +5325,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4079,7 +5349,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -4097,6 +5372,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -4109,6 +5388,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4127,7 +5412,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -4145,6 +5435,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -4157,6 +5451,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4175,7 +5475,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -4193,6 +5498,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -4205,6 +5514,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4223,7 +5538,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -4241,6 +5561,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -4253,6 +5577,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4271,7 +5601,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -4289,6 +5624,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -4301,6 +5640,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4319,7 +5664,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -4337,6 +5687,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -4349,6 +5703,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4367,7 +5727,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -4385,6 +5750,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -4397,6 +5766,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4415,7 +5790,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -4433,6 +5813,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -4445,6 +5829,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4463,7 +5853,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -4481,6 +5876,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -4493,6 +5892,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4511,7 +5916,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -4529,6 +5939,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -4541,6 +5955,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4559,7 +5979,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             },
             {
@@ -4577,6 +6002,10 @@
                                     {
                                         "device type": "fluorescence detector",
                                         "detection type": "fluorescence",
+                                        "detector distance setting (plate reader)": {
+                                            "value": 9.5,
+                                            "unit": "mm"
+                                        },
                                         "number of averages": {
                                             "value": 100.0,
                                             "unit": "#"
@@ -4589,6 +6018,12 @@
                                         "excitation wavelength setting": {
                                             "value": 550.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "number of flashes integrated": 1.0,
+                                            "flash power": 100.0,
+                                            "measurement mode setting": "Single",
+                                            "sequence executed by": "Plate"
                                         }
                                     }
                                 ]
@@ -4607,7 +6042,12 @@
                     "analytical method identifier": "PROTOCOL 1 UUID",
                     "experimental data identifier": "MEASUREMENT UUID",
                     "experiment type": "Fluorescence intensity",
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "protocol owner": "thomasjm",
+                        "measurement finished": "10/8/2024 12:11",
+                        "protocol name": "EXAMPLE PROTOCOL 1"
+                    }
                 }
             }
         ],
@@ -4623,7 +6063,7 @@
             "software name": "Kaleido",
             "software version": "3.5.3082.227",
             "ASM converter name": "allotropy_revvity_kaleido",
-            "ASM converter version": "0.1.61"
+            "ASM converter version": "0.1.105"
         }
     }
 }
