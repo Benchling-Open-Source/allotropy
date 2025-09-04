@@ -270,7 +270,6 @@ class MeasurementInfo:
         self.custom_info.clear()
 
 
-
 @dataclass(frozen=True)
 class Platemap:
     data: dict[str, str]
@@ -630,7 +629,9 @@ def _create_measurements(
 
 def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
     protocol_owner = data.measurement_info.custom_info.get("protocol owner", None)
-    measurement_finished = data.measurement_info.custom_info.get("measurement finished", None)
+    measurement_finished = data.measurement_info.custom_info.get(
+        "measurement finished", None
+    )
     protocol_name = data.measurement_info.custom_info.get("protocol name", None)
     data.measurement_info.clean_custom_info()
 
