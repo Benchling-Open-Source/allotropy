@@ -263,11 +263,8 @@ class MeasurementInfo:
             measurement_time=data[str, "measurement started"],
             protocol_signature=data[str, "protocol signature"],
             measurement_signature=data[str, "measurement signature"],
-            custom_info=data.get_unread(),
+            custom_info=data.get_unread(skip={"software version", "barcode", "nan"}),
         )
-
-    def clean_custom_info(self) -> None:
-        self.custom_info.clear()
 
 
 @dataclass(frozen=True)
@@ -436,8 +433,6 @@ class Measurements:
             custom_info=data.get_unread(
                 skip={
                     "tech",
-                    "software version",
-                    "barcode",
                     "operation",
                     "nan",
                     "excitation power [%]",
@@ -628,12 +623,15 @@ def _create_measurements(
 
 
 def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
-    protocol_owner = data.measurement_info.custom_info.get("protocol owner", None)
-    measurement_finished = data.measurement_info.custom_info.get(
+    protocol_owner = data.measurement_info.custom_info.pop("protocol owner", None)
+    measurement_finished = data.measurement_info.custom_info.pop(
         "measurement finished", None
     )
-    protocol_name = data.measurement_info.custom_info.get("protocol name", None)
-    data.measurement_info.clean_custom_info()
+    protocol_name = data.measurement_info.custom_info.pop("protocol name", None)
+
+    data.measurement_info.custom_info.pop("sequence executed by", None)
+    data.measurement_info.custom_info.pop("number of plate repeats", None)
+    data.measurement_info.custom_info.pop("start plate repeat each [s]", None)
 
     return [
         MeasurementGroup(
