@@ -435,10 +435,6 @@ class Measurements:
                     "tech",
                     "operation",
                     "nan",
-                    "excitation power [%]",
-                    "channel",
-                    "exposure time [ms]",
-                    "additional focus offset [mm]",
                 }
             ),
         )
@@ -446,16 +442,15 @@ class Measurements:
     @staticmethod
     def create_channels(data: SeriesData) -> list[Channel]:
         # Get all channel keys
-        values = {
-            key: data.series.get(key)
-            for key in [
-                "channel",
-                "excitation wavelength [nm]",
-                "excitation power [%]",
-                "exposure time [ms]",
-                "additional focus offset [mm]",
-            ]
-        }
+        channel_keys = [
+            "channel",
+            "excitation wavelength [nm]",
+            "excitation power [%]",
+            "exposure time [ms]",
+            "additional focus offset [mm]",
+        ]
+        values = {key: data.series.get(key) for key in channel_keys}
+        data.mark_read(set(channel_keys))
         if values["channel"] is None:
             return []
 
