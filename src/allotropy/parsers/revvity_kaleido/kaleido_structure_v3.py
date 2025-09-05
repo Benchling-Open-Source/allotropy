@@ -30,16 +30,23 @@ class ResultsV3(Results):
 
 
 def create_data_v3(version: str, reader: CsvReader) -> Data:
+    background_info = BackgroundInfo.create(reader)
+    results = ResultsV3.create(reader)
+    analysis_result = AnalysisResult.create_results(reader, "Measurement Information")
+    measurement_info = MeasurementInfo.create(
+        reader, "Measurement Information", "Plate Type Information"
+    )
     return Data(
         version,
-        BackgroundInfo.create(reader),
-        ResultsV3.create(reader),
-        AnalysisResult.create_results(reader, "Measurement Information"),
-        MeasurementInfo.create(
-            reader, "Measurement Information", "Plate Type Information"
-        ),
+        background_info,
+        results,
+        analysis_result,
+        measurement_info,
         Platemap.create(reader),
         Measurements.create(
-            reader, "Details of Measurement Sequence", "Post Processing Sequence"
+            reader,
+            "Details of Measurement Sequence",
+            "Post Processing Sequence",
+            measurement_info,
         ),
     )
