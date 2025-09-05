@@ -6,6 +6,13 @@ from typing import Any
 
 import pandas as pd
 
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    FieldComponentDatatype,
+)
+from allotropy.allotrope.models.shared.definitions.units import (
+    MilliAbsorbanceUnit,
+    Nanometer,
+)
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
     ErrorDocument,
     Measurement,
@@ -14,6 +21,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_rea
     Metadata,
     ProcessedDataDocument,
 )
+from allotropy.allotrope.schema_mappers.data_cube import DataCube, DataCubeComponent
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
 from allotropy.parsers.unchained_labs_lunatic_stunner.constants import (
@@ -121,20 +129,28 @@ def _is_literal_not_applicable(series: SeriesData, key: str) -> bool:
 def _create_measurement(
     well_plate_data: SeriesData,
     header: SeriesData,
-    wavelength_column: str,
+    wavelength_columns: list[str],
 ) -> Measurement:
-    if wavelength_column not in well_plate_data.series:
-        msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelength_column)
-        raise AllotropeConversionError(msg)
+    absorbance_errors: list[ErrorDocument] = []
+    for wavelength_column in wavelength_columns:
+        if wavelength_column not in well_plate_data.series:
+            msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelength_column)
+            raise AllotropeConversionError(msg)
 
-    wavelength_match = WAVELENGTH_COLUMNS_RE.match(wavelength_column)
-    if not wavelength_match:
-        raise AllotropeConversionError(INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG)
-    if len(wavelength_match.groups()) > 1:
-        wavelength, path_length = wavelength_match.groups()
-    else:
-        wavelength = wavelength_match.groups()[0]
-        path_length = None
+        wavelength_match = WAVELENGTH_COLUMNS_RE.match(wavelength_column)
+        if not wavelength_match:
+            raise AllotropeConversionError(INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG)
+
+        absorbance_is_na = _is_literal_not_applicable(
+            well_plate_data, wavelength_column
+        )
+        if absorbance_is_na:
+            absorbance_errors.append(
+                ErrorDocument(
+                    error=NOT_APPLICABLE,
+                    error_feature=f"{DEFAULT_DETECTION_TYPE.lower()}",
+                )
+            )
 
     background_wavelength = well_plate_data.get(float, "background wvl. (nm)")
     background_absorbance = None
@@ -147,8 +163,7 @@ def _create_measurement(
     peak_data = _extract_peak_data(well_plate_data)
 
     error_documents: list[ErrorDocument] = []
-    absorbance = well_plate_data.get(float, wavelength_column)
-    absorbance_is_na = _is_literal_not_applicable(well_plate_data, wavelength_column)
+
     concentration_factor = well_plate_data.get(float, "concentration factor (ng/ul)")
     application = header.get(str, "application")
     analytical_method_identifier = (
@@ -158,51 +173,33 @@ def _create_measurement(
     detection_type = DEFAULT_DETECTION_TYPE
     if application and "B22 & kD" in application:
         detection_type = DYNAMIC_LIGHT_SCATTERING_DETECTION_TYPE
-    # Build calculated data values with special handling for N/A and empty cells
-    calculated_data_values: dict[str, float] = {}
-    for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
-        value, is_na = _get_calculated_value_and_is_na(well_plate_data, item["column"])
-        # Only create error docs when the cell is the literal "N/A"
-        if is_na:
-            error_documents.append(
-                ErrorDocument(
-                    error=NOT_APPLICABLE,
-                    error_feature=item["name"],
-                )
-            )
-        # Skip missing cells entirely; include numeric values
-        if value is not None:
-            calculated_data_values[item["column"]] = value
 
-    # Append absorbance error last to preserve historical ordering (calculated-data errors first)
-    if absorbance_is_na:
-        error_documents.append(
-            ErrorDocument(
-                error=NOT_APPLICABLE,
-                error_feature=DEFAULT_DETECTION_TYPE.lower(),
-            )
-        )
+    calculated_data_values, calculated_data_errors = _get_calculated_data_values(
+        well_plate_data, wavelength_columns
+    )
 
-    return Measurement(
-        type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
-        device_type=DEVICE_TYPE,
-        detection_type=detection_type,
-        identifier=measurement_identifier,
-        analytical_method_identifier=analytical_method_identifier,
-        experimental_data_identifier=experimental_data_identifier,
-        detector_wavelength_setting=float(wavelength),
-        electronic_absorbance_reference_wavelength_setting=background_wavelength,
-        absorbance=absorbance if absorbance is not None else NEGATIVE_ZERO,
-        sample_identifier=well_plate_data[str, "sample name"],
-        location_identifier=well_plate_data[str, "plate position"],
-        well_plate_identifier=well_plate_data.get(str, "plate id"),
-        batch_identifier=well_plate_data.get(str, "sample group"),
-        firmware_version=header.get(str, "client version"),
-        number_of_averages=well_plate_data.get(float, "number of acquisitions"),
-        integration_time=well_plate_data.get(float, "acquisition time (s)"),
-        compartment_temperature=well_plate_data.get(float, "temperature (°c)"),
-        sample_custom_info={
-            "path length": float(path_length) if path_length is not None else None,
+    error_documents.extend(calculated_data_errors)
+    error_documents.extend(absorbance_errors)
+
+    measurement_dict = {
+        "type_": MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM
+        if len(wavelength_columns) > 1
+        else MeasurementType.ULTRAVIOLET_ABSORBANCE,
+        "device_type": DEVICE_TYPE,
+        "detection_type": detection_type,
+        "identifier": measurement_identifier,
+        "analytical_method_identifier": analytical_method_identifier,
+        "experimental_data_identifier": experimental_data_identifier,
+        "electronic_absorbance_reference_wavelength_setting": background_wavelength,
+        "sample_identifier": well_plate_data[str, "sample name"],
+        "location_identifier": well_plate_data[str, "plate position"],
+        "well_plate_identifier": well_plate_data.get(str, "plate id"),
+        "batch_identifier": well_plate_data.get(str, "sample group"),
+        "firmware_version": header.get(str, "client version"),
+        "number_of_averages": well_plate_data.get(float, "number of acquisitions"),
+        "integration_time": well_plate_data.get(float, "acquisition time (s)"),
+        "compartment_temperature": well_plate_data.get(float, "temperature (°c)"),
+        "sample_custom_info": {
             "plate type": header.get(str, "plate type")
             or well_plate_data.get(str, "plate type"),
             "nr of plates": header.get(str, "nr of plates"),
@@ -215,7 +212,7 @@ def _create_measurement(
                 float, "molecular weight (kda)"
             ),
         },
-        device_control_custom_info={
+        "device_control_custom_info": {
             "path length mode": well_plate_data.get(str, "path length mode"),
             "pump": well_plate_data.get(str, "pump"),
             "column": header.get(str, "column") or well_plate_data.get(str, "column"),
@@ -224,23 +221,22 @@ def _create_measurement(
             ),
             "Acquisition filtering": well_plate_data.get(str, "acquisition filtering"),
         },
-        error_document=error_documents,
-        processed_data_document=ProcessedDataDocument(
+        "error_document": error_documents,
+        "processed_data_document": ProcessedDataDocument(
             identifier=random_uuid_str(),
             concentration_factor=concentration_factor,
             peak_list_custom_info=peak_data,
         )
         if concentration_factor is not None or peak_data
         else None,
-        wavelength_identifier=wavelength_column,
-        calc_docs_custom_info={
+        "calc_docs_custom_info": {
             **calculated_data_values,
             **{
                 "b22 linear fit": well_plate_data.get(str, "b22 linear fit"),
                 "kd linear fit": well_plate_data.get(str, "kd linear fit"),
             },
         },
-        measurement_custom_info={
+        "measurement_custom_info": {
             "electronic_absorbance_reference_absorbance": background_absorbance,
             **_filter_empty_string_values(
                 well_plate_data.get_unread(
@@ -268,7 +264,88 @@ def _create_measurement(
                 )
             ),
         },
+    }
+
+    extra_variables: dict[str, Any] = {}
+    if len(wavelength_columns) > 1:
+        spectrum_data_cube = _get_spectrum_data_cube(
+            well_plate_data, wavelength_columns
+        )
+        extra_variables["spectrum_data_cube"] = spectrum_data_cube
+    elif len(wavelength_columns) == 1:
+        wavelength_match = WAVELENGTH_COLUMNS_RE.match(wavelength_columns[0])
+
+        wavelength, _ = wavelength_match.groups() if wavelength_match else ("", "")
+        absorbance = well_plate_data.get(float, wavelength_columns[0])
+        extra_variables["absorbance"] = (
+            absorbance if absorbance is not None else NEGATIVE_ZERO
+        )
+        extra_variables["detector_wavelength_setting"] = float(wavelength)
+        extra_variables["wavelength_identifier"] = wavelength_columns[0]
+
+    measurement_dict.update(extra_variables)
+
+    return Measurement(**measurement_dict)  # type: ignore
+
+
+def _get_spectrum_data_cube(
+    well_plate_data: SeriesData, wavelength_columns: list[str]
+) -> DataCube:
+    absorbances = []
+    wavelengths = []
+    for wavelength_column in wavelength_columns:
+        absorbance = well_plate_data.get(float, wavelength_column)
+        absorbances.append(absorbance)
+        match = WAVELENGTH_COLUMNS_RE.match(wavelength_column)
+        if not match:
+            # Should not happen because caller filters with the same regex, but be defensive
+            raise AllotropeConversionError(INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG)
+        wavelength_str, _ = match.groups()
+        wavelengths.append(float(wavelength_str))
+
+    return DataCube(
+        label="absorvance-spectrum",
+        structure_dimensions=[
+            DataCubeComponent(
+                concept="wavelength",
+                type_=FieldComponentDatatype.double,
+                unit=Nanometer.unit,
+            )
+        ],
+        structure_measures=[
+            DataCubeComponent(
+                concept="absorbance",
+                type_=FieldComponentDatatype.double,
+                unit=MilliAbsorbanceUnit.unit,
+            )
+        ],
+        dimensions=[wavelengths],
+        measures=[absorbances],
     )
+
+
+def _get_calculated_data_values(
+    well_plate_data: SeriesData, wavelength_columns: list[str]
+) -> tuple[dict[str, float], list[ErrorDocument]]:
+    calculated_data_values: dict[str, float] = {}
+    error_documents: list[ErrorDocument] = []
+    for wavelength_column in wavelength_columns:
+        for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
+            value, is_na = _get_calculated_value_and_is_na(
+                well_plate_data, item["column"]
+            )
+            # Only create error docs when the cell is the literal "N/A"
+            if is_na:
+                error_documents.append(
+                    ErrorDocument(
+                        error=NOT_APPLICABLE,
+                        error_feature=item["name"],
+                    )
+                )
+            # Skip missing cells entirely; include numeric values
+            if value is not None:
+                calculated_data_values[item["column"]] = value
+    return calculated_data_values, error_documents
 
 
 def _create_measurement_group(
@@ -287,10 +364,7 @@ def _create_measurement_group(
         measurement_time=assert_not_none(timestamp, msg=NO_DATE_OR_TIME_ERROR_MSG),
         analyst=header.get(str, "test performed by"),
         plate_well_count=96,
-        measurements=[
-            _create_measurement(data, header, wavelength_column)
-            for wavelength_column in wavelength_columns
-        ],
+        measurements=[_create_measurement(data, header, wavelength_columns)],
     )
 
 
