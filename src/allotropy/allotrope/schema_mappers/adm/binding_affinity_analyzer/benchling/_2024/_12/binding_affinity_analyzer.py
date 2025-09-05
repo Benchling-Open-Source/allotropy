@@ -28,8 +28,11 @@ from allotropy.allotrope.models.adm.binding_affinity_analyzer.wd._2024._12.bindi
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDegreeCelsius,
     TQuantityValueMicroliterPerMinute,
+    TQuantityValueMolar,
     TQuantityValueNanomolar,
     TQuantityValuePercent,
+    TQuantityValuePerMolarPerSecond,
+    TQuantityValuePerSecond,
     TQuantityValueResonanceUnits,
     TQuantityValueSecondTime,
 )
@@ -41,7 +44,7 @@ from allotropy.exceptions import AllotropyParserError
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
 )
-from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
+from allotropy.parsers.utils.values import assert_not_none, has_value, quantity_or_none
 from allotropy.types import DictType
 
 
@@ -88,11 +91,23 @@ class ReportPoint:
 
 
 @dataclass(frozen=True)
+class DeviceControlDocument:
+    device_type: str
+    flow_cell_identifier: str | None = None
+    flow_path: str | None = None
+    flow_rate: float | None = None
+    contact_time: float | None = None
+    dilution: float | None = None
+    sample_temperature_setting: float | None = None
+    device_control_custom_info: DictType | None = None
+
+
+@dataclass(frozen=True)
 class Measurement:
     identifier: str
     sample_identifier: str
-    device_type: str
     type_: MeasurementType
+    device_control_document: list[DeviceControlDocument]
     location_identifier: str | None = None
     batch_identifier: str | None = None
     well_plate_identifier: str | None = None
@@ -100,19 +115,23 @@ class Measurement:
     concentration: float | None = None
     method_name: str | None = None
     ligand_identifier: str | None = None
-    flow_cell_identifier: str | None = None
-    flow_path: str | None = None
-    flow_rate: float | None = None
-    contact_time: float | None = None
-    dilution: float | None = None
-    device_control_custom_info: DictType | None = None
     sample_custom_info: DictType | None = None
 
     # Sensorgram
     sensorgram_data_cube: DataCube | None = None
 
+    # Processed Data
+    binding_on_rate_measurement_datum__kon_: float | None = None
+    binding_off_rate_measurement_datum__koff_: float | None = None
+    equilibrium_dissociation_constant__kd_: float | None = None
+    maximum_binding_capacity__rmax_: float | None = None
+    processed_data_custom_info: DictType | None = None
+
     # Report point
     report_point_data: list[ReportPoint] | None = None
+
+    # Data processing
+    data_processing_document: DictType | None = None
 
 
 @dataclass(frozen=True)
@@ -153,6 +172,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     model_number=data.metadata.model_number,
                     brand_name=data.metadata.brand_name,
                     product_manufacturer=data.metadata.product_manufacturer,
+                    equipment_serial_number=data.metadata.equipment_serial_number,
                     device_document=(
                         [
                             DeviceDocumentItem(
@@ -213,6 +233,60 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_surface_plasmon_resonance_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocument:
+        processed_data_document = ProcessedDataDocumentItem(
+            data_processing_document=(
+                {
+                    key: value
+                    for key, value in measurement.data_processing_document.items()
+                    if value is not None
+                }
+                if measurement.data_processing_document
+                else None
+            ),
+            binding_on_rate_measurement_datum__kon_=quantity_or_none(
+                TQuantityValuePerMolarPerSecond,
+                measurement.binding_on_rate_measurement_datum__kon_,
+            ),
+            binding_off_rate_measurement_datum__koff_=quantity_or_none(
+                TQuantityValuePerSecond,
+                measurement.binding_off_rate_measurement_datum__koff_,
+            ),
+            equilibrium_dissociation_constant__KD_=quantity_or_none(
+                TQuantityValueMolar,
+                measurement.equilibrium_dissociation_constant__kd_,
+            ),
+            maximum_binding_capacity__Rmax_=quantity_or_none(
+                TQuantityValueResonanceUnits,
+                measurement.maximum_binding_capacity__rmax_,
+            ),
+            report_point_aggregate_document=(
+                ReportPointAggregateDocument(
+                    report_point_document=[
+                        add_custom_information_document(
+                            ReportPointDocumentItem(
+                                report_point_identifier=report_point.identifier,
+                                identifier_role=report_point.identifier_role,
+                                absolute_resonance=TQuantityValueResonanceUnits(
+                                    value=report_point.absolute_resonance
+                                ),
+                                relative_resonance=quantity_or_none(
+                                    TQuantityValueResonanceUnits,
+                                    report_point.relative_resonance,
+                                ),
+                                time_setting=TQuantityValueSecondTime(
+                                    value=report_point.time_setting
+                                ),
+                            ),
+                            custom_info_doc=report_point.custom_info,
+                        )
+                        for report_point in measurement.report_point_data
+                    ]
+                )
+                if measurement.report_point_data
+                else None
+            ),
+        )
+
         return MeasurementDocument(
             measurement_identifier=measurement.identifier,
             sample_document=add_custom_information_document(
@@ -245,55 +319,39 @@ class Mapper(SchemaMapper[Data, Model]):
                 device_control_document=[
                     add_custom_information_document(
                         DeviceControlDocumentItem(
-                            flow_cell_identifier=measurement.flow_cell_identifier,
-                            flow_path=measurement.flow_path,
+                            sample_temperature_setting=quantity_or_none(
+                                TQuantityValueDegreeCelsius,
+                                device_control.sample_temperature_setting,
+                            ),
+                            flow_cell_identifier=device_control.flow_cell_identifier,
+                            flow_path=device_control.flow_path,
                             flow_rate=quantity_or_none(
                                 TQuantityValueMicroliterPerMinute,
-                                measurement.flow_rate,
+                                device_control.flow_rate,
                             ),
                             contact_time=quantity_or_none(
-                                TQuantityValueSecondTime, measurement.contact_time
+                                TQuantityValueSecondTime, device_control.contact_time
                             ),
                             dilution_factor=quantity_or_none(
-                                TQuantityValuePercent, measurement.dilution
+                                TQuantityValuePercent, device_control.dilution
                             ),
-                            device_type=measurement.device_type,
+                            device_type=device_control.device_type,
                         ),
-                        custom_info_doc=measurement.device_control_custom_info,
+                        custom_info_doc=device_control.device_control_custom_info,
                     )
+                    for device_control in measurement.device_control_document
                 ]
             ),
             processed_data_aggregate_document=(
                 ProcessedDataAggregateDocument(
                     processed_data_document=[
-                        ProcessedDataDocumentItem(
-                            report_point_aggregate_document=ReportPointAggregateDocument(
-                                report_point_document=[
-                                    add_custom_information_document(
-                                        ReportPointDocumentItem(
-                                            report_point_identifier=report_point.identifier,
-                                            identifier_role=report_point.identifier_role,
-                                            absolute_resonance=TQuantityValueResonanceUnits(
-                                                value=report_point.absolute_resonance
-                                            ),
-                                            relative_resonance=quantity_or_none(
-                                                TQuantityValueResonanceUnits,
-                                                report_point.relative_resonance,
-                                            ),
-                                            time_setting=TQuantityValueSecondTime(
-                                                value=report_point.time_setting
-                                            ),
-                                        ),
-                                        # TODO: probably this should be at the processed document level.
-                                        custom_info_doc=report_point.custom_info,
-                                    )
-                                    for report_point in measurement.report_point_data
-                                ]
-                            )
-                        ),
+                        add_custom_information_document(
+                            processed_data_document,
+                            custom_info_doc=measurement.processed_data_custom_info,
+                        )
                     ]
                 )
-                if measurement.report_point_data
+                if has_value(processed_data_document)
                 else None
             ),
         )

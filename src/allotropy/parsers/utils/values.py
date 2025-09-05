@@ -175,3 +175,8 @@ def num_to_chars(n: int) -> str:
 
 def str_or_none(value: Any) -> str | None:
     return None if value is None else str(value)
+
+
+def has_value(model: object) -> bool:
+    # For models with all optional attributes, returns whether any attribute has a value.
+    return any(value is not None for value in model.__dict__.values())

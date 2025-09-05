@@ -1299,6 +1299,26 @@
       }
     ]
   },
+  "tQuantityValueSquareResonanceUnits": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/SquareResonanceUnits"
+      }
+    ]
+  },
+  "tNullableQuantityValueSquareResonanceUnits": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/SquareResonanceUnits"
+      }
+    ]
+  },
   "tQuantityValueTODO": {
     "allOf": [
       {
