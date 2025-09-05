@@ -10,7 +10,13 @@
                                 "device control document": [
                                     {
                                         "device type": "solution-analyzer",
-                                        "detection type": "metabolite-detection"
+                                        "detection type": "metabolite-detection",
+                                        "custom information document": {
+                                            "Vessel Pressure (psi)": 0.0,
+                                            "Sparging O2%": 20.9,
+                                            "Chemistry Flow Time": 6.67,
+                                            "pH / Gas Flow Time": 3.65
+                                        }
                                     }
                                 ]
                             },
@@ -19,7 +25,12 @@
                             "sample document": {
                                 "sample identifier": "SMPL_1234",
                                 "batch identifier": "BATCH_123",
-                                "description": "Spent Media"
+                                "description": "Spent Media",
+                                "custom information document": {
+                                    "Vessel ID": "3L Bioreactor",
+                                    "Chemistry Dilution Ratio": "1:1",
+                                    "Cell Type": "Workhog"
+                                }
                             },
                             "analyte aggregate document": {
                                 "analyte document": [
@@ -94,7 +105,13 @@
                                 "device control document": [
                                     {
                                         "device type": "solution-analyzer",
-                                        "detection type": "blood-gas-detection"
+                                        "detection type": "blood-gas-detection",
+                                        "custom information document": {
+                                            "Vessel Pressure (psi)": 0.0,
+                                            "Sparging O2%": 20.9,
+                                            "Chemistry Flow Time": 6.67,
+                                            "pH / Gas Flow Time": 3.65
+                                        }
                                     }
                                 ]
                             },
@@ -103,7 +120,12 @@
                             "sample document": {
                                 "sample identifier": "SMPL_1234",
                                 "batch identifier": "BATCH_123",
-                                "description": "Spent Media"
+                                "description": "Spent Media",
+                                "custom information document": {
+                                    "Vessel ID": "3L Bioreactor",
+                                    "Chemistry Dilution Ratio": "1:1",
+                                    "Cell Type": "Workhog"
+                                }
                             },
                             "pO2": {
                                 "value": 191.6,
@@ -127,7 +149,13 @@
                                 "device control document": [
                                     {
                                         "device type": "solution-analyzer",
-                                        "detection type": "ph-detection"
+                                        "detection type": "ph-detection",
+                                        "custom information document": {
+                                            "Vessel Pressure (psi)": 0.0,
+                                            "Sparging O2%": 20.9,
+                                            "Chemistry Flow Time": 6.67,
+                                            "pH / Gas Flow Time": 3.65
+                                        }
                                     }
                                 ]
                             },
@@ -136,7 +164,12 @@
                             "sample document": {
                                 "sample identifier": "SMPL_1234",
                                 "batch identifier": "BATCH_123",
-                                "description": "Spent Media"
+                                "description": "Spent Media",
+                                "custom information document": {
+                                    "Vessel ID": "3L Bioreactor",
+                                    "Chemistry Dilution Ratio": "1:1",
+                                    "Cell Type": "Workhog"
+                                }
                             },
                             "pH": {
                                 "value": 7.4,
@@ -159,7 +192,7 @@
             "file name": "SampleResults2022-06-28_142558.csv",
             "UNC path": "tests/parsers/novabio_flex2/testdata/SampleResults2022-06-28_142558.csv",
             "ASM converter name": "allotropy_novabio_flex2",
-            "ASM converter version": "0.1.79",
+            "ASM converter version": "0.1.105",
             "software name": "NovaBio Flex"
         },
         "device system document": {
