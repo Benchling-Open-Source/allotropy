@@ -10,7 +10,13 @@
                                 "device control document": [
                                     {
                                         "device type": "solution-analyzer",
-                                        "detection type": "metabolite-detection"
+                                        "detection type": "metabolite-detection",
+                                        "custom information document": {
+                                            "Sparging O2%": 1.0,
+                                            "pH / Gas Flow Time": 1.0,
+                                            "Chemistry Flow Time": 1.0,
+                                            "Vessel Pressure (psi)": 1.0
+                                        }
                                     }
                                 ]
                             },
@@ -21,19 +27,10 @@
                                 "batch identifier": "1.0",
                                 "description": "Default",
                                 "custom information document": {
-                                    "Chemistry Flow Time": 1.0,
-                                    "Pre-Dilution Multiplier": 1.0,
-                                    "Cell Inspection Type": "StandardCHO",
-                                    "PCO2 @ Temp": "mmHg",
-                                    "Vessel Pressure (psi)": 1.0,
-                                    "PO2 @ Temp": "mmHg",
-                                    "Sparging O2%": 1.0,
                                     "Chemistry Dilution Ratio": "1:01",
-                                    "pH / Gas Flow Time": 1.0,
                                     "Vessel ID": 1.0,
-                                    "Sample Time": "1/1/2020 16:20",
-                                    "pH @ Temp": 1.0,
-                                    "Osm": "mOsm/kg"
+                                    "Cell Inspection Type": "StandardCHO",
+                                    "Pre-Dilution Multiplier": 1.0
                                 }
                             },
                             "analyte aggregate document": {
@@ -109,7 +106,13 @@
                                 "device control document": [
                                     {
                                         "device type": "solution-analyzer",
-                                        "detection type": "cell-counting"
+                                        "detection type": "cell-counting",
+                                        "custom information document": {
+                                            "Sparging O2%": 1.0,
+                                            "pH / Gas Flow Time": 1.0,
+                                            "Chemistry Flow Time": 1.0,
+                                            "Vessel Pressure (psi)": 1.0
+                                        }
                                     }
                                 ]
                             },
@@ -120,19 +123,10 @@
                                 "batch identifier": "1.0",
                                 "description": "Default",
                                 "custom information document": {
-                                    "Chemistry Flow Time": 1.0,
-                                    "Pre-Dilution Multiplier": 1.0,
-                                    "Cell Inspection Type": "StandardCHO",
-                                    "PCO2 @ Temp": "mmHg",
-                                    "Vessel Pressure (psi)": 1.0,
-                                    "PO2 @ Temp": "mmHg",
-                                    "Sparging O2%": 1.0,
                                     "Chemistry Dilution Ratio": "1:01",
-                                    "pH / Gas Flow Time": 1.0,
                                     "Vessel ID": 1.0,
-                                    "Sample Time": "1/1/2020 16:20",
-                                    "pH @ Temp": 1.0,
-                                    "Osm": "mOsm/kg"
+                                    "Cell Inspection Type": "StandardCHO",
+                                    "Pre-Dilution Multiplier": 1.0
                                 }
                             },
                             "processed data aggregate document": {
@@ -166,7 +160,13 @@
                                 "device control document": [
                                     {
                                         "device type": "solution-analyzer",
-                                        "detection type": "blood-gas-detection"
+                                        "detection type": "blood-gas-detection",
+                                        "custom information document": {
+                                            "Sparging O2%": 1.0,
+                                            "pH / Gas Flow Time": 1.0,
+                                            "Chemistry Flow Time": 1.0,
+                                            "Vessel Pressure (psi)": 1.0
+                                        }
                                     }
                                 ]
                             },
@@ -177,19 +177,10 @@
                                 "batch identifier": "1.0",
                                 "description": "Default",
                                 "custom information document": {
-                                    "Chemistry Flow Time": 1.0,
-                                    "Pre-Dilution Multiplier": 1.0,
-                                    "Cell Inspection Type": "StandardCHO",
-                                    "PCO2 @ Temp": "mmHg",
-                                    "Vessel Pressure (psi)": 1.0,
-                                    "PO2 @ Temp": "mmHg",
-                                    "Sparging O2%": 1.0,
                                     "Chemistry Dilution Ratio": "1:01",
-                                    "pH / Gas Flow Time": 1.0,
                                     "Vessel ID": 1.0,
-                                    "Sample Time": "1/1/2020 16:20",
-                                    "pH @ Temp": 1.0,
-                                    "Osm": "mOsm/kg"
+                                    "Cell Inspection Type": "StandardCHO",
+                                    "Pre-Dilution Multiplier": 1.0
                                 }
                             },
                             "pO2": {
@@ -214,7 +205,13 @@
                                 "device control document": [
                                     {
                                         "device type": "solution-analyzer",
-                                        "detection type": "osmolality-detection"
+                                        "detection type": "osmolality-detection",
+                                        "custom information document": {
+                                            "Sparging O2%": 1.0,
+                                            "pH / Gas Flow Time": 1.0,
+                                            "Chemistry Flow Time": 1.0,
+                                            "Vessel Pressure (psi)": 1.0
+                                        }
                                     }
                                 ]
                             },
@@ -225,19 +222,10 @@
                                 "batch identifier": "1.0",
                                 "description": "Default",
                                 "custom information document": {
-                                    "Chemistry Flow Time": 1.0,
-                                    "Pre-Dilution Multiplier": 1.0,
-                                    "Cell Inspection Type": "StandardCHO",
-                                    "PCO2 @ Temp": "mmHg",
-                                    "Vessel Pressure (psi)": 1.0,
-                                    "PO2 @ Temp": "mmHg",
-                                    "Sparging O2%": 1.0,
                                     "Chemistry Dilution Ratio": "1:01",
-                                    "pH / Gas Flow Time": 1.0,
                                     "Vessel ID": 1.0,
-                                    "Sample Time": "1/1/2020 16:20",
-                                    "pH @ Temp": 1.0,
-                                    "Osm": "mOsm/kg"
+                                    "Cell Inspection Type": "StandardCHO",
+                                    "Pre-Dilution Multiplier": 1.0
                                 }
                             },
                             "osmolality": {
@@ -250,7 +238,13 @@
                                 "device control document": [
                                     {
                                         "device type": "solution-analyzer",
-                                        "detection type": "ph-detection"
+                                        "detection type": "ph-detection",
+                                        "custom information document": {
+                                            "Sparging O2%": 1.0,
+                                            "pH / Gas Flow Time": 1.0,
+                                            "Chemistry Flow Time": 1.0,
+                                            "Vessel Pressure (psi)": 1.0
+                                        }
                                     }
                                 ]
                             },
@@ -261,19 +255,10 @@
                                 "batch identifier": "1.0",
                                 "description": "Default",
                                 "custom information document": {
-                                    "Chemistry Flow Time": 1.0,
-                                    "Pre-Dilution Multiplier": 1.0,
-                                    "Cell Inspection Type": "StandardCHO",
-                                    "PCO2 @ Temp": "mmHg",
-                                    "Vessel Pressure (psi)": 1.0,
-                                    "PO2 @ Temp": "mmHg",
-                                    "Sparging O2%": 1.0,
                                     "Chemistry Dilution Ratio": "1:01",
-                                    "pH / Gas Flow Time": 1.0,
                                     "Vessel ID": 1.0,
-                                    "Sample Time": "1/1/2020 16:20",
-                                    "pH @ Temp": 1.0,
-                                    "Osm": "mOsm/kg"
+                                    "Cell Inspection Type": "StandardCHO",
+                                    "Pre-Dilution Multiplier": 1.0
                                 }
                             },
                             "pH": {
@@ -297,7 +282,7 @@
             "file name": "SampleResultsT123456789C2020-01-01_162647.csv",
             "UNC path": "tests/parsers/novabio_flex2/testdata/SampleResultsT123456789C2020-01-01_162647.csv",
             "ASM converter name": "allotropy_novabio_flex2",
-            "ASM converter version": "0.1.104",
+            "ASM converter version": "0.1.105",
             "software name": "NovaBio Flex"
         },
         "device system document": {

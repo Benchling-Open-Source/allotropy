@@ -127,6 +127,7 @@ class Measurement:
 
     # Custom information
     custom_info: dict[str, Any] | None = None
+    device_control_custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -305,7 +306,7 @@ class Mapper(SchemaMapper[Data, Model]):
                                     metadata.sample_volume_setting,
                                 ),
                             ),
-                            None,
+                            measurement.device_control_custom_info,
                         ),
                     ]
                 ),
