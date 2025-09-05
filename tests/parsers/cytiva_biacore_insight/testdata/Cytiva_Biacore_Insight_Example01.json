@@ -115,7 +115,7 @@
                             },
                             "measurement identifier": "CYTIVA_BIACORE_INSIGHT_TEST_ID_0",
                             "sample document": {
-                                "sample identifier": "Run1_Cycle1_Channel1",
+                                "sample identifier": "Run1_Cycle1",
                                 "custom information document": {
                                     "Run": 1,
                                     "Cycle": 1,
@@ -1029,7 +1029,7 @@
                             },
                             "measurement identifier": "CYTIVA_BIACORE_INSIGHT_TEST_ID_1",
                             "sample document": {
-                                "sample identifier": "Run1_Cycle1_Channel2",
+                                "sample identifier": "Run1_Cycle1",
                                 "custom information document": {
                                     "Run": 1,
                                     "Cycle": 1,
@@ -1943,7 +1943,7 @@
                             },
                             "measurement identifier": "CYTIVA_BIACORE_INSIGHT_TEST_ID_2",
                             "sample document": {
-                                "sample identifier": "Run1_Cycle1_Channel3",
+                                "sample identifier": "Run1_Cycle1",
                                 "custom information document": {
                                     "Run": 1,
                                     "Cycle": 1,
@@ -2857,7 +2857,7 @@
                             },
                             "measurement identifier": "CYTIVA_BIACORE_INSIGHT_TEST_ID_3",
                             "sample document": {
-                                "sample identifier": "Run1_Cycle1_Channel4",
+                                "sample identifier": "Run1_Cycle1",
                                 "custom information document": {
                                     "Run": 1,
                                     "Cycle": 1,
@@ -3771,7 +3771,7 @@
                             },
                             "measurement identifier": "CYTIVA_BIACORE_INSIGHT_TEST_ID_4",
                             "sample document": {
-                                "sample identifier": "Run1_Cycle1_Channel5",
+                                "sample identifier": "Run1_Cycle1",
                                 "custom information document": {
                                     "Run": 1,
                                     "Cycle": 1,
@@ -4685,7 +4685,7 @@
                             },
                             "measurement identifier": "CYTIVA_BIACORE_INSIGHT_TEST_ID_5",
                             "sample document": {
-                                "sample identifier": "Run1_Cycle1_Channel6",
+                                "sample identifier": "Run1_Cycle1",
                                 "custom information document": {
                                     "Run": 1,
                                     "Cycle": 1,
@@ -5599,7 +5599,7 @@
                             },
                             "measurement identifier": "CYTIVA_BIACORE_INSIGHT_TEST_ID_6",
                             "sample document": {
-                                "sample identifier": "Run1_Cycle1_Channel7",
+                                "sample identifier": "Run1_Cycle1",
                                 "custom information document": {
                                     "Run": 1,
                                     "Cycle": 1,
@@ -6513,7 +6513,7 @@
                             },
                             "measurement identifier": "CYTIVA_BIACORE_INSIGHT_TEST_ID_7",
                             "sample document": {
-                                "sample identifier": "Run1_Cycle1_Channel8",
+                                "sample identifier": "Run1_Cycle1",
                                 "custom information document": {
                                     "Run": 1,
                                     "Cycle": 1,
@@ -7452,7 +7452,7 @@
                             },
                             "measurement identifier": "CYTIVA_BIACORE_INSIGHT_TEST_ID_8",
                             "sample document": {
-                                "sample identifier": "Run1_Cycle2_Channel1",
+                                "sample identifier": "Run1_Cycle2",
                                 "custom information document": {
                                     "Run": 1,
                                     "Cycle": 2,
@@ -8401,7 +8401,7 @@
                             },
                             "measurement identifier": "CYTIVA_BIACORE_INSIGHT_TEST_ID_9",
                             "sample document": {
-                                "sample identifier": "Run1_Cycle2_Channel2",
+                                "sample identifier": "Run1_Cycle2",
                                 "custom information document": {
                                     "Run": 1,
                                     "Cycle": 2,
@@ -9350,7 +9350,7 @@
                             },
                             "measurement identifier": "CYTIVA_BIACORE_INSIGHT_TEST_ID_10",
                             "sample document": {
-                                "sample identifier": "Run1_Cycle2_Channel3",
+                                "sample identifier": "Run1_Cycle2",
                                 "custom information document": {
                                     "Run": 1,
                                     "Cycle": 2,
@@ -10299,7 +10299,7 @@
                             },
                             "measurement identifier": "CYTIVA_BIACORE_INSIGHT_TEST_ID_11",
                             "sample document": {
-                                "sample identifier": "Run1_Cycle2_Channel4",
+                                "sample identifier": "Run1_Cycle2",
                                 "custom information document": {
                                     "Run": 1,
                                     "Cycle": 2,
@@ -11248,7 +11248,7 @@
                             },
                             "measurement identifier": "CYTIVA_BIACORE_INSIGHT_TEST_ID_12",
                             "sample document": {
-                                "sample identifier": "Run1_Cycle2_Channel5",
+                                "sample identifier": "Run1_Cycle2",
                                 "custom information document": {
                                     "Run": 1,
                                     "Cycle": 2,
@@ -12197,7 +12197,7 @@
                             },
                             "measurement identifier": "CYTIVA_BIACORE_INSIGHT_TEST_ID_13",
                             "sample document": {
-                                "sample identifier": "Run1_Cycle2_Channel6",
+                                "sample identifier": "Run1_Cycle2",
                                 "custom information document": {
                                     "Run": 1,
                                     "Cycle": 2,
@@ -13120,7 +13120,7 @@
                             },
                             "measurement identifier": "CYTIVA_BIACORE_INSIGHT_TEST_ID_14",
                             "sample document": {
-                                "sample identifier": "Run1_Cycle2_Channel7",
+                                "sample identifier": "Run1_Cycle2",
                                 "custom information document": {
                                     "Run": 1,
                                     "Cycle": 2,
@@ -14069,7 +14069,7 @@
                             },
                             "measurement identifier": "CYTIVA_BIACORE_INSIGHT_TEST_ID_15",
                             "sample document": {
-                                "sample identifier": "Run1_Cycle2_Channel8",
+                                "sample identifier": "Run1_Cycle2",
                                 "custom information document": {
                                     "Run": 1,
                                     "Cycle": 2,
@@ -38749,7 +38749,7 @@
             "file name": "evaluation_name",
             "UNC path": "my_evaluation_path",
             "ASM converter name": "allotropy_cytiva_biacore_insight",
-            "ASM converter version": "0.1.104",
+            "ASM converter version": "0.1.105",
             "software name": "Biacore Insight Evaluation",
             "software version": "6.0.0.0000"
         },

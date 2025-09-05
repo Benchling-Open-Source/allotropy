@@ -379,7 +379,7 @@ class MeasurementData:
 
         return MeasurementData(
             identifier=identifier,
-            sample_identifier=f"Run{run}_Cycle{cycle_number}_Channel{channel}",
+            sample_identifier=f"Run{run}_Cycle{cycle_number}",
             method_name=run_metadata.method_name,
             ligand_identifier=run_info.get(str, "Ligand"),
             device_control_document=device_control_document,
