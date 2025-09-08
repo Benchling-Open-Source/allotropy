@@ -88,7 +88,7 @@ class JsonData:
                 key_or_keys if isinstance(key_or_keys, set) else {key_or_keys}
             )
             for matched in [
-                k for k in self.data.keys() if self._key_matches(str(regex_key, str(k)))
+                k for k in self.data.keys() if self._key_matches(str(regex_key), str(k))
             ]
         }
 
