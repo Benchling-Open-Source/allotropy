@@ -1,7 +1,10 @@
 from collections.abc import Mapping
+import copy
 import json
 from pathlib import Path
 from typing import Any
+
+import jsonschema
 
 from allotropy.allotrope.schema_parser.path_util import (
     get_full_schema_path,
@@ -10,6 +13,13 @@ from allotropy.allotrope.schema_parser.path_util import (
     SHARED_SCHEMAS_DEFINITIONS_PATH,
 )
 from allotropy.constants import DEFAULT_ENCODING
+from allotropy.exceptions import AllotropeSerializationError, AllotropeValidationError
+
+# Override format checker to remove "uri-reference" check, which ASM schemas fail against.
+FORMAT_CHECKER = copy.deepcopy(
+    jsonschema.validators.Draft202012Validator.FORMAT_CHECKER
+)
+FORMAT_CHECKER.checkers.pop("uri-reference", None)
 
 
 def get_shared_definitions() -> dict[str, Any]:
@@ -63,3 +73,21 @@ def get_schema_from_model(model: Any) -> dict[str, Any]:
         msg = f"No 'manifest' or 'field_asm_manifest' found in model: {type(model)}"
         raise ValueError(msg)
     return get_schema_from_manifest(manifest)
+
+
+def validate_asm_schema(asm_dict: dict[str, Any]) -> None:
+    try:
+        allotrope_schema = get_schema_from_asm(asm_dict)
+    except Exception as e:
+        msg = f"Failed to retrieve schema for model: {e}"
+        raise AllotropeSerializationError(msg) from e
+
+    try:
+        jsonschema.validators.Draft202012Validator.check_schema(
+            allotrope_schema, format_checker=FORMAT_CHECKER
+        )
+        validator = jsonschema.validators.Draft202012Validator(allotrope_schema)
+        validator.validate(asm_dict)
+    except Exception as e:
+        msg = f"Failed to validate allotrope model against schema: {e}"
+        raise AllotropeValidationError(msg) from e

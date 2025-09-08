@@ -6,6 +6,7 @@ from enum import Enum
 import logging
 from pathlib import Path
 import re
+from typing import Any
 
 import pandas as pd
 
@@ -235,6 +236,7 @@ class MeasurementInfo:
     measurement_time: str
     protocol_signature: str
     measurement_signature: str
+    custom_info: dict[str, Any]
 
     @staticmethod
     def create(
@@ -253,14 +255,15 @@ class MeasurementInfo:
             reader.lines_as_df(lines, index_col=0, names=range(max_num_cols)),
             msg=f"Unable to parser data for {section_name} section.",
         ).T.dropna(how="all")
-        df.columns = df.columns.astype(str).str.strip(":")
+        df.columns = df.columns.astype(str).str.lower().str.strip(":")
         data = df_to_series_data(df, index=0)
 
         return MeasurementInfo(
-            instrument_serial_number=data[str, "Instrument Serial Number"],
-            measurement_time=data[str, "Measurement Started"],
-            protocol_signature=data[str, "Protocol Signature"],
-            measurement_signature=data[str, "Measurement Signature"],
+            instrument_serial_number=data[str, "instrument serial number"],
+            measurement_time=data[str, "measurement started"],
+            protocol_signature=data[str, "protocol signature"],
+            measurement_signature=data[str, "measurement signature"],
+            custom_info=data.get_unread(skip={"software version", "barcode", "nan"}),
         )
 
 
@@ -350,15 +353,21 @@ class Channel:
 class Measurements:
     channels: list[Channel]
     number_of_averages: float | None
+    detector_distance_luminiscence: float | None
     detector_distance: float | None
     scan_position: ScanPositionSettingPlateReader | None
     emission_wavelength: float | None
     excitation_wavelength: float | None
     focus_height: float | None
+    device_control_custom_info: dict[str, Any]
+    custom_info: dict[str, Any] | None = None
 
     @staticmethod
     def create(
-        reader: CsvReader, section_title: str, next_section_title: str
+        reader: CsvReader,
+        section_title: str,
+        next_section_title: str,
+        measurement_info: MeasurementInfo,
     ) -> Measurements:
         assert_not_none(
             reader.drop_until_inclusive(f"^{section_title}"),
@@ -382,7 +391,8 @@ class Measurements:
         return Measurements(
             channels=Measurements.create_channels(data),
             number_of_averages=data.get(float, "number of flashes"),
-            detector_distance=data.get(
+            detector_distance=data.get(float, "measurement height [mm]"),
+            detector_distance_luminiscence=data.get(
                 float, "distance between plate and detector [mm]"
             ),
             scan_position=(
@@ -400,21 +410,47 @@ class Measurements:
                 else try_float_or_none(excitation_wavelength.removesuffix("nm"))
             ),
             focus_height=data.get(float, "focus height [µm]"),
+            device_control_custom_info={
+                "number of flashes integrated": data.get(
+                    float, "number of flashes integrated"
+                ),
+                "flash power": data.get(float, "flash power"),
+                "measurement mode setting": data.get(str, "measurement mode"),
+                "start plate repeat each [s]": measurement_info.custom_info.get(
+                    "start plate repeat each [s]", None
+                ),
+                "number of plate repeats": measurement_info.custom_info.get(
+                    "number of plate repeats", None
+                ),
+                "sequence executed by": measurement_info.custom_info.get(
+                    "sequence executed by", None
+                ),
+                "filter set": data.get(str, "filter set"),
+                "generate bright field": data.get(bool, "generate bright field"),
+                "digital phase contrast": data.get(bool, "digital phase contrast"),
+                "generate dpc": data.get(bool, "generate dpc"),
+            },
+            custom_info=data.get_unread(
+                skip={
+                    "tech",
+                    "operation",
+                    "nan",
+                }
+            ),
         )
 
     @staticmethod
     def create_channels(data: SeriesData) -> list[Channel]:
         # Get all channel keys
-        values = {
-            key: data.series.get(key)
-            for key in [
-                "channel",
-                "excitation wavelength [nm]",
-                "excitation power [%]",
-                "exposure time [ms]",
-                "additional focus offset [mm]",
-            ]
-        }
+        channel_keys = [
+            "channel",
+            "excitation wavelength [nm]",
+            "excitation power [%]",
+            "exposure time [ms]",
+            "additional focus offset [mm]",
+        ]
+        values = {key: data.series.get(key) for key in channel_keys}
+        data.mark_read(set(channel_keys))
         if values["channel"] is None:
             return []
 
@@ -479,6 +515,7 @@ def create_metadata(data: Data, file_path: str) -> Metadata:
         model_number=constants.MODEL_NUMBER,
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
         equipment_serial_number=data.measurement_info.instrument_serial_number,
+        custom_info=data.measurement_info.custom_info,
     )
 
 
@@ -513,7 +550,9 @@ def _create_measurement(data: Data, well_position: str, well_value: str) -> Meas
         well_plate_identifier=data.results.barcode,
         sample_role_type=data.platemap.get_sample_role_type(well_position),
         number_of_averages=data.measurements.number_of_averages,
-        detector_distance_setting=data.measurements.detector_distance,
+        detector_distance_setting=data.measurements.detector_distance_luminiscence
+        if experiment_type is ExperimentType.LUMINESCENCE
+        else data.measurements.detector_distance,
         scan_position_setting=data.measurements.scan_position,
         detector_wavelength_setting=detector_wavelength_setting,
         excitation_wavelength_setting=data.measurements.excitation_wavelength,
@@ -526,12 +565,23 @@ def _create_measurement(data: Data, well_position: str, well_value: str) -> Meas
         luminescence=measurement_value
         if experiment_type is ExperimentType.LUMINESCENCE
         else None,
+        device_control_custom_info=data.measurements.device_control_custom_info,
+        custom_info=data.measurements.custom_info,
     )
 
 
 def _create_optical_measurement(
     data: Data, well_position: str, channel: Channel
 ) -> Measurement:
+    device_control_custom_info = {
+        **data.measurements.device_control_custom_info,
+        "additional focus offset [mm]": channel.additional_focus_offset,
+    }
+    if channel.name != "BRIGHTFIELD":
+        to_remove = ["generate bright field", "digital phase contrast", "generate dpc"]
+        for key in to_remove:
+            device_control_custom_info.pop(key, None)
+
     return Measurement(
         type_=data.background_info.experiment_type.measurement_type,
         identifier=random_uuid_str(),
@@ -550,6 +600,8 @@ def _create_optical_measurement(
         illumination_setting_unit="%",
         transmitted_light_setting=channel.transmitted_light,
         fluorescent_tag_setting=channel.fluorescent_tag,
+        device_control_custom_info=device_control_custom_info,
+        custom_info=data.measurements.custom_info,
     )
 
 
@@ -566,6 +618,16 @@ def _create_measurements(
 
 
 def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
+    protocol_owner = data.measurement_info.custom_info.pop("protocol owner", None)
+    measurement_finished = data.measurement_info.custom_info.pop(
+        "measurement finished", None
+    )
+    protocol_name = data.measurement_info.custom_info.pop("protocol name", None)
+
+    data.measurement_info.custom_info.pop("sequence executed by", None)
+    data.measurement_info.custom_info.pop("number of plate repeats", None)
+    data.measurement_info.custom_info.pop("start plate repeat each [s]", None)
+
     return [
         MeasurementGroup(
             measurement_time=data.measurement_info.measurement_time,
@@ -596,6 +658,11 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
             ]
             if data.background_info.experiment_type is ExperimentType.OPTICAL_IMAGING
             else None,
+            custom_info={
+                "protocol owner": protocol_owner,
+                "measurement finished": measurement_finished,
+                "protocol name": protocol_name,
+            },
         )
         for well_position, well_value in data.iter_wells()
     ]

@@ -147,6 +147,31 @@ def _extract_general_custom_keywords(
     )
 
 
+def _extract_device_control_keywords_from_map(
+    mapping: dict[str, str]
+) -> dict[str, str]:
+    """Filter device control keywords using a pre-built mapping."""
+    return {
+        name: value for name, value in mapping.items() if _is_device_control_field(name)
+    }
+
+
+def _extract_general_custom_keywords_from_map(
+    mapping: dict[str, str]
+) -> dict[str, str]:
+    """Filter general custom keywords using a pre-built mapping."""
+    result: dict[str, str] = {}
+    for name, value in mapping.items():
+        if (
+            name not in ALL_STRUCTURED_KEYWORDS
+            and name not in ["FJ FCS VERSION", "curGroup"]
+            and not _is_device_control_field(name)
+            and value.strip() != ""
+        ):
+            result[name] = value
+    return result
+
+
 def _is_device_control_field(keyword: str) -> bool:
     """
     Check if a keyword belongs to device control document.
@@ -550,6 +575,30 @@ def _get_keyword_value_by_name_from_sample(
     return found_value
 
 
+def _build_keyword_map(
+    sample: StrictXmlElement,
+) -> tuple[dict[str, str], StrictXmlElement | None]:
+    """
+    Build a name->value map from the sample's Keywords block once.
+
+    Returns the map and the Keywords element (if present).
+    """
+    keywords = sample.find_or_none("Keywords")
+    if keywords is None:
+        return {}, None
+
+    mapping: dict[str, str] = {}
+    keyword_elements = keywords.findall("Keyword")
+    for kw in keyword_elements:
+        kw_name = kw.get_attr_or_none("name")
+        kw_value = kw.get_attr_or_none("value")
+        if kw_name is not None and kw_value is not None and kw_value.strip() != "":
+            mapping[kw_name] = kw_value.strip()
+        kw.mark_all_as_read()
+    keywords.mark_all_as_read()
+    return mapping, keywords
+
+
 def _create_compensation_matrix_groups(
     transform_matrix_element: StrictXmlElement,
 ) -> list[CompensationMatrixGroup] | None:
@@ -946,12 +995,79 @@ def _create_data_regions(sample: StrictXmlElement) -> list[DataRegion]:
 
 
 def create_measurement_groups(root_element: StrictXmlElement) -> list[MeasurementGroup]:
+
     sample_list = root_element.find_or_none("SampleList")
     if sample_list is None:
         msg = "No SampleList element found in XML file."
         raise AllotropeParsingError(msg)
 
+    # Precompute root-level fields (same for all samples)
+    root_element_fields = ["modDate", "name", "clientTimestamp", "homepage"]
+    pre_root_measurement_fields: dict[str, str] = {}
+    for field in root_element_fields:
+        value = root_element.get_attr_or_none(field)
+        if value is not None and value.strip() != "":
+            pre_root_measurement_fields[field] = value.strip()
+
+    root_data_processing_fields = [
+        "linFromKW",
+        "logFromKW",
+        "linMax",
+        "logMax",
+        "useFCS3",
+        "useGain",
+        "linearRescale",
+        "logMin",
+        "linMin",
+        "extraNegs",
+        "logRescale",
+    ]
+    pre_root_processing_fields: dict[str, str] = {}
+    for field in root_data_processing_fields:
+        value = root_element.get_attr_or_none(field)
+        if value is not None and value.strip() != "":
+            pre_root_processing_fields[field] = value.strip()
+
+    # Precompute cytometer-based fields (if present) once
+    cytometer = root_element.recursive_find_or_none(["Cytometers", "Cytometer"])
+    pre_cytometer_measurement_fields: dict[str, str] = {}
+    pre_cytometer_processing_fields: dict[str, str] = {}
+    if cytometer:
+        for field in root_element_fields:
+            value = cytometer.get_attr_or_none(field)
+            if value is not None and value.strip() != "":
+                pre_cytometer_measurement_fields[field] = value.strip()
+
+        for field in root_data_processing_fields:
+            value = cytometer.get_attr_or_none(field)
+            if value is not None and value.strip() != "":
+                pre_cytometer_processing_fields[field] = value.strip()
+
+        cytometer.mark_read(
+            {
+                "cyt",
+                "widthBasis",
+                "useTransform",
+                "icon",
+                "manufacturer",
+                "serialnumber",
+                "transformType",
+            }
+        )
+
+    # Precompute sample_list measurement fields (if any)
+    pre_sample_list_measurement_fields: dict[str, str] = {}
+    for field in root_element_fields:
+        value = sample_list.get_attr_or_none(field)
+        if value is not None and value.strip() != "":
+            pre_sample_list_measurement_fields[field] = value.strip()
+
     samples = sample_list.findall("Sample")
+
+    # Precompute keyword sets for fast membership tests
+    measurement_kw_set = set(MEASUREMENT_DOCUMENT_KEYWORDS)
+    sample_kw_set = set(SAMPLE_DOCUMENT_KEYWORDS)
+    processed_kw_set = set(PROCESSED_DATA_KEYWORDS)
 
     result = []
     for sample in samples:
@@ -1008,36 +1124,36 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
                 }
                 all_custom_info.update(non_none_sample_node_unread)
 
-        # Extract specific keyword values for measurement-level fields
+        # Build keyword map once per sample for faster repeated access
+        keyword_map, keywords_element = _build_keyword_map(sample)
+
+        # Helper uses the prebuilt map first, falling back to XML lookup if needed
         def get_keyword_value(
-            name: str, current_sample: StrictXmlElement = sample
+            name: str,
+            _map: dict[str, str] = keyword_map,
+            _sample: StrictXmlElement = sample,
         ) -> str | None:
-            return _get_keyword_value_by_name_from_sample(current_sample, name)
+            value = _map.get(name)
+            if value is not None:
+                return value
+            return _get_keyword_value_by_name_from_sample(_sample, name)
 
         # Extract measurement-level metadata fields
         measurement_custom_info = {}
-        for keyword in MEASUREMENT_DOCUMENT_KEYWORDS:
-            value = get_keyword_value(keyword)
-            if value is not None and value.strip() != "":
-                measurement_custom_info[keyword] = value
+        if len(keyword_map) <= len(measurement_kw_set):
+            for name, value in keyword_map.items():
+                if name in measurement_kw_set:
+                    measurement_custom_info[name] = value
+        else:
+            for name in measurement_kw_set:
+                if (value := keyword_map.get(name)) is not None:
+                    measurement_custom_info[name] = value
 
-        # Also extract root element fields for measurement document
-        root_element_fields = ["modDate", "name", "clientTimestamp", "homepage"]
-        for field in root_element_fields:
-            root_value = root_element.get_attr_or_none(field)
-            if root_value is not None and root_value.strip() != "":
-                measurement_custom_info[field] = root_value.strip()
+        for field, value in pre_root_measurement_fields.items():
+            measurement_custom_info.setdefault(field, value)
 
-        # Check sample_list element for measurement document fields
-        if sample_list:
-            for field in root_element_fields:
-                sample_list_value = sample_list.get_attr_or_none(field)
-                if (
-                    sample_list_value is not None
-                    and sample_list_value.strip() != ""
-                    and field not in measurement_custom_info
-                ):
-                    measurement_custom_info[field] = sample_list_value.strip()
+        for field, value in pre_sample_list_measurement_fields.items():
+            measurement_custom_info.setdefault(field, value)
 
         # Check current sample element for measurement document fields
         for field in root_element_fields:
@@ -1051,17 +1167,25 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
 
         # Extract sample-level metadata fields
         sample_custom_info = {}
-        for keyword in SAMPLE_DOCUMENT_KEYWORDS:
-            value = get_keyword_value(keyword)
-            if value is not None and value.strip() != "":
-                sample_custom_info[keyword] = value
+        if len(keyword_map) <= len(sample_kw_set):
+            for name, value in keyword_map.items():
+                if name in sample_kw_set:
+                    sample_custom_info[name] = value
+        else:
+            for name in sample_kw_set:
+                if (value := keyword_map.get(name)) is not None:
+                    sample_custom_info[name] = value
 
         # Extract data processing document-level metadata fields
         data_processing_custom_info = {}
-        for keyword in PROCESSED_DATA_KEYWORDS:
-            value = get_keyword_value(keyword)
-            if value is not None and value.strip() != "":
-                data_processing_custom_info[keyword] = value
+        if len(keyword_map) <= len(processed_kw_set):
+            for name, value in keyword_map.items():
+                if name in processed_kw_set:
+                    data_processing_custom_info[name] = value
+        else:
+            for name in processed_kw_set:
+                if (value := keyword_map.get(name)) is not None:
+                    data_processing_custom_info[name] = value
 
         # Also extract root element fields for data processing document
         root_data_processing_fields = [
@@ -1078,73 +1202,37 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
             "logRescale",
         ]
 
-        # Check root element
-        for field in root_data_processing_fields:
-            root_value = root_element.get_attr_or_none(field)
-            if root_value is not None and root_value.strip() != "":
-                data_processing_custom_info[field] = root_value.strip()
+        for field, value in pre_root_processing_fields.items():
+            data_processing_custom_info.setdefault(field, value)
 
-        # Check cytometer element
-        cytometer = root_element.recursive_find_or_none(["Cytometers", "Cytometer"])
-        if cytometer:
-            # Extract measurement document fields from cytometer first
-            for field in root_element_fields:
-                cytometer_value = cytometer.get_attr_or_none(field)
-                if (
-                    cytometer_value is not None
-                    and cytometer_value.strip() != ""
-                    and field not in measurement_custom_info
-                ):
-                    measurement_custom_info[field] = cytometer_value.strip()
+        for field, value in pre_cytometer_measurement_fields.items():
+            measurement_custom_info.setdefault(field, value)
+        for field, value in pre_cytometer_processing_fields.items():
+            data_processing_custom_info.setdefault(field, value)
 
-            # Then extract data processing fields
-            for field in root_data_processing_fields:
-                cytometer_value = cytometer.get_attr_or_none(field)
-                if (
-                    cytometer_value is not None
-                    and cytometer_value.strip() != ""
-                    and field not in data_processing_custom_info
-                ):
-                    data_processing_custom_info[field] = cytometer_value.strip()
-            cytometer.mark_read(
-                {
-                    "cyt",
-                    "widthBasis",
-                    "useTransform",
-                    "icon",
-                    "manufacturer",
-                    "serialnumber",
-                    "transformType",
-                }
-            )
+        device_control_custom_info = _extract_device_control_keywords_from_map(
+            keyword_map
+        )
 
-        # Extract device control-level metadata fields (parameter, laser, and CST fields)
-        keywords = sample.find_or_none("Keywords")
-        device_control_custom_info = _extract_device_control_keywords(keywords)
-
-        # Get all remaining keywords for general custom info
-        keywords_custom_info = _extract_general_custom_keywords(keywords)
+        keywords_custom_info = _extract_general_custom_keywords_from_map(keyword_map)
 
         if keywords_custom_info:
             all_custom_info.update(keywords_custom_info)
 
         measurement_group = MeasurementGroup(
             experimental_data_identifier=experimental_data_identifier,
-            measurement_time=_get_measurement_time(sample),
-            analyst=_get_keyword_value_by_name_from_sample(sample, "$OP"),
+            measurement_time=_get_measurement_time_from_map(keyword_map)
+            or _get_measurement_time(sample),
+            analyst=get_keyword_value("$OP"),
             compensation_matrix_groups=compensation_matrix_groups,
             custom_info=all_custom_info if all_custom_info else None,
             measurements=[
                 Measurement(
                     measurement_identifier=random_uuid_str(),
                     sample_identifier=sample_node.get_attr("sampleID"),
-                    location_identifier=_get_keyword_value_by_name_from_sample(
-                        sample, "WELL ID"
-                    ),
-                    well_plate_identifier=_get_keyword_value_by_name_from_sample(
-                        sample, "PLATE ID"
-                    ),
-                    written_name=_get_keyword_value_by_name_from_sample(sample, "$SRC"),
+                    location_identifier=get_keyword_value("WELL ID"),
+                    well_plate_identifier=get_keyword_value("PLATE ID"),
+                    written_name=get_keyword_value("$SRC"),
                     device_type=constants.DEVICE_TYPE,
                     method_version=root_element.get_attr_or_none("version"),
                     data_processing_time=root_element.get_attr_or_none("modDate"),
@@ -1175,5 +1263,13 @@ def _get_measurement_time(sample: StrictXmlElement) -> str | None:
     date = _get_keyword_value_by_name_from_sample(sample, "$DATE")
     etim = _get_keyword_value_by_name_from_sample(sample, "$ETIM")
     if date is None or etim is None:
+        return None
+    return f"{date} {etim}"
+
+
+def _get_measurement_time_from_map(mapping: dict[str, str]) -> str | None:
+    date = mapping.get("$DATE")
+    etim = mapping.get("$ETIM")
+    if not date or not etim:
         return None
     return f"{date} {etim}"
