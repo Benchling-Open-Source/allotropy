@@ -73,6 +73,14 @@ class JsonData:
             return float_value
         return self.get(str, key)
 
+    def _key_matches(self, match_key: str, key: str) -> bool:
+        if key == match_key:
+            return True
+        # "++" can cause re.compile to fail. Since it is never a valid regex expression
+        # it is safe to escape it to prevent the error.
+        match_key = match_key.replace("++", r"\+\+")
+        return re.fullmatch(match_key, key)
+
     def _get_matching_keys(self, key_or_keys: str | set[str]) -> set[str]:
         return {
             matched
@@ -80,9 +88,7 @@ class JsonData:
                 key_or_keys if isinstance(key_or_keys, set) else {key_or_keys}
             )
             for matched in [
-                k
-                for k in self.data.keys()
-                if k == regex_key or re.fullmatch(regex_key, k)
+                k for k in self.data.keys() if self._key_matches(str(regex_key, str(k)))
             ]
         }
 
