@@ -22,6 +22,7 @@ from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
 from re import search
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -134,7 +135,7 @@ class ResultPlateInfo(PlateInfo):
     label: str
     measinfo: str
     emission_filter_id: str
-
+    custom_info: dict[str, Any] | None = None
     @staticmethod
     def create(data: SeriesData) -> ResultPlateInfo | None:
         label = data.get(str, "Label")
@@ -159,6 +160,7 @@ class ResultPlateInfo(PlateInfo):
                 search("De=(...)", measinfo),
                 msg=f"Unable to find emission filter ID for Plate {barcode}.",
             ).group(1),
+            custom_info=data.get_unread(),
         )
 
     def match(self, background_info: BackgroundInfo) -> bool:
@@ -746,6 +748,7 @@ def _create_measurement(
         detector_bandwidth_setting=em_filter.bandwidth if em_filter else None,
         excitation_wavelength_setting=ex_filter.wavelength if ex_filter else None,
         excitation_bandwidth_setting=ex_filter.bandwidth if ex_filter else None,
+        measurement_custom_info=plate_info.custom_info,
     )
 
 
