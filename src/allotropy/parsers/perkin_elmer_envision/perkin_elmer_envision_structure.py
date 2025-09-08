@@ -136,6 +136,7 @@ class ResultPlateInfo(PlateInfo):
     measinfo: str
     emission_filter_id: str
     custom_info: dict[str, Any] | None = None
+
     @staticmethod
     def create(data: SeriesData) -> ResultPlateInfo | None:
         label = data.get(str, "Label")

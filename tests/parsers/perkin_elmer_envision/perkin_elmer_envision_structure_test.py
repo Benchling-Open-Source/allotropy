@@ -51,7 +51,7 @@ def test_create_plate_info() -> None:
         measured_height=11.9,
         chamber_temperature_at_start=23.17,
         label="AC HTRF Laser [Eu](1)",
-        custom_info={'Repeat': 1.0, 'Kinetics': 0.0},
+        custom_info={"Repeat": 1.0, "Kinetics": 0.0},
     )
 
     series = ResultPlateInfo.get_series(reader)
@@ -158,7 +158,7 @@ def test_create_plates() -> None:
                     measured_height=1.1,
                     chamber_temperature_at_start=14.5,
                     label="AC HTRF Laser [Eu](1)",
-                    custom_info={'Repeat': 1.0, 'Kinetics': 0.0},
+                    custom_info={"Repeat": 1.0, "Kinetics": 0.0},
                 ),
                 background_infos=[
                     BackgroundInfo(
