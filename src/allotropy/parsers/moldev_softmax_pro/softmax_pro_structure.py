@@ -128,6 +128,10 @@ class GroupDataElement:
 class GroupSampleData:
     identifier: str
     data_elements: list[GroupDataElement]
+    # Capture unread fields per plate and well position. The None key is used when plate is unspecified.
+    unread_by_plate_and_position: dict[
+        str | None, dict[str, list[dict[str, float | str | None]]]
+    ]
 
     @classmethod
     def create(cls, data: pd.DataFrame, calc_data_cols: list[str]) -> GroupSampleData:
@@ -141,6 +145,9 @@ class GroupSampleData:
         data_elements: dict[str, list[GroupDataElement]] = {
             column: [] for column in data_columns
         }
+        unread_by_plate_and_position: dict[
+            str | None, dict[str, list[dict[str, float | str | None]]]
+        ] = {}
         for row in row_data:
             row_results = cls._get_row_results(row, data_columns)
             position = row[str, ["Well", "Wells"]]
@@ -170,12 +177,18 @@ class GroupSampleData:
                     )
                 elif data_elements[column]:
                     data_elements[column][-1].positions.append(position)
+                row.mark_read("Sample")
+            unread = row.get_unread()
+            if unread:
+                by_position = unread_by_plate_and_position.setdefault(plate, {})
+                by_position.setdefault(str(position), []).append(unread)
 
         return GroupSampleData(
             identifier=identifier,
             data_elements=[
                 elem for elements in data_elements.values() for elem in elements
             ],
+            unread_by_plate_and_position=unread_by_plate_and_position,
         )
 
     @classmethod
