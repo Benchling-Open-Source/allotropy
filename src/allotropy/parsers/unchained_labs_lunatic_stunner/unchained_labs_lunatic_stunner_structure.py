@@ -181,25 +181,47 @@ def _create_measurement(
     error_documents.extend(calculated_data_errors)
     error_documents.extend(absorbance_errors)
 
-    measurement_dict = {
-        "type_": MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM
+    # Initialize optional variables to None; set if applicable
+    spectrum_data_cube: DataCube | None = None
+    absorbance_value: float | None = None
+    detector_wavelength_setting: float | None = None
+    wavelength_identifier: str | None = None
+
+    if len(wavelength_columns) > 1:
+        spectrum_data_cube = _get_spectrum_data_cube(
+            well_plate_data, wavelength_columns
+        )
+    elif len(wavelength_columns) == 1:
+        wavelength_match = WAVELENGTH_COLUMNS_RE.match(wavelength_columns[0])
+        wavelength, _ = wavelength_match.groups() if wavelength_match else ("", "")
+        absorbance_tmp = well_plate_data.get(float, wavelength_columns[0])
+        absorbance_value = (
+            absorbance_tmp if absorbance_tmp is not None else NEGATIVE_ZERO
+        )
+        detector_wavelength_setting = float(wavelength) if wavelength else None
+        wavelength_identifier = wavelength_columns[0]
+
+    return Measurement(
+        type_=MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_SPECTRUM
         if len(wavelength_columns) > 1
         else MeasurementType.ULTRAVIOLET_ABSORBANCE,
-        "device_type": DEVICE_TYPE,
-        "detection_type": detection_type,
-        "identifier": measurement_identifier,
-        "analytical_method_identifier": analytical_method_identifier,
-        "experimental_data_identifier": experimental_data_identifier,
-        "electronic_absorbance_reference_wavelength_setting": background_wavelength,
-        "sample_identifier": well_plate_data[str, "sample name"],
-        "location_identifier": well_plate_data[str, "plate position"],
-        "well_plate_identifier": well_plate_data.get(str, "plate id"),
-        "batch_identifier": well_plate_data.get(str, "sample group"),
-        "firmware_version": header.get(str, "client version"),
-        "number_of_averages": well_plate_data.get(float, "number of acquisitions"),
-        "integration_time": well_plate_data.get(float, "acquisition time (s)"),
-        "compartment_temperature": well_plate_data.get(float, "temperature (°c)"),
-        "sample_custom_info": {
+        device_type=DEVICE_TYPE,
+        detection_type=detection_type,
+        identifier=measurement_identifier,
+        analytical_method_identifier=analytical_method_identifier,
+        experimental_data_identifier=experimental_data_identifier,
+        detector_wavelength_setting=detector_wavelength_setting,
+        electronic_absorbance_reference_wavelength_setting=background_wavelength,
+        absorbance=absorbance_value,
+        sample_identifier=well_plate_data[str, "sample name"],
+        location_identifier=well_plate_data[str, "plate position"],
+        well_plate_identifier=well_plate_data.get(str, "plate id"),
+        batch_identifier=well_plate_data.get(str, "sample group"),
+        firmware_version=header.get(str, "client version"),
+        number_of_averages=well_plate_data.get(float, "number of acquisitions"),
+        integration_time=well_plate_data.get(float, "acquisition time (s)"),
+        compartment_temperature=well_plate_data.get(float, "temperature (°c)"),
+        sample_custom_info={
             "plate type": header.get(str, "plate type")
             or well_plate_data.get(str, "plate type"),
             "nr of plates": header.get(str, "nr of plates"),
@@ -212,7 +234,7 @@ def _create_measurement(
                 float, "molecular weight (kda)"
             ),
         },
-        "device_control_custom_info": {
+        device_control_custom_info={
             "path length mode": well_plate_data.get(str, "path length mode"),
             "pump": well_plate_data.get(str, "pump"),
             "column": header.get(str, "column") or well_plate_data.get(str, "column"),
@@ -221,22 +243,22 @@ def _create_measurement(
             ),
             "Acquisition filtering": well_plate_data.get(str, "acquisition filtering"),
         },
-        "error_document": error_documents,
-        "processed_data_document": ProcessedDataDocument(
+        error_document=error_documents,
+        processed_data_document=ProcessedDataDocument(
             identifier=random_uuid_str(),
             concentration_factor=concentration_factor,
             peak_list_custom_info=peak_data,
         )
         if concentration_factor is not None or peak_data
         else None,
-        "calc_docs_custom_info": {
+        calc_docs_custom_info={
             **calculated_data_values,
             **{
                 "b22 linear fit": well_plate_data.get(str, "b22 linear fit"),
                 "kd linear fit": well_plate_data.get(str, "kd linear fit"),
             },
         },
-        "measurement_custom_info": {
+        measurement_custom_info={
             "electronic_absorbance_reference_absorbance": background_absorbance,
             **_filter_empty_string_values(
                 well_plate_data.get_unread(
@@ -264,28 +286,9 @@ def _create_measurement(
                 )
             ),
         },
-    }
-
-    extra_variables: dict[str, Any] = {}
-    if len(wavelength_columns) > 1:
-        spectrum_data_cube = _get_spectrum_data_cube(
-            well_plate_data, wavelength_columns
-        )
-        extra_variables["spectrum_data_cube"] = spectrum_data_cube
-    elif len(wavelength_columns) == 1:
-        wavelength_match = WAVELENGTH_COLUMNS_RE.match(wavelength_columns[0])
-
-        wavelength, _ = wavelength_match.groups() if wavelength_match else ("", "")
-        absorbance = well_plate_data.get(float, wavelength_columns[0])
-        extra_variables["absorbance"] = (
-            absorbance if absorbance is not None else NEGATIVE_ZERO
-        )
-        extra_variables["detector_wavelength_setting"] = float(wavelength)
-        extra_variables["wavelength_identifier"] = wavelength_columns[0]
-
-    measurement_dict.update(extra_variables)
-
-    return Measurement(**measurement_dict)  # type: ignore
+        spectrum_data_cube=spectrum_data_cube,
+        wavelength_identifier=wavelength_identifier,
+    )
 
 
 def _get_spectrum_data_cube(
@@ -304,7 +307,7 @@ def _get_spectrum_data_cube(
         wavelengths.append(float(wavelength_str))
 
     return DataCube(
-        label="absorvance-spectrum",
+        label="absorbance-spectrum",
         structure_dimensions=[
             DataCubeComponent(
                 concept="wavelength",

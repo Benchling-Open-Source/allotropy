@@ -31,7 +31,7 @@
                             },
                             "analytical method identifier": "dsDNA (Single point)",
                             "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
+                                "label": "absorbance-spectrum",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -101,7 +101,7 @@
                             },
                             "analytical method identifier": "dsDNA (Single point)",
                             "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
+                                "label": "absorbance-spectrum",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -178,7 +178,7 @@
                                 ]
                             },
                             "absorption spectrum data cube": {
-                                "label": "absorvance-spectrum",
+                                "label": "absorbance-spectrum",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -369,7 +369,7 @@
             "UNC path": "tests/parsers/unchained_labs_lunatic_stunner/testdata/spectrum_measurement.csv",
             "file name": "spectrum_measurement.csv",
             "ASM converter name": "allotropy_unchained_labs_lunatic_&_stunner",
-            "ASM converter version": "0.1.103",
+            "ASM converter version": "0.1.105",
             "software name": "Lunatic and Stunner Analysis"
         },
         "device system document": {
