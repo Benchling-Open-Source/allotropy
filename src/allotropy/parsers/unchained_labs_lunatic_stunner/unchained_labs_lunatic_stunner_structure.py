@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from decimal import Decimal
 from pathlib import Path
 import re
 from typing import Any
@@ -294,17 +295,9 @@ def _create_measurement(
 def _get_spectrum_data_cube(
     well_plate_data: SeriesData, wavelength_columns: list[str]
 ) -> DataCube:
-    absorbances = []
-    wavelengths = []
-    for wavelength_column in wavelength_columns:
-        absorbance = well_plate_data.get(float, wavelength_column)
-        absorbances.append(absorbance)
-        match = WAVELENGTH_COLUMNS_RE.match(wavelength_column)
-        if not match:
-            # Should not happen because caller filters with the same regex, but be defensive
-            raise AllotropeConversionError(INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG)
-        wavelength_str, _ = match.groups()
-        wavelengths.append(float(wavelength_str))
+    wavelengths, absorbances = _get_wavelengths_and_absorbance(
+        well_plate_data, wavelength_columns
+    )
 
     return DataCube(
         label="absorbance-spectrum",
@@ -325,6 +318,88 @@ def _get_spectrum_data_cube(
         dimensions=[wavelengths],
         measures=[absorbances],
     )
+
+
+def _get_wavelengths_and_absorbance(
+    well_plate_data: SeriesData, wavelength_columns: list[str]
+) -> tuple[list[float], list[float]]:
+    wavelength_to_absorbance: dict[float, Decimal | None] = {}
+    for wavelength_column in wavelength_columns:
+        match = WAVELENGTH_COLUMNS_RE.match(wavelength_column)
+        if not match:
+            raise AllotropeConversionError(INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG)
+        wavelength_str, _ = match.groups()
+        wavelength = float(wavelength_str)
+        # Read as string to preserve precision; fallback to float; allow None
+        raw_str = well_plate_data.get(
+            str, wavelength_column, validate=SeriesData.NOT_NAN
+        )
+        absorbance: Decimal | None
+        if raw_str is None or str(raw_str).strip() == "":
+            absorbance = None
+        else:
+            absorbance = Decimal(str(raw_str).strip())
+
+        if wavelength in wavelength_to_absorbance:
+            previous_absorbance = wavelength_to_absorbance[wavelength]
+            if absorbance is None or previous_absorbance is None:
+                continue
+            else:
+                wavelength_to_absorbance[
+                    wavelength
+                ] = _get_absorbance_with_highest_precision(
+                    previous_absorbance, absorbance
+                )
+
+        else:
+            wavelength_to_absorbance[wavelength] = absorbance
+
+    sorted_wavelengths = sorted(wavelength_to_absorbance.keys())
+
+    absorbances = []
+    for w in sorted_wavelengths:
+        absorbance = wavelength_to_absorbance[w]
+        if absorbance is None:
+            absorbances.append(float(NEGATIVE_ZERO))
+        else:
+            absorbances.append(float(absorbance))
+
+    return sorted_wavelengths, absorbances
+
+
+def _get_absorbance_with_highest_precision(
+    absorbance1: Decimal, absorbance2: Decimal
+) -> Decimal:
+    def _int_exponent(d: Decimal) -> int:
+        exp = d.as_tuple().exponent
+        if not isinstance(exp, int):
+            msg = "Invalid absorbance value (NaN/Inf) not allowed for precision comparison."
+            raise AllotropeConversionError(msg)
+        return exp
+
+    exp1 = _int_exponent(absorbance1)
+    exp2 = _int_exponent(absorbance2)
+
+    # Determine which has higher precision (more decimal places => smaller exponent),
+    # for example, 1.56 has an exponent of -2, while 1.562 has an exponent of -3.
+    if exp1 < exp2:
+        high_precision = absorbance1
+        low_precision, low_precision_exp = absorbance2, exp2
+    else:
+        high_precision = absorbance2
+        low_precision, low_precision_exp = absorbance1, exp1
+
+    # Round both to the lower precision and ensure they match
+    quant = Decimal(1).scaleb(low_precision_exp)  # e.g., 1E-2 for two decimal places
+    if high_precision.quantize(quant) != low_precision.quantize(quant):
+        msg = (
+            f"Conflicting absorbance values at same wavelength: {absorbance1} vs {absorbance2} "
+            f"when rounded to {abs(low_precision_exp)} decimal places."
+        )
+        raise AllotropeConversionError(msg)
+
+    # Return the value with the highest precision
+    return high_precision
 
 
 def _get_calculated_data_values(

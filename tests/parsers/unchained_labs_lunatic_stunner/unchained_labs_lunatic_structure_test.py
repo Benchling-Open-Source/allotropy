@@ -1,3 +1,4 @@
+from decimal import Decimal
 from io import StringIO
 import re
 
@@ -24,6 +25,8 @@ from allotropy.parsers.unchained_labs_lunatic_stunner.unchained_labs_lunatic_stu
 from allotropy.parsers.unchained_labs_lunatic_stunner.unchained_labs_lunatic_stunner_structure import (
     _create_measurement,
     _create_measurement_group,
+    _get_absorbance_with_highest_precision,
+    _get_wavelengths_and_absorbance,
     create_measurement_groups,
     create_metadata,
 )
@@ -323,3 +326,60 @@ batch_id,Plate1,dummyApp,2021-05-20,16:55:51,14,32.6
 
     assert metadata.device_identifier == "14"
     assert len(measurement_groups) == 3
+
+
+def test__get_wavelength_and_absorbance_unique() -> None:
+    series = SeriesData(
+        pd.Series(
+            {
+                "A280": "2.34",
+                "A260": "1.23",
+            }
+        )
+    )
+    wavelengths, absorbances = _get_wavelengths_and_absorbance(series, ["A280", "A260"])
+    assert wavelengths == [260.0, 280.0]
+    assert absorbances == pytest.approx([1.23, 2.34], rel=1e-12)
+
+
+def test__get_wavelength_and_absorbance_duplicates_keep_high_precision() -> None:
+    series = SeriesData(
+        pd.Series(
+            {
+                "A260": "1.57",
+                "A260 (10mm)": "1.5678",
+            }
+        )
+    )
+    wavelengths, absorbances = _get_wavelengths_and_absorbance(
+        series, ["A260", "A260 (10mm)"]
+    )
+    assert wavelengths == [260.0]
+    assert absorbances == pytest.approx([1.5678], rel=1e-12)
+
+
+def test__get_wavelength_and_absorbance_duplicates_mismatch_raises() -> None:
+    series = SeriesData(
+        pd.Series(
+            {
+                "A260": "1.57",
+                "A260 (10mm)": "1.564",
+            }
+        )
+    )
+    with pytest.raises(AllotropeConversionError):
+        _get_wavelengths_and_absorbance(series, ["A260", "A260 (10mm)"])
+
+
+def test__get_absorbance_with_highest_precision_keeps_high_precision() -> None:
+    high = Decimal("1.5678")
+    low = Decimal("1.57")
+    result = _get_absorbance_with_highest_precision(high, low)
+    assert result == high
+
+
+def test__get_absorbance_with_highest_precision_raises_on_mismatch() -> None:
+    a = Decimal("1.564")
+    b = Decimal("1.57")
+    with pytest.raises(AllotropeConversionError):
+        _get_absorbance_with_highest_precision(a, b)
