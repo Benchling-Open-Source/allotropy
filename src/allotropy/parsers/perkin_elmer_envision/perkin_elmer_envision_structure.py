@@ -28,6 +28,10 @@ import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueDegreeCelsius,
+    TQuantityValuePercent,
+)
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     Measurement,
     MeasurementGroup,
@@ -48,6 +52,7 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
     num_to_chars,
+    quantity_or_none,
 )
 
 
@@ -164,25 +169,34 @@ class ResultPlateInfo(PlateInfo):
                 msg=f"Unable to find emission filter ID for Plate {barcode}.",
             ).group(1),
             device_control_custom_info={
-                "Ambient temperature at start": data.get(
-                    float, "Ambient temperature at start"
+                "Ambient temperature at start": quantity_or_none(
+                    TQuantityValueDegreeCelsius,
+                    data.get(float, "Ambient temperature at start"),
                 ),
-                "Ambient temperature at end": data.get(
-                    float, "Ambient temperature at end"
+                "Ambient temperature at end": quantity_or_none(
+                    TQuantityValueDegreeCelsius,
+                    data.get(float, "Ambient temperature at end"),
                 ),
-                "Chamber temperature at end": data.get(
-                    float, "Chamber temperature at end"
+                "Chamber temperature at end": quantity_or_none(
+                    TQuantityValueDegreeCelsius,
+                    data.get(float, "Chamber temperature at end"),
                 ),
-                "Humidity at start": data.get(float, "Humidity at start"),
-                "Humidity at end": data.get(float, "Humidity at end"),
+                "Humidity at start": quantity_or_none(
+                    TQuantityValuePercent, data.get(float, "Humidity at start")
+                ),
+                "Humidity at end": quantity_or_none(
+                    TQuantityValuePercent, data.get(float, "Humidity at end")
+                ),
                 "Kinetics": data.get(float, "Kinetics"),
                 "ScanX": data.get(float, "ScanX"),
                 "ScanY": data.get(float, "ScanY"),
-                "Inside temperature at start": data.get(
-                    float, "Inside temperature at start"
+                "Inside temperature at start": quantity_or_none(
+                    TQuantityValueDegreeCelsius,
+                    data.get(float, "Inside temperature at start"),
                 ),
-                "Inside temperature at end": data.get(
-                    float, "Inside temperature at end"
+                "Inside temperature at end": quantity_or_none(
+                    TQuantityValueDegreeCelsius,
+                    data.get(float, "Inside temperature at end"),
                 ),
             },
             sample_custom_info={
