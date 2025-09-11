@@ -135,7 +135,9 @@ class ResultPlateInfo(PlateInfo):
     label: str
     measinfo: str
     emission_filter_id: str
-    custom_info: dict[str, Any] | None = None
+    sample_custom_info: dict[str, Any]
+    device_control_custom_info: dict[str, Any]
+    custom_info: dict[str, Any]
 
     @staticmethod
     def create(data: SeriesData) -> ResultPlateInfo | None:
@@ -161,6 +163,32 @@ class ResultPlateInfo(PlateInfo):
                 search("De=(...)", measinfo),
                 msg=f"Unable to find emission filter ID for Plate {barcode}.",
             ).group(1),
+            device_control_custom_info={
+                "Ambient temperature at start": data.get(
+                    float, "Ambient temperature at start"
+                ),
+                "Ambient temperature at end": data.get(
+                    float, "Ambient temperature at end"
+                ),
+                "Chamber temperature at end": data.get(
+                    float, "Chamber temperature at end"
+                ),
+                "Humidity at start": data.get(float, "Humidity at start"),
+                "Humidity at end": data.get(float, "Humidity at end"),
+                "Kinetics": data.get(float, "Kinetics"),
+                "ScanX": data.get(float, "ScanX"),
+                "ScanY": data.get(float, "ScanY"),
+                "Inside temperature at start": data.get(
+                    float, "Inside temperature at start"
+                ),
+                "Inside temperature at end": data.get(
+                    float, "Inside temperature at end"
+                ),
+            },
+            sample_custom_info={
+                "group identifier": data.get(float, "Group"),
+                "Repeat": data.get(float, "Repeat"),
+            },
             custom_info=data.get_unread(),
         )
 
@@ -749,6 +777,8 @@ def _create_measurement(
         detector_bandwidth_setting=em_filter.bandwidth if em_filter else None,
         excitation_wavelength_setting=ex_filter.wavelength if ex_filter else None,
         excitation_bandwidth_setting=ex_filter.bandwidth if ex_filter else None,
+        device_control_custom_info=plate_info.device_control_custom_info,
+        sample_custom_info=plate_info.sample_custom_info,
         measurement_custom_info=plate_info.custom_info,
     )
 

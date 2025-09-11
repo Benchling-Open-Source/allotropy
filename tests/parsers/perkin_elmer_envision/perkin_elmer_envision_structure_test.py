@@ -51,7 +51,20 @@ def test_create_plate_info() -> None:
         measured_height=11.9,
         chamber_temperature_at_start=23.17,
         label="AC HTRF Laser [Eu](1)",
-        custom_info={"Repeat": 1.0, "Kinetics": 0.0},
+        custom_info={},
+        sample_custom_info={"group identifier": None, "Repeat": 1.0},
+        device_control_custom_info={
+            "Ambient temperature at start": None,
+            "Ambient temperature at end": None,
+            "Chamber temperature at end": None,
+            "Humidity at start": None,
+            "Humidity at end": None,
+            "Kinetics": 0.0,
+            "ScanX": None,
+            "ScanY": None,
+            "Inside temperature at start": None,
+            "Inside temperature at end": None,
+        },
     )
 
     series = ResultPlateInfo.get_series(reader)
@@ -158,7 +171,20 @@ def test_create_plates() -> None:
                     measured_height=1.1,
                     chamber_temperature_at_start=14.5,
                     label="AC HTRF Laser [Eu](1)",
-                    custom_info={"Repeat": 1.0, "Kinetics": 0.0},
+                    custom_info={},
+                    sample_custom_info={"group identifier": None, "Repeat": 1.0},
+                    device_control_custom_info={
+                        "Ambient temperature at start": None,
+                        "Ambient temperature at end": None,
+                        "Chamber temperature at end": None,
+                        "Humidity at start": None,
+                        "Humidity at end": None,
+                        "Kinetics": 0.0,
+                        "ScanX": None,
+                        "ScanY": None,
+                        "Inside temperature at start": None,
+                        "Inside temperature at end": None,
+                    },
                 ),
                 background_infos=[
                     BackgroundInfo(
