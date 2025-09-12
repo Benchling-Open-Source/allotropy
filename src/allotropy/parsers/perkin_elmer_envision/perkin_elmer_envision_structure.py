@@ -22,11 +22,16 @@ from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
 from re import search
+from typing import Any
 
 import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueDegreeCelsius,
+    TQuantityValuePercent,
+)
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     Measurement,
     MeasurementGroup,
@@ -47,6 +52,7 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
     num_to_chars,
+    quantity_or_none,
 )
 
 
@@ -104,6 +110,7 @@ class PlateInfo:
 class CalculatedPlateInfo(PlateInfo):
     formula: str
     name: str
+    custom_info: dict[str, Any] | None = None
 
     @staticmethod
     def create(data: SeriesData) -> CalculatedPlateInfo:
@@ -126,6 +133,7 @@ class CalculatedPlateInfo(PlateInfo):
             ),
             formula=formula,
             name=name.strip(),
+            custom_info=data.get_unread(),
         )
 
 
@@ -134,6 +142,9 @@ class ResultPlateInfo(PlateInfo):
     label: str
     measinfo: str
     emission_filter_id: str
+    sample_custom_info: dict[str, Any]
+    device_control_custom_info: dict[str, Any]
+    custom_info: dict[str, Any]
 
     @staticmethod
     def create(data: SeriesData) -> ResultPlateInfo | None:
@@ -159,6 +170,42 @@ class ResultPlateInfo(PlateInfo):
                 search("De=(...)", measinfo),
                 msg=f"Unable to find emission filter ID for Plate {barcode}.",
             ).group(1),
+            device_control_custom_info={
+                "Ambient temperature at start": quantity_or_none(
+                    TQuantityValueDegreeCelsius,
+                    data.get(float, "Ambient temperature at start"),
+                ),
+                "Ambient temperature at end": quantity_or_none(
+                    TQuantityValueDegreeCelsius,
+                    data.get(float, "Ambient temperature at end"),
+                ),
+                "Chamber temperature at end": quantity_or_none(
+                    TQuantityValueDegreeCelsius,
+                    data.get(float, "Chamber temperature at end"),
+                ),
+                "Humidity at start": quantity_or_none(
+                    TQuantityValuePercent, data.get(float, "Humidity at start")
+                ),
+                "Humidity at end": quantity_or_none(
+                    TQuantityValuePercent, data.get(float, "Humidity at end")
+                ),
+                "Kinetics": data.get(float, "Kinetics"),
+                "ScanX": data.get(float, "ScanX"),
+                "ScanY": data.get(float, "ScanY"),
+                "Inside temperature at start": quantity_or_none(
+                    TQuantityValueDegreeCelsius,
+                    data.get(float, "Inside temperature at start"),
+                ),
+                "Inside temperature at end": quantity_or_none(
+                    TQuantityValueDegreeCelsius,
+                    data.get(float, "Inside temperature at end"),
+                ),
+            },
+            sample_custom_info={
+                "group identifier": data.get(float, "Group"),
+                "Repeat": data.get(float, "Repeat"),
+            },
+            custom_info=data.get_unread(),
         )
 
     def match(self, background_info: BackgroundInfo) -> bool:
@@ -179,6 +226,8 @@ class BackgroundInfo:
 
     @staticmethod
     def create(data: SeriesData) -> BackgroundInfo:
+        # Call get_unread() to prevent warnings about unread keys
+        data.get_unread()
         return BackgroundInfo(
             plate_num=data[str, "Plate"],
             label=data[str, "Label"],
@@ -282,12 +331,14 @@ class Plate:
 class ResultPlate(Plate):
     plate_info: ResultPlateInfo
     results: list[Result]
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass
 class CalculatedPlate(Plate):
     plate_info: CalculatedPlateInfo
     results: list[CalculatedResult]
+    custom_info: dict[str, Any] | None = None
 
     def get_source_results(self, plate_list: PlateList) -> Iterator[list[Result]]:
         if not self.background_infos:
@@ -321,12 +372,14 @@ def create_plate(reader: CsvReader) -> ResultPlate | CalculatedPlate:
             plate_info=result_plate_info,
             background_infos=create_background_infos(reader),
             results=create_results(reader),
+            custom_info=series.get_unread(),
         )
     else:
         return CalculatedPlate(
             plate_info=CalculatedPlateInfo.create(series),
             background_infos=create_background_infos(reader),
             results=create_calculated_results(reader),
+            custom_info=series.get_unread(),
         )
 
 
@@ -372,6 +425,7 @@ class PlateList:
 class BasicAssayInfo:
     protocol_id: str | None
     assay_id: str | None
+    custom_info: dict[str, Any] | None = None
 
     @staticmethod
     def create(reader: CsvReader) -> BasicAssayInfo:
@@ -384,12 +438,15 @@ class BasicAssayInfo:
             data_frame.columns.astype(str).str.replace(":", "").str.strip()
         )
         data = df_to_series_data(data_frame)
-        return BasicAssayInfo(data.get(str, "Protocol ID"), data.get(str, "Assay ID"))
+        return BasicAssayInfo(
+            data.get(str, "Protocol ID"), data.get(str, "Assay ID"), data.get_unread()
+        )
 
 
 @dataclass(frozen=True)
 class PlateType:
     number_of_wells: float
+    custom_info: dict[str, Any] | None = None
 
     @staticmethod
     def create(reader: CsvReader) -> PlateType:
@@ -399,7 +456,8 @@ class PlateType:
         )
         data = df_to_series_data(data_frame.T)
         return PlateType(
-            number_of_wells=data[float, "Number of the wells in the plate"]
+            number_of_wells=data[float, "Number of the wells in the plate"],
+            custom_info=data.get_unread(),
         )
 
 
@@ -508,6 +566,7 @@ class Filter:
     name: str
     wavelength: float
     bandwidth: float | None = None
+    custom_info: dict[str, Any] | None = None
 
     @staticmethod
     def create(reader: CsvReader) -> Filter | None:
@@ -523,9 +582,12 @@ class Filter:
         data = df_to_series_data(data_frame.T)
         name = str(data.series.index[0])
         description = data[str, "Description"]
+        custom_info = data.get_unread()
 
         if search_result := search("Longpass=(\\d+)nm", description):
-            return Filter(name, wavelength=float(search_result.group(1)))
+            return Filter(
+                name, wavelength=float(search_result.group(1)), custom_info=custom_info
+            )
         return Filter(
             name,
             wavelength=float(
@@ -542,6 +604,7 @@ class Filter:
                 .group(1)
                 .replace(" ", "")
             ),
+            custom_info=custom_info,
         )
 
 
@@ -567,6 +630,7 @@ class Labels:
     scan_position_setting: ScanPositionSettingPlateReader | None = None
     number_of_flashes: float | None = None
     detector_gain_setting: str | None = None
+    custom_info: dict[str, Any] | None = None
 
     @staticmethod
     def create(reader: CsvReader) -> Labels:
@@ -596,6 +660,7 @@ class Labels:
             ),
             number_of_flashes=data.get(float, "Number of flashes"),
             detector_gain_setting=data.get(str, "Reference AD gain"),
+            custom_info=data.get_unread(),
         )
 
     def get_emission_filter(self, id_val: str) -> Filter | None:
@@ -746,6 +811,9 @@ def _create_measurement(
         detector_bandwidth_setting=em_filter.bandwidth if em_filter else None,
         excitation_wavelength_setting=ex_filter.wavelength if ex_filter else None,
         excitation_bandwidth_setting=ex_filter.bandwidth if ex_filter else None,
+        device_control_custom_info=plate_info.device_control_custom_info,
+        sample_custom_info=plate_info.sample_custom_info,
+        measurement_custom_info=plate_info.custom_info,
     )
 
 
