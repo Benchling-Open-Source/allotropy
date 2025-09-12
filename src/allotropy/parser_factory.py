@@ -63,6 +63,9 @@ from allotropy.parsers.cytiva_biacore_insight.cytiva_biacore_insight_parser impo
 from allotropy.parsers.cytiva_biacore_t200_control.cytiva_biacore_t200_control_parser import (
     CytivaBiacoreT200ControlParser,
 )
+from allotropy.parsers.cytiva_biacore_t200_evaluation.cytiva_biacore_t200_evaluation_parser import (
+    CytivaBiacoreT200EvaluationParser,
+)
 from allotropy.parsers.cytiva_unicorn.cytiva_unicorn_parser import CytivaUnicornParser
 from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_parser import (
     ExampleWeylandYutaniParser,
@@ -153,6 +156,7 @@ class Vendor(Enum):
     CTL_IMMUNOSPOT = "CTL_IMMUNOSPOT"
     CYTIVA_BIACORE_INSIGHT = "CYTIVA_BIACORE_INSIGHT"
     CYTIVA_BIACORE_T200_CONTROL = "CYTIVA_BIACORE_T200_CONTROL"
+    CYTIVA_BIACORE_T200_EVALUATION = "CYTIVA_BIACORE_T200_EVALUATION"
     CYTIVA_UNICORN = "CYTIVA_UNICORN"
     EXAMPLE_WEYLAND_YUTANI = "EXAMPLE_WEYLAND_YUTANI"
     FLOWJO = "FLOWJO"
@@ -250,6 +254,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser[Any, Any]]] = {
     Vendor.CTL_IMMUNOSPOT: CtlImmunospotParser,
     Vendor.CYTIVA_BIACORE_INSIGHT: CytivaBiacoreInsightParser,
     Vendor.CYTIVA_BIACORE_T200_CONTROL: CytivaBiacoreT200ControlParser,
+    Vendor.CYTIVA_BIACORE_T200_EVALUATION: CytivaBiacoreT200EvaluationParser,
     Vendor.CYTIVA_UNICORN: CytivaUnicornParser,
     Vendor.EXAMPLE_WEYLAND_YUTANI: ExampleWeylandYutaniParser,
     Vendor.FLOWJO: FlowjoParser,

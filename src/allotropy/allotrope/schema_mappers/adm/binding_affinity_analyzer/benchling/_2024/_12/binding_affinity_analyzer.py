@@ -33,8 +33,10 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePercent,
     TQuantityValuePerMolarPerSecond,
     TQuantityValuePerSecond,
+    TQuantityValuePerSecond,
     TQuantityValueResonanceUnits,
     TQuantityValueSecondTime,
+    TQuantityValueTODO,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDatacube
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
@@ -78,6 +80,7 @@ class Metadata:
     sensor_chip_type: str | None = None
     lot_number: str | None = None
     sensor_chip_custom_info: DictType | None = None
+    data_system_custom_info: DictType | None = None
 
 
 @dataclass(frozen=True)
@@ -115,6 +118,13 @@ class Measurement:
     concentration: float | None = None
     method_name: str | None = None
     ligand_identifier: str | None = None
+    flow_cell_identifier: str | None = None
+    flow_path: str | None = None
+    flow_rate: float | None = None
+    contact_time: float | None = None
+    dilution: float | None = None
+    detection_type: str | None = None
+    device_control_custom_info: DictType | None = None
     sample_custom_info: DictType | None = None
 
     # Sensorgram
@@ -132,6 +142,14 @@ class Measurement:
 
     # Data processing
     data_processing_document: DictType | None = None
+
+    # Kinetic analysis results
+    binding_on_rate_measurement_datum__kon_: float | None = None
+    binding_off_rate_measurement_datum__koff_: float | None = None
+    equilibrium_dissociation_constant__KD_: float | None = None  # noqa: N815
+    maximum_binding_capacity__Rmax_: float | None = None  # noqa: N815
+    # Custom info to attach at processed data level
+    processed_data_custom_info: DictType | None = None
 
 
 @dataclass(frozen=True)
@@ -157,15 +175,18 @@ class Mapper(SchemaMapper[Data, Model]):
     def map_model(self, data: Data) -> Model:
         return Model(
             binding_affinity_analyzer_aggregate_document=BindingAffinityAnalyzerAggregateDocument(
-                data_system_document=DataSystemDocument(
-                    ASM_file_identifier=data.metadata.asm_file_identifier,
-                    data_system_instance_identifier=data.metadata.data_system_instance_identifier,
-                    ASM_converter_name=self.converter_name,
-                    ASM_converter_version=ASM_CONVERTER_VERSION,
-                    file_name=data.metadata.file_name,
-                    UNC_path=data.metadata.unc_path,
-                    software_version=data.metadata.software_version,
-                    software_name=data.metadata.software_name,
+                data_system_document=add_custom_information_document(
+                    DataSystemDocument(
+                        ASM_file_identifier=data.metadata.asm_file_identifier,
+                        data_system_instance_identifier=data.metadata.data_system_instance_identifier,
+                        ASM_converter_name=self.converter_name,
+                        ASM_converter_version=ASM_CONVERTER_VERSION,
+                        file_name=data.metadata.file_name,
+                        UNC_path=data.metadata.unc_path,
+                        software_version=data.metadata.software_version,
+                        software_name=data.metadata.software_name,
+                    ),
+                    data.metadata.data_system_custom_info,
                 ),
                 device_system_document=DeviceSystemDocument(
                     device_identifier=data.metadata.device_identifier,
@@ -294,6 +315,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     sample_identifier=measurement.sample_identifier,
                     sample_role_type=measurement.sample_role_type,
                     location_identifier=measurement.location_identifier,
+                    well_plate_identifier=measurement.well_plate_identifier,
                     concentration=quantity_or_none(
                         TQuantityValueNanomolar, measurement.concentration
                     ),
