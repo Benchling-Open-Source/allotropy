@@ -15,7 +15,8 @@ The parsers follow maturation levels of: Recommended, Candidate Release, Working
 [cols="4*^.^"]
 |===
 |Instrument Category|Instrument Software|Release Status|Exported ASM Schema
-.1+|Binding Affinity Analyzer|Cytiva Biacore T200 Control|Recommended|WD/2024/12
+.2+|Binding Affinity Analyzer|Cytiva Biacore Insight|Recommended|WD/2024/12
+|Cytiva Biacore T200 Control|Recommended|WD/2024/12
 .6+|Cell Counting|Beckman Coulter Vi-Cell BLU|Recommended|REC/2024/09
 |Beckman Coulter Vi-Cell XR|Recommended|REC/2024/09
 |ChemoMetec NC View|Recommended|REC/2024/09
