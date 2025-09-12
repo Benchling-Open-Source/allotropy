@@ -180,7 +180,7 @@
                                                                                                                 "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
                                                                                                             },
                                                                                                             {
-                                                                                                                "$ref": "TODO"
+                                                                                                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/PerMolarPerSecond"
                                                                                                             }
                                                                                                         ]
                                                                                                     },
@@ -216,7 +216,7 @@
                                                                                                                 "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
                                                                                                             },
                                                                                                             {
-                                                                                                                "$ref": "TODO"
+                                                                                                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/ResonanceUnits"
                                                                                                             }
                                                                                                         ]
                                                                                                     }
@@ -4515,6 +4515,18 @@
                             "type": "string",
                             "const": "M$/yr",
                             "$asm.unit-iri": "http://qudt.org/vocab/unit#MillionDollarsPerYear"
+                        }
+                    },
+                    "required": [
+                        "unit"
+                    ]
+                },
+                "M-1s-1": {
+                    "properties": {
+                        "unit": {
+                        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#PerMolarPerSecond",
+                        "const": "M-1s-1",
+                        "type": "string"
                         }
                     },
                     "required": [
