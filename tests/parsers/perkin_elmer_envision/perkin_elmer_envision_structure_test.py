@@ -186,6 +186,7 @@ def test_create_plates() -> None:
                         "Inside temperature at end": None,
                     },
                 ),
+                custom_info={},
                 background_infos=[
                     BackgroundInfo(
                         plate_num="2",
@@ -257,7 +258,9 @@ def test_create_plates_with_calculated_data() -> None:
                     chamber_temperature_at_start=14.5,
                     formula="Calc 1: General = X / 2 where X = test",
                     name="Calc 1: General",
+                    custom_info={"Kinetics": 0.0, "Repeat": 1.0},
                 ),
+                custom_info={},
                 background_infos=[
                     BackgroundInfo(
                         plate_num="2",
@@ -316,6 +319,7 @@ def test_create_calculated_plate_info() -> None:
         formula="Calc 1: General = (X / Y) where X = AC HTRF Laser [Eu](1) Y = AC HTRF Laser [Eu](1)",
         name="Calc 1: General",
         chamber_temperature_at_start=None,
+        custom_info={},
     )
 
     assert calculated_plate_info == expected
@@ -369,6 +373,13 @@ def test_create_basic_assay_info() -> None:
     expected = BasicAssayInfo(
         protocol_id="100302",
         assay_id="3134",
+        custom_info={
+            "Serial#": "='1050209'",
+            "Assay Finished": "10/13/2022 3:08:15 PM",
+            "Protocol Name": "HTRF LASER Eu 665/620",
+            "Assay Started": "10/13/2022 3:06:23 PM",
+            "Assay Exported": "10/13/2022 3:08:15 PM",
+        },
     )
 
     assert BasicAssayInfo.create(reader) == expected
@@ -397,7 +408,9 @@ def test_create_plate_type() -> None:
         ]
     )
 
-    expected = PlateType(number_of_wells=2)
+    expected = PlateType(
+        number_of_wells=2, custom_info={"Name of the plate type": "plate"}
+    )
 
     assert PlateType.create(reader) == expected
 
@@ -493,18 +506,28 @@ def test_create_labels() -> None:
             name="Filter_1",
             wavelength=485,
             bandwidth=14,
+            custom_info={"Factory preset": "Yes", "Filter_1": 102.0},
         ),
         emission_filters={
             "1st": Filter(
                 name="Filter_2",
                 wavelength=520,
                 bandwidth=20,
+                custom_info={"Factory preset": "Yes", "Filter_2": 102.0},
             ),
             "2nd": None,
         },
         scan_position_setting=ScanPositionSettingPlateReader.top_scan_position__plate_reader_,
         number_of_flashes=10.0,
         detector_gain_setting="2",
+        custom_info={
+            "Measurement height": "5 mm",
+            "FAKE_INSTRUMENT": 4000013.0,
+            "Last edited": "4/6/2022 5:55:00 PM",
+            "Number of flashes integrated": 1.0,
+            "Using of excitation filter": "Top",
+            "Factory preset": "No",
+        },
     )
 
     label = Labels.create(reader)
