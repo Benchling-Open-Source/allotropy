@@ -279,7 +279,7 @@ class ReportPointData:
     @staticmethod
     def create(row: SeriesData) -> ReportPointData:
         return ReportPointData(
-            identifier=f"Run{row[int, 'Run']}_Channel{row[int, 'Channel']}_Cycle{row[int, 'Cycle']}_FlowCell{row[str, 'Flow cell']}_Name{row[str, 'Name']}",
+            identifier=random_uuid_str(),
             identifier_role=row[str, "Name"],
             absolute_resonance=row[float, "Absolute response (RU)"],
             time_setting=row[float, "Time (s)"],
