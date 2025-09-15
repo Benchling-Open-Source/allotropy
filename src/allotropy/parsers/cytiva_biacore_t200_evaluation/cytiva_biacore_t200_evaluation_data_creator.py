@@ -244,27 +244,19 @@ def _create_measurements_for_cycle(_: Data, cycle: CycleData) -> list[Measuremen
 
     def _normalize_flow_cell_id(value: Any) -> str:
         s = str(value)
+        # Don't normalize reference-subtracted flow cell IDs (e.g., "2-1", "3-1", "4-1")
+        if "-" in s:
+            return s
+        # Only normalize pure numeric flow cell IDs
         m = re.match(r"\d+", s)
         return m.group(0) if m else s
 
-    # Get reference-subtracted flow cell IDs from DetectionMulti if available
-    detection_multi = (
-        _.run_metadata.detection_config.config.get("DetectionMulti")
-        if _.run_metadata.detection_config
-        else None
-    )
-
-    # Parse DetectionMulti to get reference-subtracted flow cell IDs (e.g., "2-1,3-1,4-1")
-    reference_subtracted_flow_cells = []
-    if detection_multi:
-        reference_subtracted_flow_cells = [
-            fc.strip() for fc in detection_multi.split(",")
-        ]
-
-    # First, process all standard flow cells (1, 2, 3, 4)
+    # Process all flow cells (including reference-subtracted ones like "2-1", "3-1", "4-1")
     for flow_cell, df_fc in sensorgram_df.groupby("Flow Cell Number"):
         fc_id = _normalize_flow_cell_id(flow_cell)
-        display_fc_id = fc_id  # Use the standard flow cell ID
+        display_fc_id = (
+            fc_id  # Use the flow cell ID (preserves reference-subtracted format)
+        )
 
         # Extract report points from cycle data (use base fc_id for filtering data, display_fc_id for identifiers)
         report_points: list[ReportPoint] | None = _create_report_points_from_cycle_data(
@@ -432,196 +424,6 @@ def _create_measurements_for_cycle(_: Data, cycle: CycleData) -> list[Measuremen
                     "Rmax error": {
                         "value": _extract_kinetic_parameter_error(
                             kinetic_data, ["Rmax", "rmax"]
-                        ),
-                        "unit": "RU",
-                    },
-                },
-            )
-        )
-
-    # Second, process reference-subtracted flow cells from DetectionMulti (e.g., "2-1", "3-1", "4-1")
-    existing_flow_cells = {str(fc) for fc in sensorgram_df["Flow Cell Number"].unique()}
-
-    for ref_sub_fc in reference_subtracted_flow_cells:
-        if "-" not in ref_sub_fc:
-            continue  # Skip if not a reference-subtracted format
-
-        # Skip if this reference-subtracted flow cell is already in the sensorgram data
-        if ref_sub_fc in existing_flow_cells:
-            continue
-
-        base_fc = ref_sub_fc.split("-")[0]  # e.g., "3-1" -> "3"
-
-        # Find the sensorgram data for the base flow cell
-        base_fc_data = None
-        for flow_cell, df_fc in sensorgram_df.groupby("Flow Cell Number"):
-            fc_id = _normalize_flow_cell_id(flow_cell)
-            if fc_id == base_fc:
-                base_fc_data = df_fc
-                break
-
-        if base_fc_data is None:
-            continue  # Skip if no data found for base flow cell
-
-        # Extract report points for this reference-subtracted flow cell
-        report_points_ref_sub: list[
-            ReportPoint
-        ] | None = _create_report_points_from_cycle_data(
-            rp_df, base_fc, cycle_num, ref_sub_fc
-        )
-
-        # Get device control custom info (same as standard flow cells)
-        device_control_custom_info_ref_sub: DictType = {
-            "buffer volume": quantity_or_none(
-                TQuantityValueMilliliter, _.run_metadata.buffer_volume
-            ),
-            "detection": (
-                _.run_metadata.detection_config.config.get("Detection")
-                if _.run_metadata.detection_config
-                else None
-            ),
-            "detectiondual": (
-                _.run_metadata.detection_config.config.get("DetectionDual")
-                if _.run_metadata.detection_config
-                else None
-            ),
-            "detectionmulti": (
-                _.run_metadata.detection_config.config.get("DetectionMulti")
-                if _.run_metadata.detection_config
-                else None
-            ),
-            "flowcellsingle": (
-                _.run_metadata.detection_config.config.get("FlowCellSingle")
-                if _.run_metadata.detection_config
-                else None
-            ),
-            "flowcelldual": (
-                _.run_metadata.detection_config.config.get("FlowCellDual")
-                if _.run_metadata.detection_config
-                else None
-            ),
-            "flowcellmulti": (
-                _.run_metadata.detection_config.config.get("FlowCellMulti")
-                if _.run_metadata.detection_config
-                else None
-            ),
-            "maximum operating temperature": quantity_or_none(
-                TQuantityValueDegreeCelsius, _.run_metadata.rack_temperature_max
-            ),
-            "minimum operating temperature": quantity_or_none(
-                TQuantityValueDegreeCelsius, _.run_metadata.rack_temperature_min
-            ),
-            "analysis temperature": quantity_or_none(
-                TQuantityValueDegreeCelsius, _.run_metadata.analysis_temperature
-            ),
-            "prime": str(bool(_.run_metadata.prime)).lower()
-            if _.run_metadata.prime is not None
-            else None,
-            "normalize": str(bool(_.run_metadata.normalize)).lower()
-            if _.run_metadata.normalize is not None
-            else None,
-        }
-
-        # Add ligand immobilization info for the base flow cell
-        try:
-            base_fc_index = int(base_fc)
-        except ValueError:
-            base_fc_index = None
-
-        if base_fc_index is not None:
-            for imm in _.chip_data.immobilizations:
-                if imm.flow_cell_index == base_fc_index:
-                    device_control_custom_info_ref_sub = {
-                        **device_control_custom_info_ref_sub,
-                        "ligand identifier": imm.ligand,
-                        "level": quantity_or_none(
-                            TQuantityValueResonanceUnits, imm.level
-                        ),
-                    }
-                    break
-
-        # Extract kinetic analysis data for the base flow cell (same as standard processing)
-        combined_kinetic_data_ref_sub = None
-        if _.kinetic_analysis and _.kinetic_analysis.results_by_identifier:
-            eval_item_key = f"EvaluationItem{base_fc}"
-            if eval_item_key in _.kinetic_analysis.results_by_identifier:
-                matching_eval_item = eval_item_key
-            else:
-                matching_eval_item = None
-                for eval_key in _.kinetic_analysis.results_by_identifier.keys():
-                    if base_fc in eval_key or eval_key.endswith(base_fc):
-                        matching_eval_item = eval_key
-                        break
-
-            if matching_eval_item:
-                result = _.kinetic_analysis.results_by_identifier[matching_eval_item]
-                combined_kinetic_data_ref_sub = result
-
-        kinetic_data_ref_sub = combined_kinetic_data_ref_sub
-
-        measurements.append(
-            Measurement(
-                identifier=random_uuid_str(),
-                type_=MeasurementType.SURFACE_PLASMON_RESONANCE,
-                sample_identifier="N/A",
-                device_control_document=[
-                    DeviceControlDocument(
-                        device_type=constants.DEVICE_TYPE,
-                        flow_cell_identifier=ref_sub_fc,
-                        flow_rate=try_float_or_none(_.run_metadata.baseline_flow),
-                        detection_type=constants.SURFACE_PLASMON_RESONANCE,
-                        device_control_custom_info=device_control_custom_info_ref_sub,
-                    )
-                ],
-                well_plate_identifier=(
-                    ((_.application_template_details or {}).get("racks", {}) or {}).get(
-                        "_Rack1"
-                    )
-                ),
-                sample_custom_info={
-                    "rack2": (
-                        (_.application_template_details or {}).get("racks", {}) or {}
-                    ).get("_Rack2")
-                },
-                sensorgram_data_cube=_get_sensorgram_datacube(
-                    base_fc_data,
-                    cycle=cycle_num,
-                    flow_cell=ref_sub_fc,
-                ),
-                report_point_data=report_points_ref_sub,
-                # Kinetic analysis fields (same as base flow cell)
-                binding_on_rate_measurement_datum__kon_=_extract_kinetic_parameter(
-                    kinetic_data_ref_sub, "parameters", ["ka", "kon"]
-                ),
-                binding_off_rate_measurement_datum__koff_=_extract_kinetic_parameter(
-                    kinetic_data_ref_sub, "parameters", ["kd", "koff"]
-                ),
-                equilibrium_dissociation_constant__kd_=_extract_kinetic_parameter(
-                    kinetic_data_ref_sub, "calculated", ["Kd_M", "KD"]
-                ),
-                maximum_binding_capacity__rmax_=_extract_kinetic_parameter(
-                    kinetic_data_ref_sub, "parameters", ["Rmax"]
-                ),
-                processed_data_custom_info={
-                    "kinetics chi squared": {
-                        "value": _extract_chi2_value(kinetic_data_ref_sub),
-                        "unit": "(unitless)",
-                    },
-                    "ka error": {
-                        "value": _extract_kinetic_parameter_error(
-                            kinetic_data_ref_sub, ["ka", "kon"]
-                        ),
-                        "unit": "M^-1*s^-1",
-                    },
-                    "kd error": {
-                        "value": _extract_kinetic_parameter_error(
-                            kinetic_data_ref_sub, ["kd", "koff"]
-                        ),
-                        "unit": "s^-1",
-                    },
-                    "Rmax error": {
-                        "value": _extract_kinetic_parameter_error(
-                            kinetic_data_ref_sub, ["Rmax", "rmax"]
                         ),
                         "unit": "RU",
                     },
