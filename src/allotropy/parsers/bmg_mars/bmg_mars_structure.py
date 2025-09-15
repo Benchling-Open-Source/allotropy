@@ -146,7 +146,6 @@ def create_metadata(header: Header, file_path: str) -> Metadata:
         data_system_instance_id=NOT_APPLICABLE,
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
         software_name=constants.SOFTWARE_NAME,
-        custom_info_doc=header.custom_info,
     )
 
 
@@ -187,6 +186,7 @@ def create_measurement_groups(
             measurements=[
                 _create_measurement(str(row_name), str(col_name), value, header)
             ],
+            custom_info=header.custom_info,
         )
         for row_name, row in data.iterrows()
         for col_name, value in row.items()
