@@ -6,7 +6,7 @@ from enum import Enum
 from pathlib import Path
 import re
 from re import Match
-from typing import ClassVar, TypeAlias
+from typing import Any, ClassVar, TypeAlias
 
 import pandas as pd
 
@@ -67,6 +67,7 @@ class Header:
     id3: str | None
     path: str | None
     test_id: str | None
+    custom_info: dict[str, Any] | None
 
     FILTER_FORMATS: ClassVar[dict[str, tuple[str, FilterHandler]]] = {
         "Raw Data (Ex/Em)": (
@@ -130,6 +131,7 @@ class Header:
             id1=data[str, "ID1"],
             id2=data.get(str, "ID2"),
             id3=data.get(str, "ID3"),
+            custom_info=data.get_unread(),
         )
 
 
@@ -144,6 +146,7 @@ def create_metadata(header: Header, file_path: str) -> Metadata:
         data_system_instance_id=NOT_APPLICABLE,
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
         software_name=constants.SOFTWARE_NAME,
+        custom_info_doc=header.custom_info,
     )
 
 
