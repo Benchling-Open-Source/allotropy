@@ -372,7 +372,7 @@ def _create_measurements_for_cycle(_: Data, cycle: CycleData) -> list[Measuremen
 
         measurements.append(
             Measurement(
-                identifier=f"CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_{display_fc_id}_{cycle_num}_{random_uuid_str()}",
+                identifier=random_uuid_str(),
                 type_=MeasurementType.SURFACE_PLASMON_RESONANCE,
                 sample_identifier="N/A",
                 device_control_document=[
