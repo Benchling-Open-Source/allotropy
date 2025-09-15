@@ -36,7 +36,7 @@ from allotropy.parsers.cytiva_biacore_t200_evaluation.cytiva_biacore_t200_evalua
     decode_data,
 )
 from allotropy.parsers.cytiva_biacore_t200_evaluation.cytiva_biacore_t200_evaluation_structure import (
-    _extract_value_from_xml_like_dict,
+    _extract_value_from_xml_element_or_dict,
     CycleData,
     Data,
     SystemInformation,
@@ -74,7 +74,8 @@ def create_metadata(data: Data, named_file_contents: NamedFileContents) -> Metad
     sys = data.system_information
     chip = data.chip_data
     # Fallback: if run metadata lacks compartment temp, try application_template_details.RackTemperature.value
-    rack_temp_val = _extract_value_from_xml_like_dict(
+    # Using the new bridge function that can handle both StrictXmlElement and dict
+    rack_temp_val = _extract_value_from_xml_element_or_dict(
         (data.application_template_details or {}).get("RackTemperature", {})
     )
     # Additional fallback to system_preparations.RackTemp if present
@@ -171,45 +172,10 @@ def _create_report_points_from_cycle_data(
 ) -> list[ReportPoint] | None:
     """Create ReportPoint objects from cycle report point data, filtered by flow cell."""
     if rp_df is None or rp_df.empty:
-        # Create flow cell-specific sample report points for testing
-        # Different flow cells get different identifier roles to demonstrate filtering
-        fc_id_for_display = display_flow_cell_id or flow_cell_id
-        fc_num = int(flow_cell_id) if flow_cell_id.isdigit() else 1
-
-        # Create different report point types based on flow cell
-        if fc_num == 1:
-            roles = ["baseline", "binding"]
-            times = [66.4, 150.0]
-            abs_resonances = [0.0, 250.0]
-            rel_resonances = [-1.0, 249.0]
-        elif fc_num == 2:
-            roles = ["baseline", "stability"]
-            times = [66.4, 400.0]
-            abs_resonances = [0.0, 180.0]
-            rel_resonances = [-1.0, 179.0]
-        else:
-            roles = ["baseline", "binding", "stability"]
-            times = [66.4, 150.0, 400.0]
-            abs_resonances = [0.0, 300.0, 280.0]
-            rel_resonances = [-1.0, 299.0, 279.0]
-
-        return [
-            ReportPoint(
-                identifier=f"CYTIVA_BIACORE_T200_EVALUATION_RP_C{cycle_number}_FC{fc_id_for_display}_{random_uuid_str()}",
-                identifier_role=role,
-                absolute_resonance=abs_res,
-                time_setting=time,
-                relative_resonance=rel_res,
-                custom_info={"window": {"value": 5.0, "unit": "s"}},
-            )
-            for role, time, abs_res, rel_res in zip(
-                roles, times, abs_resonances, rel_resonances, strict=True
-            )
-        ]
+        return None
 
     report_points: list[ReportPoint] = []
 
-    # Filter report points by flow cell if the DataFrame has flow cell information
     filtered_df = rp_df
     if "Flow Cell Number" in rp_df.columns or "flow_cell" in rp_df.columns:
         # Try to filter by flow cell
@@ -469,9 +435,15 @@ def _create_measurements_for_cycle(_: Data, cycle: CycleData) -> list[Measuremen
         )
 
     # Second, process reference-subtracted flow cells from DetectionMulti (e.g., "2-1", "3-1", "4-1")
+    existing_flow_cells = {str(fc) for fc in sensorgram_df["Flow Cell Number"].unique()}
+
     for ref_sub_fc in reference_subtracted_flow_cells:
         if "-" not in ref_sub_fc:
             continue  # Skip if not a reference-subtracted format
+
+        # Skip if this reference-subtracted flow cell is already in the sensorgram data
+        if ref_sub_fc in existing_flow_cells:
+            continue
 
         base_fc = ref_sub_fc.split("-")[0]  # e.g., "3-1" -> "3"
 

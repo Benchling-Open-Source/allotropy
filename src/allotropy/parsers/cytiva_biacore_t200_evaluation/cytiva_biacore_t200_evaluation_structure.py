@@ -6,6 +6,7 @@ from typing import Any
 import pandas as pd
 
 from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.utils.strict_xml_element import StrictXmlElement
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float_or_none,
@@ -44,6 +45,52 @@ def _extract_value_from_xml_like_dict(xml_dict: DictType) -> str | None:
     return str(value)
 
 
+def _extract_value_from_xml_element(
+    xml_element: StrictXmlElement, value_name: str = "value"
+) -> str | None:
+    """Extract value from StrictXmlElement structure.
+
+    Handles XML structures like:
+    - <element value="25"/> -> "25"
+    - <element><value>25</value></element> -> "25"
+    - <element><value IsUndefined="False">25</value></element> -> "25"
+
+    Args:
+        xml_element: The StrictXmlElement to extract value from
+        value_name: The name of the value element/attribute to look for (default: "value")
+
+    Returns:
+        The extracted value as a string, or None if not found
+    """
+    if xml_element is None:
+        return None
+
+    # Try to get value as an attribute first
+    value = xml_element.get_attr_or_none(value_name)
+    if value is not None:
+        return str(value)
+
+    # Try to find value as a child element
+    value_element = xml_element.find_or_none(value_name)
+    if value_element is not None:
+        # Check if the value element has text content
+        text_value = value_element.get_text_or_none()
+        if text_value is not None:
+            return str(text_value)
+
+        # If no text, check if it has a value attribute
+        attr_value = value_element.get_attr_or_none("value")
+        if attr_value is not None:
+            return str(attr_value)
+
+    # If no value found in child element, try getting text content directly
+    text_value = xml_element.get_text_or_none()
+    if text_value is not None:
+        return str(text_value)
+
+    return None
+
+
 def _extract_min_max_from_xml_dict(xml_dict: DictType, key: str) -> str | None:
     """Extract min or max value from XML-like dictionary structure.
 
@@ -66,6 +113,40 @@ def _extract_min_max_from_xml_dict(xml_dict: DictType, key: str) -> str | None:
         return str(value["#text"])
 
     return str(value)
+
+
+def _extract_min_max_from_xml_element(
+    xml_element: StrictXmlElement, key: str
+) -> str | None:
+    """Extract min or max value from StrictXmlElement structure.
+
+    Handles XML structures like:
+    - <element min="4" max="45" value="25"/> -> "4" or "45"
+    - <element><min>4</min><max>45</max><value>25</value></element> -> "4" or "45"
+
+    Args:
+        xml_element: The StrictXmlElement to extract value from
+        key: Either "min" or "max"
+
+    Returns:
+        The extracted min/max value as a string, or None if not found
+    """
+    if xml_element is None:
+        return None
+
+    # Try to get min/max as an attribute first
+    value = xml_element.get_attr_or_none(key)
+    if value is not None:
+        return str(value)
+
+    # Try to find min/max as a child element
+    child_element = xml_element.find_or_none(key)
+    if child_element is not None:
+        text_value = child_element.get_text_or_none()
+        if text_value is not None:
+            return str(text_value)
+
+    return None
 
 
 @dataclass(frozen=True)
@@ -164,21 +245,21 @@ class RunMetadata:
         return RunMetadata(
             analyst=props.get("User"),
             compartment_temperature=try_float_or_none(
-                _extract_value_from_xml_like_dict(
+                _extract_value_from_xml_element_or_dict(
                     application_template_details.get("RackTemperature", {})
                 )
             ),
             baseline_flow=try_float_or_none(
-                _extract_value_from_xml_like_dict(
+                _extract_value_from_xml_element_or_dict(
                     application_template_details.get("BaselineFlow", {})
                 )
             ),
             data_collection_rate=try_float_or_none(
-                _extract_value_from_xml_like_dict(
+                _extract_value_from_xml_element_or_dict(
                     application_template_details.get("DataCollectionRate", {})
                 )
             ),
-            molecule_weight_unit=_extract_value_from_xml_like_dict(
+            molecule_weight_unit=_extract_value_from_xml_element_or_dict(
                 application_template_details.get("MoleculeWeightUnit", {})
             ),
             detection_config=DetectionConfig.create(
@@ -436,3 +517,32 @@ class Data:
             sample_data=intermediate_structured_data.get("sample_data", NOT_APPLICABLE),
             application_template_details=app_details,
         )
+
+
+def _extract_value_from_xml_element_or_dict(
+    xml_data: StrictXmlElement | DictType | None, value_name: str = "value"
+) -> str | None:
+    """Extract value from either StrictXmlElement or dictionary structure.
+
+    This function serves as a bridge between the old xmltodict-based approach
+    and the new StrictXmlElement approach.
+
+    Args:
+        xml_data: Either a StrictXmlElement or dictionary structure
+        value_name: The name of the value element/attribute to look for
+
+    Returns:
+        The extracted value as a string, or None if not found
+    """
+    if xml_data is None:
+        return None
+
+    # If it's a StrictXmlElement, use the new extraction method
+    if isinstance(xml_data, StrictXmlElement):
+        return _extract_value_from_xml_element(xml_data, value_name)
+
+    # If it's a dictionary, use the legacy extraction method
+    if isinstance(xml_data, dict):
+        return _extract_value_from_xml_like_dict(xml_data)
+
+    return None
