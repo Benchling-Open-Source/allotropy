@@ -236,19 +236,24 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> PlateReaderDocumentItem:
         plate_reader_doc = PlateReaderDocumentItem(
             analyst=measurement_group.analyst,
-            measurement_aggregate_document=MeasurementAggregateDocument(
-                analytical_method_identifier=measurement_group.analytical_method_identifier,
-                experimental_data_identifier=measurement_group.experimental_data_identifier,
-                experiment_type=measurement_group.experiment_type,
-                container_type=ContainerType.well_plate.value,
-                plate_well_count=TQuantityValueNumber(
-                    value=measurement_group.plate_well_count
+            measurement_aggregate_document=add_custom_information_document(
+                MeasurementAggregateDocument(
+                    analytical_method_identifier=measurement_group.analytical_method_identifier,
+                    experimental_data_identifier=measurement_group.experimental_data_identifier,
+                    experiment_type=measurement_group.experiment_type,
+                    container_type=ContainerType.well_plate.value,
+                    plate_well_count=TQuantityValueNumber(
+                        value=measurement_group.plate_well_count
+                    ),
+                    measurement_time=self.get_date_time(
+                        measurement_group.measurement_time
+                    ),
+                    measurement_document=[
+                        self._get_measurement_document(measurement)
+                        for measurement in measurement_group.measurements
+                    ],
                 ),
-                measurement_time=self.get_date_time(measurement_group.measurement_time),
-                measurement_document=[
-                    self._get_measurement_document(measurement)
-                    for measurement in measurement_group.measurements
-                ],
+                measurement_group.custom_info,
             ),
         )
         custom_info_doc = {
@@ -256,7 +261,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueNanometer, measurement_group.maximum_wavelength_signal
             )
         }
-        custom_info_doc.update(measurement_group.custom_info or {})
+        # custom_info_doc.update(measurement_group.custom_info or {})
         return add_custom_information_document(plate_reader_doc, custom_info_doc)
 
     def _get_measurement_document(
@@ -572,23 +577,26 @@ class Mapper(SchemaMapper[Data, Model]):
 
         return CalculatedDataAggregateDocument(
             calculated_data_document=[
-                CalculatedDataDocumentItem(
-                    calculated_data_identifier=calculated_data_item.uuid,
-                    calculated_data_name=calculated_data_item.name,
-                    calculation_description=calculated_data_item.description,
-                    calculated_result=TQuantityValueModel(
-                        value=calculated_data_item.value,
-                        unit=calculated_data_item.unit or Unitless.unit,
+                add_custom_information_document(
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier=calculated_data_item.uuid,
+                        calculated_data_name=calculated_data_item.name,
+                        calculation_description=calculated_data_item.description,
+                        calculated_result=TQuantityValueModel(
+                            value=calculated_data_item.value,
+                            unit=calculated_data_item.unit or Unitless.unit,
+                        ),
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier=item.reference.uuid,
+                                    data_source_feature=item.feature,
+                                )
+                                for item in calculated_data_item.data_sources
+                            ]
+                        ),
                     ),
-                    data_source_aggregate_document=DataSourceAggregateDocument(
-                        data_source_document=[
-                            DataSourceDocumentItem(
-                                data_source_identifier=item.reference.uuid,
-                                data_source_feature=item.feature,
-                            )
-                            for item in calculated_data_item.data_sources
-                        ]
-                    ),
+                    calculated_data_item.custom_info,
                 )
                 for calculated_data_item in calculated_data_items
             ]

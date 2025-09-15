@@ -54,6 +54,7 @@ from allotropy.parsers.utils.values import (
     num_to_chars,
     quantity_or_none,
 )
+from allotropy.parsers.utils.warnings_tools import suppress_unused_keys_warning
 
 
 class ReadType(Enum):
@@ -223,15 +224,15 @@ class BackgroundInfo:
     plate_num: str
     label: str
     measinfo: str
+    custom_info: dict[str, Any]
 
     @staticmethod
     def create(data: SeriesData) -> BackgroundInfo:
-        # Call get_unread() to prevent warnings about unread keys
-        data.get_unread()
         return BackgroundInfo(
             plate_num=data[str, "Plate"],
             label=data[str, "Label"],
             measinfo=data[str, "MeasInfo"],
+            custom_info=data.get_unread(),
         )
 
 
@@ -331,7 +332,6 @@ class Plate:
 class ResultPlate(Plate):
     plate_info: ResultPlateInfo
     results: list[Result]
-    custom_info: dict[str, Any] | None = None
 
 
 @dataclass
@@ -372,7 +372,6 @@ def create_plate(reader: CsvReader) -> ResultPlate | CalculatedPlate:
             plate_info=result_plate_info,
             background_infos=create_background_infos(reader),
             results=create_results(reader),
-            custom_info=series.get_unread(),
         )
     else:
         return CalculatedPlate(
@@ -425,7 +424,7 @@ class PlateList:
 class BasicAssayInfo:
     protocol_id: str | None
     assay_id: str | None
-    custom_info: dict[str, Any] | None = None
+    custom_info: dict[str, Any]
 
     @staticmethod
     def create(reader: CsvReader) -> BasicAssayInfo:
@@ -446,7 +445,7 @@ class BasicAssayInfo:
 @dataclass(frozen=True)
 class PlateType:
     number_of_wells: float
-    custom_info: dict[str, Any] | None = None
+    custom_info: dict[str, Any]
 
     @staticmethod
     def create(reader: CsvReader) -> PlateType:
@@ -566,9 +565,9 @@ class Filter:
     name: str
     wavelength: float
     bandwidth: float | None = None
-    custom_info: dict[str, Any] | None = None
 
     @staticmethod
+    @suppress_unused_keys_warning
     def create(reader: CsvReader) -> Filter | None:
         if not reader.current_line_exists() or reader.match(
             "(^Mirror modules)|(^Instrument:)|(^Aperture:)"
@@ -582,12 +581,9 @@ class Filter:
         data = df_to_series_data(data_frame.T)
         name = str(data.series.index[0])
         description = data[str, "Description"]
-        custom_info = data.get_unread()
 
         if search_result := search("Longpass=(\\d+)nm", description):
-            return Filter(
-                name, wavelength=float(search_result.group(1)), custom_info=custom_info
-            )
+            return Filter(name, wavelength=float(search_result.group(1)))
         return Filter(
             name,
             wavelength=float(
@@ -604,7 +600,6 @@ class Filter:
                 .group(1)
                 .replace(" ", "")
             ),
-            custom_info=custom_info,
         )
 
 
@@ -630,9 +625,9 @@ class Labels:
     scan_position_setting: ScanPositionSettingPlateReader | None = None
     number_of_flashes: float | None = None
     detector_gain_setting: str | None = None
-    custom_info: dict[str, Any] | None = None
 
     @staticmethod
+    @suppress_unused_keys_warning
     def create(reader: CsvReader) -> Labels:
         reader.drop_until_inclusive("^Labels")
         data_frame = assert_not_none(
@@ -660,7 +655,6 @@ class Labels:
             ),
             number_of_flashes=data.get(float, "Number of flashes"),
             detector_gain_setting=data.get(str, "Reference AD gain"),
-            custom_info=data.get_unread(),
         )
 
     def get_emission_filter(self, id_val: str) -> Filter | None:
@@ -741,7 +735,7 @@ class Data:
     software: Software
     plate_list: PlateList
     basic_assay_info: BasicAssayInfo
-    number_of_wells: float
+    plate_type_info: PlateType
     plate_maps: dict[str, PlateMap]
     labels: Labels
     instrument: Instrument
@@ -751,7 +745,7 @@ class Data:
         return Data(
             plate_list=PlateList.create(reader),
             basic_assay_info=BasicAssayInfo.create(reader),
-            number_of_wells=PlateType.create(reader).number_of_wells,
+            plate_type_info=PlateType.create(reader),
             plate_maps=create_plate_maps(reader),
             labels=Labels.create(reader),
             instrument=Instrument.create(reader),
@@ -837,10 +831,14 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
     return [
         MeasurementGroup(
             measurement_time=measurement_time,
-            plate_well_count=data.number_of_wells,
+            plate_well_count=data.plate_type_info.number_of_wells,
             analytical_method_identifier=data.basic_assay_info.protocol_id,
             experimental_data_identifier=data.basic_assay_info.assay_id,
             measurements=well_loc_measurements[well_location],
+            custom_info={
+                **data.basic_assay_info.custom_info,
+                **data.plate_type_info.custom_info,
+            },
         )
         for well_location in sorted(
             well_loc_measurements.keys(),

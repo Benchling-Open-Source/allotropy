@@ -186,17 +186,18 @@ def test_create_plates() -> None:
                         "Inside temperature at end": None,
                     },
                 ),
-                custom_info={},
                 background_infos=[
                     BackgroundInfo(
                         plate_num="2",
                         label="AC HTRF Laser [Eu]",
                         measinfo="De=1st Ex=Top Em=Top Wdw=1 (14)",
+                        custom_info={"Meastime": "00:00:00.000", "Result": 0.0},
                     ),
                     BackgroundInfo(
                         plate_num="2",
                         label="AC HTRF Laser [Eu]",
                         measinfo="De=2nd Ex=Top Em=Top Wdw=1 (142)",
+                        custom_info={"Meastime": "00:00:00.000", "Result": 0.0},
                     ),
                 ],
                 results=[
@@ -266,11 +267,13 @@ def test_create_plates_with_calculated_data() -> None:
                         plate_num="2",
                         label="AC HTRF Laser [Eu]",
                         measinfo="De=1st Ex=Top Em=Top Wdw=1 (14)",
+                        custom_info={"Meastime": "00:00:00.000", "Result": 0.0},
                     ),
                     BackgroundInfo(
                         plate_num="2",
                         label="AC HTRF Laser [Eu]",
                         measinfo="De=2nd Ex=Top Em=Top Wdw=1 (142)",
+                        custom_info={"Meastime": "00:00:00.000", "Result": 0.0},
                     ),
                 ],
                 results=[
@@ -506,28 +509,18 @@ def test_create_labels() -> None:
             name="Filter_1",
             wavelength=485,
             bandwidth=14,
-            custom_info={"Factory preset": "Yes", "Filter_1": 102.0},
         ),
         emission_filters={
             "1st": Filter(
                 name="Filter_2",
                 wavelength=520,
                 bandwidth=20,
-                custom_info={"Factory preset": "Yes", "Filter_2": 102.0},
             ),
             "2nd": None,
         },
         scan_position_setting=ScanPositionSettingPlateReader.top_scan_position__plate_reader_,
         number_of_flashes=10.0,
         detector_gain_setting="2",
-        custom_info={
-            "Measurement height": "5 mm",
-            "FAKE_INSTRUMENT": 4000013.0,
-            "Last edited": "4/6/2022 5:55:00 PM",
-            "Number of flashes integrated": 1.0,
-            "Using of excitation filter": "Top",
-            "Factory preset": "No",
-        },
     )
 
     label = Labels.create(reader)

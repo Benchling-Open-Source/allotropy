@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 from dataclasses import dataclass
+from typing import Any
 
 
 @dataclass
@@ -24,6 +25,7 @@ class CalculatedDocument(Referenceable):
     unit: str | None = None
     description: str | None = None
     iterated: bool = False
+    custom_info: dict[str, Any] | None = None
 
     def iter_struct(self) -> Iterator[CalculatedDocument]:
         if self.iterated:
