@@ -16,6 +16,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
 from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling._2024._12.binding_affinity_analyzer import (
+    DeviceControlDocument,
     DeviceDocument,
     Measurement,
     MeasurementGroup,
@@ -373,10 +374,16 @@ def _create_measurements_for_cycle(_: Data, cycle: CycleData) -> list[Measuremen
             Measurement(
                 identifier=f"CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_{display_fc_id}_{cycle_num}_{random_uuid_str()}",
                 type_=MeasurementType.SURFACE_PLASMON_RESONANCE,
-                device_type=constants.DEVICE_TYPE,
-                detection_type=constants.SURFACE_PLASMON_RESONANCE,
                 sample_identifier="N/A",
-                flow_cell_identifier=display_fc_id,
+                device_control_document=[
+                    DeviceControlDocument(
+                        device_type=constants.DEVICE_TYPE,
+                        flow_cell_identifier=display_fc_id,
+                        flow_rate=try_float_or_none(_.run_metadata.baseline_flow),
+                        detection_type=constants.SURFACE_PLASMON_RESONANCE,
+                        device_control_custom_info=device_control_custom_info,
+                    )
+                ],
                 well_plate_identifier=(
                     ((_.application_template_details or {}).get("racks", {}) or {}).get(
                         "_Rack1"
@@ -387,12 +394,10 @@ def _create_measurements_for_cycle(_: Data, cycle: CycleData) -> list[Measuremen
                         (_.application_template_details or {}).get("racks", {}) or {}
                     ).get("_Rack2")
                 },
-                flow_rate=try_float_or_none(_.run_metadata.baseline_flow),
                 sensorgram_data_cube=_get_sensorgram_datacube(
                     df_fc, cycle=cycle_num, flow_cell=fc_id
                 ),
                 report_point_data=report_points,
-                device_control_custom_info=device_control_custom_info,
                 # Kinetic analysis fields
                 binding_on_rate_measurement_datum__kon_=_extract_kinetic_parameter(
                     kinetic_data, "parameters", ["ka", "kon"]
@@ -400,10 +405,10 @@ def _create_measurements_for_cycle(_: Data, cycle: CycleData) -> list[Measuremen
                 binding_off_rate_measurement_datum__koff_=_extract_kinetic_parameter(
                     kinetic_data, "parameters", ["kd", "koff"]
                 ),
-                equilibrium_dissociation_constant__KD_=_extract_kinetic_parameter(
+                equilibrium_dissociation_constant__kd_=_extract_kinetic_parameter(
                     kinetic_data, "calculated", ["Kd_M", "KD", "kd"]
                 ),
-                maximum_binding_capacity__Rmax_=_extract_kinetic_parameter(
+                maximum_binding_capacity__rmax_=_extract_kinetic_parameter(
                     kinetic_data, "parameters", ["Rmax", "rmax"]
                 ),
                 # Attach custom kinetic analysis values for processed data custom info
@@ -558,10 +563,16 @@ def _create_measurements_for_cycle(_: Data, cycle: CycleData) -> list[Measuremen
             Measurement(
                 identifier=random_uuid_str(),
                 type_=MeasurementType.SURFACE_PLASMON_RESONANCE,
-                device_type=constants.DEVICE_TYPE,
-                detection_type=constants.SURFACE_PLASMON_RESONANCE,
                 sample_identifier="N/A",
-                flow_cell_identifier=ref_sub_fc,  # Use reference-subtracted ID
+                device_control_document=[
+                    DeviceControlDocument(
+                        device_type=constants.DEVICE_TYPE,
+                        flow_cell_identifier=ref_sub_fc,
+                        flow_rate=try_float_or_none(_.run_metadata.baseline_flow),
+                        detection_type=constants.SURFACE_PLASMON_RESONANCE,
+                        device_control_custom_info=device_control_custom_info_ref_sub,
+                    )
+                ],
                 well_plate_identifier=(
                     ((_.application_template_details or {}).get("racks", {}) or {}).get(
                         "_Rack1"
@@ -572,14 +583,12 @@ def _create_measurements_for_cycle(_: Data, cycle: CycleData) -> list[Measuremen
                         (_.application_template_details or {}).get("racks", {}) or {}
                     ).get("_Rack2")
                 },
-                flow_rate=try_float_or_none(_.run_metadata.baseline_flow),
                 sensorgram_data_cube=_get_sensorgram_datacube(
                     base_fc_data,
                     cycle=cycle_num,
-                    flow_cell=ref_sub_fc,  # Use ref_sub_fc for labeling
+                    flow_cell=ref_sub_fc,
                 ),
                 report_point_data=report_points_ref_sub,
-                device_control_custom_info=device_control_custom_info_ref_sub,
                 # Kinetic analysis fields (same as base flow cell)
                 binding_on_rate_measurement_datum__kon_=_extract_kinetic_parameter(
                     kinetic_data_ref_sub, "parameters", ["ka", "kon"]
@@ -587,10 +596,10 @@ def _create_measurements_for_cycle(_: Data, cycle: CycleData) -> list[Measuremen
                 binding_off_rate_measurement_datum__koff_=_extract_kinetic_parameter(
                     kinetic_data_ref_sub, "parameters", ["kd", "koff"]
                 ),
-                equilibrium_dissociation_constant__KD_=_extract_kinetic_parameter(
+                equilibrium_dissociation_constant__kd_=_extract_kinetic_parameter(
                     kinetic_data_ref_sub, "calculated", ["Kd_M", "KD"]
                 ),
-                maximum_binding_capacity__Rmax_=_extract_kinetic_parameter(
+                maximum_binding_capacity__rmax_=_extract_kinetic_parameter(
                     kinetic_data_ref_sub, "parameters", ["Rmax"]
                 ),
                 processed_data_custom_info={
@@ -665,7 +674,7 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
         # Add aggregate-level experimental data identifier for convenience (first measurement's FC)
         if measurements:
             # derive from first measurement's flow cell
-            first_fc = measurements[0].flow_cell_identifier
+            first_fc = measurements[0].device_control_document[0].flow_cell_identifier
             try:
                 fc_index = int(str(first_fc))
             except Exception:

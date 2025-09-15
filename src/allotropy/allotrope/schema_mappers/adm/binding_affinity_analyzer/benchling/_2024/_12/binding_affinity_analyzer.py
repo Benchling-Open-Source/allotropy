@@ -37,7 +37,6 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePerSecond,
     TQuantityValueResonanceUnits,
     TQuantityValueSecondTime,
-    TQuantityValueTODO,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDatacube
 from allotropy.allotrope.schema_mappers.data_cube import DataCube, get_data_cube
@@ -102,6 +101,7 @@ class DeviceControlDocument:
     flow_rate: float | None = None
     contact_time: float | None = None
     dilution: float | None = None
+    detection_type: str | None = None
     sample_temperature_setting: float | None = None
     device_control_custom_info: DictType | None = None
 
@@ -136,14 +136,6 @@ class Measurement:
 
     # Data processing
     data_processing_document: DictType | None = None
-
-    # Kinetic analysis results
-    binding_on_rate_measurement_datum__kon_: float | None = None
-    binding_off_rate_measurement_datum__koff_: float | None = None
-    equilibrium_dissociation_constant__KD_: float | None = None  # noqa: N815
-    maximum_binding_capacity__Rmax_: float | None = None  # noqa: N815
-    # Custom info to attach at processed data level
-    processed_data_custom_info: DictType | None = None
 
 
 @dataclass(frozen=True)
