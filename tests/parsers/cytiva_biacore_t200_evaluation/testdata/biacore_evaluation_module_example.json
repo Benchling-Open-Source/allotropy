@@ -10,7 +10,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "1",
                                         "flow rate": {
                                             "value": 30.0,
@@ -59,11 +58,6 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {}
-                                ]
-                            },
                             "sensorgram data cube": {
                                 "label": "Cycle1_FlowCell1",
                                 "cube-structure": {
@@ -113,7 +107,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "2",
                                         "flow rate": {
                                             "value": 30.0,
@@ -167,7 +160,7 @@
                                     {
                                         "binding on rate measurement datum  kon ": {
                                             "value": 527525.740161386,
-                                            "unit": "TODO"
+                                            "unit": "M-1s-1"
                                         },
                                         "binding off rate measurement datum  koff ": {
                                             "value": 0.00286250902270012,
@@ -179,7 +172,7 @@
                                         },
                                         "maximum binding capacity  Rmax ": {
                                             "value": 35.2486094118092,
-                                            "unit": "TODO"
+                                            "unit": "RU"
                                         },
                                         "custom information document": {
                                             "kinetics chi squared": {
@@ -251,7 +244,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "2",
                                         "flow rate": {
                                             "value": 30.0,
@@ -305,7 +297,7 @@
                                     {
                                         "binding on rate measurement datum  kon ": {
                                             "value": 527525.740161386,
-                                            "unit": "TODO"
+                                            "unit": "M-1s-1"
                                         },
                                         "binding off rate measurement datum  koff ": {
                                             "value": 0.00286250902270012,
@@ -317,7 +309,7 @@
                                         },
                                         "maximum binding capacity  Rmax ": {
                                             "value": 35.2486094118092,
-                                            "unit": "TODO"
+                                            "unit": "RU"
                                         },
                                         "custom information document": {
                                             "kinetics chi squared": {
@@ -396,7 +388,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "3",
                                         "flow rate": {
                                             "value": 30.0,
@@ -445,18 +436,6 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "custom information document": {
-                                            "kinetics chi squared": {
-                                                "value": 11.90239373089,
-                                                "unit": "(unitless)"
-                                            }
-                                        }
-                                    }
-                                ]
-                            },
                             "sensorgram data cube": {
                                 "label": "Cycle1_FlowCell3",
                                 "cube-structure": {
@@ -506,7 +485,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "3",
                                         "flow rate": {
                                             "value": 30.0,
@@ -555,18 +533,6 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "custom information document": {
-                                            "kinetics chi squared": {
-                                                "value": 11.90239373089,
-                                                "unit": "(unitless)"
-                                            }
-                                        }
-                                    }
-                                ]
-                            },
                             "sensorgram data cube": {
                                 "label": "Cycle1_FlowCell3",
                                 "cube-structure": {
@@ -623,7 +589,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "4",
                                         "flow rate": {
                                             "value": 30.0,
@@ -667,11 +632,6 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {}
-                                ]
-                            },
                             "sensorgram data cube": {
                                 "label": "Cycle1_FlowCell4",
                                 "cube-structure": {
@@ -721,7 +681,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "4",
                                         "flow rate": {
                                             "value": 30.0,
@@ -765,11 +724,6 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {}
-                                ]
-                            },
                             "sensorgram data cube": {
                                 "label": "Cycle1_FlowCell4",
                                 "cube-structure": {
@@ -845,7 +799,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "1",
                                         "flow rate": {
                                             "value": 30.0,
@@ -894,11 +847,6 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {}
-                                ]
-                            },
                             "sensorgram data cube": {
                                 "label": "Cycle2_FlowCell1",
                                 "cube-structure": {
@@ -948,7 +896,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "2",
                                         "flow rate": {
                                             "value": 30.0,
@@ -1002,7 +949,7 @@
                                     {
                                         "binding on rate measurement datum  kon ": {
                                             "value": 527525.740161386,
-                                            "unit": "TODO"
+                                            "unit": "M-1s-1"
                                         },
                                         "binding off rate measurement datum  koff ": {
                                             "value": 0.00286250902270012,
@@ -1014,7 +961,7 @@
                                         },
                                         "maximum binding capacity  Rmax ": {
                                             "value": 35.2486094118092,
-                                            "unit": "TODO"
+                                            "unit": "RU"
                                         },
                                         "custom information document": {
                                             "kinetics chi squared": {
@@ -1086,7 +1033,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "2",
                                         "flow rate": {
                                             "value": 30.0,
@@ -1140,7 +1086,7 @@
                                     {
                                         "binding on rate measurement datum  kon ": {
                                             "value": 527525.740161386,
-                                            "unit": "TODO"
+                                            "unit": "M-1s-1"
                                         },
                                         "binding off rate measurement datum  koff ": {
                                             "value": 0.00286250902270012,
@@ -1152,7 +1098,7 @@
                                         },
                                         "maximum binding capacity  Rmax ": {
                                             "value": 35.2486094118092,
-                                            "unit": "TODO"
+                                            "unit": "RU"
                                         },
                                         "custom information document": {
                                             "kinetics chi squared": {
@@ -1231,7 +1177,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "3",
                                         "flow rate": {
                                             "value": 30.0,
@@ -1280,18 +1225,6 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "custom information document": {
-                                            "kinetics chi squared": {
-                                                "value": 11.90239373089,
-                                                "unit": "(unitless)"
-                                            }
-                                        }
-                                    }
-                                ]
-                            },
                             "sensorgram data cube": {
                                 "label": "Cycle2_FlowCell3",
                                 "cube-structure": {
@@ -1341,7 +1274,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "3",
                                         "flow rate": {
                                             "value": 30.0,
@@ -1390,18 +1322,6 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "custom information document": {
-                                            "kinetics chi squared": {
-                                                "value": 11.90239373089,
-                                                "unit": "(unitless)"
-                                            }
-                                        }
-                                    }
-                                ]
-                            },
                             "sensorgram data cube": {
                                 "label": "Cycle2_FlowCell3",
                                 "cube-structure": {
@@ -1458,7 +1378,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "4",
                                         "flow rate": {
                                             "value": 30.0,
@@ -1502,11 +1421,6 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {}
-                                ]
-                            },
                             "sensorgram data cube": {
                                 "label": "Cycle2_FlowCell4",
                                 "cube-structure": {
@@ -1556,7 +1470,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "4",
                                         "flow rate": {
                                             "value": 30.0,
@@ -1600,11 +1513,6 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {}
-                                ]
-                            },
                             "sensorgram data cube": {
                                 "label": "Cycle2_FlowCell4",
                                 "cube-structure": {
@@ -1680,7 +1588,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "1",
                                         "flow rate": {
                                             "value": 30.0,
@@ -1729,11 +1636,6 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {}
-                                ]
-                            },
                             "sensorgram data cube": {
                                 "label": "Cycle3_FlowCell1",
                                 "cube-structure": {
@@ -1783,7 +1685,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "2",
                                         "flow rate": {
                                             "value": 30.0,
@@ -1837,7 +1738,7 @@
                                     {
                                         "binding on rate measurement datum  kon ": {
                                             "value": 527525.740161386,
-                                            "unit": "TODO"
+                                            "unit": "M-1s-1"
                                         },
                                         "binding off rate measurement datum  koff ": {
                                             "value": 0.00286250902270012,
@@ -1849,7 +1750,7 @@
                                         },
                                         "maximum binding capacity  Rmax ": {
                                             "value": 35.2486094118092,
-                                            "unit": "TODO"
+                                            "unit": "RU"
                                         },
                                         "custom information document": {
                                             "kinetics chi squared": {
@@ -1921,7 +1822,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "2",
                                         "flow rate": {
                                             "value": 30.0,
@@ -1975,7 +1875,7 @@
                                     {
                                         "binding on rate measurement datum  kon ": {
                                             "value": 527525.740161386,
-                                            "unit": "TODO"
+                                            "unit": "M-1s-1"
                                         },
                                         "binding off rate measurement datum  koff ": {
                                             "value": 0.00286250902270012,
@@ -1987,7 +1887,7 @@
                                         },
                                         "maximum binding capacity  Rmax ": {
                                             "value": 35.2486094118092,
-                                            "unit": "TODO"
+                                            "unit": "RU"
                                         },
                                         "custom information document": {
                                             "kinetics chi squared": {
@@ -2066,7 +1966,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "3",
                                         "flow rate": {
                                             "value": 30.0,
@@ -2115,18 +2014,6 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "custom information document": {
-                                            "kinetics chi squared": {
-                                                "value": 11.90239373089,
-                                                "unit": "(unitless)"
-                                            }
-                                        }
-                                    }
-                                ]
-                            },
                             "sensorgram data cube": {
                                 "label": "Cycle3_FlowCell3",
                                 "cube-structure": {
@@ -2176,7 +2063,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "3",
                                         "flow rate": {
                                             "value": 30.0,
@@ -2225,18 +2111,6 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "custom information document": {
-                                            "kinetics chi squared": {
-                                                "value": 11.90239373089,
-                                                "unit": "(unitless)"
-                                            }
-                                        }
-                                    }
-                                ]
-                            },
                             "sensorgram data cube": {
                                 "label": "Cycle3_FlowCell3",
                                 "cube-structure": {
@@ -2293,7 +2167,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "4",
                                         "flow rate": {
                                             "value": 30.0,
@@ -2337,11 +2210,6 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {}
-                                ]
-                            },
                             "sensorgram data cube": {
                                 "label": "Cycle3_FlowCell4",
                                 "cube-structure": {
@@ -2391,7 +2259,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "4",
                                         "flow rate": {
                                             "value": 30.0,
@@ -2435,11 +2302,6 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {}
-                                ]
-                            },
                             "sensorgram data cube": {
                                 "label": "Cycle3_FlowCell4",
                                 "cube-structure": {
@@ -2515,7 +2377,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "1",
                                         "flow rate": {
                                             "value": 30.0,
@@ -2564,11 +2425,6 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {}
-                                ]
-                            },
                             "sensorgram data cube": {
                                 "label": "Cycle4_FlowCell1",
                                 "cube-structure": {
@@ -2618,7 +2474,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "2",
                                         "flow rate": {
                                             "value": 30.0,
@@ -2672,7 +2527,7 @@
                                     {
                                         "binding on rate measurement datum  kon ": {
                                             "value": 527525.740161386,
-                                            "unit": "TODO"
+                                            "unit": "M-1s-1"
                                         },
                                         "binding off rate measurement datum  koff ": {
                                             "value": 0.00286250902270012,
@@ -2684,7 +2539,7 @@
                                         },
                                         "maximum binding capacity  Rmax ": {
                                             "value": 35.2486094118092,
-                                            "unit": "TODO"
+                                            "unit": "RU"
                                         },
                                         "custom information document": {
                                             "kinetics chi squared": {
@@ -2756,7 +2611,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "2",
                                         "flow rate": {
                                             "value": 30.0,
@@ -2810,7 +2664,7 @@
                                     {
                                         "binding on rate measurement datum  kon ": {
                                             "value": 527525.740161386,
-                                            "unit": "TODO"
+                                            "unit": "M-1s-1"
                                         },
                                         "binding off rate measurement datum  koff ": {
                                             "value": 0.00286250902270012,
@@ -2822,7 +2676,7 @@
                                         },
                                         "maximum binding capacity  Rmax ": {
                                             "value": 35.2486094118092,
-                                            "unit": "TODO"
+                                            "unit": "RU"
                                         },
                                         "custom information document": {
                                             "kinetics chi squared": {
@@ -2901,7 +2755,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "3",
                                         "flow rate": {
                                             "value": 30.0,
@@ -2950,18 +2803,6 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "custom information document": {
-                                            "kinetics chi squared": {
-                                                "value": 11.90239373089,
-                                                "unit": "(unitless)"
-                                            }
-                                        }
-                                    }
-                                ]
-                            },
                             "sensorgram data cube": {
                                 "label": "Cycle4_FlowCell3",
                                 "cube-structure": {
@@ -3011,7 +2852,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "3",
                                         "flow rate": {
                                             "value": 30.0,
@@ -3060,18 +2900,6 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "custom information document": {
-                                            "kinetics chi squared": {
-                                                "value": 11.90239373089,
-                                                "unit": "(unitless)"
-                                            }
-                                        }
-                                    }
-                                ]
-                            },
                             "sensorgram data cube": {
                                 "label": "Cycle4_FlowCell3",
                                 "cube-structure": {
@@ -3128,7 +2956,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "4",
                                         "flow rate": {
                                             "value": 30.0,
@@ -3172,11 +2999,6 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {}
-                                ]
-                            },
                             "sensorgram data cube": {
                                 "label": "Cycle4_FlowCell4",
                                 "cube-structure": {
@@ -3226,7 +3048,6 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "detection type": "Surface Plasmon Resonance",
                                         "flow cell identifier": "4",
                                         "flow rate": {
                                             "value": 30.0,
@@ -3270,11 +3091,6 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {}
-                                ]
-                            },
                             "sensorgram data cube": {
                                 "label": "Cycle4_FlowCell4",
                                 "cube-structure": {
