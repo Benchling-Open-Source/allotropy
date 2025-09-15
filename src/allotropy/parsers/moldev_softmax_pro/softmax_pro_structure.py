@@ -177,8 +177,7 @@ class GroupSampleData:
                     )
                 elif data_elements[column]:
                     data_elements[column][-1].positions.append(position)
-                row.mark_read("Sample")
-            unread = row.get_unread()
+            unread = row.get_unread(skip={"Sample"})
             if unread:
                 by_position = unread_by_plate_and_position.setdefault(plate, {})
                 by_position.setdefault(str(position), []).append(unread)
