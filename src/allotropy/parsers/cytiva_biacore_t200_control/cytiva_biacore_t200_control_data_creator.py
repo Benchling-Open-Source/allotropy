@@ -16,6 +16,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.models.shared.definitions.units import ResonanceUnits, Unitless
 from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling._2024._12.binding_affinity_analyzer import (
+    DeviceControlDocument,
     DeviceDocument,
     Measurement,
     MeasurementGroup,
@@ -112,13 +113,21 @@ def create_measurements(
         Measurement(
             identifier=measurement.identifier,
             type_=measurement.type_,
-            device_type=measurement.device_type,
             sample_identifier=measurement.sample_identifier,
             location_identifier=measurement.location_identifier,
             sample_role_type=measurement.sample_role_type,
             concentration=measurement.concentration,
-            flow_cell_identifier=measurement.flow_cell_identifier,
-            device_control_custom_info=device_control_custom_info,
+            device_control_document=[
+                DeviceControlDocument(
+                    device_type=measurement.device_type,
+                    flow_cell_identifier=measurement.flow_cell_identifier,
+                    flow_path=measurement.flow_path,
+                    flow_rate=measurement.flow_rate,
+                    contact_time=measurement.contact_time,
+                    dilution=measurement.dilution,
+                    device_control_custom_info=device_control_custom_info,
+                )
+            ],
             sample_custom_info={
                 "molecular weight": quantity_or_none(
                     TQuantityValueDalton, measurement.molecular_weight
@@ -143,10 +152,6 @@ def create_measurements(
             # for Mobilization experiments
             method_name=measurement.method_name,
             ligand_identifier=measurement.ligand_identifier,
-            flow_path=measurement.flow_path,
-            flow_rate=measurement.flow_rate,
-            contact_time=measurement.contact_time,
-            dilution=measurement.dilution,
         )
         for measurement in measurements_data
     ]
