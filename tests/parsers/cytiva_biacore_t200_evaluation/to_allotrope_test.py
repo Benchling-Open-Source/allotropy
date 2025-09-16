@@ -9,6 +9,9 @@ from allotropy.parsers.cytiva_biacore_t200_evaluation.cytiva_biacore_t200_evalua
     _get_sensorgram_datacube as _original_get_sensorgram_datacube,
     create_measurement_groups as _original_create_measurement_groups,
 )
+from allotropy.parsers.cytiva_biacore_t200_evaluation.cytiva_biacore_t200_evaluation_decoder import (
+    decode_data as _original_decode_data,
+)
 from tests.to_allotrope_test import ParserTest
 
 
@@ -30,6 +33,47 @@ def _reduce_sensorgram_for_testing(
     return _original_get_sensorgram_datacube(
         sensorgram_df, cycle=cycle, flow_cell=flow_cell
     )
+
+
+def _mask_sensitive_data_in_decoder(named_file_contents: Any) -> Any:
+    """
+    Patched version of decode_data that masks sensitive fields at the raw data level for testing.
+    """
+    # Call the original decode function first
+    decoded_data = _original_decode_data(named_file_contents)
+
+    # Mask sensitive fields in the raw decoded data
+    if "chip" in decoded_data:
+        chip = decoded_data["chip"]
+
+        # Mask chip identifier and lot number (try multiple possible field names)
+        for chip_id_field in ["Id", "ChipId", "SensorChipId"]:
+            if chip_id_field in chip:
+                chip[chip_id_field] = "MASKED_CHIP_ID"
+
+        for lot_field in ["LotNo", "LotNumber", "Lot"]:
+            if lot_field in chip:
+                chip[lot_field] = "MASKED_LOT_NUMBER"
+
+        # Mask ligand identifiers and immobilization file paths
+        for key in list(chip.keys()):
+            if key.startswith("Ligand") and ",1" in key:
+                chip[key] = "MASKED_LIGAND_ID"
+            elif key.startswith("ImmobFile") and ",1" in key:
+                chip[key] = "MASKED_EXPERIMENTAL_DATA_ID"
+
+    # Mask system information (try multiple possible field names)
+    if "system_information" in decoded_data:
+        sys_info = decoded_data["system_information"]
+        for sys_id_field in [
+            "SystemControllerId",
+            "SystemControllerIdentifier",
+            "SystemId",
+        ]:
+            if sys_id_field in sys_info:
+                sys_info[sys_id_field] = "MASKED_SYSTEM_ID"
+
+    return decoded_data
 
 
 def _reduce_cycles_for_testing(data: Any) -> Any:
@@ -66,6 +110,10 @@ class TestParser(ParserTest):
     VENDOR = Vendor.CYTIVA_BIACORE_T200_EVALUATION
 
     @patch(
+        "allotropy.parsers.cytiva_biacore_t200_evaluation.cytiva_biacore_t200_evaluation_data_creator.decode_data",
+        side_effect=_mask_sensitive_data_in_decoder,
+    )
+    @patch(
         "allotropy.parsers.cytiva_biacore_t200_evaluation.cytiva_biacore_t200_evaluation_data_creator.create_measurement_groups",
         side_effect=_reduce_cycles_for_testing,
     )
@@ -77,12 +125,13 @@ class TestParser(ParserTest):
         self,
         _mock_sensorgram: Any,
         _mock_cycles: Any,
+        _mock_decoder: Any,
         test_file_path: Path,
         *,
         overwrite: bool,
         warn_unread_keys: bool,
     ) -> None:
-        """Override the test method with cycle and sensorgram data reduction patches."""
+        """Override the test method with data masking, cycle reduction, and sensorgram data reduction patches."""
         return super().test_positive_cases(
             test_file_path, overwrite=overwrite, warn_unread_keys=warn_unread_keys
         )
