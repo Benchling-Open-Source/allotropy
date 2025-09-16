@@ -438,7 +438,9 @@ class BasicAssayInfo:
         )
         data = df_to_series_data(data_frame)
         return BasicAssayInfo(
-            data.get(str, "Protocol ID"), data.get(str, "Assay ID"), data.get_unread()
+            data.get(str, "Protocol ID"),
+            data.get(str, "Assay ID"),
+            data.get_unread(skip={"Serial#"}),
         )
 
 
@@ -773,14 +775,23 @@ def create_metadata(
 def _create_measurement(
     plate_info: ResultPlateInfo,
     result: Result,
-    plate_maps: dict[str, PlateMap],
-    labels: Labels,
+    data: Data,
     read_type: ReadType,
 ) -> Measurement:
     plate_barcode = plate_info.barcode
     well_location = f"{result.col}{result.row}"
-    ex_filter = labels.excitation_filter
-    em_filter = labels.get_emission_filter(plate_info.emission_filter_id)
+    ex_filter = data.labels.excitation_filter
+    em_filter = data.labels.get_emission_filter(plate_info.emission_filter_id)
+    sample_custom_info = {
+        **plate_info.sample_custom_info,
+        "Name of the plate type": data.plate_type_info.custom_info.pop(
+            "Name of the plate type", None
+        ),
+    }
+    device_control_custom_info = {
+        **plate_info.device_control_custom_info,
+        **data.plate_type_info.custom_info,
+    }
     return Measurement(
         type_=read_type.measurement_type,
         device_type=read_type.device_type,
@@ -790,7 +801,7 @@ def _create_measurement(
         location_identifier=well_location,
         sample_role_type=(
             p_map.get_sample_role_type(result.col, result.row)
-            if (p_map := plate_maps.get(plate_info.number))
+            if (p_map := data.plate_maps.get(plate_info.number))
             else None
         ),
         compartment_temperature=plate_info.chamber_temperature_at_start,
@@ -798,15 +809,15 @@ def _create_measurement(
         fluorescence=result.value if read_type is ReadType.FLUORESCENCE else None,
         luminescence=result.value if read_type is ReadType.LUMINESCENCE else None,
         detector_distance_setting=plate_info.measured_height,
-        number_of_averages=labels.number_of_flashes,
-        detector_gain_setting=labels.detector_gain_setting,
-        scan_position_setting=labels.scan_position_setting,
+        number_of_averages=data.labels.number_of_flashes,
+        detector_gain_setting=data.labels.detector_gain_setting,
+        scan_position_setting=data.labels.scan_position_setting,
         detector_wavelength_setting=em_filter.wavelength if em_filter else None,
         detector_bandwidth_setting=em_filter.bandwidth if em_filter else None,
         excitation_wavelength_setting=ex_filter.wavelength if ex_filter else None,
         excitation_bandwidth_setting=ex_filter.bandwidth if ex_filter else None,
-        device_control_custom_info=plate_info.device_control_custom_info,
-        sample_custom_info=plate_info.sample_custom_info,
+        device_control_custom_info=device_control_custom_info,
+        sample_custom_info=sample_custom_info,
         measurement_custom_info=plate_info.custom_info,
     )
 
@@ -819,8 +830,7 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
             measurement = _create_measurement(
                 plate.plate_info,
                 result,
-                data.plate_maps,
-                data.labels,
+                data,
                 read_type,
             )
             well_loc_measurements[
@@ -835,10 +845,7 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
             analytical_method_identifier=data.basic_assay_info.protocol_id,
             experimental_data_identifier=data.basic_assay_info.assay_id,
             measurements=well_loc_measurements[well_location],
-            custom_info={
-                **data.basic_assay_info.custom_info,
-                **data.plate_type_info.custom_info,
-            },
+            custom_info=data.basic_assay_info.custom_info,
         )
         for well_location in sorted(
             well_loc_measurements.keys(),

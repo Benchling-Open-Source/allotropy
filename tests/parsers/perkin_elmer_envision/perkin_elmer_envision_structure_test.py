@@ -369,7 +369,6 @@ def test_create_basic_assay_info() -> None:
             "Assay Exported: ,,,,10/13/2022 3:08:15 PM",
             "Protocol ID: ,,,,100302",
             "Protocol Name: ,,,,HTRF LASER Eu 665/620",
-            "Serial#: ,,,,='1050209'",
         ]
     )
 
@@ -377,7 +376,6 @@ def test_create_basic_assay_info() -> None:
         protocol_id="100302",
         assay_id="3134",
         custom_info={
-            "Serial#": "='1050209'",
             "Assay Finished": "10/13/2022 3:08:15 PM",
             "Protocol Name": "HTRF LASER Eu 665/620",
             "Assay Started": "10/13/2022 3:06:23 PM",
