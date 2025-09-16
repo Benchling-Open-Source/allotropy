@@ -51,6 +51,20 @@ def test_create_plate_info() -> None:
         measured_height=11.9,
         chamber_temperature_at_start=23.17,
         label="AC HTRF Laser [Eu](1)",
+        custom_info={},
+        sample_custom_info={"group identifier": None, "Repeat": 1.0},
+        device_control_custom_info={
+            "Ambient temperature at start": None,
+            "Ambient temperature at end": None,
+            "Chamber temperature at end": None,
+            "Humidity at start": None,
+            "Humidity at end": None,
+            "Kinetics": 0.0,
+            "ScanX": None,
+            "ScanY": None,
+            "Inside temperature at start": None,
+            "Inside temperature at end": None,
+        },
     )
 
     series = ResultPlateInfo.get_series(reader)
@@ -157,17 +171,33 @@ def test_create_plates() -> None:
                     measured_height=1.1,
                     chamber_temperature_at_start=14.5,
                     label="AC HTRF Laser [Eu](1)",
+                    custom_info={},
+                    sample_custom_info={"group identifier": None, "Repeat": 1.0},
+                    device_control_custom_info={
+                        "Ambient temperature at start": None,
+                        "Ambient temperature at end": None,
+                        "Chamber temperature at end": None,
+                        "Humidity at start": None,
+                        "Humidity at end": None,
+                        "Kinetics": 0.0,
+                        "ScanX": None,
+                        "ScanY": None,
+                        "Inside temperature at start": None,
+                        "Inside temperature at end": None,
+                    },
                 ),
                 background_infos=[
                     BackgroundInfo(
                         plate_num="2",
                         label="AC HTRF Laser [Eu]",
                         measinfo="De=1st Ex=Top Em=Top Wdw=1 (14)",
+                        custom_info={"Meastime": "00:00:00.000", "Result": 0.0},
                     ),
                     BackgroundInfo(
                         plate_num="2",
                         label="AC HTRF Laser [Eu]",
                         measinfo="De=2nd Ex=Top Em=Top Wdw=1 (142)",
+                        custom_info={"Meastime": "00:00:00.000", "Result": 0.0},
                     ),
                 ],
                 results=[
@@ -229,17 +259,21 @@ def test_create_plates_with_calculated_data() -> None:
                     chamber_temperature_at_start=14.5,
                     formula="Calc 1: General = X / 2 where X = test",
                     name="Calc 1: General",
+                    custom_info={"Kinetics": 0.0, "Repeat": 1.0},
                 ),
+                custom_info={},
                 background_infos=[
                     BackgroundInfo(
                         plate_num="2",
                         label="AC HTRF Laser [Eu]",
                         measinfo="De=1st Ex=Top Em=Top Wdw=1 (14)",
+                        custom_info={"Meastime": "00:00:00.000", "Result": 0.0},
                     ),
                     BackgroundInfo(
                         plate_num="2",
                         label="AC HTRF Laser [Eu]",
                         measinfo="De=2nd Ex=Top Em=Top Wdw=1 (142)",
+                        custom_info={"Meastime": "00:00:00.000", "Result": 0.0},
                     ),
                 ],
                 results=[
@@ -288,6 +322,7 @@ def test_create_calculated_plate_info() -> None:
         formula="Calc 1: General = (X / Y) where X = AC HTRF Laser [Eu](1) Y = AC HTRF Laser [Eu](1)",
         name="Calc 1: General",
         chamber_temperature_at_start=None,
+        custom_info={},
     )
 
     assert calculated_plate_info == expected
@@ -334,13 +369,18 @@ def test_create_basic_assay_info() -> None:
             "Assay Exported: ,,,,10/13/2022 3:08:15 PM",
             "Protocol ID: ,,,,100302",
             "Protocol Name: ,,,,HTRF LASER Eu 665/620",
-            "Serial#: ,,,,='1050209'",
         ]
     )
 
     expected = BasicAssayInfo(
         protocol_id="100302",
         assay_id="3134",
+        custom_info={
+            "Assay Finished": "10/13/2022 3:08:15 PM",
+            "Protocol Name": "HTRF LASER Eu 665/620",
+            "Assay Started": "10/13/2022 3:06:23 PM",
+            "Assay Exported": "10/13/2022 3:08:15 PM",
+        },
     )
 
     assert BasicAssayInfo.create(reader) == expected
@@ -369,7 +409,9 @@ def test_create_plate_type() -> None:
         ]
     )
 
-    expected = PlateType(number_of_wells=2)
+    expected = PlateType(
+        number_of_wells=2, custom_info={"Name of the plate type": "plate"}
+    )
 
     assert PlateType.create(reader) == expected
 
