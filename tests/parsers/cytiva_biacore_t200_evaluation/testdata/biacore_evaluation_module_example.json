@@ -49,7 +49,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_1_1_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_0",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_0",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -146,7 +146,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_2_1_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_1",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_1",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -244,7 +244,7 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "flow cell identifier": "2",
+                                        "flow cell identifier": "2-1",
                                         "flow rate": {
                                             "value": 30.0,
                                             "unit": "µL/min"
@@ -273,17 +273,12 @@
                                                 "unit": "degC"
                                             },
                                             "prime": "true",
-                                            "normalize": "false",
-                                            "ligand identifier": "ProZP0067",
-                                            "level": {
-                                                "value": 1031.22786458334,
-                                                "unit": "RU"
-                                            }
+                                            "normalize": "false"
                                         }
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_2_1_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_2",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_2",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -292,48 +287,8 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "binding on rate measurement datum  kon ": {
-                                            "value": 527525.740161386,
-                                            "unit": "M-1s-1"
-                                        },
-                                        "binding off rate measurement datum  koff ": {
-                                            "value": 0.00286250902270012,
-                                            "unit": "s^-1"
-                                        },
-                                        "equilibrium dissociation constant  KD ": {
-                                            "value": 5.426292604839325e-09,
-                                            "unit": "M"
-                                        },
-                                        "maximum binding capacity  Rmax ": {
-                                            "value": 35.2486094118092,
-                                            "unit": "RU"
-                                        },
-                                        "custom information document": {
-                                            "kinetics chi squared": {
-                                                "value": 2.37341612327362,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ka error": {
-                                                "value": 1585.25001324792,
-                                                "unit": "M-1s-1"
-                                            },
-                                            "kd error": {
-                                                "value": 6.06247809296552e-06,
-                                                "unit": "s^-1"
-                                            },
-                                            "Rmax error": {
-                                                "value": 0.0470769768777977,
-                                                "unit": "RU"
-                                            }
-                                        }
-                                    }
-                                ]
-                            },
                             "sensorgram data cube": {
-                                "label": "Cycle1_FlowCell2",
+                                "label": "Cycle1_FlowCell2-1",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -427,7 +382,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_3_1_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_3",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_3",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -485,7 +440,7 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "flow cell identifier": "3",
+                                        "flow cell identifier": "3-1",
                                         "flow rate": {
                                             "value": 30.0,
                                             "unit": "µL/min"
@@ -514,17 +469,12 @@
                                                 "unit": "degC"
                                             },
                                             "prime": "true",
-                                            "normalize": "false",
-                                            "ligand identifier": "ProZP0064",
-                                            "level": {
-                                                "value": 921.200520833336,
-                                                "unit": "RU"
-                                            }
+                                            "normalize": "false"
                                         }
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_3_1_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_4",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_4",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -534,7 +484,7 @@
                             },
                             "detection type": "surface plasmon resonance",
                             "sensorgram data cube": {
-                                "label": "Cycle1_FlowCell3",
+                                "label": "Cycle1_FlowCell3-1",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -623,7 +573,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_4_1_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_5",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_5",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -681,7 +631,7 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "flow cell identifier": "4",
+                                        "flow cell identifier": "4-1",
                                         "flow rate": {
                                             "value": 30.0,
                                             "unit": "µL/min"
@@ -715,7 +665,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_4_1_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_6",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_6",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -725,7 +675,7 @@
                             },
                             "detection type": "surface plasmon resonance",
                             "sensorgram data cube": {
-                                "label": "Cycle1_FlowCell4",
+                                "label": "Cycle1_FlowCell4-1",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -838,7 +788,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_1_2_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_7",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_7",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -935,7 +885,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_2_2_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_8",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_8",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -1033,7 +983,7 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "flow cell identifier": "2",
+                                        "flow cell identifier": "2-1",
                                         "flow rate": {
                                             "value": 30.0,
                                             "unit": "µL/min"
@@ -1062,17 +1012,12 @@
                                                 "unit": "degC"
                                             },
                                             "prime": "true",
-                                            "normalize": "false",
-                                            "ligand identifier": "ProZP0067",
-                                            "level": {
-                                                "value": 1031.22786458334,
-                                                "unit": "RU"
-                                            }
+                                            "normalize": "false"
                                         }
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_2_2_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_9",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_9",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -1081,48 +1026,8 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "binding on rate measurement datum  kon ": {
-                                            "value": 527525.740161386,
-                                            "unit": "M-1s-1"
-                                        },
-                                        "binding off rate measurement datum  koff ": {
-                                            "value": 0.00286250902270012,
-                                            "unit": "s^-1"
-                                        },
-                                        "equilibrium dissociation constant  KD ": {
-                                            "value": 5.426292604839325e-09,
-                                            "unit": "M"
-                                        },
-                                        "maximum binding capacity  Rmax ": {
-                                            "value": 35.2486094118092,
-                                            "unit": "RU"
-                                        },
-                                        "custom information document": {
-                                            "kinetics chi squared": {
-                                                "value": 2.37341612327362,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ka error": {
-                                                "value": 1585.25001324792,
-                                                "unit": "M-1s-1"
-                                            },
-                                            "kd error": {
-                                                "value": 6.06247809296552e-06,
-                                                "unit": "s^-1"
-                                            },
-                                            "Rmax error": {
-                                                "value": 0.0470769768777977,
-                                                "unit": "RU"
-                                            }
-                                        }
-                                    }
-                                ]
-                            },
                             "sensorgram data cube": {
-                                "label": "Cycle2_FlowCell2",
+                                "label": "Cycle2_FlowCell2-1",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -1216,7 +1121,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_3_2_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_10",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_10",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -1274,7 +1179,7 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "flow cell identifier": "3",
+                                        "flow cell identifier": "3-1",
                                         "flow rate": {
                                             "value": 30.0,
                                             "unit": "µL/min"
@@ -1303,17 +1208,12 @@
                                                 "unit": "degC"
                                             },
                                             "prime": "true",
-                                            "normalize": "false",
-                                            "ligand identifier": "ProZP0064",
-                                            "level": {
-                                                "value": 921.200520833336,
-                                                "unit": "RU"
-                                            }
+                                            "normalize": "false"
                                         }
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_3_2_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_11",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_11",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -1323,7 +1223,7 @@
                             },
                             "detection type": "surface plasmon resonance",
                             "sensorgram data cube": {
-                                "label": "Cycle2_FlowCell3",
+                                "label": "Cycle2_FlowCell3-1",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -1412,7 +1312,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_4_2_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_12",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_12",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -1470,7 +1370,7 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "flow cell identifier": "4",
+                                        "flow cell identifier": "4-1",
                                         "flow rate": {
                                             "value": 30.0,
                                             "unit": "µL/min"
@@ -1504,7 +1404,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_4_2_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_13",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_13",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -1514,7 +1414,7 @@
                             },
                             "detection type": "surface plasmon resonance",
                             "sensorgram data cube": {
-                                "label": "Cycle2_FlowCell4",
+                                "label": "Cycle2_FlowCell4-1",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -1627,7 +1527,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_1_3_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_14",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_14",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -1724,7 +1624,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_2_3_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_15",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_15",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -1822,7 +1722,7 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "flow cell identifier": "2",
+                                        "flow cell identifier": "2-1",
                                         "flow rate": {
                                             "value": 30.0,
                                             "unit": "µL/min"
@@ -1851,17 +1751,12 @@
                                                 "unit": "degC"
                                             },
                                             "prime": "true",
-                                            "normalize": "false",
-                                            "ligand identifier": "ProZP0067",
-                                            "level": {
-                                                "value": 1031.22786458334,
-                                                "unit": "RU"
-                                            }
+                                            "normalize": "false"
                                         }
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_2_3_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_16",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_16",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -1870,48 +1765,8 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "binding on rate measurement datum  kon ": {
-                                            "value": 527525.740161386,
-                                            "unit": "M-1s-1"
-                                        },
-                                        "binding off rate measurement datum  koff ": {
-                                            "value": 0.00286250902270012,
-                                            "unit": "s^-1"
-                                        },
-                                        "equilibrium dissociation constant  KD ": {
-                                            "value": 5.426292604839325e-09,
-                                            "unit": "M"
-                                        },
-                                        "maximum binding capacity  Rmax ": {
-                                            "value": 35.2486094118092,
-                                            "unit": "RU"
-                                        },
-                                        "custom information document": {
-                                            "kinetics chi squared": {
-                                                "value": 2.37341612327362,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ka error": {
-                                                "value": 1585.25001324792,
-                                                "unit": "M-1s-1"
-                                            },
-                                            "kd error": {
-                                                "value": 6.06247809296552e-06,
-                                                "unit": "s^-1"
-                                            },
-                                            "Rmax error": {
-                                                "value": 0.0470769768777977,
-                                                "unit": "RU"
-                                            }
-                                        }
-                                    }
-                                ]
-                            },
                             "sensorgram data cube": {
-                                "label": "Cycle3_FlowCell2",
+                                "label": "Cycle3_FlowCell2-1",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -2005,7 +1860,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_3_3_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_17",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_17",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -2063,7 +1918,7 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "flow cell identifier": "3",
+                                        "flow cell identifier": "3-1",
                                         "flow rate": {
                                             "value": 30.0,
                                             "unit": "µL/min"
@@ -2092,17 +1947,12 @@
                                                 "unit": "degC"
                                             },
                                             "prime": "true",
-                                            "normalize": "false",
-                                            "ligand identifier": "ProZP0064",
-                                            "level": {
-                                                "value": 921.200520833336,
-                                                "unit": "RU"
-                                            }
+                                            "normalize": "false"
                                         }
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_3_3_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_18",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_18",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -2112,7 +1962,7 @@
                             },
                             "detection type": "surface plasmon resonance",
                             "sensorgram data cube": {
-                                "label": "Cycle3_FlowCell3",
+                                "label": "Cycle3_FlowCell3-1",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -2201,7 +2051,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_4_3_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_19",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_19",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -2259,7 +2109,7 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "flow cell identifier": "4",
+                                        "flow cell identifier": "4-1",
                                         "flow rate": {
                                             "value": 30.0,
                                             "unit": "µL/min"
@@ -2293,7 +2143,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_4_3_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_20",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_20",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -2303,7 +2153,7 @@
                             },
                             "detection type": "surface plasmon resonance",
                             "sensorgram data cube": {
-                                "label": "Cycle3_FlowCell4",
+                                "label": "Cycle3_FlowCell4-1",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -2416,7 +2266,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_1_4_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_21",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_21",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -2513,7 +2363,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_2_4_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_22",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_22",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -2611,7 +2461,7 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "flow cell identifier": "2",
+                                        "flow cell identifier": "2-1",
                                         "flow rate": {
                                             "value": 30.0,
                                             "unit": "µL/min"
@@ -2640,17 +2490,12 @@
                                                 "unit": "degC"
                                             },
                                             "prime": "true",
-                                            "normalize": "false",
-                                            "ligand identifier": "ProZP0067",
-                                            "level": {
-                                                "value": 1031.22786458334,
-                                                "unit": "RU"
-                                            }
+                                            "normalize": "false"
                                         }
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_2_4_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_23",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_23",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -2659,48 +2504,8 @@
                                 }
                             },
                             "detection type": "surface plasmon resonance",
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "binding on rate measurement datum  kon ": {
-                                            "value": 527525.740161386,
-                                            "unit": "M-1s-1"
-                                        },
-                                        "binding off rate measurement datum  koff ": {
-                                            "value": 0.00286250902270012,
-                                            "unit": "s^-1"
-                                        },
-                                        "equilibrium dissociation constant  KD ": {
-                                            "value": 5.426292604839325e-09,
-                                            "unit": "M"
-                                        },
-                                        "maximum binding capacity  Rmax ": {
-                                            "value": 35.2486094118092,
-                                            "unit": "RU"
-                                        },
-                                        "custom information document": {
-                                            "kinetics chi squared": {
-                                                "value": 2.37341612327362,
-                                                "unit": "(unitless)"
-                                            },
-                                            "ka error": {
-                                                "value": 1585.25001324792,
-                                                "unit": "M-1s-1"
-                                            },
-                                            "kd error": {
-                                                "value": 6.06247809296552e-06,
-                                                "unit": "s^-1"
-                                            },
-                                            "Rmax error": {
-                                                "value": 0.0470769768777977,
-                                                "unit": "RU"
-                                            }
-                                        }
-                                    }
-                                ]
-                            },
                             "sensorgram data cube": {
-                                "label": "Cycle4_FlowCell2",
+                                "label": "Cycle4_FlowCell2-1",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -2794,7 +2599,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_3_4_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_24",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_24",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -2852,7 +2657,7 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "flow cell identifier": "3",
+                                        "flow cell identifier": "3-1",
                                         "flow rate": {
                                             "value": 30.0,
                                             "unit": "µL/min"
@@ -2881,17 +2686,12 @@
                                                 "unit": "degC"
                                             },
                                             "prime": "true",
-                                            "normalize": "false",
-                                            "ligand identifier": "ProZP0064",
-                                            "level": {
-                                                "value": 921.200520833336,
-                                                "unit": "RU"
-                                            }
+                                            "normalize": "false"
                                         }
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_3_4_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_25",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_25",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -2901,7 +2701,7 @@
                             },
                             "detection type": "surface plasmon resonance",
                             "sensorgram data cube": {
-                                "label": "Cycle4_FlowCell3",
+                                "label": "Cycle4_FlowCell3-1",
                                 "cube-structure": {
                                     "dimensions": [
                                         {
@@ -2990,7 +2790,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_4_4_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_26",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_26",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -3048,7 +2848,7 @@
                                 "device control document": [
                                     {
                                         "device type": "binding affinity analyzer",
-                                        "flow cell identifier": "4",
+                                        "flow cell identifier": "4-1",
                                         "flow rate": {
                                             "value": 30.0,
                                             "unit": "µL/min"
@@ -3082,7 +2882,7 @@
                                     }
                                 ]
                             },
-                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_MEASUREMENT_4_4_CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_27",
+                            "measurement identifier": "CYTIVA_BIACORE_T200_EVALUATION_TEST_ID_27",
                             "sample document": {
                                 "sample identifier": "N/A",
                                 "well plate identifier": "MICRO96DW",
@@ -3092,7 +2892,7 @@
                             },
                             "detection type": "surface plasmon resonance",
                             "sensorgram data cube": {
-                                "label": "Cycle4_FlowCell4",
+                                "label": "Cycle4_FlowCell4-1",
                                 "cube-structure": {
                                     "dimensions": [
                                         {

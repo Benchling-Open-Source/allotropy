@@ -9,6 +9,7 @@ import olefile as ole
 import pandas as pd
 import xmltodict
 
+from allotropy.exceptions import AllotropeParsingError
 from allotropy.named_file_contents import NamedFileContents
 
 # Support names like "Cycle 1" or "..._Cycle 1" anywhere in the path
@@ -35,7 +36,7 @@ def _extract_kv_stream(data: str) -> dict[str, Any]:
         if any(tk in key.lower() for tk in ("time", "date")):
             try:
                 value = _convert_datetime(value)
-            except Exception:  # noqa: S110
+            except (ValueError, TypeError):
                 pass  # Acceptable for datetime parsing fallback
         out[key] = value
     return out
@@ -180,9 +181,7 @@ def _parse_parameter_string(param_string: str, parameters_dict: dict[str, Any]) 
                 # Split by colon to separate id from parameter data
                 parts = entry.split(":", 1)
                 if len(parts) == 2:
-                    param_data = parts[
-                        1
-                    ]  # e.g., "1-3:ka|81804.6350376288|704.825316572447"
+                    param_data = parts[1]
 
                     # Check if param_data contains another colon (for format like "1-3:ka|value|error")
                     if ":" in param_data:
@@ -209,7 +208,7 @@ def _parse_parameter_string(param_string: str, parameters_dict: dict[str, Any]) 
                                         else None,
                                         "units": _get_parameter_units(param_name),
                                     }
-    except Exception:  # noqa: S110
+    except AllotropeParsingError:
         # Silently ignore parsing errors - acceptable for parameter parsing
         pass
 
@@ -404,7 +403,7 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                 raw = content.openstream(stream).read()
                 try:
                     text = raw.decode("utf-8")
-                except Exception:
+                except UnicodeDecodeError:
                     text = raw.decode("utf-8", errors="ignore")
                 intermediate["chip"] = _extract_kv_stream(text)
                 chip_done = True
@@ -414,7 +413,7 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                 raw = content.openstream(stream).read()
                 try:
                     xml_text = raw.decode("utf-8")
-                except Exception:
+                except UnicodeDecodeError:
                     xml_text = raw.decode("utf-8", errors="ignore")
                 app_dict = xmltodict.parse(xml_text)
                 application_template, sample_data = _decode_application_template(
@@ -576,7 +575,7 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
             )
             try:
                 dcr = float(dcr_val) if dcr_val is not None else None
-            except Exception:
+            except (ValueError, TypeError):
                 dcr = None
 
             grouped = combined_df.groupby("Cycle Number")
