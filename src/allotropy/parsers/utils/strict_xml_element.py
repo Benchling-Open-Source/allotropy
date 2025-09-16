@@ -137,6 +137,14 @@ class StrictXmlElement:
 
         return keys
 
+    def _key_matches(self, match_key: str, key: str) -> bool:
+        if key == match_key:
+            return True
+        # "++" can cause re.compile to fail. Since it is never a valid regex expression
+        # it is safe to escape it to prevent the error.
+        match_key = match_key.replace("++", r"\+\+")
+        return bool(re.fullmatch(match_key, key))
+
     def _get_matching_keys(self, key_or_keys: str | set[str]) -> set[str]:
         """Get keys that match the given pattern(s)."""
         all_keys = self._get_all_available_keys()
@@ -155,9 +163,7 @@ class StrictXmlElement:
                 matches_found = False
 
                 # Check for exact match
-                if any(
-                    k for k in all_keys if k == attr_key or re.fullmatch(attr_key, k)
-                ):
+                if any(k for k in all_keys if self._key_matches(attr_key, k)):
                     normalized_keys.add(attr_key)
                     matches_found = True
 
@@ -184,9 +190,7 @@ class StrictXmlElement:
         return {
             matched
             for regex_key in normalized_keys
-            for matched in [
-                k for k in all_keys if k == regex_key or re.fullmatch(regex_key, k)
-            ]
+            for matched in [k for k in all_keys if self._key_matches(str(regex_key), k)]
         }
 
     def mark_read(self, key_or_keys: str | set[str]) -> None:
@@ -266,7 +270,7 @@ class StrictXmlElement:
     ) -> set[str]:
         """Apply regex filter to attribute keys if provided."""
         if regex:
-            return {k for k in attribute_keys if re.fullmatch(regex, k)}
+            return {k for k in attribute_keys if self._key_matches(regex, k)}
         return attribute_keys
 
     def _process_attr_key(

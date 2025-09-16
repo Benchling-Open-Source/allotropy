@@ -335,6 +335,11 @@ class SquareCentimetersPerMole(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class SquareResonanceUnits(HasUnit):
+    unit: str = "RU^2"
+
+
+@dataclass(frozen=True, kw_only=True)
 class TODO(HasUnit):
     unit: str = "TODO"
 
