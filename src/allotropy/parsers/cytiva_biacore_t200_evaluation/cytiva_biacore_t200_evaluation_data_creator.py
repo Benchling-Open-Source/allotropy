@@ -366,7 +366,7 @@ def _create_measurements_for_cycle(_: Data, cycle: CycleData) -> list[Measuremen
             Measurement(
                 identifier=random_uuid_str(),
                 type_=MeasurementType.SURFACE_PLASMON_RESONANCE,
-                sample_identifier="N/A",
+                sample_identifier=NOT_APPLICABLE,
                 device_control_document=[
                     DeviceControlDocument(
                         device_type=constants.DEVICE_TYPE,
@@ -475,13 +475,12 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
         }
         # Add aggregate-level experimental data identifier for convenience (first measurement's FC)
         if measurements:
-            # derive from first measurement's flow cell
+            # Derive from first measurement's flow cell
             first_fc = measurements[0].device_control_document[0].flow_cell_identifier
-            try:
-                fc_index = int(str(first_fc))
-            except Exception:
-                fc_index = None
-            if fc_index is not None:
+            first_fc_str = str(first_fc)
+            # Check if the flow cell identifier is a valid integer (skip reference-subtracted IDs like "2-1")
+            if first_fc_str.isdigit():
+                fc_index = int(first_fc_str)
                 for imm in data.chip_data.immobilizations:
                     if imm.flow_cell_index == fc_index and imm.immob_file_path:
                         custom_info = {

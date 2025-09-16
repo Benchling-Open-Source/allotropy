@@ -290,7 +290,7 @@ def _extract_kinetic_analysis(
 
                             # Handle parameters - could be dict or string format
                             if isinstance(parameters, dict):
-                                # Extract kinetic parameters (ka, kd, Rmax)
+                                # Extract kinetic parameters
                                 for param_name, param_data in parameters.items():
                                     if param_name.lower() in [
                                         "ka",
@@ -384,11 +384,6 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
         sample_data: Any = None
 
         flow_cell = None
-        cycle_number = 0
-        # Fast-path flags: once we read essential metadata, break to avoid heavy IO
-        env_done = False
-        chip_done = False
-        app_done = False
 
         for stream in streams:
             path_str = "/".join(stream)
@@ -397,7 +392,6 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                 intermediate["system_information"] = _extract_kv_stream(
                     data.decode("utf-8")
                 )
-                env_done = True
                 continue
             if stream and stream[-1] == "Chip":
                 raw = content.openstream(stream).read()
@@ -406,7 +400,6 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                 except UnicodeDecodeError:
                     text = raw.decode("utf-8", errors="ignore")
                 intermediate["chip"] = _extract_kv_stream(text)
-                chip_done = True
                 continue
             # Application template can appear under various parents; match by tail
             if stream and stream[-1] == "ApplicationTemplate":
@@ -431,7 +424,6 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                     intermediate["system_information"] = si
                 if sample_data:
                     intermediate["sample_data"] = sample_data
-                app_done = True
                 continue
             if stream == ["RPoint Table"]:
                 data = content.openstream(stream).read()
@@ -450,10 +442,10 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                 if "dip" in stream_name or "sweep" in stream_name:
                     # Try to parse dip/sweep data
                     try:
-                        raw = content.openstream(stream).read()
+                        content.openstream(stream).read()
                         # This would need specific parsing logic based on the actual file format
                         # For now, we'll skip detailed parsing
-                    except Exception:  # noqa: S110
+                    except (OSError, ValueError):
                         pass  # Acceptable for stream parsing fallback
                 elif (
                     "kinetic" in stream_name
@@ -471,32 +463,20 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                                 _extract_kinetic_analysis(
                                     parsed_xml, kinetic_analysis, path_str
                                 )
-                            except Exception:  # noqa: S110
+                            except (ValueError, TypeError):
                                 pass  # Acceptable for XML parsing fallback
-                    except Exception:  # noqa: S110
+                    except (OSError, UnicodeDecodeError):
                         pass  # Acceptable for stream reading fallback
                 elif "sample" in stream_name:
                     # Try to parse sample data
                     try:
                         raw = content.openstream(stream).read()
                         sample_data = raw.decode("utf-8", errors="ignore")
-                    except Exception:  # noqa: S110
+                    except (OSError, UnicodeDecodeError):
                         pass  # Acceptable for sample data parsing fallback
 
-            # Check for cycle data first before applying optimization
+            # Check for cycle data
             cycle_match = cycle_pattern.search(path_str)
-
-            # If we already captured key metadata, skip heavy streams but still scan for additional metadata bags and cycle data
-            if env_done and chip_done and app_done and not cycle_match:
-                tail = stream[-1] if stream else ""
-                if tail not in (
-                    "ApplicationTemplate",
-                    "Environment",
-                    "Chip",
-                    "RPoint Table",
-                ):
-                    continue
-
             if not cycle_match:
                 continue
             cycle_number = int(cycle_match.group(1))
