@@ -249,7 +249,10 @@ def _create_measurements(plate_block: PlateBlock, position: str) -> list[Measure
 
 
 def _create_measurement_group(
-    plate_block: PlateBlock, position: str, date_last_saved: str | None
+    plate_block: PlateBlock,
+    position: str,
+    date_last_saved: str | None,
+    structure_data: StructureData,
 ) -> MeasurementGroup | None:
 
     if not (measurements := _create_measurements(plate_block, position)):
@@ -260,10 +263,41 @@ def _create_measurement_group(
         delta = datetime.timedelta(seconds=plate_block.header.read_time or 0)
         measurement_time = (parser.parse(date_last_saved) + delta).isoformat()
 
+    # Gather unread group fields for this plate/position
+    unread_rows: list[dict[str, float | str | None]] = []
+    single_plate_name: str | None = None
+    if len(structure_data.block_list.plate_blocks) == 1:
+        single_plate_name = next(iter(structure_data.block_list.plate_blocks.keys()))
+
+    for group_block in structure_data.block_list.group_blocks:
+        for group_sample_data in group_block.group_data.sample_data:
+            for (
+                plate_key,
+                positions_map,
+            ) in group_sample_data.unread_by_plate_and_position.items():
+                effective_plate = (
+                    plate_key if plate_key is not None else single_plate_name
+                )
+                # filters out unread entries that do not belong to the current plate
+                if effective_plate != plate_block.header.name:
+                    continue
+                if position in positions_map:
+                    unread_rows.extend(positions_map[position])
+
+    # Flatten unread rows into a single custom_info dict
+    custom_info = None
+    if unread_rows:
+        merged = {}
+        for row_dict in unread_rows:
+            # Only include keys with non-None values
+            merged.update({k: v for k, v in row_dict.items() if v is not None})
+        custom_info = merged
+
     return MeasurementGroup(
         measurements=measurements,
         plate_well_count=plate_block.header.num_wells,
         measurement_time=measurement_time,
+        custom_info=custom_info,
     )
 
 
@@ -274,7 +308,7 @@ def create_measurement_groups(data: StructureData) -> list[MeasurementGroup]:
         for position in plate_block.iter_wells()
         if (
             measurement_group := _create_measurement_group(
-                plate_block, position, data.date_last_saved
+                plate_block, position, data.date_last_saved, data
             )
         )
     ]
