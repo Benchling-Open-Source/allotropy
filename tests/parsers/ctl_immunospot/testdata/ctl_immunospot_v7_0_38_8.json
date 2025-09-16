@@ -14128,7 +14128,26 @@
             "software name": "ImmunoSpot",
             "software version": "7.0.38.8",
             "ASM converter name": "allotropy_ctl_immunospot",
-            "ASM converter version": "0.1.76"
+            "ASM converter version": "0.1.105"
+        },
+        "custom information document": {
+            "Edge Effect Compensation": "Off",
+            "Counting": "8 bit",
+            "     (Auto Areas": "Estimated, Manual Areas: Normalized)\"",
+            "Diffuseness": "Large",
+            "Scanning": "8 bit",
+            "Background Balance": 40.0,
+            "Sensitivity": 190.0,
+            "Normalize Counts of Mask": "On",
+            "Authenticated user": "'USER'",
+            "Spot Separation": 3.0,
+            "Max. SpotSize": "0.0542  Sq.mm",
+            "Counted": "Thu Feb 15 16:39:42 2024",
+            "Counting Mask Size(%)": 85.0,
+            "Min. SpotSize": "0.0005  Sq.mm",
+            "Counting window size": "600x600",
+            "Objects": "Normal",
+            "Assay": "1\t\t\t\t\t\tEdge Compensation Level: 1.0"
         }
     }
 }

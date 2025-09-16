@@ -128,4 +128,5 @@ def create_metadata(header: SeriesData) -> Metadata:
             re.match(r"^ImmunoSpot ([\d\.]+)$", header[str, "Software version"]),
             msg="Unable to parse software version",
         ).group(1),
+        custom_info=header.get_unread(),
     )
