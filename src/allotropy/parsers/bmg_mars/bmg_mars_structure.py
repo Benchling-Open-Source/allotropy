@@ -6,7 +6,7 @@ from enum import Enum
 from pathlib import Path
 import re
 from re import Match
-from typing import ClassVar, TypeAlias
+from typing import Any, ClassVar, TypeAlias
 
 import pandas as pd
 
@@ -67,6 +67,7 @@ class Header:
     id3: str | None
     path: str | None
     test_id: str | None
+    custom_info: dict[str, Any] | None
 
     FILTER_FORMATS: ClassVar[dict[str, tuple[str, FilterHandler]]] = {
         "Raw Data (Ex/Em)": (
@@ -130,6 +131,7 @@ class Header:
             id1=data[str, "ID1"],
             id2=data.get(str, "ID2"),
             id3=data.get(str, "ID3"),
+            custom_info=data.get_unread(),
         )
 
 
@@ -184,6 +186,7 @@ def create_measurement_groups(
             measurements=[
                 _create_measurement(str(row_name), str(col_name), value, header)
             ],
+            custom_info=header.custom_info,
         )
         for row_name, row in data.iterrows()
         for col_name, value in row.items()
