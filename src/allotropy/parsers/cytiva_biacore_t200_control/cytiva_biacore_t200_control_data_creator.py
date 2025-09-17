@@ -14,7 +14,11 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
-from allotropy.allotrope.models.shared.definitions.units import ResponseUnit, Unitless
+from allotropy.allotrope.models.shared.definitions.units import (
+    ResponseUnit,
+    ResponseUnitPerSecond,
+    Unitless,
+)
 from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling._2024._12.binding_affinity_analyzer import (
     DeviceControlDocument,
     DeviceDocument,
@@ -220,7 +224,7 @@ def create_calculated_data(data: Data) -> list[CalculatedDocument]:
                 value="slope",
                 view_data=report_point_data_view,
                 source_configs=(absolute_resonance_conf,),
-                unit=Unitless.unit,
+                unit=ResponseUnitPerSecond.unit,
             ),
             CalculatedDataConfig(
                 name="SD",

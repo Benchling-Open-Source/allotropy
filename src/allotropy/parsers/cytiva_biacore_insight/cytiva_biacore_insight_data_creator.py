@@ -7,7 +7,10 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueSquareResponseUnit,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.units import Unitless
+from allotropy.allotrope.models.shared.definitions.units import (
+    ResponseUnitPerSecond,
+    Unitless,
+)
 from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling._2024._12.binding_affinity_analyzer import (
     Measurement,
     MeasurementGroup,
@@ -174,7 +177,7 @@ def _get_report_point_calc_data(rp: ReportPointData) -> list[CalculatedDocument]
                 name="Slope",
                 value=rp.slope,
                 data_sources=[data_source],
-                unit=Unitless.unit,
+                unit=ResponseUnitPerSecond.unit,
             )
         )
     if rp.standard_deviation is not None:
