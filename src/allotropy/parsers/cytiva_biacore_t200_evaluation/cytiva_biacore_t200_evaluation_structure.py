@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any
+from typing import Any, cast
 
 import pandas as pd
 
@@ -15,136 +15,78 @@ from allotropy.parsers.utils.values import (
 from allotropy.types import DictType
 
 
-def _extract_value_from_xml_like_dict(xml_dict: DictType) -> str | None:
-    """Extract value from XML-like dictionary structure.
+def _extract_from_xml_data(
+    xml_data: StrictXmlElement | DictType | None, key: str = "value"
+) -> str | None:
+    """Extract a value from either StrictXmlElement or dictionary structure.
+
+    Unified function that handles both XML element and dictionary structures,
+    supporting extraction of any key (value, min, max, etc.).
 
     Handles structures like:
+    Dictionary:
     - {"value": "25"} -> "25"
     - {"value": {"#text": "25"}} -> "25"
     - {"value": {"@IsUndefined": "False", "#text": "25"}} -> "25"
-    """
-    if not xml_dict:
-        return None
+    - {"min": "4", "max": "45"} -> "4" or "45"
 
-    value = xml_dict.get("value")
-    if value is None:
-        return None
-
-    # If value is a simple string/number, return it
-    if isinstance(value, str | int | float):
-        return str(value)
-
-    # If value is a dict with #text, extract the text
-    if isinstance(value, dict) and "#text" in value:
-        return str(value["#text"])
-
-    # If value is a dict but no #text, try to convert to string
-    if isinstance(value, dict):
-        return str(value)
-
-    return str(value)
-
-
-def _extract_value_from_xml_element(
-    xml_element: StrictXmlElement, value_name: str = "value"
-) -> str | None:
-    """Extract value from StrictXmlElement structure.
-
-    Handles XML structures like:
+    StrictXmlElement:
     - <element value="25"/> -> "25"
     - <element><value>25</value></element> -> "25"
     - <element><value IsUndefined="False">25</value></element> -> "25"
+    - <element min="4" max="45"/> -> "4" or "45"
 
     Args:
-        xml_element: The StrictXmlElement to extract value from
-        value_name: The name of the value element/attribute to look for (default: "value")
+        xml_data: Either a StrictXmlElement or dictionary structure
+        key: The name of the key/element/attribute to extract (default: "value")
 
     Returns:
         The extracted value as a string, or None if not found
     """
-    if xml_element is None:
+    if xml_data is None:
         return None
 
-    # Try to get value as an attribute first
-    value = xml_element.get_attr_or_none(value_name)
-    if value is not None:
-        return str(value)
+    # Handle StrictXmlElement
+    if isinstance(xml_data, StrictXmlElement):
+        value = xml_data.get_attr_or_none(key)
+        if value is not None:
+            return str(value)
 
-    # Try to find value as a child element
-    value_element = xml_element.find_or_none(value_name)
-    if value_element is not None:
-        # Check if the value element has text content
-        text_value = value_element.get_text_or_none()
-        if text_value is not None:
-            return str(text_value)
+        child_element = xml_data.find_or_none(key)
+        if child_element is not None:
+            text_value = child_element.get_text_or_none()
+            if text_value is not None:
+                return str(text_value)
 
-        # If no text, check if it has a value attribute
-        attr_value = value_element.get_attr_or_none("value")
-        if attr_value is not None:
-            return str(attr_value)
+            attr_value = child_element.get_attr_or_none("value")
+            if attr_value is not None:
+                return str(attr_value)
 
-    # If no value found in child element, try getting text content directly
-    text_value = xml_element.get_text_or_none()
-    if text_value is not None:
-        return str(text_value)
+        # If key is "value" and no value found, try getting text content directly
+        if key == "value":
+            text_value = xml_data.get_text_or_none()
+            if text_value is not None:
+                return str(text_value)
 
-    return None
-
-
-def _extract_min_max_from_xml_dict(xml_dict: DictType, key: str) -> str | None:
-    """Extract min or max value from XML-like dictionary structure.
-
-    Handles structures like:
-    - {"min": "4", "max": "45", "value": {...}} -> "4" or "45"
-    """
-    if not xml_dict:
         return None
 
-    value = xml_dict.get(key)
-    if value is None:
-        return None
+    if isinstance(xml_data, dict):
+        value = xml_data.get(key)
+        if value is None:
+            return None
 
-    # If value is a simple string/number, return it
-    if isinstance(value, str | int | float):
-        return str(value)
-
-    # If value is a dict with #text, extract the text
-    if isinstance(value, dict) and "#text" in value:
-        return str(value["#text"])
-
-    return str(value)
-
-
-def _extract_min_max_from_xml_element(
-    xml_element: StrictXmlElement, key: str
-) -> str | None:
-    """Extract min or max value from StrictXmlElement structure.
-
-    Handles XML structures like:
-    - <element min="4" max="45" value="25"/> -> "4" or "45"
-    - <element><min>4</min><max>45</max><value>25</value></element> -> "4" or "45"
-
-    Args:
-        xml_element: The StrictXmlElement to extract value from
-        key: Either "min" or "max"
-
-    Returns:
-        The extracted min/max value as a string, or None if not found
-    """
-    if xml_element is None:
-        return None
-
-    # Try to get min/max as an attribute first
-    value = xml_element.get_attr_or_none(key)
-    if value is not None:
-        return str(value)
-
-    # Try to find min/max as a child element
-    child_element = xml_element.find_or_none(key)
-    if child_element is not None:
-        text_value = child_element.get_text_or_none()
-        if text_value is not None:
-            return str(text_value)
+        # Handle different value types
+        if isinstance(value, str | int | float):
+            return str(value)
+        elif isinstance(value, dict):
+            # If value is a dict with #text, extract the text
+            value_dict = cast(dict[str, Any], value)
+            text_content = value_dict.get("#text")
+            if text_content is not None:
+                return str(text_content)
+            return str(value_dict)
+        else:
+            return str(value)
 
     return None
 
@@ -271,14 +213,14 @@ class RunMetadata:
                 )
             ),
             rack_temperature_min=try_float_or_none(
-                _extract_min_max_from_xml_dict(
-                    application_template_details.get("RackTemperature", {}), "min"
+                _extract_min_from_xml_data(
+                    application_template_details.get("RackTemperature", {})
                 )
                 or application_template_details.get("RackTemperatureMin")
             ),
             rack_temperature_max=try_float_or_none(
-                _extract_min_max_from_xml_dict(
-                    application_template_details.get("RackTemperature", {}), "max"
+                _extract_max_from_xml_data(
+                    application_template_details.get("RackTemperature", {})
                 )
                 or application_template_details.get("RackTemperatureMax")
             ),
@@ -519,6 +461,7 @@ class Data:
         )
 
 
+# Convenience functions for common use cases
 def _extract_value_from_xml_element_or_dict(
     xml_data: StrictXmlElement | DictType | None, value_name: str = "value"
 ) -> str | None:
@@ -534,15 +477,18 @@ def _extract_value_from_xml_element_or_dict(
     Returns:
         The extracted value as a string, or None if not found
     """
-    if xml_data is None:
-        return None
+    return _extract_from_xml_data(xml_data, value_name)
 
-    # If it's a StrictXmlElement, use the new extraction method
-    if isinstance(xml_data, StrictXmlElement):
-        return _extract_value_from_xml_element(xml_data, value_name)
 
-    # If it's a dictionary, use the legacy extraction method
-    if isinstance(xml_data, dict):
-        return _extract_value_from_xml_like_dict(xml_data)
+def _extract_min_from_xml_data(
+    xml_data: StrictXmlElement | DictType | None,
+) -> str | None:
+    """Extract min value from either StrictXmlElement or dictionary structure."""
+    return _extract_from_xml_data(xml_data, "min")
 
-    return None
+
+def _extract_max_from_xml_data(
+    xml_data: StrictXmlElement | DictType | None,
+) -> str | None:
+    """Extract max value from either StrictXmlElement or dictionary structure."""
+    return _extract_from_xml_data(xml_data, "max")
