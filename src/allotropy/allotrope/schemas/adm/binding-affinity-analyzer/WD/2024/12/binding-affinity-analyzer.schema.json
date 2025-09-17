@@ -216,7 +216,7 @@
                                                                                                                 "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/09/core.schema#/$defs/tQuantityValue"
                                                                                                             },
                                                                                                             {
-                                                                                                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/ResonanceUnits"
+                                                                                                                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2024/09/units.schema#/$defs/ResponseUnit"
                                                                                                             }
                                                                                                         ]
                                                                                                     }
@@ -4958,7 +4958,7 @@
                         "unit": {
                             "type": "string",
                             "const": "RU",
-                            "$asm.unit-iri": "http://qudt.org/vocab/unit#ResonanceUnits"
+                            "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#ResponseUnit"
                         }
                     },
                     "required": [
@@ -4970,7 +4970,7 @@
                         "unit": {
                             "type": "string",
                             "const": "RU/s",
-                            "$asm.unit-iri": "http://qudt.org/vocab/unit#ResonanceUnitsPerSecond"
+                            "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#ResponseUnitPerSecond"
                         }
                     },
                     "required": [

@@ -33,7 +33,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePercent,
     TQuantityValuePerMolarPerSecond,
     TQuantityValuePerSecond,
-    TQuantityValueResonanceUnits,
+    TQuantityValueResponseUnit,
     TQuantityValueSecondTime,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDatacube
@@ -152,7 +152,9 @@ class Data:
 
 
 class Mapper(SchemaMapper[Data, Model]):
-    MANIFEST: str = "http://purl.allotrope.org/manifests/binding-affinity-analyzer/WD/2024/12/binding-affinity-analyzer.manifest"
+    MANIFEST: str = (
+        "http://purl.allotrope.org/manifests/binding-affinity-analyzer/WD/2024/12/binding-affinity-analyzer.manifest"
+    )
 
     def map_model(self, data: Data) -> Model:
         return Model(
@@ -256,7 +258,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.equilibrium_dissociation_constant__kd_,
             ),
             maximum_binding_capacity__Rmax_=quantity_or_none(
-                TQuantityValueResonanceUnits,
+                TQuantityValueResponseUnit,
                 measurement.maximum_binding_capacity__rmax_,
             ),
             report_point_aggregate_document=(
@@ -266,11 +268,11 @@ class Mapper(SchemaMapper[Data, Model]):
                             ReportPointDocumentItem(
                                 report_point_identifier=report_point.identifier,
                                 identifier_role=report_point.identifier_role,
-                                absolute_resonance=TQuantityValueResonanceUnits(
+                                absolute_resonance=TQuantityValueResponseUnit(
                                     value=report_point.absolute_resonance
                                 ),
                                 relative_resonance=quantity_or_none(
-                                    TQuantityValueResonanceUnits,
+                                    TQuantityValueResponseUnit,
                                     report_point.relative_resonance,
                                 ),
                                 time_setting=TQuantityValueSecondTime(

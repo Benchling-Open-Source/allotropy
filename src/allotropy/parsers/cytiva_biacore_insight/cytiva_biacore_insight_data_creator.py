@@ -4,7 +4,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueHertz,
     TQuantityValueNumber,
     TQuantityValueSecondTime,
-    TQuantityValueSquareResonanceUnits,
+    TQuantityValueSquareResponseUnit,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.units import Unitless
@@ -107,7 +107,7 @@ def _get_measurements(
             processed_data_custom_info=(
                 {
                     "Kinetics Chi squared": quantity_or_none(
-                        TQuantityValueSquareResonanceUnits,
+                        TQuantityValueSquareResponseUnit,
                         measurement.kinetics.kinetics_chi_squared,
                     ),
                     "tc": quantity_or_none(

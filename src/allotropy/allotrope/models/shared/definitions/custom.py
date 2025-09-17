@@ -66,12 +66,13 @@ from allotropy.allotrope.models.shared.definitions.units import (
     RelativeLightUnit,
     RelativeLightUnitTimesMilliliter,
     RelativeLightUnitTimesSecond,
-    ResonanceUnits,
+    ResponseUnit,
+    ResponseUnitPerSecond,
     SecondTime,
     SeimensPerMeter,
     SquareCentimetersPerGram,
     SquareCentimetersPerMole,
-    SquareResonanceUnits,
+    SquareResponseUnit,
     TODO,
     Unitless,
     UnitPerLiter,
@@ -755,12 +756,24 @@ class TNullableQuantityValueRelativeLightUnitTimesSecond(
 
 
 @dataclass(frozen=True, kw_only=True)
-class TQuantityValueResonanceUnits(ResonanceUnits, TQuantityValue):
+class TQuantityValueResponseUnit(ResponseUnit, TQuantityValue):
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueResonanceUnits(ResonanceUnits, TNullableQuantityValue):
+class TNullableQuantityValueResponseUnit(ResponseUnit, TNullableQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueResponseUnitPerSecond(ResponseUnitPerSecond, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueResponseUnitPerSecond(
+    ResponseUnitPerSecond, TNullableQuantityValue
+):
     pass
 
 
@@ -809,13 +822,13 @@ class TNullableQuantityValueSquareCentimetersPerMole(
 
 
 @dataclass(frozen=True, kw_only=True)
-class TQuantityValueSquareResonanceUnits(SquareResonanceUnits, TQuantityValue):
+class TQuantityValueSquareResponseUnit(SquareResponseUnit, TQuantityValue):
     pass
 
 
 @dataclass(frozen=True, kw_only=True)
-class TNullableQuantityValueSquareResonanceUnits(
-    SquareResonanceUnits, TNullableQuantityValue
+class TNullableQuantityValueSquareResponseUnit(
+    SquareResponseUnit, TNullableQuantityValue
 ):
     pass
 
