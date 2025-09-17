@@ -17,7 +17,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling._2024._12.binding_affinity_analyzer import (
     DeviceControlDocument,
-    DeviceDocument,
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -66,10 +65,6 @@ def _get_sensorgram_datacube(
     )
 
 
-def _device_documents_from_chip(_: Data) -> list[DeviceDocument] | None:
-    return None
-
-
 def create_metadata(data: Data, named_file_contents: NamedFileContents) -> Metadata:
     filepath = Path(named_file_contents.original_file_path)
     sys = data.system_information
@@ -105,7 +100,6 @@ def create_metadata(data: Data, named_file_contents: NamedFileContents) -> Metad
         sensor_chip_type=chip.sensor_chip_type,
         lot_number=chip.lot_number,
         sensor_chip_identifier=chip.sensor_chip_identifier,
-        device_document=_device_documents_from_chip(data),
         sensor_chip_custom_info=chip.custom_info,
         data_system_custom_info={
             "account identifier": sys.user_name,
