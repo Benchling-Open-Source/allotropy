@@ -202,8 +202,6 @@ class CtlImmunospotReader:
         return plates
 
     def _read_header(self, reader: CsvReader) -> SeriesData:
-        lines = [line.strip() for line in reader.pop_until_empty(EMPTY_STR_OR_CSV_LINE)]
-
         def fix_line(line: str) -> str:
             # Add missing key for file path line.
             if line.endswith(".txt") or line.endswith(".xls"):
@@ -213,13 +211,45 @@ class CtlImmunospotReader:
                 line = f"Review Date: {date_str}"
             return line.strip()
 
-        lines = [fix_line(line) for raw_line in lines for line in raw_line.split(";")]
+        def split_multi_key_line(line: str) -> list[str]:
+            """Split lines that contain multiple key-value pairs into separate lines."""
+            line = line.strip().strip('"').strip()  # Clean up quotes and whitespace
+
+            # Case 1: Parenthetical format: (Auto Areas: Estimated, Manual Areas: Normalized)
+            if line.startswith("(") and line.endswith(")") and "," in line:
+                return [pair.strip() for pair in line[1:-1].split(",")]
+
+            # Case 2: Tab-separated format: Assay: 1\t\t\t\t\t\tEdge Compensation Level: 1.0
+            if "\t" in line and line.count(":") > 1:
+                return [
+                    part.strip()
+                    for part in line.split("\t")
+                    if part.strip() and ":" in part
+                ]
+
+            return [line]
+
+        def process_lines(raw_lines: list[str]) -> list[str]:
+            """Process a list of raw lines and return split/fixed lines."""
+            processed = []
+            for raw_line in raw_lines:
+                for line in raw_line.split(";"):
+                    fixed_line = fix_line(line)
+                    processed.extend(split_multi_key_line(fixed_line))
+            return processed
+
+        # Process initial header lines
+        lines = [line.strip() for line in reader.pop_until_empty(EMPTY_STR_OR_CSV_LINE)]
+        all_lines = process_lines(lines)
+
+        # Process additional header lines if they exist
         reader.drop_empty(EMPTY_STR_OR_CSV_LINE)
         if ":" in (reader.get() or ""):
-            lines.extend(list(reader.pop_until_empty(EMPTY_STR_OR_CSV_LINE)))
+            additional_lines = list(reader.pop_until_empty(EMPTY_STR_OR_CSV_LINE))
+            all_lines.extend(process_lines(additional_lines))
 
         df = read_csv(
-            StringIO("\n".join(lines)),
+            StringIO("\n".join(all_lines)),
             sep=r"^([^:]+):\s+",
             header=None,
             engine="python",
