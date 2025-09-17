@@ -86,6 +86,7 @@ class ImageFeature:
     feature: str
     result: float | InvalidJsonFloat
     data_sources: list[DataSource] | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -561,15 +562,18 @@ class Mapper(SchemaMapper[Data, Model]):
                     processed_data_identifier=data.identifier,
                     image_feature_aggregate_document=ImageFeatureAggregateDocument(
                         image_feature_document=[
-                            ImageFeatureDocumentItem(
-                                image_feature_identifier=image_feature.identifier,
-                                image_feature_name=image_feature.feature,
-                                image_feature_result=TQuantityValueUnitless(
-                                    value=image_feature.result
+                            add_custom_information_document(
+                                ImageFeatureDocumentItem(
+                                    image_feature_identifier=image_feature.identifier,
+                                    image_feature_name=image_feature.feature,
+                                    image_feature_result=TQuantityValueUnitless(
+                                        value=image_feature.result
+                                    ),
+                                    data_source_aggregate_document=self._get_data_source_aggregate_document(
+                                        image_feature.data_sources
+                                    ),
                                 ),
-                                data_source_aggregate_document=self._get_data_source_aggregate_document(
-                                    image_feature.data_sources
-                                ),
+                                image_feature.custom_info,
                             )
                             for image_feature in data.features
                         ]

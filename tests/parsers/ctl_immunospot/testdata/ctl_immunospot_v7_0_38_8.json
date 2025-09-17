@@ -16,7 +16,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -37,6 +52,11 @@
                                                     "image feature result": {
                                                         "value": 1.0,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "Min. SpotSize": "0.0005  Sq.mm",
+                                                        "Max. SpotSize": "0.0542  Sq.mm",
+                                                        "Spot Separation": 3.0
                                                     }
                                                 },
                                                 {
@@ -45,6 +65,11 @@
                                                     "image feature result": {
                                                         "value": 0.0,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "Min. SpotSize": "0.0005  Sq.mm",
+                                                        "Max. SpotSize": "0.0542  Sq.mm",
+                                                        "Spot Separation": 3.0
                                                     }
                                                 },
                                                 {
@@ -53,6 +78,11 @@
                                                     "image feature result": {
                                                         "value": 0.0,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "Min. SpotSize": "0.0005  Sq.mm",
+                                                        "Max. SpotSize": "0.0542  Sq.mm",
+                                                        "Spot Separation": 3.0
                                                     }
                                                 },
                                                 {
@@ -61,6 +91,11 @@
                                                     "image feature result": {
                                                         "value": 0.0,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "Min. SpotSize": "0.0005  Sq.mm",
+                                                        "Max. SpotSize": "0.0542  Sq.mm",
+                                                        "Spot Separation": 3.0
                                                     }
                                                 },
                                                 {
@@ -69,6 +104,11 @@
                                                     "image feature result": {
                                                         "value": 0.0,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "Min. SpotSize": "0.0005  Sq.mm",
+                                                        "Max. SpotSize": "0.0542  Sq.mm",
+                                                        "Spot Separation": 3.0
                                                     }
                                                 },
                                                 {
@@ -77,6 +117,11 @@
                                                     "image feature result": {
                                                         "value": 0.0,
                                                         "unit": "(unitless)"
+                                                    },
+                                                    "custom information document": {
+                                                        "Min. SpotSize": "0.0005  Sq.mm",
+                                                        "Max. SpotSize": "0.0542  Sq.mm",
+                                                        "Spot Separation": 3.0
                                                     }
                                                 }
                                             ]
@@ -145,7 +190,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -163,7 +211,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -292,7 +355,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -310,7 +376,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -439,7 +520,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -457,7 +541,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -586,7 +685,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -604,7 +706,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -733,7 +850,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -751,7 +871,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -880,7 +1015,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -898,7 +1036,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -1027,7 +1180,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -1045,7 +1201,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -1174,7 +1345,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -1192,7 +1366,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -1321,7 +1510,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -1339,7 +1531,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -1468,7 +1675,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -1486,7 +1696,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -1615,7 +1840,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -1633,7 +1861,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -1762,7 +2005,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -1780,7 +2026,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -1909,7 +2170,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -1927,7 +2191,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -2056,7 +2335,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -2074,7 +2356,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -2203,7 +2500,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -2221,7 +2521,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -2350,7 +2665,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -2368,7 +2686,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -2497,7 +2830,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -2515,7 +2851,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -2644,7 +2995,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -2662,7 +3016,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -2791,7 +3160,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -2809,7 +3181,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -2938,7 +3325,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -2956,7 +3346,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -3085,7 +3490,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -3103,7 +3511,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -3232,7 +3655,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -3250,7 +3676,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -3379,7 +3820,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -3397,7 +3841,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -3526,7 +3985,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -3544,7 +4006,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -3673,7 +4150,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -3691,7 +4171,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -3820,7 +4315,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -3838,7 +4336,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -3967,7 +4480,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -3985,7 +4501,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -4114,7 +4645,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -4132,7 +4666,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -4261,7 +4810,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -4279,7 +4831,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -4408,7 +4975,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -4426,7 +4996,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -4555,7 +5140,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -4573,7 +5161,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -4702,7 +5305,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -4720,7 +5326,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -4849,7 +5470,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -4867,7 +5491,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -4996,7 +5635,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -5014,7 +5656,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -5143,7 +5800,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -5161,7 +5821,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -5290,7 +5965,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -5308,7 +5986,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -5437,7 +6130,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -5455,7 +6151,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -5584,7 +6295,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -5602,7 +6316,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -5731,7 +6460,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -5749,7 +6481,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -5878,7 +6625,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -5896,7 +6646,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -6025,7 +6790,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -6043,7 +6811,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -6172,7 +6955,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -6190,7 +6976,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -6319,7 +7120,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -6337,7 +7141,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -6466,7 +7285,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -6484,7 +7306,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -6613,7 +7450,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -6631,7 +7471,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -6760,7 +7615,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -6778,7 +7636,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -6907,7 +7780,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -6925,7 +7801,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -7054,7 +7945,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -7072,7 +7966,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -7201,7 +8110,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -7219,7 +8131,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -7348,7 +8275,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -7366,7 +8296,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -7495,7 +8440,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -7513,7 +8461,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -7642,7 +8605,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -7660,7 +8626,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -7789,7 +8770,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -7807,7 +8791,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -7936,7 +8935,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -7954,7 +8956,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -8083,7 +9100,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -8101,7 +9121,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -8230,7 +9265,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -8248,7 +9286,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -8377,7 +9430,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -8395,7 +9451,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -8524,7 +9595,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -8542,7 +9616,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -8671,7 +9760,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -8689,7 +9781,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -8818,7 +9925,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -8836,7 +9946,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -8965,7 +10090,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -8983,7 +10111,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -9112,7 +10255,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -9130,7 +10276,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -9259,7 +10420,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -9277,7 +10441,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -9406,7 +10585,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -9424,7 +10606,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -9553,7 +10750,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -9571,7 +10771,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -9700,7 +10915,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -9718,7 +10936,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -9847,7 +11080,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -9865,7 +11101,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -9994,7 +11245,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -10012,7 +11266,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -10141,7 +11410,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -10159,7 +11431,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -10288,7 +11575,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -10306,7 +11596,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -10435,7 +11740,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -10453,7 +11761,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -10582,7 +11905,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -10600,7 +11926,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -10729,7 +12070,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -10747,7 +12091,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -10876,7 +12235,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -10894,7 +12256,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -11023,7 +12400,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -11041,7 +12421,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -11170,7 +12565,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -11188,7 +12586,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -11317,7 +12730,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -11335,7 +12751,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -11464,7 +12895,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -11482,7 +12916,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -11611,7 +13060,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -11629,7 +13081,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -11758,7 +13225,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -11776,7 +13246,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -11905,7 +13390,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -11923,7 +13411,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -12052,7 +13555,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -12070,7 +13576,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -12199,7 +13720,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -12217,7 +13741,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -12346,7 +13885,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -12364,7 +13906,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -12493,7 +14050,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -12511,7 +14071,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -12640,7 +14215,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -12658,7 +14236,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -12787,7 +14380,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -12805,7 +14401,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -12934,7 +14545,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -12952,7 +14566,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -13081,7 +14710,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -13099,7 +14731,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -13228,7 +14875,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -13246,7 +14896,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -13375,7 +15040,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -13393,7 +15061,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -13522,7 +15205,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -13540,7 +15226,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -13669,7 +15370,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -13687,7 +15391,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -13816,7 +15535,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -13834,7 +15556,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -13963,7 +15700,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             },
@@ -13981,7 +15721,22 @@
                                 "device control document": [
                                     {
                                         "device type": "imager",
-                                        "detection type": "optical-imaging"
+                                        "detection type": "optical-imaging",
+                                        "custom information document": {
+                                            "Diffuseness": "Large",
+                                            "Manual Areas": "Normalized",
+                                            "Counting window size": "600x600",
+                                            "Background Balance": 40.0,
+                                            "Edge Effect Compensation": "Off",
+                                            "Scanning": "8 bit",
+                                            "Sensitivity": 190.0,
+                                            "Objects": "Normal",
+                                            "Normalize Counts of Mask": "On",
+                                            "Counting Mask Size(%)": 85.0,
+                                            "Auto Areas": "Estimated",
+                                            "Edge Compensation Level": 1.0,
+                                            "Counting": "8 bit"
+                                        }
                                     }
                                 ]
                             },
@@ -14110,7 +15865,10 @@
                             }
                         }
                     ],
-                    "container type": "well plate"
+                    "container type": "well plate",
+                    "custom information document": {
+                        "Assay": "1"
+                    }
                 },
                 "analyst": "'USER'"
             }
@@ -14129,25 +15887,6 @@
             "software version": "7.0.38.8",
             "ASM converter name": "allotropy_ctl_immunospot",
             "ASM converter version": "0.1.105"
-        },
-        "custom information document": {
-            "Edge Effect Compensation": "Off",
-            "Counting": "8 bit",
-            "     (Auto Areas": "Estimated, Manual Areas: Normalized)\"",
-            "Diffuseness": "Large",
-            "Scanning": "8 bit",
-            "Background Balance": 40.0,
-            "Sensitivity": 190.0,
-            "Normalize Counts of Mask": "On",
-            "Authenticated user": "'USER'",
-            "Spot Separation": 3.0,
-            "Max. SpotSize": "0.0542  Sq.mm",
-            "Counted": "Thu Feb 15 16:39:42 2024",
-            "Counting Mask Size(%)": 85.0,
-            "Min. SpotSize": "0.0005  Sq.mm",
-            "Counting window size": "600x600",
-            "Objects": "Normal",
-            "Assay": "1\t\t\t\t\t\tEdge Compensation Level: 1.0"
         }
     }
 }
