@@ -5,7 +5,6 @@ from collections.abc import Callable, Mapping, Sequence
 from dataclasses import asdict, field, fields, is_dataclass, make_dataclass, MISSING
 from enum import Enum
 import keyword
-import re
 from types import GenericAlias, UnionType
 from typing import (
     Any,
@@ -152,9 +151,6 @@ def add_custom_information_document(
             continue
         cleaned_dict[key] = value
 
-    # Filter out Python keywords - they can't be used as dataclass field names
-    cleaned_dict = {k: v for k, v in cleaned_dict.items() if not keyword.iskeyword(k)}
-
     # If dict is empty after cleaning, do not attach.
     if not cleaned_dict:
         return model
@@ -169,6 +165,8 @@ def add_custom_information_document(
 
 def _convert_model_key_to_dict_key(key: str) -> str:
     key = SPECIAL_KEYS.get(key, key)
+    if key.startswith("_KW"):
+        key = key[3:]
     if key.startswith("___") and key[3].isdigit():
         key = key[3:]
     for dict_val, model_val in DICT_KEY_TO_MODEL_KEY_REPLACEMENTS.items():
@@ -178,16 +176,12 @@ def _convert_model_key_to_dict_key(key: str) -> str:
 
 def _convert_dict_to_model_key(key: str) -> str:
     key = SPECIAL_KEYS_INVERSE.get(key, key)
+    if keyword.iskeyword(key):
+        key = f"_KW{key}"
     if key[0].isdigit():
         key = f"___{key}"
     for dict_val, model_val in DICT_KEY_TO_MODEL_KEY_REPLACEMENTS.items():
         key = key.replace(dict_val, model_val)
-
-    # Ensure the key is a valid Python identifier
-    if not key.isidentifier():
-        # Remove leading/trailing quotes and other invalid characters
-        key = re.sub(r'^["\']+|["\']+$', "", key)
-
     return key
 
 
