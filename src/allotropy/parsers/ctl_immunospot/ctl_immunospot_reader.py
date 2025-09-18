@@ -235,7 +235,9 @@ class CtlImmunospotReader:
             for raw_line in raw_lines:
                 for line in raw_line.split(";"):
                     fixed_line = fix_line(line)
-                    processed.extend(split_multi_key_line(fixed_line))
+                    # Only process lines that have colons (key: value format)
+                    if ":" in fixed_line:
+                        processed.extend(split_multi_key_line(fixed_line))
             return processed
 
         # Process initial header lines
