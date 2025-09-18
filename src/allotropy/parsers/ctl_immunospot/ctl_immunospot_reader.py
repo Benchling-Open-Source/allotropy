@@ -213,7 +213,7 @@ class CtlImmunospotReader:
 
         def split_multi_key_line(line: str) -> list[str]:
             """Split lines that contain multiple key-value pairs into separate lines."""
-            line = line.strip().strip('"').strip()  # Clean up quotes and whitespace
+            line = line.strip(' "')  # Clean up quotes and whitespace
 
             # Case 1: Parenthetical format: (Auto Areas: Estimated, Manual Areas: Normalized)
             if line.startswith("(") and line.endswith(")") and "," in line:
