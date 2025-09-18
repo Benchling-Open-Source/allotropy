@@ -11,7 +11,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDalton,
     TQuantityValueMicroliterPerMinute,
     TQuantityValueNanomolar,
-    TQuantityValueResonanceUnits,
+    TQuantityValueResponseUnit,
     TQuantityValueSecondTime,
 )
 from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling._2024._12.binding_affinity_analyzer import (
@@ -367,7 +367,7 @@ class MeasurementData:
                             str, "Sensorgram type", run_info.get(str, "Sensorgram type")
                         ),
                         "Level": quantity_or_none(
-                            TQuantityValueResonanceUnits,
+                            TQuantityValueResponseUnit,
                             run_info.get(float, "Level (RU)"),
                         ),
                     },
