@@ -36,6 +36,15 @@ def _create_measurement(
     header_data: dict[str, float | str | None],
 ) -> Measurement:
     location_identifier = f"{well_row}{well_col}"
+    data_processing_document = {
+        "Min. SpotSize": header_data.pop("Min. SpotSize", None),
+        "Max. SpotSize": header_data.pop("Max. SpotSize", None),
+        "Spot Separation": header_data.pop("Spot Separation", None),
+    }
+    has_data = any(
+        value is not None and str(value).strip() != ""
+        for value in data_processing_document.values()
+    )
     return Measurement(
         type_=MeasurementType.OPTICAL_IMAGING,
         device_type=constants.DEVICE_TYPE,
@@ -46,11 +55,7 @@ def _create_measurement(
         detection_type=constants.DETECTION_TYPE,
         processed_data=ProcessedData(
             identifier=random_uuid_str(),
-            data_processing_document={
-                "Min. SpotSize": header_data.pop("Min. SpotSize", None),
-                "Max. SpotSize": header_data.pop("Max. SpotSize", None),
-                "Spot Separation": header_data.pop("Spot Separation", None),
-            },
+            data_processing_document=data_processing_document if has_data else None,
             features=[
                 ImageFeature(
                     identifier=random_uuid_str(),
