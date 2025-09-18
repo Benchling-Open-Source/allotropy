@@ -36,11 +36,6 @@ def _create_measurement(
     header_data: dict[str, float | str | None],
 ) -> Measurement:
     location_identifier = f"{well_row}{well_col}"
-    image_custom_info = {
-        "Min. SpotSize": header_data.pop("Min. SpotSize", None),
-        "Max. SpotSize": header_data.pop("Max. SpotSize", None),
-        "Spot Separation": header_data.pop("Spot Separation", None),
-    }
     return Measurement(
         type_=MeasurementType.OPTICAL_IMAGING,
         device_type=constants.DEVICE_TYPE,
@@ -51,12 +46,16 @@ def _create_measurement(
         detection_type=constants.DETECTION_TYPE,
         processed_data=ProcessedData(
             identifier=random_uuid_str(),
+            data_processing_document={
+                "Min. SpotSize": header_data.pop("Min. SpotSize", None),
+                "Max. SpotSize": header_data.pop("Max. SpotSize", None),
+                "Spot Separation": header_data.pop("Spot Separation", None),
+            },
             features=[
                 ImageFeature(
                     identifier=random_uuid_str(),
                     feature=name,
                     result=float(data[well_col][well_row]),
-                    custom_info=image_custom_info,
                 )
                 for name, data in plate_data.items()
             ],
@@ -115,7 +114,12 @@ def create_measurement_groups(
             analyst=analyst,
             measurements=[
                 _create_measurement(
-                    row, col, well_plate_identifier, plate_data, histograms, header_data
+                    row,
+                    col,
+                    well_plate_identifier,
+                    plate_data,
+                    histograms,
+                    header_data.copy(),
                 )
             ],
             custom_info=custom_info,

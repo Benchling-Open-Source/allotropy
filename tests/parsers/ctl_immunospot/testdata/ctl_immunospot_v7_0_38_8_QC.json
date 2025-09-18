@@ -18,8 +18,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -33,6 +33,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_1",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -162,8 +163,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -177,6 +178,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_8",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -306,8 +308,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -321,6 +323,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_15",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -450,8 +453,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -465,6 +468,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_22",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -594,8 +598,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -609,6 +613,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_29",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -738,8 +743,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -753,6 +758,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_36",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -882,8 +888,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -897,6 +903,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_43",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -1026,8 +1033,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -1041,6 +1048,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_50",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -1170,8 +1178,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -1185,6 +1193,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_57",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -1314,8 +1323,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -1329,6 +1338,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_64",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -1458,8 +1468,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -1473,6 +1483,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_71",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -1602,8 +1613,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -1617,6 +1628,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_78",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -1746,8 +1758,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -1761,6 +1773,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_85",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -1890,8 +1903,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -1905,6 +1918,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_92",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -2034,8 +2048,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -2049,6 +2063,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_99",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -2178,8 +2193,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -2193,6 +2208,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_106",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -2322,8 +2338,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -2337,6 +2353,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_113",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -2466,8 +2483,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -2481,6 +2498,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_120",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -2610,8 +2628,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -2625,6 +2643,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_127",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -2754,8 +2773,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -2769,6 +2788,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_134",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -2898,8 +2918,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -2913,6 +2933,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_141",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -3042,8 +3063,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -3057,6 +3078,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_148",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -3186,8 +3208,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -3201,6 +3223,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_155",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -3330,8 +3353,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -3345,6 +3368,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_162",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -3474,8 +3498,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -3489,6 +3513,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_169",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -3618,8 +3643,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -3633,6 +3658,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_176",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -3762,8 +3788,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -3777,6 +3803,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_183",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -3906,8 +3933,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -3921,6 +3948,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_190",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -4050,8 +4078,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -4065,6 +4093,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_197",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -4194,8 +4223,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -4209,6 +4238,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_204",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -4338,8 +4368,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -4353,6 +4383,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_211",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -4482,8 +4513,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -4497,6 +4528,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_218",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -4626,8 +4658,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -4641,6 +4673,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_225",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -4770,8 +4803,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -4785,6 +4818,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_232",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -4914,8 +4948,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -4929,6 +4963,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_239",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -5058,8 +5093,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -5073,6 +5108,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_246",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -5202,8 +5238,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -5217,6 +5253,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_253",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -5346,8 +5383,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -5361,6 +5398,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_260",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -5490,8 +5528,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -5505,6 +5543,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_267",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -5634,8 +5673,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -5649,6 +5688,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_274",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -5778,8 +5818,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -5793,6 +5833,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_281",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -5922,8 +5963,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -5937,6 +5978,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_288",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -6066,8 +6108,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -6081,6 +6123,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_295",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -6210,8 +6253,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -6225,6 +6268,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_302",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -6354,8 +6398,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -6369,6 +6413,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_309",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -6498,8 +6543,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -6513,6 +6558,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_316",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -6642,8 +6688,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -6657,6 +6703,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_323",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -6786,8 +6833,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -6801,6 +6848,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_330",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -6930,8 +6978,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -6945,6 +6993,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_337",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -7074,8 +7123,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -7089,6 +7138,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_344",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -7218,8 +7268,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -7233,6 +7283,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_351",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -7362,8 +7413,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -7377,6 +7428,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_358",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -7506,8 +7558,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -7521,6 +7573,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_365",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -7650,8 +7703,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -7665,6 +7718,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_372",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -7794,8 +7848,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -7809,6 +7863,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_379",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -7938,8 +7993,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -7953,6 +8008,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_386",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -8082,8 +8138,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -8097,6 +8153,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_393",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -8226,8 +8283,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -8241,6 +8298,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_400",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -8370,8 +8428,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -8385,6 +8443,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_407",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -8514,8 +8573,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -8529,6 +8588,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_414",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -8658,8 +8718,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -8673,6 +8733,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_421",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -8802,8 +8863,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -8817,6 +8878,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_428",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -8946,8 +9008,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -8961,6 +9023,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_435",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -9090,8 +9153,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -9105,6 +9168,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_442",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -9234,8 +9298,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -9249,6 +9313,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_449",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -9378,8 +9443,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -9393,6 +9458,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_456",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -9522,8 +9588,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -9537,6 +9603,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_463",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -9666,8 +9733,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -9681,6 +9748,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_470",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -9810,8 +9878,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -9825,6 +9893,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_477",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -9954,8 +10023,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -9969,6 +10038,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_484",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -10098,8 +10168,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -10113,6 +10183,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_491",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -10242,8 +10313,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -10257,6 +10328,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_498",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -10386,8 +10458,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -10401,6 +10473,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_505",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -10530,8 +10603,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -10545,6 +10618,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_512",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -10674,8 +10748,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -10689,6 +10763,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_519",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -10818,8 +10893,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -10833,6 +10908,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_526",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -10962,8 +11038,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -10977,6 +11053,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_533",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -11106,8 +11183,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -11121,6 +11198,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_540",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -11250,8 +11328,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -11265,6 +11343,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_547",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -11394,8 +11473,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -11409,6 +11488,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_554",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -11538,8 +11618,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -11553,6 +11633,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_561",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -11682,8 +11763,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -11697,6 +11778,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_568",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -11826,8 +11908,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -11841,6 +11923,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_575",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -11970,8 +12053,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -11985,6 +12068,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_582",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -12114,8 +12198,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -12129,6 +12213,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_589",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -12258,8 +12343,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -12273,6 +12358,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_596",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -12402,8 +12488,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -12417,6 +12503,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_603",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -12546,8 +12633,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -12561,6 +12648,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_610",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -12690,8 +12778,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -12705,6 +12793,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_617",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -12834,8 +12923,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -12849,6 +12938,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_624",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -12978,8 +13068,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -12993,6 +13083,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_631",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -13122,8 +13213,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -13137,6 +13228,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_638",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -13266,8 +13358,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -13281,6 +13373,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_645",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -13410,8 +13503,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -13425,6 +13518,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_652",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -13554,8 +13648,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -13569,6 +13663,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_659",
                                         "image feature aggregate document": {
                                             "image feature document": [
@@ -13698,8 +13793,8 @@
                                         "device type": "imager",
                                         "detection type": "optical-imaging",
                                         "custom information document": {
-                                            "Counting": "8 bit",
                                             "Counting window size": "600x600",
+                                            "Counting": "8 bit",
                                             "Scanning": "8 bit"
                                         }
                                     }
@@ -13713,6 +13808,7 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {},
                                         "processed data identifier": "CTL_IMMUNOSPOT_TEST_ID_666",
                                         "image feature aggregate document": {
                                             "image feature document": [
