@@ -4,10 +4,13 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueHertz,
     TQuantityValueNumber,
     TQuantityValueSecondTime,
-    TQuantityValueSquareResonanceUnits,
+    TQuantityValueSquareResponseUnit,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.units import Unitless
+from allotropy.allotrope.models.shared.definitions.units import (
+    ResponseUnitPerSecond,
+    Unitless,
+)
 from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling._2024._12.binding_affinity_analyzer import (
     Measurement,
     MeasurementGroup,
@@ -107,7 +110,7 @@ def _get_measurements(
             processed_data_custom_info=(
                 {
                     "Kinetics Chi squared": quantity_or_none(
-                        TQuantityValueSquareResonanceUnits,
+                        TQuantityValueSquareResponseUnit,
                         measurement.kinetics.kinetics_chi_squared,
                     ),
                     "tc": quantity_or_none(
@@ -174,7 +177,7 @@ def _get_report_point_calc_data(rp: ReportPointData) -> list[CalculatedDocument]
                 name="Slope",
                 value=rp.slope,
                 data_sources=[data_source],
-                unit=Unitless.unit,
+                unit=ResponseUnitPerSecond.unit,
             )
         )
     if rp.standard_deviation is not None:

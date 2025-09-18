@@ -719,12 +719,24 @@
       "unit"
     ]
   },
-  "ResonanceUnits": {
+  "ResponseUnit": {
     "properties": {
       "unit": {
         "type": "string",
         "const": "RU",
-        "$asm.unit-iri": "http://qudt.org/vocab/unit#ResonanceUnits"
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#ResponseUnit"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
+  "ResponseUnitPerSecond": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "RU/s",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#ResponseUnitPerSecond"
       }
     },
     "required": [
@@ -779,7 +791,7 @@
       "unit"
     ]
   },
-  "SquareResonanceUnits": {
+  "SquareResponseUnit": {
     "properties": {
       "unit": {
         "type": "string",
