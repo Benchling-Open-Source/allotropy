@@ -279,6 +279,7 @@ class SeriesData:
         # "++" can cause re.compile to fail. Since it is never a valid regex expression
         # it is safe to escape it to prevent the error.
         match_key = match_key.replace("++", r"\+\+")
+
         return bool(re.fullmatch(match_key, key))
 
     def _get_matching_keys(self, key_or_keys: str | set[str]) -> set[str]:
