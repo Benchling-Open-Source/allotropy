@@ -39,6 +39,7 @@ jobs:
         python-version: "3.11.9"
     - name: Install hatch
       run: pip install hatch
+    # NOTE: due to bug: https://github.com/pallets/click/issues/3066
     - name: Install click
       run: pip install click!=8.3.0
     - name: Run Tests
