@@ -41,6 +41,7 @@ from allotropy.parsers.cytiva_biacore_t200_evaluation.cytiva_biacore_t200_evalua
     Data,
     SystemInformation,
 )
+from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import quantity_or_none, try_float_or_none
 from allotropy.types import DictType
@@ -159,6 +160,47 @@ def _extract_chi2_value(kinetic_result: Any) -> float | None:
     )
 
 
+def _create_report_point(
+    series_data: SeriesData,
+    flow_cell_id: str,
+    cycle_number: int,
+    display_flow_cell_id: str | None = None,
+) -> ReportPoint | None:
+    """Create a single ReportPoint object from SeriesData."""
+    try:
+        time_setting = series_data.get(float, ["column1", "Time"], default=0.0)
+        relative_resonance = series_data.get(
+            float, ["column3", "Relative"], default=0.0
+        )
+        identifier_role = series_data.get(str, ["column4", "Role"], default="baseline")
+        absolute_resonance = series_data.get(
+            float, ["column5", "Absolute"], default=0.0
+        )
+
+        unread_data = series_data.get_unread()
+
+        fc_id_for_display = display_flow_cell_id or flow_cell_id
+        report_point_id = f"CYTIVA_BIACORE_T200_EVALUATION_RP_C{cycle_number}_FC{fc_id_for_display}_{random_uuid_str()}"
+
+        custom_info: dict[str, dict[str, object]] = {
+            "window": {"value": 5.0, "unit": "s"}
+        }
+        for key, value in unread_data.items():
+            custom_info[key] = {"value": value}
+
+        return ReportPoint(
+            identifier=report_point_id,
+            identifier_role=identifier_role,
+            absolute_resonance=absolute_resonance,
+            time_setting=time_setting,
+            relative_resonance=relative_resonance,
+            custom_info=custom_info,
+        )
+    except Exception:
+        series_data.get_unread()
+        return None
+
+
 def _create_report_points_from_cycle_data(
     rp_df: pd.DataFrame | None,
     flow_cell_id: str,
@@ -168,8 +210,6 @@ def _create_report_points_from_cycle_data(
     """Create ReportPoint objects from cycle report point data, filtered by flow cell."""
     if rp_df is None or rp_df.empty:
         return None
-
-    report_points: list[ReportPoint] = []
 
     filtered_df = rp_df
     if "Flow Cell Number" in rp_df.columns or "flow_cell" in rp_df.columns:
@@ -185,45 +225,21 @@ def _create_report_points_from_cycle_data(
             # If filtering fails, use all data (fallback)
             filtered_df = rp_df
 
-    # Map column names based on specification:
-    # column1 = Time setting, column3 = Relative resonance, column4 = Identifier role, column5 = Absolute resonance
-    for _idx, row in filtered_df.iterrows():
-        try:
-            # Extract values from the expected columns
-            time_setting = try_float_or_none(
-                str(row.get("column1") or row.get("Time") or 0.0)
-            )
-            relative_resonance = try_float_or_none(
-                str(row.get("column3") or row.get("Relative") or 0.0)
-            )
-            identifier_role = str(row.get("column4") or row.get("Role") or "baseline")
-            absolute_resonance = try_float_or_none(
-                str(row.get("column5") or row.get("Absolute") or 0.0)
-            )
-
-            # Use display flow cell ID for identifiers, fallback to base flow cell ID
-            fc_id_for_display = display_flow_cell_id or flow_cell_id
-            # Generate a unique identifier for this report point (include cycle number)
-            report_point_id = f"CYTIVA_BIACORE_T200_EVALUATION_RP_C{cycle_number}_FC{fc_id_for_display}_{random_uuid_str()}"
-
-            report_points.append(
-                ReportPoint(
-                    identifier=report_point_id,
-                    identifier_role=identifier_role,
-                    absolute_resonance=absolute_resonance or 0.0,
-                    time_setting=time_setting or 0.0,
-                    relative_resonance=relative_resonance,
-                    custom_info={"window": {"value": 5.0, "unit": "s"}},
-                )
-            )
-        except Exception:  # noqa: S112
-            # Skip malformed rows - acceptable for data parsing
-            continue
+    report_points = [
+        rp
+        for rp in map_rows(
+            filtered_df,
+            lambda series_data: _create_report_point(
+                series_data, flow_cell_id, cycle_number, display_flow_cell_id
+            ),
+        )
+        if rp is not None
+    ]
 
     return report_points if report_points else None
 
 
-def _create_measurements_for_cycle(_: Data, cycle: CycleData) -> list[Measurement]:
+def _create_measurements_for_cycle(data: Data, cycle: CycleData) -> list[Measurement]:
     sensorgram_df = cycle.sensorgram_data
     cycle_num = cycle.cycle_number
 
@@ -259,52 +275,52 @@ def _create_measurements_for_cycle(_: Data, cycle: CycleData) -> list[Measuremen
 
         device_control_custom_info: DictType = {
             "buffer volume": quantity_or_none(
-                TQuantityValueMilliliter, _.run_metadata.buffer_volume
+                TQuantityValueMilliliter, data.run_metadata.buffer_volume
             ),
             "detection": (
-                _.run_metadata.detection_config.config.get("Detection")
-                if _.run_metadata.detection_config
+                data.run_metadata.detection_config.config.get("Detection")
+                if data.run_metadata.detection_config
                 else None
             ),
             "detectiondual": (
-                _.run_metadata.detection_config.config.get("DetectionDual")
-                if _.run_metadata.detection_config
+                data.run_metadata.detection_config.config.get("DetectionDual")
+                if data.run_metadata.detection_config
                 else None
             ),
             "detectionmulti": (
-                _.run_metadata.detection_config.config.get("DetectionMulti")
-                if _.run_metadata.detection_config
+                data.run_metadata.detection_config.config.get("DetectionMulti")
+                if data.run_metadata.detection_config
                 else None
             ),
             "flowcellsingle": (
-                _.run_metadata.detection_config.config.get("FlowCellSingle")
-                if _.run_metadata.detection_config
+                data.run_metadata.detection_config.config.get("FlowCellSingle")
+                if data.run_metadata.detection_config
                 else None
             ),
             "flowcelldual": (
-                _.run_metadata.detection_config.config.get("FlowCellDual")
-                if _.run_metadata.detection_config
+                data.run_metadata.detection_config.config.get("FlowCellDual")
+                if data.run_metadata.detection_config
                 else None
             ),
             "flowcellmulti": (
-                _.run_metadata.detection_config.config.get("FlowCellMulti")
-                if _.run_metadata.detection_config
+                data.run_metadata.detection_config.config.get("FlowCellMulti")
+                if data.run_metadata.detection_config
                 else None
             ),
             "maximum operating temperature": quantity_or_none(
-                TQuantityValueDegreeCelsius, _.run_metadata.rack_temperature_max
+                TQuantityValueDegreeCelsius, data.run_metadata.rack_temperature_max
             ),
             "minimum operating temperature": quantity_or_none(
-                TQuantityValueDegreeCelsius, _.run_metadata.rack_temperature_min
+                TQuantityValueDegreeCelsius, data.run_metadata.rack_temperature_min
             ),
             "analysis temperature": quantity_or_none(
-                TQuantityValueDegreeCelsius, _.run_metadata.analysis_temperature
+                TQuantityValueDegreeCelsius, data.run_metadata.analysis_temperature
             ),
-            "prime": str(bool(_.run_metadata.prime)).lower()
-            if _.run_metadata.prime is not None
+            "prime": str(bool(data.run_metadata.prime)).lower()
+            if data.run_metadata.prime is not None
             else None,
-            "normalize": str(bool(_.run_metadata.normalize)).lower()
-            if _.run_metadata.normalize is not None
+            "normalize": str(bool(data.run_metadata.normalize)).lower()
+            if data.run_metadata.normalize is not None
             else None,
         }
         # Add experimental data identifier per measurement via chip immobilization mapping
@@ -313,7 +329,7 @@ def _create_measurements_for_cycle(_: Data, cycle: CycleData) -> list[Measuremen
         except Exception:
             fc_index = None
         if fc_index is not None:
-            for imm in _.chip_data.immobilizations:
+            for imm in data.chip_data.immobilizations:
                 if imm.flow_cell_index == fc_index and imm.ligand:
                     device_control_custom_info = {
                         **device_control_custom_info,
@@ -331,7 +347,7 @@ def _create_measurements_for_cycle(_: Data, cycle: CycleData) -> list[Measuremen
         # Extract kinetic analysis data for this specific flow cell
         # Match EvaluationItem identifier to flow cell identifier
         combined_kinetic_data = None
-        if _.kinetic_analysis and _.kinetic_analysis.results_by_identifier:
+        if data.kinetic_analysis and data.kinetic_analysis.results_by_identifier:
             # Try to find the specific EvaluationItem for this flow cell
             # Flow cell IDs are typically "1", "2", "3", "4"
             # EvaluationItem IDs are typically "EvaluationItem1", "EvaluationItem2", etc.
@@ -339,19 +355,19 @@ def _create_measurements_for_cycle(_: Data, cycle: CycleData) -> list[Measuremen
 
             # First, try direct mapping: flow cell "1" -> "EvaluationItem1"
             eval_item_key = f"EvaluationItem{fc_id}"
-            if eval_item_key in _.kinetic_analysis.results_by_identifier:
+            if eval_item_key in data.kinetic_analysis.results_by_identifier:
                 matching_eval_item = eval_item_key
             else:
                 # If direct mapping fails, look for any EvaluationItem that might correspond to this flow cell
                 # This could be enhanced with more sophisticated matching logic if needed
-                for eval_key in _.kinetic_analysis.results_by_identifier.keys():
+                for eval_key in data.kinetic_analysis.results_by_identifier.keys():
                     if fc_id in eval_key or eval_key.endswith(fc_id):
                         matching_eval_item = eval_key
                         break
 
             # Use only the matching EvaluationItem data for this flow cell
             if matching_eval_item:
-                result = _.kinetic_analysis.results_by_identifier[matching_eval_item]
+                result = data.kinetic_analysis.results_by_identifier[matching_eval_item]
                 combined_kinetic_data = result
 
         kinetic_data = combined_kinetic_data
@@ -365,19 +381,19 @@ def _create_measurements_for_cycle(_: Data, cycle: CycleData) -> list[Measuremen
                     DeviceControlDocument(
                         device_type=constants.DEVICE_TYPE,
                         flow_cell_identifier=display_fc_id,
-                        flow_rate=try_float_or_none(_.run_metadata.baseline_flow),
+                        flow_rate=try_float_or_none(data.run_metadata.baseline_flow),
                         detection_type=constants.SURFACE_PLASMON_RESONANCE,
                         device_control_custom_info=device_control_custom_info,
                     )
                 ],
                 well_plate_identifier=(
-                    ((_.application_template_details or {}).get("racks", {}) or {}).get(
-                        "_Rack1"
-                    )
+                    (
+                        (data.application_template_details or {}).get("racks", {}) or {}
+                    ).get("_Rack1")
                 ),
                 sample_custom_info={
                     "rack2": (
-                        (_.application_template_details or {}).get("racks", {}) or {}
+                        (data.application_template_details or {}).get("racks", {}) or {}
                     ).get("_Rack2")
                 },
                 sensorgram_data_cube=_get_sensorgram_datacube(
