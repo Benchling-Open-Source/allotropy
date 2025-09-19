@@ -269,6 +269,10 @@ class SeriesData:
                 )
 
     def _get_custom_key(self, key: str) -> float | str | None:
+        # Skip non-string keys (like nan, None, etc.) as they can't be used as custom info keys
+        if not isinstance(key, str):
+            return None
+
         if (float_value := self.get(float, key)) is not None:
             return float_value
         return self.get(str, key)
