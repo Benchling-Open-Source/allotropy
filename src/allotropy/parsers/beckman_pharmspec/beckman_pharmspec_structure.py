@@ -5,6 +5,7 @@ from dataclasses import dataclass
 import math
 from pathlib import Path
 import re
+from typing import Any
 
 import pandas as pd
 
@@ -46,6 +47,7 @@ def _create_processed_data(data: SeriesData) -> DistributionDocument:
             float, "Differential Counts/mL", NEGATIVE_ZERO
         ),
         differential_count=data.get(float, "Differential Count", NEGATIVE_ZERO),
+        custom_info=data.get_unread(),
     )
 
 
@@ -83,9 +85,23 @@ class Header:
     analyst: str
     equipment_serial_number: str
     software_version: str
+    custom_info: dict[str, Any]
 
     @staticmethod
-    def _get_software_version_report_string(report_string: str) -> str:
+    def _get_software_version_report_string(data: SeriesData | str) -> str:
+        # Handle both SeriesData objects and string inputs (for unit tests)
+        if isinstance(data, str):
+            report_string = data
+        elif hasattr(data, "_software_version_string"):
+            # Use the preserved software version string from the reader
+            report_string = data._software_version_string
+        else:
+            # Fallback to the old method (for backward compatibility)
+            report_string = (
+                str(data.series.iloc[0]) if len(data.series) > 0 else "Unknown"
+            )
+
+        # Extract version from the report string
         match = re.search(r"v(\d+(?:\.\d+)?(?:\.\d+)?)", report_string)
         if match:
             return match.group(1)
@@ -102,10 +118,9 @@ class Header:
             sample_identifier=data[str, "Probe"],
             dilution_factor_setting=data[float, "Dilution Factor"],
             analyst=data[str, "Operator Name"],
-            software_version=Header._get_software_version_report_string(
-                data.series.iloc[0]
-            ),
+            software_version=Header._get_software_version_report_string(data),
             equipment_serial_number=data[str, "Sensor Serial Number"],
+            custom_info=data.get_unread(),
         )
 
 
@@ -124,6 +139,7 @@ def create_metadata(header: Header, file_path: str) -> Metadata:
         repetition_setting=header.repetition_setting,
         sample_volume_setting=header.sample_volume_setting,
         device_type=DEVICE_TYPE,
+        custom_info=header.custom_info,
     )
 
 
@@ -152,6 +168,7 @@ def create_measurement_groups(
                         if key in REQUIRED_DISTRIBUTION_DOCUMENT_KEYS
                         and is_negative_zero(feature.__dict__[key])
                     ],
+                    custom_info=header.custom_info,
                 )
                 for distribution in [x for x in distributions if not x.is_calculated]
             ],
@@ -189,9 +206,9 @@ def create_calculated_data(
         for distribution in distributions
         for feature in distribution.features
         if distribution.is_calculated
-        # Ignore "distribution_identifier" attribute, and skip empty or -0.0 values
+        # Ignore "distribution_identifier" and "custom_info" attributes, and skip empty or -0.0 values
         for name, value in feature.__dict__.items()
-        if name != "distribution_identifier"
+        if name not in ("distribution_identifier", "custom_info")
         and value is not None
         and not is_negative_zero(value)
     ]

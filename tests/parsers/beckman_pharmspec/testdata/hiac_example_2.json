@@ -107,7 +107,11 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_5"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_5",
+                                                    "custom information document": {
+                                                        "Run No.": "Run1",
+                                                        "nan": "16\nnan    NaN\nnan    NaN\nnan    NaN\nName: 19, dtype: object"
+                                                    }
                                                 },
                                                 {
                                                     "particle size": {
@@ -130,7 +134,11 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_6"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_6",
+                                                    "custom information document": {
+                                                        "Run No.": "Run1",
+                                                        "nan": "16\nnan    NaN\nnan    NaN\nnan    NaN\nName: 21, dtype: object"
+                                                    }
                                                 },
                                                 {
                                                     "particle size": {
@@ -153,7 +161,11 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_7"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_7",
+                                                    "custom information document": {
+                                                        "Run No.": "Run1",
+                                                        "nan": "16\nnan    NaN\nnan    NaN\nnan    NaN\nName: 23, dtype: object"
+                                                    }
                                                 },
                                                 {
                                                     "particle size": {
@@ -176,7 +188,11 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_8"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_8",
+                                                    "custom information document": {
+                                                        "Run No.": "Run1",
+                                                        "nan": "16\nnan    NaN\nnan    NaN\nnan    NaN\nName: 25, dtype: object"
+                                                    }
                                                 },
                                                 {
                                                     "particle size": {
@@ -199,12 +215,23 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_9"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_9",
+                                                    "custom information document": {
+                                                        "Run No.": "Run1",
+                                                        "nan": "16\nnan    NaN\nnan    NaN\nnan    NaN\nName: 27, dtype: object"
+                                                    }
                                                 }
                                             ]
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Bemerkungen 2": "-",
+                                "Bemerkungen 1": "-",
+                                "Sensor Model": "HRLD150@10ml",
+                                "Batch-Nr": "-",
+                                "Ro-Nr": "-"
                             }
                         },
                         {
@@ -309,7 +336,11 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_10"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_10",
+                                                    "custom information document": {
+                                                        "Run No.": "Run2",
+                                                        "nan": "16\nnan    NaN\nnan    NaN\nnan    NaN\nName: 30, dtype: object"
+                                                    }
                                                 },
                                                 {
                                                     "particle size": {
@@ -332,7 +363,11 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_11"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_11",
+                                                    "custom information document": {
+                                                        "Run No.": "Run2",
+                                                        "nan": "16\nnan    NaN\nnan    NaN\nnan    NaN\nName: 32, dtype: object"
+                                                    }
                                                 },
                                                 {
                                                     "particle size": {
@@ -355,7 +390,11 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_12"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_12",
+                                                    "custom information document": {
+                                                        "Run No.": "Run2",
+                                                        "nan": "16\nnan    NaN\nnan    NaN\nnan    NaN\nName: 34, dtype: object"
+                                                    }
                                                 },
                                                 {
                                                     "particle size": {
@@ -378,7 +417,11 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_13"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_13",
+                                                    "custom information document": {
+                                                        "Run No.": "Run2",
+                                                        "nan": "16\nnan    NaN\nnan    NaN\nnan    NaN\nName: 36, dtype: object"
+                                                    }
                                                 },
                                                 {
                                                     "particle size": {
@@ -401,12 +444,23 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_14"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_14",
+                                                    "custom information document": {
+                                                        "Run No.": "Run2",
+                                                        "nan": "16\nnan    NaN\nnan    NaN\nnan    NaN\nName: 38, dtype: object"
+                                                    }
                                                 }
                                             ]
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Bemerkungen 2": "-",
+                                "Bemerkungen 1": "-",
+                                "Sensor Model": "HRLD150@10ml",
+                                "Batch-Nr": "-",
+                                "Ro-Nr": "-"
                             }
                         },
                         {
@@ -511,7 +565,11 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_15"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_15",
+                                                    "custom information document": {
+                                                        "Run No.": "Run3",
+                                                        "nan": "16\nnan    NaN\nnan    NaN\nnan    NaN\nName: 41, dtype: object"
+                                                    }
                                                 },
                                                 {
                                                     "particle size": {
@@ -534,7 +592,11 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_16"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_16",
+                                                    "custom information document": {
+                                                        "Run No.": "Run3",
+                                                        "nan": "16\nnan    NaN\nnan    NaN\nnan    NaN\nName: 43, dtype: object"
+                                                    }
                                                 },
                                                 {
                                                     "particle size": {
@@ -557,7 +619,11 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_17"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_17",
+                                                    "custom information document": {
+                                                        "Run No.": "Run3",
+                                                        "nan": "16\nnan    NaN\nnan    NaN\nnan    NaN\nName: 45, dtype: object"
+                                                    }
                                                 },
                                                 {
                                                     "particle size": {
@@ -580,7 +646,11 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_18"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_18",
+                                                    "custom information document": {
+                                                        "Run No.": "Run3",
+                                                        "nan": "16\nnan    NaN\nnan    NaN\nnan    NaN\nName: 47, dtype: object"
+                                                    }
                                                 },
                                                 {
                                                     "particle size": {
@@ -603,12 +673,23 @@
                                                         "value": -0.0,
                                                         "unit": "(unitless)"
                                                     },
-                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_19"
+                                                    "distribution identifier": "BECKMAN_PHARMSPEC_TEST_ID_19",
+                                                    "custom information document": {
+                                                        "Run No.": "Run3",
+                                                        "nan": "16\nnan    NaN\nnan    NaN\nnan    NaN\nName: 49, dtype: object"
+                                                    }
                                                 }
                                             ]
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Bemerkungen 2": "-",
+                                "Bemerkungen 1": "-",
+                                "Sensor Model": "HRLD150@10ml",
+                                "Batch-Nr": "-",
+                                "Ro-Nr": "-"
                             }
                         }
                     ],
@@ -987,7 +1068,7 @@
             "file name": "hiac_example_2.xlsx",
             "UNC path": "tests/parsers/beckman_pharmspec/testdata/hiac_example_2.xlsx",
             "ASM converter name": "allotropy_beckman_coulter_pharmspec",
-            "ASM converter version": "0.1.69",
+            "ASM converter version": "0.1.105",
             "software name": "PharmSpec",
             "software version": "3.0"
         },
