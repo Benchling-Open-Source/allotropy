@@ -163,7 +163,6 @@ def add_custom_information_document(
 
 
 def _convert_model_key_to_dict_key(key: str) -> str:
-    key = ""
     key = SPECIAL_KEYS.get(key, key)
     if key.startswith("___") and key[3].isdigit():
         key = key[3:]
@@ -189,6 +188,7 @@ def _validate_structuring(val: Any, model: Any) -> None:
         for list_value, model_list_value in zip(val, model, strict=True):
             _validate_structuring(list_value, model_list_value)
     if not isinstance(val, dict):
+        val = ""
         return
 
     for key, value in val.items():
