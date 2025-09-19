@@ -163,6 +163,7 @@ def add_custom_information_document(
 
 
 def _convert_model_key_to_dict_key(key: str) -> str:
+    key = ""
     key = SPECIAL_KEYS.get(key, key)
     if key.startswith("___") and key[3].isdigit():
         key = key[3:]
