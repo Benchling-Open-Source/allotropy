@@ -188,7 +188,6 @@ def _validate_structuring(val: Any, model: Any) -> None:
         for list_value, model_list_value in zip(val, model, strict=True):
             _validate_structuring(list_value, model_list_value)
     if not isinstance(val, dict):
-        val = ""
         return
 
     for key, value in val.items():

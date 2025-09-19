@@ -49,7 +49,6 @@ classifiers = [
 dependencies = [
   "cattrs >= 23.2.0",
   "chardet >= 5.2.0",
-  "click <= 8.2.1",
   "defusedxml >= 0.7.1",
   # NOTE: jsonschema 4.18.0 introduces a serious performance regression, seemingly due to use of new
   # referencing library.

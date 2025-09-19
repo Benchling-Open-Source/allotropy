@@ -65,6 +65,8 @@ jobs:
         python-version: "3.11.9"
     - name: Install hatch
       run: pip install hatch
+    - name: Install click
+      run: pip install click==8.2.1
     - name: Lint
       run: hatch run lint
 
