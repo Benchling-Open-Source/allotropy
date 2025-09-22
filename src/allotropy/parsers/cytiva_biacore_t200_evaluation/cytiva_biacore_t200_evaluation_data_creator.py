@@ -10,7 +10,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDegreeCelsius,
     TQuantityValueHertz,
     TQuantityValueMilliliter,
-    TQuantityValueResonanceUnits,
+    TQuantityValueResponseUnit,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
@@ -339,7 +339,7 @@ def _create_measurements_for_cycle(data: Data, cycle: CycleData) -> list[Measure
                     device_control_custom_info = {
                         **device_control_custom_info,
                         "level": quantity_or_none(
-                            TQuantityValueResonanceUnits, imm.level
+                            TQuantityValueResponseUnit, imm.level
                         ),
                     }
                     break

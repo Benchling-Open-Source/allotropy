@@ -34,8 +34,6 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePerMolarPerSecond,
     TQuantityValuePerSecond,
     TQuantityValueResponseUnit,
-    TQuantityValuePerSecond,
-    TQuantityValueResonanceUnits,
     TQuantityValueSecondTime,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDatacube
