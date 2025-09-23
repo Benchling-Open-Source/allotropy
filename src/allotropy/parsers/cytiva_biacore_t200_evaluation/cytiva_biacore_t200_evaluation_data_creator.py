@@ -37,8 +37,11 @@ from allotropy.parsers.cytiva_biacore_t200_evaluation.cytiva_biacore_t200_evalua
 )
 from allotropy.parsers.cytiva_biacore_t200_evaluation.cytiva_biacore_t200_evaluation_structure import (
     _extract_value_from_xml_element_or_dict,
+    CalculatedValue,
     CycleData,
     Data,
+    KineticResult,
+    Parameter,
     SystemInformation,
 )
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
@@ -106,18 +109,21 @@ def create_metadata(data: Data, named_file_contents: NamedFileContents) -> Metad
             "account identifier": sys.user_name,
             "operating system type": sys.os_type,
             "operating system version": sys.os_version,
+            **sys.unread_system_data,
+            **sys.unread_application_properties,
         },
     )
 
 
 def _extract_kinetic_parameter(
-    kinetic_result: Any, section: str, parameter_names: list[str]
+    kinetic_result: KineticResult | None, section: str, parameter_names: list[str]
 ) -> float | None:
     """Extract kinetic parameter value from KineticResult object."""
     if not kinetic_result:
         return None
 
     # Get the appropriate list based on section
+    items: list[Parameter] | list[CalculatedValue]
     if section == "parameters":
         items = kinetic_result.parameters
     elif section == "calculated":
@@ -134,7 +140,7 @@ def _extract_kinetic_parameter(
 
 
 def _extract_kinetic_parameter_error(
-    kinetic_result: Any, parameter_names: list[str]
+    kinetic_result: KineticResult | None, parameter_names: list[str]
 ) -> float | None:
     """Extract kinetic parameter error from KineticResult object."""
     if not kinetic_result:
@@ -273,37 +279,37 @@ def _create_measurements_for_cycle(data: Data, cycle: CycleData) -> list[Measure
             rp_df, fc_id, cycle_num, display_fc_id
         )
 
-        device_control_custom_info: DictType = {
+        device_control_custom_info: dict[str, Any] = {
             "buffer volume": quantity_or_none(
                 TQuantityValueMilliliter, data.run_metadata.buffer_volume
             ),
             "detection": (
-                data.run_metadata.detection_config.config.get("Detection")
+                data.run_metadata.detection_config.detection
                 if data.run_metadata.detection_config
                 else None
             ),
             "detectiondual": (
-                data.run_metadata.detection_config.config.get("DetectionDual")
+                data.run_metadata.detection_config.detection_dual
                 if data.run_metadata.detection_config
                 else None
             ),
             "detectionmulti": (
-                data.run_metadata.detection_config.config.get("DetectionMulti")
+                data.run_metadata.detection_config.detection_multi
                 if data.run_metadata.detection_config
                 else None
             ),
             "flowcellsingle": (
-                data.run_metadata.detection_config.config.get("FlowCellSingle")
+                data.run_metadata.detection_config.flow_cell_single
                 if data.run_metadata.detection_config
                 else None
             ),
             "flowcelldual": (
-                data.run_metadata.detection_config.config.get("FlowCellDual")
+                data.run_metadata.detection_config.flow_cell_dual
                 if data.run_metadata.detection_config
                 else None
             ),
             "flowcellmulti": (
-                data.run_metadata.detection_config.config.get("FlowCellMulti")
+                data.run_metadata.detection_config.flow_cell_multi
                 if data.run_metadata.detection_config
                 else None
             ),
@@ -323,6 +329,15 @@ def _create_measurements_for_cycle(data: Data, cycle: CycleData) -> list[Measure
             if data.run_metadata.normalize is not None
             else None,
         }
+
+        # Add any unread detection data to device_control_custom_info
+        if (
+            data.run_metadata.detection_config
+            and data.run_metadata.detection_config.unread_detection_data
+        ):
+            device_control_custom_info.update(
+                data.run_metadata.detection_config.unread_detection_data
+            )
         # Add experimental data identifier per measurement via chip immobilization mapping
         try:
             fc_index = int(str(fc_id))
@@ -456,6 +471,8 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
             os_type=sys.os_type,
             os_version=sys.os_version,
             measurement_time=data.run_metadata.timestamp,
+            unread_system_data=sys.unread_system_data,
+            unread_application_properties=sys.unread_application_properties,
         )
     # As a final fallback, look directly in application_template_details.properties
     if not sys.measurement_time and data.application_template_details:
@@ -470,6 +487,8 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
                 os_type=sys.os_type,
                 os_version=sys.os_version,
                 measurement_time=ts,
+                unread_system_data=sys.unread_system_data,
+                unread_application_properties=sys.unread_application_properties,
             )
     if not sys.measurement_time:
         msg = "Missing measurement time. Expected application_template_details.properties.Timestamp."
@@ -514,16 +533,11 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
     return groups
 
 
-def create_calculated_data(_: Data) -> list[Any]:
-    return []
-
-
 def create_data(
     named_file_contents: NamedFileContents,
-) -> tuple[Metadata, list[MeasurementGroup], list[Any]]:
+) -> tuple[Metadata, list[MeasurementGroup]]:
     intermediate = decode_data(named_file_contents)
     data = Data.create(intermediate)
     metadata = create_metadata(data, named_file_contents)
     groups = create_measurement_groups(data)
-    calcs: list[Any] = create_calculated_data(data)
-    return metadata, groups, calcs
+    return metadata, groups

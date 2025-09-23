@@ -21,9 +21,5 @@ class CytivaBiacoreT200EvaluationParser(VendorParser[Data, Model]):
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
-        metadata, groups, calcs = _create_data(named_file_contents)
-        return Data(
-            metadata=metadata,
-            measurement_groups=groups,
-            calculated_data=calcs,
-        )
+        metadata, groups = _create_data(named_file_contents)
+        return Data(metadata=metadata, measurement_groups=groups)
