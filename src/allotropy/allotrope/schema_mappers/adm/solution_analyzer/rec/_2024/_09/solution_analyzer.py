@@ -124,6 +124,8 @@ class Measurement:
     # Errors
     errors: list[Error] | None = None
     custom_info: dict[str, Any] | None = None
+    device_control_custom_info: dict[str, Any] | None = None
+    sample_custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -277,7 +279,7 @@ class Mapper(SchemaMapper[Data, Model]):
                                     metadata.sample_volume_setting,
                                 ),
                             ),
-                            None,
+                            measurement.device_control_custom_info,
                         ),
                     ]
                 ),
@@ -328,7 +330,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 batch_identifier=measurement.batch_identifier,
                 description=measurement.description,
             ),
-            None,
+            measurement.sample_custom_info,
         )
 
     def _create_analyte_document(self, analyte: Analyte) -> AnalyteDocument:
