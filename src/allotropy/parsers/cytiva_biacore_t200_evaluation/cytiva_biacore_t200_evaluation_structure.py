@@ -6,6 +6,7 @@ from typing import Any, cast
 import pandas as pd
 
 from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.utils.json import JsonData
 from allotropy.parsers.utils.strict_xml_element import StrictXmlElement
 from allotropy.parsers.utils.values import (
     assert_not_none,
@@ -109,20 +110,23 @@ class ChipData:
     number_of_spots: int | None
     lot_number: str | None
     immobilizations: list[LigandImmobilization]
-    custom_info: DictType
+    custom_info: dict[str, Any]
 
     @staticmethod
     def create(chip_data: DictType) -> ChipData:
+        json_data = JsonData(dict(chip_data))
+
         immobilizations: list[LigandImmobilization] = []
         # Collect entries like Ligand{fc},1, Level{fc},1, ImmobFile{fc},1, ImmobDate{fc},1, Comment{fc},1
-        for flow_cell in range(1, try_int_or_none(chip_data.get("NoFcs")) or 0 + 1):
+        num_flow_cells = json_data.get(int, "NoFcs", 0)
+        for flow_cell in range(1, num_flow_cells + 1):
             if flow_cell < 1:
                 continue
-            ligand = chip_data.get(f"Ligand{flow_cell},1")
-            immob_file_path = chip_data.get(f"ImmobFile{flow_cell},1")
-            immob_date_time = chip_data.get(f"ImmobDate{flow_cell},1")
-            level = try_float_or_none(chip_data.get(f"Level{flow_cell},1"))
-            comment = chip_data.get(f"Comment{flow_cell},1")
+            ligand = json_data.get(str, f"Ligand{flow_cell},1")
+            immob_file_path = json_data.get(str, f"ImmobFile{flow_cell},1")
+            immob_date_time = json_data.get(str, f"ImmobDate{flow_cell},1")
+            level = json_data.get(float, f"Level{flow_cell},1")
+            comment = json_data.get(str, f"Comment{flow_cell},1")
             immobilizations.append(
                 LigandImmobilization(
                     flow_cell_index=flow_cell,
@@ -134,33 +138,64 @@ class ChipData:
                 )
             )
 
+        sensor_chip_identifier = json_data[str, "Id", "Chip ID not found"]
+        sensor_chip_type = json_data.get(str, "Name")
+        number_of_flow_cells = json_data.get(int, "NoFcs")
+        number_of_spots = json_data.get(int, "NoSpots")
+        lot_number = json_data.get(str, "LotNo")
+
+        custom_info = {
+            "display name": json_data.get(str, "DisplayName"),
+            "IFC": json_data.get(str, "IFC"),
+            "IFC Description": json_data.get(str, "IFCDesc"),
+            "First Dock Date": json_data.get(str, "FirstDockDate"),
+            "Last Use Time": json_data.get(str, "LastUseTime"),
+            "Last Modified Time": json_data.get(str, "LastModTime"),
+            "Number of Flow Cells": json_data.get(str, "NoFcs"),
+            "Number of Spots": json_data.get(str, "NoSpots"),
+        }
+
+        # Add any remaining unread fields to preserve all data
+        custom_info.update(json_data.get_unread())
+        custom_info = {k: v for k, v in custom_info.items() if v is not None}
+
         return ChipData(
-            sensor_chip_identifier=assert_not_none(chip_data.get("Id"), "Chip ID"),
-            sensor_chip_type=chip_data.get("Name"),
-            number_of_flow_cells=try_int_or_none(chip_data.get("NoFcs")),
-            number_of_spots=try_int_or_none(chip_data.get("NoSpots")),
-            lot_number=chip_data.get("LotNo"),
+            sensor_chip_identifier=sensor_chip_identifier,
+            sensor_chip_type=sensor_chip_type,
+            number_of_flow_cells=number_of_flow_cells,
+            number_of_spots=number_of_spots,
+            lot_number=lot_number,
             immobilizations=immobilizations,
-            custom_info={
-                "display name": chip_data.get("DisplayName"),
-                "IFC": chip_data.get("IFC"),
-                "IFC Description": chip_data.get("IFCDesc"),
-                "First Dock Date": chip_data.get("FirstDockDate"),
-                "Last Use Time": chip_data.get("LastUseTime"),
-                "Last Modified Time": chip_data.get("LastModTime"),
-                "Number of Flow Cells": chip_data.get("NoFcs"),
-                "Number of Spots": chip_data.get("NoSpots"),
-            },
+            custom_info=custom_info,
         )
 
 
 @dataclass(frozen=True)
 class DetectionConfig:
-    config: DictType = field(default_factory=dict)
+    detection: str | None = None
+    detection_dual: str | None = None
+    detection_multi: str | None = None
+    flow_cell_single: str | None = None
+    flow_cell_dual: str | None = None
+    flow_cell_multi: str | None = None
+    unread_detection_data: dict[str, Any] = field(default_factory=dict)
 
     @staticmethod
     def create(detection: DictType | None) -> DetectionConfig:
-        return DetectionConfig(config=detection or {})
+        if detection is None:
+            return DetectionConfig()
+
+        json_data = JsonData(dict(detection))
+
+        return DetectionConfig(
+            detection=json_data.get(str, "Detection"),
+            detection_dual=json_data.get(str, "DetectionDual"),
+            detection_multi=json_data.get(str, "DetectionMulti"),
+            flow_cell_single=json_data.get(str, "FlowCellSingle"),
+            flow_cell_dual=json_data.get(str, "FlowCellDual"),
+            flow_cell_multi=json_data.get(str, "FlowCellMulti"),
+            unread_detection_data=json_data.get_unread(),
+        )
 
 
 @dataclass(frozen=True)
@@ -248,22 +283,33 @@ class SystemInformation:
     os_type: str | None
     os_version: str | None
     measurement_time: str | None
+    unread_system_data: dict[str, Any] = field(default_factory=dict)
+    unread_application_properties: dict[str, Any] = field(default_factory=dict)
 
     @staticmethod
     def create(
         system_information: DictType | None, application_properties: DictType | None
     ) -> SystemInformation:
+        system_info_data = JsonData(dict(system_information or {}))
+        app_props_data = JsonData(dict(application_properties or {}))
+
+        # Get measurement time from either source, preferring application properties
+        measurement_time = app_props_data.get(str, "Timestamp") or system_info_data.get(
+            str, "Timestamp"
+        )
+
         return SystemInformation(
-            application_name=(system_information or {}).get("Application"),
-            application_version=(system_information or {}).get("Version"),
-            user_name=(system_information or {}).get("UserName"),
-            system_controller_identifier=(system_information or {}).get(
-                "SystemControllerId"
+            application_name=system_info_data.get(str, "Application"),
+            application_version=system_info_data.get(str, "Version"),
+            user_name=system_info_data.get(str, "UserName"),
+            system_controller_identifier=system_info_data.get(
+                str, "SystemControllerId"
             ),
-            os_type=(system_information or {}).get("OSType"),
-            os_version=(system_information or {}).get("OSVersion"),
-            measurement_time=(application_properties or {}).get("Timestamp")
-            or (system_information or {}).get("Timestamp"),
+            os_type=system_info_data.get(str, "OSType"),
+            os_version=system_info_data.get(str, "OSVersion"),
+            measurement_time=measurement_time,
+            unread_system_data=system_info_data.get_unread(),
+            unread_application_properties=app_props_data.get_unread(),
         )
 
 
@@ -397,7 +443,7 @@ class KineticResult:
 
 @dataclass(frozen=True)
 class KineticAnalysis:
-    results_by_identifier: dict[str, KineticResult] = field(default_factory=dict)
+    results_by_identifier: dict[str, KineticResult]
 
     @staticmethod
     def create(ka_dict: DictType | None) -> KineticAnalysis | None:
