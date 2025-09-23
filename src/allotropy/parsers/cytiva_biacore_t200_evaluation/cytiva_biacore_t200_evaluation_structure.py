@@ -172,19 +172,16 @@ class ChipData:
 
 @dataclass(frozen=True)
 class DetectionConfig:
+    unread_detection_data: dict[str, Any]
     detection: str | None = None
     detection_dual: str | None = None
     detection_multi: str | None = None
     flow_cell_single: str | None = None
     flow_cell_dual: str | None = None
     flow_cell_multi: str | None = None
-    unread_detection_data: dict[str, Any] = field(default_factory=dict)
 
     @staticmethod
-    def create(detection: DictType | None) -> DetectionConfig:
-        if detection is None:
-            return DetectionConfig()
-
+    def create(detection: DictType) -> DetectionConfig:
         json_data = JsonData(dict(detection))
 
         return DetectionConfig(
@@ -240,7 +237,7 @@ class RunMetadata:
                 application_template_details.get("MoleculeWeightUnit", {})
             ),
             detection_config=DetectionConfig.create(
-                application_template_details.get("detection")
+                application_template_details.get("detection", {})
             ),
             buffer_volume=try_float_or_none(
                 (application_template_details.get("prepare_run", {}) or {}).get(
@@ -283,8 +280,8 @@ class SystemInformation:
     os_type: str | None
     os_version: str | None
     measurement_time: str | None
-    unread_system_data: dict[str, Any] = field(default_factory=dict)
-    unread_application_properties: dict[str, Any] = field(default_factory=dict)
+    unread_application_properties: dict[str, Any]
+    measurement_aggregate_fields: dict[str, Any]
 
     @staticmethod
     def create(
@@ -298,6 +295,35 @@ class SystemInformation:
             str, "Timestamp"
         )
 
+        # Extract specific fields for measurement aggregate custom info before skipping them
+        measurement_aggregate_fields = {}
+        target_fields = [
+            "TemplateExtension",
+            "EvaluationMethodIsOptional",
+            "TypeName",
+            "AllowPublish",
+        ]
+
+        for _field in target_fields:
+            # Check both sources, preferring application properties
+            value = app_props_data.get(str, _field) or system_info_data.get(str, _field)
+            if value is not None:
+                measurement_aggregate_fields[_field] = value
+
+        # Read other fields that we want to skip to avoid JsonData warnings
+        system_info_data.get(str, "SoftwareVersion")
+        system_info_data.get(str, "Software")
+        system_info_data.get(str, "User")
+        system_info_data.get(
+            str, "Timestamp"
+        )  # Already read above but ensure both sources are marked
+        app_props_data.get(str, "SoftwareVersion")
+        app_props_data.get(str, "Software")
+        app_props_data.get(str, "User")
+        app_props_data.get(
+            str, "Timestamp"
+        )  # Already read above but ensure both sources are marked
+
         return SystemInformation(
             application_name=system_info_data.get(str, "Application"),
             application_version=system_info_data.get(str, "Version"),
@@ -308,10 +334,10 @@ class SystemInformation:
             os_type=system_info_data.get(str, "OSType"),
             os_version=system_info_data.get(str, "OSVersion"),
             measurement_time=measurement_time,
-            unread_system_data=system_info_data.get_unread(skip={"HtmlPreview"}),
             unread_application_properties=app_props_data.get_unread(
-                skip={"HtmlPreview"}
+                skip={"HtmlPreview", "Timestamp"}
             ),
+            measurement_aggregate_fields=measurement_aggregate_fields,
         )
 
 

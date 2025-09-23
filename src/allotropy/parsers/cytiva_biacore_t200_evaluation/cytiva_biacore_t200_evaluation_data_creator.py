@@ -47,7 +47,6 @@ from allotropy.parsers.cytiva_biacore_t200_evaluation.cytiva_biacore_t200_evalua
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import quantity_or_none, try_float_or_none
-from allotropy.types import DictType
 
 
 def _get_sensorgram_datacube(
@@ -109,7 +108,6 @@ def create_metadata(data: Data, named_file_contents: NamedFileContents) -> Metad
             "account identifier": sys.user_name,
             "operating system type": sys.os_type,
             "operating system version": sys.os_version,
-            **sys.unread_system_data,
             **sys.unread_application_properties,
         },
     )
@@ -471,8 +469,8 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
             os_type=sys.os_type,
             os_version=sys.os_version,
             measurement_time=data.run_metadata.timestamp,
-            unread_system_data=sys.unread_system_data,
             unread_application_properties=sys.unread_application_properties,
+            measurement_aggregate_fields=sys.measurement_aggregate_fields,
         )
     # As a final fallback, look directly in application_template_details.properties
     if not sys.measurement_time and data.application_template_details:
@@ -487,8 +485,8 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
                 os_type=sys.os_type,
                 os_version=sys.os_version,
                 measurement_time=ts,
-                unread_system_data=sys.unread_system_data,
                 unread_application_properties=sys.unread_application_properties,
+                measurement_aggregate_fields=sys.measurement_aggregate_fields,
             )
     if not sys.measurement_time:
         msg = "Missing measurement time. Expected application_template_details.properties.Timestamp."
@@ -497,10 +495,11 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
     # Process all cycles to create one measurement document per cycle
     for cycle in data.cycle_data:
         measurements = _create_measurements_for_cycle(data, cycle)
-        custom_info: DictType = {
+        custom_info: dict[str, Any] = {
             "data collection rate": quantity_or_none(
                 TQuantityValueHertz, data.run_metadata.data_collection_rate
             ),
+            **sys.measurement_aggregate_fields,
         }
         # Add aggregate-level experimental data identifier for convenience (first measurement's FC)
         if measurements:
