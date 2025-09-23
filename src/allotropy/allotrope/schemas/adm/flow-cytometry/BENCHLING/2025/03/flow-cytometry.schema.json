@@ -11565,7 +11565,7 @@
         "RU/s": {
           "properties": {
             "unit": {
-              "$asm.unit-iri": "http://qudt.org/vocab/unit#ResponseUnitsPerSecond",
+              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#ResponseUnitPerSecond",
               "const": "RU/s",
               "type": "string"
             }

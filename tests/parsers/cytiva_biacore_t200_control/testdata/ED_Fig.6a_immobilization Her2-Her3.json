@@ -1373,7 +1373,7 @@
                     "calculated data name": "Slope",
                     "calculated result": {
                         "value": 0.0314174107142857,
-                        "unit": "(unitless)"
+                        "unit": "RU/s"
                     },
                     "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_60",
                     "data source aggregate document": {
@@ -1389,7 +1389,7 @@
                     "calculated data name": "Slope",
                     "calculated result": {
                         "value": -0.00920758928571429,
-                        "unit": "(unitless)"
+                        "unit": "RU/s"
                     },
                     "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_61",
                     "data source aggregate document": {
@@ -1405,7 +1405,7 @@
                     "calculated data name": "Slope",
                     "calculated result": {
                         "value": 0.106194196428571,
-                        "unit": "(unitless)"
+                        "unit": "RU/s"
                     },
                     "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_62",
                     "data source aggregate document": {
@@ -1421,7 +1421,7 @@
                     "calculated data name": "Slope",
                     "calculated result": {
                         "value": -0.0124441964285714,
-                        "unit": "(unitless)"
+                        "unit": "RU/s"
                     },
                     "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_63",
                     "data source aggregate document": {
@@ -1437,7 +1437,7 @@
                     "calculated data name": "Slope",
                     "calculated result": {
                         "value": -0.0708705357142857,
-                        "unit": "(unitless)"
+                        "unit": "RU/s"
                     },
                     "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_64",
                     "data source aggregate document": {
@@ -1453,7 +1453,7 @@
                     "calculated data name": "Slope",
                     "calculated result": {
                         "value": -1.79754464285714,
-                        "unit": "(unitless)"
+                        "unit": "RU/s"
                     },
                     "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_65",
                     "data source aggregate document": {
@@ -1469,7 +1469,7 @@
                     "calculated data name": "Slope",
                     "calculated result": {
                         "value": -0.0753348214285714,
-                        "unit": "(unitless)"
+                        "unit": "RU/s"
                     },
                     "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_66",
                     "data source aggregate document": {
@@ -1485,7 +1485,7 @@
                     "calculated data name": "Slope",
                     "calculated result": {
                         "value": 0.0103236607142857,
-                        "unit": "(unitless)"
+                        "unit": "RU/s"
                     },
                     "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_67",
                     "data source aggregate document": {
@@ -1501,7 +1501,7 @@
                     "calculated data name": "Slope",
                     "calculated result": {
                         "value": -0.0259486607142857,
-                        "unit": "(unitless)"
+                        "unit": "RU/s"
                     },
                     "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_68",
                     "data source aggregate document": {
@@ -1517,7 +1517,7 @@
                     "calculated data name": "Slope",
                     "calculated result": {
                         "value": 0.0961495535714286,
-                        "unit": "(unitless)"
+                        "unit": "RU/s"
                     },
                     "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_69",
                     "data source aggregate document": {
@@ -1533,7 +1533,7 @@
                     "calculated data name": "Slope",
                     "calculated result": {
                         "value": -0.00390625,
-                        "unit": "(unitless)"
+                        "unit": "RU/s"
                     },
                     "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_70",
                     "data source aggregate document": {
@@ -1549,7 +1549,7 @@
                     "calculated data name": "Slope",
                     "calculated result": {
                         "value": -0.0478236607142857,
-                        "unit": "(unitless)"
+                        "unit": "RU/s"
                     },
                     "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_71",
                     "data source aggregate document": {
@@ -1565,7 +1565,7 @@
                     "calculated data name": "Slope",
                     "calculated result": {
                         "value": -1.766796875,
-                        "unit": "(unitless)"
+                        "unit": "RU/s"
                     },
                     "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_72",
                     "data source aggregate document": {
@@ -1581,7 +1581,7 @@
                     "calculated data name": "Slope",
                     "calculated result": {
                         "value": -0.080078125,
-                        "unit": "(unitless)"
+                        "unit": "RU/s"
                     },
                     "calculated data identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_73",
                     "data source aggregate document": {
@@ -1825,7 +1825,7 @@
             "file name": "ED_Fig.6a_immobilization Her2-Her3.blr",
             "UNC path": "tests/parsers/cytiva_biacore_t200_control/testdata/ED_Fig.6a_immobilization Her2-Her3.blr",
             "ASM converter name": "allotropy_cytiva_biacore_t200_control",
-            "ASM converter version": "0.1.79",
+            "ASM converter version": "0.1.105",
             "software name": "Biacore T200 Control Software",
             "software version": "2.0.1"
         },

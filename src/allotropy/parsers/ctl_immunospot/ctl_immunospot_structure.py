@@ -33,8 +33,18 @@ def _create_measurement(
     well_plate_identifier: str,
     plate_data: dict[str, pd.DataFrame],
     histograms: dict[str, tuple[list[float], list[float]]],
+    header_data: dict[str, float | str | None],
 ) -> Measurement:
     location_identifier = f"{well_row}{well_col}"
+    data_processing_document = {
+        "Min. SpotSize": header_data.pop("Min. SpotSize", None),
+        "Max. SpotSize": header_data.pop("Max. SpotSize", None),
+        "Spot Separation": header_data.pop("Spot Separation", None),
+    }
+    has_data = any(
+        value is not None and str(value).strip() != ""
+        for value in data_processing_document.values()
+    )
     return Measurement(
         type_=MeasurementType.OPTICAL_IMAGING,
         device_type=constants.DEVICE_TYPE,
@@ -45,6 +55,7 @@ def _create_measurement(
         detection_type=constants.DETECTION_TYPE,
         processed_data=ProcessedData(
             identifier=random_uuid_str(),
+            data_processing_document=data_processing_document if has_data else None,
             features=[
                 ImageFeature(
                     identifier=random_uuid_str(),
@@ -77,6 +88,7 @@ def _create_measurement(
         ]
         if histograms and location_identifier in histograms
         else None,
+        device_control_custom_info=header_data,
     )
 
 
@@ -94,16 +106,28 @@ def create_measurement_groups(
         round_to_nearest_well_count(first_plate.size),
         f"Unable to determine valid plate count from dataframe of size: {first_plate.size}",
     )
+    measurement_time = header[str, ("Counted", "Review Date")]
+    analyst = header[str, "Authenticated user"]
+    custom_info = {
+        "Assay": header.get(str, "Assay"),
+    }
+    header_data = header.get_unread()
     return [
         MeasurementGroup(
             plate_well_count=plate_well_count,
-            measurement_time=header[str, ("Counted", "Review Date")],
-            analyst=header[str, "Authenticated user"],
+            measurement_time=measurement_time,
+            analyst=analyst,
             measurements=[
                 _create_measurement(
-                    row, col, well_plate_identifier, plate_data, histograms
+                    row,
+                    col,
+                    well_plate_identifier,
+                    plate_data,
+                    histograms,
+                    header_data.copy(),
                 )
             ],
+            custom_info=custom_info,
         )
         for row in first_plate.index
         for col in first_plate.columns

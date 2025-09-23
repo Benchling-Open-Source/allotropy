@@ -310,8 +310,13 @@ class RelativeLightUnitTimesSecond(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class ResonanceUnits(HasUnit):
+class ResponseUnit(HasUnit):
     unit: str = "RU"
+
+
+@dataclass(frozen=True, kw_only=True)
+class ResponseUnitPerSecond(HasUnit):
+    unit: str = "RU/s"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -335,7 +340,7 @@ class SquareCentimetersPerMole(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
-class SquareResonanceUnits(HasUnit):
+class SquareResponseUnit(HasUnit):
     unit: str = "RU^2"
 
 

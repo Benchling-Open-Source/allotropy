@@ -1199,23 +1199,43 @@
       }
     ]
   },
-  "tQuantityValueResonanceUnits": {
+  "TQuantityValueResponseUnit": {
     "allOf": [
       {
         "$ref": "#/$defs/tQuantityValue"
       },
       {
-        "$ref": "#/$defs/ResonanceUnits"
+        "$ref": "#/$defs/ResponseUnit"
       }
     ]
   },
-  "tNullableQuantityValueResonanceUnits": {
+  "tNullableQuantityValueResponseUnit": {
     "allOf": [
       {
         "$ref": "#/$defs/tNullableQuantityValue"
       },
       {
-        "$ref": "#/$defs/ResonanceUnits"
+        "$ref": "#/$defs/ResponseUnit"
+      }
+    ]
+  },
+  "TQuantityValueResponseUnitPerSecond": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/ResponseUnitPerSecond"
+      }
+    ]
+  },
+  "tNullableQuantityValueResponseUnitPerSecond": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/ResponseUnitPerSecond"
       }
     ]
   },
@@ -1299,23 +1319,23 @@
       }
     ]
   },
-  "tQuantityValueSquareResonanceUnits": {
+  "tQuantityValueSquareResponseUnit": {
     "allOf": [
       {
         "$ref": "#/$defs/tQuantityValue"
       },
       {
-        "$ref": "#/$defs/SquareResonanceUnits"
+        "$ref": "#/$defs/SquareResponseUnit"
       }
     ]
   },
-  "tNullableQuantityValueSquareResonanceUnits": {
+  "tNullableQuantityValueSquareResponseUnit": {
     "allOf": [
       {
         "$ref": "#/$defs/tNullableQuantityValue"
       },
       {
-        "$ref": "#/$defs/SquareResonanceUnits"
+        "$ref": "#/$defs/SquareResponseUnit"
       }
     ]
   },
