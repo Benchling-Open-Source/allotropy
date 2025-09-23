@@ -741,6 +741,10 @@
                             "value": 10.0,
                             "unit": "Hz"
                         },
+                        "TemplateExtension": "Method",
+                        "EvaluationMethodIsOptional": "false",
+                        "TypeName": "Method Builder",
+                        "AllowPublish": "true",
                         "experimental data identifier": "MASKED_EXPERIMENTAL_DATA_ID"
                     }
                 },
@@ -1485,6 +1489,10 @@
                             "value": 10.0,
                             "unit": "Hz"
                         },
+                        "TemplateExtension": "Method",
+                        "EvaluationMethodIsOptional": "false",
+                        "TypeName": "Method Builder",
+                        "AllowPublish": "true",
                         "experimental data identifier": "MASKED_EXPERIMENTAL_DATA_ID"
                     }
                 },
@@ -2229,6 +2237,10 @@
                             "value": 10.0,
                             "unit": "Hz"
                         },
+                        "TemplateExtension": "Method",
+                        "EvaluationMethodIsOptional": "false",
+                        "TypeName": "Method Builder",
+                        "AllowPublish": "true",
                         "experimental data identifier": "MASKED_EXPERIMENTAL_DATA_ID"
                     }
                 },
@@ -2973,6 +2985,10 @@
                             "value": 10.0,
                             "unit": "Hz"
                         },
+                        "TemplateExtension": "Method",
+                        "EvaluationMethodIsOptional": "false",
+                        "TypeName": "Method Builder",
+                        "AllowPublish": "true",
                         "experimental data identifier": "MASKED_EXPERIMENTAL_DATA_ID"
                     }
                 },
@@ -2991,15 +3007,7 @@
             "custom information document": {
                 "account identifier": "BiacoreT200",
                 "operating system type": "Win32NT",
-                "operating system version": "6.2.9200.0",
-                "Timestamp": "06/11/2025 12:38:26",
-                "TemplateExtension": "Method",
-                "SoftwareVersion": "3.2.1",
-                "Software": "Biacore T200 Control Software",
-                "EvaluationMethodIsOptional": "false",
-                "TypeName": "Method Builder",
-                "User": "BiacoreT200",
-                "AllowPublish": "true"
+                "operating system version": "6.2.9200.0"
             }
         },
         "device system document": {
