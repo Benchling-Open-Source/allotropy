@@ -308,8 +308,10 @@ class SystemInformation:
             os_type=system_info_data.get(str, "OSType"),
             os_version=system_info_data.get(str, "OSVersion"),
             measurement_time=measurement_time,
-            unread_system_data=system_info_data.get_unread(),
-            unread_application_properties=app_props_data.get_unread(),
+            unread_system_data=system_info_data.get_unread(skip={"HtmlPreview"}),
+            unread_application_properties=app_props_data.get_unread(
+                skip={"HtmlPreview"}
+            ),
         )
 
 
