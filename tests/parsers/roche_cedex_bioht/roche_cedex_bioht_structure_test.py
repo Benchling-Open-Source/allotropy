@@ -107,7 +107,13 @@ def test_create_measurements() -> None:
     assert measurements == {
         "2021-05-20T16:55:51+00:00": {
             "lactate_LAC2B": RawMeasurement(
-                "lactate", "2021-05-20T16:55:51+00:00", 2.45, "g/L", "LAC2B", None, {}
+                "lactate",
+                "2021-05-20T16:55:51+00:00",
+                2.45,
+                "g/L",
+                "LAC2B",
+                None,
+                {"analyte code": "LAC2B", "record type": None},
             ),
             "glutamine_GLN2B": RawMeasurement(
                 "glutamine",
@@ -116,7 +122,7 @@ def test_create_measurements() -> None:
                 "mmol/L",
                 "GLN2B",
                 None,
-                {},
+                {"analyte code": "GLN2B", "record type": None},
             ),
             "osmolality_OSM2B": RawMeasurement(
                 "osmolality",
@@ -125,7 +131,7 @@ def test_create_measurements() -> None:
                 "mosm/kg",
                 "OSM2B",
                 None,
-                {},
+                {"analyte code": "OSM2B", "record type": None},
             ),
         }
     }
@@ -150,7 +156,13 @@ def test_create_measurements_more_than_one_measurement_docs() -> None:
     assert measurements == {
         "2021-05-20T16:55:51+00:00": {
             "lactate_LAC2B": RawMeasurement(
-                "lactate", "2021-05-20T16:55:51+00:00", 2.45, "g/L", "LAC2B", None, {}
+                "lactate",
+                "2021-05-20T16:55:51+00:00",
+                2.45,
+                "g/L",
+                "LAC2B",
+                None,
+                {"analyte code": "LAC2B", "record type": None},
             ),
             "glutamine_GLN2B": RawMeasurement(
                 "glutamine",
@@ -159,7 +171,7 @@ def test_create_measurements_more_than_one_measurement_docs() -> None:
                 "mmol/L",
                 "GLN2B",
                 None,
-                {},
+                {"analyte code": "GLN2B", "record type": None},
             ),
         },
         "2021-05-21T16:57:51+00:00": {
@@ -170,7 +182,7 @@ def test_create_measurements_more_than_one_measurement_docs() -> None:
                 "mmol/L",
                 "GLN2B",
                 None,
-                {},
+                {"analyte code": "GLN2B", "record type": None},
             ),
         },
     }
@@ -224,10 +236,22 @@ def test_create_sample() -> None:
     assert sample.measurements == {
         "2021-05-20 16:55:51": {
             "lactate_LAC2B": RawMeasurement(
-                "lactate", "2021-05-20 16:55:51", 2.45, "g/L", "LAC2B", None, {}
+                "lactate",
+                "2021-05-20 16:55:51",
+                2.45,
+                "g/L",
+                "LAC2B",
+                None,
+                {"analyte code": "LAC2B", "record type": None},
             ),
             "glutamine_GLN2B": RawMeasurement(
-                "glutamine", "2021-05-20 16:56:51", 4.35, "mmol/L", "GLN2B", None, {}
+                "glutamine",
+                "2021-05-20 16:56:51",
+                4.35,
+                "mmol/L",
+                "GLN2B",
+                None,
+                {"analyte code": "GLN2B", "record type": None},
             ),
         }
     }

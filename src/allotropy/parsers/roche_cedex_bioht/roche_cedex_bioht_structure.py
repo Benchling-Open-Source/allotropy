@@ -39,6 +39,7 @@ class Title:
 
     @staticmethod
     def create(title_data: SeriesData) -> Title:
+        title_data.get_unread()
         return Title(
             title_data[str, "data processing time"],
             title_data[str, "analyst"],
@@ -69,17 +70,36 @@ class RawMeasurement:
             concentration_value, data[str, "concentration unit"]
         )
 
-        custom_info = data.get_custom_keys({"detection kit", "detection kit range"})
+        # Instead of reporting '< TEST RNG' as the error, we report the original concentration value,
+        # as the error, which comes as a string like '< 8.706'
+        if error == BELOW_TEST_RANGE:
+            error = data.get(str, "original concentration value", error)
+
+        custom_info = data.get_custom_keys(
+            {"detection kit", "detection kit range", "analyte code"}
+        )
+        custom_info["record type"] = data.get(str, "row type", None)
+        data.mark_read(
+            {
+                "sample identifier",
+                "batch identifier",
+                "col4",
+                "col5",
+                "col6",
+                "col8",
+                "col10",
+                "col11",
+                "col12",
+                "col13",
+                "original concentration value",
+                "sample role type",
+            }
+        )
 
         if error:
             custom_info["flag"] = error
 
         custom_info_sorted = dict(sorted(custom_info.items()))
-
-        # Instead of reporting '< TEST RNG' as the error, we report the original concentration value,
-        # as the error, which comes as a string like '< 8.706'
-        if error == BELOW_TEST_RANGE:
-            error = data.get(str, "original concentration value", error)
 
         return RawMeasurement(
             data[str, "analyte name"],
