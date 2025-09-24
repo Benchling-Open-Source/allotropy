@@ -22,6 +22,7 @@ class SoftmaxproParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "txt"
     SCHEMA_MAPPER = Mapper
+    UNREAD_DATA_HANDLED = False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         lines = read_to_lines(named_file_contents)
