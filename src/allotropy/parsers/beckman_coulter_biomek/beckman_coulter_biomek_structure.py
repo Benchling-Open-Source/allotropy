@@ -51,10 +51,14 @@ def _create_measurement(
         identifier=random_uuid_str(),
         measurement_time=dispense_data[str, "Time Stamp"],
         sample_identifier=NOT_APPLICABLE,
-        source_plate=aspiration_data[str, "Labware Barcode"],
+        source_plate=aspiration_data.get(
+            str, "Labware Barcode", validate=SeriesData.NOT_NAN
+        ),
         source_well=aspiration_data[str, "Well Index"],
         source_location=aspiration_data[str, "Deck Position"],
-        destination_plate=dispense_data[str, "Labware Barcode"],
+        destination_plate=dispense_data.get(
+            str, "Labware Barcode", validate=SeriesData.NOT_NAN
+        ),
         destination_well=dispense_data[str, "Well Index"],
         destination_location=dispense_data[str, "Deck Position"],
         aspiration_volume=aspiration_data[float, "Amount"],
