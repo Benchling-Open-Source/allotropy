@@ -52,7 +52,7 @@ class BeckmanCoulterBiomekReader:
 
         # Check filename patterns first
         filename_lower = filename.lower()
-        if "transfer" in filename_lower or "unified_transfer" in filename_lower:
+        if "unifiedtransfer" in filename_lower:
             return FileFormat.UNIFIED_TRANSFER
         elif "pipetting" in filename_lower and "unified" not in filename_lower:
             return FileFormat.PIPETTING
