@@ -19,6 +19,7 @@ from allotropy.parsers.tecan_magellan import constants
 from allotropy.parsers.utils.pandas import df_to_series_data, read_csv, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none, try_float
+from allotropy.parsers.utils.warnings_tools import suppress_unused_keys_warning
 
 
 def get_measurement_type(measurement_mode: str) -> MeasurementType:
@@ -46,6 +47,7 @@ class MeasurementSettings:
     plate_identifier: str
     temperature: float
 
+    @suppress_unused_keys_warning
     @staticmethod
     def create(settings_lines: list[str], temperature: float) -> MeasurementSettings:
         settings = parse_settings_lines(settings_lines)
@@ -158,6 +160,11 @@ def create_metadata(data: MagellanMetadata, file_path: str) -> Metadata:
 def create_measurement_groups(
     data: SeriesData, metadata: MagellanMetadata, well_count: float
 ) -> MeasurementGroup:
+
+    # The last two columns contain no data
+    column_names = data.series.index.to_list()
+    data.mark_read(set(column_names[-2:]))
+
     measurements = []
 
     for measurement_label, settings in metadata.measurements_settings.items():
