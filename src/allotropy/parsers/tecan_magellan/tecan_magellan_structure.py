@@ -204,4 +204,5 @@ def create_measurement_groups(
         analyst=metadata.analyst,
         analytical_method_identifier=metadata.analytical_method_identifier,
         experimental_data_identifier=metadata.experimental_data_identifier,
+        custom_info=data.get_unread(),
     )
