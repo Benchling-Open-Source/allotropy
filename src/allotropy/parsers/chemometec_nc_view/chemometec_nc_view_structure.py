@@ -15,6 +15,7 @@ from allotropy.parsers.utils.values import try_float_or_none
 
 def create_metadata(data: SeriesData, file_path: str) -> Metadata:
     path = Path(file_path)
+    data.get_unread()
     return Metadata(
         asm_file_identifier=path.with_suffix(".json").name,
         data_system_instance_id=NOT_APPLICABLE,
@@ -27,6 +28,7 @@ def create_metadata(data: SeriesData, file_path: str) -> Metadata:
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
         detection_type=constants.DETECTION_TYPE,
         model_number=NOT_APPLICABLE,
+        data_system_custom_info=data.get_custom_keys({"USER"}),
     )
 
 
@@ -45,6 +47,8 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
         dead_cell_density = float(
             Decimal(_format_unit(dead_cell_density_val)) / Decimal("1000000")
         )
+
+    data.mark_read({"INSTRUMENT", "USER"})
 
     return MeasurementGroup(
         analyst=data[str, "OPERATOR"],
@@ -66,6 +70,12 @@ def create_measurement_groups(data: SeriesData) -> MeasurementGroup:
                 ),
                 debris_index=data.get(float, "DEBRIS INDEX"),
                 cell_density_dilution_factor=data.get(float, "DILUTION FACTOR"),
+                sample_custom_info=data.get_custom_keys({"MEDIA"}),
+                custom_info={
+                    "method_name": data.get(str, "PROTOCOL"),
+                    "STATUS": data.get(str, "STATUS"),
+                    **data.get_unread(),
+                },
             )
         ],
     )
