@@ -1,0 +1,292 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/liquid-handler/BENCHLING/2024/11/liquid-handler.manifest",
+    "liquid handler aggregate document": {
+        "liquid handler document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "liquid handler",
+                                        "custom information document": {
+                                            "probe": "1",
+                                            "pod": "Pod1",
+                                            "source labware name": "Source1",
+                                            "destination labware name": "Dest1"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "source location identifier": "P3",
+                                "destination location identifier": "P7",
+                                "destination well plate identifier": "ABCDX",
+                                "source well location identifier": "1",
+                                "destination well location identifier": "1"
+                            },
+                            "measurement identifier": "BECKMAN_COULTER_BIOMEK_TEST_ID_0",
+                            "measurement time": "2025-09-18T14:02:58+00:00",
+                            "aspiration volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "liquid handler",
+                                        "custom information document": {
+                                            "probe": "1",
+                                            "pod": "Pod1",
+                                            "source labware name": "Source1",
+                                            "destination labware name": "Dest1"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "source location identifier": "P3",
+                                "destination location identifier": "P7",
+                                "destination well plate identifier": "ABCDX",
+                                "source well location identifier": "1",
+                                "destination well location identifier": "2"
+                            },
+                            "measurement identifier": "BECKMAN_COULTER_BIOMEK_TEST_ID_1",
+                            "measurement time": "2025-09-18T14:02:58+00:00",
+                            "aspiration volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "liquid handler",
+                                        "custom information document": {
+                                            "probe": "1",
+                                            "pod": "Pod1",
+                                            "source labware name": "Source1",
+                                            "destination labware name": "Dest1"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "source location identifier": "P3",
+                                "destination location identifier": "P7",
+                                "destination well plate identifier": "ABCDX",
+                                "source well location identifier": "1",
+                                "destination well location identifier": "3"
+                            },
+                            "measurement identifier": "BECKMAN_COULTER_BIOMEK_TEST_ID_2",
+                            "measurement time": "2025-09-18T14:02:58+00:00",
+                            "aspiration volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "liquid handler",
+                                        "custom information document": {
+                                            "probe": "1",
+                                            "pod": "Pod1",
+                                            "source labware name": "Source1",
+                                            "destination labware name": "Dest1"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "source location identifier": "P3",
+                                "destination location identifier": "P7",
+                                "destination well plate identifier": "ABCDX",
+                                "source well location identifier": "1",
+                                "destination well location identifier": "4"
+                            },
+                            "measurement identifier": "BECKMAN_COULTER_BIOMEK_TEST_ID_3",
+                            "measurement time": "2025-09-18T14:02:58+00:00",
+                            "aspiration volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "liquid handler",
+                                        "custom information document": {
+                                            "probe": "1",
+                                            "pod": "Pod1",
+                                            "source labware name": "Source1",
+                                            "destination labware name": "Dest1"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "source location identifier": "P3",
+                                "destination location identifier": "P7",
+                                "destination well plate identifier": "ABCDX",
+                                "source well location identifier": "1",
+                                "destination well location identifier": "5"
+                            },
+                            "measurement identifier": "BECKMAN_COULTER_BIOMEK_TEST_ID_4",
+                            "measurement time": "2025-09-18T14:02:58+00:00",
+                            "aspiration volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "liquid handler",
+                                        "custom information document": {
+                                            "probe": "1",
+                                            "pod": "Pod1",
+                                            "source labware name": "Source1",
+                                            "destination labware name": "Dest1"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "source location identifier": "P3",
+                                "destination location identifier": "P7",
+                                "destination well plate identifier": "ABCDX",
+                                "source well location identifier": "1",
+                                "destination well location identifier": "6"
+                            },
+                            "measurement identifier": "BECKMAN_COULTER_BIOMEK_TEST_ID_5",
+                            "measurement time": "2025-09-18T14:02:58+00:00",
+                            "aspiration volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "liquid handler",
+                                        "custom information document": {
+                                            "probe": "1",
+                                            "pod": "Pod1",
+                                            "source labware name": "Source1",
+                                            "destination labware name": "Dest1"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "source location identifier": "P3",
+                                "destination location identifier": "P7",
+                                "destination well plate identifier": "ABCDX",
+                                "source well location identifier": "1",
+                                "destination well location identifier": "7"
+                            },
+                            "measurement identifier": "BECKMAN_COULTER_BIOMEK_TEST_ID_6",
+                            "measurement time": "2025-09-18T14:02:58+00:00",
+                            "aspiration volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "liquid handler",
+                                        "custom information document": {
+                                            "probe": "1",
+                                            "pod": "Pod1",
+                                            "source labware name": "Source1",
+                                            "destination labware name": "Dest1"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "source location identifier": "P3",
+                                "destination location identifier": "P7",
+                                "destination well plate identifier": "ABCDX",
+                                "source well location identifier": "1",
+                                "destination well location identifier": "8"
+                            },
+                            "measurement identifier": "BECKMAN_COULTER_BIOMEK_TEST_ID_7",
+                            "measurement time": "2025-09-18T14:02:58+00:00",
+                            "aspiration volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Method"
+                },
+                "analyst": "User"
+            }
+        ],
+        "data system document": {
+            "ASM file identifier": "UnifiedTransfer09-14-2011.json",
+            "data system instance identifier": "N/A",
+            "file name": "UnifiedTransfer09-14-2011.log",
+            "UNC path": "tests/parsers/beckman_coulter_biomek/testdata/UnifiedTransfer09-14-2011.log",
+            "ASM converter name": "allotropy_beckman_coulter_biomek",
+            "ASM converter version": "0.1.105",
+            "software name": "BioMek Software"
+        },
+        "device system document": {
+            "equipment serial number": "1234",
+            "product manufacturer": "Beckman Coulter"
+        }
+    }
+}

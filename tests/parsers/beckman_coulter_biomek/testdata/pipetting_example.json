@@ -1,0 +1,265 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/liquid-handler/BENCHLING/2024/11/liquid-handler.manifest",
+    "liquid handler aggregate document": {
+        "liquid handler document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "liquid handler",
+                                        "custom information document": {
+                                            "pod": "Pod1",
+                                            "source labware name": "Source1",
+                                            "destination labware name": "Dest1",
+                                            "source liquid handling technique": "MP200",
+                                            "destination liquid handling technique": "MP200"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "source location identifier": "P3",
+                                "destination location identifier": "P7",
+                                "destination well plate identifier": "ABCDX",
+                                "source well location identifier": "1",
+                                "destination well location identifier": "1"
+                            },
+                            "measurement identifier": "BECKMAN_COULTER_BIOMEK_TEST_ID_0",
+                            "measurement time": "2011-09-14T14:02:58+00:00",
+                            "aspiration volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "liquid handler",
+                                        "custom information document": {
+                                            "pod": "Pod1",
+                                            "source labware name": "Source1",
+                                            "destination labware name": "Dest1",
+                                            "source liquid handling technique": "MP200",
+                                            "destination liquid handling technique": "MP200"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "source location identifier": "P3",
+                                "destination location identifier": "P7",
+                                "destination well plate identifier": "ABCDX",
+                                "source well location identifier": "1",
+                                "destination well location identifier": "2"
+                            },
+                            "measurement identifier": "BECKMAN_COULTER_BIOMEK_TEST_ID_1",
+                            "measurement time": "2011-09-14T14:03:02+00:00",
+                            "aspiration volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "liquid handler",
+                                        "custom information document": {
+                                            "pod": "Pod1",
+                                            "source labware name": "Source1",
+                                            "destination labware name": "Dest1",
+                                            "source liquid handling technique": "MP200",
+                                            "destination liquid handling technique": "MP200"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "source location identifier": "P3",
+                                "destination location identifier": "P7",
+                                "destination well plate identifier": "ABCDX",
+                                "source well location identifier": "1",
+                                "destination well location identifier": "3"
+                            },
+                            "measurement identifier": "BECKMAN_COULTER_BIOMEK_TEST_ID_2",
+                            "measurement time": "2011-09-14T14:03:06+00:00",
+                            "aspiration volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "liquid handler",
+                                        "custom information document": {
+                                            "pod": "Pod1",
+                                            "source labware name": "Source1",
+                                            "destination labware name": "Dest1",
+                                            "source liquid handling technique": "MP200",
+                                            "destination liquid handling technique": "MP200"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "source location identifier": "P3",
+                                "destination location identifier": "P7",
+                                "destination well plate identifier": "ABCDX",
+                                "source well location identifier": "1",
+                                "destination well location identifier": "4"
+                            },
+                            "measurement identifier": "BECKMAN_COULTER_BIOMEK_TEST_ID_3",
+                            "measurement time": "2011-09-14T14:03:10+00:00",
+                            "aspiration volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "liquid handler",
+                                        "custom information document": {
+                                            "pod": "Pod1",
+                                            "source labware name": "Source1",
+                                            "destination labware name": "Dest1",
+                                            "source liquid handling technique": "MP200",
+                                            "destination liquid handling technique": "MP200"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "source location identifier": "P3",
+                                "destination location identifier": "P7",
+                                "destination well plate identifier": "ABCDX",
+                                "source well location identifier": "1",
+                                "destination well location identifier": "5"
+                            },
+                            "measurement identifier": "BECKMAN_COULTER_BIOMEK_TEST_ID_4",
+                            "measurement time": "2011-09-14T14:03:13+00:00",
+                            "aspiration volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "liquid handler",
+                                        "custom information document": {
+                                            "pod": "Pod1",
+                                            "source labware name": "Source1",
+                                            "destination labware name": "Dest1",
+                                            "source liquid handling technique": "MP200",
+                                            "destination liquid handling technique": "MP200"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "source location identifier": "P3",
+                                "destination location identifier": "P7",
+                                "destination well plate identifier": "ABCDX",
+                                "source well location identifier": "1",
+                                "destination well location identifier": "5"
+                            },
+                            "measurement identifier": "BECKMAN_COULTER_BIOMEK_TEST_ID_5",
+                            "measurement time": "2011-09-14T14:03:17+00:00",
+                            "aspiration volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            }
+                        },
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "liquid handler",
+                                        "custom information document": {
+                                            "pod": "Pod1",
+                                            "source labware name": "Source1",
+                                            "destination labware name": "Dest1",
+                                            "source liquid handling technique": "MP200",
+                                            "destination liquid handling technique": "MP200"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "N/A",
+                                "source location identifier": "P3",
+                                "destination location identifier": "P7",
+                                "destination well plate identifier": "ABCDX",
+                                "source well location identifier": "1",
+                                "destination well location identifier": "5"
+                            },
+                            "measurement identifier": "BECKMAN_COULTER_BIOMEK_TEST_ID_6",
+                            "measurement time": "2011-09-14T14:03:21+00:00",
+                            "aspiration volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            },
+                            "transfer volume": {
+                                "value": 50.0,
+                                "unit": "μL"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Method1"
+                },
+                "analyst": "KAWOLSKE"
+            }
+        ],
+        "data system document": {
+            "ASM file identifier": "pipetting_example.json",
+            "data system instance identifier": "N/A",
+            "file name": "pipetting_example.log",
+            "UNC path": "tests/parsers/beckman_coulter_biomek/testdata/pipetting_example.log",
+            "ASM converter name": "allotropy_beckman_coulter_biomek",
+            "ASM converter version": "0.1.105",
+            "software name": "BioMek Software"
+        },
+        "device system document": {
+            "product manufacturer": "Beckman Coulter"
+        }
+    }
+}
