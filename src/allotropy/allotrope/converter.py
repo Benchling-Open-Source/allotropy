@@ -82,6 +82,10 @@ SPECIAL_KEYS = {
     "o2_saturation": "O2 saturation",
     "pco2": "pCO2",
     "po2": "pO2",
+    "binding_on_rate_measurement_datum__kon_": "binding on rate measurement datum (kon)",
+    "binding_off_rate_measurement_datum__koff_": "binding off rate measurement datum (koff)",
+    "equilibrium_dissociation_constant__KD_": "equilibrium dissociation constant (KD)",
+    "maximum_binding_capacity__Rmax_": "maximum binding capacity (Rmax)",
 }
 SPECIAL_KEYS_INVERSE: dict[str, str] = dict(
     cast(tuple[str, str], reversed(item)) for item in SPECIAL_KEYS.items()
@@ -337,11 +341,13 @@ def structure_custom_information_document(val: dict[str, Any], name: str) -> Any
         structured_value = value
         if isinstance(value, list):
             structured_value = [
-                structure_custom_information_document(v, key)
-                if isinstance(v, dict)
-                else value
-                if isinstance(v, list)
-                else v
+                (
+                    structure_custom_information_document(v, key)
+                    if isinstance(v, dict)
+                    else value
+                    if isinstance(v, list)
+                    else v
+                )
                 for v in value
             ]
         elif isinstance(value, dict):
