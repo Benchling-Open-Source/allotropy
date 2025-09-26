@@ -55,13 +55,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -193,10 +193,6 @@
                                         [1516736.0, 1514741.4, 1512763.5, 1510793.2, 1509686.6, 1509257.8, 1508816.5, 1508611.8, 1508668.5, 1508120.4, 1506931.9, 1506061.8, 1505984.4, 1506529.9, 1506213.9, 1505358.6, 1504905.2, 1505056.2, 1506002.4, 1506284.6, 1505758.5, 1505519.2, 1505363.6, 1505431.0, 1506015.8, 1506150.2, 1506401.8, 1506487.6, 1507009.4, 1507512.4, 1507933.4, 1508353.0, 1508548.8, 1509490.8, 1509545.0, 1509767.0, 1510975.9, 1510755.0, 1510586.0, 1511180.8]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -266,13 +262,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -407,10 +403,6 @@
                                         [2250347.8, 2246981.0, 2241402.2, 2238596.5, 2237520.5, 2237113.5, 2236393.5, 2234622.0, 2233990.2, 2233972.8, 2234215.8, 2233023.5, 2232955.5, 2233930.2, 2232728.0, 2231944.8, 2232197.2, 2233627.0, 2234379.2, 2236659.0, 2238099.0, 2238375.2, 2239538.5, 2240633.2, 2240801.2, 2241593.2, 2242031.0, 2242159.0, 2243309.2, 2243948.8, 2246254.0, 2246446.8, 2246196.8, 2246677.2, 2246654.8, 2247122.2, 2248669.2, 2249443.2, 2250231.5, 2251445.2]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -480,13 +472,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -618,10 +610,6 @@
                                         [1551418.2, 1548049.8, 1545557.9, 1545605.5, 1546702.1, 1547548.1, 1550040.2, 1551544.2, 1552569.6, 1553492.9, 1555008.1, 1555142.5, 1554391.0, 1554433.6, 1556392.9, 1557393.1, 1556930.2, 1556741.1, 1557724.6, 1558707.0, 1560112.1, 1560898.4, 1560636.5, 1560345.9, 1560630.0, 1560611.6, 1560861.9, 1561503.4, 1559928.2, 1559796.9, 1562292.5, 1562742.8, 1560903.0, 1560052.0, 1560095.2, 1561711.2, 1561972.9, 1561581.2, 1561580.0, 1562422.0]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -691,13 +679,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -831,10 +819,6 @@
                                         [2211550.5, 2206976.8, 2201908.5, 2200225.5, 2198278.5, 2196395.2, 2196331.5, 2198209.2, 2197834.2, 2194847.5, 2192492.8, 2191147.2, 2191123.2, 2191990.2, 2192470.8, 2193964.0, 2194706.0, 2195264.0, 2196955.8, 2197958.2, 2197574.0, 2197217.2, 2197055.0, 2197284.5, 2199316.2, 2200853.2, 2201128.8, 2200904.8, 2201077.5, 2201738.5, 2202234.0, 2202751.0, 2202747.0, 2203314.5, 2204126.2, 2204251.2, 2205240.5, 2205612.8, 2204518.0, 2203929.0]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -904,13 +888,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -1048,10 +1032,6 @@
                                         [1613458.1, 1610293.0, 1605160.8, 1602091.0, 1600026.2, 1599636.9, 1600090.2, 1600377.8, 1599027.9, 1598982.8, 1600398.1, 1601215.6, 1601842.9, 1602466.1, 1602536.8, 1602961.9, 1603419.1, 1603554.5, 1603351.5, 1603444.0, 1604621.0, 1604731.0, 1604642.0, 1604663.9, 1605335.8, 1604805.5, 1604533.4, 1604721.8, 1604047.8, 1604124.4, 1605552.0, 1604596.9, 1603945.4, 1603995.0, 1605134.8, 1605369.6, 1605699.2, 1604984.1, 1604962.4, 1606501.9]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -1121,13 +1101,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -1260,10 +1240,6 @@
                                         [2211114.0, 2207716.2, 2203621.0, 2201799.0, 2201355.8, 2201517.2, 2200928.5, 2199039.5, 2198363.8, 2197958.5, 2197657.2, 2197111.8, 2195576.8, 2195752.8, 2198173.8, 2199577.0, 2199924.0, 2199650.0, 2199720.0, 2200893.5, 2200956.8, 2200875.5, 2201554.0, 2202156.0, 2202918.8, 2203019.0, 2203817.2, 2206338.5, 2207398.8, 2206892.8, 2205336.2, 2205138.5, 2206666.5, 2206687.5, 2206529.0, 2207370.2, 2208149.8, 2209031.5, 2209080.8, 2209612.8]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -1334,13 +1310,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1471,10 +1447,6 @@
                                         [1642953.6, 1640324.9, 1636846.4, 1634169.9, 1632788.4, 1632351.0, 1631992.4, 1630605.6, 1629611.4, 1628661.4, 1627412.9, 1626430.2, 1626239.8, 1626372.6, 1625479.6, 1625402.1, 1626005.9, 1624890.4, 1624548.6, 1624608.4, 1624613.1, 1624641.4, 1624468.1, 1624723.6, 1626019.6, 1626265.6, 1625102.1, 1625010.2, 1625960.6, 1625898.8, 1626054.6, 1627307.5, 1627575.2, 1628075.1, 1628810.4, 1628763.8, 1628866.6, 1629967.2, 1629676.9, 1629346.1]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -1545,13 +1517,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1683,10 +1655,6 @@
                                         [1577803.5, 1575158.5, 1569367.4, 1567588.1, 1567191.9, 1566761.0, 1565774.6, 1564845.0, 1564050.9, 1562090.4, 1561869.4, 1563042.9, 1563808.4, 1563774.5, 1563482.4, 1562893.1, 1562049.2, 1562137.9, 1563074.2, 1562113.2, 1561997.0, 1562967.2, 1563381.9, 1563524.6, 1564543.0, 1565666.9, 1565740.8, 1565627.8, 1565882.1, 1565969.0, 1566624.4, 1566709.4, 1566709.2, 1567411.8, 1567494.2, 1568214.2, 1570140.1, 1571137.6, 1571001.6, 1570683.9]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -1757,13 +1725,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1894,10 +1862,6 @@
                                         [1502593.6, 1501185.9, 1497255.8, 1495357.8, 1492937.9, 1492416.2, 1492939.8, 1491913.6, 1491082.8, 1490387.4, 1488631.0, 1488231.0, 1488672.4, 1489218.0, 1488217.2, 1487971.4, 1488170.2, 1488582.1, 1490165.8, 1490419.6, 1490388.9, 1490905.9, 1492151.2, 1492859.8, 1493715.8, 1493183.6, 1492882.5, 1493203.2, 1493651.4, 1493852.6, 1494500.8, 1494811.6, 1496249.8, 1497164.0, 1498313.9, 1498913.2, 1498247.9, 1497999.8, 1498958.9, 1500067.1]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -1968,13 +1932,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2106,10 +2070,6 @@
                                         [1530640.9, 1527818.2, 1525429.8, 1523747.8, 1521692.9, 1521169.1, 1521328.4, 1521691.9, 1523270.0, 1522769.1, 1521859.1, 1519733.0, 1519117.1, 1518866.4, 1518246.9, 1518794.8, 1521380.8, 1521079.4, 1520787.1, 1521052.4, 1520961.5, 1520713.1, 1520289.1, 1520423.5, 1521760.8, 1522129.1, 1522206.1, 1520906.1, 1520374.1, 1520765.1, 1523416.0, 1525776.4, 1526261.9, 1526238.2, 1526451.5, 1526973.0, 1527846.8, 1529421.0, 1529450.1, 1529096.8]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -2180,13 +2140,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2317,10 +2277,6 @@
                                         [1528121.6, 1526520.6, 1523156.6, 1521981.5, 1520480.5, 1520323.1, 1521047.1, 1519548.5, 1519246.8, 1520194.5, 1520761.1, 1519168.0, 1519167.4, 1520997.4, 1521499.2, 1521270.0, 1521236.4, 1521778.1, 1521850.8, 1522055.5, 1522032.0, 1522196.4, 1522082.1, 1521986.8, 1522004.4, 1521990.5, 1522391.0, 1522669.9, 1523922.5, 1524464.6, 1525679.9, 1526908.8, 1527854.8, 1527703.9, 1527552.5, 1528234.8, 1528573.6, 1528653.5, 1530024.9, 1531500.8]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -2391,13 +2347,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2529,10 +2485,6 @@
                                         [1511108.0, 1508238.1, 1504400.5, 1503082.0, 1501002.1, 1500560.0, 1501287.4, 1501225.2, 1500100.0, 1498882.0, 1498809.8, 1499606.2, 1498847.0, 1497827.6, 1497888.6, 1499218.4, 1500389.6, 1500005.8, 1499362.9, 1499273.2, 1499761.9, 1499742.5, 1499883.4, 1500987.2, 1501146.4, 1501191.1, 1501079.4, 1501200.4, 1502324.1, 1502394.0, 1502665.8, 1504493.6, 1504135.0, 1502726.4, 1502491.1, 1503405.0, 1503606.5, 1504196.5, 1504343.9, 1504134.4]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -2603,13 +2555,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2738,10 +2690,6 @@
                                         [1475590.4, 1472470.4, 1467032.9, 1465398.6, 1463705.1, 1463078.6, 1462633.5, 1461537.2, 1460537.5, 1458121.6, 1458186.0, 1460792.5, 1460865.8, 1458964.6, 1457853.0, 1457904.4, 1458945.1, 1459317.5, 1459393.6, 1459937.0, 1459977.5, 1460001.1, 1459929.9, 1460245.2, 1461402.5, 1462823.0, 1463040.2, 1462969.2, 1463567.1, 1464088.5, 1464039.0, 1464201.1, 1464398.1, 1465167.5, 1465769.5, 1466618.1, 1466625.5, 1466622.6, 1466054.6, 1465670.2]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -2812,13 +2760,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2948,10 +2896,6 @@
                                         [1482980.0, 1481182.9, 1475686.9, 1474296.4, 1474147.9, 1474115.1, 1474173.1, 1472023.9, 1471093.8, 1470069.2, 1470223.0, 1471840.4, 1471206.0, 1470126.0, 1469327.8, 1469309.0, 1470031.5, 1470855.4, 1471370.1, 1472336.0, 1472295.5, 1472181.1, 1472564.9, 1473415.8, 1475361.9, 1474320.8, 1474238.2, 1476071.8, 1476182.1, 1476000.6, 1476892.6, 1478833.1, 1478814.9, 1478507.2, 1478965.6, 1480375.4, 1481253.5, 1481245.8, 1481628.9, 1481594.4]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -3022,13 +2966,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3157,10 +3101,6 @@
                                         [1478965.4, 1476475.5, 1473621.0, 1473006.4, 1472910.4, 1472948.6, 1472619.9, 1471824.2, 1471558.2, 1471476.9, 1470358.8, 1470138.9, 1470500.4, 1469435.2, 1469191.0, 1469585.1, 1469280.0, 1468955.5, 1468492.1, 1468610.0, 1469808.5, 1471012.1, 1470606.4, 1470073.1, 1470231.5, 1471815.2, 1472844.1, 1472607.0, 1472495.6, 1473441.1, 1474680.0, 1473320.4, 1472983.4, 1474166.0, 1475153.5, 1475408.9, 1476309.9, 1476604.8, 1476690.4, 1477843.6]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -3231,13 +3171,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3366,10 +3306,6 @@
                                         [1487030.6, 1483412.6, 1478899.6, 1477543.8, 1476189.1, 1475613.0, 1475162.2, 1474611.1, 1473356.4, 1472932.1, 1472843.6, 1472702.9, 1472264.6, 1471643.4, 1471098.1, 1471105.6, 1471505.5, 1471044.2, 1471422.9, 1473920.4, 1475695.8, 1475200.6, 1474927.2, 1475405.8, 1476207.6, 1476960.2, 1477179.1, 1477416.8, 1477259.2, 1477146.2, 1477468.9, 1478656.6, 1478660.9, 1478377.0, 1478415.9, 1478625.2, 1478514.1, 1478628.5, 1478835.8, 1480361.9]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -3440,13 +3376,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3577,10 +3513,6 @@
                                         [1514113.6, 1512436.5, 1508059.1, 1506970.1, 1506737.9, 1505660.1, 1505015.2, 1503959.0, 1503045.6, 1502129.6, 1501801.4, 1501876.4, 1502604.6, 1502959.2, 1501778.9, 1501809.5, 1503210.0, 1503365.8, 1503236.6, 1503283.4, 1503221.8, 1503605.9, 1504860.6, 1505154.2, 1505718.9, 1506091.9, 1506518.5, 1507148.4, 1507154.4, 1507267.1, 1507546.8, 1509169.2, 1509453.9, 1509723.0, 1509976.2, 1511403.4, 1511545.0, 1510728.0, 1510670.4, 1512172.4]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -3651,13 +3583,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3786,10 +3718,6 @@
                                         [1533351.6, 1531075.1, 1528656.4, 1527326.8, 1526913.2, 1526649.8, 1525630.5, 1525260.0, 1525214.0, 1525036.0, 1524675.0, 1524087.4, 1523416.2, 1523144.0, 1522941.2, 1522993.8, 1523500.6, 1524074.1, 1524263.6, 1523792.5, 1523724.2, 1524253.8, 1524728.9, 1525718.5, 1526467.5, 1527335.0, 1527608.9, 1528340.9, 1527660.6, 1527454.1, 1528524.2, 1530211.2, 1530818.5, 1530824.5, 1531048.8, 1530970.4, 1531181.0, 1531090.9, 1531249.9, 1531071.6]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -3860,13 +3788,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3997,10 +3925,6 @@
                                         [1602836.5, 1600429.6, 1598421.0, 1596712.1, 1595852.5, 1595124.9, 1594013.0, 1592743.0, 1591247.9, 1590274.6, 1589282.2, 1589007.1, 1588987.2, 1587694.5, 1586435.2, 1586419.5, 1587276.9, 1587204.6, 1587322.8, 1588347.0, 1588334.9, 1587672.2, 1587813.6, 1589128.2, 1588597.1, 1588290.0, 1588363.5, 1588501.1, 1589390.6, 1589775.1, 1590484.0, 1591270.8, 1591587.4, 1591368.4, 1590955.8, 1591032.1, 1592429.2, 1593101.8, 1593052.6, 1592809.4]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -4071,13 +3995,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4207,10 +4131,6 @@
                                         [1555698.1, 1553981.0, 1552814.6, 1552189.2, 1551172.8, 1550059.9, 1549611.2, 1548785.9, 1546082.8, 1544991.9, 1544925.9, 1545393.6, 1546028.1, 1546323.0, 1544869.4, 1544575.8, 1544983.0, 1545182.0, 1545867.0, 1546477.9, 1547029.6, 1546196.1, 1545756.6, 1545917.0, 1547103.0, 1547528.1, 1547748.5, 1548028.1, 1549552.8, 1550345.8, 1550454.2, 1550553.1, 1550701.4, 1550633.4, 1550637.8, 1551434.1, 1551502.9, 1552022.8, 1553240.5, 1553283.4]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -4281,13 +4201,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4419,10 +4339,6 @@
                                         [1506005.2, 1503153.6, 1499905.1, 1498447.0, 1495224.1, 1494766.9, 1496564.8, 1497215.8, 1495804.0, 1493672.5, 1493138.1, 1492983.2, 1493236.1, 1494386.0, 1494446.1, 1493868.9, 1493528.6, 1493513.5, 1494020.6, 1494710.6, 1495105.6, 1495939.5, 1495665.6, 1495534.4, 1495905.1, 1495554.0, 1494777.0, 1494655.1, 1495390.8, 1496122.9, 1496447.4, 1497803.1, 1498450.2, 1498388.1, 1498623.9, 1499239.6, 1498871.0, 1498955.9, 1500714.8, 1501798.9]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -4493,13 +4409,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4630,10 +4546,6 @@
                                         [1537361.9, 1534758.5, 1531837.8, 1531171.5, 1530780.5, 1529975.0, 1529496.2, 1528932.2, 1528440.8, 1527394.6, 1526535.5, 1526505.4, 1527631.0, 1528366.5, 1526540.5, 1526360.8, 1527435.2, 1525513.2, 1525169.2, 1526147.0, 1526623.9, 1527202.4, 1527421.2, 1528269.2, 1528694.9, 1528436.0, 1527704.6, 1527808.4, 1529496.0, 1530280.1, 1530061.6, 1529436.8, 1528821.6, 1527495.1, 1527703.5, 1529728.1, 1528155.8, 1527759.4, 1529311.6, 1531516.2]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -4704,13 +4616,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4843,10 +4755,6 @@
                                         [1537827.2, 1535842.4, 1534118.5, 1533487.2, 1532314.6, 1531882.4, 1531948.4, 1532312.4, 1530567.2, 1530334.6, 1531175.0, 1529848.8, 1529700.0, 1530612.5, 1530312.4, 1530117.8, 1530116.8, 1530319.6, 1531329.2, 1531621.6, 1531811.5, 1530431.6, 1529825.4, 1529883.1, 1530602.4, 1531247.6, 1531870.5, 1531823.5, 1531533.1, 1531452.1, 1531972.4, 1532789.9, 1532974.1, 1533027.8, 1533611.8, 1533061.0, 1532778.5, 1533152.1, 1534292.2, 1535264.2]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -4917,13 +4825,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -5051,10 +4959,6 @@
                                         [1503108.5, 1499801.9, 1497087.0, 1496059.4, 1493794.2, 1493280.9, 1493906.5, 1494097.0, 1493901.4, 1493724.2, 1493711.6, 1493502.0, 1493113.9, 1492538.1, 1491011.4, 1491064.8, 1492752.2, 1493087.6, 1493432.8, 1494305.1, 1494113.8, 1493054.1, 1493047.5, 1494603.8, 1495786.9, 1496911.4, 1496699.1, 1496349.4, 1496245.6, 1496603.0, 1496956.9, 1498888.6, 1499906.0, 1499470.8, 1499176.4, 1499656.1, 1500486.5, 1500825.1, 1501901.0, 1502419.5]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -5125,13 +5029,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -5262,10 +5166,6 @@
                                         [1447706.1, 1445158.1, 1440590.8, 1439603.6, 1439733.4, 1439029.8, 1436928.2, 1435652.0, 1435450.1, 1435800.0, 1435837.6, 1436038.4, 1436209.6, 1436318.1, 1435330.2, 1434790.4, 1434004.2, 1434045.8, 1435112.4, 1436186.8, 1437656.2, 1437856.6, 1437558.1, 1437672.4, 1438927.4, 1439048.8, 1439130.0, 1439563.8, 1438273.8, 1438052.5, 1438908.0, 1437827.1, 1437741.6, 1439172.5, 1438854.6, 1438701.0, 1439407.0, 1439576.0, 1440122.4, 1440251.2]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -5336,13 +5236,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -5471,10 +5371,6 @@
                                         [1487351.1, 1484783.4, 1480558.5, 1478682.2, 1477082.8, 1476796.5, 1477276.5, 1477497.8, 1477826.6, 1476300.6, 1476249.1, 1478049.5, 1478998.2, 1476993.1, 1476436.8, 1476663.8, 1476943.8, 1478088.5, 1478310.5, 1478371.4, 1479058.6, 1478902.6, 1478811.8, 1479260.4, 1479509.0, 1480337.5, 1479437.1, 1478365.6, 1478415.4, 1479842.8, 1479960.4, 1479548.5, 1479470.4, 1480306.4, 1481114.5, 1480115.0, 1479404.9, 1479352.9, 1480181.0, 1480657.4]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -5545,13 +5441,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -5682,10 +5578,6 @@
                                         [1463966.9, 1461431.5, 1458917.8, 1457782.2, 1456848.2, 1455129.5, 1454607.6, 1454366.5, 1451950.8, 1451571.9, 1453155.6, 1453261.2, 1452795.5, 1452456.9, 1452178.6, 1451852.2, 1451713.0, 1452153.4, 1452389.6, 1452188.0, 1451620.6, 1451451.6, 1451919.2, 1452225.0, 1453588.0, 1453421.2, 1452082.2, 1451223.5, 1449876.8, 1449836.8, 1451180.5, 1450354.9, 1449670.8, 1448635.5, 1448069.8, 1447705.5, 1447510.1, 1447191.0, 1446576.9, 1446432.0]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -5756,13 +5648,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -5892,10 +5784,6 @@
                                         [1427494.4, 1426094.2, 1423436.5, 1422654.5, 1422369.6, 1421777.9, 1419814.4, 1419292.1, 1419590.8, 1419409.1, 1419253.0, 1419387.4, 1419102.8, 1418284.5, 1417990.9, 1417681.0, 1416430.5, 1416514.5, 1418026.5, 1418008.5, 1417761.5, 1417541.0, 1417674.1, 1418709.5, 1418809.9, 1419050.1, 1420592.0, 1420462.1, 1418979.6, 1418791.5, 1420057.1, 1420819.2, 1421093.2, 1422322.1, 1422454.5, 1422416.4, 1422319.1, 1422752.1, 1423738.4, 1425832.8]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -5966,13 +5854,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -6102,10 +5990,6 @@
                                         [1476248.1, 1474604.5, 1472580.4, 1471417.9, 1470046.1, 1469363.0, 1468243.5, 1467059.6, 1466374.8, 1466117.5, 1465827.4, 1465652.9, 1465772.9, 1466297.8, 1465411.0, 1465149.9, 1465185.9, 1465355.6, 1466262.9, 1467364.8, 1467876.1, 1467234.2, 1466949.1, 1467322.9, 1468842.1, 1469403.0, 1469621.2, 1470098.1, 1470993.8, 1471566.8, 1471612.9, 1472251.6, 1472837.2, 1473149.0, 1473275.2, 1473608.1, 1474101.9, 1474466.9, 1474027.2, 1473656.8]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -6176,13 +6060,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -6314,10 +6198,6 @@
                                         [1510484.8, 1507164.4, 1505186.1, 1504255.4, 1503344.0, 1503009.8, 1502808.5, 1502446.9, 1502538.1, 1503361.4, 1503206.9, 1503066.1, 1503150.6, 1502794.2, 1502018.0, 1501925.1, 1502293.1, 1502532.5, 1502802.5, 1502256.0, 1502343.2, 1503651.9, 1504599.2, 1505032.8, 1506485.9, 1507193.9, 1506651.8, 1506473.5, 1507255.9, 1508158.1, 1508462.1, 1509929.5, 1511055.5, 1510689.5, 1510656.9, 1511853.2, 1511564.9, 1511505.9, 1512747.0, 1512800.4]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -6388,13 +6268,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -6524,10 +6404,6 @@
                                         [1577808.2, 1575972.4, 1574213.4, 1573335.2, 1571953.2, 1571238.4, 1570185.0, 1568669.4, 1568294.4, 1568577.5, 1567560.1, 1566431.2, 1565780.5, 1564548.1, 1564130.0, 1563942.2, 1563685.8, 1563091.5, 1563019.5, 1563425.1, 1563984.2, 1564321.8, 1564727.4, 1564706.8, 1564669.0, 1564814.9, 1565074.1, 1565281.9, 1565827.9, 1565957.6, 1566078.9, 1567034.5, 1567222.2, 1567592.8, 1568122.1, 1569953.0, 1570294.8, 1569896.2, 1569149.2, 1568782.2]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -6598,13 +6474,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -6735,10 +6611,6 @@
                                         [1511064.4, 1508597.2, 1505828.5, 1504479.4, 1503767.0, 1502669.1, 1501960.9, 1500752.5, 1500006.0, 1499733.1, 1499633.5, 1499482.5, 1499060.8, 1497411.4, 1496838.6, 1496413.2, 1496479.6, 1497503.5, 1498998.4, 1499252.1, 1499363.2, 1498997.5, 1498969.0, 1499709.6, 1499601.1, 1498913.1, 1498918.4, 1500004.0, 1500141.8, 1500452.6, 1501496.4, 1501186.8, 1501152.9, 1502201.6, 1502640.4, 1503996.4, 1504458.2, 1505676.9, 1505722.8, 1505407.8]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -6809,13 +6681,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -6945,10 +6817,6 @@
                                         [1502361.1, 1500424.2, 1497059.4, 1494036.1, 1491858.5, 1491239.4, 1490763.0, 1489408.1, 1488535.2, 1486845.5, 1486522.2, 1487097.2, 1487037.9, 1486107.0, 1485831.6, 1485975.6, 1486794.9, 1487804.4, 1488250.2, 1487449.0, 1486998.5, 1487060.9, 1487823.6, 1487996.9, 1488371.4, 1488538.5, 1488634.2, 1489166.0, 1488267.6, 1488146.4, 1489149.5, 1489419.2, 1490067.9, 1490420.0, 1490574.8, 1490378.2, 1490277.2, 1490832.8, 1491742.1, 1493358.1]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -7019,13 +6887,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -7154,10 +7022,6 @@
                                         [1506985.5, 1504874.9, 1502808.0, 1501635.0, 1500663.9, 1499042.6, 1498852.0, 1499700.0, 1498781.8, 1498210.9, 1497407.4, 1496958.5, 1497135.2, 1498052.6, 1497919.8, 1497574.5, 1497599.4, 1498256.6, 1498483.9, 1497741.1, 1497479.9, 1497447.2, 1497323.2, 1497042.8, 1497317.5, 1498740.8, 1499321.6, 1500634.0, 1500839.2, 1500877.1, 1500974.1, 1501675.1, 1501743.2, 1501963.8, 1502059.5, 1502144.9, 1503294.2, 1504206.9, 1504458.4, 1505316.4]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -7228,13 +7092,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -7363,10 +7227,6 @@
                                         [1492676.4, 1490496.0, 1488448.4, 1487777.2, 1487087.0, 1486759.4, 1486796.8, 1487449.8, 1487280.4, 1486346.8, 1486392.5, 1487601.6, 1487130.2, 1486052.9, 1485859.9, 1486204.9, 1486262.1, 1486563.0, 1486827.1, 1485596.0, 1485740.8, 1487710.2, 1488210.5, 1488237.4, 1488415.9, 1488606.5, 1489398.5, 1488371.0, 1487812.9, 1487325.5, 1487618.1, 1489985.6, 1491555.9, 1490794.6, 1490424.9, 1490642.6, 1490740.0, 1491749.5, 1492724.2, 1492785.2]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -7437,13 +7297,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -7572,10 +7432,6 @@
                                         [1468176.9, 1464950.2, 1463138.2, 1462441.5, 1460522.8, 1460070.6, 1460570.5, 1460553.2, 1459443.8, 1458082.0, 1458032.6, 1459057.2, 1459199.5, 1458359.4, 1458263.4, 1458860.5, 1458792.9, 1458516.4, 1457910.0, 1458067.5, 1459187.9, 1459015.0, 1459325.0, 1461320.5, 1461760.5, 1461916.6, 1461178.9, 1460871.4, 1460950.9, 1461257.5, 1462940.9, 1463772.4, 1464857.2, 1464980.4, 1465380.1, 1466177.1, 1466723.4, 1466558.4, 1466802.8, 1468506.4]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -7646,13 +7502,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -7782,10 +7638,6 @@
                                         [1405656.5, 1403099.6, 1400402.5, 1398917.1, 1398251.9, 1397214.9, 1395868.4, 1394857.9, 1393265.1, 1393027.0, 1393708.9, 1393619.9, 1393712.5, 1394253.6, 1392770.5, 1392388.5, 1392571.8, 1392833.1, 1393823.4, 1393960.6, 1394003.2, 1394417.1, 1394633.5, 1395225.2, 1395336.8, 1395560.9, 1395096.9, 1395075.9, 1395983.5, 1396099.9, 1396165.1, 1396419.0, 1398032.5, 1398835.1, 1398689.8, 1398425.0, 1398284.0, 1398008.1, 1397653.5, 1397395.5]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -7856,13 +7708,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -7991,10 +7843,6 @@
                                         [1511532.1, 1509071.5, 1505647.1, 1504207.8, 1504217.1, 1505689.0, 1505669.4, 1503870.4, 1503131.5, 1502383.6, 1502070.0, 1501811.5, 1502018.1, 1503142.4, 1502463.5, 1501278.8, 1501117.9, 1501769.1, 1503022.1, 1503184.4, 1503176.8, 1503388.6, 1503467.8, 1504163.0, 1505037.4, 1505802.1, 1505882.0, 1505148.2, 1504464.4, 1504538.2, 1506079.9, 1507367.1, 1508389.0, 1508952.4, 1509870.4, 1509936.5, 1509998.4, 1511231.2, 1511339.5, 1511269.5]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -8065,13 +7913,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -8201,10 +8049,6 @@
                                         [1446781.8, 1444242.4, 1442448.1, 1441409.1, 1440959.0, 1440259.1, 1438770.5, 1438593.2, 1439185.8, 1438351.0, 1438150.4, 1438422.9, 1438572.2, 1438726.4, 1439325.6, 1438944.1, 1438767.4, 1438841.6, 1438871.0, 1439126.8, 1438962.0, 1438319.4, 1438291.5, 1438938.9, 1439194.0, 1438579.6, 1438376.9, 1438385.8, 1438608.1, 1439891.2, 1441280.1, 1441906.9, 1441723.0, 1441544.0, 1441664.1, 1441840.6, 1442424.6, 1442723.9, 1442956.5, 1442831.1]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -8275,13 +8119,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -8414,10 +8258,6 @@
                                         [1405166.0, 1402415.6, 1399252.2, 1398345.6, 1397026.1, 1396936.1, 1398081.5, 1398425.9, 1397429.4, 1396710.5, 1396660.0, 1397247.4, 1398131.6, 1398164.4, 1398024.6, 1397777.9, 1396823.6, 1396466.5, 1396614.4, 1397612.8, 1398622.0, 1397884.8, 1397529.6, 1397391.8, 1397473.0, 1398166.2, 1398362.1, 1399074.8, 1400163.4, 1400577.9, 1400983.4, 1400991.5, 1401218.2, 1401038.1, 1401174.0, 1402291.2, 1401325.0, 1400960.4, 1401399.6, 1401338.9]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -8488,13 +8328,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -8623,10 +8463,6 @@
                                         [1430442.6, 1428322.4, 1426358.0, 1425776.5, 1425961.8, 1427428.0, 1427209.8, 1426646.6, 1426643.1, 1427157.4, 1425224.4, 1423486.0, 1423614.6, 1425034.9, 1423426.8, 1423139.9, 1424054.1, 1424218.4, 1424405.6, 1424894.1, 1425190.4, 1425301.8, 1426372.1, 1428005.4, 1428200.4, 1428176.8, 1428142.5, 1428606.4, 1428789.9, 1429740.2, 1430106.6, 1430563.0, 1431048.8, 1431174.1, 1431371.5, 1432509.4, 1433223.6, 1434664.9, 1435033.2, 1435299.5]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -8697,13 +8533,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -8834,10 +8670,6 @@
                                         [1496288.5, 1494261.5, 1490224.5, 1488684.8, 1486224.4, 1485764.4, 1486285.5, 1486215.2, 1486527.4, 1487970.0, 1487406.5, 1487077.9, 1487186.5, 1487665.8, 1487912.9, 1487289.1, 1487178.8, 1487756.8, 1487823.4, 1487804.8, 1487305.2, 1487410.8, 1488721.2, 1488980.2, 1488935.4, 1489320.2, 1489321.5, 1489603.0, 1490466.9, 1491752.0, 1492129.9, 1493061.6, 1492553.9, 1492410.4, 1493333.6, 1493577.0, 1494354.5, 1494782.0, 1496583.0, 1497140.1]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -8908,13 +8740,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -9045,10 +8877,6 @@
                                         [1565451.4, 1561043.5, 1558930.5, 1559310.6, 1560527.1, 1561786.6, 1563143.0, 1565619.2, 1566797.2, 1568183.9, 1568720.9, 1568219.5, 1568231.4, 1569817.2, 1570349.1, 1570544.1, 1571752.9, 1570304.8, 1570002.9, 1571810.6, 1572946.5, 1572843.6, 1571564.0, 1571264.8, 1572473.6, 1573186.9, 1573362.6, 1573363.1, 1574491.5, 1575125.9, 1575475.0, 1575997.5, 1576146.8, 1577365.9, 1578995.0, 1579027.6, 1579034.4, 1579115.9, 1580205.1, 1580388.5]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -9119,13 +8947,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -9255,10 +9083,6 @@
                                         [1594999.2, 1594048.4, 1592164.5, 1590920.2, 1589474.0, 1588718.6, 1588193.8, 1587097.5, 1586731.6, 1586723.6, 1586647.5, 1586722.9, 1586648.6, 1586428.0, 1585322.1, 1584654.0, 1584501.6, 1584641.4, 1585249.6, 1585662.1, 1586650.2, 1585575.2, 1585445.2, 1586737.0, 1587671.4, 1587941.0, 1588688.4, 1589255.6, 1588263.6, 1588245.4, 1589966.8, 1590852.5, 1591439.5, 1591544.8, 1591744.2, 1591228.9, 1591254.5, 1592658.9, 1593197.5, 1594822.2]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -9329,13 +9153,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -9464,10 +9288,6 @@
                                         [1584063.9, 1581556.0, 1579576.2, 1579157.9, 1579022.5, 1578301.0, 1576217.1, 1575678.1, 1575819.4, 1574719.1, 1574401.8, 1574721.4, 1574023.6, 1572159.4, 1571983.8, 1573077.0, 1573399.8, 1573557.2, 1574383.4, 1574069.6, 1573849.6, 1573917.2, 1573863.6, 1573951.2, 1573933.6, 1574148.4, 1574373.6, 1575537.8, 1575991.6, 1576114.6, 1576184.5, 1576095.0, 1575829.2, 1576034.5, 1577924.6, 1579178.8, 1579114.4, 1578627.9, 1578556.6, 1579502.6]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -9538,13 +9358,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -9673,10 +9493,6 @@
                                         [1489511.5, 1488356.8, 1486610.1, 1485856.8, 1484547.5, 1483149.5, 1482381.9, 1481852.0, 1481759.8, 1481981.2, 1481080.9, 1480628.1, 1480075.8, 1479761.2, 1479916.8, 1480728.8, 1480719.0, 1480173.2, 1480377.0, 1481952.9, 1482340.2, 1481305.9, 1481028.0, 1481504.0, 1482241.6, 1482099.4, 1480992.5, 1480796.6, 1481766.4, 1483405.4, 1483615.5, 1483750.6, 1484466.5, 1484589.2, 1484816.6, 1485614.5, 1486229.8, 1486140.2, 1486030.6, 1485815.8]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -9747,13 +9563,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -9886,10 +9702,6 @@
                                         [1489624.6, 1488013.9, 1485518.1, 1484276.1, 1484008.8, 1484163.5, 1483959.4, 1483588.1, 1482758.5, 1482500.9, 1482577.0, 1482696.6, 1482158.1, 1481800.8, 1481786.0, 1482051.1, 1482475.5, 1482673.4, 1482924.9, 1483021.6, 1483414.8, 1483204.0, 1483110.9, 1483378.4, 1483602.4, 1484597.6, 1484810.1, 1484576.4, 1484593.5, 1485337.6, 1485312.0, 1485305.5, 1485745.1, 1484644.5, 1484707.2, 1486836.4, 1487828.2, 1488050.0, 1487933.6, 1487698.4]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -9960,13 +9772,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -10096,10 +9908,6 @@
                                         [1441145.6, 1440275.1, 1438926.5, 1437913.6, 1437475.6, 1437140.1, 1436632.0, 1435445.0, 1434969.5, 1434618.0, 1434406.5, 1434147.6, 1433645.4, 1433486.4, 1433428.4, 1432872.1, 1432796.2, 1433106.0, 1433266.0, 1433259.9, 1433553.1, 1434350.1, 1434468.2, 1434562.1, 1434803.9, 1435468.2, 1434669.8, 1434528.9, 1435468.6, 1436255.8, 1436724.9, 1436090.0, 1435849.1, 1436125.4, 1436294.9, 1437422.9, 1438460.2, 1438569.6, 1438875.4, 1438763.9]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -10170,13 +9978,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -10305,10 +10113,6 @@
                                         [1394493.8, 1393802.6, 1391898.2, 1389506.0, 1388897.1, 1388735.9, 1386709.8, 1386031.9, 1385903.4, 1385821.9, 1385654.0, 1385464.5, 1385426.8, 1385705.2, 1384935.9, 1383620.1, 1383518.6, 1384144.0, 1383755.0, 1384011.5, 1385795.9, 1386194.8, 1385524.2, 1384663.6, 1384364.0, 1384175.0, 1384300.6, 1385468.9, 1386604.5, 1386580.2, 1386474.1, 1387224.6, 1388962.0, 1389540.4, 1389751.5, 1389874.2, 1390961.9, 1391348.8, 1391379.9, 1391154.1]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -10379,13 +10183,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -10512,10 +10316,6 @@
                                         [1429521.6, 1427707.2, 1425154.8, 1424637.9, 1424502.2, 1422862.0, 1422594.8, 1423458.9, 1422556.9, 1421018.9, 1420857.4, 1421864.5, 1422571.8, 1422412.1, 1422241.4, 1422243.2, 1421826.6, 1420524.1, 1420450.0, 1421537.6, 1421909.6, 1420823.8, 1420857.5, 1422308.2, 1422718.2, 1423551.5, 1424360.1, 1424130.6, 1424029.2, 1424559.1, 1424592.6, 1424918.0, 1425333.0, 1424608.1, 1424300.6, 1424699.8, 1425715.8, 1426757.8, 1427011.4, 1427965.5]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -10586,13 +10386,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -10722,10 +10522,6 @@
                                         [1459070.4, 1457361.8, 1455151.4, 1453036.9, 1452652.8, 1453309.5, 1453286.9, 1452947.5, 1452998.5, 1453805.5, 1453433.0, 1452540.2, 1452075.0, 1452086.1, 1452395.9, 1451287.5, 1451288.9, 1452686.6, 1453366.8, 1453042.8, 1452536.9, 1451330.1, 1451276.8, 1452535.5, 1453645.5, 1453496.9, 1453283.4, 1453224.5, 1453257.6, 1453972.4, 1454636.6, 1454849.0, 1455084.0, 1456410.2, 1456285.6, 1455909.2, 1455573.5, 1455761.1, 1457684.9, 1459171.2]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -10796,13 +10592,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -10933,10 +10729,6 @@
                                         [1387020.2, 1385688.5, 1383720.8, 1380907.1, 1380283.6, 1380797.0, 1380765.5, 1380214.8, 1379106.2, 1379077.0, 1379982.6, 1379219.4, 1378883.9, 1378823.2, 1378652.2, 1378235.8, 1378244.1, 1378671.6, 1378774.4, 1378995.0, 1379114.0, 1379271.0, 1379394.0, 1379858.2, 1380536.1, 1380766.6, 1380696.5, 1380766.2, 1380773.2, 1381138.1, 1381172.4, 1381775.5, 1383146.2, 1383017.5, 1382771.9, 1382851.5, 1382814.0, 1383472.1, 1384821.0, 1385368.2]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -11007,13 +10799,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -11144,10 +10936,6 @@
                                         [1456630.1, 1454490.0, 1450869.1, 1448517.6, 1447293.1, 1446386.0, 1446649.4, 1448439.4, 1448821.9, 1449167.6, 1449839.1, 1450598.5, 1450997.6, 1451496.4, 1452038.8, 1451885.2, 1451634.2, 1451550.5, 1451742.9, 1453179.2, 1453193.2, 1452514.4, 1452249.5, 1452801.6, 1453985.5, 1454102.4, 1453192.2, 1453170.0, 1454711.1, 1455009.6, 1455540.0, 1455760.4, 1455785.6, 1456666.1, 1456444.5, 1455311.6, 1455296.4, 1457123.1, 1457477.2, 1458034.2]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -11218,13 +11006,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -11354,10 +11142,6 @@
                                         [1435178.5, 1432714.4, 1431088.9, 1429873.8, 1429221.0, 1429131.8, 1429454.6, 1429257.2, 1429107.5, 1429151.4, 1429264.2, 1429601.5, 1428081.8, 1427642.0, 1427787.2, 1428261.5, 1428488.1, 1428632.6, 1429354.5, 1429116.0, 1427822.8, 1427618.2, 1428464.2, 1430384.0, 1431638.9, 1432133.8, 1432612.0, 1432674.4, 1432433.4, 1432126.8, 1432404.0, 1434759.8, 1436517.4, 1436155.0, 1436160.5, 1437922.8, 1438913.2, 1438590.2, 1438430.9, 1439281.1]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -11428,13 +11212,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -11566,10 +11350,6 @@
                                         [2499556.0, 2494548.8, 2492641.8, 2495300.5, 2499196.2, 2506136.0, 2512683.5, 2516821.8, 2518070.8, 2520517.2, 2522506.2, 2524961.2, 2525948.5, 2526840.0, 2528610.8, 2531199.5, 2532817.5, 2531917.2, 2531199.8, 2532005.0, 2534433.8, 2534932.8, 2534720.0, 2534702.2, 2536632.2, 2536697.8, 2536759.8, 2536763.5, 2538475.2, 2538900.5, 2540006.8, 2540210.2, 2541754.0, 2541743.2, 2543258.2, 2548335.2, 2550823.5, 2550792.5, 2550395.8, 2550728.2]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -11640,13 +11420,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -11780,10 +11560,6 @@
                                         [2424771.0, 2420594.5, 2416306.5, 2416506.5, 2419912.0, 2422234.8, 2425667.0, 2428939.8, 2430629.0, 2433679.0, 2434765.5, 2434607.8, 2434719.8, 2436866.2, 2438475.5, 2440682.2, 2441305.5, 2441909.5, 2442405.0, 2443303.2, 2443177.0, 2443023.5, 2442824.5, 2442798.0, 2444472.2, 2445039.0, 2444995.0, 2445259.8, 2445401.0, 2445803.8, 2445682.2, 2445468.0, 2445413.5, 2447161.0, 2448668.5, 2450721.8, 2453015.8, 2453909.2, 2456048.5, 2456070.8]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -11854,13 +11630,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -11992,10 +11768,6 @@
                                         [2229160.5, 2224384.8, 2219983.0, 2219898.8, 2222461.0, 2226340.0, 2229481.8, 2231269.2, 2232159.0, 2234077.0, 2235301.5, 2236023.2, 2235652.8, 2235676.8, 2237612.0, 2238448.5, 2238138.0, 2237810.5, 2238098.8, 2238081.8, 2238868.8, 2238789.8, 2238831.0, 2240517.5, 2240920.8, 2242086.8, 2242124.5, 2241919.2, 2241802.2, 2242049.0, 2241720.8, 2241541.0, 2242928.8, 2244689.5, 2246207.0, 2247592.8, 2250253.5, 2250629.8, 2250336.2, 2251094.0]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -12066,13 +11838,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -12208,10 +11980,6 @@
                                         [2234112.5, 2231912.0, 2226195.2, 2222325.8, 2219096.5, 2218645.0, 2219411.5, 2219138.5, 2219132.0, 2219907.2, 2220417.8, 2220747.2, 2222446.5, 2223907.2, 2224431.0, 2226089.0, 2226499.5, 2227280.2, 2227415.2, 2227449.2, 2227998.2, 2227938.5, 2227976.5, 2227814.8, 2227910.5, 2227900.5, 2228650.2, 2229103.8, 2229501.2, 2229388.5, 2229494.5, 2229440.2, 2230421.2, 2232081.5, 2232538.0, 2235048.8, 2239624.2, 2240601.2, 2241356.5, 2242042.0]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -12282,13 +12050,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -12418,10 +12186,6 @@
                                         [2167264.8, 2163647.5, 2161701.0, 2161576.2, 2161018.2, 2161020.8, 2162032.5, 2161293.2, 2160721.5, 2160120.5, 2159909.5, 2160185.2, 2159613.5, 2157575.2, 2156685.5, 2155755.2, 2155593.5, 2155954.8, 2156487.5, 2156912.2, 2158425.2, 2158741.2, 2158769.2, 2158270.2, 2158294.2, 2159494.2, 2160132.5, 2160289.8, 2160437.5, 2159991.5, 2160037.8, 2161689.0, 2163413.5, 2163900.0, 2164726.8, 2166801.5, 2169912.2, 2171522.5, 2173131.8, 2173655.5]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -12492,13 +12256,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -12633,10 +12397,6 @@
                                         [2112284.5, 2110348.0, 2107237.5, 2106277.2, 2105908.2, 2105535.2, 2105295.0, 2104965.0, 2103412.0, 2102372.8, 2100275.2, 2100035.2, 2101218.2, 2101798.0, 2101838.0, 2101830.8, 2100747.8, 2100714.5, 2101942.8, 2102375.8, 2103282.2, 2103256.5, 2103207.0, 2104200.5, 2106006.5, 2106760.8, 2106619.8, 2106836.2, 2108267.0, 2108377.8, 2108298.0, 2108574.2, 2109230.0, 2110289.0, 2111133.2, 2114498.0, 2117888.2, 2119177.0, 2119973.8, 2119946.5]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -12707,13 +12467,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -12848,10 +12608,6 @@
                                         [2067424.6, 2064372.4, 2061805.0, 2060809.0, 2059976.6, 2059638.4, 2059423.9, 2058755.4, 2057029.5, 2056659.5, 2056871.8, 2057084.5, 2057487.5, 2058130.4, 2058039.6, 2057901.5, 2057908.2, 2057992.2, 2058680.9, 2059021.6, 2059215.6, 2060240.5, 2060384.1, 2060633.6, 2061487.8, 2062494.2, 2062542.8, 2062556.1, 2062819.9, 2064596.6, 2065199.4, 2065197.5, 2065830.1, 2066599.1, 2070332.5, 2072795.5, 2073309.8, 2074599.4, 2076309.4, 2077032.2]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -12922,13 +12678,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -13060,10 +12816,6 @@
                                         [2095334.4, 2092666.5, 2089037.0, 2087968.2, 2086734.9, 2086536.6, 2087016.8, 2085421.9, 2085130.8, 2085790.6, 2084405.1, 2084095.6, 2084617.8, 2084104.5, 2083898.4, 2084215.1, 2084640.4, 2083362.9, 2083163.5, 2083809.2, 2084288.8, 2085824.8, 2086158.5, 2086512.4, 2087176.9, 2089096.1, 2090063.8, 2090133.8, 2090679.0, 2091124.5, 2092131.5, 2092568.9, 2094246.6, 2095767.5, 2097145.0, 2101647.0, 2103051.5, 2104965.8, 2105840.2, 2106911.8]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -13134,13 +12886,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -13275,10 +13027,6 @@
                                         [2187227.2, 2182950.5, 2178597.5, 2175053.8, 2172657.5, 2171822.2, 2170806.8, 2169253.2, 2169158.5, 2170303.0, 2171229.5, 2172187.5, 2172599.5, 2174174.5, 2175224.5, 2174820.0, 2174695.8, 2175590.2, 2176213.2, 2176603.8, 2176718.8, 2177687.0, 2177843.8, 2177710.0, 2178265.0, 2179074.2, 2179949.5, 2179645.8, 2179230.0, 2179090.5, 2179102.0, 2178346.2, 2178394.8, 2180573.8, 2182229.8, 2183457.2, 2186398.8, 2187271.8, 2187511.0, 2189626.0]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -13349,13 +13097,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -13488,10 +13236,6 @@
                                         [2134642.2, 2131245.8, 2129878.2, 2132136.8, 2137787.8, 2143247.5, 2147344.8, 2151683.0, 2153829.0, 2156176.0, 2158007.5, 2159482.8, 2160531.8, 2160742.5, 2161624.5, 2161154.8, 2160676.8, 2161354.2, 2162425.8, 2163330.8, 2164408.0, 2164829.0, 2164384.0, 2163538.8, 2163329.5, 2164847.5, 2164609.8, 2163669.5, 2163493.0, 2165374.5, 2165932.2, 2165843.0, 2167107.2, 2168484.5, 2168884.0, 2170005.8, 2171414.2, 2173385.0, 2175899.5, 2176088.0]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -13562,13 +13306,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -13699,10 +13443,6 @@
                                         [2291770.0, 2286128.2, 2282470.2, 2281836.5, 2282449.2, 2286208.5, 2290622.8, 2292654.5, 2293865.8, 2295665.5, 2295719.8, 2295816.5, 2297466.2, 2298068.2, 2298819.8, 2298921.0, 2300204.2, 2302296.8, 2303768.2, 2304368.0, 2304521.8, 2304589.0, 2305211.8, 2305859.0, 2306014.2, 2307266.5, 2308866.2, 2308698.2, 2307539.2, 2307249.8, 2308600.2, 2308743.5, 2308936.2, 2309596.5, 2311801.5, 2313163.5, 2315217.8, 2315390.2, 2315728.2, 2315369.2]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -13773,13 +13513,13 @@
                                             "custom information document": {
                                                 "reference dna description": "GAPDH",
                                                 "reference sample description": "Liver",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
+                                                "OUTLIERRG": "N",
                                                 "BADROX": "N",
-                                                "CQCONF": "N",
                                                 "omit": false,
-                                                "OUTLIERRG": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -13911,10 +13651,6 @@
                                         [2248692.2, 2245882.5, 2244603.2, 2244969.0, 2246506.0, 2253082.0, 2257602.5, 2259268.5, 2262220.2, 2263940.8, 2266231.2, 2267684.0, 2269540.5, 2270491.5, 2270445.0, 2270968.0, 2271399.2, 2272919.5, 2274240.5, 2274852.8, 2275756.2, 2276568.8, 2276394.2, 2276157.2, 2277709.5, 2279835.2, 2279277.2, 2276834.2, 2276107.0, 2277115.0, 2277279.0, 2277364.2, 2277663.8, 2280713.2, 2282735.0, 2284398.0, 2286690.8, 2288422.8, 2289328.8, 2291099.8]
                                     ]
                                 }
-                            },
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
                             }
                         }
                     ],
@@ -16966,7 +16702,7 @@
             "file name": "appbio_quantstudio_example05.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_example05.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.84",
+            "ASM converter version": "0.1.105",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },

@@ -56,13 +56,13 @@
                                             "custom information document": {
                                                 "reference dna description": "RNaseP",
                                                 "reference sample description": "800",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "CQCONF": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "OUTLIERRG": "N",
-                                                "omit": false
+                                                "CQCONF": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -126,11 +126,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "RNaseP",
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
-                            }
+                            "target DNA description": "RNaseP"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example",
@@ -200,13 +196,13 @@
                                             "custom information document": {
                                                 "reference dna description": "RNaseP",
                                                 "reference sample description": "800",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "CQCONF": "N",
+                                                "Analysis Type": "Singleplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
                                                 "OUTLIERRG": "N",
-                                                "omit": false
+                                                "CQCONF": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -272,11 +268,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "RNaseP",
-                            "custom information document": {
-                                "RQ Min/Max Confidence Level": 95.0,
-                                "Analysis Type": "Singleplex"
-                            }
+                            "target DNA description": "RNaseP"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example",
@@ -623,7 +615,7 @@
             "file name": "appbio_quantstudio_minimal_test04.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test04.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.84",
+            "ASM converter version": "0.1.105",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },

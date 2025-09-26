@@ -110,10 +110,19 @@ def _create_processed_data(well_item: WellItem, data: Data) -> ProcessedData:
         "CQCONF": custom_info.get("CQCONF", "N"),
         "NOISE": custom_info.get("NOISE", "N"),
         "OUTLIERRG": custom_info.get("OUTLIERRG", "N"),
-        "Analysis Type": "SinglePlex",
-        "RQ Min/Max Confidence Level": 0.95,
         "Omit": custom_info.get("Omit", False),
     }
+
+    # Add Analysis Type and RQ Min/Max Confidence Level only if present in instrument file
+    if data.header.extra_data:
+        if "Analysis Type" in data.header.extra_data:
+            data_processing_custom_info["Analysis Type"] = data.header.extra_data[
+                "Analysis Type"
+            ]
+        if "RQ Min/Max Confidence Level" in data.header.extra_data:
+            data_processing_custom_info[
+                "RQ Min/Max Confidence Level"
+            ] = data.header.extra_data["RQ Min/Max Confidence Level"]
 
     return ProcessedData(
         automatic_cycle_threshold_enabled_setting=result.automatic_cycle_threshold_enabled_setting,

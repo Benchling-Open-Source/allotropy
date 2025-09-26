@@ -52,15 +52,13 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
                                                 "BADROX": "N",
+                                                "SNP Assay Name": "CYP19_2",
+                                                "omit": false,
                                                 "Method": "Auto",
                                                 "OUTLIERRG": "N",
-                                                "SNP Assay Name": "CYP19_2",
-                                                "CQCONF": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -126,14 +124,14 @@
                                         },
                                         "genotyping qPCR result": "Negative Control (NC)",
                                         "custom information document": {
-                                            "Quality(%)": 100.0,
                                             "Allele2 Delta Rn": 0.029,
-                                            "Allele1 Cq Conf": 0.0,
+                                            "Quality(%)": 100.0,
                                             "Allele2 Cq Conf": 0.0,
-                                            "Allele2 Ct Threshold": 0.132,
-                                            "Allele1 Amp Score": 0.0,
                                             "Pass.Ref": 846041.75,
-                                            "Allele2 Amp Score": 0.0
+                                            "Allele2 Ct Threshold": 0.132,
+                                            "Allele2 Amp Score": 0.0,
+                                            "Allele1 Cq Conf": 0.0,
+                                            "Allele1 Amp Score": 0.0
                                         }
                                     }
                                 ]
@@ -166,11 +164,11 @@
                                 "custom information document": {
                                     "well identifier": 1,
                                     "sample color": "RGB(238,238,0)",
-                                    "Allele2 Quencher": "NFQ-MGB",
-                                    "Allele1 Color": "RGB(0,0,255)",
                                     "SNP Assay Color": "RGB(176,23,31)",
-                                    "Allele2 Color": "RGB(0,139,69)",
-                                    "Allele1 Quencher": "NFQ-MGB"
+                                    "Allele2 Quencher": "NFQ-MGB",
+                                    "Allele1 Quencher": "NFQ-MGB",
+                                    "Allele1 Color": "RGB(0,0,255)",
+                                    "Allele2 Color": "RGB(0,139,69)"
                                 }
                             },
                             "processed data aggregate document": {
@@ -192,13 +190,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
                                                 "BADROX": "N",
+                                                "omit": false,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "CQCONF": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -289,7 +285,7 @@
             "file name": "appbio_quantstudio_minimal_test03.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test03.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.84",
+            "ASM converter version": "0.1.105",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },

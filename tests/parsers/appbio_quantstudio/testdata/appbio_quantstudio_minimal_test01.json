@@ -57,15 +57,13 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "BADROX": "N",
                                                 "noamp": "N",
-                                                "expfail": "N",
+                                                "CQCONF": "N",
                                                 "omit": false,
+                                                "BADROX": "N",
                                                 "NOISE": "N",
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "expfail": "N"
                                             }
                                         },
                                         "normalized reporter result": {
@@ -241,15 +239,13 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "BADROX": "N",
                                                 "noamp": "N",
-                                                "expfail": "N",
+                                                "CQCONF": "N",
                                                 "omit": false,
+                                                "BADROX": "N",
                                                 "NOISE": "N",
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "expfail": "N"
                                             }
                                         },
                                         "normalized reporter result": {
@@ -461,7 +457,7 @@
             "file name": "appbio_quantstudio_minimal_test01.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test01.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.84",
+            "ASM converter version": "0.1.105",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },

@@ -56,13 +56,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -126,11 +126,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "18S"
                         },
                         {
                             "device control aggregate document": {
@@ -183,13 +179,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -258,11 +254,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TJP-1 Rhesus",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "TJP-1 Rhesus"
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -332,13 +324,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -402,11 +394,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "18S"
                         },
                         {
                             "device control aggregate document": {
@@ -459,13 +447,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -532,11 +520,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TJP-1 Rhesus",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "TJP-1 Rhesus"
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -606,13 +590,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -676,11 +660,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "18S"
                         },
                         {
                             "device control aggregate document": {
@@ -733,13 +713,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -806,11 +786,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TJP-1 Rhesus",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "TJP-1 Rhesus"
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -880,13 +856,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -950,11 +926,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "18S"
                         },
                         {
                             "device control aggregate document": {
@@ -1007,13 +979,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1080,11 +1052,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TJP-1 Human",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "TJP-1 Human"
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -1154,13 +1122,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1227,11 +1195,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "18S"
                         },
                         {
                             "device control aggregate document": {
@@ -1284,13 +1248,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1357,11 +1321,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TJP-1 Human",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "TJP-1 Human"
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -1431,13 +1391,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1503,11 +1463,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "18S"
                         },
                         {
                             "device control aggregate document": {
@@ -1560,13 +1516,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1633,11 +1589,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "TJP-1 Human",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "TJP-1 Human"
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -1707,13 +1659,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1777,11 +1729,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "18S"
                         },
                         {
                             "device control aggregate document": {
@@ -1834,13 +1782,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1907,11 +1855,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "AqP4- Rhesus",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "AqP4- Rhesus"
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -1981,13 +1925,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2051,11 +1995,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "18S"
                         },
                         {
                             "device control aggregate document": {
@@ -2108,13 +2048,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2181,11 +2121,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "AqP4- Rhesus",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "AqP4- Rhesus"
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -2255,13 +2191,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2325,11 +2261,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "18S"
                         },
                         {
                             "device control aggregate document": {
@@ -2382,13 +2314,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2461,11 +2393,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "AqP4- Rhesus",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "AqP4- Rhesus"
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -2535,13 +2463,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2605,11 +2533,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "18S"
                         },
                         {
                             "device control aggregate document": {
@@ -2662,13 +2586,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2735,11 +2659,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "AQP4-Human",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "AQP4-Human"
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -2809,13 +2729,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2879,11 +2799,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "18S"
                         },
                         {
                             "device control aggregate document": {
@@ -2936,13 +2852,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3009,11 +2925,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "AQP4-Human",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "AQP4-Human"
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -3083,13 +2995,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3153,11 +3065,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "18S"
                         },
                         {
                             "device control aggregate document": {
@@ -3210,13 +3118,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3283,11 +3191,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "AQP4-Human",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "AQP4-Human"
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -3357,13 +3261,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3427,11 +3331,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "18S"
                         },
                         {
                             "device control aggregate document": {
@@ -3484,13 +3384,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3557,11 +3457,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "ANPEP-Rhesus",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "ANPEP-Rhesus"
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -3631,13 +3527,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3701,11 +3597,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "18S"
                         },
                         {
                             "device control aggregate document": {
@@ -3758,13 +3650,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3831,11 +3723,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "ANPEP-Rhesus",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "ANPEP-Rhesus"
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -3905,13 +3793,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3981,11 +3869,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "18S"
                         },
                         {
                             "device control aggregate document": {
@@ -4038,13 +3922,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4129,11 +4013,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "ANPEP-Rhesus",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "ANPEP-Rhesus"
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -4203,13 +4083,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4281,11 +4161,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "18S"
                         },
                         {
                             "device control aggregate document": {
@@ -4338,13 +4214,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4429,11 +4305,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "ANPEP-Human",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "ANPEP-Human"
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -4503,13 +4375,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4573,11 +4445,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "18S"
                         },
                         {
                             "device control aggregate document": {
@@ -4630,13 +4498,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4713,11 +4581,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "ANPEP-Human",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "ANPEP-Human"
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -4787,13 +4651,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4861,11 +4725,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "18S",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "18S"
                         },
                         {
                             "device control aggregate document": {
@@ -4918,13 +4778,13 @@
                                             "custom information document": {
                                                 "reference dna description": "18S",
                                                 "reference sample description": "13Jul2022-Hs-1",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "Analysis Type": "Multiplex",
+                                                "RQ Min/Max Confidence Level": 95.0,
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "NOISE": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -5009,11 +4869,7 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "ANPEP-Human",
-                            "custom information document": {
-                                "Analysis Type": "Multiplex",
-                                "RQ Min/Max Confidence Level": 95.0
-                            }
+                            "target DNA description": "ANPEP-Human"
                         }
                     ],
                     "experimental data identifier": "2022-08-12 145003",
@@ -6624,7 +6480,7 @@
             "file name": "appbio_quantstudio_example08.xlsx",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_example08.xlsx",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.84",
+            "ASM converter version": "0.1.105",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },

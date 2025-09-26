@@ -125,9 +125,18 @@ def _create_processed_data(
     data_processing_custom_info = {
         "reference dna description": result_metadata.reference_dna_description,
         "reference sample description": result_metadata.reference_sample_description,
-        "Analysis Type": "SinglePlex",
-        "RQ Min/Max Confidence Level": 0.95,
     }
+
+    # Add Analysis Type and RQ Min/Max Confidence Level only if present in instrument file
+    if result_metadata.extra_data:
+        if "Analysis Type" in result_metadata.extra_data:
+            data_processing_custom_info["Analysis Type"] = result_metadata.extra_data[
+                "Analysis Type"
+            ]
+        if "RQ Min/Max Confidence Level" in result_metadata.extra_data:
+            data_processing_custom_info[
+                "RQ Min/Max Confidence Level"
+            ] = result_metadata.extra_data["RQ Min/Max Confidence Level"]
 
     for field in data_processing_field_names:
         if field in extra_data:
@@ -269,7 +278,6 @@ def _create_measurement(
         reporter_dye_data_cube=reporter_dye_data_cube,
         passive_reference_dye_data_cube=passive_reference_dye_data_cube,
         melting_curve_data_cube=_create_melt_curve_data_cube(melt_curve_raw_data),
-        custom_info=result_metadata.extra_data,
     )
 
 
