@@ -54,13 +54,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "omit": false,
-                                                "CQCONF": "N",
+                                                "BADROX": "N",
                                                 "NOISE": "N",
+                                                "omit": false,
                                                 "OUTLIERRG": "N",
-                                                "BADROX": "N"
+                                                "CQCONF": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -175,13 +173,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "omit": false,
-                                                "CQCONF": "N",
+                                                "BADROX": "N",
                                                 "NOISE": "N",
+                                                "omit": false,
                                                 "OUTLIERRG": "N",
-                                                "BADROX": "N"
+                                                "CQCONF": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -313,13 +309,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "omit": false,
-                                                "CQCONF": "N",
+                                                "BADROX": "N",
                                                 "NOISE": "N",
+                                                "omit": false,
                                                 "OUTLIERRG": "N",
-                                                "BADROX": "N"
+                                                "CQCONF": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -434,13 +428,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "omit": false,
-                                                "CQCONF": "N",
+                                                "BADROX": "N",
                                                 "NOISE": "N",
+                                                "omit": false,
                                                 "OUTLIERRG": "N",
-                                                "BADROX": "N"
+                                                "CQCONF": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1075,7 +1067,7 @@
             "file name": "appbio_quantstudio_multiple_cal_doc_wells.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_multiple_cal_doc_wells.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.84",
+            "ASM converter version": "0.1.105",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },

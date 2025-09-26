@@ -55,13 +55,11 @@
                                             "custom information document": {
                                                 "reference dna description": "N/A",
                                                 "reference sample description": "N/A",
-                                                "Analysis Type": "SinglePlex",
-                                                "RQ Min/Max Confidence Level": 0.95,
-                                                "CQCONF": "N",
                                                 "BADROX": "N",
-                                                "NOISE": "N",
                                                 "OUTLIERRG": "N",
-                                                "omit": false
+                                                "CQCONF": "N",
+                                                "omit": false,
+                                                "NOISE": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -260,7 +258,7 @@
             "file name": "appbio_quantstudio_minimal_test02.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test02.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.84",
+            "ASM converter version": "0.1.105",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },
