@@ -37,8 +37,23 @@ class BeckmanPharmspecReader:
         raw_header = df.loc[: start - 1].T
         header_data = pd.concat([raw_header.loc[2], raw_header.loc[5]])
         header_columns = pd.concat([raw_header.loc[0], raw_header.loc[3]])
+
+        # Store the software version string before filtering (it's usually at index 0)
+        software_version_string = (
+            str(header_data.iloc[0]) if len(header_data) > 0 else "Unknown"
+        )
+
+        # Filter out nan values from header_columns to avoid nan keys in the Series
+        valid_mask = ~pd.isna(header_columns)
+        header_data = header_data[valid_mask]
+        header_columns = header_columns[valid_mask]
+
         header_data.index = pd.Index(header_columns)
-        self.header = SeriesData(header_data)
+
+        # Create a SeriesData with the software version string preserved
+        series_data = SeriesData(header_data)
+        series_data._software_version_string = software_version_string  # type: ignore
+        self.header = series_data
 
         data = df.loc[start:end]
         data = parse_header_row(data)
