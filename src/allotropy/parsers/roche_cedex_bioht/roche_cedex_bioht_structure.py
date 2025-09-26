@@ -75,47 +75,39 @@ class RawMeasurement:
         if error == BELOW_TEST_RANGE:
             error = data.get(str, "original concentration value", error)
 
-        custom_info = data.get_custom_keys(
-            {"detection kit", "detection kit range", "analyte code"}
-        )
-        custom_info["record type"] = data.get(str, "row type", None)
-        data.mark_read(
-            {
-                "sample identifier",
-                "batch identifier",
-                "col4",
-                "col5",
-                "col6",
-                "col8",
-                "col10",
-                "col11",
-                "col12",
-                "col13",
-                "original concentration value",
-                "sample role type",
-            }
-        )
-
-        if error:
-            custom_info["flag"] = error
-
-        measurement = RawMeasurement(
+        return RawMeasurement(
             data[str, "analyte name"],
             data[str, "measurement time"],
             value,
             unit,
             data[str, "analyte code"],
             error,
-            {},
+            custom_info=dict(
+                sorted(
+                    {
+                        **{
+                            # analyte code is read to generate the analyte id, but is not saved to a field, so include in custom data.
+                            "analyte code": data.get(str, "analyte code"),
+                            "record type": data.get(str, "row type"),
+                            "flag": error or None,
+                        },
+                        **data.get_unread(
+                            skip={
+                                # Sample and batch identifier are read in groupby operation.
+                                "sample identifier",
+                                "batch identifier",
+                                # Read by reader
+                                "sample role type",
+                                # Only read if there is an error.
+                                "original concentration value",
+                                # Skip unidentified columns (col1, col2, etc)
+                                r"col[\d]+",
+                            }
+                        ),
+                    }.items()
+                )
+            ),
         )
-
-        if isinstance(measurement.custom_info, dict):
-            custom_info.update(data.get_unread())
-            custom_info_sorted = dict(sorted(custom_info.items()))
-
-            measurement.custom_info.update(custom_info_sorted)
-
-        return measurement
 
     @staticmethod
     def _get_value_and_unit(value: JsonFloat, unit: str) -> tuple[JsonFloat, str]:
