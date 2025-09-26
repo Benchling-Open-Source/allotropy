@@ -39,6 +39,7 @@ class Title:
 
     @staticmethod
     def create(title_data: SeriesData) -> Title:
+        title_data.get_unread()
         return Title(
             title_data[str, "data processing time"],
             title_data[str, "analyst"],
@@ -69,27 +70,52 @@ class RawMeasurement:
             concentration_value, data[str, "concentration unit"]
         )
 
-        custom_info = data.get_custom_keys({"detection kit", "detection kit range"})
-
-        if error:
-            custom_info["flag"] = error
-
-        custom_info_sorted = dict(sorted(custom_info.items()))
-
         # Instead of reporting '< TEST RNG' as the error, we report the original concentration value,
         # as the error, which comes as a string like '< 8.706'
         if error == BELOW_TEST_RANGE:
             error = data.get(str, "original concentration value", error)
 
-        return RawMeasurement(
+        custom_info = data.get_custom_keys(
+            {"detection kit", "detection kit range", "analyte code"}
+        )
+        custom_info["record type"] = data.get(str, "row type", None)
+        data.mark_read(
+            {
+                "sample identifier",
+                "batch identifier",
+                "col4",
+                "col5",
+                "col6",
+                "col8",
+                "col10",
+                "col11",
+                "col12",
+                "col13",
+                "original concentration value",
+                "sample role type",
+            }
+        )
+
+        if error:
+            custom_info["flag"] = error
+
+        measurement = RawMeasurement(
             data[str, "analyte name"],
             data[str, "measurement time"],
             value,
             unit,
             data[str, "analyte code"],
             error,
-            custom_info_sorted,
+            {},
         )
+
+        if isinstance(measurement.custom_info, dict):
+            custom_info.update(data.get_unread())
+            custom_info_sorted = dict(sorted(custom_info.items()))
+
+            measurement.custom_info.update(custom_info_sorted)
+
+        return measurement
 
     @staticmethod
     def _get_value_and_unit(value: JsonFloat, unit: str) -> tuple[JsonFloat, str]:
