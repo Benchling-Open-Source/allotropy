@@ -78,6 +78,7 @@ class Metadata:
     sensor_chip_type: str | None = None
     lot_number: str | None = None
     sensor_chip_custom_info: DictType | None = None
+    data_system_custom_info: DictType | None = None
 
 
 @dataclass(frozen=True)
@@ -98,6 +99,7 @@ class DeviceControlDocument:
     flow_rate: float | None = None
     contact_time: float | None = None
     dilution: float | None = None
+    detection_type: str | None = None
     sample_temperature_setting: float | None = None
     device_control_custom_info: DictType | None = None
 
@@ -157,15 +159,18 @@ class Mapper(SchemaMapper[Data, Model]):
     def map_model(self, data: Data) -> Model:
         return Model(
             binding_affinity_analyzer_aggregate_document=BindingAffinityAnalyzerAggregateDocument(
-                data_system_document=DataSystemDocument(
-                    ASM_file_identifier=data.metadata.asm_file_identifier,
-                    data_system_instance_identifier=data.metadata.data_system_instance_identifier,
-                    ASM_converter_name=self.converter_name,
-                    ASM_converter_version=ASM_CONVERTER_VERSION,
-                    file_name=data.metadata.file_name,
-                    UNC_path=data.metadata.unc_path,
-                    software_version=data.metadata.software_version,
-                    software_name=data.metadata.software_name,
+                data_system_document=add_custom_information_document(
+                    DataSystemDocument(
+                        ASM_file_identifier=data.metadata.asm_file_identifier,
+                        data_system_instance_identifier=data.metadata.data_system_instance_identifier,
+                        ASM_converter_name=self.converter_name,
+                        ASM_converter_version=ASM_CONVERTER_VERSION,
+                        file_name=data.metadata.file_name,
+                        UNC_path=data.metadata.unc_path,
+                        software_version=data.metadata.software_version,
+                        software_name=data.metadata.software_name,
+                    ),
+                    data.metadata.data_system_custom_info,
                 ),
                 device_system_document=DeviceSystemDocument(
                     device_identifier=data.metadata.device_identifier,
@@ -294,6 +299,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     sample_identifier=measurement.sample_identifier,
                     sample_role_type=measurement.sample_role_type,
                     location_identifier=measurement.location_identifier,
+                    well_plate_identifier=measurement.well_plate_identifier,
                     concentration=quantity_or_none(
                         TQuantityValueNanomolar, measurement.concentration
                     ),
