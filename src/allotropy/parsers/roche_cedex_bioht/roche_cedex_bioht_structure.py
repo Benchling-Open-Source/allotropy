@@ -99,17 +99,23 @@ class RawMeasurement:
         if error:
             custom_info["flag"] = error
 
-        custom_info_sorted = dict(sorted(custom_info.items()))
-
-        return RawMeasurement(
+        measurement = RawMeasurement(
             data[str, "analyte name"],
             data[str, "measurement time"],
             value,
             unit,
             data[str, "analyte code"],
             error,
-            custom_info_sorted,
+            {},
         )
+
+        if isinstance(measurement.custom_info, dict):
+            custom_info.update(data.get_unread())
+            custom_info_sorted = dict(sorted(custom_info.items()))
+
+            measurement.custom_info.update(custom_info_sorted)
+
+        return measurement
 
     @staticmethod
     def _get_value_and_unit(value: JsonFloat, unit: str) -> tuple[JsonFloat, str]:
