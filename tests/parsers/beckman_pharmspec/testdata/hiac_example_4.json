@@ -22,6 +22,9 @@
                                         "sample volume setting": {
                                             "value": 0.2,
                                             "unit": "mL"
+                                        },
+                                        "custom information document": {
+                                            "model number": "HRLD150@10ml"
                                         }
                                     }
                                 ]
@@ -219,7 +222,7 @@
             "file name": "hiac_example_4.xlsx",
             "UNC path": "tests/parsers/beckman_pharmspec/testdata/hiac_example_4.xlsx",
             "ASM converter name": "allotropy_beckman_coulter_pharmspec",
-            "ASM converter version": "0.1.69",
+            "ASM converter version": "0.1.105",
             "software name": "PharmSpec",
             "software version": "3.0"
         },
