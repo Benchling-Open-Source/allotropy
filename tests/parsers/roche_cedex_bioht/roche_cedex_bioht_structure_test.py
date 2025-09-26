@@ -113,7 +113,7 @@ def test_create_measurements() -> None:
                 "g/L",
                 "LAC2B",
                 None,
-                {"analyte code": "LAC2B", "record type": None},
+                {"analyte code": "LAC2B", "record type": None, "flag": None},
             ),
             "glutamine_GLN2B": RawMeasurement(
                 "glutamine",
@@ -122,7 +122,7 @@ def test_create_measurements() -> None:
                 "mmol/L",
                 "GLN2B",
                 None,
-                {"analyte code": "GLN2B", "record type": None},
+                {"analyte code": "GLN2B", "record type": None, "flag": None},
             ),
             "osmolality_OSM2B": RawMeasurement(
                 "osmolality",
@@ -131,7 +131,7 @@ def test_create_measurements() -> None:
                 "mosm/kg",
                 "OSM2B",
                 None,
-                {"analyte code": "OSM2B", "record type": None},
+                {"analyte code": "OSM2B", "record type": None, "flag": None},
             ),
         }
     }
@@ -162,7 +162,7 @@ def test_create_measurements_more_than_one_measurement_docs() -> None:
                 "g/L",
                 "LAC2B",
                 None,
-                {"analyte code": "LAC2B", "record type": None},
+                {"analyte code": "LAC2B", "record type": None, "flag": None},
             ),
             "glutamine_GLN2B": RawMeasurement(
                 "glutamine",
@@ -171,7 +171,7 @@ def test_create_measurements_more_than_one_measurement_docs() -> None:
                 "mmol/L",
                 "GLN2B",
                 None,
-                {"analyte code": "GLN2B", "record type": None},
+                {"analyte code": "GLN2B", "record type": None, "flag": None},
             ),
         },
         "2021-05-21T16:57:51+00:00": {
@@ -182,7 +182,7 @@ def test_create_measurements_more_than_one_measurement_docs() -> None:
                 "mmol/L",
                 "GLN2B",
                 None,
-                {"analyte code": "GLN2B", "record type": None},
+                {"analyte code": "GLN2B", "record type": None, "flag": None},
             ),
         },
     }
@@ -242,7 +242,7 @@ def test_create_sample() -> None:
                 "g/L",
                 "LAC2B",
                 None,
-                {"analyte code": "LAC2B", "record type": None},
+                {"analyte code": "LAC2B", "record type": None, "flag": None},
             ),
             "glutamine_GLN2B": RawMeasurement(
                 "glutamine",
@@ -251,7 +251,7 @@ def test_create_sample() -> None:
                 "mmol/L",
                 "GLN2B",
                 None,
-                {"analyte code": "GLN2B", "record type": None},
+                {"analyte code": "GLN2B", "record type": None, "flag": None},
             ),
         }
     }
