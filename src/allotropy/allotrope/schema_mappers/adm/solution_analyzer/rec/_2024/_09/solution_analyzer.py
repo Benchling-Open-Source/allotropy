@@ -75,6 +75,7 @@ class DistributionDocument:
     differential_particle_density: float
     differential_count: float
     distribution_identifier: str
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -122,6 +123,9 @@ class Measurement:
 
     # Errors
     errors: list[Error] | None = None
+    custom_info: dict[str, Any] | None = None
+    device_control_custom_info: dict[str, Any] | None = None
+    sample_custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -156,6 +160,7 @@ class Metadata:
     detector_view_volume: float | None = None
     repetition_setting: int | None = None
     sample_volume_setting: float | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -274,7 +279,7 @@ class Mapper(SchemaMapper[Data, Model]):
                                     metadata.sample_volume_setting,
                                 ),
                             ),
-                            None,
+                            measurement.device_control_custom_info,
                         ),
                     ]
                 ),
@@ -315,7 +320,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     TQuantityValueMilliOsmolesPerKilogram, measurement.osmolality
                 ),
             ),
-            None,
+            measurement.custom_info,
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
@@ -325,7 +330,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 batch_identifier=measurement.batch_identifier,
                 description=measurement.description,
             ),
-            None,
+            measurement.sample_custom_info,
         )
 
     def _create_analyte_document(self, analyte: Analyte) -> AnalyteDocument:
@@ -410,23 +415,26 @@ class Mapper(SchemaMapper[Data, Model]):
                 else None,
                 distribution_aggregate_document=DistributionAggregateDocument(
                     distribution_document=[
-                        DistributionDocumentItem(
-                            distribution_identifier=distribution.distribution_identifier,
-                            particle_size=TQuantityValueMicrometer(
-                                value=distribution.particle_size
+                        add_custom_information_document(
+                            DistributionDocumentItem(
+                                distribution_identifier=distribution.distribution_identifier,
+                                particle_size=TQuantityValueMicrometer(
+                                    value=distribution.particle_size
+                                ),
+                                cumulative_count=TQuantityValueUnitless(
+                                    value=distribution.cumulative_count
+                                ),
+                                cumulative_particle_density=TQuantityValueCountsPerMilliliter(
+                                    value=distribution.cumulative_particle_density
+                                ),
+                                differential_particle_density=TQuantityValueCountsPerMilliliter(
+                                    value=distribution.differential_particle_density
+                                ),
+                                differential_count=TQuantityValueUnitless(
+                                    value=distribution.differential_count
+                                ),
                             ),
-                            cumulative_count=TQuantityValueUnitless(
-                                value=distribution.cumulative_count
-                            ),
-                            cumulative_particle_density=TQuantityValueCountsPerMilliliter(
-                                value=distribution.cumulative_particle_density
-                            ),
-                            differential_particle_density=TQuantityValueCountsPerMilliliter(
-                                value=distribution.differential_particle_density
-                            ),
-                            differential_count=TQuantityValueUnitless(
-                                value=distribution.differential_count
-                            ),
+                            distribution.custom_info,
                         )
                         for distribution in measurement.distribution_documents
                     ]
