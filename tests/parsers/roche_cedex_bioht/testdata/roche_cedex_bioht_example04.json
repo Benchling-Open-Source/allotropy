@@ -47,8 +47,10 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "AC2B",
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.25 - 38.9 mmol/L"
+                                            "detection kit range": "0.25 - 38.9 mmol/L",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -58,8 +60,10 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "GLC3B",
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.111 - 41.63 mmol/L"
+                                            "detection kit range": "0.111 - 41.63 mmol/L",
+                                            "record type": "40"
                                         }
                                     }
                                 ]
@@ -115,8 +119,10 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "AC2B",
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.25 - 38.9 mmol/L"
+                                            "detection kit range": "0.25 - 38.9 mmol/L",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -126,8 +132,10 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "GLC3B",
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.111 - 41.63 mmol/L"
+                                            "detection kit range": "0.111 - 41.63 mmol/L",
+                                            "record type": "40"
                                         }
                                     }
                                 ]
@@ -183,8 +191,10 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "AC2B",
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.25 - 38.9 mmol/L"
+                                            "detection kit range": "0.25 - 38.9 mmol/L",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -194,8 +204,10 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "GLC3B",
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.111 - 41.63 mmol/L"
+                                            "detection kit range": "0.111 - 41.63 mmol/L",
+                                            "record type": "40"
                                         }
                                     }
                                 ]
@@ -213,7 +225,7 @@
             "file name": "roche_cedex_bioht_example04.txt",
             "UNC path": "tests/parsers/roche_cedex_bioht/testdata/roche_cedex_bioht_example04.txt",
             "ASM converter name": "allotropy_roche_cedex_bioht",
-            "ASM converter version": "0.1.101",
+            "ASM converter version": "0.1.105",
             "software name": "CEDEX BIO HT",
             "software version": "6.0.0.1905 (1905)"
         },
