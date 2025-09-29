@@ -75,8 +75,10 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "AC2B",
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.25 - 38.9 mmol/L"
+                                            "detection kit range": "0.25 - 38.9 mmol/L",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -86,9 +88,11 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "NH3B",
                                             "detection kit": "Standard",
                                             "detection kit range": " 0.278 - 13.89 mmol/L",
-                                            "flag": "< TEST RNG"
+                                            "flag": "< 4.734",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -98,9 +102,11 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "ASNHB",
                                             "detection kit": "Standard",
                                             "detection kit range": "0.5 - 9 mmol/L",
-                                            "flag": "< TEST RNG"
+                                            "flag": "< 0.066",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -110,9 +116,11 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "ASPB",
                                             "detection kit": "Standard",
                                             "detection kit range": "0.1 - 9 mmol/L",
-                                            "flag": "< TEST RNG"
+                                            "flag": "< 0.013",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -122,9 +130,11 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "CA2B",
                                             "detection kit": "Standard",
                                             "detection kit range": "0.2 - 5 mmol/L",
-                                            "flag": "< TEST RNG"
+                                            "flag": "< 8.02",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -134,9 +144,11 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "GLC3B",
                                             "detection kit": "Standard",
                                             "detection kit range": "0.111 - 41.63 mmol/L",
-                                            "flag": "< TEST RNG"
+                                            "flag": "< 0.020",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -146,9 +158,11 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "GLU2B",
                                             "detection kit": "Standard",
                                             "detection kit range": "0.099 - 10.2 mmol/L",
-                                            "flag": "< TEST RNG"
+                                            "flag": "< 0.10",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -158,9 +172,11 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "GLN2B",
                                             "detection kit": "Standard",
                                             "detection kit range": "0.1 - 10.26 mmol/L",
-                                            "flag": "< TEST RNG"
+                                            "flag": "< 0.100",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -170,8 +186,10 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "FE2B",
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.0009 - 0.179 mmol/L"
+                                            "detection kit range": "0.0009 - 0.179 mmol/L",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -181,8 +199,10 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "LAC2B",
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.0444 - 15.55 mmol/L"
+                                            "detection kit range": "0.0444 - 15.55 mmol/L",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -192,9 +212,11 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "MG2B",
                                             "detection kit": "Standard",
                                             "detection kit range": "0.1 - 2.5 mmol/L",
-                                            "flag": "< TEST RNG"
+                                            "flag": "< 2.43",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -204,9 +226,11 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "PHO2B",
                                             "detection kit": "Standard",
                                             "detection kit range": "0.1 - 8.37 mmol/L",
-                                            "flag": "< TEST RNG"
+                                            "flag": "< 9.50",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -216,9 +240,11 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "KB",
                                             "detection kit": "Standard",
                                             "detection kit range": "2 - 28 mmol/L",
-                                            "flag": "unknown"
+                                            "flag": "unknown",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -228,9 +254,11 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "PYRB",
                                             "detection kit": "Standard",
                                             "detection kit range": "0.2 - 8 mmol/L",
-                                            "flag": "< TEST RNG"
+                                            "flag": "< 8.706",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -240,9 +268,11 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "NAB",
                                             "detection kit": "Standard",
                                             "detection kit range": "50 - 275 mmol/L",
-                                            "flag": "verification"
+                                            "flag": "verification",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -252,9 +282,11 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "TP2B",
                                             "detection kit": "Standard",
                                             "detection kit range": "4 - 120 g/L",
-                                            "flag": "< TEST RNG"
+                                            "flag": "< 2.00",
+                                            "record type": "40"
                                         }
                                     }
                                 ]
@@ -272,7 +304,7 @@
             "file name": "roche_cedex_bioht_v5_multiple_detection_ranges.txt",
             "UNC path": "tests/parsers/roche_cedex_bioht/testdata/roche_cedex_bioht_v5_multiple_detection_ranges.txt",
             "ASM converter name": "allotropy_roche_cedex_bioht",
-            "ASM converter version": "0.1.102",
+            "ASM converter version": "0.1.105",
             "software name": "CEDEX BIO HT",
             "software version": "5.0.0.1206 (1206.0)"
         },
