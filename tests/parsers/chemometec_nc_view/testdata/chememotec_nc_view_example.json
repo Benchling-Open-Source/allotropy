@@ -6,8 +6,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -16,12 +14,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "1"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_0",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_1",
                                         "viability (cell counter)": {
                                             "value": 45.1,
                                             "unit": "%"
@@ -30,13 +34,6 @@
                                             "value": 0.124,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_1",
                                         "total cell density (cell counter)": {
                                             "value": 0.274,
                                             "unit": "10^6 cells/mL"
@@ -61,6 +58,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "1",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -71,8 +78,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_2",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -81,12 +86,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "2"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_2",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_3",
                                         "viability (cell counter)": {
                                             "value": 49.0,
                                             "unit": "%"
@@ -95,13 +106,6 @@
                                             "value": 0.22,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_3",
                                         "total cell density (cell counter)": {
                                             "value": 0.448,
                                             "unit": "10^6 cells/mL"
@@ -126,6 +130,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "2",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -136,8 +150,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_4",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -146,12 +158,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "3"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_4",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_5",
                                         "viability (cell counter)": {
                                             "value": 65.3,
                                             "unit": "%"
@@ -160,13 +178,6 @@
                                             "value": 0.248,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_5",
                                         "total cell density (cell counter)": {
                                             "value": 0.379,
                                             "unit": "10^6 cells/mL"
@@ -191,6 +202,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "3",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -201,8 +222,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_6",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -211,12 +230,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "4"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_6",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_7",
                                         "viability (cell counter)": {
                                             "value": 49.8,
                                             "unit": "%"
@@ -225,13 +250,6 @@
                                             "value": 0.148,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_7",
                                         "total cell density (cell counter)": {
                                             "value": 0.298,
                                             "unit": "10^6 cells/mL"
@@ -256,6 +274,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "4",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -266,8 +294,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_8",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -276,12 +302,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "5"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_8",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_9",
                                         "viability (cell counter)": {
                                             "value": 62.6,
                                             "unit": "%"
@@ -290,13 +322,6 @@
                                             "value": 0.242,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_9",
                                         "total cell density (cell counter)": {
                                             "value": 0.387,
                                             "unit": "10^6 cells/mL"
@@ -321,6 +346,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "5",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -331,8 +366,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_10",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -341,12 +374,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "6"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_10",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_11",
                                         "viability (cell counter)": {
                                             "value": 71.4,
                                             "unit": "%"
@@ -355,13 +394,6 @@
                                             "value": 0.278,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_11",
                                         "total cell density (cell counter)": {
                                             "value": 0.389,
                                             "unit": "10^6 cells/mL"
@@ -386,6 +418,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "6",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -396,8 +438,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_12",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -406,12 +446,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "7"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_12",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_13",
                                         "viability (cell counter)": {
                                             "value": 63.0,
                                             "unit": "%"
@@ -420,13 +466,6 @@
                                             "value": 0.119,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_13",
                                         "total cell density (cell counter)": {
                                             "value": 0.189,
                                             "unit": "10^6 cells/mL"
@@ -451,6 +490,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "7",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -461,8 +510,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_14",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -471,12 +518,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "8"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_14",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_15",
                                         "viability (cell counter)": {
                                             "value": 80.4,
                                             "unit": "%"
@@ -485,13 +538,6 @@
                                             "value": 0.341,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_15",
                                         "total cell density (cell counter)": {
                                             "value": 0.424,
                                             "unit": "10^6 cells/mL"
@@ -516,6 +562,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "8",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "Warning: Foreign object detected"
                             }
                         }
                     ]
@@ -526,8 +582,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_16",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -536,12 +590,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "9"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_16",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_17",
                                         "viability (cell counter)": {
                                             "value": 87.8,
                                             "unit": "%"
@@ -550,13 +610,6 @@
                                             "value": 0.492,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_17",
                                         "total cell density (cell counter)": {
                                             "value": 0.56,
                                             "unit": "10^6 cells/mL"
@@ -581,6 +634,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "9",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -591,8 +654,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_18",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -601,12 +662,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "10"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_18",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_19",
                                         "viability (cell counter)": {
                                             "value": 92.8,
                                             "unit": "%"
@@ -615,13 +682,6 @@
                                             "value": 0.516,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_19",
                                         "total cell density (cell counter)": {
                                             "value": 0.555,
                                             "unit": "10^6 cells/mL"
@@ -646,6 +706,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "10",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -656,8 +726,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_20",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -666,12 +734,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "11"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_20",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_21",
                                         "viability (cell counter)": {
                                             "value": 94.7,
                                             "unit": "%"
@@ -680,13 +754,6 @@
                                             "value": 0.653,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_21",
                                         "total cell density (cell counter)": {
                                             "value": 0.69,
                                             "unit": "10^6 cells/mL"
@@ -711,6 +778,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "11",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "Warning: Foreign object detected"
                             }
                         }
                     ]
@@ -721,8 +798,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_22",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -731,12 +806,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "12"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_22",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_23",
                                         "viability (cell counter)": {
                                             "value": 96.2,
                                             "unit": "%"
@@ -745,13 +826,6 @@
                                             "value": 0.89,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_23",
                                         "total cell density (cell counter)": {
                                             "value": 0.925,
                                             "unit": "10^6 cells/mL"
@@ -776,6 +850,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "12",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -786,8 +870,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_24",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -796,12 +878,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "13"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_24",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_25",
                                         "viability (cell counter)": {
                                             "value": 96.6,
                                             "unit": "%"
@@ -810,13 +898,6 @@
                                             "value": 0.684,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_25",
                                         "total cell density (cell counter)": {
                                             "value": 0.708,
                                             "unit": "10^6 cells/mL"
@@ -841,6 +922,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "13",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -851,8 +942,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_26",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -861,12 +950,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "14"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_26",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_27",
                                         "viability (cell counter)": {
                                             "value": 37.9,
                                             "unit": "%"
@@ -875,13 +970,6 @@
                                             "value": 0.144,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_27",
                                         "total cell density (cell counter)": {
                                             "value": 0.379,
                                             "unit": "10^6 cells/mL"
@@ -906,6 +994,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "14",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -916,8 +1014,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_28",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -926,12 +1022,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "15"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_28",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_29",
                                         "viability (cell counter)": {
                                             "value": 44.2,
                                             "unit": "%"
@@ -940,13 +1042,6 @@
                                             "value": 0.141,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_29",
                                         "total cell density (cell counter)": {
                                             "value": 0.318,
                                             "unit": "10^6 cells/mL"
@@ -971,6 +1066,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "15",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -981,8 +1086,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_30",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -991,12 +1094,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "16"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_30",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_31",
                                         "viability (cell counter)": {
                                             "value": 44.8,
                                             "unit": "%"
@@ -1005,13 +1114,6 @@
                                             "value": 0.163,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_31",
                                         "total cell density (cell counter)": {
                                             "value": 0.365,
                                             "unit": "10^6 cells/mL"
@@ -1036,6 +1138,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "16",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -1046,8 +1158,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_32",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1056,12 +1166,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "17"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_32",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_33",
                                         "viability (cell counter)": {
                                             "value": 59.2,
                                             "unit": "%"
@@ -1070,13 +1186,6 @@
                                             "value": 0.256,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_33",
                                         "total cell density (cell counter)": {
                                             "value": 0.433,
                                             "unit": "10^6 cells/mL"
@@ -1101,6 +1210,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "17",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -1111,8 +1230,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_34",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1121,12 +1238,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "18"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_34",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_35",
                                         "viability (cell counter)": {
                                             "value": 58.1,
                                             "unit": "%"
@@ -1135,13 +1258,6 @@
                                             "value": 0.253,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_35",
                                         "total cell density (cell counter)": {
                                             "value": 0.435,
                                             "unit": "10^6 cells/mL"
@@ -1166,6 +1282,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "18",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -1176,8 +1302,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_36",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1186,12 +1310,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "19"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_36",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_37",
                                         "viability (cell counter)": {
                                             "value": 67.5,
                                             "unit": "%"
@@ -1200,13 +1330,6 @@
                                             "value": 0.361,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_37",
                                         "total cell density (cell counter)": {
                                             "value": 0.535,
                                             "unit": "10^6 cells/mL"
@@ -1231,6 +1354,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "19",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -1241,8 +1374,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_38",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1251,12 +1382,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "20"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_38",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_39",
                                         "viability (cell counter)": {
                                             "value": 83.9,
                                             "unit": "%"
@@ -1265,13 +1402,6 @@
                                             "value": 0.563,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_39",
                                         "total cell density (cell counter)": {
                                             "value": 0.671,
                                             "unit": "10^6 cells/mL"
@@ -1296,6 +1426,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "20",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -1306,8 +1446,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_40",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1316,12 +1454,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "21"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_40",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_41",
                                         "viability (cell counter)": {
                                             "value": 93.6,
                                             "unit": "%"
@@ -1330,13 +1474,6 @@
                                             "value": 0.92,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_41",
                                         "total cell density (cell counter)": {
                                             "value": 0.983,
                                             "unit": "10^6 cells/mL"
@@ -1361,6 +1498,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "21",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -1371,8 +1518,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_42",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1381,12 +1526,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "22"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_42",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_43",
                                         "viability (cell counter)": {
                                             "value": 94.9,
                                             "unit": "%"
@@ -1395,13 +1546,6 @@
                                             "value": 1.02,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_43",
                                         "total cell density (cell counter)": {
                                             "value": 1.07,
                                             "unit": "10^6 cells/mL"
@@ -1426,6 +1570,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "22",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -1436,8 +1590,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_44",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1446,12 +1598,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "23"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_44",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_45",
                                         "viability (cell counter)": {
                                             "value": 92.9,
                                             "unit": "%"
@@ -1460,13 +1618,6 @@
                                             "value": 1.04,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_45",
                                         "total cell density (cell counter)": {
                                             "value": 1.12,
                                             "unit": "10^6 cells/mL"
@@ -1491,6 +1642,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "23",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -1501,8 +1662,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_46",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1511,12 +1670,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "24"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_46",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_47",
                                         "viability (cell counter)": {
                                             "value": 85.4,
                                             "unit": "%"
@@ -1525,13 +1690,6 @@
                                             "value": 0.412,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_47",
                                         "total cell density (cell counter)": {
                                             "value": 0.483,
                                             "unit": "10^6 cells/mL"
@@ -1556,6 +1714,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "24",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -1566,8 +1734,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_48",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1576,12 +1742,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "25"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_48",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_49",
                                         "viability (cell counter)": {
                                             "value": 91.2,
                                             "unit": "%"
@@ -1590,13 +1762,6 @@
                                             "value": 0.646,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_49",
                                         "total cell density (cell counter)": {
                                             "value": 0.708,
                                             "unit": "10^6 cells/mL"
@@ -1621,6 +1786,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "25",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -1631,8 +1806,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_50",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1641,12 +1814,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "26"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_50",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_51",
                                         "viability (cell counter)": {
                                             "value": 90.2,
                                             "unit": "%"
@@ -1655,13 +1834,6 @@
                                             "value": 0.56,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_51",
                                         "total cell density (cell counter)": {
                                             "value": 0.621,
                                             "unit": "10^6 cells/mL"
@@ -1686,6 +1858,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "26",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -1696,8 +1878,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_52",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1706,12 +1886,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "27"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_52",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_53",
                                         "viability (cell counter)": {
                                             "value": 93.1,
                                             "unit": "%"
@@ -1720,13 +1906,6 @@
                                             "value": 0.577,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_53",
                                         "total cell density (cell counter)": {
                                             "value": 0.619,
                                             "unit": "10^6 cells/mL"
@@ -1751,6 +1930,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "27",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -1761,8 +1950,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_54",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1771,12 +1958,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "28"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_54",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_55",
                                         "viability (cell counter)": {
                                             "value": 94.9,
                                             "unit": "%"
@@ -1785,13 +1978,6 @@
                                             "value": 0.743,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_55",
                                         "total cell density (cell counter)": {
                                             "value": 0.782,
                                             "unit": "10^6 cells/mL"
@@ -1816,6 +2002,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "28",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -1826,8 +2022,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_56",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1836,12 +2030,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "29"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_56",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_57",
                                         "viability (cell counter)": {
                                             "value": 96.6,
                                             "unit": "%"
@@ -1850,13 +2050,6 @@
                                             "value": 0.765,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_57",
                                         "total cell density (cell counter)": {
                                             "value": 0.792,
                                             "unit": "10^6 cells/mL"
@@ -1881,6 +2074,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "29",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -1891,8 +2094,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_58",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1901,12 +2102,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "30"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_58",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_59",
                                         "viability (cell counter)": {
                                             "value": 94.7,
                                             "unit": "%"
@@ -1915,13 +2122,6 @@
                                             "value": 0.735,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_59",
                                         "total cell density (cell counter)": {
                                             "value": 0.777,
                                             "unit": "10^6 cells/mL"
@@ -1946,6 +2146,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "30",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -1956,8 +2166,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_60",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1966,12 +2174,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "31"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_60",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_61",
                                         "viability (cell counter)": {
                                             "value": 96.2,
                                             "unit": "%"
@@ -1980,13 +2194,6 @@
                                             "value": 0.707,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_61",
                                         "total cell density (cell counter)": {
                                             "value": 0.735,
                                             "unit": "10^6 cells/mL"
@@ -2011,6 +2218,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "31",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -2021,8 +2238,6 @@
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement time": "2024-02-19T00:00:00+00:00",
-                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_62",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2031,12 +2246,18 @@
                                     }
                                 ]
                             },
-                            "sample document": {
-                                "sample identifier": "32"
-                            },
+                            "measurement identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_62",
+                            "measurement time": "2024-02-19T00:00:00+00:00",
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_63",
                                         "viability (cell counter)": {
                                             "value": 94.7,
                                             "unit": "%"
@@ -2045,13 +2266,6 @@
                                             "value": 0.702,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "data processing document": {
-                                            "cell density dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "processed data identifier": "CHEMOMETEC_NC_VIEW_TEST_ID_63",
                                         "total cell density (cell counter)": {
                                             "value": 0.742,
                                             "unit": "10^6 cells/mL"
@@ -2076,6 +2290,16 @@
                                         }
                                     }
                                 ]
+                            },
+                            "sample document": {
+                                "sample identifier": "32",
+                                "custom information document": {
+                                    "MEDIA": "Via2-Cassette"
+                                }
+                            },
+                            "custom information document": {
+                                "method name": "Count & Viability",
+                                "STATUS": "OK"
                             }
                         }
                     ]
@@ -2089,8 +2313,11 @@
             "file name": "chememotec_nc_view_example.csv",
             "UNC path": "tests/parsers/chemometec_nc_view/testdata/chememotec_nc_view_example.csv",
             "ASM converter name": "allotropy_chemometec_nc_view",
-            "ASM converter version": "0.1.66",
-            "software name": "NC-View"
+            "ASM converter version": "0.1.105",
+            "software name": "NC-View",
+            "custom information document": {
+                "USER": "na"
+            }
         },
         "device system document": {
             "device identifier": "N/A",
