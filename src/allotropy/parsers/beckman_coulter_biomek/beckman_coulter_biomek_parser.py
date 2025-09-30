@@ -28,5 +28,5 @@ class BeckmanCoulterBiomekParser(VendorParser[Data, Model]):
         reader = BeckmanCoulterBiomekReader(named_file_contents)
         return Data(
             create_metadata(reader.header, named_file_contents.original_file_path),
-            create_measurement_groups(reader.data, reader.header),
+            create_measurement_groups(reader.data, reader.header, reader.file_format),
         )
