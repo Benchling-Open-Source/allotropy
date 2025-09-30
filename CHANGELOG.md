@@ -5,6 +5,32 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.106] - 2025-09-30
+
+### Added
+
+- AppBio QuantStudio Design & Analysis -  remove duplicates and hardcoded values from measurement custom info doc (#1088)
+- Tecan Magellan - remove unread keys warning (#1086)
+- Beckman Coulter Biomek - Add handle for unified transfer and pipetting samples (#1085)
+- Agilent OpenLab CDS - add peak area percentage and peak height (#1083)
+- Roche Cedex Bioht - use get_unread (#1084)
+- Chemometec NC View - Migrated to use get unread (#1082)
+- Migrate beckman_pharmspec to use SeriesData.get_unread (#1081)
+- Beckman Coulter Biomek Liquid Handler - add support for log headerless files (#1078)
+- Migrate ctl_immunospot to use SeriesData.get_unread (#1076)
+- Cytiva Biacore Insight/Cytiva Biacore T200 Control - Update Slope calculated data's reported units to RU/s (#1077)
+- Molecular Devices SoftMax Pro - Add unread data (#1071)
+- Perkin elmer envision get unread (#1073)
+- BMG mars - Migrate to use get_unread info (#1074)
+- Unchained Labs Lunnatic & Stunner - refactor measurements to use data cubes for wavelength spectrums (#1062)
+- Cytiva Biacore Insight - initial implementation (#1066)
+- NovaBio Flex2 - use SeriesData.get_unread (#1070)
+- Migrate revvity_kaleido to use SeriesData.get_unread (#1060)
+
+### Fixed
+
+- Binding Affinity Analyzer - add support for special keys in processed data document (#1087)
+
 ## [0.1.105] - 2025-09-02
 
 ### Added
