@@ -117,6 +117,7 @@ def create_peak(peak_structure: list[dict[str, Any]]) -> list[Peak]:
             else "mAU.s"
             if "Area" in peak and peak["Area"].get("@unit")
             else None,
+            relative_area=try_float_or_none(peak.get("AreaPercent", {}).get("@val")),
             height=try_float_or_none(peak.get("Height", {}).get("@val"))
             if try_float_or_none(peak.get("Height", {}).get("@val")) is not None
             else None,
@@ -125,6 +126,9 @@ def create_peak(peak_structure: list[dict[str, Any]]) -> list[Peak]:
             else "mAU"
             if "Height" in peak and peak["Height"].get("@unit")
             else None,
+            relative_height=try_float_or_none(
+                peak.get("HeightPercent", {}).get("@val")
+            ),
             written_name=peak["Peak Metadata"].get("CompoundName"),
             retention_time=float(peak["RetentionTime"]["@val"]) * 60
             if peak.get("RetentionTime")

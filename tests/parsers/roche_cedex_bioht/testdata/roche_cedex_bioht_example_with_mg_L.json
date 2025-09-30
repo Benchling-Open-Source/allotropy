@@ -45,8 +45,10 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "NH3B",
                                             "detection kit": "Standard",
-                                            "detection kit range": " 0.278 - 13.89 mmol/L"
+                                            "detection kit range": " 0.278 - 13.89 mmol/L",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -56,8 +58,10 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "GLN2B",
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.1 - 10.26 mmol/L"
+                                            "detection kit range": "0.1 - 10.26 mmol/L",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -67,8 +71,10 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "LAC2B",
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.0444 - 15.55 mmol/L"
+                                            "detection kit range": "0.0444 - 15.55 mmol/L",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -78,8 +84,10 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "LDH2B",
                                             "detection kit": "Standard",
-                                            "detection kit range": "20 - 1000 U/L"
+                                            "detection kit range": "20 - 1000 U/L",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -89,8 +97,10 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "TP2LB",
                                             "detection kit": "Low",
-                                            "detection kit range": "0.3 - 6.0 g/L"
+                                            "detection kit range": "0.3 - 6.0 g/L",
+                                            "record type": "40"
                                         }
                                     }
                                 ]
@@ -164,8 +174,10 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "NH3B",
                                             "detection kit": "Standard",
-                                            "detection kit range": " 0.278 - 13.89 mmol/L"
+                                            "detection kit range": " 0.278 - 13.89 mmol/L",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -175,8 +187,10 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "GLN2B",
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.1 - 10.26 mmol/L"
+                                            "detection kit range": "0.1 - 10.26 mmol/L",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -186,9 +200,11 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "LAC2B",
                                             "detection kit": "Standard",
                                             "detection kit range": "0.0444 - 15.55 mmol/L",
-                                            "flag": "< TEST RNG"
+                                            "flag": "< 0.00",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -198,9 +214,11 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "LDH2B",
                                             "detection kit": "Standard",
                                             "detection kit range": "20 - 1000 U/L",
-                                            "flag": "< TEST RNG"
+                                            "flag": "< 20.00",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -210,9 +228,11 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "TP2B",
                                             "detection kit": "Standard",
                                             "detection kit range": "4 - 120 g/L",
-                                            "flag": "< TEST RNG"
+                                            "flag": "< 4.0",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -222,9 +242,11 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "TP2D",
                                             "detection kit": "High with Pre - Dilution",
                                             "detection kit range": "40 - 1200 g/L",
-                                            "flag": "< TEST RNG"
+                                            "flag": "< 40.0",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -234,8 +256,10 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "TP2LB",
                                             "detection kit": "Low",
-                                            "detection kit range": "0.3 - 6.0 g/L"
+                                            "detection kit range": "0.3 - 6.0 g/L",
+                                            "record type": "40"
                                         }
                                     }
                                 ]
@@ -305,8 +329,10 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "NH3B",
                                             "detection kit": "Standard",
-                                            "detection kit range": " 0.278 - 13.89 mmol/L"
+                                            "detection kit range": " 0.278 - 13.89 mmol/L",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -316,8 +342,10 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "GLN2B",
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.1 - 10.26 mmol/L"
+                                            "detection kit range": "0.1 - 10.26 mmol/L",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -327,9 +355,11 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "LAC2B",
                                             "detection kit": "Standard",
                                             "detection kit range": "0.0444 - 15.55 mmol/L",
-                                            "flag": "< TEST RNG"
+                                            "flag": "< 0.00",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -339,9 +369,11 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "LDH2B",
                                             "detection kit": "Standard",
                                             "detection kit range": "20 - 1000 U/L",
-                                            "flag": "< TEST RNG"
+                                            "flag": "< 20.00",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -351,9 +383,11 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "TP2D",
                                             "detection kit": "High with Pre - Dilution",
                                             "detection kit range": "40 - 1200 g/L",
-                                            "flag": "< TEST RNG"
+                                            "flag": "< 40.0",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -363,8 +397,10 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "TP2LB",
                                             "detection kit": "Low",
-                                            "detection kit range": "0.3 - 6.0 g/L"
+                                            "detection kit range": "0.3 - 6.0 g/L",
+                                            "record type": "40"
                                         }
                                     }
                                 ]
@@ -418,8 +454,10 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "NH3B",
                                             "detection kit": "Standard",
-                                            "detection kit range": " 0.278 - 13.89 mmol/L"
+                                            "detection kit range": " 0.278 - 13.89 mmol/L",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -429,8 +467,10 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "GLN2B",
                                             "detection kit": "Standard",
-                                            "detection kit range": "0.1 - 10.26 mmol/L"
+                                            "detection kit range": "0.1 - 10.26 mmol/L",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -440,9 +480,11 @@
                                             "unit": "g/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "LAC2B",
                                             "detection kit": "Standard",
                                             "detection kit range": "0.0444 - 15.55 mmol/L",
-                                            "flag": "verification"
+                                            "flag": "verification",
+                                            "record type": "40"
                                         }
                                     },
                                     {
@@ -452,8 +494,10 @@
                                             "unit": "mmol/L"
                                         },
                                         "custom information document": {
+                                            "analyte code": "LDH2B",
                                             "detection kit": "Standard",
-                                            "detection kit range": "20 - 1000 U/L"
+                                            "detection kit range": "20 - 1000 U/L",
+                                            "record type": "40"
                                         }
                                     }
                                 ]
@@ -471,7 +515,7 @@
             "file name": "roche_cedex_bioht_example_with_mg_L.txt",
             "UNC path": "tests/parsers/roche_cedex_bioht/testdata/roche_cedex_bioht_example_with_mg_L.txt",
             "ASM converter name": "allotropy_roche_cedex_bioht",
-            "ASM converter version": "0.1.102",
+            "ASM converter version": "0.1.105",
             "software name": "CEDEX BIO HT",
             "software version": "6.0.0.1905 (1905)"
         },

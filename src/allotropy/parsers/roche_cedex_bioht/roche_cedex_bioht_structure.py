@@ -39,6 +39,7 @@ class Title:
 
     @staticmethod
     def create(title_data: SeriesData) -> Title:
+        title_data.get_unread()
         return Title(
             title_data[str, "data processing time"],
             title_data[str, "analyst"],
@@ -69,13 +70,6 @@ class RawMeasurement:
             concentration_value, data[str, "concentration unit"]
         )
 
-        custom_info = data.get_custom_keys({"detection kit", "detection kit range"})
-
-        if error:
-            custom_info["flag"] = error
-
-        custom_info_sorted = dict(sorted(custom_info.items()))
-
         # Instead of reporting '< TEST RNG' as the error, we report the original concentration value,
         # as the error, which comes as a string like '< 8.706'
         if error == BELOW_TEST_RANGE:
@@ -88,7 +82,31 @@ class RawMeasurement:
             unit,
             data[str, "analyte code"],
             error,
-            custom_info_sorted,
+            custom_info=dict(
+                sorted(
+                    {
+                        **{
+                            # analyte code is read to generate the analyte id, but is not saved to a field, so include in custom data.
+                            "analyte code": data.get(str, "analyte code"),
+                            "record type": data.get(str, "row type"),
+                            "flag": error or None,
+                        },
+                        **data.get_unread(
+                            skip={
+                                # Sample and batch identifier are read in groupby operation.
+                                "sample identifier",
+                                "batch identifier",
+                                # Read by reader
+                                "sample role type",
+                                # Only read if there is an error.
+                                "original concentration value",
+                                # Skip unidentified columns (col1, col2, etc)
+                                r"col[\d]+",
+                            }
+                        ),
+                    }.items()
+                )
+            ),
         )
 
     @staticmethod
