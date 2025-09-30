@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from io import StringIO
 from pathlib import Path
 import re
+from typing import Any
 
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     ErrorDocument,
@@ -45,12 +46,15 @@ class MeasurementSettings:
     number_of_averages: float
     plate_identifier: str
     temperature: float
+    custom_info: dict[str, Any]
 
     @staticmethod
     def create(settings_lines: list[str], temperature: float) -> MeasurementSettings:
         settings = parse_settings_lines(settings_lines)
         raw_wavelength = settings[str, "Measurement wavelength"].split()[0]
         measurement_mode = settings[str, "Measurement mode"]
+
+        settings.mark_read("Unit")
 
         return MeasurementSettings(
             measurement_mode=measurement_mode,
@@ -59,6 +63,7 @@ class MeasurementSettings:
             number_of_averages=settings[float, "Number of flashes"],
             plate_identifier=settings[str, "Plate definition file"].split(".")[0],
             temperature=temperature,
+            custom_info=settings.get_unread(),
         )
 
 
@@ -158,6 +163,11 @@ def create_metadata(data: MagellanMetadata, file_path: str) -> Metadata:
 def create_measurement_groups(
     data: SeriesData, metadata: MagellanMetadata, well_count: float
 ) -> MeasurementGroup:
+
+    # The last two columns contain no data
+    column_names = data.series.index.to_list()
+    data.mark_read(set(column_names[-2:]))
+
     measurements = []
 
     for measurement_label, settings in metadata.measurements_settings.items():
@@ -187,6 +197,7 @@ def create_measurement_groups(
                 number_of_averages=settings.number_of_averages,
                 detector_wavelength_setting=settings.wavelength_setting,
                 error_document=errors,
+                device_control_custom_info=settings.custom_info,
             )
         )
 
@@ -197,4 +208,5 @@ def create_measurement_groups(
         analyst=metadata.analyst,
         analytical_method_identifier=metadata.analytical_method_identifier,
         experimental_data_identifier=metadata.experimental_data_identifier,
+        custom_info=data.get_unread(),
     )
