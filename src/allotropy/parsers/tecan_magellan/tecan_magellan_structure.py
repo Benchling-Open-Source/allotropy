@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from io import StringIO
 from pathlib import Path
 import re
+from typing import Any
 
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
     ErrorDocument,
@@ -19,7 +20,6 @@ from allotropy.parsers.tecan_magellan import constants
 from allotropy.parsers.utils.pandas import df_to_series_data, read_csv, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none, try_float
-from allotropy.parsers.utils.warnings_tools import suppress_unused_keys_warning
 
 
 def get_measurement_type(measurement_mode: str) -> MeasurementType:
@@ -46,13 +46,15 @@ class MeasurementSettings:
     number_of_averages: float
     plate_identifier: str
     temperature: float
+    custom_info: dict[str, Any]
 
-    @suppress_unused_keys_warning
     @staticmethod
     def create(settings_lines: list[str], temperature: float) -> MeasurementSettings:
         settings = parse_settings_lines(settings_lines)
         raw_wavelength = settings[str, "Measurement wavelength"].split()[0]
         measurement_mode = settings[str, "Measurement mode"]
+
+        settings.mark_read("Unit")
 
         return MeasurementSettings(
             measurement_mode=measurement_mode,
@@ -61,6 +63,7 @@ class MeasurementSettings:
             number_of_averages=settings[float, "Number of flashes"],
             plate_identifier=settings[str, "Plate definition file"].split(".")[0],
             temperature=temperature,
+            custom_info=settings.get_unread(),
         )
 
 
@@ -194,6 +197,7 @@ def create_measurement_groups(
                 number_of_averages=settings.number_of_averages,
                 detector_wavelength_setting=settings.wavelength_setting,
                 error_document=errors,
+                device_control_custom_info=settings.custom_info,
             )
         )
 
