@@ -152,7 +152,7 @@ def _extract_kinetic_parameter_error(
     return None
 
 
-def _extract_chi2_value(kinetic_result: Any) -> float | None:
+def _extract_chi2_value(kinetic_result: KineticResult | None) -> float | None:
     """Extract Chi2 value from KineticResult fit quality."""
     if not kinetic_result or not kinetic_result.fit_quality:
         return None
