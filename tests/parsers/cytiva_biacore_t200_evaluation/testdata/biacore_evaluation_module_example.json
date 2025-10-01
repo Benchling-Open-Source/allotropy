@@ -158,19 +158,19 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "binding on rate measurement datum  kon ": {
+                                        "binding on rate measurement datum (kon)": {
                                             "value": 527525.740161386,
                                             "unit": "M-1s-1"
                                         },
-                                        "binding off rate measurement datum  koff ": {
+                                        "binding off rate measurement datum (koff)": {
                                             "value": 0.00286250902270012,
                                             "unit": "s^-1"
                                         },
-                                        "equilibrium dissociation constant  KD ": {
+                                        "equilibrium dissociation constant (KD)": {
                                             "value": 5.426292604839325e-09,
                                             "unit": "M"
                                         },
-                                        "maximum binding capacity  Rmax ": {
+                                        "maximum binding capacity (Rmax)": {
                                             "value": 35.2486094118092,
                                             "unit": "RU"
                                         },
@@ -906,19 +906,19 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "binding on rate measurement datum  kon ": {
+                                        "binding on rate measurement datum (kon)": {
                                             "value": 527525.740161386,
                                             "unit": "M-1s-1"
                                         },
-                                        "binding off rate measurement datum  koff ": {
+                                        "binding off rate measurement datum (koff)": {
                                             "value": 0.00286250902270012,
                                             "unit": "s^-1"
                                         },
-                                        "equilibrium dissociation constant  KD ": {
+                                        "equilibrium dissociation constant (KD)": {
                                             "value": 5.426292604839325e-09,
                                             "unit": "M"
                                         },
-                                        "maximum binding capacity  Rmax ": {
+                                        "maximum binding capacity (Rmax)": {
                                             "value": 35.2486094118092,
                                             "unit": "RU"
                                         },
@@ -1654,19 +1654,19 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "binding on rate measurement datum  kon ": {
+                                        "binding on rate measurement datum (kon)": {
                                             "value": 527525.740161386,
                                             "unit": "M-1s-1"
                                         },
-                                        "binding off rate measurement datum  koff ": {
+                                        "binding off rate measurement datum (koff)": {
                                             "value": 0.00286250902270012,
                                             "unit": "s^-1"
                                         },
-                                        "equilibrium dissociation constant  KD ": {
+                                        "equilibrium dissociation constant (KD)": {
                                             "value": 5.426292604839325e-09,
                                             "unit": "M"
                                         },
-                                        "maximum binding capacity  Rmax ": {
+                                        "maximum binding capacity (Rmax)": {
                                             "value": 35.2486094118092,
                                             "unit": "RU"
                                         },
@@ -2402,19 +2402,19 @@
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
-                                        "binding on rate measurement datum  kon ": {
+                                        "binding on rate measurement datum (kon)": {
                                             "value": 527525.740161386,
                                             "unit": "M-1s-1"
                                         },
-                                        "binding off rate measurement datum  koff ": {
+                                        "binding off rate measurement datum (koff)": {
                                             "value": 0.00286250902270012,
                                             "unit": "s^-1"
                                         },
-                                        "equilibrium dissociation constant  KD ": {
+                                        "equilibrium dissociation constant (KD)": {
                                             "value": 5.426292604839325e-09,
                                             "unit": "M"
                                         },
-                                        "maximum binding capacity  Rmax ": {
+                                        "maximum binding capacity (Rmax)": {
                                             "value": 35.2486094118092,
                                             "unit": "RU"
                                         },
@@ -3001,7 +3001,7 @@
             "file name": "biacore_evaluation_module_example.bme",
             "UNC path": "tests/parsers/cytiva_biacore_t200_evaluation/testdata/biacore_evaluation_module_example.bme",
             "ASM converter name": "allotropy_cytiva_biacore_t200_evaluation",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.106",
             "software name": "Biacore T200 Evaluation Software",
             "software version": "3.2.1",
             "custom information document": {
