@@ -255,11 +255,16 @@
             "file name": "pipetting_example.log",
             "UNC path": "tests/parsers/beckman_coulter_biomek/testdata/pipetting_example.log",
             "ASM converter name": "allotropy_beckman_coulter_biomek",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.106",
             "software name": "BioMek Software"
         },
         "device system document": {
             "product manufacturer": "Beckman Coulter"
+        },
+        "custom information document": {
+            "Method": "Method1",
+            "Unit serial number": "",
+            "Logged in user": "KAWOLSKE"
         }
     }
 }

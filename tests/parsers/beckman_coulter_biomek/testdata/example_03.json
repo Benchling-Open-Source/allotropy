@@ -799,11 +799,16 @@
             "file name": "example_03.log",
             "UNC path": "tests/parsers/beckman_coulter_biomek/testdata/example_03.log",
             "ASM converter name": "allotropy_beckman_coulter_biomek",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.106",
             "software name": "BioMek Software"
         },
         "device system document": {
             "product manufacturer": "Beckman Coulter"
+        },
+        "custom information document": {
+            "Unit serial number": "",
+            "Logged in user": "robolab",
+            "Method": "Cryovial to 96W Plate\\LabElite 5ml to 96 1ml FullPlate 99999999"
         }
     }
 }

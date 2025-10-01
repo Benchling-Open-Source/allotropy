@@ -341,7 +341,7 @@
             "file name": "example_02.log",
             "UNC path": "tests/parsers/beckman_coulter_biomek/testdata/example_02.log",
             "ASM converter name": "allotropy_beckman_coulter_biomek",
-            "ASM converter version": "0.1.69",
+            "ASM converter version": "0.1.106",
             "software name": "BioMek Software"
         },
         "device system document": {
@@ -355,6 +355,11 @@
             ],
             "equipment serial number": "B8758519K13",
             "product manufacturer": "Beckman Coulter"
+        },
+        "custom information document": {
+            "Method": "!Strain Engineering\\Pfast Feas\\FF2_Induction",
+            "Unit serial number": "B8758519K13",
+            "Logged in user": "Beckman Coulter"
         }
     }
 }

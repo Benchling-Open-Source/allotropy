@@ -18,6 +18,35 @@ from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
+def _mark_known_fields_as_read(series_data: SeriesData) -> None:
+    known_unread_fields = {
+        "Time Stamp",
+        "Sample Name",
+        "Unnamed: 7",
+        "Amount",
+        "Deck Position",
+        "Labware Barcode",
+        "Labware Name",
+        "Liquid Handling Technique",
+        "Pod",
+        "Well Index",
+        "Position",
+        "Source Position",
+        "Source Well Index",
+        "Source Labware Barcode",
+        "Source Labware Name",
+        "Destination Position",
+        "Destination Well Index",
+        "Destination Labware Barcode",
+        "Destination Labware Name",
+        "Probe",
+    }
+
+    for field in known_unread_fields:
+        if series_data.has_key(field):
+            series_data.mark_read(field)
+
+
 def create_metadata(data: SeriesData, file_path: str) -> Metadata:
     pod_head_serial_columns = [
         str(column) for column in data.series.index if "head serial number" in column
@@ -41,6 +70,7 @@ def create_metadata(data: SeriesData, file_path: str) -> Metadata:
                 )
             )
 
+    custom_info = data.get_unread()
     path = Path(file_path)
     return Metadata(
         file_name=path.name,
@@ -52,6 +82,7 @@ def create_metadata(data: SeriesData, file_path: str) -> Metadata:
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
         software_name=constants.SOFTWARE_NAME,
         devices=devices,
+        custom_info=custom_info if custom_info else None,
     )
 
 
@@ -153,6 +184,8 @@ class PairedTransferStrategy(MeasurementStrategy):
         aspirations: dict[str, SeriesData] = {}
 
         def map_row(row_data: SeriesData) -> None:
+            # Mark known problematic fields as read to avoid warnings
+            _mark_known_fields_as_read(row_data)
             transfer_step = row_data[str, "Transfer Step"]
             probe = row_data.get(str, "Probe", default="default")
 
@@ -232,6 +265,8 @@ class PipettingStrategy(MeasurementStrategy):
         aspirations: list[SeriesData] = []
 
         def map_row(row_data: SeriesData) -> None:
+            # Mark known problematic fields as read to avoid warnings
+            _mark_known_fields_as_read(row_data)
             transfer_step = row_data[str, "Transfer Step"]
             if transfer_step == constants.TransferStep.ASPIRATE.value:
                 aspirations.append(deepcopy(row_data))
@@ -316,6 +351,10 @@ def _create_measurement_from_mapping(
         dest_technique_value = get_dest_value(mapping.destination_technique_field)
         if dest_technique_value is not None:
             custom_info["destination liquid handling technique"] = dest_technique_value
+    if source_data:
+        _mark_known_fields_as_read(source_data)
+    if dest_data:
+        _mark_known_fields_as_read(dest_data)
 
     return Measurement(
         identifier=random_uuid_str(),
@@ -363,5 +402,6 @@ def create_measurement_groups(
             analyst=header[str, "Logged in user"],
             analytical_method_identifier=header.get(str, "Method"),
             measurements=measurements,
+            custom_info=header.get_unread(),
         )
     ]

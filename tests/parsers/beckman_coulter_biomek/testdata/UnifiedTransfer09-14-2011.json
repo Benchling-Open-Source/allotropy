@@ -281,12 +281,17 @@
             "file name": "UnifiedTransfer09-14-2011.log",
             "UNC path": "tests/parsers/beckman_coulter_biomek/testdata/UnifiedTransfer09-14-2011.log",
             "ASM converter name": "allotropy_beckman_coulter_biomek",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.106",
             "software name": "BioMek Software"
         },
         "device system document": {
             "equipment serial number": "1234",
             "product manufacturer": "Beckman Coulter"
+        },
+        "custom information document": {
+            "Logged in user": "User",
+            "Unit serial number": 1234.0,
+            "Method": "Method"
         }
     }
 }
