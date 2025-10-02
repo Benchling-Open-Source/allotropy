@@ -83,6 +83,7 @@ def create_measurement_groups(
                             "value": header.get(float, "Upper"),
                             "unit": "nm",
                         },
+                        "number of sampled points": header.get(int, "Length"),
                         **header.get_unread(),
                     },
                 ),
