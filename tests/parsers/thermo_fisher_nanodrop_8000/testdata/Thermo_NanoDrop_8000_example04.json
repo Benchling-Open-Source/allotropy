@@ -36,6 +36,17 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "date": "4/6/2022",
+                                "260/280": 1.82,
+                                "260/230": 2.23,
+                                "cursor abs.": 10.854,
+                                "conc. factor (ng/ul)": 50.0,
+                                "cursor pos.": 260.0,
+                                "340 raw": 0.016,
+                                "time": "4:20 PM",
+                                "user id": "Default"
                             }
                         },
                         {
@@ -99,6 +110,17 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "date": "4/6/2022",
+                                "260/280": 1.81,
+                                "260/230": 2.24,
+                                "cursor abs.": 11.625,
+                                "conc. factor (ng/ul)": 50.0,
+                                "cursor pos.": 260.0,
+                                "340 raw": 0.006,
+                                "time": "4:20 PM",
+                                "user id": "Default"
                             }
                         },
                         {
@@ -162,6 +184,17 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "date": "4/6/2022",
+                                "260/280": 1.85,
+                                "260/230": 2.29,
+                                "cursor abs.": 6.233,
+                                "conc. factor (ng/ul)": 50.0,
+                                "cursor pos.": 260.0,
+                                "340 raw": -0.023,
+                                "time": "4:20 PM",
+                                "user id": "Default"
                             }
                         },
                         {
@@ -225,6 +258,17 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "date": "4/6/2022",
+                                "260/280": 1.82,
+                                "260/230": 2.25,
+                                "cursor abs.": 9.693,
+                                "conc. factor (ng/ul)": 50.0,
+                                "cursor pos.": 260.0,
+                                "340 raw": 0.012,
+                                "time": "4:20 PM",
+                                "user id": "Default"
                             }
                         },
                         {
@@ -288,6 +332,17 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "date": "4/6/2022",
+                                "260/280": 1.84,
+                                "260/230": 2.27,
+                                "cursor abs.": 9.28,
+                                "conc. factor (ng/ul)": 50.0,
+                                "cursor pos.": 260.0,
+                                "340 raw": 0.007,
+                                "time": "4:20 PM",
+                                "user id": "Default"
                             }
                         },
                         {
@@ -351,6 +406,17 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "date": "4/6/2022",
+                                "260/280": 1.85,
+                                "260/230": 2.25,
+                                "cursor abs.": 6.396,
+                                "conc. factor (ng/ul)": 50.0,
+                                "cursor pos.": 260.0,
+                                "340 raw": 0.014,
+                                "time": "4:20 PM",
+                                "user id": "Default"
                             }
                         },
                         {
@@ -414,6 +480,17 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "date": "4/6/2022",
+                                "260/280": 1.83,
+                                "260/230": 2.23,
+                                "cursor abs.": 8.936,
+                                "conc. factor (ng/ul)": 50.0,
+                                "cursor pos.": 260.0,
+                                "340 raw": 0.023,
+                                "time": "4:20 PM",
+                                "user id": "Default"
                             }
                         },
                         {
@@ -477,6 +554,17 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "date": "4/6/2022",
+                                "260/280": 1.83,
+                                "260/230": 2.18,
+                                "cursor abs.": 9.728,
+                                "conc. factor (ng/ul)": 50.0,
+                                "cursor pos.": 260.0,
+                                "340 raw": 0.095,
+                                "time": "4:20 PM",
+                                "user id": "Default"
                             }
                         },
                         {
@@ -540,6 +628,17 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "date": "4/6/2022",
+                                "260/280": 1.83,
+                                "260/230": 2.24,
+                                "cursor abs.": 9.97,
+                                "conc. factor (ng/ul)": 50.0,
+                                "cursor pos.": 260.0,
+                                "340 raw": -0.032,
+                                "time": "4:22 PM",
+                                "user id": "Default"
                             }
                         },
                         {
@@ -578,7 +677,7 @@
             "file name": "Thermo_NanoDrop_8000_example04.txt",
             "UNC path": "tests/parsers/thermo_fisher_nanodrop_8000/testdata/Thermo_NanoDrop_8000_example04.txt",
             "ASM converter name": "allotropy_thermo_fisher_scientific_nanodrop_8000",
-            "ASM converter version": "0.1.62"
+            "ASM converter version": "0.1.106"
         },
         "calculated data aggregate document": {
             "calculated data document": [
