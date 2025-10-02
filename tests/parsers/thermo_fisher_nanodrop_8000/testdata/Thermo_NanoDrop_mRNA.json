@@ -36,6 +36,17 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "ext.c. (l/(mol*cm))": 25.0,
+                                "user id": "Default",
+                                "formula name 1": "260/280",
+                                "time": "1:45 PM",
+                                "cursor abs.": 0.982,
+                                "formula value 1": 1.449,
+                                "formula 1": "A(260)/A(280)",
+                                "date": "1/13/2023",
+                                "m.w. (g/mol)": 1.0
                             }
                         },
                         {
@@ -88,6 +99,16 @@
                             "absorbance": {
                                 "value": 0.0,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "ext.c. (l/(mol*cm))": 25.0,
+                                "user id": "Default",
+                                "formula name 1": "260/280",
+                                "time": "1:47 PM",
+                                "cursor abs.": 0.982,
+                                "formula 1": "A(260)/A(280)",
+                                "date": "1/13/2023",
+                                "m.w. (g/mol)": 1.0
                             }
                         },
                         {
@@ -150,6 +171,17 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "ext.c. (l/(mol*cm))": 25.0,
+                                "user id": "Default",
+                                "formula name 1": "260/280",
+                                "time": "1:47 PM",
+                                "cursor abs.": 1.711,
+                                "formula value 1": 1.685,
+                                "formula 1": "A(260)/A(280)",
+                                "date": "1/13/2023",
+                                "m.w. (g/mol)": 1.0
                             }
                         },
                         {
@@ -212,6 +244,17 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "ext.c. (l/(mol*cm))": 25.0,
+                                "user id": "Default",
+                                "formula name 1": "260/280",
+                                "time": "1:49 PM",
+                                "cursor abs.": 1.671,
+                                "formula value 1": 1.414,
+                                "formula 1": "A(260)/A(280)",
+                                "date": "1/13/2023",
+                                "m.w. (g/mol)": 1.0
                             }
                         },
                         {
@@ -249,7 +292,7 @@
             "file name": "Thermo_NanoDrop_mRNA.txt",
             "UNC path": "tests/parsers/thermo_fisher_nanodrop_8000/testdata/Thermo_NanoDrop_mRNA.txt",
             "ASM converter name": "allotropy_thermo_fisher_scientific_nanodrop_8000",
-            "ASM converter version": "0.1.62"
+            "ASM converter version": "0.1.106"
         },
         "calculated data aggregate document": {
             "calculated data document": [

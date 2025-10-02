@@ -112,6 +112,7 @@ DICT_KEY_TO_MODEL_KEY_REPLACEMENTS = {
     "=": "_EQUALS_",
     "@": "_AT_",
     "'": "_QUOTE_",
+    "*": "_ASTERISK_",
     ",": "_COMMA_",
     # NOTE: this MUST be at the end, or it will break other key replacements.
     " ": "_",
