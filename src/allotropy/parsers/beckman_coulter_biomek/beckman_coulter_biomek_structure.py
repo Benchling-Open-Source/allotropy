@@ -70,7 +70,11 @@ def create_metadata(data: SeriesData, file_path: str) -> Metadata:
                 )
             )
 
-    custom_info = data.get_unread()
+    custom_info = data.get_unread(skip={
+        "Logged in user",
+        "Unit serial number",
+        "Method",
+    })
     path = Path(file_path)
     return Metadata(
         file_name=path.name,
