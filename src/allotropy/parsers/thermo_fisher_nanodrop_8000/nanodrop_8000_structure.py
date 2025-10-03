@@ -195,6 +195,7 @@ class SpectroscopyRow:
                     and mass_concentration
                     and unit
                     else None,
+                    custom_info=data.get_unread(),
                 )
             )
 
