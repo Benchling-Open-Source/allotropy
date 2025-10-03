@@ -103,6 +103,7 @@ class SpectroscopyRow:
                     and mass_concentration
                     and unit
                     else None,
+                    custom_info={**data.get_unread(), **header.get_unread()},
                 )
             )
         if spectra_data_cube:
@@ -113,6 +114,7 @@ class SpectroscopyRow:
                     data_cube=spectra_data_cube,
                     sample_identifier=sample_id,
                     location_identifier=location_id,
+                    custom_info={**data.get_unread(), **header.get_unread()},
                 )
             )
 
