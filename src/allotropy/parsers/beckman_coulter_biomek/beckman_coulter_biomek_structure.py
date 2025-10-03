@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from copy import deepcopy
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 import pandas as pd
 
@@ -16,35 +17,6 @@ from allotropy.parsers.beckman_coulter_biomek.constants import FileFormat
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-
-
-def _mark_known_fields_as_read(series_data: SeriesData) -> None:
-    known_unread_fields = {
-        "Time Stamp",
-        "Sample Name",
-        "Unnamed: 7",
-        "Amount",
-        "Deck Position",
-        "Labware Barcode",
-        "Labware Name",
-        "Liquid Handling Technique",
-        "Pod",
-        "Well Index",
-        "Position",
-        "Source Position",
-        "Source Well Index",
-        "Source Labware Barcode",
-        "Source Labware Name",
-        "Destination Position",
-        "Destination Well Index",
-        "Destination Labware Barcode",
-        "Destination Labware Name",
-        "Probe",
-    }
-
-    for field in known_unread_fields:
-        if series_data.has_key(field):
-            series_data.mark_read(field)
 
 
 def create_metadata(data: SeriesData, file_path: str) -> Metadata:
@@ -135,6 +107,40 @@ class FieldMapping:
     probe_field: str | None = None
     pod_field: str | None = None
 
+    def get_read_keys(self) -> set[str]:
+        """Return all field names that this mapping reads from."""
+        keys = {
+            self.time_field,
+            self.aspiration_volume_field,
+            self.transfer_volume_field,
+        }
+
+        # Add all optional fields that are not None
+        optional_fields = [
+            self.sample_id_field,
+            self.source_location_field,
+            self.source_well_field,
+            self.source_plate_field,
+            self.source_labware_name_field,
+            self.source_technique_field,
+            self.destination_location_field,
+            self.destination_well_field,
+            self.destination_plate_field,
+            self.destination_labware_name_field,
+            self.destination_technique_field,
+            self.probe_field,
+            self.pod_field,
+        ]
+
+        for field in optional_fields:
+            if field is not None:
+                keys.add(field)
+
+        # Add fields that are always read by the strategies but not in mapping
+        keys.add("Transfer Step")
+
+        return keys
+
 
 class MeasurementStrategy(ABC):
     """Abstract strategy for creating measurements from different file formats."""
@@ -187,11 +193,11 @@ class PairedTransferStrategy(MeasurementStrategy):
 
     def create_measurements(self, data: pd.DataFrame) -> list[Measurement]:
         measurements: list[Measurement] = []
-        aspirations: dict[str, SeriesData] = {}
+        aspirations: dict[str, pd.Series[Any]] = {}
 
         def map_row(row_data: SeriesData) -> None:
             # Mark known problematic fields as read to avoid warnings
-            _mark_known_fields_as_read(row_data)
+            row_data.mark_read(self.mapping.get_read_keys())
             transfer_step = row_data[str, "Transfer Step"]
             probe = row_data.get(str, "Probe", default="default")
 
@@ -199,14 +205,15 @@ class PairedTransferStrategy(MeasurementStrategy):
                 if probe in aspirations:
                     msg = f"Got a second Aspirate step before a Dispense step for probe {probe}"
                     raise AssertionError(msg)
-                aspirations[probe] = deepcopy(row_data)
+                row_data.get_unread()  # we're not using this SeriesData, so silence unread warnings
+                aspirations[probe] = deepcopy(row_data.series)
             elif transfer_step == constants.TransferStep.DISPENSE.value:
                 if probe not in aspirations:
                     msg = (
                         f"Got a Dispense step before an Aspirate step for probe {probe}"
                     )
                     raise AssertionError(msg)
-                aspiration_data = aspirations.pop(probe)
+                aspiration_data = SeriesData(aspirations.pop(probe))
                 measurements.append(
                     _create_measurement_from_mapping(
                         aspiration_data, row_data, self.mapping
@@ -268,19 +275,19 @@ class PipettingStrategy(MeasurementStrategy):
 
     def create_measurements(self, data: pd.DataFrame) -> list[Measurement]:
         measurements: list[Measurement] = []
-        aspirations: list[SeriesData] = []
+        aspirations: list[pd.Series[Any]] = []
 
         def map_row(row_data: SeriesData) -> None:
-            # Mark known problematic fields as read to avoid warnings
-            _mark_known_fields_as_read(row_data)
+            row_data.mark_read(self.mapping.get_read_keys())
             transfer_step = row_data[str, "Transfer Step"]
             if transfer_step == constants.TransferStep.ASPIRATE.value:
-                aspirations.append(deepcopy(row_data))
+                row_data.get_unread()  # we're not using this SeriesData, so silence unread warnings
+                aspirations.append(deepcopy(row_data.series))
             elif transfer_step == constants.TransferStep.DISPENSE.value:
                 if not aspirations:
                     msg = "Got a Dispense step before an Aspirate step"
                     raise AssertionError(msg)
-                aspiration_data = aspirations.pop(0)  # FIFO matching
+                aspiration_data = SeriesData(aspirations.pop(0))  # FIFO matching
                 measurements.append(
                     _create_measurement_from_mapping(
                         aspiration_data, row_data, self.mapping
@@ -358,9 +365,25 @@ def _create_measurement_from_mapping(
         if dest_technique_value is not None:
             custom_info["destination liquid handling technique"] = dest_technique_value
     if source_data:
-        _mark_known_fields_as_read(source_data)
+        source_data.mark_read(mapping.get_read_keys())
     if dest_data:
-        _mark_known_fields_as_read(dest_data)
+        dest_data.mark_read(mapping.get_read_keys())
+
+    # Get unread data for custom info
+    source_unread = (
+        source_data.get_unread(skip={"Unnamed.*", "Sample Name"}) if source_data else {}
+    )
+    dest_unread = (
+        dest_data.get_unread(skip={"Unnamed.*", "Sample Name"}) if dest_data else {}
+    )
+
+    # Merge unread data into custom_info, converting values to strings
+    for key, value in source_unread.items():
+        if value is not None:
+            custom_info[key] = str(value)
+    for key, value in dest_unread.items():
+        if value is not None:
+            custom_info[key] = str(value)
 
     return Measurement(
         identifier=random_uuid_str(),
