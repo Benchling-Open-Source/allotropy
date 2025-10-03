@@ -26,6 +26,15 @@
                             "absorbance": {
                                 "value": -0.008245813102050192,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "a260/a230": 0.4716429731601753,
+                                "a260/a280": -43.64513059797263,
+                                "sample name": "Sample 1",
+                                "ng/âμl": -0.4122906551025096,
+                                "date & time": "06/16/2022 04:38:28 PM(-07:00)",
+                                "serial number": "NDE8675309",
+                                "user name": "Jenny"
                             }
                         },
                         {
@@ -297,6 +306,13 @@
                             "absorbance": {
                                 "value": -0.01142989429727237,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "a260/a230": 0.7474400267787948,
+                                "a260/a280": 3.500264914912444,
+                                "sample name": "Sample 2",
+                                "ng/âμl": -0.5714947148636185,
+                                "date & time": "06/16/2022 04:39:01 PM(-07:00)"
                             }
                         },
                         {
@@ -565,6 +581,13 @@
                             "absorbance": {
                                 "value": -0.009565099990167525,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "a260/a230": 1.461831081649615,
+                                "a260/a280": -1.0907398987646264,
+                                "sample name": "Abc 3",
+                                "ng/âμl": -0.47825499950837624,
+                                "date & time": "06/16/2022 04:39:39 PM(-07:00)"
                             }
                         },
                         {
@@ -775,6 +798,13 @@
                             "absorbance": {
                                 "value": -0.008348743142043702,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "a260/a230": 4.223068228732775,
+                                "a260/a280": -0.6241776992561424,
+                                "sample name": "Abc",
+                                "ng/âμl": -0.4174371571021851,
+                                "date & time": "06/16/2022 04:40:39 PM(-07:00)"
                             }
                         },
                         {
@@ -964,6 +994,12 @@
                             "absorbance": {
                                 "value": -0.018283710715536472,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "a260/a230": 1.340839950170999,
+                                "a260/a280": 2.027763503070494,
+                                "ng/âμl": -0.9141855357768236,
+                                "date & time": "06/16/2022 04:41:11 PM(-07:00)"
                             }
                         },
                         {
@@ -1289,7 +1325,7 @@
             "file name": "thermo_nanodrop_eight_example01.txt",
             "UNC path": "tests/parsers/thermo_fisher_nanodrop_eight/testdata/thermo_nanodrop_eight_example01.txt",
             "ASM converter name": "allotropy_thermo_fisher_scientific_nanodrop_eight",
-            "ASM converter version": "0.1.76"
+            "ASM converter version": "0.1.106"
         },
         "calculated data aggregate document": {
             "calculated data document": [
