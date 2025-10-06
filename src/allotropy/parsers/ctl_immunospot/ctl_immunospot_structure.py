@@ -29,6 +29,7 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
     quantity_or_none,
+    try_float_or_none,
 )
 
 
@@ -47,7 +48,7 @@ def _create_measurement(
         if value is None or str(value).strip() == "":
             return None
         try:
-            return float(str(value).split()[0])
+            return try_float_or_none(str(value).split()[0])
         except ValueError:
             return None
 
