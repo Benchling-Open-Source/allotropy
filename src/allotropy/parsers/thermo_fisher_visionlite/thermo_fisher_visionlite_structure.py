@@ -130,6 +130,7 @@ class VisionLiteData(Data):
                             identifier=random_uuid_str(),
                             sample_identifier=header.sample_name,
                             data_cube=_get_data_cube(data),
+                            custom_info=reader.header.get_unread(skip={"File Name"})
                         )
                     ],
                 )
@@ -232,6 +233,7 @@ def _get_absorbance_measurements(
             absorbance=measurement.absorbance,
             dilution_factor_setting=data.get(float, "Dilution factor"),
             detector_wavelength_setting=try_float_or_none(measurement.wavelength),
+            custom_info=data.get_unread(skip={"Result"})
         )
         for measurement in absorbance_measurements
     ]
