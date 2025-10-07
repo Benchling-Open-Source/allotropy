@@ -130,7 +130,7 @@ class VisionLiteData(Data):
                             identifier=random_uuid_str(),
                             sample_identifier=header.sample_name,
                             data_cube=_get_data_cube(data),
-                            custom_info=reader.header.get_unread()
+                            custom_info=reader.header.get_unread(skip={"File Name"})
                             if reader.header
                             else None,
                         )
