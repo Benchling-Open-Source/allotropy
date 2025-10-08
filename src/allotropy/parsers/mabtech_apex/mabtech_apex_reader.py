@@ -33,10 +33,15 @@ class MabtechApexReader:
         self.data = self._get_data(contents)
 
     def _get_plate_info(self, contents: dict[str, pd.DataFrame]) -> SeriesData:
+        sheet_df = None
+        for name in ["Plate Information", "Plate Info"]:
+            if name in contents:
+                sheet_df = contents[name]
+                break
         sheet = (
             assert_not_none(
-                contents.get("Plate Information"),
-                msg="Unable to find 'Plate Information' sheet.",
+                sheet_df,
+                msg="Unable to find 'Plate Information' or 'Plate Info' sheet.",
             )
             .dropna(axis=1, how="all")
             .T
