@@ -16,7 +16,7 @@ from allotropy.parsers.utils.values import (
     try_float_or_none,
 )
 
-T = TypeVar("T", bool, float, int, str, dict[Any, Any], list[Any])
+T = TypeVar("T", bool, float, int, str)
 # Need to use this instead of type[T] to get mypy to realize primitive can be called to return T
 Type_ = Callable[..., T]
 KeyOrKeys = Iterable[str]
