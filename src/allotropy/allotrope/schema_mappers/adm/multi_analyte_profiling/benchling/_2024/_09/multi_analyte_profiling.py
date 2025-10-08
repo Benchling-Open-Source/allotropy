@@ -70,6 +70,7 @@ class Analyte:
     statistics: list[StatisticsDocument] | None = None
     statistic_datum_role: TStatisticDatumRole | None = None
     fluorescence: float | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -253,42 +254,45 @@ class Mapper(SchemaMapper[Data, Model]):
             assay_bead_count=TQuantityValueNumber(value=measurement.assay_bead_count),
             analyte_aggregate_document=AnalyteAggregateDocument(
                 analyte_document=[
-                    AnalyteDocumentItem(
-                        analyte_identifier=analyte.identifier,
-                        analyte_name=analyte.name,
-                        assay_bead_identifier=analyte.assay_bead_identifier,
-                        assay_bead_count=TQuantityValueNumber(
-                            value=analyte.assay_bead_count
+                    add_custom_information_document(
+                        AnalyteDocumentItem(
+                            analyte_identifier=analyte.identifier,
+                            analyte_name=analyte.name,
+                            assay_bead_identifier=analyte.assay_bead_identifier,
+                            assay_bead_count=TQuantityValueNumber(
+                                value=analyte.assay_bead_count
+                            ),
+                            fluorescence=quantity_or_none(
+                                TQuantityValueRelativeFluorescenceUnit,
+                                analyte.fluorescence,
+                                has_statistic_datum_role=analyte.statistic_datum_role,
+                            ),
+                            statistics_aggregate_document=(
+                                StatisticsAggregateDocument(
+                                    statistics_document=[
+                                        StatisticsDocumentItem(
+                                            statistical_feature=statistic.statistical_feature,
+                                            statistic_dimension_aggregate_document=StatisticDimensionAggregateDocument(
+                                                statistic_dimension_document=[
+                                                    StatisticDimensionDocumentItem(
+                                                        statistical_value=TQuantityValueModel(
+                                                            value=dimension.value,
+                                                            unit=dimension.unit,
+                                                            has_statistic_datum_role=dimension.statistic_datum_role,
+                                                        ),
+                                                    )
+                                                    for dimension in statistic.statistic_dimensions
+                                                ]
+                                            ),
+                                        )
+                                        for statistic in analyte.statistics
+                                    ]
+                                )
+                                if analyte.statistics
+                                else None
+                            ),
                         ),
-                        fluorescence=quantity_or_none(
-                            TQuantityValueRelativeFluorescenceUnit,
-                            analyte.fluorescence,
-                            has_statistic_datum_role=analyte.statistic_datum_role,
-                        ),
-                        statistics_aggregate_document=(
-                            StatisticsAggregateDocument(
-                                statistics_document=[
-                                    StatisticsDocumentItem(
-                                        statistical_feature=statistic.statistical_feature,
-                                        statistic_dimension_aggregate_document=StatisticDimensionAggregateDocument(
-                                            statistic_dimension_document=[
-                                                StatisticDimensionDocumentItem(
-                                                    statistical_value=TQuantityValueModel(
-                                                        value=dimension.value,
-                                                        unit=dimension.unit,
-                                                        has_statistic_datum_role=dimension.statistic_datum_role,
-                                                    ),
-                                                )
-                                                for dimension in statistic.statistic_dimensions
-                                            ]
-                                        ),
-                                    )
-                                    for statistic in analyte.statistics
-                                ]
-                            )
-                            if analyte.statistics
-                            else None
-                        ),
+                        custom_info_doc=analyte.custom_info,
                     )
                     for analyte in measurement.analytes
                 ]

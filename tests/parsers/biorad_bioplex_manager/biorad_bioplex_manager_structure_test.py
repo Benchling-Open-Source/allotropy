@@ -1,5 +1,4 @@
 from unittest import mock
-from xml.etree import ElementTree
 
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.models.shared.definitions.definitions import (
@@ -18,6 +17,7 @@ from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_structure i
     SystemMetadata,
     Well,
 )
+from allotropy.parsers.utils.strict_xml_element import StrictXmlElement
 
 
 def test_create_analyte_metadata() -> None:
@@ -27,9 +27,11 @@ def test_create_analyte_metadata() -> None:
         <Reading Valid="true" Code="0" OutlierType="None">7.00000000000000000E+000</Reading>
     </MWAnalyte>
     """
-    analyte_xml = ElementTree.fromstring(analyte_xml_string)  # noqa: S314
+    analyte_xml = StrictXmlElement.create_from_bytes(analyte_xml_string.encode("utf-8"))
     analyte_metadata = AnalyteMetadata.create(analyte_xml)
-    assert analyte_metadata == AnalyteMetadata(name="Pn4", region=18, error_msg=None)
+    assert analyte_metadata == AnalyteMetadata(
+        name="Pn4", region=18, error_msg=None, custom_info={}
+    )
     assert analyte_metadata.error is None
 
 
@@ -40,7 +42,7 @@ def test_create_analyte_sample_with_error() -> None:
         <Reading Valid="true" Code="1" OutlierType="None">7.00000000000000000E+000</Reading>
     </MWAnalyte>
     """
-    analyte_xml = ElementTree.fromstring(analyte_xml_string)  # noqa: S314
+    analyte_xml = StrictXmlElement.create_from_bytes(analyte_xml_string.encode("utf-8"))
     analyte_metadata = AnalyteMetadata.create(analyte_xml)
     assert analyte_metadata.error_msg == "Low bead number"
     assert analyte_metadata.error == Error(error="Low bead number", feature="Pn4")
@@ -50,8 +52,8 @@ def test_create_well() -> None:
     test_filepath = (
         "tests/parsers/biorad_bioplex_manager/testdata/exclude/well_xml_example.xml"
     )
-    tree = ElementTree.parse(test_filepath)  # noqa: S314
-    well_xml = tree.getroot()
+    with open(test_filepath, "rb") as f:
+        well_xml = StrictXmlElement.create_from_bytes(f.read())
     well = Well.create(well_xml)
 
     assert well == Well(
@@ -62,7 +64,17 @@ def test_create_well() -> None:
         well_total_events=717,
         acquisition_time="2023-05-09T18:55:02Z",
         analyst="baz",
-        xml=well_xml,
+        xml=well_xml.element,
+        custom_info={
+            "ColNo": "1",
+            "PlateID": "555",
+            "RowNo": "1",
+            "RunProtocolDocumentLocation": "Z:\\corge\\quux_qux Luminex\\Protocols\\qux_15PLEX_ASSAY.spbx",
+            "RunProtocolDocumentName": "qux_15PLEX_ASSAY",
+            "TotalGatedEvents": "637",
+            "TotalRegionEventCount": "609",
+            "WellNo": "1",
+        },
     )
 
 
@@ -81,7 +93,7 @@ def test_create_analyte_document_data() -> None:
 </BeadRegion>
     """
     analyte_region_dict = {"62": "Pn4"}
-    bead_xml = ElementTree.fromstring(bead_xml_string)  # noqa: S314
+    bead_xml = StrictXmlElement.create_from_bytes(bead_xml_string.encode("utf-8"))
 
     with mock.patch(
         "allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_structure.random_uuid_str",
@@ -137,6 +149,10 @@ def test_create_analyte_document_data() -> None:
         assay_bead_count=46,
         assay_bead_identifier="62",
         statistics=expected_statistics,
+        custom_info={
+            "StdErr": "3.24580078125000000E+001",
+            "TrimmedCV": "1.86024442315101620E-001",
+        },
     )
 
 
@@ -147,7 +163,9 @@ def test_create_sample() -> None:
 <Dilution>1.00000000000000000E+000</Dilution>
 </Blank>
     """
-    sample_metadata_xml = ElementTree.fromstring(sample_metadata)  # noqa: S314
+    sample_metadata_xml = StrictXmlElement.create_from_bytes(
+        sample_metadata.encode("utf-8")
+    )
     member_well = """
 <MemberWell RowNo="1" ColNo="12" WellNumber="12">
     <MWAnalytes>
@@ -164,7 +182,7 @@ def test_create_sample() -> None:
     </MWAnalytes>
 </MemberWell>
 """
-    member_well_xml = ElementTree.fromstring(member_well)  # noqa: S314
+    member_well_xml = StrictXmlElement.create_from_bytes(member_well.encode("utf-8"))
     assert SampleMetadata.create(
         sample_metadata_xml, member_well_xml
     ) == SampleMetadata(
@@ -177,6 +195,7 @@ def test_create_sample() -> None:
             "12": "alpha",
             "15": "bravo",
         },
+        custom_info={"ColNo": "12", "RowNo": "1", "WellNumber": "12"},
     )
 
 
@@ -184,8 +203,8 @@ def test_create_samples() -> None:
     test_filepath = (
         "tests/parsers/biorad_bioplex_manager/testdata/exclude/sample_xml_example.xml"
     )
-    tree = ElementTree.parse(test_filepath)  # noqa: S314
-    sample_xml = tree.getroot()
+    with open(test_filepath, "rb") as f:
+        sample_xml = StrictXmlElement.create_from_bytes(f.read())
     samples = SampleMetadata.create_samples(sample_xml)
     assert isinstance(samples, dict)
 
@@ -199,6 +218,7 @@ def test_create_samples() -> None:
             analyte_region_dict={
                 "12": "alpha",
             },
+            custom_info={"ColNo": "12", "RowNo": "1", "WellNumber": "12"},
         ),
         "B12": SampleMetadata(
             sample_type=SampleRoleType.blank_role,
@@ -209,6 +229,7 @@ def test_create_samples() -> None:
             analyte_region_dict={
                 "12": "alpha",
             },
+            custom_info={"ColNo": "12", "RowNo": "2", "WellNumber": "24"},
         ),
         "C1": SampleMetadata(
             sample_type=SampleRoleType.control_sample_role,
@@ -220,6 +241,7 @@ def test_create_samples() -> None:
                 "12": "alpha",
                 "15": "bravo",
             },
+            custom_info={"ColNo": "1", "RowNo": "3", "WellNumber": "25"},
         ),
         "C2": SampleMetadata(
             sample_type=SampleRoleType.control_sample_role,
@@ -230,6 +252,7 @@ def test_create_samples() -> None:
             analyte_region_dict={
                 "12": "alpha",
             },
+            custom_info={"ColNo": "2", "RowNo": "3", "WellNumber": "26"},
         ),
         "D2": SampleMetadata(
             sample_type=SampleRoleType.control_sample_role,
@@ -240,6 +263,7 @@ def test_create_samples() -> None:
             analyte_region_dict={
                 "12": "alpha",
             },
+            custom_info={"ColNo": "2", "RowNo": "4", "WellNumber": "38"},
         ),
     }
 
@@ -248,13 +272,24 @@ def test_create_system_metadata() -> None:
     test_filepath = (
         "tests/parsers/biorad_bioplex_manager/testdata/exclude/well_xml_example.xml"
     )
-    tree = ElementTree.parse(test_filepath)  # noqa: S314
-    well_system_xml = tree.getroot()
+    with open(test_filepath, "rb") as f:
+        well_system_xml = StrictXmlElement.create_from_bytes(f.read())
     assert SystemMetadata.create(well_system_xml) == SystemMetadata(
         plate_id="555",
         serial_number="LX12345678912",
         controller_version="2.6.1",
         analytical_method=r"Z:\corge\quux_qux Luminex\Protocols\qux_15PLEX_ASSAY.spbx",
+        custom_info={
+            "AcquisitionTime": "2023-05-09T18:55:02Z",
+            "ColNo": "1",
+            "RowNo": "1",
+            "RunProtocolDocumentName": "qux_15PLEX_ASSAY",
+            "TotalEvents": "717",
+            "TotalGatedEvents": "637",
+            "TotalRegionEventCount": "609",
+            "User": "baz",
+            "WellNo": "1",
+        },
         regions_of_interest=[
             "12",
             "15",
