@@ -44,13 +44,8 @@ def _create_measurement(
     def get_value_or_none(
         data: dict[str, float | str | None], name: str
     ) -> float | None:
-        value = data.pop(name, None)
-        if value is None or str(value).strip() == "":
-            return None
-        try:
-            return try_float_or_none(str(value).split()[0])
-        except ValueError:
-            return None
+        value = str(data.pop(name, None)).split()[0]
+        return try_float_or_none(value)
 
     location_identifier = f"{well_row}{well_col}"
     data_processing_document = {
