@@ -5,6 +5,18 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.107] - 2025-10-09
+
+### Added
+
+- Thermo Fisher Scientific Genesys30 - add unread data (#1093)
+- Mabtech Apex - support files with different plate info (#1099)
+- Cytiva Biacore T200 Evaluation Module - initial implementation (#1075)
+
+### Fixed
+
+- Thermo Fisher Scientific Qubit Flex - added handling for sep header (#1101)
+
 ## [0.1.106] - 2025-09-30
 
 ### Added
