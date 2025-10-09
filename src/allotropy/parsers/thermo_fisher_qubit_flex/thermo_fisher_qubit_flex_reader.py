@@ -30,7 +30,7 @@ class ThermoFisherQubitFlexReader:
         if named_file_contents.extension == "csv":
             csv_reader = CsvReader.create(named_file_contents)
             # Skip lines until we find the "Run ID" header
-            csv_reader.drop_until(r"^Run ID")
+            csv_reader.drop_until(r"Run ID")
             # Read the CSV block starting from the header
             df = csv_reader.pop_csv_block_as_df(index_col=False, header=0)
             if df is None:
