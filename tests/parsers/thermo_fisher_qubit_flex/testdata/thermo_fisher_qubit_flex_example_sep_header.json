@@ -1,0 +1,459 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/spectrophotometry/BENCHLING/2023/12/spectrophotometry.manifest",
+    "spectrophotometry aggregate document": {
+        "spectrophotometry document": [
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2022-12-13T16:41:09+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_QUBIT_FLEX_TEST_ID_0",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "custom information document": {
+                                            "operating minimum": {
+                                                "value": "10.0-20.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating maximum": {
+                                                "value": "1000-1200",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating range": {
+                                                "value": "20.0-1000",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 1.0,
+                                                "unit": "μL"
+                                            },
+                                            "excitation setting": "RED",
+                                            "dilution factor": {
+                                                "value": 200.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "S1",
+                                "batch identifier": "131222-164034",
+                                "custom information document": {
+                                    "last read standards": "2022-12-13T16:40:57+00:00",
+                                    "selected samples": 6,
+                                    "qubit tube concentration": {
+                                        "value": 2.64,
+                                        "unit": "ug/mL"
+                                    },
+                                    "standard 1 concentration": {
+                                        "value": 3.19791240277,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
+                                        "value": 45.4272739973,
+                                        "unit": "RFU"
+                                    },
+                                    "original sample concentration": {
+                                        "value": 528.0,
+                                        "unit": "ng/µL"
+                                    }
+                                }
+                            },
+                            "fluorescence": {
+                                "value": 26.8,
+                                "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "Calibrated Tubes": 6.0
+                            }
+                        }
+                    ],
+                    "experiment type": "RNA BR",
+                    "container type": "tube"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2022-12-13T16:41:09+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_QUBIT_FLEX_TEST_ID_1",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "custom information document": {
+                                            "operating minimum": {
+                                                "value": "10.0-20.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating maximum": {
+                                                "value": "1000-1200",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating range": {
+                                                "value": "20.0-1000",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 1.0,
+                                                "unit": "μL"
+                                            },
+                                            "excitation setting": "RED",
+                                            "dilution factor": {
+                                                "value": 200.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "S2",
+                                "batch identifier": "131222-164034",
+                                "custom information document": {
+                                    "last read standards": "2022-12-13T16:40:57+00:00",
+                                    "selected samples": 6,
+                                    "qubit tube concentration": {
+                                        "value": 3.05,
+                                        "unit": "ug/mL"
+                                    },
+                                    "standard 1 concentration": {
+                                        "value": 2.94017020913,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
+                                        "value": 42.6888518933,
+                                        "unit": "RFU"
+                                    },
+                                    "original sample concentration": {
+                                        "value": 610.0,
+                                        "unit": "ng/µL"
+                                    }
+                                }
+                            },
+                            "fluorescence": {
+                                "value": 28.4,
+                                "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "Calibrated Tubes": 6.0
+                            }
+                        }
+                    ],
+                    "experiment type": "RNA BR",
+                    "container type": "tube"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2022-12-13T16:41:09+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_QUBIT_FLEX_TEST_ID_2",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "custom information document": {
+                                            "operating minimum": {
+                                                "value": "10.0-20.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating maximum": {
+                                                "value": "1000-1200",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating range": {
+                                                "value": "20.0-1000",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 1.0,
+                                                "unit": "μL"
+                                            },
+                                            "excitation setting": "RED",
+                                            "dilution factor": {
+                                                "value": 200.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "S3",
+                                "batch identifier": "131222-164034",
+                                "custom information document": {
+                                    "last read standards": "2022-12-13T16:40:57+00:00",
+                                    "selected samples": 6,
+                                    "qubit tube concentration": {
+                                        "value": 2.67,
+                                        "unit": "ug/mL"
+                                    },
+                                    "standard 1 concentration": {
+                                        "value": 2.74925006568,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
+                                        "value": 40.589712998,
+                                        "unit": "RFU"
+                                    },
+                                    "original sample concentration": {
+                                        "value": 534.0,
+                                        "unit": "ng/µL"
+                                    }
+                                }
+                            },
+                            "fluorescence": {
+                                "value": 24.2,
+                                "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "Calibrated Tubes": 6.0
+                            }
+                        }
+                    ],
+                    "experiment type": "RNA BR",
+                    "container type": "tube"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2022-12-13T16:41:09+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_QUBIT_FLEX_TEST_ID_3",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "custom information document": {
+                                            "operating minimum": {
+                                                "value": "10.0-20.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating maximum": {
+                                                "value": "1000-1200",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating range": {
+                                                "value": "20.0-1000",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 1.0,
+                                                "unit": "μL"
+                                            },
+                                            "excitation setting": "RED",
+                                            "dilution factor": {
+                                                "value": 200.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "S4",
+                                "batch identifier": "131222-164034",
+                                "custom information document": {
+                                    "last read standards": "2022-12-13T16:40:57+00:00",
+                                    "selected samples": 6,
+                                    "qubit tube concentration": {
+                                        "value": 1.86,
+                                        "unit": "ug/mL"
+                                    },
+                                    "standard 1 concentration": {
+                                        "value": 2.987900245,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
+                                        "value": 43.0991381318,
+                                        "unit": "RFU"
+                                    },
+                                    "original sample concentration": {
+                                        "value": 372.0,
+                                        "unit": "ng/µL"
+                                    }
+                                }
+                            },
+                            "fluorescence": {
+                                "value": 18.9,
+                                "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "Calibrated Tubes": 6.0
+                            }
+                        }
+                    ],
+                    "experiment type": "RNA BR",
+                    "container type": "tube"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2022-12-13T16:41:09+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_QUBIT_FLEX_TEST_ID_4",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "custom information document": {
+                                            "operating minimum": {
+                                                "value": "10.0-20.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating maximum": {
+                                                "value": "1000-1200",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating range": {
+                                                "value": "20.0-1000",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 1.0,
+                                                "unit": "μL"
+                                            },
+                                            "excitation setting": "RED",
+                                            "dilution factor": {
+                                                "value": 200.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "S5",
+                                "batch identifier": "131222-164034",
+                                "custom information document": {
+                                    "last read standards": "2022-12-13T16:40:57+00:00",
+                                    "selected samples": 6,
+                                    "qubit tube concentration": {
+                                        "value": 2.73,
+                                        "unit": "ug/mL"
+                                    },
+                                    "standard 1 concentration": {
+                                        "value": 2.8447101374,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
+                                        "value": 41.381660854,
+                                        "unit": "RFU"
+                                    },
+                                    "original sample concentration": {
+                                        "value": 546.0,
+                                        "unit": "ng/µL"
+                                    }
+                                }
+                            },
+                            "fluorescence": {
+                                "value": 25.1,
+                                "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "Calibrated Tubes": 6.0
+                            }
+                        }
+                    ],
+                    "experiment type": "RNA BR",
+                    "container type": "tube"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2022-12-13T16:41:09+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "THERMO_FISHER_QUBIT_FLEX_TEST_ID_5",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "custom information document": {
+                                            "operating minimum": {
+                                                "value": "10.0-20.0",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating maximum": {
+                                                "value": "1000-1200",
+                                                "unit": "ng/µL"
+                                            },
+                                            "operating range": {
+                                                "value": "20.0-1000",
+                                                "unit": "ng/µL"
+                                            },
+                                            "sample volume setting": {
+                                                "value": 1.0,
+                                                "unit": "μL"
+                                            },
+                                            "excitation setting": "RED",
+                                            "dilution factor": {
+                                                "value": 200.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "S6",
+                                "batch identifier": "131222-164034",
+                                "custom information document": {
+                                    "last read standards": "2022-12-13T16:40:57+00:00",
+                                    "selected samples": 6,
+                                    "qubit tube concentration": {
+                                        "value": 2.43,
+                                        "unit": "ug/mL"
+                                    },
+                                    "standard 1 concentration": {
+                                        "value": 2.82561812305,
+                                        "unit": "RFU"
+                                    },
+                                    "standard 2 concentration": {
+                                        "value": 40.2748421637,
+                                        "unit": "RFU"
+                                    },
+                                    "original sample concentration": {
+                                        "value": 486.0,
+                                        "unit": "ng/µL"
+                                    }
+                                }
+                            },
+                            "fluorescence": {
+                                "value": 22.2,
+                                "unit": "RFU"
+                            },
+                            "custom information document": {
+                                "Calibrated Tubes": 6.0
+                            }
+                        }
+                    ],
+                    "experiment type": "RNA BR",
+                    "container type": "tube"
+                }
+            }
+        ],
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "Qubit Flex",
+            "brand name": "Qubit",
+            "product manufacturer": "Thermo Fisher Scientific"
+        },
+        "data system document": {
+            "file name": "thermo_fisher_qubit_flex_example_sep_header.csv",
+            "UNC path": "tests/parsers/thermo_fisher_qubit_flex/testdata/thermo_fisher_qubit_flex_example_sep_header.csv",
+            "software name": "Qubit Flex software",
+            "software version": "1.5.0",
+            "ASM converter name": "allotropy_thermo_fisher_scientific_qubit_flex",
+            "ASM converter version": "0.1.106"
+        }
+    }
+}
