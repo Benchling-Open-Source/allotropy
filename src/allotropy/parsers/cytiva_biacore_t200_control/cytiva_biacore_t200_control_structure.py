@@ -57,14 +57,14 @@ class ChipData:
 @dataclass(frozen=True)
 class DetectionSetting:
     key: str
-    value: str | None
+    value: float | None
 
     @staticmethod
     def create(detection_setting: TrackedDict) -> DetectionSetting:
-        detection_key = f"Detection{detection_setting.get_with_type(str, 'Detection')}"
+        detection_key = f"Detection{detection_setting['Detection']}"
         return DetectionSetting(
             key=detection_key.lower(),
-            value=detection_setting.get_with_type(str, detection_key),
+            value=detection_setting[detection_key],
         )
 
 
@@ -327,7 +327,7 @@ class SampleData:
                     "Flow Cell Number"
                 )
             ]
-        custom_info = application_template_details.get_unread()
+        custom_info: dict[str, Any] = {}
         return SampleData(measurements, custom_info)
 
 
