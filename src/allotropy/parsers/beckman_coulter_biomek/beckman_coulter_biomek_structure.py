@@ -331,7 +331,7 @@ def _create_measurement_from_mapping(
         return data.get(str, field) if field else None
 
     # Build custom info
-    custom_info = {}
+    custom_info: dict[str, Any] = {}
 
     # Probe info - only add if field exists and has a non-empty value
     if mapping.probe_field:
@@ -366,24 +366,14 @@ def _create_measurement_from_mapping(
             custom_info["destination liquid handling technique"] = dest_technique_value
     if source_data:
         source_data.mark_read(mapping.get_read_keys())
+        custom_info |= source_data.get_unread(
+            skip={"Unnamed.*", "Sample Name", "Transfer Step"}
+        )
     if dest_data:
         dest_data.mark_read(mapping.get_read_keys())
-
-    # Get unread data for custom info
-    source_unread = (
-        source_data.get_unread(skip={"Unnamed.*", "Sample Name"}) if source_data else {}
-    )
-    dest_unread = (
-        dest_data.get_unread(skip={"Unnamed.*", "Sample Name"}) if dest_data else {}
-    )
-
-    # Merge unread data into custom_info, converting values to strings
-    for key, value in source_unread.items():
-        if value is not None:
-            custom_info[key] = str(value)
-    for key, value in dest_unread.items():
-        if value is not None:
-            custom_info[key] = str(value)
+        custom_info |= dest_data.get_unread(
+            skip={"Unnamed.*", "Sample Name", "Transfer Step"}
+        )
 
     return Measurement(
         identifier=random_uuid_str(),
