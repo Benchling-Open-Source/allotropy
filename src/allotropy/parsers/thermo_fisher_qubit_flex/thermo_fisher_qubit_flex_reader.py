@@ -3,9 +3,10 @@
 import numpy as np
 import pandas as pd
 
-from allotropy.constants import DEFAULT_ENCODING
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.utils.pandas import read_csv, read_excel
+from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.utils.pandas import read_excel
 
 
 class ThermoFisherQubitFlexReader:
@@ -27,11 +28,14 @@ class ThermoFisherQubitFlexReader:
         AllotropeConversionError: If the file format is not supported.
         """
         if named_file_contents.extension == "csv":
-            df = read_csv(
-                named_file_contents.contents,
-                index_col=False,
-                encoding=DEFAULT_ENCODING,
-            )
+            csv_reader = CsvReader.create(named_file_contents)
+            # Skip lines until we find the "Run ID" header
+            csv_reader.drop_until(r"Test Date")
+            # Read the CSV block starting from the header
+            df = csv_reader.pop_csv_block_as_df(index_col=False, header=0)
+            if df is None:
+                msg = "Unable to find 'Run ID' header in CSV file"
+                raise AllotropeConversionError(msg)
         else:
             df = read_excel(named_file_contents.contents)
         df = df.replace(np.nan, None)
