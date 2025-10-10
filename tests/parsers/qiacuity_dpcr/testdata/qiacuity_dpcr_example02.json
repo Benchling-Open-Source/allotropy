@@ -59,6 +59,12 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "IC": "-",
+                                "Control type": "-",
+                                "Reaction Mix": "5p",
+                                "CI (95%)": 4.6
                             }
                         },
                         {
@@ -106,6 +112,12 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "IC": "-",
+                                "Control type": "-",
+                                "Reaction Mix": "5p",
+                                "CI (95%)": 15.2
                             }
                         },
                         {
@@ -153,6 +165,12 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "IC": "-",
+                                "Control type": "-",
+                                "Reaction Mix": "5p",
+                                "CI (95%)": 10.3
                             }
                         },
                         {
@@ -200,6 +218,12 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "IC": "-",
+                                "Control type": "-",
+                                "Reaction Mix": "5p",
+                                "CI (95%)": 4.2
                             }
                         },
                         {
@@ -247,6 +271,12 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "IC": "-",
+                                "Control type": "-",
+                                "Reaction Mix": "5p",
+                                "CI (95%)": 3.3
                             }
                         },
                         {
@@ -294,6 +324,12 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "IC": "-",
+                                "Control type": "-",
+                                "Reaction Mix": "5p",
+                                "CI (95%)": 6.6
                             }
                         }
                     ]
@@ -305,7 +341,7 @@
             "UNC path": "tests/parsers/qiacuity_dpcr/testdata/qiacuity_dpcr_example02.csv",
             "software name": "Qiacuity Software Suite",
             "ASM converter name": "allotropy_qiacuity_dpcr",
-            "ASM converter version": "0.1.61"
+            "ASM converter version": "0.1.106"
         }
     }
 }
