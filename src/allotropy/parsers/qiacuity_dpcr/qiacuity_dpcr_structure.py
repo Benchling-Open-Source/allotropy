@@ -42,6 +42,7 @@ def create_measurements(data: SeriesData) -> Measurement:
         positive_partition_count=data[int, "Partitions (positive)"],
         negative_partition_count=data.get(int, "Partitions (negative)"),
         fluorescence_intensity_threshold_setting=data.get(float, "Threshold"),
+        custom_info=data.get_unread(),
     )
 
 
