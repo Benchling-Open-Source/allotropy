@@ -24,6 +24,7 @@ class AgilentOpenLabCDSParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "rslt"
     SCHEMA_MAPPER = Mapper
+    UNREAD_DATA_HANDLED = False
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         structured_data = decode_data(named_file_contents.get_bytes_stream())
