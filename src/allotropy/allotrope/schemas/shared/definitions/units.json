@@ -791,6 +791,18 @@
       "unit"
     ]
   },
+  "SquareMillimeter": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "mm^2",
+        "$asm.unit-iri": "http://qudt.org/vocab/unit#SquareMillimeter"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "SquareResponseUnit": {
     "properties": {
       "unit": {

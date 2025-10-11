@@ -72,6 +72,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     SeimensPerMeter,
     SquareCentimetersPerGram,
     SquareCentimetersPerMole,
+    SquareMillimeter,
     SquareResponseUnit,
     TODO,
     Unitless,
@@ -818,6 +819,16 @@ class TQuantityValueSquareCentimetersPerMole(SquareCentimetersPerMole, TQuantity
 class TNullableQuantityValueSquareCentimetersPerMole(
     SquareCentimetersPerMole, TNullableQuantityValue
 ):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueSquareMillimeter(SquareMillimeter, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueSquareMillimeter(SquareMillimeter, TNullableQuantityValue):
     pass
 
 

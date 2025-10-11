@@ -5,6 +5,10 @@ import re
 
 import pandas as pd
 
+from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueSquareMillimeter,
+    TQuantityValueUnitless,
+)
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
 )
@@ -24,6 +28,8 @@ from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
+    quantity_or_none,
+    try_float_or_none,
 )
 
 
@@ -35,11 +41,26 @@ def _create_measurement(
     histograms: dict[str, tuple[list[float], list[float]]],
     header_data: dict[str, float | str | None],
 ) -> Measurement:
+    def get_value_or_none(
+        data: dict[str, float | str | None], name: str
+    ) -> float | None:
+        value = str(data.pop(name, None)).split()[0]
+        return try_float_or_none(value)
+
     location_identifier = f"{well_row}{well_col}"
     data_processing_document = {
-        "Min. SpotSize": header_data.pop("Min. SpotSize", None),
-        "Max. SpotSize": header_data.pop("Max. SpotSize", None),
-        "Spot Separation": header_data.pop("Spot Separation", None),
+        "Min. SpotSize": quantity_or_none(
+            TQuantityValueSquareMillimeter,
+            get_value_or_none(header_data, "Min. SpotSize"),
+        ),
+        "Max. SpotSize": quantity_or_none(
+            TQuantityValueSquareMillimeter,
+            get_value_or_none(header_data, "Max. SpotSize"),
+        ),
+        "Spot Separation": quantity_or_none(
+            TQuantityValueUnitless,
+            get_value_or_none(header_data, "Spot Separation"),
+        ),
     }
     has_data = any(
         value is not None and str(value).strip() != ""
@@ -65,29 +86,31 @@ def _create_measurement(
                 for name, data in plate_data.items()
             ],
         ),
-        custom_data_cubes=[
-            DataCube(
-                label="spot count histogram",
-                structure_dimensions=[
-                    DataCubeComponent(
-                        concept="spot size",
-                        type_=FieldComponentDatatype.double,
-                        unit=UNITLESS,
-                    )
-                ],
-                structure_measures=[
-                    DataCubeComponent(
-                        concept="spot count",
-                        type_=FieldComponentDatatype.double,
-                        unit="Number",
-                    )
-                ],
-                dimensions=[histograms[location_identifier][0]],
-                measures=[histograms[location_identifier][1]],
-            )
-        ]
-        if histograms and location_identifier in histograms
-        else None,
+        custom_data_cubes=(
+            [
+                DataCube(
+                    label="spot count histogram",
+                    structure_dimensions=[
+                        DataCubeComponent(
+                            concept="spot size",
+                            type_=FieldComponentDatatype.double,
+                            unit=UNITLESS,
+                        )
+                    ],
+                    structure_measures=[
+                        DataCubeComponent(
+                            concept="spot count",
+                            type_=FieldComponentDatatype.double,
+                            unit="Number",
+                        )
+                    ],
+                    dimensions=[histograms[location_identifier][0]],
+                    measures=[histograms[location_identifier][1]],
+                )
+            ]
+            if histograms and location_identifier in histograms
+            else None
+        ),
         device_control_custom_info=header_data,
     )
 
