@@ -271,7 +271,10 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueMilliAbsorbanceUnit,
                 measurement.baseline_absorbance,
             ),
-            "340 raw": quantity_or_none(TQuantityValueMilliAbsorbanceUnit, (measurement.custom_info or {}).get("340 raw")),
+            "340 raw": quantity_or_none(
+                TQuantityValueMilliAbsorbanceUnit,
+                (measurement.custom_info or {}).get("340 raw"),
+            ),
             "Cursor Abs.": quantity_or_none(
                 TQuantityValueMilliAbsorbanceUnit,
                 measurement.cursor_absorbance,
@@ -348,7 +351,9 @@ class Mapper(SchemaMapper[Data, Model]):
             "dilution factor": quantity_or_none(
                 TQuantityValueUnitless, measurement.dilution_factor_setting
             ),
-            "Cursor Pos.": quantity_or_none(TQuantityValueNanometer, measurement.cursor_position)
+            "Cursor Pos.": quantity_or_none(
+                TQuantityValueNanometer, measurement.cursor_position
+            ),
         }
         return (measurement.device_control_custom_info or {}) | custom_info
 
@@ -376,8 +381,7 @@ class Mapper(SchemaMapper[Data, Model]):
         if "Mol. Wt. kda" in sample_custom_info:
             mol_wt_g_per_mol = sample_custom_info["Mol. Wt. kda"]
             sample_custom_info["Mol. Wt. kda"] = quantity_or_none(
-                TQuantityValueKiloDalton,
-                mol_wt_g_per_mol
+                TQuantityValueKiloDalton, mol_wt_g_per_mol
             )
 
         return add_custom_information_document(
@@ -400,15 +404,20 @@ class Mapper(SchemaMapper[Data, Model]):
         processed_data_custom_info = {}
         if data.custom_info:
             processed_data_custom_info = {
-                "E1%": quantity_or_none(TQuantityValueUnitless, data.custom_info.get("E1%")),
+                "E1%": quantity_or_none(
+                    TQuantityValueUnitless, data.custom_info.get("E1%")
+                ),
                 "ext. coeff x10e3": quantity_or_none(
-                    TQuantityValuePerMolarPerCentimeter, data.custom_info.get("ext. coeff x10e3")
+                    TQuantityValuePerMolarPerCentimeter,
+                    data.custom_info.get("ext. coeff x10e3"),
                 ),
                 "ext.c.": quantity_or_none(
-                    TQuantityValuePerMolarPerCentimeter, data.custom_info.get("ext.c. (l/(mol*cm))")
+                    TQuantityValuePerMolarPerCentimeter,
+                    data.custom_info.get("ext.c. (l/(mol*cm))"),
                 ),
                 "conc. factor": quantity_or_none(
-                    TQuantityValueNanogramPerMicroliter, data.custom_info.get("conc. factor (ng/ul)")
+                    TQuantityValueNanogramPerMicroliter,
+                    data.custom_info.get("conc. factor (ng/ul)"),
                 ),
             }
 

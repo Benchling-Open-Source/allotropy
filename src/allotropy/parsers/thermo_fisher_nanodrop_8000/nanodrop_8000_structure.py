@@ -173,10 +173,6 @@ class SpectroscopyRow:
             "ext.c. (l/(mol*cm))": data.get(float, "ext.c. (l/(mol*cm))"),
             "conc. factor (ng/ul)": data.get(float, "conc. factor (ng/ul)"),
         }
-        # Remove None values
-        processed_data_custom_info = {
-            k: v for k, v in processed_data_custom_info.items() if v is not None
-        }
 
         measurements: list[Measurement] = []
         for wavelength, absorbance in absorbances.items():
@@ -213,22 +209,24 @@ class SpectroscopyRow:
                     sample_custom_info={
                         "Mol. Wt. kda": data.get(float, "mol. wt. kda"),
                     },
-                    custom_info=data.get_unread(skip={
-                        "date",
-                        "time",
-                        "user id",
-                        "formula value 1",
-                        "formula name 1",
-                        "formula 1",
-                        "260/230",
-                        "260/280",
-                        "m.w. (g/mol)",
-                        "mol. wt. kda",
-                        "e1%",
-                        "ext. coeff x10e3",
-                        "ext.c. (l/(mol*cm))",
-                        "conc. factor (ng/ul)",
-                    }),
+                    custom_info=data.get_unread(
+                        skip={
+                            "date",
+                            "time",
+                            "user id",
+                            "formula value 1",
+                            "formula name 1",
+                            "formula 1",
+                            "260/230",
+                            "260/280",
+                            "m.w. (g/mol)",
+                            "mol. wt. kda",
+                            "e1%",
+                            "ext. coeff x10e3",
+                            "ext.c. (l/(mol*cm))",
+                            "conc. factor (ng/ul)",
+                        }
+                    ),
                 )
             )
 
