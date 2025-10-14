@@ -14,8 +14,8 @@ from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling.
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.cytiva_biacore_t200_control import constants
+from allotropy.parsers.utils.dict_data import DictData
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
-from allotropy.parsers.utils.tracked_dict import TrackedDict
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
@@ -34,22 +34,18 @@ class ChipData:
     custom_info: dict[str, Any]
 
     @staticmethod
-    def create(chip_data: TrackedDict) -> ChipData:
+    def create(chip_data: DictData) -> ChipData:
         return ChipData(
-            sensor_chip_identifier=assert_not_none(
-                chip_data.get_with_type(str, "Id"), "Chip ID"
-            ),
-            sensor_chip_type=chip_data.get_with_type(str, "Name"),
-            number_of_flow_cells=chip_data.get_with_type(int, "NoFcs"),
-            number_of_spots=chip_data.get_with_type(int, "NoSpots"),
-            lot_number=lot_no
-            if (lot_no := chip_data.get_with_type(str, "LotNo"))
-            else None,
+            sensor_chip_identifier=assert_not_none(chip_data.get(str, "Id"), "Chip ID"),
+            sensor_chip_type=chip_data.get(str, "Name"),
+            number_of_flow_cells=chip_data.get(int, "NoFcs"),
+            number_of_spots=chip_data.get(int, "NoSpots"),
+            lot_number=lot_no if (lot_no := chip_data.get(str, "LotNo")) else None,
             custom_info={
-                "ifc identifier": chip_data.get_with_type(str, "IFC"),
-                "last modified time": chip_data.get_with_type(str, "LastModTime"),
-                "last use time": chip_data.get_with_type(str, "LastUseTime"),
-                "first dock date": chip_data.get_with_type(str, "FirstDockDate"),
+                "ifc identifier": chip_data.get(str, "IFC"),
+                "last modified time": chip_data.get(str, "LastModTime"),
+                "last use time": chip_data.get(str, "LastUseTime"),
+                "first dock date": chip_data.get(str, "FirstDockDate"),
             },
         )
 
@@ -60,7 +56,7 @@ class DetectionSetting:
     value: float | None
 
     @staticmethod
-    def create(detection_setting: TrackedDict) -> DetectionSetting:
+    def create(detection_setting: DictData) -> DetectionSetting:
         detection_key = f"Detection{detection_setting['Detection']}"
         return DetectionSetting(
             key=detection_key.lower(),
@@ -86,54 +82,52 @@ class RunMetadata:
 
     @staticmethod
     def create(
-        application_template_details: TrackedDict | None,
+        application_template_details: DictData | None,
     ) -> RunMetadata:
         if application_template_details is None:
             return RunMetadata()
-        baseline_flow = application_template_details.get_with_type(
-            TrackedDict, "BaselineFlow", TrackedDict({})
+        baseline_flow = application_template_details.get(
+            DictData, "BaselineFlow", DictData({})
         )
         baseline_flow_value = baseline_flow.get("value")
-        data_collection_rate = application_template_details.get_with_type(
-            TrackedDict, "DataCollectionRate", TrackedDict({})
+        data_collection_rate = application_template_details.get(
+            DictData, "DataCollectionRate", DictData({})
         )
         data_collection_rate_value = data_collection_rate.get("value")
         return RunMetadata(
-            analyst=application_template_details.get_with_type(
-                TrackedDict, "properties", TrackedDict({})
-            ).get_with_type(str, "User"),
+            analyst=application_template_details.get(
+                DictData, "properties", DictData({})
+            ).get(str, "User"),
             compartment_temperature=try_float_or_none(
-                application_template_details.get_with_type(
-                    TrackedDict,
+                application_template_details.get(
+                    DictData,
                     "RackTemperature",
-                    TrackedDict({}),
+                    DictData({}),
                 )["Value"]
                 if "sample_data" in application_template_details
-                else application_template_details.get_with_type(
-                    TrackedDict,
+                else application_template_details.get(
+                    DictData,
                     "system_preparations",
-                    TrackedDict({}),
-                ).get_with_type(str, "RackTemp")
+                    DictData({}),
+                ).get(str, "RackTemp")
             ),
             baseline_flow=try_float_or_none(baseline_flow_value),
             data_collection_rate=try_float_or_none(data_collection_rate_value),
             detection_setting=(
                 DetectionSetting.create(
-                    application_template_details.get_with_type(
-                        TrackedDict, "detection", TrackedDict({})
+                    application_template_details.get(
+                        DictData, "detection", DictData({})
                     )
                 )
-                if application_template_details.get_with_type(
-                    TrackedDict, "detection", TrackedDict({})
-                )
+                if application_template_details.get(DictData, "detection", DictData({}))
                 else None
             ),
             buffer_volume=try_float_or_none(
                 next(
                     (
                         value
-                        for key, value in application_template_details.get_with_type(
-                            TrackedDict, "prepare_run", TrackedDict({})
+                        for key, value in application_template_details.get(
+                            DictData, "prepare_run", DictData({})
                         ).items()
                         if key.startswith("Buffer")
                     ),
@@ -159,24 +153,22 @@ class SystemInformation:
     software_version: str | None
 
     @staticmethod
-    def create(system_information: TrackedDict) -> SystemInformation:
+    def create(system_information: DictData) -> SystemInformation:
         return SystemInformation(
             device_identifier=assert_not_none(
-                system_information.get_with_type(str, "InstrumentId"), "InstrumentId"
+                system_information.get(str, "InstrumentId"), "InstrumentId"
             ),
             model_number=assert_not_none(
-                system_information.get_with_type(str, "ProcessingUnit"),
+                system_information.get(str, "ProcessingUnit"),
                 "ProcessingUnit",
             ),
             measurement_time=assert_not_none(
-                system_information.get_with_type(str, "Timestamp"), "Timestamp"
+                system_information.get(str, "Timestamp"), "Timestamp"
             ),
-            experiment_type=system_information.get_with_type(str, "RunTypeId"),
-            analytical_method_identifier=system_information.get_with_type(
-                str, "TemplateFile"
-            ),
-            software_name=system_information.get_with_type(str, "Application"),
-            software_version=system_information.get_with_type(str, "Version"),
+            experiment_type=system_information.get(str, "RunTypeId"),
+            analytical_method_identifier=system_information.get(str, "TemplateFile"),
+            software_name=system_information.get(str, "Application"),
+            software_version=system_information.get(str, "Version"),
         )
 
 
@@ -252,36 +244,30 @@ class SampleData:
     custom_info: dict[str, Any]
 
     @staticmethod
-    def create(intermediate_structured_data: TrackedDict) -> SampleData:
-        application_template_details = intermediate_structured_data.get_with_type(
-            TrackedDict, "application_template_details", TrackedDict({})
+    def create(intermediate_structured_data: DictData) -> SampleData:
+        application_template_details = intermediate_structured_data.get(
+            DictData, "application_template_details", DictData({})
         )
         measurements: dict[str, list[MeasurementData]] = defaultdict(list)
         total_cycles = assert_not_none(
-            intermediate_structured_data.get_with_type(int, "total_cycles"),
+            intermediate_structured_data.get(int, "total_cycles"),
             "total_cycles",
         )
         for idx in range(total_cycles):
-            flowcell_cycle_json = application_template_details.get_with_type(
-                TrackedDict, f"Flowcell {idx + 1}", TrackedDict({})
+            flowcell_cycle_json = application_template_details.get(
+                DictData, f"Flowcell {idx + 1}", DictData({})
             )
-            sd_list = intermediate_structured_data.get_with_type(
-                list, "sample_data", []
-            )
-            sample_data_json = sd_list[idx] if sd_list else TrackedDict({})
+            sd_list = intermediate_structured_data.get(list, "sample_data", [])
+            sample_data_json = sd_list[idx] if sd_list else DictData({})
 
-            cycle_data_list = intermediate_structured_data.get_with_type(
-                list, "cycle_data", []
-            )
+            cycle_data_list = intermediate_structured_data.get(list, "cycle_data", [])
             cycle_data: dict[str, pd.DataFrame] = cycle_data_list[idx]
             sensorgram_data: pd.DataFrame = cycle_data["sensorgram_data"]
             # some experiments don't have report point data for some cycles (apparently just the first one)
             report_point_data: pd.DataFrame | None = cycle_data["report_point_data"]
 
-            sample_identifier = sample_data_json.get_with_type(
-                str, "sample_name", NOT_APPLICABLE
-            )
-            location_identifier = sample_data_json.get_with_type(str, "rack")
+            sample_identifier = sample_data_json.get(str, "sample_name", NOT_APPLICABLE)
+            location_identifier = sample_data_json.get(str, "rack")
             sample_location_key = f"{location_identifier}_{sample_identifier}"
 
             # Measurements are grouped by sample and location identifiers
@@ -294,14 +280,10 @@ class SampleData:
                     flow_cell_identifier=str(flow_cell),
                     location_identifier=location_identifier,
                     sample_role_type=constants.SAMPLE_ROLE_TYPE.get(
-                        sample_data_json.get_with_type(str, "role", "__IVALID_KEY__")
+                        sample_data_json.get(str, "role", "__IVALID_KEY__")
                     ),
-                    concentration=sample_data_json.get_with_type(
-                        float, "concentration"
-                    ),
-                    molecular_weight=sample_data_json.get_with_type(
-                        float, "molecular_weight"
-                    ),
+                    concentration=sample_data_json.get(float, "concentration"),
+                    molecular_weight=sample_data_json.get(float, "molecular_weight"),
                     sensorgram_data=sensorgram_df,
                     report_point_data=(
                         map_rows(
@@ -312,14 +294,12 @@ class SampleData:
                         else None
                     ),
                     # for Mobilization experiments
-                    method_name=flowcell_cycle_json.get_with_type(str, "MethodName"),
-                    ligand_identifier=flowcell_cycle_json.get_with_type(str, "Ligand"),
-                    flow_path=flowcell_cycle_json.get_with_type(str, "DetectionText"),
-                    flow_rate=flowcell_cycle_json.get_with_type(float, "Flow"),
-                    contact_time=flowcell_cycle_json.get_with_type(
-                        float, "ContactTime"
-                    ),
-                    dilution=flowcell_cycle_json.get_with_type(float, "DilutePercent"),
+                    method_name=flowcell_cycle_json.get(str, "MethodName"),
+                    ligand_identifier=flowcell_cycle_json.get(str, "Ligand"),
+                    flow_path=flowcell_cycle_json.get(str, "DetectionText"),
+                    flow_rate=flowcell_cycle_json.get(float, "Flow"),
+                    contact_time=flowcell_cycle_json.get(float, "ContactTime"),
+                    dilution=flowcell_cycle_json.get(float, "DilutePercent"),
                     custom_info={},
                 )
                 # group sensorgram data by Flow Cell Number (Fc in rpoint data)
@@ -339,15 +319,13 @@ class Data:
     sample_data: SampleData
 
     @staticmethod
-    def create(intermediate_structured_data: TrackedDict) -> Data:
-        application_template_details = intermediate_structured_data.get_with_type(
-            TrackedDict, "application_template_details", TrackedDict({})
+    def create(intermediate_structured_data: DictData) -> Data:
+        application_template_details = intermediate_structured_data.get(
+            DictData, "application_template_details", DictData({})
         )
-        chip_data = intermediate_structured_data.get_with_type(
-            TrackedDict, "chip", TrackedDict({})
-        )
-        system_information = intermediate_structured_data.get_with_type(
-            TrackedDict, "system_information", TrackedDict({})
+        chip_data = intermediate_structured_data.get(DictData, "chip", DictData({}))
+        system_information = intermediate_structured_data.get(
+            DictData, "system_information", DictData({})
         )
 
         return Data(

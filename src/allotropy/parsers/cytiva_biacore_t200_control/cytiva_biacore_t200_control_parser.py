@@ -19,7 +19,7 @@ from allotropy.parsers.cytiva_biacore_t200_control.cytiva_biacore_t200_control_s
     Data,
 )
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.utils.tracked_dict import TrackedDict
+from allotropy.parsers.utils.dict_data import DictData
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -30,7 +30,7 @@ class CytivaBiacoreT200ControlParser(VendorParser[MapperData, Model]):
     SCHEMA_MAPPER = Mapper
 
     def create_data(self, named_file_contents: NamedFileContents) -> MapperData:
-        data = Data.create(TrackedDict(decode_data(named_file_contents)))
+        data = Data.create(DictData(decode_data(named_file_contents)))
         return MapperData(
             metadata=create_metadata(data, named_file_contents),
             measurement_groups=create_measurement_groups(data),
