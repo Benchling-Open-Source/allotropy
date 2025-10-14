@@ -376,7 +376,6 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.sample_custom_info["last read standards"]
             )
 
-        # Convert molecular weight from g/mol to kDa
         sample_custom_info = measurement.sample_custom_info or {}
         if "Mol. Wt. kda" in sample_custom_info:
             mol_wt_g_per_mol = sample_custom_info["Mol. Wt. kda"]
