@@ -166,6 +166,18 @@ class SpectroscopyRow:
         )
         unit = data.get(str, "units")
 
+        # Read fields for Data Processing Document custom info
+        processed_data_custom_info = {
+            "E1%": data.get(float, "e 1%"),
+            "ext. coeff x10e3": data.get(float, "ext. coeff x10e3"),
+            "ext.c. (l/(mol*cm))": data.get(float, "ext.c. (l/(mol*cm))"),
+            "conc. factor (ng/ul)": data.get(float, "conc. factor (ng/ul)"),
+        }
+        # Remove None values
+        processed_data_custom_info = {
+            k: v for k, v in processed_data_custom_info.items() if v is not None
+        }
+
         measurements: list[Measurement] = []
         for wavelength, absorbance in absorbances.items():
             if absorbance is None:
@@ -190,12 +202,33 @@ class SpectroscopyRow:
                                 unit=unit,
                             )
                         ],
+                        custom_info=processed_data_custom_info or None,
                     )
                     if mass_concentration_capture_wavelength == wavelength
                     and mass_concentration
                     and unit
                     else None,
-                    custom_info=data.get_unread(),
+                    cursor_position=data.get(float, "cursor pos."),
+                    cursor_absorbance=data.get(float, "cursor abs."),
+                    sample_custom_info={
+                        "Mol. Wt. kda": data.get(float, "mol. wt. kda"),
+                    },
+                    custom_info=data.get_unread(skip={
+                        "date",
+                        "time",
+                        "user id",
+                        "formula value 1",
+                        "formula name 1",
+                        "formula 1",
+                        "260/230",
+                        "260/280",
+                        "m.w. (g/mol)",
+                        "mol. wt. kda",
+                        "e1%",
+                        "ext. coeff x10e3",
+                        "ext.c. (l/(mol*cm))",
+                        "conc. factor (ng/ul)",
+                    }),
                 )
             )
 

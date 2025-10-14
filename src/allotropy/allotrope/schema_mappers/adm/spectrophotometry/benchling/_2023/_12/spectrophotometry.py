@@ -29,9 +29,12 @@ from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectr
     UltravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueKiloDalton,
     TQuantityValueMicroliter,
     TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueNanogramPerMicroliter,
     TQuantityValueNanometer,
+    TQuantityValuePerMolarPerCentimeter,
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueUnitless,
 )
@@ -77,6 +80,7 @@ class ProcessedDataFeature:
 class ProcessedData:
     features: list[ProcessedDataFeature]
     identifier: str | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass
@@ -102,6 +106,8 @@ class Measurement:
     original_sample_concentration_unit: str | None = None
     baseline_absorbance: float | None = None
     electronic_absorbance_reference_wavelength_setting: float | None = None
+    cursor_position: float | None = None
+    cursor_absorbance: float | None = None
 
     # Measurements
     absorbance: JsonFloat | None = None
@@ -265,6 +271,11 @@ class Mapper(SchemaMapper[Data, Model]):
                 TQuantityValueMilliAbsorbanceUnit,
                 measurement.baseline_absorbance,
             ),
+            "340 raw": quantity_or_none(TQuantityValueMilliAbsorbanceUnit, (measurement.custom_info or {}).get("340 raw")),
+            "Cursor Abs.": quantity_or_none(
+                TQuantityValueMilliAbsorbanceUnit,
+                measurement.cursor_absorbance,
+            ),
         }
         return add_custom_information_document(doc, custom_info_doc)
 
@@ -337,6 +348,7 @@ class Mapper(SchemaMapper[Data, Model]):
             "dilution factor": quantity_or_none(
                 TQuantityValueUnitless, measurement.dilution_factor_setting
             ),
+            "Cursor Pos.": quantity_or_none(TQuantityValueNanometer, measurement.cursor_position)
         }
         return (measurement.device_control_custom_info or {}) | custom_info
 
@@ -359,6 +371,15 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.sample_custom_info["last read standards"]
             )
 
+        # Convert molecular weight from g/mol to kDa
+        sample_custom_info = measurement.sample_custom_info or {}
+        if "Mol. Wt. kda" in sample_custom_info:
+            mol_wt_g_per_mol = sample_custom_info["Mol. Wt. kda"]
+            sample_custom_info["Mol. Wt. kda"] = quantity_or_none(
+                TQuantityValueKiloDalton,
+                mol_wt_g_per_mol
+            )
+
         return add_custom_information_document(
             SampleDocument(
                 sample_identifier=measurement.sample_identifier,
@@ -366,7 +387,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 location_identifier=measurement.location_identifier,
                 well_plate_identifier=measurement.well_plate_identifier,
             ),
-            (measurement.sample_custom_info or {}) | custom_info_doc,
+            sample_custom_info | custom_info_doc,
         )
 
     def _get_processed_data_aggregate_document(
@@ -375,14 +396,33 @@ class Mapper(SchemaMapper[Data, Model]):
         if not data:
             return None
 
+        # Build custom info for processed data with proper TQuantityValue wrappers
+        processed_data_custom_info = {}
+        if data.custom_info:
+            processed_data_custom_info = {
+                "E1%": quantity_or_none(TQuantityValueUnitless, data.custom_info.get("E1%")),
+                "ext. coeff x10e3": quantity_or_none(
+                    TQuantityValuePerMolarPerCentimeter, data.custom_info.get("ext. coeff x10e3")
+                ),
+                "ext.c.": quantity_or_none(
+                    TQuantityValuePerMolarPerCentimeter, data.custom_info.get("ext.c. (l/(mol*cm))")
+                ),
+                "conc. factor": quantity_or_none(
+                    TQuantityValueNanogramPerMicroliter, data.custom_info.get("conc. factor (ng/ul)")
+                ),
+            }
+
         return ProcessedDataAggregateDocument(
             processed_data_document=[
-                ProcessedDataDocumentItem(
-                    # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
-                    mass_concentration=quantity_or_none(
-                        get_quantity_class(feature.unit), feature.result  # type: ignore[arg-type]
+                add_custom_information_document(
+                    ProcessedDataDocumentItem(
+                        # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
+                        mass_concentration=quantity_or_none(
+                            get_quantity_class(feature.unit), feature.result  # type: ignore[arg-type]
+                        ),
+                        processed_data_identifier=data.identifier,
                     ),
-                    processed_data_identifier=data.identifier,
+                    processed_data_custom_info,
                 )
                 for feature in data.features
             ]

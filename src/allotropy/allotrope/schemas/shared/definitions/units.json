@@ -575,6 +575,18 @@
       "unit"
     ]
   },
+  "PerMolarPerCentimeter": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "M-1cm-1",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#PerMolarPerCentimeter"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "PerMolarPerSecond": {
     "properties": {
       "unit": {
