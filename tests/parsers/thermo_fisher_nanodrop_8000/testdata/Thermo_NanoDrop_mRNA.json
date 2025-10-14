@@ -33,20 +33,21 @@
                                         "mass concentration": {
                                             "value": 0.3929,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "ext.c.": {
+                                                "value": 25.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "ext.c. (l/(mol*cm))": 25.0,
-                                "user id": "Default",
-                                "formula name 1": "260/280",
-                                "time": "1:45 PM",
-                                "cursor abs.": 0.982,
-                                "formula value 1": 1.449,
-                                "formula 1": "A(260)/A(280)",
-                                "date": "1/13/2023",
-                                "m.w. (g/mol)": 1.0
+                                "Cursor Abs.": {
+                                    "value": 0.982,
+                                    "unit": "mAU"
+                                }
                             }
                         },
                         {
@@ -69,6 +70,12 @@
                             "absorbance": {
                                 "value": 0.678,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 0.982,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -101,14 +108,10 @@
                                 "unit": "mAU"
                             },
                             "custom information document": {
-                                "ext.c. (l/(mol*cm))": 25.0,
-                                "user id": "Default",
-                                "formula name 1": "260/280",
-                                "time": "1:47 PM",
-                                "cursor abs.": 0.982,
-                                "formula 1": "A(260)/A(280)",
-                                "date": "1/13/2023",
-                                "m.w. (g/mol)": 1.0
+                                "Cursor Abs.": {
+                                    "value": 0.982,
+                                    "unit": "mAU"
+                                }
                             }
                         },
                         {
@@ -131,6 +134,12 @@
                             "absorbance": {
                                 "value": 0.0,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 0.982,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -168,20 +177,21 @@
                                         "mass concentration": {
                                             "value": 0.6844,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "ext.c.": {
+                                                "value": 25.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "ext.c. (l/(mol*cm))": 25.0,
-                                "user id": "Default",
-                                "formula name 1": "260/280",
-                                "time": "1:47 PM",
-                                "cursor abs.": 1.711,
-                                "formula value 1": 1.685,
-                                "formula 1": "A(260)/A(280)",
-                                "date": "1/13/2023",
-                                "m.w. (g/mol)": 1.0
+                                "Cursor Abs.": {
+                                    "value": 1.711,
+                                    "unit": "mAU"
+                                }
                             }
                         },
                         {
@@ -204,6 +214,12 @@
                             "absorbance": {
                                 "value": 1.016,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 1.711,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -241,20 +257,21 @@
                                         "mass concentration": {
                                             "value": 0.6685,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "ext.c.": {
+                                                "value": 25.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "ext.c. (l/(mol*cm))": 25.0,
-                                "user id": "Default",
-                                "formula name 1": "260/280",
-                                "time": "1:49 PM",
-                                "cursor abs.": 1.671,
-                                "formula value 1": 1.414,
-                                "formula 1": "A(260)/A(280)",
-                                "date": "1/13/2023",
-                                "m.w. (g/mol)": 1.0
+                                "Cursor Abs.": {
+                                    "value": 1.671,
+                                    "unit": "mAU"
+                                }
                             }
                         },
                         {
@@ -277,6 +294,12 @@
                             "absorbance": {
                                 "value": 1.182,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 1.671,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]

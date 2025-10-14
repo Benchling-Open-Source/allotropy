@@ -15,6 +15,12 @@
                                         "detector wavelength setting": {
                                             "value": 260,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 260.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -33,20 +39,25 @@
                                         "mass concentration": {
                                             "value": 542.7,
                                             "unit": "ng/µL"
+                                        },
+                                        "custom information document": {
+                                            "conc. factor": {
+                                                "value": 50.0,
+                                                "unit": "ng/µL"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "date": "4/6/2022",
-                                "260/280": 1.82,
-                                "260/230": 2.23,
-                                "cursor abs.": 10.854,
-                                "conc. factor (ng/ul)": 50.0,
-                                "cursor pos.": 260.0,
-                                "340 raw": 0.016,
-                                "time": "4:20 PM",
-                                "user id": "Default"
+                                "340 raw": {
+                                    "value": 0.016,
+                                    "unit": "mAU"
+                                },
+                                "Cursor Abs.": {
+                                    "value": 10.854,
+                                    "unit": "mAU"
+                                }
                             }
                         },
                         {
@@ -58,6 +69,12 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 260.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -69,6 +86,12 @@
                             "absorbance": {
                                 "value": 5.978,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 10.854,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ],
@@ -89,6 +112,12 @@
                                         "detector wavelength setting": {
                                             "value": 260,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 260.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -107,20 +136,25 @@
                                         "mass concentration": {
                                             "value": 581.2,
                                             "unit": "ng/µL"
+                                        },
+                                        "custom information document": {
+                                            "conc. factor": {
+                                                "value": 50.0,
+                                                "unit": "ng/µL"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "date": "4/6/2022",
-                                "260/280": 1.81,
-                                "260/230": 2.24,
-                                "cursor abs.": 11.625,
-                                "conc. factor (ng/ul)": 50.0,
-                                "cursor pos.": 260.0,
-                                "340 raw": 0.006,
-                                "time": "4:20 PM",
-                                "user id": "Default"
+                                "340 raw": {
+                                    "value": 0.006,
+                                    "unit": "mAU"
+                                },
+                                "Cursor Abs.": {
+                                    "value": 11.625,
+                                    "unit": "mAU"
+                                }
                             }
                         },
                         {
@@ -132,6 +166,12 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 260.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -143,6 +183,12 @@
                             "absorbance": {
                                 "value": 6.413,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 11.625,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ],
@@ -163,6 +209,12 @@
                                         "detector wavelength setting": {
                                             "value": 260,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 260.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -181,20 +233,25 @@
                                         "mass concentration": {
                                             "value": 311.6,
                                             "unit": "ng/µL"
+                                        },
+                                        "custom information document": {
+                                            "conc. factor": {
+                                                "value": 50.0,
+                                                "unit": "ng/µL"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "date": "4/6/2022",
-                                "260/280": 1.85,
-                                "260/230": 2.29,
-                                "cursor abs.": 6.233,
-                                "conc. factor (ng/ul)": 50.0,
-                                "cursor pos.": 260.0,
-                                "340 raw": -0.023,
-                                "time": "4:20 PM",
-                                "user id": "Default"
+                                "340 raw": {
+                                    "value": -0.023,
+                                    "unit": "mAU"
+                                },
+                                "Cursor Abs.": {
+                                    "value": 6.233,
+                                    "unit": "mAU"
+                                }
                             }
                         },
                         {
@@ -206,6 +263,12 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 260.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -217,6 +280,12 @@
                             "absorbance": {
                                 "value": 3.376,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 6.233,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ],
@@ -237,6 +306,12 @@
                                         "detector wavelength setting": {
                                             "value": 260,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 260.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -255,20 +330,25 @@
                                         "mass concentration": {
                                             "value": 484.6,
                                             "unit": "ng/µL"
+                                        },
+                                        "custom information document": {
+                                            "conc. factor": {
+                                                "value": 50.0,
+                                                "unit": "ng/µL"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "date": "4/6/2022",
-                                "260/280": 1.82,
-                                "260/230": 2.25,
-                                "cursor abs.": 9.693,
-                                "conc. factor (ng/ul)": 50.0,
-                                "cursor pos.": 260.0,
-                                "340 raw": 0.012,
-                                "time": "4:20 PM",
-                                "user id": "Default"
+                                "340 raw": {
+                                    "value": 0.012,
+                                    "unit": "mAU"
+                                },
+                                "Cursor Abs.": {
+                                    "value": 9.693,
+                                    "unit": "mAU"
+                                }
                             }
                         },
                         {
@@ -280,6 +360,12 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 260.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -291,6 +377,12 @@
                             "absorbance": {
                                 "value": 5.315,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 9.693,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ],
@@ -311,6 +403,12 @@
                                         "detector wavelength setting": {
                                             "value": 260,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 260.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -329,20 +427,25 @@
                                         "mass concentration": {
                                             "value": 464.0,
                                             "unit": "ng/µL"
+                                        },
+                                        "custom information document": {
+                                            "conc. factor": {
+                                                "value": 50.0,
+                                                "unit": "ng/µL"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "date": "4/6/2022",
-                                "260/280": 1.84,
-                                "260/230": 2.27,
-                                "cursor abs.": 9.28,
-                                "conc. factor (ng/ul)": 50.0,
-                                "cursor pos.": 260.0,
-                                "340 raw": 0.007,
-                                "time": "4:20 PM",
-                                "user id": "Default"
+                                "340 raw": {
+                                    "value": 0.007,
+                                    "unit": "mAU"
+                                },
+                                "Cursor Abs.": {
+                                    "value": 9.28,
+                                    "unit": "mAU"
+                                }
                             }
                         },
                         {
@@ -354,6 +457,12 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 260.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -365,6 +474,12 @@
                             "absorbance": {
                                 "value": 5.049,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 9.28,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ],
@@ -385,6 +500,12 @@
                                         "detector wavelength setting": {
                                             "value": 260,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 260.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -403,20 +524,25 @@
                                         "mass concentration": {
                                             "value": 319.8,
                                             "unit": "ng/µL"
+                                        },
+                                        "custom information document": {
+                                            "conc. factor": {
+                                                "value": 50.0,
+                                                "unit": "ng/µL"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "date": "4/6/2022",
-                                "260/280": 1.85,
-                                "260/230": 2.25,
-                                "cursor abs.": 6.396,
-                                "conc. factor (ng/ul)": 50.0,
-                                "cursor pos.": 260.0,
-                                "340 raw": 0.014,
-                                "time": "4:20 PM",
-                                "user id": "Default"
+                                "340 raw": {
+                                    "value": 0.014,
+                                    "unit": "mAU"
+                                },
+                                "Cursor Abs.": {
+                                    "value": 6.396,
+                                    "unit": "mAU"
+                                }
                             }
                         },
                         {
@@ -428,6 +554,12 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 260.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -439,6 +571,12 @@
                             "absorbance": {
                                 "value": 3.464,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 6.396,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ],
@@ -459,6 +597,12 @@
                                         "detector wavelength setting": {
                                             "value": 260,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 260.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -477,20 +621,25 @@
                                         "mass concentration": {
                                             "value": 446.8,
                                             "unit": "ng/µL"
+                                        },
+                                        "custom information document": {
+                                            "conc. factor": {
+                                                "value": 50.0,
+                                                "unit": "ng/µL"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "date": "4/6/2022",
-                                "260/280": 1.83,
-                                "260/230": 2.23,
-                                "cursor abs.": 8.936,
-                                "conc. factor (ng/ul)": 50.0,
-                                "cursor pos.": 260.0,
-                                "340 raw": 0.023,
-                                "time": "4:20 PM",
-                                "user id": "Default"
+                                "340 raw": {
+                                    "value": 0.023,
+                                    "unit": "mAU"
+                                },
+                                "Cursor Abs.": {
+                                    "value": 8.936,
+                                    "unit": "mAU"
+                                }
                             }
                         },
                         {
@@ -502,6 +651,12 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 260.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -513,6 +668,12 @@
                             "absorbance": {
                                 "value": 4.871,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 8.936,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ],
@@ -533,6 +694,12 @@
                                         "detector wavelength setting": {
                                             "value": 260,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 260.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -551,20 +718,25 @@
                                         "mass concentration": {
                                             "value": 486.4,
                                             "unit": "ng/µL"
+                                        },
+                                        "custom information document": {
+                                            "conc. factor": {
+                                                "value": 50.0,
+                                                "unit": "ng/µL"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "date": "4/6/2022",
-                                "260/280": 1.83,
-                                "260/230": 2.18,
-                                "cursor abs.": 9.728,
-                                "conc. factor (ng/ul)": 50.0,
-                                "cursor pos.": 260.0,
-                                "340 raw": 0.095,
-                                "time": "4:20 PM",
-                                "user id": "Default"
+                                "340 raw": {
+                                    "value": 0.095,
+                                    "unit": "mAU"
+                                },
+                                "Cursor Abs.": {
+                                    "value": 9.728,
+                                    "unit": "mAU"
+                                }
                             }
                         },
                         {
@@ -576,6 +748,12 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 260.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -587,6 +765,12 @@
                             "absorbance": {
                                 "value": 5.328,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 9.728,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ],
@@ -607,6 +791,12 @@
                                         "detector wavelength setting": {
                                             "value": 260,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 260.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -625,20 +815,25 @@
                                         "mass concentration": {
                                             "value": 498.5,
                                             "unit": "ng/µL"
+                                        },
+                                        "custom information document": {
+                                            "conc. factor": {
+                                                "value": 50.0,
+                                                "unit": "ng/µL"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "custom information document": {
-                                "date": "4/6/2022",
-                                "260/280": 1.83,
-                                "260/230": 2.24,
-                                "cursor abs.": 9.97,
-                                "conc. factor (ng/ul)": 50.0,
-                                "cursor pos.": 260.0,
-                                "340 raw": -0.032,
-                                "time": "4:22 PM",
-                                "user id": "Default"
+                                "340 raw": {
+                                    "value": -0.032,
+                                    "unit": "mAU"
+                                },
+                                "Cursor Abs.": {
+                                    "value": 9.97,
+                                    "unit": "mAU"
+                                }
                             }
                         },
                         {
@@ -650,6 +845,12 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 260.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -661,6 +862,12 @@
                             "absorbance": {
                                 "value": 5.449,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 9.97,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ],

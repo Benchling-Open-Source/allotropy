@@ -54,6 +54,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     PartsPerBillion,
     PartsPerMillion,
     Percent,
+    PerMolarPerCentimeter,
     PerMolarPerSecond,
     PerSecond,
     PH,
@@ -606,6 +607,18 @@ class TQuantityValuePartsPerMillion(PartsPerMillion, TQuantityValue):
 
 @dataclass(frozen=True, kw_only=True)
 class TNullableQuantityValuePartsPerMillion(PartsPerMillion, TNullableQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValuePerMolarPerCentimeter(PerMolarPerCentimeter, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValuePerMolarPerCentimeter(
+    PerMolarPerCentimeter, TNullableQuantityValue
+):
     pass
 
 
