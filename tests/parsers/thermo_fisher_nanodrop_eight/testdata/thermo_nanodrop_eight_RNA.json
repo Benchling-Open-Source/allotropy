@@ -26,16 +26,16 @@
                                 "value": 17.62,
                                 "unit": "mAU"
                             },
-                            "custom information document": {
-                                "a260/a230": 2.19,
-                                "sample": "ALP096 PBL1",
-                                "username": "GN104564",
-                                "ng/âμl": 704.986,
-                                "weirdextra:": "Blah",
-                                "a260/a280": 2.07,
-                                "andmore": "Blah",
-                                "date": "11/09/2023 14:19",
-                                "serial number": 1234.0
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_12",
+                                        "mass concentration": {
+                                            "value": 704.986,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
                             }
                         },
                         {
@@ -87,15 +87,16 @@
                                 "value": 17.16,
                                 "unit": "mAU"
                             },
-                            "custom information document": {
-                                "a260/a230": 1.87,
-                                "sample": "ALP111 PBL1",
-                                "username": "GN104564",
-                                "ng/âμl": 686.535,
-                                "weirdextra:": "Blah",
-                                "a260/a280": 2.07,
-                                "andmore": "Blah",
-                                "date": "11/09/2023 14:19"
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_13",
+                                        "mass concentration": {
+                                            "value": 686.535,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
                             }
                         },
                         {
@@ -147,15 +148,16 @@
                                 "value": 17.75,
                                 "unit": "mAU"
                             },
-                            "custom information document": {
-                                "a260/a230": 2.0,
-                                "sample": "651 PBL1",
-                                "username": "GN104564",
-                                "ng/âμl": 710.13,
-                                "weirdextra:": "Blah",
-                                "a260/a280": 2.08,
-                                "andmore": "Blah",
-                                "date": "11/09/2023 14:20"
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "processed data identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_14",
+                                        "mass concentration": {
+                                            "value": 710.13,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
                             }
                         },
                         {

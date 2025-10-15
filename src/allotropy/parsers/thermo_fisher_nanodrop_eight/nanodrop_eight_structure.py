@@ -49,12 +49,16 @@ class SpectroscopyRow:
         )
         mass_concentration = get_first_not_none(
             lambda key: data.get(float, key),
-            ["conc.", "conc", "concentration"],
+            ["conc.", "conc", "concentration", "ng/âμl", "ng/μl", "ng/µL", "ng/µl"],
         )
         unit = get_first_not_none(
             lambda key: key if data.get(float, key.lower()) else None,
             constants.CONCENTRATION_UNITS,
         )
+        # Normalize the unit to a standard format that ASM recognizes
+        if unit and "ng/" in unit:
+            # Normalize all variants to ng/µL (micro sign + uppercase L)
+            unit = "ng/µL"
 
         spectra_data_cube = None
         float_cols = [col for col in data.series.index if try_float_or_none(col)]
@@ -78,6 +82,27 @@ class SpectroscopyRow:
             str, ["sample id", "uid"], NOT_APPLICABLE, SeriesData.NOT_NAN
         )
         location_id = data.get(str, "location")
+
+        # Fields to skip from data as they're already captured elsewhere
+        data_skip_fields = {
+            "date",
+            "date & time",
+            "a260/a230",
+            "a260/a280",
+            "sample",
+            "sample name",
+            "username",
+            "weirdextra:",
+            "andmore",
+        }
+
+        # Fields to skip from header as they're already captured elsewhere
+        header_skip_fields = {
+            "serial number",
+            "application",
+            "user name",
+        }
+
         measurements: list[Measurement] = []
         for wavelength, absorbance in absorbances.items():
             if not absorbance:
@@ -103,7 +128,10 @@ class SpectroscopyRow:
                     and mass_concentration
                     and unit
                     else None,
-                    custom_info={**data.get_unread(), **header.get_unread()},
+                    custom_info={
+                        **data.get_unread(skip=data_skip_fields),
+                        **header.get_unread(skip=header_skip_fields),
+                    },
                 )
             )
         if spectra_data_cube:
@@ -114,7 +142,10 @@ class SpectroscopyRow:
                     data_cube=spectra_data_cube,
                     sample_identifier=sample_id,
                     location_identifier=location_id,
-                    custom_info={**data.get_unread(), **header.get_unread()},
+                    custom_info={
+                        **data.get_unread(skip=data_skip_fields),
+                        **header.get_unread(skip=header_skip_fields),
+                    },
                 )
             )
 
