@@ -49,7 +49,6 @@ from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
 )
 from allotropy.parsers.utils.units import get_quantity_class
-from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 
 
@@ -383,7 +382,7 @@ class Mapper(SchemaMapper[Data, Model]):
                     mass_concentration=quantity_or_none(
                         get_quantity_class(feature.unit), feature.result  # type: ignore[arg-type]
                     ),
-                    processed_data_identifier=data.identifier or random_uuid_str(),
+                    processed_data_identifier=data.identifier,
                 )
                 for feature in data.features
             ]
