@@ -124,15 +124,15 @@ class VisionLiteData(Data):
                     analyst=header.analyst,
                     measurement_time=header.measurement_time,
                     experiment_type=experiment_type.value,
+                    custom_info=reader.header.get_unread(skip={"File Name"})
+                    if reader.header
+                    else {},
                     measurements=[
                         Measurement(
                             type_=experiment_type.measurement_type,
                             identifier=random_uuid_str(),
                             sample_identifier=header.sample_name,
                             data_cube=_get_data_cube(data),
-                            custom_info=reader.header.get_unread(skip={"File Name"})
-                            if reader.header
-                            else None,
                         )
                     ],
                 )
