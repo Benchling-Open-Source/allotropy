@@ -80,22 +80,52 @@ class ThermoSkanItMetadata:
         )
         general_info_data = ThermoSkanItMetadata._get_general_info_data(general_info_df)
         path = Path(file_path)
+        # Ensure custom_info dictionaries have consistent string types
+        instrument_custom_info = instrument_info_data.get("custom_info", {})
+        general_custom_info = general_info_data.get("custom_info", {})
+
+        # Only process if they are dictionaries
+        instrument_custom_info_str = {}
+        general_custom_info_str = {}
+
+        if isinstance(instrument_custom_info, dict):
+            instrument_custom_info_str = {
+                k: str(v) for k, v in instrument_custom_info.items()
+            }
+        if isinstance(general_custom_info, dict):
+            general_custom_info_str = {
+                k: str(v) for k, v in general_custom_info.items()
+            }
+
+        custom_info = {
+            **instrument_custom_info_str,
+            **general_custom_info_str,
+        }
         return Metadata(
             asm_file_identifier=path.with_suffix(".json").name,
             data_system_instance_id=NOT_APPLICABLE,
             file_name=path.name,
             unc_path=file_path,
-            device_identifier=instrument_info_data["device_identifier"],
-            model_number=instrument_info_data["model_number"],
-            equipment_serial_number=instrument_info_data.get("equipment_serial_number"),
-            software_name=general_info_data["software_name"],
-            software_version=general_info_data["software_version"],
+            device_identifier=str(instrument_info_data["device_identifier"]),
+            model_number=str(instrument_info_data["model_number"]),
+            equipment_serial_number=str(
+                instrument_info_data.get("equipment_serial_number")
+            )
+            if instrument_info_data.get("equipment_serial_number") is not None
+            else None,
+            software_name=str(general_info_data["software_name"])
+            if general_info_data["software_name"] is not None
+            else None,
+            software_version=str(general_info_data["software_version"])
+            if general_info_data["software_version"] is not None
+            else None,
+            custom_info_doc=custom_info,
         )
 
     @staticmethod
     def _get_general_info_data(
         general_info_df: pd.DataFrame | None,
-    ) -> dict[str, str | None]:
+    ) -> dict[str, str | None | dict[str, str]]:
         if general_info_df is None:
             return dict.fromkeys(GENERAL_INFO_KEYS, None)
 
@@ -106,15 +136,21 @@ class ThermoSkanItMetadata:
         software_name, software_version_txt = software_info.split(",", 1)
         match = re.search(r"\d+(?:\.\d+)*", software_version_txt)
         software_version = match.group() if match else None
+        unread_data = general_info_data.get_unread(skip={"Filter", "Position"})
+        # Filter out "nan" keys from custom info and ensure string values
+        custom_info = {
+            k: str(v) for k, v in unread_data.items() if k != "nan" and v is not None
+        }
         return {
             "software_name": software_name,
             "software_version": software_version,
+            "custom_info": custom_info,
         }
 
     @staticmethod
     def _get_instrument_data(
         instrument_info_df: pd.DataFrame | None,
-    ) -> dict[str, str]:
+    ) -> dict[str, str | None | dict[str, str]]:
         if instrument_info_df is None:
             return {
                 "device_identifier": NOT_APPLICABLE,
@@ -139,11 +175,18 @@ class ThermoSkanItMetadata:
             "model_number": ("Name", NOT_APPLICABLE),
             "equipment_serial_number": ("Serial number", None),
         }
-        return {
+        # Get the raw data first
+        raw_data = {
             key: value
             for key, (label, default) in lookups.items()
             if (value := instrument_info_data.get(str, label, default)) is not None
         }
+
+        unread_data = instrument_info_data.get_unread(skip={"Filter", "Position"})
+        custom_info = {
+            k: str(v) for k, v in unread_data.items() if k != "nan" and v is not None
+        }
+        return {**raw_data, "custom_info": custom_info}
 
 
 @dataclass
@@ -206,10 +249,14 @@ class ThermoSkanItMeasurementGroups:
         plates = ThermoSkanItMeasurementGroups.identify_data_and_sample_dfs(sheet_df)
 
         session_name = exec_time = None
+        custom_info = {}
         if session_info_df is not None:
             session_info_data = df_to_series_data(parse_header_row(session_info_df.T))
             session_name = session_info_data.get(str, "Session name")
             exec_time = session_info_data.get(str, "Execution time")
+            unread_data = session_info_data.get_unread(skip={"Filter", "Position"})
+            # Filter out "nan" keys from custom info
+            custom_info = {k: v for k, v in unread_data.items() if k != "nan"}
 
         if not exec_time:
             exec_time = sheet_df.iloc[1].iloc[0]
@@ -288,6 +335,7 @@ class ThermoSkanItMeasurementGroups:
                     measurements=measurements,
                     plate_well_count=plate_well_counts[plate_id],
                     measurement_time=exec_time,
+                    custom_info=custom_info,
                 )
             )
 
