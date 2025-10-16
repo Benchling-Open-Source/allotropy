@@ -17,7 +17,7 @@ from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_structure imp
     create_metadata,
     SpectroscopyRow,
 )
-from allotropy.parsers.utils.pandas import map_rows
+from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -40,7 +40,10 @@ class NanodropEightParser(VendorParser[Data, Model]):
         return Data(
             metadata=metadata,
             measurement_groups=[
-                create_measurement_group(row, reader.header) for row in rows
+                create_measurement_group(
+                    row, reader.header, SeriesData(reader.data.iloc[0])
+                )
+                for row in rows
             ],
             # NOTE: in current implementation, calculated data is reported at global level for some reason.
             # TODO(nstender): should we move this inside of measurements?

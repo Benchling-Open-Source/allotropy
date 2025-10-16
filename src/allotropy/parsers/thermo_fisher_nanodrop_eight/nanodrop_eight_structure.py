@@ -90,7 +90,6 @@ class SpectroscopyRow:
             "a260/a230",
             "a260/a280",
             "sample",
-            "sample name",
             "username",
             "weirdextra:",
             "andmore",
@@ -128,6 +127,7 @@ class SpectroscopyRow:
                     and mass_concentration
                     and unit
                     else None,
+                    sample_custom_info={"Sample Name": data.get(str, "sample name")},
                     custom_info={
                         **data.get_unread(skip=data_skip_fields),
                         **header.get_unread(skip=header_skip_fields),
@@ -171,11 +171,13 @@ def create_metadata(data: SeriesData, file_path: str) -> Metadata:
 
 
 def create_measurement_group(
-    row: SpectroscopyRow, header: SeriesData
+    row: SpectroscopyRow, header: SeriesData, data: SeriesData
 ) -> MeasurementGroup:
+    analyst = header.get(str, "user name") or data.get(str, "username")
+    data.get_unread()
     return MeasurementGroup(
         measurement_time=row.timestamp,
-        analyst=header.get(str, "user name"),
+        analyst=analyst,
         experiment_type=row.experiment_type,
         measurements=row.measurements,
     )
