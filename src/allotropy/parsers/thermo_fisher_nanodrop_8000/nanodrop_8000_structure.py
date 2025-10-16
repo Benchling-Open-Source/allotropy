@@ -38,11 +38,11 @@ def read_absorbances(data: SeriesData) -> dict[float, float]:
         absorbances[wavelength] = absorbance
 
     # Read absorbance columns with format "a<wavelength> <suffix>?", handle these as they come up.
-    if (a230_absorbance := data.get(float, ["a230", "A230"])) is not None:
+    if (a230_absorbance := data.get(float, ["a230"])) is not None:
         absorbances[230] = a230_absorbance
-    if (a260_absorbance := data.get(float, ["a260", "A260"])) is not None:
+    if (a260_absorbance := data.get(float, ["a260"])) is not None:
         absorbances[260] = a260_absorbance
-    if (a280_absorbance := data.get(float, ["a280", "A280", "a280 10mm"])) is not None:
+    if (a280_absorbance := data.get(float, ["a280", "a280 10mm"])) is not None:
         absorbances[280] = a280_absorbance
 
     return absorbances
