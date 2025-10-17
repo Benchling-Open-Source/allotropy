@@ -80,45 +80,48 @@ class ThermoSkanItMetadata:
         )
         general_info_data = ThermoSkanItMetadata._get_general_info_data(general_info_df)
         path = Path(file_path)
-        # Ensure custom_info dictionaries have consistent string types
+
+        device_identifier = str(instrument_info_data.pop("device_identifier"))
+        model_number = str(instrument_info_data.pop("model_number"))
+
+        equipment_serial_number = None
+        if "equipment_serial_number" in instrument_info_data:
+            equipment_serial_number = str(
+                instrument_info_data.pop("equipment_serial_number")
+            )
+
+        software_name = None
+        if general_info_data.get("software_name") is not None:
+            software_name = str(general_info_data.pop("software_name"))
+        else:
+            general_info_data.pop("software_name", None)
+
+        software_version = None
+        if general_info_data.get("software_version") is not None:
+            software_version = str(general_info_data.pop("software_version"))
+        else:
+            general_info_data.pop("software_version", None)
+
+        # Merge custom_info dicts, ensuring we only unpack dict types
         instrument_custom_info = instrument_info_data.get("custom_info", {})
         general_custom_info = general_info_data.get("custom_info", {})
 
-        # Only process if they are dictionaries
-        instrument_custom_info_str = {}
-        general_custom_info_str = {}
-
+        custom_info = {}
         if isinstance(instrument_custom_info, dict):
-            instrument_custom_info_str = {
-                k: str(v) for k, v in instrument_custom_info.items()
-            }
+            custom_info.update(instrument_custom_info)
         if isinstance(general_custom_info, dict):
-            general_custom_info_str = {
-                k: str(v) for k, v in general_custom_info.items()
-            }
+            custom_info.update(general_custom_info)
 
-        custom_info = {
-            **instrument_custom_info_str,
-            **general_custom_info_str,
-        }
         return Metadata(
             asm_file_identifier=path.with_suffix(".json").name,
             data_system_instance_id=NOT_APPLICABLE,
             file_name=path.name,
             unc_path=file_path,
-            device_identifier=str(instrument_info_data["device_identifier"]),
-            model_number=str(instrument_info_data["model_number"]),
-            equipment_serial_number=str(
-                instrument_info_data.get("equipment_serial_number")
-            )
-            if instrument_info_data.get("equipment_serial_number") is not None
-            else None,
-            software_name=str(general_info_data["software_name"])
-            if general_info_data["software_name"] is not None
-            else None,
-            software_version=str(general_info_data["software_version"])
-            if general_info_data["software_version"] is not None
-            else None,
+            device_identifier=device_identifier,
+            model_number=model_number,
+            equipment_serial_number=equipment_serial_number,
+            software_name=software_name,
+            software_version=software_version,
             custom_info_doc=custom_info,
         )
 
