@@ -377,11 +377,9 @@ class Mapper(SchemaMapper[Data, Model]):
             )
 
         sample_custom_info = measurement.sample_custom_info or {}
-        if "Mol. Wt. kda" in sample_custom_info:
-            mol_wt_g_per_mol = sample_custom_info["Mol. Wt. kda"]
-            sample_custom_info["Mol. Wt. kda"] = quantity_or_none(
-                TQuantityValueKiloDalton, mol_wt_g_per_mol
-            )
+        sample_custom_info["Mol. Wt. kda"] = quantity_or_none(
+            TQuantityValueKiloDalton, sample_custom_info.get("Mol. Wt. kda")
+        )
 
         return add_custom_information_document(
             SampleDocument(
