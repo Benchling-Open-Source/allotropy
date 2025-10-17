@@ -220,11 +220,6 @@ class SpectroscopyRow:
                             "260/230",
                             "260/280",
                             "m.w. (g/mol)",
-                            "mol. wt. kda",
-                            "e1%",
-                            "ext. coeff x10e3",
-                            "ext.c. (l/(mol*cm))",
-                            "conc. factor (ng/ul)",
                         }
                     ),
                 )
