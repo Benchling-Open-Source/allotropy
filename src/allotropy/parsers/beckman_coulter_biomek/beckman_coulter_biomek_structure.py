@@ -108,38 +108,7 @@ class FieldMapping:
     pod_field: str | None = None
 
     def get_read_keys(self) -> set[str]:
-        """Return all field names that this mapping reads from."""
-        keys = {
-            self.time_field,
-            self.aspiration_volume_field,
-            self.transfer_volume_field,
-        }
-
-        # Add all optional fields that are not None
-        optional_fields = [
-            self.sample_id_field,
-            self.source_location_field,
-            self.source_well_field,
-            self.source_plate_field,
-            self.source_labware_name_field,
-            self.source_technique_field,
-            self.destination_location_field,
-            self.destination_well_field,
-            self.destination_plate_field,
-            self.destination_labware_name_field,
-            self.destination_technique_field,
-            self.probe_field,
-            self.pod_field,
-        ]
-
-        for field in optional_fields:
-            if field is not None:
-                keys.add(field)
-
-        # Add fields that are always read by the strategies but not in mapping
-        keys.add("Transfer Step")
-
-        return keys
+        return {field for field in self.__dict__.values() if field is not None}
 
 
 class MeasurementStrategy(ABC):
@@ -196,8 +165,6 @@ class PairedTransferStrategy(MeasurementStrategy):
         aspirations: dict[str, pd.Series[Any]] = {}
 
         def map_row(row_data: SeriesData) -> None:
-            # Mark known problematic fields as read to avoid warnings
-            row_data.mark_read(self.mapping.get_read_keys())
             transfer_step = row_data[str, "Transfer Step"]
             probe = row_data.get(str, "Probe", default="default")
 
