@@ -104,6 +104,9 @@ class ThermoSkanItMetadata:
 
         # Merge custom_info dicts, ensuring we only unpack dict types
         instrument_custom_info = instrument_info_data.get("custom_info", {})
+        device_control_custom_info_raw = instrument_info_data.get(
+            "device_control_custom_info"
+        )
         general_custom_info = general_info_data.get("custom_info", {})
 
         custom_info = {}
@@ -111,6 +114,13 @@ class ThermoSkanItMetadata:
             custom_info.update(instrument_custom_info)
         if isinstance(general_custom_info, dict):
             custom_info.update(general_custom_info)
+
+        # Ensure device_control_custom_info is the correct type
+        device_control_custom_info = (
+            device_control_custom_info_raw
+            if isinstance(device_control_custom_info_raw, dict)
+            else None
+        )
 
         return Metadata(
             asm_file_identifier=path.with_suffix(".json").name,
@@ -122,7 +132,8 @@ class ThermoSkanItMetadata:
             equipment_serial_number=equipment_serial_number,
             software_name=software_name,
             software_version=software_version,
-            custom_info_doc=custom_info,
+            metadata_custom_info=custom_info,
+            device_control_custom_info=device_control_custom_info,
         )
 
     @staticmethod
@@ -184,12 +195,49 @@ class ThermoSkanItMetadata:
             for key, (label, default) in lookups.items()
             if (value := instrument_info_data.get(str, label, default)) is not None
         }
-
-        unread_data = instrument_info_data.get_unread(skip={"Filter", "Position"})
+        device_control_custom_info_raw = instrument_info_data.get_custom_keys(
+            {
+                "Optical response compensation",
+                "Plate adapter number",
+                "Plate adapter name",
+            }
+        )
+        # Convert values to strings for consistency
+        device_control_custom_info = (
+            {
+                k: str(v)
+                for k, v in device_control_custom_info_raw.items()
+                if v is not None
+            }
+            if device_control_custom_info_raw
+            else None
+        )
+        unread_data = instrument_info_data.get_unread(
+            skip={
+                "Wavelength",
+                "Incubator",
+                "Date and time of definition",
+                "Top optics",
+                "Bottom optics",
+                "Dispenser 1",
+                "Dispenser 2",
+                "Module's name",
+                "Module's serial number",
+                "Instrument modules",
+                "Gas control",
+                "Bandwidth",
+                "Position",
+                "Filter",
+            }
+        )
         custom_info = {
             k: str(v) for k, v in unread_data.items() if k != "nan" and v is not None
         }
-        return {**raw_data, "custom_info": custom_info}
+        return {
+            **raw_data,
+            "custom_info": custom_info,
+            "device_control_custom_info": device_control_custom_info,
+        }
 
 
 @dataclass
@@ -204,6 +252,7 @@ class DataWell(Measurement):
         well_plate_identifier: str | None,
         error_documents: list[ErrorDocument] | None = None,
         experimental_data_identifier: str | None = None,
+        device_control_custom_info: dict[str, Any] | None = None,
     ) -> Measurement:
         measurement_type_str = MEASUREMENT_TYPES[type_]
         error_docs = error_documents or []
@@ -230,6 +279,7 @@ class DataWell(Measurement):
             else None,
             experimental_data_identifier=experimental_data_identifier,
             error_document=error_docs if error_docs else None,
+            device_control_custom_info=device_control_custom_info,
         )
 
     @staticmethod
@@ -248,6 +298,7 @@ class ThermoSkanItMeasurementGroups:
         sheet_df: pd.DataFrame,
         type_: MeasurementType,
         session_info_df: pd.DataFrame | None,
+        device_control_custom_info: dict[str, Any] | None = None,
     ) -> list[MeasurementGroup]:
         plates = ThermoSkanItMeasurementGroups.identify_data_and_sample_dfs(sheet_df)
 
@@ -257,7 +308,7 @@ class ThermoSkanItMeasurementGroups:
             session_info_data = df_to_series_data(parse_header_row(session_info_df.T))
             session_name = session_info_data.get(str, "Session name")
             exec_time = session_info_data.get(str, "Execution time")
-            unread_data = session_info_data.get_unread(skip={"Filter", "Position"})
+            unread_data = session_info_data.get_unread(skip={"Executed with"})
             # Filter out "nan" keys from custom info
             custom_info = {k: v for k, v in unread_data.items() if k != "nan"}
 
@@ -323,6 +374,7 @@ class ThermoSkanItMeasurementGroups:
                         experimental_data_identifier=session_name.replace(".skax", "")
                         if session_name
                         else None,
+                        device_control_custom_info=device_control_custom_info,
                     )
 
                     if well_key not in well_measurements:
@@ -509,10 +561,15 @@ class DataThermoSkanIt(Data):
             general_info_df=clean_data.get("General information"),
             file_path=file_path,
         )
+
+        # Extract device control custom info from metadata
+        device_control_custom_info = metadata.device_control_custom_info
+
         measurement_groups = ThermoSkanItMeasurementGroups.create(
             sheet_df=measurement_df,
             session_info_df=clean_data.get("Session information"),
             type_=_type,
+            device_control_custom_info=device_control_custom_info,
         )
 
         return Data(
