@@ -109,7 +109,7 @@ class ThermoSkanItMetadata:
         )
         general_custom_info = general_info_data.get("custom_info", {})
 
-        custom_info = {}
+        custom_info: dict[str, Any] = {}
         if isinstance(instrument_custom_info, dict):
             custom_info.update(instrument_custom_info)
         if isinstance(general_custom_info, dict):
@@ -164,7 +164,7 @@ class ThermoSkanItMetadata:
     @staticmethod
     def _get_instrument_data(
         instrument_info_df: pd.DataFrame | None,
-    ) -> dict[str, str | None | dict[str, str]]:
+    ) -> dict[str, str | None | dict[str, str] | dict[str, float | str | None]]:
         if instrument_info_df is None:
             return {
                 "device_identifier": NOT_APPLICABLE,
@@ -195,22 +195,12 @@ class ThermoSkanItMetadata:
             for key, (label, default) in lookups.items()
             if (value := instrument_info_data.get(str, label, default)) is not None
         }
-        device_control_custom_info_raw = instrument_info_data.get_custom_keys(
+        device_control_custom_info = instrument_info_data.get_custom_keys(
             {
                 "Optical response compensation",
                 "Plate adapter number",
                 "Plate adapter name",
             }
-        )
-        # Convert values to strings for consistency
-        device_control_custom_info = (
-            {
-                k: str(v)
-                for k, v in device_control_custom_info_raw.items()
-                if v is not None
-            }
-            if device_control_custom_info_raw
-            else None
         )
         unread_data = instrument_info_data.get_unread(
             skip={
