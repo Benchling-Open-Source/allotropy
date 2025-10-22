@@ -29,8 +29,15 @@ def create_measurements(data: SeriesData) -> Measurement:
             "sample type", sample_role_type, SAMPLE_ROLE_TYPE_MAPPING
         )
 
+    identifier = data.get(str, "_measurement_identifier") or random_uuid_str()
+
+    sample_custom_info = data.get_custom_keys({"IC", "Control type"})
+    for key in sample_custom_info:
+        if sample_custom_info[key] in ("", "-", "-", "--"):
+            sample_custom_info[key] = None
+
     return Measurement(
-        identifier=random_uuid_str(),
+        identifier=identifier,
         measurement_time=DEFAULT_EPOCH_TIMESTAMP,
         sample_identifier=data[str, "Sample/NTC/Control"],
         sample_role_type=sample_role_type,
@@ -42,6 +49,8 @@ def create_measurements(data: SeriesData) -> Measurement:
         positive_partition_count=data[int, "Partitions (positive)"],
         negative_partition_count=data.get(int, "Partitions (negative)"),
         fluorescence_intensity_threshold_setting=data.get(float, "Threshold"),
+        sample_custom_info=sample_custom_info,
+        custom_info=data.get_unread(),
     )
 
 

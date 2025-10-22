@@ -59,6 +59,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Reaction Mix": "5p"
                             }
                         },
                         {
@@ -106,6 +109,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Reaction Mix": "5p"
                             }
                         },
                         {
@@ -153,6 +159,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Reaction Mix": "5p"
                             }
                         },
                         {
@@ -200,6 +209,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Reaction Mix": "5p"
                             }
                         },
                         {
@@ -247,6 +259,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Reaction Mix": "5p"
                             }
                         },
                         {
@@ -294,6 +309,9 @@
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Reaction Mix": "5p"
                             }
                         }
                     ]
@@ -305,7 +323,107 @@
             "UNC path": "tests/parsers/qiacuity_dpcr/testdata/qiacuity_dpcr_example01.csv",
             "software name": "Qiacuity Software Suite",
             "ASM converter name": "allotropy_qiacuity_dpcr",
-            "ASM converter version": "0.1.92"
+            "ASM converter version": "0.1.107"
+        },
+        "calculated data aggregate document": {
+            "calculated data document": [
+                {
+                    "calculated data identifier": "QIACUITY_DPCR_TEST_ID_6",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "QIACUITY_DPCR_TEST_ID_0",
+                                "data source feature": "CI (95%)"
+                            }
+                        ]
+                    },
+                    "calculated data name": "CI (95%)",
+                    "calculated datum": {
+                        "value": 4.6,
+                        "unit": "#/μL"
+                    }
+                },
+                {
+                    "calculated data identifier": "QIACUITY_DPCR_TEST_ID_7",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "QIACUITY_DPCR_TEST_ID_1",
+                                "data source feature": "CI (95%)"
+                            }
+                        ]
+                    },
+                    "calculated data name": "CI (95%)",
+                    "calculated datum": {
+                        "value": 15.2,
+                        "unit": "#/μL"
+                    }
+                },
+                {
+                    "calculated data identifier": "QIACUITY_DPCR_TEST_ID_8",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "QIACUITY_DPCR_TEST_ID_2",
+                                "data source feature": "CI (95%)"
+                            }
+                        ]
+                    },
+                    "calculated data name": "CI (95%)",
+                    "calculated datum": {
+                        "value": 10.3,
+                        "unit": "#/μL"
+                    }
+                },
+                {
+                    "calculated data identifier": "QIACUITY_DPCR_TEST_ID_9",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "QIACUITY_DPCR_TEST_ID_3",
+                                "data source feature": "CI (95%)"
+                            }
+                        ]
+                    },
+                    "calculated data name": "CI (95%)",
+                    "calculated datum": {
+                        "value": 4.2,
+                        "unit": "#/μL"
+                    }
+                },
+                {
+                    "calculated data identifier": "QIACUITY_DPCR_TEST_ID_10",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "QIACUITY_DPCR_TEST_ID_4",
+                                "data source feature": "CI (95%)"
+                            }
+                        ]
+                    },
+                    "calculated data name": "CI (95%)",
+                    "calculated datum": {
+                        "value": 3.3,
+                        "unit": "#/μL"
+                    }
+                },
+                {
+                    "calculated data identifier": "QIACUITY_DPCR_TEST_ID_11",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "QIACUITY_DPCR_TEST_ID_5",
+                                "data source feature": "CI (95%)"
+                            }
+                        ]
+                    },
+                    "calculated data name": "CI (95%)",
+                    "calculated datum": {
+                        "value": 6.6,
+                        "unit": "#/μL"
+                    }
+                }
+            ]
         }
     }
 }
