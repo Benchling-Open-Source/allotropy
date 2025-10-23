@@ -77,6 +77,7 @@ def test_json_to_csv_dataset(
     expected_results: dict[str, str],
     *,
     overwrite: bool,
+    force_overwrite: bool,
 ) -> None:
     with open(input_file) as infile:
         input_json = json.load(infile)
