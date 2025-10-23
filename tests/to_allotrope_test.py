@@ -61,6 +61,9 @@ class ParserTest:
         )
         # If expected output does not exist, assume this is a new file and write it.
         overwrite = overwrite or not expected_filepath.exists()
+        # Force overwrite should always allow overwriting
+        if force_overwrite:
+            overwrite = True
         validate_contents(
             allotrope_dict,
             expected_filepath,
