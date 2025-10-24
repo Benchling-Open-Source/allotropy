@@ -21,7 +21,8 @@
                                             "operating maximum": {
                                                 "value": 480.0,
                                                 "unit": "nm"
-                                            }
+                                            },
+                                            "number of sampled points": 156
                                         }
                                     }
                                 ]
@@ -74,7 +75,7 @@
             "UNC path": "tests/parsers/thermo_fisher_genesys30/testdata/thermo_fisher_genesys30_example_01.tsv",
             "software name": "Genesys 30 instrument software",
             "ASM converter name": "allotropy_thermo_fisher_scientific_genesys30",
-            "ASM converter version": "0.1.76"
+            "ASM converter version": "0.1.106"
         }
     }
 }

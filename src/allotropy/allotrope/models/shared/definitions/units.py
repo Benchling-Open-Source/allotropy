@@ -340,6 +340,11 @@ class SquareCentimetersPerMole(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class SquareMillimeter(HasUnit):
+    unit: str = "mm^2"
+
+
+@dataclass(frozen=True, kw_only=True)
 class SquareResponseUnit(HasUnit):
     unit: str = "RU^2"
 

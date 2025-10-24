@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass, field
+from typing import Any
 
 import pandas as pd
 
@@ -13,12 +14,12 @@ from allotropy.allotrope.schema_mappers.adm.binding_affinity_analyzer.benchling.
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.cytiva_biacore_t200_control import constants
+from allotropy.parsers.utils.dict_data import DictData
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float_or_none,
-    try_int_or_none,
 )
 from allotropy.types import DictType
 
@@ -30,21 +31,21 @@ class ChipData:
     number_of_flow_cells: int | None
     number_of_spots: int | None
     lot_number: str | None
-    custom_info: DictType
+    custom_info: dict[str, Any]
 
     @staticmethod
-    def create(chip_data: DictType) -> ChipData:
+    def create(chip_data: DictData) -> ChipData:
         return ChipData(
-            sensor_chip_identifier=assert_not_none(chip_data.get("Id"), "Chip ID"),
-            sensor_chip_type=chip_data.get("Name"),
-            number_of_flow_cells=try_int_or_none(chip_data.get("NoFcs")),
-            number_of_spots=try_int_or_none(chip_data.get("NoSpots")),
-            lot_number=lot_no if (lot_no := chip_data.get("LotNo")) else None,
+            sensor_chip_identifier=assert_not_none(chip_data.get(str, "Id"), "Chip ID"),
+            sensor_chip_type=chip_data.get(str, "Name"),
+            number_of_flow_cells=chip_data.get(int, "NoFcs"),
+            number_of_spots=chip_data.get(int, "NoSpots"),
+            lot_number=lot_no if (lot_no := chip_data.get(str, "LotNo")) else None,
             custom_info={
-                "ifc identifier": chip_data.get("IFC"),
-                "last modified time": chip_data.get("LastModTime"),
-                "last use time": chip_data.get("LastUseTime"),
-                "first dock date": chip_data.get("FirstDockDate"),
+                "ifc identifier": chip_data.get(str, "IFC"),
+                "last modified time": chip_data.get(str, "LastModTime"),
+                "last use time": chip_data.get(str, "LastUseTime"),
+                "first dock date": chip_data.get(str, "FirstDockDate"),
             },
         )
 
@@ -52,10 +53,10 @@ class ChipData:
 @dataclass(frozen=True)
 class DetectionSetting:
     key: str
-    value: float
+    value: float | None
 
     @staticmethod
-    def create(detection_setting: DictType) -> DetectionSetting:
+    def create(detection_setting: DictData) -> DetectionSetting:
         detection_key = f"Detection{detection_setting['Detection']}"
         return DetectionSetting(
             key=detection_key.lower(),
@@ -81,35 +82,48 @@ class RunMetadata:
 
     @staticmethod
     def create(
-        application_template_details: dict[str, DictType] | None,
+        application_template_details: DictData | None,
     ) -> RunMetadata:
         if application_template_details is None:
             return RunMetadata()
+        baseline_flow = application_template_details.get_nested("BaselineFlow")
+        baseline_flow_value = baseline_flow.get("value")
+        data_collection_rate = application_template_details.get_nested(
+            "DataCollectionRate"
+        )
+        data_collection_rate_value = data_collection_rate.get("value")
         return RunMetadata(
-            analyst=application_template_details["properties"].get("User"),
+            analyst=application_template_details.get(
+                DictData, "properties", DictData({})
+            ).get(str, "User"),
             compartment_temperature=try_float_or_none(
-                application_template_details["RackTemperature"].get("Value")
+                application_template_details.get_nested("RackTemperature")["Value"]
                 if "sample_data" in application_template_details
-                else application_template_details["system_preparations"].get("RackTemp")
+                else application_template_details.get(
+                    DictData,
+                    "system_preparations",
+                    DictData({}),
+                ).get(str, "RackTemp")
             ),
-            baseline_flow=try_float_or_none(
-                application_template_details.get("BaselineFlow", {}).get("value")
-            ),
-            data_collection_rate=try_float_or_none(
-                application_template_details.get("DataCollectionRate", {}).get("value")
-            ),
+            baseline_flow=try_float_or_none(baseline_flow_value),
+            data_collection_rate=try_float_or_none(data_collection_rate_value),
             detection_setting=(
-                DetectionSetting.create(detection_setting)
-                if (detection_setting := application_template_details.get("detection"))
+                DetectionSetting.create(
+                    application_template_details.get_nested("detection")
+                )
+                if application_template_details.get_nested("detection")
                 else None
             ),
             buffer_volume=try_float_or_none(
                 next(
-                    value
-                    for key, value in application_template_details[
-                        "prepare_run"
-                    ].items()
-                    if key.startswith("Buffer")
+                    (
+                        value
+                        for key, value in application_template_details.get_nested(
+                            "prepare_run"
+                        ).items()
+                        if key.startswith("Buffer")
+                    ),
+                    None,
                 )
             ),
             devices=[
@@ -131,21 +145,22 @@ class SystemInformation:
     software_version: str | None
 
     @staticmethod
-    def create(system_information: DictType) -> SystemInformation:
+    def create(system_information: DictData) -> SystemInformation:
         return SystemInformation(
             device_identifier=assert_not_none(
-                system_information.get("InstrumentId"), "InstrumentId"
+                system_information.get(str, "InstrumentId"), "InstrumentId"
             ),
             model_number=assert_not_none(
-                system_information.get("ProcessingUnit"), "ProcessingUnit"
+                system_information.get(str, "ProcessingUnit"),
+                "ProcessingUnit",
             ),
             measurement_time=assert_not_none(
-                system_information.get("Timestamp"), "Timestamp"
+                system_information.get(str, "Timestamp"), "Timestamp"
             ),
-            experiment_type=system_information.get("RunTypeId"),
-            analytical_method_identifier=system_information.get("TemplateFile"),
-            software_name=system_information.get("Application"),
-            software_version=system_information.get("Version"),
+            experiment_type=system_information.get(str, "RunTypeId"),
+            analytical_method_identifier=system_information.get(str, "TemplateFile"),
+            software_name=system_information.get(str, "Application"),
+            software_version=system_information.get(str, "Version"),
         )
 
 
@@ -212,34 +227,39 @@ class MeasurementData:
     flow_rate: float | None
     contact_time: float | None
     dilution: float | None
+    custom_info: dict[str, Any]
 
 
 @dataclass(frozen=True)
 class SampleData:
     measurements: dict[str, list[MeasurementData]]
+    custom_info: dict[str, Any]
 
     @staticmethod
-    def create(intermediate_structured_data: DictType) -> SampleData:
-        application_template_details: dict[
-            str, DictType
-        ] = intermediate_structured_data.get("application_template_details", {})
+    def create(intermediate_structured_data: DictData) -> SampleData:
+        application_template_details = intermediate_structured_data.get_nested(
+            "application_template_details"
+        )
         measurements: dict[str, list[MeasurementData]] = defaultdict(list)
-        for idx in range(intermediate_structured_data["total_cycles"]):
-            flowcell_cycle_data: DictType = application_template_details.get(
-                f"Flowcell {idx + 1}", {}
+        total_cycles = assert_not_none(
+            intermediate_structured_data.get(int, "total_cycles"),
+            "total_cycles",
+        )
+        for idx in range(total_cycles):
+            flowcell_cycle_json = application_template_details.get_nested(
+                f"Flowcell {idx + 1}"
             )
-            sample_data: DictType = (
-                sd[idx]
-                if (sd := intermediate_structured_data.get("sample_data"))
-                else {}
-            )
-            cycle_data: DictType = intermediate_structured_data["cycle_data"][idx]
+            sd_list = intermediate_structured_data.get(list, "sample_data", [])
+            sample_data_json = sd_list[idx] if sd_list else DictData({})
+
+            cycle_data_list = intermediate_structured_data.get(list, "cycle_data", [])
+            cycle_data: dict[str, pd.DataFrame] = cycle_data_list[idx]
             sensorgram_data: pd.DataFrame = cycle_data["sensorgram_data"]
             # some experiments don't have report point data for some cycles (apparently just the first one)
             report_point_data: pd.DataFrame | None = cycle_data["report_point_data"]
 
-            sample_identifier = sample_data.get("sample_name", NOT_APPLICABLE)
-            location_identifier = sample_data.get("rack")
+            sample_identifier = sample_data_json.get(str, "sample_name", NOT_APPLICABLE)
+            location_identifier = sample_data_json.get(str, "rack")
             sample_location_key = f"{location_identifier}_{sample_identifier}"
 
             # Measurements are grouped by sample and location identifiers
@@ -252,12 +272,10 @@ class SampleData:
                     flow_cell_identifier=str(flow_cell),
                     location_identifier=location_identifier,
                     sample_role_type=constants.SAMPLE_ROLE_TYPE.get(
-                        sample_data.get("role", "__IVALID_KEY__")
+                        sample_data_json.get(str, "role", "__IVALID_KEY__")
                     ),
-                    concentration=try_float_or_none(sample_data.get("concentration")),
-                    molecular_weight=try_float_or_none(
-                        sample_data.get("molecular_weight")
-                    ),
+                    concentration=sample_data_json.get(float, "concentration"),
+                    molecular_weight=sample_data_json.get(float, "molecular_weight"),
                     sensorgram_data=sensorgram_df,
                     report_point_data=(
                         map_rows(
@@ -268,23 +286,21 @@ class SampleData:
                         else None
                     ),
                     # for Mobilization experiments
-                    method_name=flowcell_cycle_data.get("MethodName"),
-                    ligand_identifier=flowcell_cycle_data.get("Ligand"),
-                    flow_path=flowcell_cycle_data.get("DetectionText"),
-                    flow_rate=try_float_or_none(flowcell_cycle_data.get("Flow")),
-                    contact_time=try_float_or_none(
-                        flowcell_cycle_data.get("ContactTime")
-                    ),
-                    dilution=try_float_or_none(
-                        flowcell_cycle_data.get("DilutePercent")
-                    ),
+                    method_name=flowcell_cycle_json.get(str, "MethodName"),
+                    ligand_identifier=flowcell_cycle_json.get(str, "Ligand"),
+                    flow_path=flowcell_cycle_json.get(str, "DetectionText"),
+                    flow_rate=flowcell_cycle_json.get(float, "Flow"),
+                    contact_time=flowcell_cycle_json.get(float, "ContactTime"),
+                    dilution=flowcell_cycle_json.get(float, "DilutePercent"),
+                    custom_info={},
                 )
                 # group sensorgram data by Flow Cell Number (Fc in rpoint data)
                 for flow_cell, sensorgram_df in sensorgram_data.groupby(
                     "Flow Cell Number"
                 )
             ]
-        return SampleData(measurements)
+        custom_info: dict[str, Any] = {}
+        return SampleData(measurements, custom_info)
 
 
 @dataclass(frozen=True)
@@ -295,14 +311,15 @@ class Data:
     sample_data: SampleData
 
     @staticmethod
-    def create(intermediate_structured_data: DictType) -> Data:
-        application_template_details: dict[
-            str, DictType
-        ] | None = intermediate_structured_data.get("application_template_details")
-        chip_data: DictType = intermediate_structured_data["chip"]
-        system_information: DictType = intermediate_structured_data[
+    def create(intermediate_structured_data: DictData) -> Data:
+        application_template_details = intermediate_structured_data.get_nested(
+            "application_template_details"
+        )
+        chip_data = intermediate_structured_data.get_nested("chip")
+        system_information = intermediate_structured_data.get_nested(
             "system_information"
-        ]
+        )
+
         return Data(
             run_metadata=RunMetadata.create(application_template_details),
             chip_data=ChipData.create(chip_data),

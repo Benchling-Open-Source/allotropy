@@ -463,7 +463,7 @@ def create_metadata(header: SeriesData, file_path: str) -> Metadata:
         unc_path=file_path,
         asm_file_identifier=asm_file_identifier.name,
         data_system_instance_id=NOT_APPLICABLE,
-        custom_info_doc=_filter_empty_string_values(
+        metadata_custom_info=_filter_empty_string_values(
             header.get_unread(
                 # Skip already mapped columns from well plate data (repeated in CSV no header cases)
                 skip={
