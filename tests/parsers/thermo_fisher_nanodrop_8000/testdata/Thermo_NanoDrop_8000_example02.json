@@ -15,13 +15,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "8",
-                                "location identifier": "A1"
+                                "location identifier": "A1",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.142,
@@ -33,9 +45,25 @@
                                         "mass concentration": {
                                             "value": 4.142,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.142,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -55,13 +83,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "8",
-                                "location identifier": "B1"
+                                "location identifier": "B1",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.153,
@@ -73,9 +113,25 @@
                                         "mass concentration": {
                                             "value": 4.153,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.153,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -95,13 +151,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "8",
-                                "location identifier": "C1"
+                                "location identifier": "C1",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.138,
@@ -113,9 +181,25 @@
                                         "mass concentration": {
                                             "value": 4.138,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.138,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -135,13 +219,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "11",
-                                "location identifier": "D1"
+                                "location identifier": "D1",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.158,
@@ -153,9 +249,25 @@
                                         "mass concentration": {
                                             "value": 4.158,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.158,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -175,13 +287,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "11",
-                                "location identifier": "E1"
+                                "location identifier": "E1",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.18,
@@ -193,9 +317,25 @@
                                         "mass concentration": {
                                             "value": 4.18,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.18,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -215,13 +355,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "11",
-                                "location identifier": "F1"
+                                "location identifier": "F1",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.185,
@@ -233,9 +385,25 @@
                                         "mass concentration": {
                                             "value": 4.185,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.185,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -255,13 +423,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "13",
-                                "location identifier": "A2"
+                                "location identifier": "A2",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.56,
@@ -273,9 +453,25 @@
                                         "mass concentration": {
                                             "value": 4.56,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.56,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -295,13 +491,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "13",
-                                "location identifier": "B2"
+                                "location identifier": "B2",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.544,
@@ -313,9 +521,25 @@
                                         "mass concentration": {
                                             "value": 4.544,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.544,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -335,13 +559,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "13",
-                                "location identifier": "C2"
+                                "location identifier": "C2",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.548,
@@ -353,9 +589,25 @@
                                         "mass concentration": {
                                             "value": 4.548,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.548,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -375,13 +627,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "6",
-                                "location identifier": "A3"
+                                "location identifier": "A3",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 41.724,
@@ -393,9 +657,25 @@
                                         "mass concentration": {
                                             "value": 41.72,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 41.724,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -415,13 +695,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "6",
-                                "location identifier": "B3"
+                                "location identifier": "B3",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 50.116,
@@ -433,9 +725,25 @@
                                         "mass concentration": {
                                             "value": 50.12,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 50.116,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -455,13 +763,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "6",
-                                "location identifier": "C3"
+                                "location identifier": "C3",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 44.989,
@@ -473,9 +793,25 @@
                                         "mass concentration": {
                                             "value": 44.99,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 44.989,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -495,13 +831,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "7",
-                                "location identifier": "D3"
+                                "location identifier": "D3",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 62.522,
@@ -513,9 +861,25 @@
                                         "mass concentration": {
                                             "value": 62.52,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 62.522,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -535,13 +899,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "7",
-                                "location identifier": "E3"
+                                "location identifier": "E3",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": -5.338,
@@ -553,9 +929,25 @@
                                         "mass concentration": {
                                             "value": -5.338,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": -5.338,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -575,13 +967,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "7",
-                                "location identifier": "F3"
+                                "location identifier": "F3",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": -8.199,
@@ -593,9 +997,25 @@
                                         "mass concentration": {
                                             "value": -8.199,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": -8.199,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -615,13 +1035,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "6",
-                                "location identifier": "A3"
+                                "location identifier": "A3",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.919,
@@ -633,9 +1065,25 @@
                                         "mass concentration": {
                                             "value": 4.919,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.919,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -655,13 +1103,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "6",
-                                "location identifier": "B3"
+                                "location identifier": "B3",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.871,
@@ -673,9 +1133,25 @@
                                         "mass concentration": {
                                             "value": 4.871,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.871,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -695,13 +1171,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "6",
-                                "location identifier": "C3"
+                                "location identifier": "C3",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.829,
@@ -713,9 +1201,25 @@
                                         "mass concentration": {
                                             "value": 4.829,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.829,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -735,13 +1239,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "7",
-                                "location identifier": "D3"
+                                "location identifier": "D3",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 5.333,
@@ -753,9 +1269,25 @@
                                         "mass concentration": {
                                             "value": 5.333,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 5.333,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -775,13 +1307,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "7",
-                                "location identifier": "E3"
+                                "location identifier": "E3",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 5.3,
@@ -793,9 +1337,25 @@
                                         "mass concentration": {
                                             "value": 5.3,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 5.3,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -815,13 +1375,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "7",
-                                "location identifier": "F3"
+                                "location identifier": "F3",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 5.326,
@@ -833,9 +1405,25 @@
                                         "mass concentration": {
                                             "value": 5.326,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 5.326,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -855,13 +1443,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "9",
-                                "location identifier": "A4"
+                                "location identifier": "A4",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 6.969,
@@ -873,9 +1473,25 @@
                                         "mass concentration": {
                                             "value": 6.969,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 6.969,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -895,13 +1511,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "9",
-                                "location identifier": "B4"
+                                "location identifier": "B4",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 6.935,
@@ -913,9 +1541,25 @@
                                         "mass concentration": {
                                             "value": 6.935,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 6.935,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -935,13 +1579,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "9",
-                                "location identifier": "C4"
+                                "location identifier": "C4",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 6.972,
@@ -953,9 +1609,25 @@
                                         "mass concentration": {
                                             "value": 6.972,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 6.972,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -975,13 +1647,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "10",
-                                "location identifier": "D4"
+                                "location identifier": "D4",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.813,
@@ -993,9 +1677,25 @@
                                         "mass concentration": {
                                             "value": 4.813,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.813,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -1015,13 +1715,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "10",
-                                "location identifier": "E4"
+                                "location identifier": "E4",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.795,
@@ -1033,9 +1745,25 @@
                                         "mass concentration": {
                                             "value": 4.795,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.795,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -1055,13 +1783,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "10",
-                                "location identifier": "F4"
+                                "location identifier": "F4",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.812,
@@ -1073,9 +1813,25 @@
                                         "mass concentration": {
                                             "value": 4.812,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.812,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -1095,13 +1851,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "12",
-                                "location identifier": "A5"
+                                "location identifier": "A5",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.199,
@@ -1113,9 +1881,25 @@
                                         "mass concentration": {
                                             "value": 4.199,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.199,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -1135,13 +1919,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "12",
-                                "location identifier": "B5"
+                                "location identifier": "B5",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.175,
@@ -1153,9 +1949,25 @@
                                         "mass concentration": {
                                             "value": 4.175,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.175,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -1175,13 +1987,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "12",
-                                "location identifier": "C5"
+                                "location identifier": "C5",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.163,
@@ -1193,9 +2017,25 @@
                                         "mass concentration": {
                                             "value": 4.163,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.163,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -1215,13 +2055,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "14",
-                                "location identifier": "D5"
+                                "location identifier": "D5",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.514,
@@ -1233,9 +2085,25 @@
                                         "mass concentration": {
                                             "value": 4.514,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.514,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -1255,13 +2123,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "14",
-                                "location identifier": "E5"
+                                "location identifier": "E5",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.528,
@@ -1273,9 +2153,25 @@
                                         "mass concentration": {
                                             "value": 4.528,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.528,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -1295,13 +2191,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "14",
-                                "location identifier": "F5"
+                                "location identifier": "F5",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.558,
@@ -1313,9 +2221,25 @@
                                         "mass concentration": {
                                             "value": 4.558,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.558,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -1335,13 +2259,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "N/A",
-                                "location identifier": "A6"
+                                "location identifier": "A6",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.572,
@@ -1353,9 +2289,25 @@
                                         "mass concentration": {
                                             "value": 4.572,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.572,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -1375,13 +2327,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "N/A",
-                                "location identifier": "B6"
+                                "location identifier": "B6",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.54,
@@ -1393,9 +2357,25 @@
                                         "mass concentration": {
                                             "value": 4.54,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.54,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -1415,13 +2395,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "N/A",
-                                "location identifier": "C6"
+                                "location identifier": "C6",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.546,
@@ -1433,9 +2425,25 @@
                                         "mass concentration": {
                                             "value": 4.546,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.546,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -1455,13 +2463,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "N/A",
-                                "location identifier": "D6"
+                                "location identifier": "D6",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.532,
@@ -1473,9 +2493,25 @@
                                         "mass concentration": {
                                             "value": 4.532,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.532,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -1495,13 +2531,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "N/A",
-                                "location identifier": "E6"
+                                "location identifier": "E6",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.542,
@@ -1513,9 +2561,25 @@
                                         "mass concentration": {
                                             "value": 4.542,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.542,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -1535,13 +2599,25 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
                             },
                             "sample document": {
                                 "sample identifier": "N/A",
-                                "location identifier": "F6"
+                                "location identifier": "F6",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 4.537,
@@ -1553,9 +2629,25 @@
                                         "mass concentration": {
                                             "value": 4.537,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 4.537,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -1571,7 +2663,7 @@
             "file name": "Thermo_NanoDrop_8000_example02.txt",
             "UNC path": "tests/parsers/thermo_fisher_nanodrop_8000/testdata/Thermo_NanoDrop_8000_example02.txt",
             "ASM converter name": "allotropy_thermo_fisher_scientific_nanodrop_8000",
-            "ASM converter version": "0.1.62"
+            "ASM converter version": "0.1.106"
         },
         "calculated data aggregate document": {
             "calculated data document": [
