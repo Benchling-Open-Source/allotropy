@@ -37,14 +37,17 @@ class DictData(dict[str, Any]):
         self._read_keys: set[str] = set()
         self.errored = False
         self.creation_stack = traceback.extract_stack()
-        for key, value in data.items():
-            super().__setitem__(key, self._wrap(value))
+        self._load_dict(data)
 
-    def _wrap(self, value: Any) -> Any:
+    def _load_dict(self, data: dict[str, Any]) -> None:
+        for key, value in data.items():
+            super().__setitem__(key, self._wrap_value(value))
+
+    def _wrap_value(self, value: Any) -> Any:
         if isinstance(value, dict):
             return DictData(value)
         if isinstance(value, list):
-            return [self._wrap(v) for v in value]
+            return [self._wrap_value(v) for v in value]
         return value
 
     # Reading APIs
@@ -215,6 +218,10 @@ class DictData(dict[str, Any]):
                     stacklevel=2,
                 )
 
+    def get_nested(self, key: str) -> DictData:
+        """Get nested dict for safe chaining."""
+        return self.get(DictData, key, DictData())
+
     def keys_read(self) -> set[str]:
         return set(self._read_keys)
 
@@ -288,17 +295,4 @@ class DictData(dict[str, Any]):
 
     # Mutation APIs (not expected to be used, but kept consistent)
     def __setitem__(self, key: str, value: Any) -> None:
-        super().__setitem__(key, self._wrap(value))
-
-    # Convenience helpers
-    @staticmethod
-    def from_any(value: Any) -> Any:
-        """
-        Recursively convert dictionaries inside the given value into
-        DictData instances.
-        """
-        if isinstance(value, dict):
-            return DictData(value)
-        if isinstance(value, list):
-            return [DictData.from_any(v) for v in value]
-        return value
+        super().__setitem__(key, self._wrap_value(value))

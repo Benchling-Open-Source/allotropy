@@ -49,11 +49,28 @@ def test_get_unread_and_get_unread_deep() -> None:
     assert deep == {"nested": {"x": 2, "inner": {"z": 3}}, "arr": [{"y": 4}, {"k": 5}]}
 
 
-def test_from_any_wraps_dicts_and_lists() -> None:
+def test_wrap_value_wraps_dicts_and_lists() -> None:
     value = {"a": {"b": 1}, "c": [{"d": 2}, 3]}
-    wrapped = DictData.from_any(value)
+    helper = DictData({})
+    wrapped = helper._wrap_value(value)
     assert isinstance(wrapped, DictData)
     assert isinstance(wrapped.get(DictData, "a"), DictData)
     arr = wrapped.get(list, "c")
     assert isinstance(arr, list)
     assert isinstance(arr[0], DictData)
+
+
+def test_get_nested_returns_dictdata_and_marks_read() -> None:
+    d = DictData({"nested": {"x": 1}})
+
+    # Existing key returns a DictData and marks key as read
+    nested = d.get_nested("nested")
+    assert isinstance(nested, DictData)
+    assert nested.get(int, "x") == 1
+    assert "nested" in d.keys_read()
+
+    # Missing key returns empty DictData and does not mark as read
+    missing = d.get_nested("missing")
+    assert isinstance(missing, DictData)
+    assert missing == DictData({})
+    assert "missing" not in d.keys_read()

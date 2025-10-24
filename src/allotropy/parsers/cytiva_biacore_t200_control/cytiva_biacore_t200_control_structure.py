@@ -86,12 +86,10 @@ class RunMetadata:
     ) -> RunMetadata:
         if application_template_details is None:
             return RunMetadata()
-        baseline_flow = application_template_details.get(
-            DictData, "BaselineFlow", DictData({})
-        )
+        baseline_flow = application_template_details.get_nested("BaselineFlow")
         baseline_flow_value = baseline_flow.get("value")
-        data_collection_rate = application_template_details.get(
-            DictData, "DataCollectionRate", DictData({})
+        data_collection_rate = application_template_details.get_nested(
+            "DataCollectionRate"
         )
         data_collection_rate_value = data_collection_rate.get("value")
         return RunMetadata(
@@ -99,11 +97,7 @@ class RunMetadata:
                 DictData, "properties", DictData({})
             ).get(str, "User"),
             compartment_temperature=try_float_or_none(
-                application_template_details.get(
-                    DictData,
-                    "RackTemperature",
-                    DictData({}),
-                )["Value"]
+                application_template_details.get_nested("RackTemperature")["Value"]
                 if "sample_data" in application_template_details
                 else application_template_details.get(
                     DictData,
@@ -115,19 +109,17 @@ class RunMetadata:
             data_collection_rate=try_float_or_none(data_collection_rate_value),
             detection_setting=(
                 DetectionSetting.create(
-                    application_template_details.get(
-                        DictData, "detection", DictData({})
-                    )
+                    application_template_details.get_nested("detection")
                 )
-                if application_template_details.get(DictData, "detection", DictData({}))
+                if application_template_details.get_nested("detection")
                 else None
             ),
             buffer_volume=try_float_or_none(
                 next(
                     (
                         value
-                        for key, value in application_template_details.get(
-                            DictData, "prepare_run", DictData({})
+                        for key, value in application_template_details.get_nested(
+                            "prepare_run"
                         ).items()
                         if key.startswith("Buffer")
                     ),
@@ -245,8 +237,8 @@ class SampleData:
 
     @staticmethod
     def create(intermediate_structured_data: DictData) -> SampleData:
-        application_template_details = intermediate_structured_data.get(
-            DictData, "application_template_details", DictData({})
+        application_template_details = intermediate_structured_data.get_nested(
+            "application_template_details"
         )
         measurements: dict[str, list[MeasurementData]] = defaultdict(list)
         total_cycles = assert_not_none(
@@ -254,8 +246,8 @@ class SampleData:
             "total_cycles",
         )
         for idx in range(total_cycles):
-            flowcell_cycle_json = application_template_details.get(
-                DictData, f"Flowcell {idx + 1}", DictData({})
+            flowcell_cycle_json = application_template_details.get_nested(
+                f"Flowcell {idx + 1}"
             )
             sd_list = intermediate_structured_data.get(list, "sample_data", [])
             sample_data_json = sd_list[idx] if sd_list else DictData({})
@@ -320,12 +312,12 @@ class Data:
 
     @staticmethod
     def create(intermediate_structured_data: DictData) -> Data:
-        application_template_details = intermediate_structured_data.get(
-            DictData, "application_template_details", DictData({})
+        application_template_details = intermediate_structured_data.get_nested(
+            "application_template_details"
         )
-        chip_data = intermediate_structured_data.get(DictData, "chip", DictData({}))
-        system_information = intermediate_structured_data.get(
-            DictData, "system_information", DictData({})
+        chip_data = intermediate_structured_data.get_nested("chip")
+        system_information = intermediate_structured_data.get_nested(
+            "system_information"
         )
 
         return Data(
