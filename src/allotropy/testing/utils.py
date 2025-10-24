@@ -301,13 +301,17 @@ def validate_contents(
 
         # Check for deletions before doing the assertion if we're going to overwrite
         if write_actual_to_expected_on_fail:
-            has_deletions, deleted_paths = _check_allotrope_dicts_for_deletions(expected_dict, allotrope_dict)
+            has_deletions, deleted_paths = _check_allotrope_dicts_for_deletions(
+                expected_dict, allotrope_dict
+            )
 
             if has_deletions and not force_overwrite:
                 # Show a summary of deleted fields instead of the full list
                 if len(deleted_paths) <= 10:
                     # Show all paths if there are few
-                    deleted_paths_str = "\n".join(f"  - {path}" for path in deleted_paths)
+                    deleted_paths_str = "\n".join(
+                        f"  - {path}" for path in deleted_paths
+                    )
                     summary_msg = f"Fields that will be deleted:\n{deleted_paths_str}"
                 else:
                     # Show first few and summary for many deletions
@@ -351,7 +355,9 @@ def validate_contents(
                 _write_actual_to_expected(allotrope_dict, expected_file)
                 msg = f"Missing expected output file '{expected_file}', writing expected output because 'write_actual_to_expected_on_fail=True'"
                 raise AssertionError(msg) from e
-            elif isinstance(e, AssertionError) and "allotropy output != expected:" in str(e):
+            elif isinstance(
+                e, AssertionError
+            ) and "allotropy output != expected:" in str(e):
                 _write_actual_to_expected(allotrope_dict, expected_file)
                 msg = f"Mismatch between actual and expected for '{expected_file}', writing expected output because 'write_actual_to_expected_on_fail=True'\n\n{e}"
                 raise AssertionError(msg) from e

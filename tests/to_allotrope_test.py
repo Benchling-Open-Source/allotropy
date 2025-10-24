@@ -44,7 +44,12 @@ class ParserTest:
 
     # test_file_path is automatically populated with all files in testdata folder next to the test file.
     def test_positive_cases(
-        self, test_file_path: Path, *, overwrite: bool, force_overwrite: bool, warn_unread_keys: bool
+        self,
+        test_file_path: Path,
+        *,
+        overwrite: bool,
+        force_overwrite: bool,
+        warn_unread_keys: bool,
     ) -> None:
         if warn_unread_keys:
             os.environ["WARN_UNUSED_KEYS"] = "1"
