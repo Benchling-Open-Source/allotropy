@@ -90,6 +90,7 @@ class Measurement:
     errors: list[Error] | None = None
 
     # custom
+    sample_custom_info: dict[str, Any] | None = None
     custom_info: dict[str, Any] | None = None
 
 
@@ -243,6 +244,10 @@ class Mapper(SchemaMapper[Data, Model]):
                     )
                 ]
             ),
+        )
+
+        measurement_doc.sample_document = add_custom_information_document(
+            measurement_doc.sample_document, measurement.sample_custom_info
         )
         return add_custom_information_document(measurement_doc, measurement.custom_info)
 
