@@ -124,6 +124,9 @@ class VisionLiteData(Data):
                     analyst=header.analyst,
                     measurement_time=header.measurement_time,
                     experiment_type=experiment_type.value,
+                    custom_info=reader.header.get_unread(skip={"File Name"})
+                    if reader.header
+                    else {},
                     measurements=[
                         Measurement(
                             type_=experiment_type.measurement_type,
@@ -139,7 +142,7 @@ class VisionLiteData(Data):
             for _, row in data.iterrows():
                 row_data = SeriesData(row)
                 measurements = _get_absorbance_measurements(
-                    row_data, experiment_type, wavelength_cols
+                    row_data, experiment_type, wavelength_cols, reader.header
                 )
                 measurement_groups.append(
                     MeasurementGroup(
@@ -196,6 +199,7 @@ def _get_absorbance_measurements(
     data: SeriesData,
     experiment_type: ExperimentType,
     wavelength_cols: dict[int, str],
+    header: SeriesData | None = None,
 ) -> list[Measurement]:
     if experiment_type == ExperimentType.QUANT:
         ordinate_col = "Ordinate [A]"
@@ -232,6 +236,10 @@ def _get_absorbance_measurements(
             absorbance=measurement.absorbance,
             dilution_factor_setting=data.get(float, "Dilution factor"),
             detector_wavelength_setting=try_float_or_none(measurement.wavelength),
+            custom_info={
+                **data.get_unread(skip={"Result"}),
+                **(header.get_unread(skip={"File Name"}) if header else {}),
+            },
         )
         for measurement in absorbance_measurements
     ]
