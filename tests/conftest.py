@@ -21,6 +21,11 @@ def pytest_addoption(parser: Parser) -> None:
         help="If set, overwrite failing tests with new data.",
     )
     parser.addoption(
+        "--force-overwrite",
+        action="store_true",
+        help="If set, allow overwriting test data even when fields are deleted. Use with caution!",
+    )
+    parser.addoption(
         "--exclude",
         action="store",
         default="",
@@ -42,6 +47,11 @@ def pytest_addoption(parser: Parser) -> None:
 @pytest.fixture
 def overwrite(request: FixtureRequest) -> Any:
     return request.config.getoption("--overwrite")
+
+
+@pytest.fixture
+def force_overwrite(request: FixtureRequest) -> Any:
+    return request.config.getoption("--force-overwrite")
 
 
 @pytest.fixture
