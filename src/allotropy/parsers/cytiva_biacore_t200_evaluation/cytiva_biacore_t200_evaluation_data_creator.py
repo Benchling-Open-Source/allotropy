@@ -48,13 +48,16 @@ from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import quantity_or_none, try_float_or_none
 
+# Precompiled patterns for faster flow cell id normalization
+_FLOWCELL_ID_RE = re.compile(r"\d+")
+
 
 def _get_sensorgram_datacube(
     sensorgram_df: pd.DataFrame, *, cycle: int, flow_cell: str
 ) -> DataCube:
     # Extract all sensorgram data points
-    time_vals = sensorgram_df["Time (s)"].astype(float).to_list()
-    resp_vals = sensorgram_df["Sensorgram (RU)"].astype(float).to_list()
+    time_vals = sensorgram_df["Time (s)"].to_numpy(copy=False)
+    resp_vals = sensorgram_df["Sensorgram (RU)"].to_numpy(copy=False)
     return DataCube(
         label=f"Cycle{cycle}_FlowCell{flow_cell}",
         structure_dimensions=[
@@ -63,8 +66,8 @@ def _get_sensorgram_datacube(
         structure_measures=[
             DataCubeComponent(FieldComponentDatatype.double, "resonance", "RU")
         ],
-        dimensions=[time_vals],
-        measures=[resp_vals],
+        dimensions=[time_vals.tolist()],
+        measures=[resp_vals.tolist()],
     )
 
 
@@ -261,9 +264,21 @@ def _create_measurements_for_cycle(data: Data, cycle: CycleData) -> list[Measure
         # Don't normalize reference-subtracted flow cell IDs (e.g., "2-1", "3-1", "4-1")
         if "-" in s:
             return s
-        # Only normalize pure numeric flow cell IDs
-        m = re.match(r"\d+", s)
+        # Fast path for pure digits
+        if s.isdigit():
+            return s
+        # Only normalize pure numeric prefix if present
+        m = _FLOWCELL_ID_RE.match(s)
         return m.group(0) if m else s
+
+    # Precompute kinetic analysis mapping from identifiers to flow cell ids (e.g., EvaluationItem2 -> "2")
+    kinetic_map: dict[str, KineticResult] | None = None
+    if data.kinetic_analysis and data.kinetic_analysis.results_by_identifier:
+        kinetic_map = {}
+        for key, result in data.kinetic_analysis.results_by_identifier.items():
+            m = _FLOWCELL_ID_RE.search(str(key))
+            if m:
+                kinetic_map[m.group(0)] = result
 
     # Process all flow cells (including reference-subtracted ones like "2-1", "3-1", "4-1")
     for flow_cell, df_fc in sensorgram_df.groupby("Flow Cell Number"):
@@ -357,33 +372,8 @@ def _create_measurements_for_cycle(data: Data, cycle: CycleData) -> list[Measure
                     }
                     break
 
-        # Extract kinetic analysis data for this specific flow cell
-        # Match EvaluationItem identifier to flow cell identifier
-        combined_kinetic_data = None
-        if data.kinetic_analysis and data.kinetic_analysis.results_by_identifier:
-            # Try to find the specific EvaluationItem for this flow cell
-            # Flow cell IDs are typically "1", "2", "3", "4"
-            # EvaluationItem IDs are typically "EvaluationItem1", "EvaluationItem2", etc.
-            matching_eval_item = None
-
-            # First, try direct mapping: flow cell "1" -> "EvaluationItem1"
-            eval_item_key = f"EvaluationItem{fc_id}"
-            if eval_item_key in data.kinetic_analysis.results_by_identifier:
-                matching_eval_item = eval_item_key
-            else:
-                # If direct mapping fails, look for any EvaluationItem that might correspond to this flow cell
-                # This could be enhanced with more sophisticated matching logic if needed
-                for eval_key in data.kinetic_analysis.results_by_identifier.keys():
-                    if fc_id in eval_key or eval_key.endswith(fc_id):
-                        matching_eval_item = eval_key
-                        break
-
-            # Use only the matching EvaluationItem data for this flow cell
-            if matching_eval_item:
-                result = data.kinetic_analysis.results_by_identifier[matching_eval_item]
-                combined_kinetic_data = result
-
-        kinetic_data = combined_kinetic_data
+        # Extract kinetic analysis data using precomputed mapping (if present)
+        kinetic_data = kinetic_map.get(fc_id) if kinetic_map is not None else None
 
         measurements.append(
             Measurement(
@@ -458,37 +448,37 @@ def _create_measurements_for_cycle(data: Data, cycle: CycleData) -> list[Measure
 
 
 def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
-    sys = data.system_information
+    system_info = data.system_information
     # Prefer application template timestamp if present in run metadata
-    if data.run_metadata.timestamp and not sys.measurement_time:
-        sys = SystemInformation(
-            application_name=sys.application_name,
-            application_version=sys.application_version,
-            user_name=sys.user_name,
-            system_controller_identifier=sys.system_controller_identifier,
-            os_type=sys.os_type,
-            os_version=sys.os_version,
+    if data.run_metadata.timestamp and not system_info.measurement_time:
+        system_info = SystemInformation(
+            application_name=system_info.application_name,
+            application_version=system_info.application_version,
+            user_name=system_info.user_name,
+            system_controller_identifier=system_info.system_controller_identifier,
+            os_type=system_info.os_type,
+            os_version=system_info.os_version,
             measurement_time=data.run_metadata.timestamp,
-            unread_application_properties=sys.unread_application_properties,
-            measurement_aggregate_fields=sys.measurement_aggregate_fields,
+            unread_application_properties=system_info.unread_application_properties,
+            measurement_aggregate_fields=system_info.measurement_aggregate_fields,
         )
     # As a final fallback, look directly in application_template_details.properties
-    if not sys.measurement_time and data.application_template_details:
+    if not system_info.measurement_time and data.application_template_details:
         props = data.application_template_details.get("properties", {})
         ts = props.get("Timestamp")
         if ts:
-            sys = SystemInformation(
-                application_name=sys.application_name,
-                application_version=sys.application_version,
-                user_name=sys.user_name,
-                system_controller_identifier=sys.system_controller_identifier,
-                os_type=sys.os_type,
-                os_version=sys.os_version,
+            system_info = SystemInformation(
+                application_name=system_info.application_name,
+                application_version=system_info.application_version,
+                user_name=system_info.user_name,
+                system_controller_identifier=system_info.system_controller_identifier,
+                os_type=system_info.os_type,
+                os_version=system_info.os_version,
                 measurement_time=ts,
-                unread_application_properties=sys.unread_application_properties,
-                measurement_aggregate_fields=sys.measurement_aggregate_fields,
+                unread_application_properties=system_info.unread_application_properties,
+                measurement_aggregate_fields=system_info.measurement_aggregate_fields,
             )
-    if not sys.measurement_time:
+    if not system_info.measurement_time:
         msg = "Missing measurement time. Expected application_template_details.properties.Timestamp."
         raise AllotropeParsingError(msg)
     groups: list[MeasurementGroup] = []
@@ -499,7 +489,7 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
             "data collection rate": quantity_or_none(
                 TQuantityValueHertz, data.run_metadata.data_collection_rate
             ),
-            **sys.measurement_aggregate_fields,
+            **system_info.measurement_aggregate_fields,
         }
         # Add aggregate-level experimental data identifier for convenience (first measurement's FC)
         if measurements:
@@ -519,7 +509,7 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
 
         groups.append(
             MeasurementGroup(
-                measurement_time=sys.measurement_time,
+                measurement_time=system_info.measurement_time,
                 measurements=measurements,
                 experiment_type=None,
                 analytical_method_identifier=None,
