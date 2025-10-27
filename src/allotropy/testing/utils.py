@@ -334,8 +334,8 @@ def validate_contents(
                 # Issue warning about deletions for PR description
                 deleted_paths_str = "\n".join(f"  - {path}" for path in deleted_paths)
                 warning_msg = (
-                    f"Fields will be deleted from '{expected_file}': {deleted_paths_str}. "
-                    f"Please copy the following information into your PR description:\n"
+                    f"Fields will be deleted from '{expected_file}':\n\n"
+                    f"Please copy the following information into your PR description:\n\n"
                     f"**Fields deleted in test data:**\n"
                     f"{deleted_paths_str}"
                 )
