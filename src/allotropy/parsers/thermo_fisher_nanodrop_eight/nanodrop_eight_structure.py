@@ -127,7 +127,11 @@ class SpectroscopyRow:
                     and mass_concentration
                     and unit
                     else None,
-                    sample_custom_info={"Sample Name": data.get(str, "sample name")},
+                    sample_custom_info={
+                        "Sample Name": data.get(
+                            str, "sample name", validate=SeriesData.NOT_NAN
+                        )
+                    },
                     custom_info={
                         **data.get_unread(skip=data_skip_fields),
                         **header.get_unread(skip=header_skip_fields),
