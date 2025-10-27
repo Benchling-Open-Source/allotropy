@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from copy import deepcopy
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 import pandas as pd
 
@@ -41,6 +42,13 @@ def create_metadata(data: SeriesData, file_path: str) -> Metadata:
                 )
             )
 
+    custom_info = data.get_unread(
+        skip={
+            "Logged in user",
+            "Unit serial number",
+            "Method",
+        }
+    )
     path = Path(file_path)
     return Metadata(
         file_name=path.name,
@@ -52,6 +60,7 @@ def create_metadata(data: SeriesData, file_path: str) -> Metadata:
         product_manufacturer=constants.PRODUCT_MANUFACTURER,
         software_name=constants.SOFTWARE_NAME,
         devices=devices,
+        custom_info=custom_info if custom_info else None,
     )
 
 
@@ -97,6 +106,9 @@ class FieldMapping:
     # Device fields
     probe_field: str | None = None
     pod_field: str | None = None
+
+    def get_read_keys(self) -> set[str]:
+        return {field for field in self.__dict__.values() if field is not None}
 
 
 class MeasurementStrategy(ABC):
@@ -150,7 +162,7 @@ class PairedTransferStrategy(MeasurementStrategy):
 
     def create_measurements(self, data: pd.DataFrame) -> list[Measurement]:
         measurements: list[Measurement] = []
-        aspirations: dict[str, SeriesData] = {}
+        aspirations: dict[str, pd.Series[Any]] = {}
 
         def map_row(row_data: SeriesData) -> None:
             transfer_step = row_data[str, "Transfer Step"]
@@ -160,14 +172,15 @@ class PairedTransferStrategy(MeasurementStrategy):
                 if probe in aspirations:
                     msg = f"Got a second Aspirate step before a Dispense step for probe {probe}"
                     raise AssertionError(msg)
-                aspirations[probe] = deepcopy(row_data)
+                row_data.get_unread()  # we're not using this SeriesData, so silence unread warnings
+                aspirations[probe] = deepcopy(row_data.series)
             elif transfer_step == constants.TransferStep.DISPENSE.value:
                 if probe not in aspirations:
                     msg = (
                         f"Got a Dispense step before an Aspirate step for probe {probe}"
                     )
                     raise AssertionError(msg)
-                aspiration_data = aspirations.pop(probe)
+                aspiration_data = SeriesData(aspirations.pop(probe))
                 measurements.append(
                     _create_measurement_from_mapping(
                         aspiration_data, row_data, self.mapping
@@ -229,17 +242,19 @@ class PipettingStrategy(MeasurementStrategy):
 
     def create_measurements(self, data: pd.DataFrame) -> list[Measurement]:
         measurements: list[Measurement] = []
-        aspirations: list[SeriesData] = []
+        aspirations: list[pd.Series[Any]] = []
 
         def map_row(row_data: SeriesData) -> None:
+            row_data.mark_read(self.mapping.get_read_keys())
             transfer_step = row_data[str, "Transfer Step"]
             if transfer_step == constants.TransferStep.ASPIRATE.value:
-                aspirations.append(deepcopy(row_data))
+                row_data.get_unread()  # we're not using this SeriesData, so silence unread warnings
+                aspirations.append(deepcopy(row_data.series))
             elif transfer_step == constants.TransferStep.DISPENSE.value:
                 if not aspirations:
                     msg = "Got a Dispense step before an Aspirate step"
                     raise AssertionError(msg)
-                aspiration_data = aspirations.pop(0)  # FIFO matching
+                aspiration_data = SeriesData(aspirations.pop(0))  # FIFO matching
                 measurements.append(
                     _create_measurement_from_mapping(
                         aspiration_data, row_data, self.mapping
@@ -283,7 +298,7 @@ def _create_measurement_from_mapping(
         return data.get(str, field) if field else None
 
     # Build custom info
-    custom_info = {}
+    custom_info: dict[str, Any] = {}
 
     # Probe info - only add if field exists and has a non-empty value
     if mapping.probe_field:
@@ -316,6 +331,16 @@ def _create_measurement_from_mapping(
         dest_technique_value = get_dest_value(mapping.destination_technique_field)
         if dest_technique_value is not None:
             custom_info["destination liquid handling technique"] = dest_technique_value
+    if source_data:
+        source_data.mark_read(mapping.get_read_keys())
+        custom_info |= source_data.get_unread(
+            skip={"Unnamed.*", "Sample Name", "Transfer Step"}
+        )
+    if dest_data:
+        dest_data.mark_read(mapping.get_read_keys())
+        custom_info |= dest_data.get_unread(
+            skip={"Unnamed.*", "Sample Name", "Transfer Step"}
+        )
 
     return Measurement(
         identifier=random_uuid_str(),
@@ -363,5 +388,6 @@ def create_measurement_groups(
             analyst=header[str, "Logged in user"],
             analytical_method_identifier=header.get(str, "Method"),
             measurements=measurements,
+            custom_info=header.get_unread(),
         )
     ]
