@@ -130,8 +130,12 @@ class TestParser(ParserTest):
         *,
         overwrite: bool,
         warn_unread_keys: bool,
+        force_overwrite: bool,
     ) -> None:
         """Override the test method with data masking, cycle reduction, and sensorgram data reduction patches."""
         return super().test_positive_cases(
-            test_file_path, overwrite=overwrite, warn_unread_keys=warn_unread_keys
+            test_file_path,
+            overwrite=overwrite,
+            warn_unread_keys=warn_unread_keys,
+            force_overwrite=force_overwrite,
         )
