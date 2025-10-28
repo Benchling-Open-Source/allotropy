@@ -612,7 +612,6 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                 for cycle, df in sensorgram_by_cycle.items()
             ]
             intermediate["total_cycles"] = int(max(sensorgram_by_cycle.keys(), key=int))
-            # timing logs removed
         else:
             # Synthesize a tiny dataset to allow downstream mapping without heavy parsing
             df = pd.DataFrame(
