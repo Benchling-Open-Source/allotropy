@@ -114,6 +114,7 @@ DICT_KEY_TO_MODEL_KEY_REPLACEMENTS = {
     "'": "_QUOTE_",
     "*": "_ASTERISK_",
     ",": "_COMMA_",
+    "&": "_AMPERSAND_",
     # NOTE: this MUST be at the end, or it will break other key replacements.
     " ": "_",
 }

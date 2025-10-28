@@ -133,6 +133,7 @@ class MeasurementGroup:
     container_type: str | None = None
 
     processed_data: ProcessedData | None = None
+    custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -200,16 +201,19 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> SpectrophotometryDocumentItem:
         return SpectrophotometryDocumentItem(
             analyst=measurement_group.analyst,
-            measurement_aggregate_document=MeasurementAggregateDocument(
-                measurement_time=self.get_date_time(
-                    assert_not_none(measurement_group.measurement_time)
+            measurement_aggregate_document=add_custom_information_document(
+                MeasurementAggregateDocument(
+                    measurement_time=self.get_date_time(
+                        assert_not_none(measurement_group.measurement_time)
+                    ),
+                    experiment_type=measurement_group.experiment_type,
+                    container_type=metadata.container_type,
+                    measurement_document=[
+                        self._get_measurement_document_item(measurement, metadata)
+                        for measurement in measurement_group.measurements
+                    ],
                 ),
-                experiment_type=measurement_group.experiment_type,
-                container_type=metadata.container_type,
-                measurement_document=[
-                    self._get_measurement_document_item(measurement, metadata)
-                    for measurement in measurement_group.measurements
-                ],
+                measurement_group.custom_info,
             ),
         )
 
