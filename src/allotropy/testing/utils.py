@@ -10,6 +10,7 @@ import shutil
 import tempfile
 from typing import Any
 from unittest import mock
+import warnings
 
 from deepdiff import DeepDiff
 from deepdiff.model import DiffLevel
@@ -184,6 +185,42 @@ def _assert_allotrope_dicts_equal(
         raise AssertionError(msg)
 
 
+def _check_allotrope_dicts_for_deletions(
+    expected: DictType,
+    actual: DictType,
+) -> tuple[bool, list[str]]:
+    """
+    Check if the actual dict has any deleted fields compared to expected dict.
+
+    Returns:
+        tuple[bool, list[str]]: (has_deletions, deleted_paths)
+        - has_deletions: True if any fields were deleted
+        - deleted_paths: List of JSON paths for deleted fields
+    """
+    expected_replaced = _replace_asm_converter_version(expected)
+    ddiff = DeepDiff(
+        expected_replaced,
+        actual,
+        ignore_type_in_groups=[(float, np.float64)],
+        ignore_nan_inequality=True,
+        custom_operators=[DEEPDIFF_PATH_COMPARATOR],
+    )
+
+    deleted_paths = []
+    if ddiff:
+        # Check for dictionary item removals
+        if "dictionary_item_removed" in ddiff:
+            for path in ddiff["dictionary_item_removed"]:
+                deleted_paths.append(str(path))
+
+        # Check for iterable item removals (list items)
+        if "iterable_item_removed" in ddiff:
+            for path in ddiff["iterable_item_removed"]:
+                deleted_paths.append(str(path))
+
+    return len(deleted_paths) > 0, deleted_paths
+
+
 class TestIdGenerator:
     next_id: int
     prefix: str | None
@@ -251,6 +288,7 @@ def validate_contents(
     allotrope_dict: DictType,
     expected_file: Path | str,
     write_actual_to_expected_on_fail: bool = False,  # noqa: FBT001, FBT002
+    force_overwrite: bool = False,  # noqa: FBT001, FBT002
 ) -> None:
     """Use the newly created allotrope_dict to validate the contents inside expected_file."""
     # Ensure that allotrope_dict can be written via json.dump()
@@ -260,16 +298,67 @@ def validate_contents(
     try:
         with open(expected_file, encoding=DEFAULT_ENCODING) as f:
             expected_dict = json.load(f)
-        _assert_allotrope_dicts_equal(expected_dict, allotrope_dict)
+
+        # Check for deletions before doing the assertion if we're going to overwrite
+        if write_actual_to_expected_on_fail:
+            has_deletions, deleted_paths = _check_allotrope_dicts_for_deletions(
+                expected_dict, allotrope_dict
+            )
+
+            if has_deletions and not force_overwrite:
+                # Show a summary of deleted fields instead of the full list
+                if len(deleted_paths) <= 10:
+                    # Show all paths if there are few
+                    deleted_paths_str = "\n".join(
+                        f"  - {path}" for path in deleted_paths
+                    )
+                    summary_msg = f"Fields that will be deleted:\n{deleted_paths_str}"
+                else:
+                    # Show first few and summary for many deletions
+                    first_few = "\n".join(f"  - {path}" for path in deleted_paths[:5])
+                    summary_msg = (
+                        f"Fields that will be deleted (showing first 5 of {len(deleted_paths)}):\n"
+                        f"{first_few}\n"
+                        f"  ... and {len(deleted_paths) - 5} more fields"
+                    )
+
+                error_msg = (
+                    f"DELETION DETECTED: Cannot overwrite test data for '{expected_file}'\n"
+                    f"Total fields to be deleted: {len(deleted_paths)}\n\n"
+                    f"{summary_msg}\n\n"
+                    f"To proceed anyway, use the --force-overwrite flag.\n\n"
+                    f"If you use --force-overwrite, the full list will be provided for your PR description."
+                )
+                raise AssertionError(error_msg)
+            elif has_deletions and force_overwrite:
+                # Issue warning about deletions for PR description
+                deleted_paths_str = "\n".join(f"  - {path}" for path in deleted_paths)
+                warning_msg = (
+                    f"Fields will be deleted from '{expected_file}':\n\n"
+                    f"Please copy the following information into your PR description:\n\n"
+                    f"**Fields deleted in test data:**\n"
+                    f"{deleted_paths_str}"
+                )
+                warnings.warn(warning_msg, UserWarning, stacklevel=2)
+
+        # Only do the assertion if we're not force overwriting
+        if not (write_actual_to_expected_on_fail and force_overwrite):
+            _assert_allotrope_dicts_equal(expected_dict, allotrope_dict)
+        elif write_actual_to_expected_on_fail and force_overwrite:
+            # Force overwrite - write the file and continue
+            _write_actual_to_expected(allotrope_dict, expected_file)
+
     except Exception as e:
         if write_actual_to_expected_on_fail:
-            _write_actual_to_expected(allotrope_dict, expected_file)
             if isinstance(e, FileNotFoundError):
+                # File doesn't exist, safe to create
+                _write_actual_to_expected(allotrope_dict, expected_file)
                 msg = f"Missing expected output file '{expected_file}', writing expected output because 'write_actual_to_expected_on_fail=True'"
                 raise AssertionError(msg) from e
-            if isinstance(e, AssertionError) and "allotropy output != expected:" in str(
-                e
-            ):
+            elif isinstance(
+                e, AssertionError
+            ) and "allotropy output != expected:" in str(e):
+                _write_actual_to_expected(allotrope_dict, expected_file)
                 msg = f"Mismatch between actual and expected for '{expected_file}', writing expected output because 'write_actual_to_expected_on_fail=True'\n\n{e}"
                 raise AssertionError(msg) from e
         raise
