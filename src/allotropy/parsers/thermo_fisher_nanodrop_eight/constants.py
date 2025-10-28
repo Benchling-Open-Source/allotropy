@@ -8,4 +8,14 @@ ABSORBANCE_RATIOS = [
     (260, 230),
 ]
 
-CONCENTRATION_UNITS = ["ng/μL", "μg/mL", "μg/µL", "mg/mL", "μg,mL"]
+CONCENTRATION_UNITS = [
+    "ng/μL",
+    "ng/µL",
+    "ng/μl",
+    "ng/µl",
+    "ng/âμl",
+    "μg/mL",
+    "μg/µL",
+    "mg/mL",
+    "μg,mL",
+]
