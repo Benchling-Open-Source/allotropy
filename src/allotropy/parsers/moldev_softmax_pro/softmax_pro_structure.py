@@ -615,7 +615,7 @@ class PlateReducedData:
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> PlateReducedData:
         raw_data: pd.DataFrame = get_plate_dataframe(reader, header)
-        # Reduced data has 2 empty columns where
+        # Reduced data has 2 empty columns where wavelength/temperature are typically specified.
         start = 2
         df_data = raw_data.iloc[:, start : (start + header.num_columns)]
         reduced_data_elements = []
