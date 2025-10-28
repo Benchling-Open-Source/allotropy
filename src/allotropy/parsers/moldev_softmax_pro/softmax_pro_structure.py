@@ -467,37 +467,48 @@ class PlateWavelengthData:
             self.data_elements[position].kinetic_measures.append(value)
 
 
+def get_plate_dataframe(
+    reader: CsvReader, header: PlateHeader, columns: pd.Series[str] | None = None
+) -> pd.DataFrame:
+    if columns is None:
+        columns = assert_not_none(
+            reader.pop_as_series(sep="\t"),
+            msg="unable to find data columns for plate block raw data.",
+        )
+    dimensions = assert_not_none(
+        NUM_WELLS_TO_PLATE_DIMENSIONS.get(header.num_wells),
+        msg="unable to determine plate dimensions",
+    )
+    rows = dimensions[1]
+
+    lines = []
+    # read number of rows in plate section
+    for i in range(rows):
+        if not (line := reader.pop()):
+            msg = f"Expected {rows} rows in measurement table, got {i}."
+            raise AllotropeConversionError(msg)
+        lines.append(line)
+    reader.drop_empty()
+
+    # convert rows to df
+    data = assert_not_none(
+        reader.lines_as_df(lines=lines, sep="\t"),
+        msg="unable to find data from plate block.",
+    )
+
+    # Truncate columns Series to match the actual number of data columns
+    if len(columns) >= data.shape[1]:
+        columns = columns.iloc[: data.shape[1]]
+    elif len(columns) < data.shape[1]:
+        data = data.loc[:, : len(columns) - 1]
+
+    set_columns(data, columns)
+    return data
+
+
 @dataclass(frozen=True)
 class RawData:
     wavelength_data: list[PlateWavelengthData]
-
-    @staticmethod
-    def get_measurement_section(
-        reader: CsvReader, columns: pd.Series[str], rows: int
-    ) -> pd.DataFrame:
-        lines = []
-        # read number of rows in plate section
-        for i in range(rows):
-            if not (line := reader.pop()):
-                msg = f"Expected {rows} rows in measurement table, got {i}."
-                raise AllotropeConversionError(msg)
-            lines.append(line)
-        reader.drop_empty()
-
-        # convert rows to df
-        data = assert_not_none(
-            reader.lines_as_df(lines=lines, sep="\t"),
-            msg="unable to find data from plate block.",
-        )
-
-        # Truncate columns Series to match the actual number of data columns
-        if len(columns) >= data.shape[1]:
-            columns = columns.iloc[: data.shape[1]]
-        elif len(columns) < data.shape[1]:
-            data = data.loc[:, : len(columns) - 1]
-
-        set_columns(data, columns)
-        return data
 
 
 @dataclass(frozen=True)
@@ -508,13 +519,7 @@ class PlateRawData(RawData):
             reader.pop_as_series(sep="\t"),
             msg="unable to find data columns for plate block raw data.",
         )
-        # use plate dimensions to determine how many rows of plate block to read
-        dimensions = assert_not_none(
-            NUM_WELLS_TO_PLATE_DIMENSIONS.get(header.num_wells),
-            msg="unable to determine plate dimensions",
-        )
-        rows = dimensions[1]
-        data = RawData.get_measurement_section(reader, columns, rows)
+        data = get_plate_dataframe(reader, header, columns=columns)
 
         # get temperature and elapsed time (kinetic) from the first column of the first row with value
         first_row_idx = int(pd.to_numeric(data.first_valid_index()))
@@ -534,7 +539,7 @@ class PlateRawData(RawData):
 
         if elapsed_time is not None and header.kinetic_points > 1:
             for _ in range(header.kinetic_points - 1):
-                data = RawData.get_measurement_section(reader, columns, rows)
+                data = get_plate_dataframe(reader, header, columns=columns)
 
                 elapsed_time = time_to_seconds(str(data.iloc[0, 0]))
                 plate_raw_data._update_kinetic_data(
@@ -584,15 +589,9 @@ class SpectrumPlateRawData(RawData):
             reader.pop_as_series(sep="\t"),
             msg="unable to find data columns for plate block raw data.",
         )
-        dimensions = assert_not_none(
-            NUM_WELLS_TO_PLATE_DIMENSIONS.get(header.num_wells),
-            msg="unable to determine plate dimensions",
-        )
-        rows = dimensions[1]
         wavelength_data: list[PlateWavelengthData] = []
-
         for wavelength in header.wavelengths:
-            data = RawData.get_measurement_section(reader, columns, rows)
+            data = get_plate_dataframe(reader, header, columns=columns)
             first_row_idx = int(pd.to_numeric(data.first_valid_index()))
             temperature = try_non_nan_float_or_none(str(data.iloc[first_row_idx, 1]))
             wavelength_data.append(
@@ -615,15 +614,10 @@ class PlateReducedData:
 
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> PlateReducedData:
-
-        raw_data = assert_not_none(
-            reader.pop_csv_block_as_df(sep="\t", header=0),
-            msg="Unable to find reduced data for plate block.",
-        )
-
+        raw_data: pd.DataFrame = get_plate_dataframe(reader, header)
+        # Reduced data has 2 empty columns where
         start = 2
         df_data = raw_data.iloc[:, start : (start + header.num_columns)]
-
         reduced_data_elements = []
         for row, *data in df_data.itertuples():
             for col, str_value in zip(df_data.columns, data, strict=True):
