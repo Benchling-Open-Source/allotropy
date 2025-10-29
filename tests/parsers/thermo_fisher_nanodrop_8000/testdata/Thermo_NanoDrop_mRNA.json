@@ -33,9 +33,21 @@
                                         "mass concentration": {
                                             "value": 0.3929,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "ext.c.": {
+                                                "value": 25.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 0.982,
+                                    "unit": "mAU"
+                                }
                             }
                         },
                         {
@@ -58,6 +70,12 @@
                             "absorbance": {
                                 "value": 0.678,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 0.982,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -88,6 +106,12 @@
                             "absorbance": {
                                 "value": 0.0,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 0.982,
+                                    "unit": "mAU"
+                                }
                             }
                         },
                         {
@@ -110,6 +134,12 @@
                             "absorbance": {
                                 "value": 0.0,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 0.982,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -147,9 +177,21 @@
                                         "mass concentration": {
                                             "value": 0.6844,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "ext.c.": {
+                                                "value": 25.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 1.711,
+                                    "unit": "mAU"
+                                }
                             }
                         },
                         {
@@ -172,6 +214,12 @@
                             "absorbance": {
                                 "value": 1.016,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 1.711,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -209,9 +257,21 @@
                                         "mass concentration": {
                                             "value": 0.6685,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "ext.c.": {
+                                                "value": 25.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 1.671,
+                                    "unit": "mAU"
+                                }
                             }
                         },
                         {
@@ -234,6 +294,12 @@
                             "absorbance": {
                                 "value": 1.182,
                                 "unit": "mAU"
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 1.671,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -249,7 +315,7 @@
             "file name": "Thermo_NanoDrop_mRNA.txt",
             "UNC path": "tests/parsers/thermo_fisher_nanodrop_8000/testdata/Thermo_NanoDrop_mRNA.txt",
             "ASM converter name": "allotropy_thermo_fisher_scientific_nanodrop_8000",
-            "ASM converter version": "0.1.62"
+            "ASM converter version": "0.1.106"
         },
         "calculated data aggregate document": {
             "calculated data document": [
