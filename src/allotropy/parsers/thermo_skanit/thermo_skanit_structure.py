@@ -443,8 +443,12 @@ class ThermoSkanItMeasurementGroups:
                     reading_samples = False
                     continue
 
-            if "Plate" in row_str:
-                plate_match = re.search(r"Plate\s*(\d+)", row_str)
+            if "plate" in row_str.lower():
+                # Match "Plate 1", "Blank plate", "gch - Plate", etc.
+                # Matches optional word before "plate" and optional number after
+                plate_match = re.search(
+                    r"\b(?:\w+\s+)?plate(?:\s+\d+)?\b", row_str, re.IGNORECASE
+                )
                 if plate_match:
                     current_plate_id = plate_match.group(0)
                     if current_plate_id not in plates_dict:
