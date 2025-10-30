@@ -5,6 +5,21 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.109] - 2025-10-28
+
+### Added
+
+- Thermo Fisher Scientific VISIONlite - add get unread data (#1097)
+- Flowjo - Added new example (#1108)
+- Beckman Coulter Biomek - clear unread data warnings (#1092)
+- Cytiva Biacore T200 - Refactor to use JsonData (#1095)
+- CTL ImmunoSpot - use proper units in data processing document (#1098)
+- Thermo Fisher Scientific SkanIt - add unread data (#1104)
+
+### Fixed
+
+- Molecular Devices SoftMax Pro - handle reduced data blocks with empty rows correctly (#1110)
+
 ## [0.1.108] - 2025-10-23
 
 ### Added

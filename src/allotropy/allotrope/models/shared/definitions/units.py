@@ -250,6 +250,11 @@ class PartsPerMillion(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class PerMolarPerCentimeter(HasUnit):
+    unit: str = "M-1cm-1"
+
+
+@dataclass(frozen=True, kw_only=True)
 class PerMolarPerSecond(HasUnit):
     unit: str = "M-1s-1"
 

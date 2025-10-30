@@ -15,6 +15,12 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -22,7 +28,13 @@
                             "sample document": {
                                 "sample identifier": "baz",
                                 "location identifier": "A1",
-                                "well plate identifier": "foobar"
+                                "well plate identifier": "foobar",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 3.177,
@@ -34,9 +46,25 @@
                                         "mass concentration": {
                                             "value": 1.961,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 16.2,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 3.177,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -56,6 +84,12 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -63,7 +97,13 @@
                             "sample document": {
                                 "sample identifier": "baz",
                                 "location identifier": "B1",
-                                "well plate identifier": "foobar"
+                                "well plate identifier": "foobar",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 3.409,
@@ -75,9 +115,25 @@
                                         "mass concentration": {
                                             "value": 2.104,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 16.2,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 3.409,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -97,6 +153,12 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -104,7 +166,13 @@
                             "sample document": {
                                 "sample identifier": "baz",
                                 "location identifier": "C1",
-                                "well plate identifier": "foobar"
+                                "well plate identifier": "foobar",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 3.43,
@@ -116,9 +184,25 @@
                                         "mass concentration": {
                                             "value": 2.117,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 16.2,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 3.43,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -138,6 +222,12 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -145,7 +235,13 @@
                             "sample document": {
                                 "sample identifier": "baz",
                                 "location identifier": "D1",
-                                "well plate identifier": "foobar"
+                                "well plate identifier": "foobar",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 3.144,
@@ -157,9 +253,25 @@
                                         "mass concentration": {
                                             "value": 1.941,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 16.2,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 3.144,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -179,6 +291,12 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -186,7 +304,13 @@
                             "sample document": {
                                 "sample identifier": "baz",
                                 "location identifier": "E1",
-                                "well plate identifier": "foobar"
+                                "well plate identifier": "foobar",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 3.397,
@@ -198,9 +322,25 @@
                                         "mass concentration": {
                                             "value": 2.097,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 16.2,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 3.397,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -220,6 +360,12 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -227,7 +373,13 @@
                             "sample document": {
                                 "sample identifier": "baz",
                                 "location identifier": "F1",
-                                "well plate identifier": "foobar"
+                                "well plate identifier": "foobar",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 3.239,
@@ -239,9 +391,25 @@
                                         "mass concentration": {
                                             "value": 1.999,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 16.2,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 3.239,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -261,6 +429,12 @@
                                         "detector wavelength setting": {
                                             "value": 280,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Cursor Pos.": {
+                                                "value": 280.0,
+                                                "unit": "nm"
+                                            }
                                         }
                                     }
                                 ]
@@ -268,7 +442,13 @@
                             "sample document": {
                                 "sample identifier": "baz",
                                 "location identifier": "G1",
-                                "well plate identifier": "foobar"
+                                "well plate identifier": "foobar",
+                                "custom information document": {
+                                    "Mol. Wt. kda": {
+                                        "value": 1.0,
+                                        "unit": "kDa"
+                                    }
+                                }
                             },
                             "absorbance": {
                                 "value": 3.286,
@@ -280,9 +460,25 @@
                                         "mass concentration": {
                                             "value": 2.028,
                                             "unit": "mg/mL"
+                                        },
+                                        "custom information document": {
+                                            "E1%": {
+                                                "value": 16.2,
+                                                "unit": "(unitless)"
+                                            },
+                                            "ext. coeff x10e3": {
+                                                "value": 1.0,
+                                                "unit": "M-1cm-1"
+                                            }
                                         }
                                     }
                                 ]
+                            },
+                            "custom information document": {
+                                "Cursor Abs.": {
+                                    "value": 3.286,
+                                    "unit": "mAU"
+                                }
                             }
                         }
                     ]
@@ -298,7 +494,7 @@
             "file name": "Thermo_NanoDrop_8000_example01.txt",
             "UNC path": "tests/parsers/thermo_fisher_nanodrop_8000/testdata/Thermo_NanoDrop_8000_example01.txt",
             "ASM converter name": "allotropy_thermo_fisher_scientific_nanodrop_8000",
-            "ASM converter version": "0.1.62"
+            "ASM converter version": "0.1.106"
         },
         "calculated data aggregate document": {
             "calculated data document": [
