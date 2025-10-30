@@ -90,6 +90,7 @@ class Measurement:
     errors: list[Error] | None = None
 
     # custom
+    sample_custom_info: dict[str, Any] | None = None
     custom_info: dict[str, Any] | None = None
 
 
@@ -182,6 +183,15 @@ class Mapper(SchemaMapper[Data, Model]):
     def _get_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocumentItem:
+        sample_document = SampleDocument(
+            sample_identifier=measurement.sample_identifier,
+            well_location_identifier=measurement.location_identifier,
+            well_plate_identifier=measurement.plate_identifier,
+            sample_role_type=measurement.sample_role_type,
+        )
+        sample_document = add_custom_information_document(
+            sample_document, measurement.sample_custom_info
+        )
         measurement_doc = MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
             measurement_time=self.get_date_time(measurement.measurement_time),
@@ -198,12 +208,7 @@ class Mapper(SchemaMapper[Data, Model]):
             error_aggregate_document=self._get_error_aggregate_document(
                 measurement.errors
             ),
-            sample_document=SampleDocument(
-                sample_identifier=measurement.sample_identifier,
-                well_location_identifier=measurement.location_identifier,
-                well_plate_identifier=measurement.plate_identifier,
-                sample_role_type=measurement.sample_role_type,
-            ),
+            sample_document=sample_document,
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
                     DeviceControlDocumentItem(
@@ -244,6 +249,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 ]
             ),
         )
+
         return add_custom_information_document(measurement_doc, measurement.custom_info)
 
     def _get_calculated_data_aggregate_document(
