@@ -208,7 +208,10 @@ class Vendor(Enum):
 
     @property
     def asm_versions(self) -> list[str]:
-        return ["/".join(Path(manifest).parts[-4:-1]).split(".")[0] for manifest in self.manifests]
+        return [
+            "/".join(Path(manifest).parts[-4:-1]).split(".")[0]
+            for manifest in self.manifests
+        ]
 
     @property
     def technique(self) -> str:
