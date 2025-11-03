@@ -18,6 +18,9 @@ def test_get_parser() -> None:
 
 
 def test_supported_schemas() -> None:
+    assert Vendor.AGILENT_GEN5.manifests == [
+        "http://purl.allotrope.org/manifests/plate-reader/REC/2025/03/plate-reader.manifest"
+    ]
     assert Vendor.AGILENT_GEN5.asm_versions == ["REC/2025/03"]
     assert Vendor.AGILENT_GEN5.technique == "Plate Reader"
     assert Vendor.APPBIO_ABSOLUTE_Q.technique == "dPCR"
