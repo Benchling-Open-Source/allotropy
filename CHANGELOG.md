@@ -5,6 +5,17 @@ All notable changes to this packages will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.110] - 2025-11-03
+
+### Added
+
+- Thermo Fisher Scientific NanoDrop 8000 - add unread data to asm (#1094)
+- Thermo Fisher Scientific NanoDrop Eight - add unread data to asm (#1096)
+
+### Fixed
+
+- Thermo Fisher Scientific SkanIt - error detecing plate word matching (#1113)
+
 ## [0.1.109] - 2025-10-28
 
 ### Added
