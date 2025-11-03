@@ -202,12 +202,13 @@ class Vendor(Enum):
         ]
 
     @property
+    def manifests(self) -> list[str]:
+        # NOTE: this is a list because eventually parsers will support multiple schemas as they are upgraded.
+        return [self.get_parser()._get_mapper().MANIFEST]
+
+    @property
     def asm_versions(self) -> list[str]:
-        # NOTE: this is a list because soon parsers will support multiple schemas as they are upgraded.
-        manifests = [
-            Path(manifest) for manifest in [self.get_parser()._get_mapper().MANIFEST]
-        ]
-        return ["/".join(manifest.parts[-4:-1]).split(".")[0] for manifest in manifests]
+        return ["/".join(Path(manifest).parts[-4:-1]).split(".")[0] for manifest in self.manifests]
 
     @property
     def technique(self) -> str:
