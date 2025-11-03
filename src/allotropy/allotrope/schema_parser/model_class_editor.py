@@ -577,7 +577,7 @@ class ModelClassEditor:
     ) -> ClassLines | None:
         # Reads lines for the next class and returns as a ClassLines object.
         lines: list[str] = existing_lines or []
-        started = False
+        started = bool(lines)
         while True:
             line = file.readline()
             # Skip empty lines at the start, return when we hit a newline after the class.

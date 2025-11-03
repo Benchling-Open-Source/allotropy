@@ -1,0 +1,112 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2025/03/plate-reader.manifest",
+    "plate reader aggregate document": {
+        "plate reader document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Optical response compensation": "Yes",
+                                            "Plate adapter number": 2.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_0",
+                            "sample document": {
+                                "location identifier": "A2",
+                                "sample identifier": "Blank1",
+                                "sample role type": "blank role",
+                                "well plate identifier": "Blank plate"
+                            },
+                            "absorbance": {
+                                "value": 0.0499,
+                                "unit": "mAU"
+                            },
+                            "experimental data identifier": "4-8-24 BD final"
+                        }
+                    ],
+                    "measurement time": "2024-05-08T15:54:50+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detection type": "Absorbance",
+                                        "detector wavelength setting": {
+                                            "value": 260.0,
+                                            "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Plate adapter name": "96-well adapter for plate without lid",
+                                            "Optical response compensation": "Yes",
+                                            "Plate adapter number": 2.0
+                                        }
+                                    }
+                                ]
+                            },
+                            "measurement identifier": "THERMO_SKANIT_TEST_ID_1",
+                            "sample document": {
+                                "location identifier": "A2",
+                                "sample identifier": "Un0001",
+                                "sample role type": "unknown sample role",
+                                "well plate identifier": "Sample Plate"
+                            },
+                            "absorbance": {
+                                "value": 0.058,
+                                "unit": "mAU"
+                            },
+                            "experimental data identifier": "4-8-24 BD final"
+                        }
+                    ],
+                    "measurement time": "2024-05-08T15:54:50+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "container type": "well plate"
+                }
+            }
+        ],
+        "data system document": {
+            "ASM file identifier": "skanit_different_plate_pattern.json",
+            "data system instance identifier": "N/A",
+            "UNC path": "tests/parsers/thermo_skanit/testdata/skanit_different_plate_pattern.xlsx",
+            "file name": "skanit_different_plate_pattern.xlsx",
+            "ASM converter name": "allotropy_thermo_fisher_scientific_skanit",
+            "ASM converter version": "0.1.109",
+            "software name": "SkanIt Software 7.0.2 RE for Microplate Readers RE",
+            "software version": "7.0.2.5",
+            "custom information document": {
+                "Dispenser": "No",
+                "ESW version": "1.00.38"
+            }
+        },
+        "device system document": {
+            "device identifier": "Varioskan LUX",
+            "model number": "Varioskan LUX",
+            "equipment serial number": "3020-83152"
+        }
+    }
+}

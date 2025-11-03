@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+import datetime as _dt
+import io
 import re
-import struct
 from typing import Any
 
 import numpy as np
+from numpy.typing import NDArray
 import olefile as ole
 import pandas as pd
 import xmltodict
@@ -20,8 +22,6 @@ curve_pattern = re.compile(r"(?:^|_|\s)Curve\s*(\d+)")
 
 def _convert_datetime(days_str: str) -> str:
     # Biacore epoch: 1899-12-30 UTC
-    import datetime as _dt
-
     days = float(days_str)
     start = _dt.datetime(year=1899, month=12, day=30, tzinfo=_dt.timezone.utc)
     return (start + _dt.timedelta(days=days)).isoformat()
@@ -234,8 +234,6 @@ def _extract_kinetic_analysis(
 
     # Use the full EvaluationItem identifier as the key
     if "EvaluationItem" in path_str:
-        import re
-
         match = re.search(r"(EvaluationItem\d+)", path_str)
         if match:
             flow_cell_id = match.group(1)  # e.g., "EvaluationItem2"
@@ -377,13 +375,20 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
     with ole.OleFileIO(named_file_contents.get_bytes_stream()) as content:
         streams = content.listdir()
 
-        sensorgram_df_list: list[pd.DataFrame] = []
+        # Accumulate arrays for a single DataFrame build at the end
+        fc_list: list[NDArray[np.object_]] = []
+        cycle_list: list[NDArray[np.integer[Any]]] = []
+        curve_list: list[NDArray[np.object_]] = []
+        window_list: list[NDArray[np.object_]] = []
+        values_list: list[NDArray[np.floating[Any]]] = []
+        times_list: list[NDArray[np.floating[Any]]] = []
         report_point_by_cycle: dict[str, pd.DataFrame] = {}
         dip_data: dict[str, Any] = {}
         kinetic_analysis: dict[str, Any] = {}
         sample_data: Any = None
 
         flow_cell = None
+        total_cycles_detected = 0
 
         for stream in streams:
             path_str = "/".join(stream)
@@ -427,10 +432,8 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                 continue
             if stream == ["RPoint Table"]:
                 data = content.openstream(stream).read()
-                lines = data.decode("utf-8").strip().split("\n")
-                header = lines[0].split("\t")
-                rows = [line.split("\t") for line in lines[1:] if line]
-                df = pd.DataFrame([dict(zip(header, r, strict=True)) for r in rows])
+
+                df = pd.read_csv(io.BytesIO(data), sep="\t")
                 report_point_by_cycle = {
                     grp["Cycle"].iloc[0]: grp for _, grp in df.groupby("Cycle")
                 }
@@ -501,49 +504,53 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                 if "XYData" in path_str:
                     # Read all data from the file
                     raw = content.openstream(stream).read()
-                    xy = list(struct.unpack("f" * (len(raw) // 4), raw))
-                    indexed = xy[3:]
-                    half = int(len(indexed) / 2)
+                    arr = np.frombuffer(raw, dtype="<f4")
+                    indexed = arr[3:]
+                    half = indexed.size // 2
                     values = indexed[half:]
                     times = indexed[:half]
-                    length = len(values)
-                    sensorgram_df_list.append(
-                        pd.DataFrame(
-                            {
-                                "Flow Cell Number": [flow_cell or 1] * length,
-                                "Cycle Number": [cycle_number] * length,
-                                "Curve Number": [curve_number] * length,
-                                "Window Number": [window_number] * length,
-                                "Sensorgram (RU)": values,
-                                "Time (s)": times,
-                            }
-                        )
-                    )
+                    length = values.size
+                    fc_list.append(np.full(length, flow_cell or 1, dtype=object))
+                    cycle_list.append(np.full(length, cycle_number, dtype=np.int64))
+                    curve_list.append(np.full(length, curve_number, dtype=object))
+                    window_list.append(np.full(length, window_number, dtype=object))
+                    values_list.append(values)
+                    times_list.append(times)
+                    total_cycles_detected += 1
                     continue
 
                 if "Segment" in path_str:
                     # Read all data from the file
                     raw = content.openstream(stream).read()
-                    seg = list(struct.unpack("f" * (len(raw) // 4), raw))
-                    seg_vals = seg[11:]
-                    length = len(seg_vals)
-                    sensorgram_df_list.append(
-                        pd.DataFrame(
-                            {
-                                "Flow Cell Number": [flow_cell or 1] * length,
-                                "Cycle Number": [cycle_number] * length,
-                                "Curve Number": [curve_number] * length,
-                                "Window Number": [window_number] * length,
-                                "Sensorgram (RU)": seg_vals,
-                            }
-                        )
-                    )
+                    seg_arr = np.frombuffer(raw, dtype="<f4")
+                    seg_vals = seg_arr[11:]
+                    length = seg_vals.size
+                    fc_list.append(np.full(length, flow_cell or 1, dtype=object))
+                    cycle_list.append(np.full(length, cycle_number, dtype=np.int64))
+                    curve_list.append(np.full(length, curve_number, dtype=object))
+                    window_list.append(np.full(length, window_number, dtype=object))
+                    values_list.append(seg_vals)
+                    times_list.append(np.full(length, np.nan, dtype=np.float64))
+                    # no time aggregation; removed
 
-        combined_df = (
-            pd.concat(sensorgram_df_list, ignore_index=True)
-            if sensorgram_df_list
-            else pd.DataFrame()
-        )
+        if values_list:
+            combined_df = pd.DataFrame(
+                {
+                    "Flow Cell Number": np.concatenate(fc_list, axis=0),
+                    "Cycle Number": np.concatenate(cycle_list, axis=0),
+                    "Curve Number": np.concatenate(curve_list, axis=0),
+                    "Window Number": np.concatenate(window_list, axis=0),
+                    "Sensorgram (RU)": np.concatenate(values_list, axis=0),
+                    "Time (s)": np.concatenate(times_list, axis=0),
+                }
+            )
+            # Use categorical dtype for string-like columns to save memory and speed up grouping
+            combined_df["Curve Number"] = combined_df["Curve Number"].astype("category")
+            combined_df["Window Number"] = combined_df["Window Number"].astype(
+                "category"
+            )
+        else:
+            combined_df = pd.DataFrame()
 
         if not combined_df.empty:
             # Normalize time per flow cell using reference as in control
@@ -564,23 +571,17 @@ def decode_data(named_file_contents: NamedFileContents) -> dict[str, Any]:
                 g = group.copy()
                 if "Time (s)" in g.columns:
                     max_fc = g["Flow Cell Number"].max()
-                    mask = g["Flow Cell Number"] == max_fc
-                    ref_times = g.loc[mask, "Time (s)"]
+                    ref_mask = g["Flow Cell Number"] == max_fc
+                    ref_times = g.loc[ref_mask, "Time (s)"]
                     if pd.isna(ref_times).any():
                         g["Time (s)"] = g.groupby("Flow Cell Number").cumcount() + 1
-                    else:
-                        unique_fc = g["Flow Cell Number"].unique()
-                        if len(unique_fc) > 1:
-                            ref = g[mask].reset_index(drop=True)["Time (s)"].values
-                            for fc in unique_fc:
-                                if fc == max_fc:
-                                    continue
-                                fc_mask = g["Flow Cell Number"] == fc
-                                idx = g[fc_mask].index
-                                if len(ref) > 0:
-                                    g.loc[idx, "Time (s)"] = ref[
-                                        np.arange(len(idx)) % len(ref)
-                                    ]
+                    elif g["Flow Cell Number"].nunique() > 1:
+                        ref = ref_times.reset_index(drop=True).to_numpy()
+                        nonref_mask = ~ref_mask
+                        if ref.size > 0 and nonref_mask.any():
+                            pos = g.groupby("Flow Cell Number").cumcount()
+                            pos_nonref = pos[nonref_mask].to_numpy()
+                            g.loc[nonref_mask, "Time (s)"] = ref[pos_nonref % ref.size]
                 elif dcr is not None:
                     g["Time (s)"] = g.groupby("Flow Cell Number").cumcount() * (1 / dcr)
                 else:

@@ -19,7 +19,11 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_rea
 )
 from allotropy.exceptions import AllotropyParserError
 from allotropy.parsers.constants import NEGATIVE_ZERO, NOT_APPLICABLE
-from allotropy.parsers.thermo_skanit.constants import DEVICE_TYPE, SAMPLE_ROLE_MAPPINGS
+from allotropy.parsers.thermo_skanit.constants import (
+    DEVICE_TYPE,
+    PLATE_IDENTIFIER_PATTERN,
+    SAMPLE_ROLE_MAPPINGS,
+)
 from allotropy.parsers.utils.pandas import df_to_series_data, parse_header_row
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import try_float_or_none
@@ -443,8 +447,11 @@ class ThermoSkanItMeasurementGroups:
                     reading_samples = False
                     continue
 
-            if "Plate" in row_str:
-                plate_match = re.search(r"Plate\s*(\d+)", row_str)
+            if "plate" in row_str.lower():
+                # Match "Plate 1", "Blank plate", "gch - Plate", etc.
+                plate_match = re.search(
+                    PLATE_IDENTIFIER_PATTERN, row_str, re.IGNORECASE
+                )
                 if plate_match:
                     current_plate_id = plate_match.group(0)
                     if current_plate_id not in plates_dict:
