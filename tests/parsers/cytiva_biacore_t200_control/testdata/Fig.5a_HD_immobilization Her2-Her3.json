@@ -30,14 +30,21 @@
                                             "buffer volume": {
                                                 "value": 100.0,
                                                 "unit": "mL"
-                                            }
+                                            },
+                                            "analysis temperature": 25.0,
+                                            "prime": false,
+                                            "normalize": false
                                         }
                                     }
                                 ]
                             },
                             "measurement identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_0",
                             "sample document": {
-                                "sample identifier": "N/A"
+                                "sample identifier": "N/A",
+                                "custom information document": {
+                                    "Rack2": "REAG2",
+                                    "Lock Positions": false
+                                }
                             },
                             "detection type": "surface plasmon resonance",
                             "processed data aggregate document": {
@@ -158,7 +165,28 @@
                                     "ifc identifier": "IFC105",
                                     "last modified time": "2019-09-04T15:21:36.301000+00:00",
                                     "last use time": "2019-09-04T12:33:50.039997+00:00",
-                                    "first dock date": "2019-09-04T12:32:23.242004+00:00"
+                                    "first dock date": "2019-09-04T12:32:23.242004+00:00",
+                                    "DisplayName": "CM5",
+                                    "IFCDesc": "IFC105",
+                                    "Ligand1,1": "[Blank]",
+                                    "ImmobFile1,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                    "ImmobDate1,1": "2019-09-04T00:00:00+00:00",
+                                    "Comment1,1": "",
+                                    "Ligand2,1": "Her2-Her3",
+                                    "ImmobFile2,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                    "ImmobDate2,1": "2019-09-04T00:00:00+00:00",
+                                    "Level2,1": "6153.95084635416",
+                                    "Comment2,1": "",
+                                    "Ligand3,1": "Her2-Her3",
+                                    "ImmobFile3,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                    "ImmobDate3,1": "2019-09-04T00:00:00+00:00",
+                                    "Level3,1": "6055.79654947917",
+                                    "Comment3,1": "",
+                                    "Ligand4,1": "Her2-Her3",
+                                    "ImmobFile4,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                    "ImmobDate4,1": "2019-09-04T00:00:00+00:00",
+                                    "Level4,1": "5965.12727864583",
+                                    "Comment4,1": ""
                                 }
                             }
                         },
@@ -187,14 +215,21 @@
                                             "buffer volume": {
                                                 "value": 100.0,
                                                 "unit": "mL"
-                                            }
+                                            },
+                                            "analysis temperature": 25.0,
+                                            "prime": false,
+                                            "normalize": false
                                         }
                                     }
                                 ]
                             },
                             "measurement identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_4",
                             "sample document": {
-                                "sample identifier": "N/A"
+                                "sample identifier": "N/A",
+                                "custom information document": {
+                                    "Rack2": "REAG2",
+                                    "Lock Positions": false
+                                }
                             },
                             "detection type": "surface plasmon resonance",
                             "processed data aggregate document": {
@@ -340,7 +375,28 @@
                                     "ifc identifier": "IFC105",
                                     "last modified time": "2019-09-04T15:21:36.301000+00:00",
                                     "last use time": "2019-09-04T12:33:50.039997+00:00",
-                                    "first dock date": "2019-09-04T12:32:23.242004+00:00"
+                                    "first dock date": "2019-09-04T12:32:23.242004+00:00",
+                                    "DisplayName": "CM5",
+                                    "IFCDesc": "IFC105",
+                                    "Ligand1,1": "[Blank]",
+                                    "ImmobFile1,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                    "ImmobDate1,1": "2019-09-04T00:00:00+00:00",
+                                    "Comment1,1": "",
+                                    "Ligand2,1": "Her2-Her3",
+                                    "ImmobFile2,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                    "ImmobDate2,1": "2019-09-04T00:00:00+00:00",
+                                    "Level2,1": "6153.95084635416",
+                                    "Comment2,1": "",
+                                    "Ligand3,1": "Her2-Her3",
+                                    "ImmobFile3,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                    "ImmobDate3,1": "2019-09-04T00:00:00+00:00",
+                                    "Level3,1": "6055.79654947917",
+                                    "Comment3,1": "",
+                                    "Ligand4,1": "Her2-Her3",
+                                    "ImmobFile4,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                    "ImmobDate4,1": "2019-09-04T00:00:00+00:00",
+                                    "Level4,1": "5965.12727864583",
+                                    "Comment4,1": ""
                                 }
                             }
                         },
@@ -369,14 +425,21 @@
                                             "buffer volume": {
                                                 "value": 100.0,
                                                 "unit": "mL"
-                                            }
+                                            },
+                                            "analysis temperature": 25.0,
+                                            "prime": false,
+                                            "normalize": false
                                         }
                                     }
                                 ]
                             },
                             "measurement identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_9",
                             "sample document": {
-                                "sample identifier": "N/A"
+                                "sample identifier": "N/A",
+                                "custom information document": {
+                                    "Rack2": "REAG2",
+                                    "Lock Positions": false
+                                }
                             },
                             "detection type": "surface plasmon resonance",
                             "processed data aggregate document": {
@@ -522,7 +585,28 @@
                                     "ifc identifier": "IFC105",
                                     "last modified time": "2019-09-04T15:21:36.301000+00:00",
                                     "last use time": "2019-09-04T12:33:50.039997+00:00",
-                                    "first dock date": "2019-09-04T12:32:23.242004+00:00"
+                                    "first dock date": "2019-09-04T12:32:23.242004+00:00",
+                                    "DisplayName": "CM5",
+                                    "IFCDesc": "IFC105",
+                                    "Ligand1,1": "[Blank]",
+                                    "ImmobFile1,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                    "ImmobDate1,1": "2019-09-04T00:00:00+00:00",
+                                    "Comment1,1": "",
+                                    "Ligand2,1": "Her2-Her3",
+                                    "ImmobFile2,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                    "ImmobDate2,1": "2019-09-04T00:00:00+00:00",
+                                    "Level2,1": "6153.95084635416",
+                                    "Comment2,1": "",
+                                    "Ligand3,1": "Her2-Her3",
+                                    "ImmobFile3,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                    "ImmobDate3,1": "2019-09-04T00:00:00+00:00",
+                                    "Level3,1": "6055.79654947917",
+                                    "Comment3,1": "",
+                                    "Ligand4,1": "Her2-Her3",
+                                    "ImmobFile4,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                    "ImmobDate4,1": "2019-09-04T00:00:00+00:00",
+                                    "Level4,1": "5965.12727864583",
+                                    "Comment4,1": ""
                                 }
                             }
                         },
@@ -551,14 +635,21 @@
                                             "buffer volume": {
                                                 "value": 100.0,
                                                 "unit": "mL"
-                                            }
+                                            },
+                                            "analysis temperature": 25.0,
+                                            "prime": false,
+                                            "normalize": false
                                         }
                                     }
                                 ]
                             },
                             "measurement identifier": "CYTIVA_BIACORE_T200_CONTROL_TEST_ID_14",
                             "sample document": {
-                                "sample identifier": "N/A"
+                                "sample identifier": "N/A",
+                                "custom information document": {
+                                    "Rack2": "REAG2",
+                                    "Lock Positions": false
+                                }
                             },
                             "detection type": "surface plasmon resonance",
                             "processed data aggregate document": {
@@ -704,7 +795,28 @@
                                     "ifc identifier": "IFC105",
                                     "last modified time": "2019-09-04T15:21:36.301000+00:00",
                                     "last use time": "2019-09-04T12:33:50.039997+00:00",
-                                    "first dock date": "2019-09-04T12:32:23.242004+00:00"
+                                    "first dock date": "2019-09-04T12:32:23.242004+00:00",
+                                    "DisplayName": "CM5",
+                                    "IFCDesc": "IFC105",
+                                    "Ligand1,1": "[Blank]",
+                                    "ImmobFile1,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                    "ImmobDate1,1": "2019-09-04T00:00:00+00:00",
+                                    "Comment1,1": "",
+                                    "Ligand2,1": "Her2-Her3",
+                                    "ImmobFile2,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                    "ImmobDate2,1": "2019-09-04T00:00:00+00:00",
+                                    "Level2,1": "6153.95084635416",
+                                    "Comment2,1": "",
+                                    "Ligand3,1": "Her2-Her3",
+                                    "ImmobFile3,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                    "ImmobDate3,1": "2019-09-04T00:00:00+00:00",
+                                    "Level3,1": "6055.79654947917",
+                                    "Comment3,1": "",
+                                    "Ligand4,1": "Her2-Her3",
+                                    "ImmobFile4,1": "C:\\Users\\Administrator\\Documents\\Elena\\20190904 immobilization Her2-Her3 fc234.blr",
+                                    "ImmobDate4,1": "2019-09-04T00:00:00+00:00",
+                                    "Level4,1": "5965.12727864583",
+                                    "Comment4,1": ""
                                 }
                             }
                         }
@@ -715,6 +827,11 @@
                     "compartment temperature": {
                         "value": 25.0,
                         "unit": "degC"
+                    },
+                    "custom information document": {
+                        "Run Type": "Immobilization",
+                        "RunGUID": "72d018f3-ce7c-4351-acea-ed7cb4c6ccb0",
+                        "EndTime": "2019-09-04T15:21:36.253999+00:00"
                     }
                 },
                 "analyst": "Administrator"
@@ -1930,9 +2047,14 @@
             "file name": "Fig.5a_HD_immobilization Her2-Her3.blr",
             "UNC path": "tests/parsers/cytiva_biacore_t200_control/testdata/Fig.5a_HD_immobilization Her2-Her3.blr",
             "ASM converter name": "allotropy_cytiva_biacore_t200_control",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.110",
             "software name": "Biacore T200 Control Software",
-            "software version": "2.0.1"
+            "software version": "2.0.1",
+            "custom information document": {
+                "OSVersion": "6.1.7601.65536",
+                "IFCType": "TYPE105",
+                "OSType": "Win32NT"
+            }
         },
         "device system document": {
             "device identifier": "1950172",
@@ -1941,22 +2063,70 @@
             "device document": [
                 {
                     "device type": "Flowcell",
-                    "device identifier": "1"
+                    "device identifier": "1",
+                    "custom information document": {
+                        "DiluteWith": "",
+                        "Regeneration": "50 mM NaOH",
+                        "Procedure": 2,
+                        "TargetLevel": 10000,
+                        "DetectionType": 1,
+                        "UseFlowcell": true,
+                        "CustomMethod": false,
+                        "DiluteLigand": false
+                    }
                 },
                 {
                     "device type": "Flowcell",
-                    "device identifier": "2"
+                    "device identifier": "2",
+                    "custom information document": {
+                        "DiluteWith": "",
+                        "Regeneration": "50 mM NaOH",
+                        "Procedure": 0,
+                        "TargetLevel": 10000,
+                        "DetectionType": 1,
+                        "UseFlowcell": true,
+                        "CustomMethod": false,
+                        "DiluteLigand": false
+                    }
                 },
                 {
                     "device type": "Flowcell",
-                    "device identifier": "3"
+                    "device identifier": "3",
+                    "custom information document": {
+                        "DiluteWith": "",
+                        "Regeneration": "50 mM NaOH",
+                        "Procedure": 0,
+                        "TargetLevel": 10000,
+                        "DetectionType": 1,
+                        "UseFlowcell": true,
+                        "CustomMethod": false,
+                        "DiluteLigand": false
+                    }
                 },
                 {
                     "device type": "Flowcell",
-                    "device identifier": "4"
+                    "device identifier": "4",
+                    "custom information document": {
+                        "DiluteWith": "",
+                        "Regeneration": "50 mM NaOH",
+                        "Procedure": 0,
+                        "TargetLevel": 10000,
+                        "DetectionType": 1,
+                        "UseFlowcell": true,
+                        "CustomMethod": false,
+                        "DiluteLigand": false
+                    }
                 }
             ],
-            "product manufacturer": "Cytiva"
+            "product manufacturer": "Cytiva",
+            "custom information document": {
+                "DegasserWorkingTime": "1920-08-04T00:00:00+00:00",
+                "VacuumUnitWorkingTime": "1900-01-05T00:00:00+00:00",
+                "SystemControllerId": "BIACORE-T200",
+                "VacuumUnitIdleTime": "1920-06-24T00:00:00+00:00",
+                "DegasserErrors": "0",
+                "VacuumUnitErrors": "0"
+            }
         }
     }
 }

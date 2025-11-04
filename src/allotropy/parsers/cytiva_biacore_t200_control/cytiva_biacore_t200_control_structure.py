@@ -46,6 +46,7 @@ class ChipData:
                 "last modified time": chip_data.get(str, "LastModTime"),
                 "last use time": chip_data.get(str, "LastUseTime"),
                 "first dock date": chip_data.get(str, "FirstDockDate"),
+                **chip_data.get_unread(skip={"IFCType", "OSType", "OSVersion"}),
             },
         )
 
@@ -68,6 +69,7 @@ class DetectionSetting:
 class Device:
     type_: str
     identifier: str
+    custom_info: dict[str, Any]
 
 
 @dataclass(frozen=True)
@@ -127,11 +129,22 @@ class RunMetadata:
                 )
             ),
             devices=[
-                Device(type_=key.split()[0], identifier=key.split()[-1])
+                Device(
+                    type_=key.split()[0],
+                    identifier=key.split()[-1],
+                    custom_info={},
+                )
                 for key in application_template_details
                 if key.startswith("Flowcell")
             ],
         )
+
+    def set_device_custom_info(self, application_template_details: DictData) -> None:
+        for device in self.devices:
+            new_custom_data = application_template_details.get_nested(
+                f"Flowcell {device.identifier}"
+            ).get_unread()
+            device.custom_info.update(new_custom_data)
 
 
 @dataclass(frozen=True)
@@ -143,6 +156,9 @@ class SystemInformation:
     analytical_method_identifier: str | None
     software_name: str | None
     software_version: str | None
+    measurement_aggregate_custom_info: dict[str, Any]
+    data_system_custom_info: dict[str, Any]
+    device_system_custom_info: dict[str, Any]
 
     @staticmethod
     def create(system_information: DictData) -> SystemInformation:
@@ -161,6 +177,22 @@ class SystemInformation:
             analytical_method_identifier=system_information.get(str, "TemplateFile"),
             software_name=system_information.get(str, "Application"),
             software_version=system_information.get(str, "Version"),
+            measurement_aggregate_custom_info=system_information.get_unread(
+                key={"RunGUID", "EndTime"}
+            ),
+            data_system_custom_info=system_information.get_unread(
+                key={"IFCType", "OSType", "OSVersion"}
+            ),
+            device_system_custom_info=system_information.get_unread(
+                key={
+                    "SystemControllerId",
+                    "DegasserWorkingTime",
+                    "DegasserErrors",
+                    "VacuumUnitWorkingTime",
+                    "VacuumUnitIdleTime",
+                    "VacuumUnitErrors",
+                }
+            ),
         )
 
 
@@ -309,20 +341,34 @@ class Data:
     chip_data: ChipData
     system_information: SystemInformation
     sample_data: SampleData
+    application_template_details: DictData
 
     @staticmethod
     def create(intermediate_structured_data: DictData) -> Data:
         application_template_details = intermediate_structured_data.get_nested(
             "application_template_details"
         )
-        chip_data = intermediate_structured_data.get_nested("chip")
-        system_information = intermediate_structured_data.get_nested(
+        application_template_details.mark_read_deep({"prepare_run"})
+        system_information_dictdata = intermediate_structured_data.get_nested(
             "system_information"
         )
+        intermediate_structured_data.mark_read_deep(
+            {"sample_data", "cycle_data", "dip"}
+        )
+
+        run_metadata = RunMetadata.create(application_template_details)
+        system_information = SystemInformation.create(system_information_dictdata)
+        chip_data_dictdata = intermediate_structured_data.get_nested("chip")
+        chip_data = ChipData.create(chip_data_dictdata)
+        sample_data = SampleData.create(intermediate_structured_data)
+
+        # This has to be called later because in SampleData.create some of the unread keys are called
+        run_metadata.set_device_custom_info(application_template_details)
 
         return Data(
-            run_metadata=RunMetadata.create(application_template_details),
-            chip_data=ChipData.create(chip_data),
-            system_information=SystemInformation.create(system_information),
-            sample_data=SampleData.create(intermediate_structured_data),
+            run_metadata=run_metadata,
+            chip_data=chip_data,
+            system_information=system_information,
+            sample_data=sample_data,
+            application_template_details=application_template_details,
         )

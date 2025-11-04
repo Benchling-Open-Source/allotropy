@@ -68,6 +68,8 @@ def _get_sensorgram_datacube(sensorgram_data: pd.DataFrame) -> DataCube:
 
 
 def _get_device_control_custom_info(data: Data) -> DictType:
+    application_template_details = data.application_template_details
+
     custom_ifo: dict[str, Any] = {
         "number of flow cells": data.chip_data.number_of_flow_cells,
         "number of spots": data.chip_data.number_of_spots,
@@ -77,6 +79,32 @@ def _get_device_control_custom_info(data: Data) -> DictType:
     }
     if detection_setting := data.run_metadata.detection_setting:
         custom_ifo.update({detection_setting.key: detection_setting.value})
+
+    detection_info = application_template_details.get_nested("detection")
+    custom_ifo.update(
+        detection_info.get(key={"FlowCellSingle", "FlowCellDual", "FlowCellMulti"})
+    )
+
+    temp_info = application_template_details.get_nested("RackTemperature")
+    custom_ifo.update(
+        temp_info.get_keys_as_dict(
+            {
+                "minimum operating temperature": (float, "min", None),
+                "maximum operating temperature": (float, "max", None),
+            }
+        )
+    )
+
+    system_preparations = application_template_details.get_nested("system_preparations")
+    custom_ifo.update(
+        system_preparations.get_keys_as_dict(
+            {
+                "analysis temperature": (float, "AnalTemp", None),
+                "prime": (bool, "Prime", None),
+                "normalize": (bool, "Normalize", None),
+            }
+        )
+    )
     return custom_ifo
 
 
@@ -103,15 +131,19 @@ def create_metadata(data: Data, named_file_contents: NamedFileContents) -> Metad
         lot_number=chip_data.lot_number,
         sensor_chip_identifier=chip_data.sensor_chip_identifier,
         device_document=[
-            DeviceDocument(device.type_, device.identifier)
+            DeviceDocument(device.type_, device.identifier, device.custom_info)
             for device in run_metadata.devices
         ],
         sensor_chip_custom_info=chip_data.custom_info,
+        data_system_custom_info=system_information.data_system_custom_info,
+        device_system_custom_info=system_information.device_system_custom_info,
     )
 
 
 def create_measurements(
-    measurements_data: list[MeasurementData], device_control_custom_info: DictType
+    measurements_data: list[MeasurementData],
+    device_control_custom_info: DictType,
+    data: Data,
 ) -> list[Measurement]:
     return [
         Measurement(
@@ -129,13 +161,24 @@ def create_measurements(
                     flow_rate=measurement.flow_rate,
                     contact_time=measurement.contact_time,
                     dilution=measurement.dilution,
-                    device_control_custom_info=device_control_custom_info,
+                    device_control_custom_info=dict(
+                        device_control_custom_info
+                    ),  # copy to avoid modifying the original
                 )
             ],
             sample_custom_info={
+                **data.application_template_details.get_nested(
+                    "racks"
+                ).get_keys_as_dict(
+                    {
+                        "Rack1": (str, "_Rack1", None),
+                        "Rack2": (str, "_Rack2", None),
+                        "Lock Positions": (bool, "_LockPositions", None),
+                    }
+                ),
                 "molecular weight": quantity_or_none(
                     TQuantityValueDalton, measurement.molecular_weight
-                )
+                ),
             },
             sensorgram_data_cube=_get_sensorgram_datacube(measurement.sensorgram_data),
             report_point_data=(
@@ -168,7 +211,7 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
         MeasurementGroup(
             measurement_time=system_information.measurement_time,
             measurements=create_measurements(
-                measurements_data, device_control_custom_info
+                measurements_data, device_control_custom_info, data
             ),
             experiment_type=system_information.experiment_type,
             analytical_method_identifier=system_information.analytical_method_identifier,
@@ -181,6 +224,10 @@ def create_measurement_groups(data: Data) -> list[MeasurementGroup]:
                     TQuantityValueHertz,
                     try_float_or_none(data.run_metadata.data_collection_rate),
                 ),
+                **data.application_template_details.get_nested(
+                    "properties"
+                ).get_keys_as_dict({"Run Type": (str, "TypeName", None)}),
+                **system_information.measurement_aggregate_custom_info,
             },
         )
         for measurements_data in data.sample_data.measurements.values()
