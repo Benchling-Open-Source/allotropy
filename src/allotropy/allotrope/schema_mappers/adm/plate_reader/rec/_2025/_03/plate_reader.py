@@ -220,7 +220,8 @@ class Metadata:
     equipment_serial_number: str | None = None
     product_manufacturer: str | None = None
     file_name: str | None = None
-    custom_info_doc: dict[str, Any] | None = None
+    metadata_custom_info: dict[str, Any] | None = None
+    device_control_custom_info: dict[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -253,7 +254,7 @@ class Mapper(SchemaMapper[Data, Model]):
                         ASM_converter_name=self.converter_name,
                         ASM_converter_version=ASM_CONVERTER_VERSION,
                     ),
-                    data.metadata.custom_info_doc,
+                    data.metadata.metadata_custom_info,
                 ),
                 plate_reader_document=[
                     self._get_technique_document(measurement_group)

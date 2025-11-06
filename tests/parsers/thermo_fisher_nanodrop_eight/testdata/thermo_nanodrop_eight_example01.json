@@ -21,11 +21,24 @@
                             },
                             "sample document": {
                                 "sample identifier": "c36ca1fb-0722-4f79-9eb5-2509e091dd92",
-                                "location identifier": "A"
+                                "location identifier": "A",
+                                "custom information document": {
+                                    "Sample Name": "Sample 1"
+                                }
                             },
                             "absorbance": {
                                 "value": -0.008245813102050192,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": -0.4122906551025096,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
                             }
                         },
                         {
@@ -43,7 +56,10 @@
                             },
                             "sample document": {
                                 "sample identifier": "c36ca1fb-0722-4f79-9eb5-2509e091dd92",
-                                "location identifier": "A"
+                                "location identifier": "A",
+                                "custom information document": {
+                                    "Sample Name": "Sample 1"
+                                }
                             },
                             "absorbance": {
                                 "value": 0.00018892859269925566,
@@ -292,11 +308,24 @@
                             },
                             "sample document": {
                                 "sample identifier": "f7d3777e-97b3-4b8e-9dc2-914f70927693",
-                                "location identifier": "A"
+                                "location identifier": "A",
+                                "custom information document": {
+                                    "Sample Name": "Sample 2"
+                                }
                             },
                             "absorbance": {
                                 "value": -0.01142989429727237,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": -0.5714947148636185,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
                             }
                         },
                         {
@@ -314,7 +343,10 @@
                             },
                             "sample document": {
                                 "sample identifier": "f7d3777e-97b3-4b8e-9dc2-914f70927693",
-                                "location identifier": "A"
+                                "location identifier": "A",
+                                "custom information document": {
+                                    "Sample Name": "Sample 2"
+                                }
                             },
                             "absorbance": {
                                 "value": -0.003265436924095866,
@@ -560,11 +592,24 @@
                             },
                             "sample document": {
                                 "sample identifier": "8b1a9822-6d2f-4970-b164-37eb1b7209a3",
-                                "location identifier": "A"
+                                "location identifier": "A",
+                                "custom information document": {
+                                    "Sample Name": "Abc 3"
+                                }
                             },
                             "absorbance": {
                                 "value": -0.009565099990167525,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": -0.47825499950837624,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
                             }
                         },
                         {
@@ -582,7 +627,10 @@
                             },
                             "sample document": {
                                 "sample identifier": "8b1a9822-6d2f-4970-b164-37eb1b7209a3",
-                                "location identifier": "A"
+                                "location identifier": "A",
+                                "custom information document": {
+                                    "Sample Name": "Abc 3"
+                                }
                             },
                             "absorbance": {
                                 "value": 0.008769368390210142,
@@ -770,11 +818,24 @@
                             },
                             "sample document": {
                                 "sample identifier": "b6694c05-8c08-4117-a83e-e57df026498c",
-                                "location identifier": "A"
+                                "location identifier": "A",
+                                "custom information document": {
+                                    "Sample Name": "Abc"
+                                }
                             },
                             "absorbance": {
                                 "value": -0.008348743142043702,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": -0.4174371571021851,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
                             }
                         },
                         {
@@ -792,7 +853,10 @@
                             },
                             "sample document": {
                                 "sample identifier": "b6694c05-8c08-4117-a83e-e57df026498c",
-                                "location identifier": "A"
+                                "location identifier": "A",
+                                "custom information document": {
+                                    "Sample Name": "Abc"
+                                }
                             },
                             "absorbance": {
                                 "value": 0.013375587035540093,
@@ -964,6 +1028,16 @@
                             "absorbance": {
                                 "value": -0.018283710715536472,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": -0.9141855357768236,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
                             }
                         },
                         {
@@ -1289,7 +1363,7 @@
             "file name": "thermo_nanodrop_eight_example01.txt",
             "UNC path": "tests/parsers/thermo_fisher_nanodrop_eight/testdata/thermo_nanodrop_eight_example01.txt",
             "ASM converter name": "allotropy_thermo_fisher_scientific_nanodrop_eight",
-            "ASM converter version": "0.1.76"
+            "ASM converter version": "0.1.106"
         },
         "calculated data aggregate document": {
             "calculated data document": [

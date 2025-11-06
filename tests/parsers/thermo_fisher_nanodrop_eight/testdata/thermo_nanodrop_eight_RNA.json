@@ -25,6 +25,16 @@
                             "absorbance": {
                                 "value": 17.62,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 704.986,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
                             }
                         },
                         {
@@ -50,7 +60,8 @@
                         }
                     ],
                     "experiment type": "RNA"
-                }
+                },
+                "analyst": "GN104564"
             },
             {
                 "measurement aggregate document": {
@@ -75,6 +86,16 @@
                             "absorbance": {
                                 "value": 17.16,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 686.535,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
                             }
                         },
                         {
@@ -100,7 +121,8 @@
                         }
                     ],
                     "experiment type": "RNA"
-                }
+                },
+                "analyst": "GN104564"
             },
             {
                 "measurement aggregate document": {
@@ -125,6 +147,16 @@
                             "absorbance": {
                                 "value": 17.75,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 710.13,
+                                            "unit": "ng/µL"
+                                        }
+                                    }
+                                ]
                             }
                         },
                         {
@@ -150,7 +182,8 @@
                         }
                     ],
                     "experiment type": "RNA"
-                }
+                },
+                "analyst": "GN104564"
             }
         ],
         "device system document": {
@@ -162,7 +195,7 @@
             "file name": "thermo_nanodrop_eight_RNA.txt",
             "UNC path": "tests/parsers/thermo_fisher_nanodrop_eight/testdata/thermo_nanodrop_eight_RNA.txt",
             "ASM converter name": "allotropy_thermo_fisher_scientific_nanodrop_eight",
-            "ASM converter version": "0.1.62"
+            "ASM converter version": "0.1.106"
         },
         "calculated data aggregate document": {
             "calculated data document": [
