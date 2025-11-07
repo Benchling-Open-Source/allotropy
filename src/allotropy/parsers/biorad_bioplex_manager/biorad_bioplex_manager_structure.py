@@ -48,12 +48,15 @@ class AnalyteMetadata:
         return AnalyteMetadata(
             name=analyte_xml.find("AnalyteName").get_text("AnalyteName"),
             region=try_int(analyte_xml.get_attr("RegionNumber"), "analyte_region"),
-            error_msg=get_key_or_error(
-                "error code", error_code, constants.ERROR_MAPPING
-            )
-            if error_code != "0"
-            else None,
-            custom_info=analyte_xml.get_unread(),
+            error_msg=(
+                get_key_or_error("error code", error_code, constants.ERROR_MAPPING)
+                if error_code != "0"
+                else None
+            ),
+            custom_info={
+                **analyte_xml.get_unread(),
+                **reading_element.get_unread(),
+            },
         )
 
 
@@ -90,9 +93,9 @@ class SampleMetadata:
                 constants.SAMPLE_ROLE_TYPE_MAPPING,
             ),
             sample_identifier=sample_metadata.find("Label").get_text("Label"),
-            description=description_element.get_text_or_none()
-            if description_element
-            else None,
+            description=(
+                description_element.get_text_or_none() if description_element else None
+            ),
             errors=[analyte.error for analyte in analyte_metadata if analyte.error],
             sample_dilution=try_float_or_none(
                 dilution_element.get_text_or_none() if dilution_element else None
@@ -102,7 +105,7 @@ class SampleMetadata:
             },
             custom_info={
                 **sample_metadata.get_unread(),
-                **member_well.get_unread(),
+                **member_well.get_unread(skip={"WellNumber", "WellNo"}),
             },
         )
 
@@ -134,22 +137,22 @@ class Well:
 
     @staticmethod
     def create(well_xml: StrictXmlElement) -> Well:
+        sample_volume_element = well_xml.recursive_find(["RunSettings", "SampleVolume"])
+        stop_reading_criteria_element = well_xml.recursive_find(
+            ["RunSettings", "StopReadingCriteria"]
+        )
 
         return Well(
             name=get_well_name(well_xml.element.attrib),
             sample_volume_setting=try_float(
-                well_xml.find("RunSettings")
-                .find("SampleVolume")
-                .get_text("SampleVolume"),
+                sample_volume_element.get_text("SampleVolume"),
                 "sample_volume",
             ),
             detector_gain_setting=well_xml.find("RunConditions")
             .find("RP1Gain")
             .get_text("RP1Gain"),
             minimum_assay_bead_count_setting=try_int(
-                well_xml.find("RunSettings")
-                .find("StopReadingCriteria")
-                .get_attr("BeadCount"),
+                stop_reading_criteria_element.get_attr("BeadCount"),
                 "minimum_assay_bead_count_settings",
             ),
             acquisition_time=well_xml.find("AcquisitionTime").get_text(
@@ -161,7 +164,11 @@ class Well:
             ),
             analyst=well_xml.find("User").get_text("User"),
             xml=well_xml.element,
-            custom_info=well_xml.get_unread(),
+            custom_info={
+                **well_xml.get_unread(),
+                **sample_volume_element.get_unread(),
+                **stop_reading_criteria_element.get_unread(),
+            },
         )
 
 
@@ -207,6 +214,7 @@ def create_analytes(
     analyte_region_dict: dict[str, str],
     regions_of_interest: list[str],
 ) -> list[Analyte]:
+    well_xml.get_unread()  # already being captured by the Well class
     return [
         create_analyte(bead, analyte_region_dict)
         for child in well_xml.findall("BeadRegions")

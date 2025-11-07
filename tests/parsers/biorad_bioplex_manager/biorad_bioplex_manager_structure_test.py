@@ -30,7 +30,10 @@ def test_create_analyte_metadata() -> None:
     analyte_xml = StrictXmlElement.create_from_bytes(analyte_xml_string.encode("utf-8"))
     analyte_metadata = AnalyteMetadata.create(analyte_xml)
     assert analyte_metadata == AnalyteMetadata(
-        name="Pn4", region=18, error_msg=None, custom_info={}
+        name="Pn4",
+        region=18,
+        error_msg=None,
+        custom_info={"OutlierType": "None", "Valid": "true"},
     )
     assert analyte_metadata.error is None
 
@@ -66,6 +69,7 @@ def test_create_well() -> None:
         analyst="baz",
         xml=well_xml.element,
         custom_info={
+            "BeadCountIn": "0",
             "ColNo": "1",
             "PlateID": "555",
             "RowNo": "1",
@@ -73,6 +77,7 @@ def test_create_well() -> None:
             "RunProtocolDocumentName": "qux_15PLEX_ASSAY",
             "TotalGatedEvents": "637",
             "TotalRegionEventCount": "609",
+            "Unit": "µl",
             "WellNo": "1",
         },
     )
@@ -195,7 +200,7 @@ def test_create_sample() -> None:
             "12": "alpha",
             "15": "bravo",
         },
-        custom_info={"ColNo": "12", "RowNo": "1", "WellNumber": "12"},
+        custom_info={"ColNo": "12", "RowNo": "1"},
     )
 
 
@@ -218,7 +223,7 @@ def test_create_samples() -> None:
             analyte_region_dict={
                 "12": "alpha",
             },
-            custom_info={"ColNo": "12", "RowNo": "1", "WellNumber": "12"},
+            custom_info={"ColNo": "12", "RowNo": "1"},
         ),
         "B12": SampleMetadata(
             sample_type=SampleRoleType.blank_role,
@@ -229,7 +234,7 @@ def test_create_samples() -> None:
             analyte_region_dict={
                 "12": "alpha",
             },
-            custom_info={"ColNo": "12", "RowNo": "2", "WellNumber": "24"},
+            custom_info={"ColNo": "12", "RowNo": "2"},
         ),
         "C1": SampleMetadata(
             sample_type=SampleRoleType.control_sample_role,
@@ -241,7 +246,7 @@ def test_create_samples() -> None:
                 "12": "alpha",
                 "15": "bravo",
             },
-            custom_info={"ColNo": "1", "RowNo": "3", "WellNumber": "25"},
+            custom_info={"ColNo": "1", "RowNo": "3"},
         ),
         "C2": SampleMetadata(
             sample_type=SampleRoleType.control_sample_role,
@@ -252,7 +257,7 @@ def test_create_samples() -> None:
             analyte_region_dict={
                 "12": "alpha",
             },
-            custom_info={"ColNo": "2", "RowNo": "3", "WellNumber": "26"},
+            custom_info={"ColNo": "2", "RowNo": "3"},
         ),
         "D2": SampleMetadata(
             sample_type=SampleRoleType.control_sample_role,
@@ -263,7 +268,7 @@ def test_create_samples() -> None:
             analyte_region_dict={
                 "12": "alpha",
             },
-            custom_info={"ColNo": "2", "RowNo": "4", "WellNumber": "38"},
+            custom_info={"ColNo": "2", "RowNo": "4"},
         ),
     }
 

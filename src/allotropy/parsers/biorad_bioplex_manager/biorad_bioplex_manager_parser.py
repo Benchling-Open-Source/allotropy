@@ -35,6 +35,9 @@ class BioradBioplexParser(VendorParser[Data, Model]):
         # Only parse system-level metadata once, from the first well.
         wells = reader["Wells"].findall("Well")
         system_metadata = SystemMetadata.create(wells[0])
+        plate_dimensions = reader["PlateDimensions"]
+        plate_well_count = plate_dimensions.get_attr("TotalWells")
+        plate_dimensions.get_unread()
 
         return Data(
             create_metadata(
@@ -49,9 +52,7 @@ class BioradBioplexParser(VendorParser[Data, Model]):
                         "NativeDocumentLocation"
                     ].get_text_or_none(),
                     experiment_type=reader["Description"].get_text_or_none(),
-                    plate_well_count=int(
-                        reader.get_attribute("PlateDimensions", "TotalWells")
-                    ),
+                    plate_well_count=int(plate_well_count),
                 )
                 for well in [Well.create(well_xml) for well_xml in wells]
             ],
