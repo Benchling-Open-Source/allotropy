@@ -236,21 +236,21 @@ class SystemMetadata:
     def create(xml_well: StrictXmlElement) -> SystemMetadata:
 
         return SystemMetadata(
-            serial_number=xml_well.find("MachineInfo")
-            .find("SerialNumber")
-            .get_text("SerialNumber"),
-            controller_version=xml_well.find("MachineInfo")
-            .find("MicroControllerVersion")
-            .get_text("MicroControllerVersion"),
+            serial_number=xml_well.recursive_find(
+                ["MachineInfo", "SerialNumber"]
+            ).get_text("SerialNumber"),
+            controller_version=xml_well.recursive_find(
+                ["MachineInfo", "MicroControllerVersion"]
+            ).get_text("MicroControllerVersion"),
             analytical_method=xml_well.find("RunProtocolDocumentLocation").get_text(
                 "RunProtocolDocumentLocation"
             ),
             plate_id=xml_well.find("PlateID").get_text("PlateID"),
             regions_of_interest=[
                 str(region.get_attr("RegionNumber"))
-                for region in xml_well.find("RunSettings")
-                .find("RegionsOfInterest")
-                .findall("Region")
+                for region in xml_well.recursive_find(
+                    ["RunSettings", "RegionsOfInterest"]
+                ).findall("Region")
             ],
             custom_info=xml_well.get_unread(),
         )
