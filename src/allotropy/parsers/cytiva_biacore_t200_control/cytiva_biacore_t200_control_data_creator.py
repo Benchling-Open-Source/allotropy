@@ -179,6 +179,7 @@ def create_measurements(
                 "molecular weight": quantity_or_none(
                     TQuantityValueDalton, measurement.molecular_weight
                 ),
+                **measurement.sample_custom_info,
             },
             sensorgram_data_cube=_get_sensorgram_datacube(measurement.sensorgram_data),
             report_point_data=(

@@ -431,8 +431,11 @@ class DictData(dict[str, Any]):
                 "output_field2": (float, "input_field2", 0.0),
                 "renamed_field": (int, "original_name", None),
             }
-            result = dict_data.get_keys_as_dict(field_mappings)
-
+            output = {
+                "output_field1": "value1",
+                "output_field2": 1.0,
+                "renamed_field": 1,
+            }
         """
         result: dict[str, Any] = {}
 

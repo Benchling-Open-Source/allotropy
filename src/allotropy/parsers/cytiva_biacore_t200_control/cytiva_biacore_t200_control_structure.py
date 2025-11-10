@@ -21,7 +21,6 @@ from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float_or_none,
 )
-from allotropy.types import DictType
 
 
 @dataclass(frozen=True)
@@ -35,6 +34,7 @@ class ChipData:
 
     @staticmethod
     def create(chip_data: DictData) -> ChipData:
+        chip_data.mark_read_deep({"IFCType", "OSType", "OSVersion"})
         return ChipData(
             sensor_chip_identifier=assert_not_none(chip_data.get(str, "Id"), "Chip ID"),
             sensor_chip_type=chip_data.get(str, "Name"),
@@ -46,7 +46,7 @@ class ChipData:
                 "last modified time": chip_data.get(str, "LastModTime"),
                 "last use time": chip_data.get(str, "LastUseTime"),
                 "first dock date": chip_data.get(str, "FirstDockDate"),
-                **chip_data.get_unread(skip={"IFCType", "OSType", "OSVersion"}),
+                **chip_data.get_unread_deep(),
             },
         )
 
@@ -203,16 +203,31 @@ class ReportPointData:
     absolute_resonance: float
     relative_resonance: float | None
     time_setting: float
-    custom_info: DictType
+    custom_info: dict[str, Any]
     min_resonance: float
     max_resonance: float
     lrsd: float
     slope: float
     sd: float
+    sample_custom_info: dict[str, Any]
+    measurement_aggregate_custom_info: dict[str, Any]
 
     @staticmethod
     def create(data: SeriesData) -> ReportPointData:
-        return ReportPointData(
+        # This is to mark the keys as read so they don't get added to the custom_info, which has to use a regex
+        # because some keys look like 'Sample1_Ligand'
+        for key in (
+            "FlowRate",
+            "ContactTime",
+            "Chip",
+            "Ligand",
+            "Method",
+            "Fc",
+            "Sample",
+        ):
+            data.get_unread(f".*{key}.*")
+
+        report_point_data = ReportPointData(
             identifier=random_uuid_str(),
             identifier_role=data[str, "Id"],
             absolute_resonance=data[float, "AbsResp"],
@@ -236,7 +251,14 @@ class ReportPointData:
                 "assay_step_purpose": data.get(str, "AssayStepPurpose"),
                 "buffer": data.get(str, "Buffer"),
             },
+            sample_custom_info=data.get_custom_keys({"Cycle"}),
+            measurement_aggregate_custom_info=data.get_custom_keys({"Procedure"}),
         )
+
+        unread_data = data.get_unread()
+        for key in list(unread_data.keys()):
+            report_point_data.custom_info[key] = unread_data[key]
+        return report_point_data
 
 
 @dataclass(frozen=True)
@@ -259,7 +281,7 @@ class MeasurementData:
     flow_rate: float | None
     contact_time: float | None
     dilution: float | None
-    custom_info: dict[str, Any]
+    sample_custom_info: dict[str, Any]
 
 
 @dataclass(frozen=True)
@@ -268,15 +290,15 @@ class SampleData:
     custom_info: dict[str, Any]
 
     @staticmethod
-    def create(intermediate_structured_data: DictData) -> SampleData:
-        application_template_details = intermediate_structured_data.get_nested(
-            "application_template_details"
-        )
+    def create(
+        intermediate_structured_data: DictData, application_template_details: DictData
+    ) -> SampleData:
         measurements: dict[str, list[MeasurementData]] = defaultdict(list)
         total_cycles = assert_not_none(
             intermediate_structured_data.get(int, "total_cycles"),
             "total_cycles",
         )
+
         for idx in range(total_cycles):
             flowcell_cycle_json = application_template_details.get_nested(
                 f"Flowcell {idx + 1}"
@@ -324,15 +346,33 @@ class SampleData:
                     flow_rate=flowcell_cycle_json.get(float, "Flow"),
                     contact_time=flowcell_cycle_json.get(float, "ContactTime"),
                     dilution=flowcell_cycle_json.get(float, "DilutePercent"),
-                    custom_info={},
+                    sample_custom_info={},
                 )
                 # group sensorgram data by Flow Cell Number (Fc in rpoint data)
                 for flow_cell, sensorgram_df in sensorgram_data.groupby(
                     "Flow Cell Number"
                 )
             ]
-        custom_info: dict[str, Any] = {}
-        return SampleData(measurements, custom_info)
+            # Add custom info from report point data
+            for measurement_data in measurements[sample_location_key]:
+                if measurement_data.report_point_data:
+                    for report_point_data_item in measurement_data.report_point_data:
+                        measurement_data.sample_custom_info.update(
+                            report_point_data_item.sample_custom_info
+                        )
+                        break
+        return SampleData(measurements, {})
+
+    def get_measurement_aggregate_custom_info(self) -> dict[str, Any]:
+        measurement_aggregate_custom_info: dict[str, Any] = {}
+        for measurements_by_sample_location_key in self.measurements.values():
+            for measurement_data in measurements_by_sample_location_key:
+                if measurement_data.report_point_data:
+                    for report_point_data_item in measurement_data.report_point_data:
+                        measurement_aggregate_custom_info.update(
+                            report_point_data_item.measurement_aggregate_custom_info
+                        )
+        return measurement_aggregate_custom_info
 
 
 @dataclass(frozen=True)
@@ -360,9 +400,15 @@ class Data:
         system_information = SystemInformation.create(system_information_dictdata)
         chip_data_dictdata = intermediate_structured_data.get_nested("chip")
         chip_data = ChipData.create(chip_data_dictdata)
-        sample_data = SampleData.create(intermediate_structured_data)
+        sample_data = SampleData.create(
+            intermediate_structured_data, application_template_details
+        )
 
-        # This has to be called later because in SampleData.create some of the unread keys are called
+        system_information.measurement_aggregate_custom_info.update(
+            sample_data.get_measurement_aggregate_custom_info()
+        )
+
+        # This has to be called later because SampleData.create uses some of the unread keys
         run_metadata.set_device_custom_info(application_template_details)
 
         return Data(

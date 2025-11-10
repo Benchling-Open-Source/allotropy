@@ -43,7 +43,8 @@
                                 "sample identifier": "N/A",
                                 "custom information document": {
                                     "Rack2": "REAG2",
-                                    "Lock Positions": false
+                                    "Lock Positions": false,
+                                    "Cycle": 1.0
                                 }
                             },
                             "detection type": "surface plasmon resonance",
@@ -70,7 +71,8 @@
                                                             "unit": "s"
                                                         },
                                                         "quality": "Ok",
-                                                        "baseline": "Yes"
+                                                        "baseline": "Yes",
+                                                        "Aprog": "Amine_1"
                                                     }
                                                 },
                                                 {
@@ -95,7 +97,8 @@
                                                             "unit": "s"
                                                         },
                                                         "quality": "Ok",
-                                                        "baseline": "No"
+                                                        "baseline": "No",
+                                                        "Aprog": "Amine_1"
                                                     }
                                                 },
                                                 {
@@ -120,7 +123,8 @@
                                                             "unit": "s"
                                                         },
                                                         "quality": "Ok",
-                                                        "baseline": "No"
+                                                        "baseline": "No",
+                                                        "Aprog": "Amine_1"
                                                     }
                                                 }
                                             ]
@@ -228,7 +232,8 @@
                                 "sample identifier": "N/A",
                                 "custom information document": {
                                     "Rack2": "REAG2",
-                                    "Lock Positions": false
+                                    "Lock Positions": false,
+                                    "Cycle": 2.0
                                 }
                             },
                             "detection type": "surface plasmon resonance",
@@ -255,7 +260,8 @@
                                                             "unit": "s"
                                                         },
                                                         "quality": "Ok",
-                                                        "baseline": "Yes"
+                                                        "baseline": "Yes",
+                                                        "Aprog": "Amine_2"
                                                     }
                                                 },
                                                 {
@@ -280,7 +286,8 @@
                                                             "unit": "s"
                                                         },
                                                         "quality": "Ok",
-                                                        "baseline": "No"
+                                                        "baseline": "No",
+                                                        "Aprog": "Amine_2"
                                                     }
                                                 },
                                                 {
@@ -305,7 +312,8 @@
                                                             "unit": "s"
                                                         },
                                                         "quality": "Ok",
-                                                        "baseline": "No"
+                                                        "baseline": "No",
+                                                        "Aprog": "Amine_2"
                                                     }
                                                 },
                                                 {
@@ -330,7 +338,8 @@
                                                             "unit": "s"
                                                         },
                                                         "quality": "Ok",
-                                                        "baseline": "No"
+                                                        "baseline": "No",
+                                                        "Aprog": "Amine_2"
                                                     }
                                                 }
                                             ]
@@ -438,7 +447,8 @@
                                 "sample identifier": "N/A",
                                 "custom information document": {
                                     "Rack2": "REAG2",
-                                    "Lock Positions": false
+                                    "Lock Positions": false,
+                                    "Cycle": 3.0
                                 }
                             },
                             "detection type": "surface plasmon resonance",
@@ -465,7 +475,8 @@
                                                             "unit": "s"
                                                         },
                                                         "quality": "Ok",
-                                                        "baseline": "Yes"
+                                                        "baseline": "Yes",
+                                                        "Aprog": "Amine_3"
                                                     }
                                                 },
                                                 {
@@ -490,7 +501,8 @@
                                                             "unit": "s"
                                                         },
                                                         "quality": "Ok",
-                                                        "baseline": "No"
+                                                        "baseline": "No",
+                                                        "Aprog": "Amine_3"
                                                     }
                                                 },
                                                 {
@@ -515,7 +527,8 @@
                                                             "unit": "s"
                                                         },
                                                         "quality": "Ok",
-                                                        "baseline": "No"
+                                                        "baseline": "No",
+                                                        "Aprog": "Amine_3"
                                                     }
                                                 },
                                                 {
@@ -540,7 +553,8 @@
                                                             "unit": "s"
                                                         },
                                                         "quality": "Ok",
-                                                        "baseline": "No"
+                                                        "baseline": "No",
+                                                        "Aprog": "Amine_3"
                                                     }
                                                 }
                                             ]
@@ -648,7 +662,8 @@
                                 "sample identifier": "N/A",
                                 "custom information document": {
                                     "Rack2": "REAG2",
-                                    "Lock Positions": false
+                                    "Lock Positions": false,
+                                    "Cycle": 4.0
                                 }
                             },
                             "detection type": "surface plasmon resonance",
@@ -675,7 +690,8 @@
                                                             "unit": "s"
                                                         },
                                                         "quality": "Ok",
-                                                        "baseline": "Yes"
+                                                        "baseline": "Yes",
+                                                        "Aprog": "Amine_4"
                                                     }
                                                 },
                                                 {
@@ -700,7 +716,8 @@
                                                             "unit": "s"
                                                         },
                                                         "quality": "Ok",
-                                                        "baseline": "No"
+                                                        "baseline": "No",
+                                                        "Aprog": "Amine_4"
                                                     }
                                                 },
                                                 {
@@ -725,7 +742,8 @@
                                                             "unit": "s"
                                                         },
                                                         "quality": "Ok",
-                                                        "baseline": "No"
+                                                        "baseline": "No",
+                                                        "Aprog": "Amine_4"
                                                     }
                                                 },
                                                 {
@@ -750,7 +768,8 @@
                                                             "unit": "s"
                                                         },
                                                         "quality": "Ok",
-                                                        "baseline": "No"
+                                                        "baseline": "No",
+                                                        "Aprog": "Amine_4"
                                                     }
                                                 }
                                             ]
@@ -831,7 +850,8 @@
                     "custom information document": {
                         "Run Type": "Immobilization",
                         "RunGUID": "72d018f3-ce7c-4351-acea-ed7cb4c6ccb0",
-                        "EndTime": "2019-09-04T15:21:36.253999+00:00"
+                        "EndTime": "2019-09-04T15:21:36.253999+00:00",
+                        "Procedure": "TimeAndFlow"
                     }
                 },
                 "analyst": "Administrator"
@@ -2051,8 +2071,8 @@
             "software name": "Biacore T200 Control Software",
             "software version": "2.0.1",
             "custom information document": {
-                "OSVersion": "6.1.7601.65536",
                 "IFCType": "TYPE105",
+                "OSVersion": "6.1.7601.65536",
                 "OSType": "Win32NT"
             }
         },
@@ -2120,12 +2140,12 @@
             ],
             "product manufacturer": "Cytiva",
             "custom information document": {
-                "DegasserWorkingTime": "1920-08-04T00:00:00+00:00",
-                "VacuumUnitWorkingTime": "1900-01-05T00:00:00+00:00",
-                "SystemControllerId": "BIACORE-T200",
                 "VacuumUnitIdleTime": "1920-06-24T00:00:00+00:00",
+                "VacuumUnitWorkingTime": "1900-01-05T00:00:00+00:00",
                 "DegasserErrors": "0",
-                "VacuumUnitErrors": "0"
+                "VacuumUnitErrors": "0",
+                "SystemControllerId": "BIACORE-T200",
+                "DegasserWorkingTime": "1920-08-04T00:00:00+00:00"
             }
         }
     }
