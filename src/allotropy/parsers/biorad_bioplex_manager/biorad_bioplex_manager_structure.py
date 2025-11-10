@@ -148,9 +148,9 @@ class Well:
                 sample_volume_element.get_text("SampleVolume"),
                 "sample_volume",
             ),
-            detector_gain_setting=well_xml.find("RunConditions")
-            .find("RP1Gain")
-            .get_text("RP1Gain"),
+            detector_gain_setting=well_xml.recursive_find(
+                ["RunConditions", "RP1Gain"]
+            ).get_text("RP1Gain"),
             minimum_assay_bead_count_setting=try_int(
                 stop_reading_criteria_element.get_attr("BeadCount"),
                 "minimum_assay_bead_count_settings",
@@ -165,7 +165,7 @@ class Well:
             analyst=well_xml.find("User").get_text("User"),
             xml=well_xml.element,
             custom_info={
-                **well_xml.get_unread(),
+                **well_xml.get_unread(skip={"WellNo"}),
                 **sample_volume_element.get_unread(),
                 **stop_reading_criteria_element.get_unread(),
             },

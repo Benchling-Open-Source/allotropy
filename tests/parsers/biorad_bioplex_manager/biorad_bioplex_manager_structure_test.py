@@ -78,7 +78,6 @@ def test_create_well() -> None:
             "TotalGatedEvents": "637",
             "TotalRegionEventCount": "609",
             "Unit": "µl",
-            "WellNo": "1",
         },
     )
 
