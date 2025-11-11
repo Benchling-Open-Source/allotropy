@@ -80,6 +80,11 @@ class KiloPascal(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class MassPerCharge(HasUnit):
+    unit: str = "m/z"
+
+
+@dataclass(frozen=True, kw_only=True)
 class MicrogramPerMicroliter(HasUnit):
     unit: str = "ug/µL"
 
