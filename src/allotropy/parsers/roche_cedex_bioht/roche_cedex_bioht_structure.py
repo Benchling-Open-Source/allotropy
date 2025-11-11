@@ -28,6 +28,12 @@ from allotropy.parsers.roche_cedex_bioht.constants import (
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
+# Maps source units to (target_unit, conversion_multiplier)
+UNIT_CONVERSIONS: dict[str, tuple[str, float]] = {
+    "mg/L": ("g/L", 0.001),
+    "mM": ("mmol/L", 1.0),
+}
+
 
 @dataclass(frozen=True)
 class Title:
@@ -111,15 +117,18 @@ class RawMeasurement:
 
     @staticmethod
     def _get_value_and_unit(value: JsonFloat, unit: str) -> tuple[JsonFloat, str]:
-        multiplier = 1.0
-        if unit == "mg/L":
-            unit = "g/L"
-            multiplier = 1 / 1000
+        normalized_unit = unit.strip()
 
-        if isinstance(value, int | float):
-            value = value * multiplier
+        # Check if unit needs conversion
+        if normalized_unit in UNIT_CONVERSIONS:
+            target_unit, multiplier = UNIT_CONVERSIONS[normalized_unit]
+            if isinstance(value, int | float):
+                converted_value: JsonFloat = value * multiplier
+            else:
+                converted_value = value
+            return converted_value, target_unit
 
-        return value, unit
+        return value, normalized_unit
 
 
 def create_measurements(data: pd.DataFrame) -> dict[str, dict[str, RawMeasurement]]:
