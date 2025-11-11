@@ -8,3 +8,5 @@ SAMPLE_ROLE_MAPPINGS = {
     "Ctrl": SampleRoleType.control_sample_role,
 }
 DEVICE_TYPE = "plate reader"
+
+PLATE_IDENTIFIER_PATTERN = r"\b(?:\w+\s+)?plate(?:\s+\d+)?\b"
