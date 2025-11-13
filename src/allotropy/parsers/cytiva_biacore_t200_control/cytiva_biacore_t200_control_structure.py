@@ -255,9 +255,7 @@ class ReportPointData:
             measurement_aggregate_custom_info=data.get_custom_keys({"Procedure"}),
         )
 
-        unread_data = data.get_unread()
-        for key in list(unread_data.keys()):
-            report_point_data.custom_info[key] = unread_data[key]
+        report_point_data.custom_info.update(data.get_unread())
         return report_point_data
 
 
