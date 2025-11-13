@@ -70,7 +70,7 @@ def _get_sensorgram_datacube(sensorgram_data: pd.DataFrame) -> DataCube:
 def _get_device_control_custom_info(data: Data) -> DictType:
     application_template_details = data.application_template_details
 
-    custom_ifo: dict[str, Any] = {
+    custom_info: dict[str, Any] = {
         "number of flow cells": data.chip_data.number_of_flow_cells,
         "number of spots": data.chip_data.number_of_spots,
         "buffer volume": quantity_or_none(
@@ -78,15 +78,15 @@ def _get_device_control_custom_info(data: Data) -> DictType:
         ),
     }
     if detection_setting := data.run_metadata.detection_setting:
-        custom_ifo.update({detection_setting.key: detection_setting.value})
+        custom_info.update({detection_setting.key: detection_setting.value})
 
     detection_info = application_template_details.get_nested("detection")
-    custom_ifo.update(
+    custom_info.update(
         detection_info.get(key={"FlowCellSingle", "FlowCellDual", "FlowCellMulti"})
     )
 
     temp_info = application_template_details.get_nested("RackTemperature")
-    custom_ifo.update(
+    custom_info.update(
         temp_info.get_keys_as_dict(
             {
                 "minimum operating temperature": (float, "min", None),
@@ -96,7 +96,7 @@ def _get_device_control_custom_info(data: Data) -> DictType:
     )
 
     system_preparations = application_template_details.get_nested("system_preparations")
-    custom_ifo.update(
+    custom_info.update(
         system_preparations.get_keys_as_dict(
             {
                 "analysis temperature": (float, "AnalTemp", None),
@@ -105,7 +105,7 @@ def _get_device_control_custom_info(data: Data) -> DictType:
             }
         )
     )
-    return custom_ifo
+    return custom_info
 
 
 def create_metadata(data: Data, named_file_contents: NamedFileContents) -> Metadata:
