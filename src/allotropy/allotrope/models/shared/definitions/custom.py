@@ -20,6 +20,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     Hertz,
     KiloDalton,
     KiloPascal,
+    MassPerCharge,
     MicrogramPerMicroliter,
     MicrogramPerMilliliter,
     Microliter,
@@ -54,6 +55,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     PartsPerBillion,
     PartsPerMillion,
     Percent,
+    PerMolarPerCentimeter,
     PerMolarPerSecond,
     PerSecond,
     PH,
@@ -72,6 +74,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     SeimensPerMeter,
     SquareCentimetersPerGram,
     SquareCentimetersPerMole,
+    SquareMillimeter,
     SquareResponseUnit,
     TODO,
     Unitless,
@@ -222,6 +225,16 @@ class TQuantityValueKiloPascal(KiloPascal, TQuantityValue):
 
 @dataclass(frozen=True, kw_only=True)
 class TNullableQuantityValueKiloPascal(KiloPascal, TNullableQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueMassPerCharge(MassPerCharge, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueMassPerCharge(MassPerCharge, TNullableQuantityValue):
     pass
 
 
@@ -610,6 +623,18 @@ class TNullableQuantityValuePartsPerMillion(PartsPerMillion, TNullableQuantityVa
 
 
 @dataclass(frozen=True, kw_only=True)
+class TQuantityValuePerMolarPerCentimeter(PerMolarPerCentimeter, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValuePerMolarPerCentimeter(
+    PerMolarPerCentimeter, TNullableQuantityValue
+):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
 class TQuantityValuePerMolarPerSecond(PerMolarPerSecond, TQuantityValue):
     pass
 
@@ -818,6 +843,16 @@ class TQuantityValueSquareCentimetersPerMole(SquareCentimetersPerMole, TQuantity
 class TNullableQuantityValueSquareCentimetersPerMole(
     SquareCentimetersPerMole, TNullableQuantityValue
 ):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueSquareMillimeter(SquareMillimeter, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueSquareMillimeter(SquareMillimeter, TNullableQuantityValue):
     pass
 
 

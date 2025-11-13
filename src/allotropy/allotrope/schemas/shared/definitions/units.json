@@ -167,6 +167,18 @@
       "unit"
     ]
   },
+  "MassPerCharge": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "m/z",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MassPerCharge"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "MicrogramPerMicroliter": {
     "properties": {
       "unit": {
@@ -575,6 +587,18 @@
       "unit"
     ]
   },
+  "PerMolarPerCentimeter": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "M-1cm-1",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#PerMolarPerCentimeter"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "PerMolarPerSecond": {
     "properties": {
       "unit": {
@@ -785,6 +809,18 @@
         "type": "string",
         "const": "cm^2/mol",
         "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#SquareCentimetersPerMole"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
+  "SquareMillimeter": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "mm^2",
+        "$asm.unit-iri": "http://qudt.org/vocab/unit#SquareMillimeter"
       }
     },
     "required": [

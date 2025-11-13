@@ -1,9 +1,13 @@
+import re
+
 import pandas as pd
+import pytest
 
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2025._03.plate_reader import (
     MeasurementType,
 )
+from allotropy.parsers.thermo_skanit.constants import PLATE_IDENTIFIER_PATTERN
 from allotropy.parsers.thermo_skanit.thermo_skanit_structure import (
     DataThermoSkanIt,
     DataWell,
@@ -201,3 +205,35 @@ def test_create_skanit_data() -> None:
     skanit_data = DataThermoSkanIt.create(sheet_data=sheet_data, file_path="abc")
     assert len(skanit_data.measurement_groups) == 96
     assert skanit_data.metadata.equipment_serial_number == "3020-81776"
+
+
+@pytest.mark.parametrize(
+    "input_string,expected_match",
+    [
+        ("Plate 1", "Plate 1"),
+        ("Plate 2", "Plate 2"),
+        ("Plate 123", "Plate 123"),
+        ("Blank plate", "Blank plate"),
+        ("Sample Plate", "Sample Plate"),
+        ("blank plate", "blank plate"),
+        ("SAMPLE PLATE", "SAMPLE PLATE"),
+        ("plate", "plate"),
+    ],
+)
+def test_plate_identifier_regex_matching(
+    input_string: str, expected_match: str | None
+) -> None:
+    """Test that the plate identifier regex correctly matches valid plate names."""
+    match = re.search(PLATE_IDENTIFIER_PATTERN, input_string, re.IGNORECASE)
+
+    if expected_match is None:
+        assert (
+            match is None
+        ), f"Expected no match for '{input_string}', but got '{match.group(0) if match else None}'"
+    else:
+        assert (
+            match is not None
+        ), f"Expected to match '{expected_match}' in '{input_string}', but got no match"
+        assert (
+            match.group(0) == expected_match
+        ), f"Expected '{expected_match}', but got '{match.group(0)}'"

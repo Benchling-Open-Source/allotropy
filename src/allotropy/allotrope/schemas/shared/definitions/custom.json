@@ -279,6 +279,26 @@
       }
     ]
   },
+  "tQuantityValueMassPerCharge": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/MassPerCharge"
+      }
+    ]
+  },
+  "tNullableQuantityValueMassPerCharge": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/MassPerCharge"
+      }
+    ]
+  },
   "tQuantityValueMicrogramPerMicroliter": {
     "allOf": [
       {
@@ -959,6 +979,26 @@
       }
     ]
   },
+  "tQuantityValuePerMolarPerCentimeter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/PerMolarPerCentimeter"
+      }
+    ]
+  },
+  "tNullableQuantityValuePerMolarPerCentimeter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/PerMolarPerCentimeter"
+      }
+    ]
+  },
   "tQuantityValuePerMolarPerSecond": {
     "allOf": [
       {
@@ -1199,7 +1239,7 @@
       }
     ]
   },
-  "TQuantityValueResponseUnit": {
+  "tQuantityValueResponseUnit": {
     "allOf": [
       {
         "$ref": "#/$defs/tQuantityValue"
@@ -1219,7 +1259,7 @@
       }
     ]
   },
-  "TQuantityValueResponseUnitPerSecond": {
+  "tQuantityValueResponseUnitPerSecond": {
     "allOf": [
       {
         "$ref": "#/$defs/tQuantityValue"
@@ -1316,6 +1356,26 @@
       },
       {
         "$ref": "#/$defs/SquareCentimetersPerMole"
+      }
+    ]
+  },
+  "tQuantityValueSquareMillimeter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/SquareMillimeter"
+      }
+    ]
+  },
+  "tNullableQuantityValueSquareMillimeter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/SquareMillimeter"
       }
     ]
   },
