@@ -258,18 +258,18 @@ class Mapper(SchemaMapper[Data, Model]):
             m_z=quantity_or_none(TQuantityValueMassPerCharge, peak.m_z),
             mass=quantity_or_none(TQuantityValueDalton, peak.mass),
             peak_area=(
-                TQuantityValue(value=peak.peak_area_value, unit=peak.peak_area_unit)  # type: ignore[arg-type]
+                TQuantityValue(value=peak.peak_area_value, unit=peak.peak_area_unit)
                 if peak.peak_area_value is not None and peak.peak_area_unit is not None
                 else None
             ),
             peak_height=(
-                TQuantityValue(value=peak.peak_height_value, unit=peak.peak_height_unit)  # type: ignore[arg-type]
+                TQuantityValue(value=peak.peak_height_value, unit=peak.peak_height_unit)
                 if peak.peak_height_value is not None
                 and peak.peak_height_unit is not None
                 else None
             ),
             peak_width=(
-                TQuantityValue(value=peak.peak_width_value, unit=peak.peak_width_unit)  # type: ignore[arg-type]
+                TQuantityValue(value=peak.peak_width_value, unit=peak.peak_width_unit)
                 if peak.peak_width_value is not None
                 and peak.peak_width_unit is not None
                 else None
