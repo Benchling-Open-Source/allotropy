@@ -167,6 +167,18 @@
       "unit"
     ]
   },
+  "MassPerCharge": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "m/z",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MassPerCharge"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "MicrogramPerMicroliter": {
     "properties": {
       "unit": {
