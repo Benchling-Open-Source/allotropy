@@ -279,6 +279,26 @@
       }
     ]
   },
+  "tQuantityValueMassPerCharge": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/MassPerCharge"
+      }
+    ]
+  },
+  "tNullableQuantityValueMassPerCharge": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/MassPerCharge"
+      }
+    ]
+  },
   "tQuantityValueMicrogramPerMicroliter": {
     "allOf": [
       {
