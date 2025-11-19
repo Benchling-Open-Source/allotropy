@@ -1,12 +1,17 @@
 from dataclasses import dataclass
 from enum import Enum
 
-from allotropy.allotrope.converter import add_custom_information_document
+from allotropy.allotrope.converter import (
+    add_custom_information_aggregate_document,
+    add_custom_information_document,
+)
 from allotropy.allotrope.models.adm.binding_affinity_analyzer.wd._2024._12.binding_affinity_analyzer import (
     BindingAffinityAnalyzerAggregateDocument,
     BindingAffinityAnalyzerDocumentItem,
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
+    CustomInformationAggregateDocument,
+    CustomInformationDocumentItem,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
@@ -247,14 +252,10 @@ class Mapper(SchemaMapper[Data, Model]):
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocument:
         processed_data_document = ProcessedDataDocumentItem(
-            data_processing_document=(
-                {
-                    key: value
-                    for key, value in measurement.data_processing_document.items()
-                    if value is not None
-                }
-                if measurement.data_processing_document
-                else None
+            custom_information_aggregate_document=add_custom_information_aggregate_document(
+                measurement.data_processing_document,
+                CustomInformationAggregateDocument,
+                CustomInformationDocumentItem,
             ),
             binding_on_rate_measurement_datum__kon_=quantity_or_none(
                 TQuantityValuePerMolarPerSecond,
