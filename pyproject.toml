@@ -151,6 +151,7 @@ download-schema = "scripts/download_schema.py {args:}"
 create-parser = "scripts/create_parser.py {args:}"
 update-instrument-table = "scripts/update_supported_instruments_table.py {args:}"
 update-version = "scripts/update_version.py {args:}"
+json-to-csv = "scripts/json_to_csv_convert.py {args:}"
 
 [tool.hatch.envs.win-scripts]
 platforms = ["windows"]
@@ -161,6 +162,7 @@ download-schema = "python scripts\\download_schema.py {args:}"
 create-parser = "python scripts\\create_parser.py {args:}"
 update-instrument-table = "python scripts\\update_supported_instruments_table.py {args:}"
 update-version = "python scripts\\update_version.py {args:}"
+json-to-csv = "python scripts\\json_to_csv_convert.py {args:}"
 
 [tool.hatch.envs.viz.scripts]
 run = "scripts/visualization.py {args:}"
