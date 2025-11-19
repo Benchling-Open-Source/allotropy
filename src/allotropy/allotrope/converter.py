@@ -170,6 +170,85 @@ def add_custom_information_document(
     return model
 
 
+def add_custom_information_aggregate_document(
+    custom_info_dict: Mapping[str, Any] | None,
+    custom_information_aggregate_document_class: type,
+    custom_information_document_item_class: type,
+) -> Any:
+    """
+    Create a CustomInformationAggregateDocument from a flat dictionary.
+
+    This method validates that the input dictionary does not contain nested
+    dictionaries or lists (except for TQuantityValue-like objects with 'value' and 'unit').
+
+    Args:
+        custom_info_dict: Dictionary with key-value pairs to convert
+        custom_information_aggregate_document_class: The aggregate document class to instantiate
+        custom_information_document_item_class: The document item class to instantiate
+
+    Returns:
+        CustomInformationAggregateDocument instance or None if input is empty
+
+    Raises:
+        ValueError: If nested dictionaries or lists are found in the input
+    """
+    if not custom_info_dict:
+        return None
+
+    # Remove None values
+    cleaned_dict = {k: v for k, v in custom_info_dict.items() if v is not None}
+
+    if not cleaned_dict:
+        return None
+
+    # Validate no nested structures (except TQuantityValue-like objects)
+    for key, value in cleaned_dict.items():
+        if isinstance(value, dict):
+            # Allow TQuantityValue-like objects (have 'value' and 'unit' keys)
+            if not (set(value.keys()) <= {"value", "unit"}):
+                msg = (
+                    f"CustomInformationAggregateDocument does not support nested dictionaries. "
+                    f"Found nested dict at key '{key}': {value}. "
+                    f"Please flatten the structure or use custom_information_document instead."
+                )
+                raise ValueError(msg)
+        elif isinstance(value, list):
+            msg = (
+                f"CustomInformationAggregateDocument does not support list values. "
+                f"Found list at key '{key}': {value}. "
+                f"Please use scalar values only or use custom_information_document instead."
+            )
+            raise ValueError(msg)
+
+    # Create CustomInformationDocumentItem instances
+    items = []
+    for key, value in cleaned_dict.items():
+        item_kwargs: dict[str, Any] = {"datum_label": key}
+
+        # Determine the appropriate scalar field based on value type
+        if isinstance(value, bool):
+            item_kwargs["scalar_boolean_datum"] = value
+        elif isinstance(value, int | float | np.int64 | np.float64):
+            item_kwargs["scalar_double_datum"] = float(value)
+        elif isinstance(value, str):
+            item_kwargs["scalar_string_datum"] = value
+        elif isinstance(value, dict):
+            # TQuantityValue-like object - store as double with unit
+            if "value" in value:
+                item_kwargs["scalar_double_datum"] = float(value["value"])
+            if "unit" in value:
+                item_kwargs["unit"] = value["unit"]
+        else:
+            # Fallback to string representation
+            item_kwargs["scalar_string_datum"] = str(value)
+
+        items.append(custom_information_document_item_class(**item_kwargs))
+
+    return custom_information_aggregate_document_class(
+        custom_information_document=items
+    )
+
+
 def _convert_model_key_to_dict_key(key: str) -> str:
     key = SPECIAL_KEYS.get(key, key)
     if key.startswith("_KW"):
