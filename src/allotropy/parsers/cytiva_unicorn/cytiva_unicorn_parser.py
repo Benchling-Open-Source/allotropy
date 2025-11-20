@@ -25,6 +25,7 @@ class CytivaUnicornParser(VendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SUPPORTED_EXTENSIONS = "zip"
     SCHEMA_MAPPER = Mapper
+    UNREAD_DATA_HANDLED = True
 
     def create_data(self, named_file_contents: NamedFileContents) -> Data:
         handler = UnicornZipHandler(named_file_contents.get_bytes_stream())
