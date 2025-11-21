@@ -63,6 +63,13 @@ class DictData(dict[str, Any]):
     @overload
     def get(
         self,
+        key: set[str],
+    ) -> dict[str, Any]:
+        ...
+
+    @overload
+    def get(
+        self,
         type_: type[DictData],
         key: str,
         default: Literal[None] = None,
@@ -114,6 +121,14 @@ class DictData(dict[str, Any]):
     ) -> T:
         ...
 
+    @overload
+    def get(
+        self,
+        type_: Type_[T],
+        key: set[str],
+    ) -> dict[str, T]:
+        ...
+
     def get(self, *args: Any, **kwargs: Any) -> Any:
         """
         Get a value either by key (dict-style) or by specifying a type and key.
@@ -121,6 +136,8 @@ class DictData(dict[str, Any]):
         Usage:
         - get(key: str, default: Any | None = None) -> Any | None
         - get(type_: type, key: str, default: Any | None = None) -> Any | None
+        - get(key: set[str]) -> dict[str, Any]
+        - get(type_: type, key: set[str]) -> dict[str, Any]
 
         """
         # Determine mode and normalize args
@@ -132,44 +149,54 @@ class DictData(dict[str, Any]):
             # Dict-style usage: get(key, default?) or get(key=..., default=...)
             key_local = kwargs.get("key", args[0] if len(args) >= 1 else None)
             default_local = kwargs.get("default", args[1] if len(args) >= 2 else None)
+            if isinstance(key_local, set):
+                return self._get_raw_many(key_local)
             if not isinstance(key_local, str):
                 msg = "Dict-style get requires 'key' to be a str."
                 raise AllotropeConversionError(msg)
-            if key_local in self:
-                self._read_keys.add(key_local)
-            return super().get(key_local, default_local)
+            return self._get_raw(key_local, default_local)
 
         # Typed mode: type_, key, default via kwargs or args
         type_ = kwargs.get("type_", args[0] if len(args) >= 1 else None)
         key_local = kwargs.get("key", args[1] if len(args) >= 2 else None)
         default_local = kwargs.get("default", args[2] if len(args) >= 3 else None)
+        if isinstance(key_local, set):
+            return self._get_typed_many(type_, key_local)
         if not isinstance(key_local, str):
             msg = (
                 "When calling get with a type as first argument, the second "
                 "argument must be the key (str)."
             )
             raise AllotropeConversionError(msg)
+        return self._get_typed(type_, key_local, default_local)
 
-        if key_local not in self:
-            return default_local
-        # Mark as read regardless of convert success
-        self._read_keys.add(key_local)
-        raw_value = super().get(key_local)
+    # --- Simplified helper APIs ---
+    def _get_raw(self, key: str, default: Any | None = None) -> Any | None:
+        if not isinstance(key, str):
+            msg = "get_raw requires 'key' to be a str."
+            raise AllotropeConversionError(msg)
+        if key in self:
+            self._read_keys.add(key)
+        return super().get(key, default)
 
+    def _get_raw_many(self, keys: set[str]) -> dict[str, Any]:
+        result: dict[str, Any] = {}
+        for k in keys:
+            if isinstance(k, str) and k in self:
+                self._read_keys.add(k)
+                result[k] = super().get(k)
+        return result
+
+    def _convert_typed(self, type_: Any, raw_value: Any) -> Any | None:
         # Special handling for containers
         if type_ in (dict, DictData):
             if isinstance(raw_value, DictData):
-                value: Any = raw_value
-            elif isinstance(raw_value, dict):
-                value = DictData(raw_value)
-            else:
-                value = None
-            return default_local if value is None else value
-
-        if type_ is list:
-            if isinstance(raw_value, list):
                 return raw_value
-            return default_local
+            if isinstance(raw_value, dict):
+                return DictData(raw_value)
+            return None
+        if type_ is list:
+            return raw_value if isinstance(raw_value, list) else None
 
         # Scalar conversions mirror JsonData.get behavior
         try:
@@ -187,15 +214,36 @@ class DictData(dict[str, Any]):
             ):
                 converted_raw = converted_raw.strip("%")
             if type_ is float:
-                value = (
+                return (
                     None if converted_raw is None else try_float_or_none(converted_raw)
                 )
-            else:
-                value = None if converted_raw is None else type_(converted_raw)
+            return None if converted_raw is None else type_(converted_raw)
         except ValueError:
-            value = None
+            return None
 
-        return default_local if value is None else value
+    def _get_typed(
+        self, type_: Any, key: str, default: Any | None = None
+    ) -> Any | None:
+        if not isinstance(key, str):
+            msg = "get_typed requires 'key' to be a str."
+            raise AllotropeConversionError(msg)
+        if key not in self:
+            return default
+        # Mark as read regardless of convert success
+        self._read_keys.add(key)
+        raw_value = super().get(key)
+        value = self._convert_typed(type_, raw_value)
+        return default if value is None else value
+
+    def _get_typed_many(self, type_: Any, keys: set[str]) -> dict[str, Any]:
+        result: dict[str, Any] = {}
+        for k in keys:
+            if not isinstance(k, str):
+                continue
+            value = self._get_typed(type_, k, None)
+            if value is not None:
+                result[k] = value
+        return result
 
     def __del__(self) -> None:
         if self.errored:
@@ -228,21 +276,94 @@ class DictData(dict[str, Any]):
     def keys_unread(self) -> set[str]:
         return set(self.keys()) - self._read_keys
 
-    def mark_read(self, key: str) -> None:
-        self._read_keys.add(key)
+    def mark_read(self, key: str | set[str]) -> None:
+        if isinstance(key, str):
+            self._read_keys.add(key)
+            return
+        if isinstance(key, set):
+            for k in key:
+                if isinstance(k, str):
+                    self._read_keys.add(k)
+            return
 
-    def get_unread(self) -> dict[str, Any]:
+    def mark_read_deep(self, key: str | set[str]) -> None:
+        """
+        Mark the provided key(s) as read and recursively mark all nested keys
+        as read for any child DictData values (including those inside lists).
+        """
+        # Normalize to a set of keys
+        if isinstance(key, str):
+            keys_to_mark: set[str] = {key}
+        elif isinstance(key, set):
+            keys_to_mark = {k for k in key if isinstance(k, str)}
+        else:
+            msg = "mark_read_deep expects a str or set[str]."
+            raise AllotropeConversionError(msg)
+
+        for k in keys_to_mark:
+            # Mark the key at this level
+            self._read_keys.add(k)
+            if k not in self:
+                continue
+            value = super().get(k)
+            # Recurse into nested DictData
+            if isinstance(value, DictData):
+                value.mark_read_deep(set(value.keys()))
+            # Recurse into lists of DictData
+            elif isinstance(value, list):
+                for item in value:
+                    if isinstance(item, DictData):
+                        item.mark_read_deep(set(item.keys()))
+
+    def get_unread(
+        self, key: str | set[str] | None = None, skip: set[str] | None = None
+    ) -> dict[str, Any]:
         """
         Return a mapping of unread keys to their values, excluding nested
         dictionaries and lists (which should be handled explicitly).
+
+        If `key` is provided (str or set[str]), only return those keys that are
+        currently unread and present (with non-container values). Matched keys
+        are marked as read.
         """
         unread: dict[str, Any] = {}
-        for key, value in self.items():
-            if key in self._read_keys:
+        # Normalize skip set (tolerate non-str entries)
+        skip_set: set[str] = set()
+        if skip is not None:
+            skip_set = {s for s in skip if isinstance(s, str)}
+
+        if key is None:
+            for k, value in self.items():
+                if k in self._read_keys or k in skip_set:
+                    continue
+                if isinstance(value, dict | list):
+                    continue
+                unread[k] = value
+            if unread:
+                self._read_keys.update(unread.keys())
+            return unread
+
+        keys_to_check: set[str]
+        if isinstance(key, str):
+            keys_to_check = {key}
+        elif isinstance(key, set):
+            keys_to_check = {k for k in key if isinstance(k, str)}
+        else:
+            msg = "key must be str | set[str] | None"
+            raise AllotropeConversionError(msg)
+
+        for k in keys_to_check:
+            if k in skip_set:
                 continue
+            if k in self._read_keys:
+                continue
+            if k not in self:
+                continue
+            value = super().get(k)
             if isinstance(value, dict | list):
                 continue
-            unread[key] = value
+            unread[k] = value
+
         if unread:
             self._read_keys.update(unread.keys())
         return unread
@@ -292,6 +413,45 @@ class DictData(dict[str, Any]):
                 self._read_keys.add(key)
 
         return result
+
+    def get_keys_as_dict(
+        self,
+        field_mappings: dict[str, tuple[Any, str, Any | None]],
+    ) -> dict[str, Any]:
+        """
+        Extract multiple fields into a dictionary using output key renaming,
+        with type conversion and per-field defaults.
+
+        This mirrors JsonData.get_keys_as_dict semantics, but operates on
+        DictData and marks matched keys as read via DictData.get.
+
+        Example:
+            field_mappings = {
+                "output_field1": (str, "input_field1", None),
+                "output_field2": (float, "input_field2", 0.0),
+                "renamed_field": (int, "original_name", None),
+            }
+            output = {
+                "output_field1": "value1",
+                "output_field2": 1.0,
+                "renamed_field": 1,
+            }
+        """
+        result: dict[str, Any] = {}
+
+        for output_field, (
+            field_type,
+            input_field,
+            per_field_default,
+        ) in field_mappings.items():
+            value = self.get(field_type, input_field, per_field_default)
+            if value is not None or (
+                per_field_default is not None and field_type is not float
+            ):
+                result[output_field] = value
+
+        # Filter out None values and empty strings, matching JsonData.get_keys_as_dict behavior
+        return {k: v for k, v in result.items() if v is not None and v != ""}
 
     # Mutation APIs (not expected to be used, but kept consistent)
     def __setitem__(self, key: str, value: Any) -> None:

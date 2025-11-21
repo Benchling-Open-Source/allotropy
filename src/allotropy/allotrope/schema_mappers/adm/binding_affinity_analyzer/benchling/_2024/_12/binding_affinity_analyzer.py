@@ -56,6 +56,7 @@ class MeasurementType(Enum):
 class DeviceDocument:
     device_type: str
     device_identifier: str
+    device_custom_info: DictType | None = None
 
 
 @dataclass(frozen=True)
@@ -79,6 +80,7 @@ class Metadata:
     lot_number: str | None = None
     sensor_chip_custom_info: DictType | None = None
     data_system_custom_info: DictType | None = None
+    device_system_custom_info: DictType | None = None
 
 
 @dataclass(frozen=True)
@@ -172,23 +174,29 @@ class Mapper(SchemaMapper[Data, Model]):
                     ),
                     data.metadata.data_system_custom_info,
                 ),
-                device_system_document=DeviceSystemDocument(
-                    device_identifier=data.metadata.device_identifier,
-                    model_number=data.metadata.model_number,
-                    brand_name=data.metadata.brand_name,
-                    product_manufacturer=data.metadata.product_manufacturer,
-                    equipment_serial_number=data.metadata.equipment_serial_number,
-                    device_document=(
-                        [
-                            DeviceDocumentItem(
-                                device_type=device_document_item.device_type,
-                                device_identifier=device_document_item.device_identifier,
-                            )
-                            for device_document_item in data.metadata.device_document
-                        ]
-                        if data.metadata.device_document
-                        else None
+                device_system_document=add_custom_information_document(
+                    DeviceSystemDocument(
+                        device_identifier=data.metadata.device_identifier,
+                        model_number=data.metadata.model_number,
+                        brand_name=data.metadata.brand_name,
+                        product_manufacturer=data.metadata.product_manufacturer,
+                        equipment_serial_number=data.metadata.equipment_serial_number,
+                        device_document=(
+                            [
+                                add_custom_information_document(
+                                    DeviceDocumentItem(
+                                        device_type=device_document_item.device_type,
+                                        device_identifier=device_document_item.device_identifier,
+                                    ),
+                                    custom_info_doc=device_document_item.device_custom_info,
+                                )
+                                for device_document_item in data.metadata.device_document
+                            ]
+                            if data.metadata.device_document
+                            else None
+                        ),
                     ),
+                    data.metadata.device_system_custom_info,
                 ),
                 binding_affinity_analyzer_document=[
                     self._get_technique_document(measurement_group, data.metadata)
