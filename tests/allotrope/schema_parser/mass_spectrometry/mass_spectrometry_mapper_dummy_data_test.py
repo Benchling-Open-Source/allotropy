@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from allotropy.allotrope.allotrope import serialize_and_validate_allotrope
 from allotropy.allotrope.schema_mappers.adm.mass_spectrometry.rec._2025._06.mass_spectrometry import (
     Data,
