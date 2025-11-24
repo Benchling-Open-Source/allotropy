@@ -11,10 +11,21 @@
                                     {
                                         "device type": "luminescence detector",
                                         "detection type": "luminescence",
-                                        "custom information document": {
-                                            "Spots Per Well": 1.0,
-                                            "Det Param": "Standard",
-                                            "Orient": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "Det Param"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Orient"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Spots Per Well"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -23,14 +34,28 @@
                             "sample document": {
                                 "sample identifier": "*22M0TALA85N*_A1",
                                 "location identifier": "1",
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "<>",
+                                            "datum label": "Barcode2"
+                                        },
+                                        {
+                                            "scalar string datum": "<>",
+                                            "datum label": "Barcode3"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "Plate #"
+                                        },
+                                        {
+                                            "scalar double datum": 0.1,
+                                            "datum label": "Stack ID"
+                                        }
+                                    ]
+                                },
                                 "well location identifier": "A1",
-                                "well plate identifier": "*22M0TALA85N*",
-                                "custom information document": {
-                                    "Stack ID": 0.1,
-                                    "Barcode2": "<>",
-                                    "Barcode3": "<>",
-                                    "Plate #": 1.0
-                                }
+                                "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
                                 "value": 12895.0,
@@ -56,10 +81,21 @@
                                     {
                                         "device type": "luminescence detector",
                                         "detection type": "luminescence",
-                                        "custom information document": {
-                                            "Spots Per Well": 1.0,
-                                            "Det Param": "Standard",
-                                            "Orient": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "Det Param"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Orient"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Spots Per Well"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -68,14 +104,28 @@
                             "sample document": {
                                 "sample identifier": "*22M0TALA85N*_A2",
                                 "location identifier": "1",
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "<>",
+                                            "datum label": "Barcode2"
+                                        },
+                                        {
+                                            "scalar string datum": "<>",
+                                            "datum label": "Barcode3"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "Plate #"
+                                        },
+                                        {
+                                            "scalar double datum": 0.1,
+                                            "datum label": "Stack ID"
+                                        }
+                                    ]
+                                },
                                 "well location identifier": "A2",
-                                "well plate identifier": "*22M0TALA85N*",
-                                "custom information document": {
-                                    "Stack ID": 0.1,
-                                    "Barcode2": "<>",
-                                    "Barcode3": "<>",
-                                    "Plate #": 1.0
-                                }
+                                "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
                                 "value": 10144.0,
@@ -101,10 +151,21 @@
                                     {
                                         "device type": "luminescence detector",
                                         "detection type": "luminescence",
-                                        "custom information document": {
-                                            "Spots Per Well": 1.0,
-                                            "Det Param": "Standard",
-                                            "Orient": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "Det Param"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Orient"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Spots Per Well"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -113,14 +174,28 @@
                             "sample document": {
                                 "sample identifier": "*22M0TALA85N*_A3",
                                 "location identifier": "1",
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "<>",
+                                            "datum label": "Barcode2"
+                                        },
+                                        {
+                                            "scalar string datum": "<>",
+                                            "datum label": "Barcode3"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "Plate #"
+                                        },
+                                        {
+                                            "scalar double datum": 0.1,
+                                            "datum label": "Stack ID"
+                                        }
+                                    ]
+                                },
                                 "well location identifier": "A3",
-                                "well plate identifier": "*22M0TALA85N*",
-                                "custom information document": {
-                                    "Stack ID": 0.1,
-                                    "Barcode2": "<>",
-                                    "Barcode3": "<>",
-                                    "Plate #": 1.0
-                                }
+                                "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
                                 "value": 7436.0,
@@ -146,10 +221,21 @@
                                     {
                                         "device type": "luminescence detector",
                                         "detection type": "luminescence",
-                                        "custom information document": {
-                                            "Spots Per Well": 1.0,
-                                            "Det Param": "Standard",
-                                            "Orient": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "Det Param"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Orient"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Spots Per Well"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -158,14 +244,28 @@
                             "sample document": {
                                 "sample identifier": "*22M0TALA85N*_B1",
                                 "location identifier": "1",
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "<>",
+                                            "datum label": "Barcode2"
+                                        },
+                                        {
+                                            "scalar string datum": "<>",
+                                            "datum label": "Barcode3"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "Plate #"
+                                        },
+                                        {
+                                            "scalar double datum": 0.1,
+                                            "datum label": "Stack ID"
+                                        }
+                                    ]
+                                },
                                 "well location identifier": "B1",
-                                "well plate identifier": "*22M0TALA85N*",
-                                "custom information document": {
-                                    "Stack ID": 0.1,
-                                    "Barcode2": "<>",
-                                    "Barcode3": "<>",
-                                    "Plate #": 1.0
-                                }
+                                "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
                                 "value": 13346.0,
@@ -191,10 +291,21 @@
                                     {
                                         "device type": "luminescence detector",
                                         "detection type": "luminescence",
-                                        "custom information document": {
-                                            "Spots Per Well": 1.0,
-                                            "Det Param": "Standard",
-                                            "Orient": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "Det Param"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Orient"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Spots Per Well"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -203,14 +314,28 @@
                             "sample document": {
                                 "sample identifier": "*22M0TALA85N*_B2",
                                 "location identifier": "1",
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "<>",
+                                            "datum label": "Barcode2"
+                                        },
+                                        {
+                                            "scalar string datum": "<>",
+                                            "datum label": "Barcode3"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "Plate #"
+                                        },
+                                        {
+                                            "scalar double datum": 0.1,
+                                            "datum label": "Stack ID"
+                                        }
+                                    ]
+                                },
                                 "well location identifier": "B2",
-                                "well plate identifier": "*22M0TALA85N*",
-                                "custom information document": {
-                                    "Stack ID": 0.1,
-                                    "Barcode2": "<>",
-                                    "Barcode3": "<>",
-                                    "Plate #": 1.0
-                                }
+                                "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
                                 "value": 10408.0,
@@ -236,10 +361,21 @@
                                     {
                                         "device type": "luminescence detector",
                                         "detection type": "luminescence",
-                                        "custom information document": {
-                                            "Spots Per Well": 1.0,
-                                            "Det Param": "Standard",
-                                            "Orient": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "Det Param"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Orient"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Spots Per Well"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -248,14 +384,28 @@
                             "sample document": {
                                 "sample identifier": "*22M0TALA85N*_B3",
                                 "location identifier": "1",
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "<>",
+                                            "datum label": "Barcode2"
+                                        },
+                                        {
+                                            "scalar string datum": "<>",
+                                            "datum label": "Barcode3"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "Plate #"
+                                        },
+                                        {
+                                            "scalar double datum": 0.1,
+                                            "datum label": "Stack ID"
+                                        }
+                                    ]
+                                },
                                 "well location identifier": "B3",
-                                "well plate identifier": "*22M0TALA85N*",
-                                "custom information document": {
-                                    "Stack ID": 0.1,
-                                    "Barcode2": "<>",
-                                    "Barcode3": "<>",
-                                    "Plate #": 1.0
-                                }
+                                "well plate identifier": "*22M0TALA85N*"
                             },
                             "luminescence": {
                                 "value": 7433.0,
@@ -279,7 +429,7 @@
             "file name": "22M0TALA85_2023-09-08-1=Data=33933.txt",
             "UNC path": "Z:\\MSD-WP\\Export\\Data\\22M0TALA85_2023-09-08-1=Data=33933.txt",
             "ASM converter name": "allotropy_msd_methodical_mind",
-            "ASM converter version": "0.1.87",
+            "ASM converter version": "0.1.110",
             "software name": "MMPR 1.0.38",
             "software version": "MMPR 1.0.38"
         },
