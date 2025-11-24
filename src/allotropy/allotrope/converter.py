@@ -258,12 +258,20 @@ def add_custom_information_aggregate_document(
         elif isinstance(value, dict):
             # TQuantityValue-like dict object - store as double with unit
             if "value" in value:
-                item_kwargs["scalar_double_datum"] = float(value["value"])
+                try:
+                    item_kwargs["scalar_double_datum"] = float(value["value"])
+                except (ValueError, TypeError):
+                    # If value cannot be converted to float, store as string
+                    item_kwargs["scalar_string_datum"] = str(value["value"])
             if "unit" in value:
                 item_kwargs["unit"] = value["unit"]
         elif is_dataclass(value) and hasattr(value, "value") and hasattr(value, "unit"):
             # TQuantityValue-like dataclass object - store as double with unit
-            item_kwargs["scalar_double_datum"] = float(value.value)
+            try:
+                item_kwargs["scalar_double_datum"] = float(value.value)
+            except (ValueError, TypeError):
+                # If value cannot be converted to float, store as string
+                item_kwargs["scalar_string_datum"] = str(value.value)
             if value.unit:
                 item_kwargs["unit"] = value.unit
         else:
@@ -467,9 +475,7 @@ def structure_custom_information_document(val: dict[str, Any], name: str) -> Any
                 (
                     structure_custom_information_document(v, key)
                     if isinstance(v, dict)
-                    else value
-                    if isinstance(v, list)
-                    else v
+                    else value if isinstance(v, list) else v
                 )
                 for v in value
             ]
@@ -584,18 +590,18 @@ def register_unstructure_hooks(converter: Converter) -> None:
             if hasattr(obj, "custom_information_document") and not isinstance(
                 obj.custom_information_document, list
             ):
-                dataclass_dict[
-                    "custom information document"
-                ] = unstructure_custom_information_document(
-                    obj.custom_information_document
+                dataclass_dict["custom information document"] = (
+                    unstructure_custom_information_document(
+                        obj.custom_information_document
+                    )
                 )
             # Handle dynamically added custom_information_aggregate_document (additive ASM field)
             if hasattr(obj, "custom_information_aggregate_document"):
                 custom_info_agg = obj.custom_information_aggregate_document
                 if custom_info_agg is not None:
-                    dataclass_dict[
-                        "custom information aggregate document"
-                    ] = converter.unstructure(custom_info_agg)
+                    dataclass_dict["custom information aggregate document"] = (
+                        converter.unstructure(custom_info_agg)
+                    )
             return dataclass_dict
 
         # This custom unstructure function overrides the unstruct_hook. We need to do this at this level
