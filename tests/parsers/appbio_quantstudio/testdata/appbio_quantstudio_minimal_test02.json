@@ -27,16 +27,35 @@
                                 "sample identifier": "1. 200217 U251p14_-ab_-SEMA3F_8h_pA_1",
                                 "location identifier": "1",
                                 "sample role type": "unknown sample role",
-                                "well location identifier": "A1",
-                                "custom information document": {
-                                    "well identifier": 1,
-                                    "sample color": "RGB(176,23,31)",
-                                    "target color": "RGB(176,23,31)"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "RGB(176,23,31)",
+                                            "datum label": "sample color"
+                                        },
+                                        {
+                                            "scalar string datum": "RGB(176,23,31)",
+                                            "datum label": "target color"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "well identifier"
+                                        }
+                                    ]
+                                },
+                                "well location identifier": "A1"
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 78.122,
+                                                    "datum label": "Tm1"
+                                                }
+                                            ]
+                                        },
                                         "data processing document": {
                                             "automatic cycle threshold enabled setting": true,
                                             "cycle threshold value setting (qPCR)": {
@@ -52,14 +71,37 @@
                                                 "value": 40,
                                                 "unit": "#"
                                             },
-                                            "custom information document": {
-                                                "reference dna description": "N/A",
-                                                "reference sample description": "N/A",
-                                                "BADROX": "N",
-                                                "OUTLIERRG": "N",
-                                                "CQCONF": "N",
-                                                "omit": false,
-                                                "NOISE": "N"
+                                            "custom information aggregate document": {
+                                                "custom information document": [
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "BADROX"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "CQCONF"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "NOISE"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N",
+                                                        "datum label": "OUTLIERRG"
+                                                    },
+                                                    {
+                                                        "scalar boolean datum": false,
+                                                        "datum label": "omit"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N/A",
+                                                        "datum label": "reference dna description"
+                                                    },
+                                                    {
+                                                        "scalar string datum": "N/A",
+                                                        "datum label": "reference sample description"
+                                                    }
+                                                ]
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -121,9 +163,6 @@
                                                     ]
                                                 ]
                                             }
-                                        },
-                                        "custom information document": {
-                                            "Tm1": 78.122
                                         }
                                     }
                                 ]
@@ -258,7 +297,7 @@
             "file name": "appbio_quantstudio_minimal_test02.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test02.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.110",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },
