@@ -13,11 +13,14 @@
                                     {
                                         "device type": "spectrophotometer",
                                         "detection type": "absorbance",
-                                        "custom information document": {
-                                            "dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "dilution factor"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -56,11 +59,14 @@
                                     {
                                         "device type": "spectrophotometer",
                                         "detection type": "absorbance",
-                                        "custom information document": {
-                                            "dilution factor": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "dilution factor"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]

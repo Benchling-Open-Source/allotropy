@@ -12,28 +12,38 @@
                                 "device control document": [
                                     {
                                         "device type": "fluorescence detector",
-                                        "custom information document": {
-                                            "operating minimum": {
-                                                "value": "0.1-0.2",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "100-120",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.2-100",
-                                                "unit": "ng/µL"
-                                            },
-                                            "sample volume setting": {
-                                                "value": 1.0,
-                                                "unit": "μL"
-                                            },
-                                            "excitation setting": "BLUE",
-                                            "dilution factor": {
-                                                "value": 200.0,
-                                                "unit": "(unitless)"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 200.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "dilution factor"
+                                                },
+                                                {
+                                                    "scalar string datum": "BLUE",
+                                                    "datum label": "excitation setting"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "100-120",
+                                                    "datum label": "operating maximum"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "0.1-0.2",
+                                                    "datum label": "operating minimum"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "0.2-100",
+                                                    "datum label": "operating range"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "μL",
+                                                    "datum label": "sample volume setting"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -41,24 +51,33 @@
                             "sample document": {
                                 "sample identifier": "S1",
                                 "batch identifier": "101023-122753",
-                                "custom information document": {
-                                    "last read standards": "2023-06-10T10:28:14+00:00",
-                                    "qubit tube concentration": {
-                                        "value": 63.6,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.47839939461,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 1021.37558695,
-                                        "unit": "RFU"
-                                    },
-                                    "original sample concentration": {
-                                        "value": 12.7,
-                                        "unit": "ng/µL"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "2023-06-10T10:28:14+00:00",
+                                            "datum label": "last read standards"
+                                        },
+                                        {
+                                            "scalar double datum": 12.7,
+                                            "unit": "ng/µL",
+                                            "datum label": "original sample concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 63.6,
+                                            "unit": "ng/mL",
+                                            "datum label": "qubit tube concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 1.47839939461,
+                                            "unit": "RFU",
+                                            "datum label": "standard 1 concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 1021.37558695,
+                                            "unit": "RFU",
+                                            "datum label": "standard 2 concentration"
+                                        }
+                                    ]
                                 }
                             },
                             "fluorescence": {
@@ -81,28 +100,38 @@
                                 "device control document": [
                                     {
                                         "device type": "fluorescence detector",
-                                        "custom information document": {
-                                            "operating minimum": {
-                                                "value": "0.1-0.2",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "100-120",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.2-100",
-                                                "unit": "ng/µL"
-                                            },
-                                            "sample volume setting": {
-                                                "value": 1.0,
-                                                "unit": "μL"
-                                            },
-                                            "excitation setting": "BLUE",
-                                            "dilution factor": {
-                                                "value": 200.0,
-                                                "unit": "(unitless)"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 200.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "dilution factor"
+                                                },
+                                                {
+                                                    "scalar string datum": "BLUE",
+                                                    "datum label": "excitation setting"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "100-120",
+                                                    "datum label": "operating maximum"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "0.1-0.2",
+                                                    "datum label": "operating minimum"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "0.2-100",
+                                                    "datum label": "operating range"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "μL",
+                                                    "datum label": "sample volume setting"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -110,24 +139,33 @@
                             "sample document": {
                                 "sample identifier": "S2",
                                 "batch identifier": "101023-122753",
-                                "custom information document": {
-                                    "last read standards": "2023-06-10T10:28:14+00:00",
-                                    "qubit tube concentration": {
-                                        "value": 48.7,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.62874509575,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 978.738614734,
-                                        "unit": "RFU"
-                                    },
-                                    "original sample concentration": {
-                                        "value": 9.74,
-                                        "unit": "ng/µL"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "2023-06-10T10:28:14+00:00",
+                                            "datum label": "last read standards"
+                                        },
+                                        {
+                                            "scalar double datum": 9.74,
+                                            "unit": "ng/µL",
+                                            "datum label": "original sample concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 48.7,
+                                            "unit": "ng/mL",
+                                            "datum label": "qubit tube concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 1.62874509575,
+                                            "unit": "RFU",
+                                            "datum label": "standard 1 concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 978.738614734,
+                                            "unit": "RFU",
+                                            "datum label": "standard 2 concentration"
+                                        }
+                                    ]
                                 }
                             },
                             "fluorescence": {
@@ -150,28 +188,38 @@
                                 "device control document": [
                                     {
                                         "device type": "fluorescence detector",
-                                        "custom information document": {
-                                            "operating minimum": {
-                                                "value": "0.1-0.2",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "100-120",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.2-100",
-                                                "unit": "ng/µL"
-                                            },
-                                            "sample volume setting": {
-                                                "value": 1.0,
-                                                "unit": "μL"
-                                            },
-                                            "excitation setting": "BLUE",
-                                            "dilution factor": {
-                                                "value": 200.0,
-                                                "unit": "(unitless)"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 200.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "dilution factor"
+                                                },
+                                                {
+                                                    "scalar string datum": "BLUE",
+                                                    "datum label": "excitation setting"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "100-120",
+                                                    "datum label": "operating maximum"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "0.1-0.2",
+                                                    "datum label": "operating minimum"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "0.2-100",
+                                                    "datum label": "operating range"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "μL",
+                                                    "datum label": "sample volume setting"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -179,24 +227,33 @@
                             "sample document": {
                                 "sample identifier": "S3",
                                 "batch identifier": "101023-122753",
-                                "custom information document": {
-                                    "last read standards": "2023-06-10T10:28:14+00:00",
-                                    "qubit tube concentration": {
-                                        "value": 50.8,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.52851462833,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 998.4849411,
-                                        "unit": "RFU"
-                                    },
-                                    "original sample concentration": {
-                                        "value": 10.2,
-                                        "unit": "ng/µL"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "2023-06-10T10:28:14+00:00",
+                                            "datum label": "last read standards"
+                                        },
+                                        {
+                                            "scalar double datum": 10.2,
+                                            "unit": "ng/µL",
+                                            "datum label": "original sample concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 50.8,
+                                            "unit": "ng/mL",
+                                            "datum label": "qubit tube concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 1.52851462833,
+                                            "unit": "RFU",
+                                            "datum label": "standard 1 concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 998.4849411,
+                                            "unit": "RFU",
+                                            "datum label": "standard 2 concentration"
+                                        }
+                                    ]
                                 }
                             },
                             "fluorescence": {
@@ -219,28 +276,38 @@
                                 "device control document": [
                                     {
                                         "device type": "fluorescence detector",
-                                        "custom information document": {
-                                            "operating minimum": {
-                                                "value": "0.1-0.2",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "100-120",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.2-100",
-                                                "unit": "ng/µL"
-                                            },
-                                            "sample volume setting": {
-                                                "value": 1.0,
-                                                "unit": "μL"
-                                            },
-                                            "excitation setting": "BLUE",
-                                            "dilution factor": {
-                                                "value": 200.0,
-                                                "unit": "(unitless)"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 200.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "dilution factor"
+                                                },
+                                                {
+                                                    "scalar string datum": "BLUE",
+                                                    "datum label": "excitation setting"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "100-120",
+                                                    "datum label": "operating maximum"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "0.1-0.2",
+                                                    "datum label": "operating minimum"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "0.2-100",
+                                                    "datum label": "operating range"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "μL",
+                                                    "datum label": "sample volume setting"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -248,24 +315,33 @@
                             "sample document": {
                                 "sample identifier": "S4",
                                 "batch identifier": "101023-122753",
-                                "custom information document": {
-                                    "last read standards": "2023-06-10T10:28:14+00:00",
-                                    "qubit tube concentration": {
-                                        "value": 18.6,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.6036874789,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 988.649509754,
-                                        "unit": "RFU"
-                                    },
-                                    "original sample concentration": {
-                                        "value": 3.72,
-                                        "unit": "ng/µL"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "2023-06-10T10:28:14+00:00",
+                                            "datum label": "last read standards"
+                                        },
+                                        {
+                                            "scalar double datum": 3.72,
+                                            "unit": "ng/µL",
+                                            "datum label": "original sample concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 18.6,
+                                            "unit": "ng/mL",
+                                            "datum label": "qubit tube concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 1.6036874789,
+                                            "unit": "RFU",
+                                            "datum label": "standard 1 concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 988.649509754,
+                                            "unit": "RFU",
+                                            "datum label": "standard 2 concentration"
+                                        }
+                                    ]
                                 }
                             },
                             "fluorescence": {
@@ -288,28 +364,38 @@
                                 "device control document": [
                                     {
                                         "device type": "fluorescence detector",
-                                        "custom information document": {
-                                            "operating minimum": {
-                                                "value": "0.1-0.2",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "100-120",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.2-100",
-                                                "unit": "ng/µL"
-                                            },
-                                            "sample volume setting": {
-                                                "value": 1.0,
-                                                "unit": "μL"
-                                            },
-                                            "excitation setting": "BLUE",
-                                            "dilution factor": {
-                                                "value": 200.0,
-                                                "unit": "(unitless)"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 200.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "dilution factor"
+                                                },
+                                                {
+                                                    "scalar string datum": "BLUE",
+                                                    "datum label": "excitation setting"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "100-120",
+                                                    "datum label": "operating maximum"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "0.1-0.2",
+                                                    "datum label": "operating minimum"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "0.2-100",
+                                                    "datum label": "operating range"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "μL",
+                                                    "datum label": "sample volume setting"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -317,24 +403,33 @@
                             "sample document": {
                                 "sample identifier": "S5",
                                 "batch identifier": "101023-122753",
-                                "custom information document": {
-                                    "last read standards": "2023-06-10T10:28:14+00:00",
-                                    "qubit tube concentration": {
-                                        "value": 1070.0,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.6036874789,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 976.49985926,
-                                        "unit": "RFU"
-                                    },
-                                    "original sample concentration": {
-                                        "value": 214.0,
-                                        "unit": "ng/µL"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "2023-06-10T10:28:14+00:00",
+                                            "datum label": "last read standards"
+                                        },
+                                        {
+                                            "scalar double datum": 214.0,
+                                            "unit": "ng/µL",
+                                            "datum label": "original sample concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 1070.0,
+                                            "unit": "ng/mL",
+                                            "datum label": "qubit tube concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 1.6036874789,
+                                            "unit": "RFU",
+                                            "datum label": "standard 1 concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 976.49985926,
+                                            "unit": "RFU",
+                                            "datum label": "standard 2 concentration"
+                                        }
+                                    ]
                                 }
                             },
                             "fluorescence": {
@@ -357,28 +452,38 @@
                                 "device control document": [
                                     {
                                         "device type": "fluorescence detector",
-                                        "custom information document": {
-                                            "operating minimum": {
-                                                "value": "0.1-0.2",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "100-120",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.2-100",
-                                                "unit": "ng/µL"
-                                            },
-                                            "sample volume setting": {
-                                                "value": 1.0,
-                                                "unit": "μL"
-                                            },
-                                            "excitation setting": "BLUE",
-                                            "dilution factor": {
-                                                "value": 200.0,
-                                                "unit": "(unitless)"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 200.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "dilution factor"
+                                                },
+                                                {
+                                                    "scalar string datum": "BLUE",
+                                                    "datum label": "excitation setting"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "100-120",
+                                                    "datum label": "operating maximum"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "0.1-0.2",
+                                                    "datum label": "operating minimum"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "0.2-100",
+                                                    "datum label": "operating range"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "μL",
+                                                    "datum label": "sample volume setting"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -386,24 +491,33 @@
                             "sample document": {
                                 "sample identifier": "S6",
                                 "batch identifier": "101023-122753",
-                                "custom information document": {
-                                    "last read standards": "2023-06-10T10:28:14+00:00",
-                                    "qubit tube concentration": {
-                                        "value": 70.5,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.40322654403,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 878.522864107,
-                                        "unit": "RFU"
-                                    },
-                                    "original sample concentration": {
-                                        "value": 14.1,
-                                        "unit": "ng/µL"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "2023-06-10T10:28:14+00:00",
+                                            "datum label": "last read standards"
+                                        },
+                                        {
+                                            "scalar double datum": 14.1,
+                                            "unit": "ng/µL",
+                                            "datum label": "original sample concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 70.5,
+                                            "unit": "ng/mL",
+                                            "datum label": "qubit tube concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 1.40322654403,
+                                            "unit": "RFU",
+                                            "datum label": "standard 1 concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 878.522864107,
+                                            "unit": "RFU",
+                                            "datum label": "standard 2 concentration"
+                                        }
+                                    ]
                                 }
                             },
                             "fluorescence": {
@@ -426,28 +540,38 @@
                                 "device control document": [
                                     {
                                         "device type": "fluorescence detector",
-                                        "custom information document": {
-                                            "operating minimum": {
-                                                "value": "0.1-0.2",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "100-120",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.2-100",
-                                                "unit": "ng/µL"
-                                            },
-                                            "sample volume setting": {
-                                                "value": 1.0,
-                                                "unit": "μL"
-                                            },
-                                            "excitation setting": "BLUE",
-                                            "dilution factor": {
-                                                "value": 200.0,
-                                                "unit": "(unitless)"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 200.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "dilution factor"
+                                                },
+                                                {
+                                                    "scalar string datum": "BLUE",
+                                                    "datum label": "excitation setting"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "100-120",
+                                                    "datum label": "operating maximum"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "0.1-0.2",
+                                                    "datum label": "operating minimum"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "0.2-100",
+                                                    "datum label": "operating range"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "μL",
+                                                    "datum label": "sample volume setting"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -455,24 +579,33 @@
                             "sample document": {
                                 "sample identifier": "S7",
                                 "batch identifier": "101023-122753",
-                                "custom information document": {
-                                    "last read standards": "2023-06-10T10:28:14+00:00",
-                                    "qubit tube concentration": {
-                                        "value": 72.6,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.25288084289,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 818.655021114,
-                                        "unit": "RFU"
-                                    },
-                                    "original sample concentration": {
-                                        "value": 14.5,
-                                        "unit": "ng/µL"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "2023-06-10T10:28:14+00:00",
+                                            "datum label": "last read standards"
+                                        },
+                                        {
+                                            "scalar double datum": 14.5,
+                                            "unit": "ng/µL",
+                                            "datum label": "original sample concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 72.6,
+                                            "unit": "ng/mL",
+                                            "datum label": "qubit tube concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 1.25288084289,
+                                            "unit": "RFU",
+                                            "datum label": "standard 1 concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 818.655021114,
+                                            "unit": "RFU",
+                                            "datum label": "standard 2 concentration"
+                                        }
+                                    ]
                                 }
                             },
                             "fluorescence": {
@@ -495,28 +628,38 @@
                                 "device control document": [
                                     {
                                         "device type": "fluorescence detector",
-                                        "custom information document": {
-                                            "operating minimum": {
-                                                "value": "0.1-0.2",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "100-120",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.2-100",
-                                                "unit": "ng/µL"
-                                            },
-                                            "sample volume setting": {
-                                                "value": 1.0,
-                                                "unit": "μL"
-                                            },
-                                            "excitation setting": "BLUE",
-                                            "dilution factor": {
-                                                "value": 200.0,
-                                                "unit": "(unitless)"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 200.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "dilution factor"
+                                                },
+                                                {
+                                                    "scalar string datum": "BLUE",
+                                                    "datum label": "excitation setting"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "100-120",
+                                                    "datum label": "operating maximum"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "0.1-0.2",
+                                                    "datum label": "operating minimum"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "0.2-100",
+                                                    "datum label": "operating range"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "μL",
+                                                    "datum label": "sample volume setting"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -524,24 +667,33 @@
                             "sample document": {
                                 "sample identifier": "S8",
                                 "batch identifier": "101023-122753",
-                                "custom information document": {
-                                    "last read standards": "2023-06-10T10:28:14+00:00",
-                                    "qubit tube concentration": {
-                                        "value": 31.7,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.27793845975,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 824.314796187,
-                                        "unit": "RFU"
-                                    },
-                                    "original sample concentration": {
-                                        "value": 6.34,
-                                        "unit": "ng/µL"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "2023-06-10T10:28:14+00:00",
+                                            "datum label": "last read standards"
+                                        },
+                                        {
+                                            "scalar double datum": 6.34,
+                                            "unit": "ng/µL",
+                                            "datum label": "original sample concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 31.7,
+                                            "unit": "ng/mL",
+                                            "datum label": "qubit tube concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 1.27793845975,
+                                            "unit": "RFU",
+                                            "datum label": "standard 1 concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 824.314796187,
+                                            "unit": "RFU",
+                                            "datum label": "standard 2 concentration"
+                                        }
+                                    ]
                                 }
                             },
                             "fluorescence": {
@@ -564,28 +716,38 @@
                                 "device control document": [
                                     {
                                         "device type": "fluorescence detector",
-                                        "custom information document": {
-                                            "operating minimum": {
-                                                "value": "0.1-0.2",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "100-120",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.2-100",
-                                                "unit": "ng/µL"
-                                            },
-                                            "sample volume setting": {
-                                                "value": 1.0,
-                                                "unit": "μL"
-                                            },
-                                            "excitation setting": "BLUE",
-                                            "dilution factor": {
-                                                "value": 200.0,
-                                                "unit": "(unitless)"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 200.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "dilution factor"
+                                                },
+                                                {
+                                                    "scalar string datum": "BLUE",
+                                                    "datum label": "excitation setting"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "100-120",
+                                                    "datum label": "operating maximum"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "0.1-0.2",
+                                                    "datum label": "operating minimum"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "0.2-100",
+                                                    "datum label": "operating range"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "μL",
+                                                    "datum label": "sample volume setting"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -593,24 +755,33 @@
                             "sample document": {
                                 "sample identifier": "S9",
                                 "batch identifier": "101023-122753",
-                                "custom information document": {
-                                    "last read standards": "2023-06-10T10:28:14+00:00",
-                                    "qubit tube concentration": {
-                                        "value": 969.0,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.47839939461,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 1021.37558695,
-                                        "unit": "RFU"
-                                    },
-                                    "original sample concentration": {
-                                        "value": 194.0,
-                                        "unit": "ng/µL"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "2023-06-10T10:28:14+00:00",
+                                            "datum label": "last read standards"
+                                        },
+                                        {
+                                            "scalar double datum": 194.0,
+                                            "unit": "ng/µL",
+                                            "datum label": "original sample concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 969.0,
+                                            "unit": "ng/mL",
+                                            "datum label": "qubit tube concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 1.47839939461,
+                                            "unit": "RFU",
+                                            "datum label": "standard 1 concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 1021.37558695,
+                                            "unit": "RFU",
+                                            "datum label": "standard 2 concentration"
+                                        }
+                                    ]
                                 }
                             },
                             "fluorescence": {
@@ -633,28 +804,38 @@
                                 "device control document": [
                                     {
                                         "device type": "fluorescence detector",
-                                        "custom information document": {
-                                            "operating minimum": {
-                                                "value": "0.1-0.2",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "100-120",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.2-100",
-                                                "unit": "ng/µL"
-                                            },
-                                            "sample volume setting": {
-                                                "value": 1.0,
-                                                "unit": "μL"
-                                            },
-                                            "excitation setting": "BLUE",
-                                            "dilution factor": {
-                                                "value": 200.0,
-                                                "unit": "(unitless)"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 200.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "dilution factor"
+                                                },
+                                                {
+                                                    "scalar string datum": "BLUE",
+                                                    "datum label": "excitation setting"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "100-120",
+                                                    "datum label": "operating maximum"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "0.1-0.2",
+                                                    "datum label": "operating minimum"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "0.2-100",
+                                                    "datum label": "operating range"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "μL",
+                                                    "datum label": "sample volume setting"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -662,24 +843,33 @@
                             "sample document": {
                                 "sample identifier": "S10",
                                 "batch identifier": "101023-122753",
-                                "custom information document": {
-                                    "last read standards": "2023-06-10T10:28:14+00:00",
-                                    "qubit tube concentration": {
-                                        "value": 678.0,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.47839939461,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 1021.37558695,
-                                        "unit": "RFU"
-                                    },
-                                    "original sample concentration": {
-                                        "value": 136.0,
-                                        "unit": "ng/µL"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "2023-06-10T10:28:14+00:00",
+                                            "datum label": "last read standards"
+                                        },
+                                        {
+                                            "scalar double datum": 136.0,
+                                            "unit": "ng/µL",
+                                            "datum label": "original sample concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 678.0,
+                                            "unit": "ng/mL",
+                                            "datum label": "qubit tube concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 1.47839939461,
+                                            "unit": "RFU",
+                                            "datum label": "standard 1 concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 1021.37558695,
+                                            "unit": "RFU",
+                                            "datum label": "standard 2 concentration"
+                                        }
+                                    ]
                                 }
                             },
                             "fluorescence": {
@@ -702,28 +892,38 @@
                                 "device control document": [
                                     {
                                         "device type": "fluorescence detector",
-                                        "custom information document": {
-                                            "operating minimum": {
-                                                "value": "0.1-0.2",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating maximum": {
-                                                "value": "100-120",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "0.2-100",
-                                                "unit": "ng/µL"
-                                            },
-                                            "sample volume setting": {
-                                                "value": 1.0,
-                                                "unit": "μL"
-                                            },
-                                            "excitation setting": "BLUE",
-                                            "dilution factor": {
-                                                "value": 200.0,
-                                                "unit": "(unitless)"
-                                            }
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 200.0,
+                                                    "unit": "(unitless)",
+                                                    "datum label": "dilution factor"
+                                                },
+                                                {
+                                                    "scalar string datum": "BLUE",
+                                                    "datum label": "excitation setting"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "100-120",
+                                                    "datum label": "operating maximum"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "0.1-0.2",
+                                                    "datum label": "operating minimum"
+                                                },
+                                                {
+                                                    "unit": "ng/µL",
+                                                    "scalar string datum": "0.2-100",
+                                                    "datum label": "operating range"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "unit": "μL",
+                                                    "datum label": "sample volume setting"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -731,24 +931,33 @@
                             "sample document": {
                                 "sample identifier": "S11",
                                 "batch identifier": "101023-122753",
-                                "custom information document": {
-                                    "last read standards": "2023-06-10T10:28:14+00:00",
-                                    "qubit tube concentration": {
-                                        "value": 300.0,
-                                        "unit": "ng/mL"
-                                    },
-                                    "standard 1 concentration": {
-                                        "value": 1.47839939461,
-                                        "unit": "RFU"
-                                    },
-                                    "standard 2 concentration": {
-                                        "value": 1021.37558695,
-                                        "unit": "RFU"
-                                    },
-                                    "original sample concentration": {
-                                        "value": 60.0,
-                                        "unit": "ng/µL"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "2023-06-10T10:28:14+00:00",
+                                            "datum label": "last read standards"
+                                        },
+                                        {
+                                            "scalar double datum": 60.0,
+                                            "unit": "ng/µL",
+                                            "datum label": "original sample concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 300.0,
+                                            "unit": "ng/mL",
+                                            "datum label": "qubit tube concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 1.47839939461,
+                                            "unit": "RFU",
+                                            "datum label": "standard 1 concentration"
+                                        },
+                                        {
+                                            "scalar double datum": 1021.37558695,
+                                            "unit": "RFU",
+                                            "datum label": "standard 2 concentration"
+                                        }
+                                    ]
                                 }
                             },
                             "fluorescence": {
@@ -773,7 +982,7 @@
             "UNC path": "tests/parsers/thermo_fisher_qubit_flex/testdata/thermo_fisher_qubit_flex_example_03.xlsx",
             "software name": "Qubit Flex software",
             "ASM converter name": "allotropy_thermo_fisher_scientific_qubit_flex",
-            "ASM converter version": "0.1.71"
+            "ASM converter version": "0.1.110"
         }
     }
 }

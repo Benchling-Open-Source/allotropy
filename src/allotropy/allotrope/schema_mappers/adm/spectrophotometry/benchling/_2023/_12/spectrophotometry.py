@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Any
 
-from allotropy.allotrope.converter import add_custom_information_document
+from allotropy.allotrope.converter import add_custom_information_aggregate_document
 from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
@@ -27,6 +27,10 @@ from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectr
     UltravioletAbsorbanceSpectrumDetectionDeviceControlAggregateDocument,
     UltravioletAbsorbanceSpectrumDetectionDeviceControlDocumentItem,
     UltravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems,
+)
+from allotropy.allotrope.models.adm.spectrophotometry.rec._2024._06.spectrophotometry import (
+    CustomInformationAggregateDocument,
+    CustomInformationDocumentItem,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueKiloDalton,
@@ -201,8 +205,11 @@ class Mapper(SchemaMapper[Data, Model]):
     ) -> SpectrophotometryDocumentItem:
         return SpectrophotometryDocumentItem(
             analyst=measurement_group.analyst,
-            measurement_aggregate_document=add_custom_information_document(
-                MeasurementAggregateDocument(
+            measurement_aggregate_document=add_custom_information_aggregate_document(
+                measurement_group.custom_info,
+                CustomInformationAggregateDocument,
+                CustomInformationDocumentItem,
+                aggregate_document=MeasurementAggregateDocument(
                     measurement_time=self.get_date_time(
                         assert_not_none(measurement_group.measurement_time)
                     ),
@@ -213,7 +220,6 @@ class Mapper(SchemaMapper[Data, Model]):
                         for measurement in measurement_group.measurements
                     ],
                 ),
-                measurement_group.custom_info,
             ),
         )
 
@@ -246,8 +252,11 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
             device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
                 device_control_document=[
-                    add_custom_information_document(
-                        UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
+                    add_custom_information_aggregate_document(
+                        self._get_device_control_custom_document(measurement),
+                        CustomInformationAggregateDocument,
+                        CustomInformationDocumentItem,
+                        aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
                             device_type=metadata.device_type,
                             detection_type=metadata.detection_type,
                             detector_wavelength_setting=quantity_or_none(
@@ -259,7 +268,6 @@ class Mapper(SchemaMapper[Data, Model]):
                                 measurement.electronic_absorbance_reference_wavelength_setting,
                             ),
                         ),
-                        self._get_device_control_custom_document(measurement),
                     )
                 ]
             ),
@@ -284,7 +292,12 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.cursor_absorbance,
             ),
         }
-        return add_custom_information_document(doc, custom_info_doc)
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            custom_info_doc,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=doc,
+        )
 
     def _get_ultraviolet_absorbance_spectrum_measurement_document(
         self, measurement: Measurement, metadata: Metadata
@@ -297,12 +310,14 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
             device_control_aggregate_document=UltravioletAbsorbanceSpectrumDetectionDeviceControlAggregateDocument(
                 device_control_document=[
-                    add_custom_information_document(
-                        UltravioletAbsorbanceSpectrumDetectionDeviceControlDocumentItem(
+                    add_custom_information_aggregate_document(
+                        self._get_device_control_custom_document(measurement),
+                        CustomInformationAggregateDocument,
+                        CustomInformationDocumentItem,
+                        aggregate_document=UltravioletAbsorbanceSpectrumDetectionDeviceControlDocumentItem(
                             device_type=metadata.device_type,
                             detection_type=metadata.detection_type,
                         ),
-                        self._get_device_control_custom_document(measurement),
                     )
                 ]
             ),
@@ -311,7 +326,12 @@ class Mapper(SchemaMapper[Data, Model]):
                 msg="Parser must provide absorption spectrum data cube",
             ),
         )
-        return add_custom_information_document(doc, measurement.custom_info)
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            measurement.custom_info,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=doc,
+        )
 
     def _get_fluorescence_measurement_document(
         self, measurement: Measurement, metadata: Metadata
@@ -324,15 +344,17 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
             device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
                 device_control_document=[
-                    add_custom_information_document(
-                        FluorescencePointDetectionDeviceControlDocumentItem(
+                    add_custom_information_aggregate_document(
+                        self._get_device_control_custom_document(measurement),
+                        CustomInformationAggregateDocument,
+                        CustomInformationDocumentItem,
+                        aggregate_document=FluorescencePointDetectionDeviceControlDocumentItem(
                             device_type=metadata.device_type,
                             detector_wavelength_setting=quantity_or_none(
                                 TQuantityValueNanometer,
                                 measurement.detector_wavelength_setting,
                             ),
                         ),
-                        self._get_device_control_custom_document(measurement),
                     )
                 ]
             ),
@@ -340,7 +362,12 @@ class Mapper(SchemaMapper[Data, Model]):
                 value=assert_not_none(measurement.fluorescence)  # type: ignore[arg-type]
             ),
         )
-        return add_custom_information_document(doc, measurement.custom_info)
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            measurement.custom_info,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=doc,
+        )
 
     def _get_device_control_custom_document(
         self, measurement: Measurement
@@ -385,14 +412,16 @@ class Mapper(SchemaMapper[Data, Model]):
             TQuantityValueKiloDalton, sample_custom_info.get("Mol. Wt. kda")
         )
 
-        return add_custom_information_document(
-            SampleDocument(
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            sample_custom_info | custom_info_doc,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=SampleDocument(
                 sample_identifier=measurement.sample_identifier,
                 batch_identifier=measurement.batch_identifier,
                 location_identifier=measurement.location_identifier,
                 well_plate_identifier=measurement.well_plate_identifier,
             ),
-            sample_custom_info | custom_info_doc,
         )
 
     def _get_processed_data_aggregate_document(
@@ -424,15 +453,17 @@ class Mapper(SchemaMapper[Data, Model]):
 
         return ProcessedDataAggregateDocument(
             processed_data_document=[
-                add_custom_information_document(
-                    ProcessedDataDocumentItem(
+                add_custom_information_aggregate_document(
+                    processed_data_custom_info,
+                    CustomInformationAggregateDocument,
+                    CustomInformationDocumentItem,
+                    aggregate_document=ProcessedDataDocumentItem(
                         # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
                         mass_concentration=quantity_or_none(
                             get_quantity_class(feature.unit), feature.result  # type: ignore[arg-type]
                         ),
                         processed_data_identifier=data.identifier,
                     ),
-                    processed_data_custom_info,
                 )
                 for feature in data.features
             ]
