@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Any, TypeVar
 
-from allotropy.allotrope.converter import add_custom_information_document
+from allotropy.allotrope.converter import add_custom_information_aggregate_document
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import (
     CalculatedDataDocumentItem,
     ContainerType,
@@ -25,6 +25,10 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import (
     ReporterDyeDataCube,
     SampleDocument,
     TCalculatedDataAggregateDocument,
+)
+from allotropy.allotrope.models.adm.pcr.rec._2024._09.dpcr import (
+    CustomInformationAggregateDocument,
+    CustomInformationDocumentItem,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
@@ -189,8 +193,11 @@ class Mapper(SchemaMapper[Data, Model]):
             well_plate_identifier=measurement.plate_identifier,
             sample_role_type=measurement.sample_role_type,
         )
-        sample_document = add_custom_information_document(
-            sample_document, measurement.sample_custom_info
+        sample_document = add_custom_information_aggregate_document(
+            measurement.sample_custom_info,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=sample_document,
         )
         measurement_doc = MeasurementDocumentItem(
             measurement_identifier=measurement.identifier,
@@ -250,7 +257,12 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
         )
 
-        return add_custom_information_document(measurement_doc, measurement.custom_info)
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            measurement.custom_info,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=measurement_doc,
+        )
 
     def _get_calculated_data_aggregate_document(
         self, calculated_data_items: list[CalculatedDataItem] | None
