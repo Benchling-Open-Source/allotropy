@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Any, TypeVar
 
-from allotropy.allotrope.converter import add_custom_information_document
+from allotropy.allotrope.converter import add_custom_information_aggregate_document
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
     BaselineCorrectedReporterDataCube,
     CalculatedDataDocumentItem,
@@ -27,6 +27,10 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
     ReporterDyeDataCube,
     SampleDocument,
     TCalculatedDataAggregateDocument,
+)
+from allotropy.allotrope.models.adm.pcr.rec._2024._09.qpcr import (
+    CustomInformationAggregateDocument,
+    CustomInformationDocumentItem,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TNullableQuantityValueUnitless,
@@ -244,7 +248,12 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.melting_curve_data_cube, MeltingCurveDataCube
             ),
         )
-        return add_custom_information_document(measurement_doc, measurement.custom_info)
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            measurement.custom_info,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=measurement_doc,
+        )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
         # TODO(ASM gaps): we believe these values should be added to ASM.
@@ -255,8 +264,11 @@ class Mapper(SchemaMapper[Data, Model]):
             well_location_identifier=measurement.well_location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
         )
-        return add_custom_information_document(
-            sample_doc, (measurement.sample_custom_info or {}) | custom_info_doc
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            (measurement.sample_custom_info or {}) | custom_info_doc,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=sample_doc,
         )
 
     def _get_processed_data_aggregate_document(
@@ -305,7 +317,12 @@ class Mapper(SchemaMapper[Data, Model]):
         )
         return ProcessedDataAggregateDocument(
             processed_data_document=[
-                add_custom_information_document(doc, data.custom_info)
+                add_custom_information_aggregate_document(
+                    data.custom_info,
+                    CustomInformationAggregateDocument,
+                    CustomInformationDocumentItem,
+                    aggregate_document=doc,
+                )
             ]
         )
 
