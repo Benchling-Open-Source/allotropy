@@ -171,45 +171,68 @@ def add_custom_information_document(
 
 
 def add_custom_information_aggregate_document(
-    custom_info_dict: Mapping[str, Any] | None,
+    custom_info_source: Mapping[str, Any] | None,
     custom_information_aggregate_document_class: type,
     custom_information_document_item_class: type,
+    aggregate_document: Any = None,
 ) -> Any:
     """
-    Create a CustomInformationAggregateDocument from a flat dictionary.
-
-    This method validates that the input dictionary does not contain nested
-    dictionaries or lists (except for TQuantityValue-like objects with 'value' and 'unit').
-
     Args:
-        custom_info_dict: Dictionary with key-value pairs to convert
+        custom_info_source: A flat dictionary of custom information
         custom_information_aggregate_document_class: The aggregate document class to instantiate
         custom_information_document_item_class: The document item class to instantiate
+        aggregate_document: Optional aggregate document to dynamically add the field to
 
     Returns:
-        CustomInformationAggregateDocument instance or None if input is empty
+        - If aggregate_document is provided: Returns the aggregate_document with custom_information_aggregate_document added
+        - Otherwise: Returns CustomInformationAggregateDocument instance or None if input is empty
 
     Raises:
         ValueError: If nested dictionaries or lists are found in the input
     """
-    if not custom_info_dict:
-        return None
+    if not custom_info_source:
+        return aggregate_document if aggregate_document is not None else None
 
-    # Remove None values
-    cleaned_dict = {k: v for k, v in custom_info_dict.items() if v is not None}
+    # Handle dictionary input
+    custom_info_dict = dict(custom_info_source)
+
+    if not custom_info_dict:
+        return aggregate_document if aggregate_document is not None else None
+
+    # Remove None values and TQuantityValue-like objects with None values
+    cleaned_dict = {}
+    for k, v in custom_info_dict.items():
+        if v is None:
+            continue
+        # Skip TQuantityValue-like dict objects where the value is None
+        if isinstance(v, dict) and "value" in v and v["value"] is None:
+            continue
+        # Skip TQuantityValue-like dataclass objects where the value is None
+        if is_dataclass(v) and hasattr(v, "value") and v.value is None:
+            continue
+        cleaned_dict[k] = v
 
     if not cleaned_dict:
-        return None
+        return aggregate_document if aggregate_document is not None else None
 
     # Validate no nested structures (except TQuantityValue-like objects)
     for key, value in cleaned_dict.items():
         if isinstance(value, dict):
-            # Allow TQuantityValue-like objects (have 'value' and 'unit' keys)
+            # Allow TQuantityValue-like dict objects (have 'value' and 'unit' keys)
             if not (set(value.keys()) <= {"value", "unit"}):
                 msg = (
                     f"CustomInformationAggregateDocument does not support nested dictionaries. "
                     f"Found nested dict at key '{key}': {value}. "
                     f"Please flatten the structure or use custom_information_document instead."
+                )
+                raise ValueError(msg)
+        elif is_dataclass(value):
+            # Allow TQuantityValue-like dataclass objects (have 'value' and 'unit' attributes)
+            if not (hasattr(value, "value") and hasattr(value, "unit")):
+                msg = (
+                    f"CustomInformationAggregateDocument does not support nested dataclass objects. "
+                    f"Found dataclass at key '{key}': {value}. "
+                    f"Please use scalar values only or use custom_information_document instead."
                 )
                 raise ValueError(msg)
         elif isinstance(value, list):
@@ -233,20 +256,38 @@ def add_custom_information_aggregate_document(
         elif isinstance(value, str):
             item_kwargs["scalar_string_datum"] = value
         elif isinstance(value, dict):
-            # TQuantityValue-like object - store as double with unit
+            # TQuantityValue-like dict object - store as double with unit
             if "value" in value:
                 item_kwargs["scalar_double_datum"] = float(value["value"])
             if "unit" in value:
                 item_kwargs["unit"] = value["unit"]
+        elif is_dataclass(value) and hasattr(value, "value") and hasattr(value, "unit"):
+            # TQuantityValue-like dataclass object - store as double with unit
+            item_kwargs["scalar_double_datum"] = float(value.value)
+            if value.unit:
+                item_kwargs["unit"] = value.unit
         else:
             # Fallback to string representation
             item_kwargs["scalar_string_datum"] = str(value)
 
         items.append(custom_information_document_item_class(**item_kwargs))
 
-    return custom_information_aggregate_document_class(
+    # Sort items by datum_label to ensure consistent ordering
+    items.sort(key=lambda item: item.datum_label)
+
+    custom_info_aggregate_doc = custom_information_aggregate_document_class(
         custom_information_document=items
     )
+
+    # If aggregate_document is provided, dynamically add the field and return it
+    if aggregate_document is not None:
+        aggregate_document.custom_information_aggregate_document = (
+            custom_info_aggregate_doc
+        )
+        return aggregate_document
+
+    # Otherwise, just return the custom info aggregate document
+    return custom_info_aggregate_doc
 
 
 def _convert_model_key_to_dict_key(key: str) -> str:
@@ -426,9 +467,7 @@ def structure_custom_information_document(val: dict[str, Any], name: str) -> Any
                 (
                     structure_custom_information_document(v, key)
                     if isinstance(v, dict)
-                    else value
-                    if isinstance(v, list)
-                    else v
+                    else value if isinstance(v, list) else v
                 )
                 for v in value
             ]
@@ -543,11 +582,18 @@ def register_unstructure_hooks(converter: Converter) -> None:
             if hasattr(obj, "custom_information_document") and not isinstance(
                 obj.custom_information_document, list
             ):
-                dataclass_dict[
-                    "custom information document"
-                ] = unstructure_custom_information_document(
-                    obj.custom_information_document
+                dataclass_dict["custom information document"] = (
+                    unstructure_custom_information_document(
+                        obj.custom_information_document
+                    )
                 )
+            # Handle dynamically added custom_information_aggregate_document (additive ASM field)
+            if hasattr(obj, "custom_information_aggregate_document"):
+                custom_info_agg = obj.custom_information_aggregate_document
+                if custom_info_agg is not None:
+                    dataclass_dict["custom information aggregate document"] = (
+                        converter.unstructure(custom_info_agg)
+                    )
             return dataclass_dict
 
         # This custom unstructure function overrides the unstruct_hook. We need to do this at this level
