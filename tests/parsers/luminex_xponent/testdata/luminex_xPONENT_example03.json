@@ -10,6 +10,30 @@
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "5000 to 25000",
+                                                    "datum label": "DDGate"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolAnalysis"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolHeater"
+                                                },
+                                                {
+                                                    "scalar string datum": "Map",
+                                                    "datum label": "ProtocolMicrosphere"
+                                                },
+                                                {
+                                                    "scalar string datum": "0 sec",
+                                                    "datum label": "SampleTimeout"
+                                                }
+                                            ]
+                                        },
                                         "detector gain setting": "Standard PMT",
                                         "sample volume setting": {
                                             "value": 50.0,
@@ -22,13 +46,6 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
-                                        },
-                                        "custom information document": {
-                                            "ProtocolHeater": "Off",
-                                            "DDGate": "5000 to 25000",
-                                            "SampleTimeout": "0 sec",
-                                            "ProtocolAnalysis": "Off",
-                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -37,10 +54,15 @@
                             "measurement time": "2023-05-18T11:03:56+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown1",
-                                "location identifier": "A1",
-                                "custom information document": {
-                                    "BatchDescription": "<None>"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "<None>",
+                                            "datum label": "BatchDescription"
+                                        }
+                                    ]
+                                },
+                                "location identifier": "A1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -116,6 +138,18 @@
                             }
                         }
                     ],
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "5/18/2023 11:36:34 AM",
+                                "datum label": "BatchStopTime"
+                            },
+                            {
+                                "scalar string datum": "baz",
+                                "datum label": "ProtocolDescription"
+                            }
+                        ]
+                    },
                     "analytical method identifier": "foo_bar",
                     "method version": "3",
                     "experimental data identifier": "ABCD_123456_20230518",
@@ -123,10 +157,6 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "BatchStopTime": "5/18/2023 11:36:34 AM",
-                        "ProtocolDescription": "baz"
                     }
                 },
                 "analyst": "waldo"
@@ -139,6 +169,30 @@
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "5000 to 25000",
+                                                    "datum label": "DDGate"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolAnalysis"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolHeater"
+                                                },
+                                                {
+                                                    "scalar string datum": "Map",
+                                                    "datum label": "ProtocolMicrosphere"
+                                                },
+                                                {
+                                                    "scalar string datum": "0 sec",
+                                                    "datum label": "SampleTimeout"
+                                                }
+                                            ]
+                                        },
                                         "detector gain setting": "Standard PMT",
                                         "sample volume setting": {
                                             "value": 50.0,
@@ -151,13 +205,6 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
-                                        },
-                                        "custom information document": {
-                                            "ProtocolHeater": "Off",
-                                            "DDGate": "5000 to 25000",
-                                            "SampleTimeout": "0 sec",
-                                            "ProtocolAnalysis": "Off",
-                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -166,10 +213,15 @@
                             "measurement time": "2023-05-18T11:03:56+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown2",
-                                "location identifier": "B1",
-                                "custom information document": {
-                                    "BatchDescription": "<None>"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "<None>",
+                                            "datum label": "BatchDescription"
+                                        }
+                                    ]
+                                },
+                                "location identifier": "B1"
                             },
                             "assay bead count": {
                                 "value": 832.0,
@@ -235,6 +287,18 @@
                             }
                         }
                     ],
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "5/18/2023 11:36:34 AM",
+                                "datum label": "BatchStopTime"
+                            },
+                            {
+                                "scalar string datum": "baz",
+                                "datum label": "ProtocolDescription"
+                            }
+                        ]
+                    },
                     "analytical method identifier": "foo_bar",
                     "method version": "3",
                     "experimental data identifier": "ABCD_123456_20230518",
@@ -242,10 +306,6 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "BatchStopTime": "5/18/2023 11:36:34 AM",
-                        "ProtocolDescription": "baz"
                     }
                 },
                 "analyst": "waldo"
@@ -258,6 +318,30 @@
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "5000 to 25000",
+                                                    "datum label": "DDGate"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolAnalysis"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolHeater"
+                                                },
+                                                {
+                                                    "scalar string datum": "Map",
+                                                    "datum label": "ProtocolMicrosphere"
+                                                },
+                                                {
+                                                    "scalar string datum": "0 sec",
+                                                    "datum label": "SampleTimeout"
+                                                }
+                                            ]
+                                        },
                                         "detector gain setting": "Standard PMT",
                                         "sample volume setting": {
                                             "value": 50.0,
@@ -270,13 +354,6 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
-                                        },
-                                        "custom information document": {
-                                            "ProtocolHeater": "Off",
-                                            "DDGate": "5000 to 25000",
-                                            "SampleTimeout": "0 sec",
-                                            "ProtocolAnalysis": "Off",
-                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -285,10 +362,15 @@
                             "measurement time": "2023-05-18T11:03:56+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown3",
-                                "location identifier": "C1",
-                                "custom information document": {
-                                    "BatchDescription": "<None>"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "<None>",
+                                            "datum label": "BatchDescription"
+                                        }
+                                    ]
+                                },
+                                "location identifier": "C1"
                             },
                             "assay bead count": {
                                 "value": 799.0,
@@ -354,6 +436,18 @@
                             }
                         }
                     ],
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "5/18/2023 11:36:34 AM",
+                                "datum label": "BatchStopTime"
+                            },
+                            {
+                                "scalar string datum": "baz",
+                                "datum label": "ProtocolDescription"
+                            }
+                        ]
+                    },
                     "analytical method identifier": "foo_bar",
                     "method version": "3",
                     "experimental data identifier": "ABCD_123456_20230518",
@@ -361,10 +455,6 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "BatchStopTime": "5/18/2023 11:36:34 AM",
-                        "ProtocolDescription": "baz"
                     }
                 },
                 "analyst": "waldo"
@@ -377,6 +467,30 @@
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "5000 to 25000",
+                                                    "datum label": "DDGate"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolAnalysis"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolHeater"
+                                                },
+                                                {
+                                                    "scalar string datum": "Map",
+                                                    "datum label": "ProtocolMicrosphere"
+                                                },
+                                                {
+                                                    "scalar string datum": "0 sec",
+                                                    "datum label": "SampleTimeout"
+                                                }
+                                            ]
+                                        },
                                         "detector gain setting": "Standard PMT",
                                         "sample volume setting": {
                                             "value": 50.0,
@@ -389,13 +503,6 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100.0,
                                             "unit": "#"
-                                        },
-                                        "custom information document": {
-                                            "ProtocolHeater": "Off",
-                                            "DDGate": "5000 to 25000",
-                                            "SampleTimeout": "0 sec",
-                                            "ProtocolAnalysis": "Off",
-                                            "ProtocolMicrosphere": "Map"
                                         }
                                     }
                                 ]
@@ -404,10 +511,15 @@
                             "measurement time": "2023-05-18T11:03:56+00:00",
                             "sample document": {
                                 "sample identifier": "Unknown4",
-                                "location identifier": "D1",
-                                "custom information document": {
-                                    "BatchDescription": "<None>"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "<None>",
+                                            "datum label": "BatchDescription"
+                                        }
+                                    ]
+                                },
+                                "location identifier": "D1"
                             },
                             "assay bead count": {
                                 "value": 845.0,
@@ -473,6 +585,18 @@
                             }
                         }
                     ],
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "5/18/2023 11:36:34 AM",
+                                "datum label": "BatchStopTime"
+                            },
+                            {
+                                "scalar string datum": "baz",
+                                "datum label": "ProtocolDescription"
+                            }
+                        ]
+                    },
                     "analytical method identifier": "foo_bar",
                     "method version": "3",
                     "experimental data identifier": "ABCD_123456_20230518",
@@ -480,10 +604,6 @@
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "BatchStopTime": "5/18/2023 11:36:34 AM",
-                        "ProtocolDescription": "baz"
                     }
                 },
                 "analyst": "waldo"
@@ -627,7 +747,7 @@
             "file name": "luminex_xPONENT_example03.csv",
             "UNC path": "tests/parsers/luminex_xponent/testdata/luminex_xPONENT_example03.csv",
             "ASM converter name": "allotropy_luminex_xponent",
-            "ASM converter version": "0.1.103",
+            "ASM converter version": "0.1.110",
             "software name": "xPONENT",
             "software version": "4.3.229.0"
         },
@@ -668,10 +788,21 @@
                     }
                 ]
             },
-            "custom information document": {
-                "Country Code": "7F",
-                "ProtocolDevelopingCompany": "WAN",
-                "Version": "1"
+            "custom information aggregate document": {
+                "custom information document": [
+                    {
+                        "scalar string datum": "7F",
+                        "datum label": "Country Code"
+                    },
+                    {
+                        "scalar string datum": "WAN",
+                        "datum label": "ProtocolDevelopingCompany"
+                    },
+                    {
+                        "scalar string datum": "1",
+                        "datum label": "Version"
+                    }
+                ]
             }
         }
     }
