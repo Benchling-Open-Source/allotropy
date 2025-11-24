@@ -74,6 +74,10 @@ class Header:
             r"Raw Data \((\d+\.?\d*)/(\d+\.?\d*)\)",
             lambda m: (float(m.group(2)), float(m.group(1))),
         ),
+        "Raw Data (Ex Em)": (
+            r"Raw Data \((\d+\.?\d*) (\d+\.?\d*)\)",
+            lambda m: (float(m.group(2)), float(m.group(1))),
+        ),
         "Raw Data (Em)": (
             r"Raw Data \((\d+\.?\d*)\)",
             lambda m: (float(m.group(1)), None),
