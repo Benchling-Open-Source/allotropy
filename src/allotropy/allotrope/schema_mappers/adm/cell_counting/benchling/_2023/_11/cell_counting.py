@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from allotropy.allotrope.converter import add_custom_information_document
+from allotropy.allotrope.converter import add_custom_information_aggregate_document
 from allotropy.allotrope.models.adm.cell_counting.benchling._2023._11.cell_counting import (
     CellCountingAggregateDocument,
     CellCountingDetectorDeviceControlAggregateDocument,
@@ -17,6 +17,10 @@ from allotropy.allotrope.models.adm.cell_counting.benchling._2023._11.cell_count
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
+)
+from allotropy.allotrope.models.adm.cell_counting.rec._2024._09.cell_counting import (
+    CustomInformationAggregateDocument,
+    CustomInformationDocumentItem,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCell,
@@ -202,13 +206,15 @@ class Mapper(SchemaMapper[Data, Model]):
             if measurement.sample_draw_time
             else None,
         }
-        return add_custom_information_document(
-            SampleDocument(
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
+            custom_document,
+            CustomInformationAggregateDocument,
+            CustomInformationDocumentItem,
+            aggregate_document=SampleDocument(
                 sample_identifier=measurement.sample_identifier,
                 batch_identifier=measurement.batch_identifier,
                 written_name=measurement.written_name,
             ),
-            custom_document,
         )
 
     def _get_processed_data_aggregate_document(
@@ -309,8 +315,11 @@ class Mapper(SchemaMapper[Data, Model]):
         )
         return ProcessedDataAggregateDocument(
             processed_data_document=[
-                add_custom_information_document(
-                    processed_data_document, custom_document
+                add_custom_information_aggregate_document(
+                    custom_document,
+                    CustomInformationAggregateDocument,
+                    CustomInformationDocumentItem,
+                    aggregate_document=processed_data_document,
                 )
             ]
         )
