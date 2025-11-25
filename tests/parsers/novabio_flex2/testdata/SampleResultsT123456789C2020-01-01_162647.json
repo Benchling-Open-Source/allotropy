@@ -11,11 +11,25 @@
                                     {
                                         "device type": "solution-analyzer",
                                         "detection type": "metabolite-detection",
-                                        "custom information document": {
-                                            "Sparging O2%": 1.0,
-                                            "pH / Gas Flow Time": 1.0,
-                                            "Chemistry Flow Time": 1.0,
-                                            "Vessel Pressure (psi)": 1.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Chemistry Flow Time"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Sparging O2%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Vessel Pressure (psi)"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "pH / Gas Flow Time"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -26,11 +40,25 @@
                                 "sample identifier": "Test1",
                                 "batch identifier": "1.0",
                                 "description": "Default",
-                                "custom information document": {
-                                    "Chemistry Dilution Ratio": "1:01",
-                                    "Vessel ID": 1.0,
-                                    "Cell Inspection Type": "StandardCHO",
-                                    "Pre-Dilution Multiplier": 1.0
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "StandardCHO",
+                                            "datum label": "Cell Inspection Type"
+                                        },
+                                        {
+                                            "scalar string datum": "1:01",
+                                            "datum label": "Chemistry Dilution Ratio"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "Pre-Dilution Multiplier"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "Vessel ID"
+                                        }
+                                    ]
                                 }
                             },
                             "analyte aggregate document": {
@@ -107,11 +135,25 @@
                                     {
                                         "device type": "solution-analyzer",
                                         "detection type": "cell-counting",
-                                        "custom information document": {
-                                            "Sparging O2%": 1.0,
-                                            "pH / Gas Flow Time": 1.0,
-                                            "Chemistry Flow Time": 1.0,
-                                            "Vessel Pressure (psi)": 1.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Chemistry Flow Time"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Sparging O2%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Vessel Pressure (psi)"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "pH / Gas Flow Time"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -122,11 +164,25 @@
                                 "sample identifier": "Test1",
                                 "batch identifier": "1.0",
                                 "description": "Default",
-                                "custom information document": {
-                                    "Chemistry Dilution Ratio": "1:01",
-                                    "Vessel ID": 1.0,
-                                    "Cell Inspection Type": "StandardCHO",
-                                    "Pre-Dilution Multiplier": 1.0
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "StandardCHO",
+                                            "datum label": "Cell Inspection Type"
+                                        },
+                                        {
+                                            "scalar string datum": "1:01",
+                                            "datum label": "Chemistry Dilution Ratio"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "Pre-Dilution Multiplier"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "Vessel ID"
+                                        }
+                                    ]
                                 }
                             },
                             "processed data aggregate document": {
@@ -161,11 +217,25 @@
                                     {
                                         "device type": "solution-analyzer",
                                         "detection type": "blood-gas-detection",
-                                        "custom information document": {
-                                            "Sparging O2%": 1.0,
-                                            "pH / Gas Flow Time": 1.0,
-                                            "Chemistry Flow Time": 1.0,
-                                            "Vessel Pressure (psi)": 1.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Chemistry Flow Time"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Sparging O2%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Vessel Pressure (psi)"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "pH / Gas Flow Time"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -176,11 +246,25 @@
                                 "sample identifier": "Test1",
                                 "batch identifier": "1.0",
                                 "description": "Default",
-                                "custom information document": {
-                                    "Chemistry Dilution Ratio": "1:01",
-                                    "Vessel ID": 1.0,
-                                    "Cell Inspection Type": "StandardCHO",
-                                    "Pre-Dilution Multiplier": 1.0
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "StandardCHO",
+                                            "datum label": "Cell Inspection Type"
+                                        },
+                                        {
+                                            "scalar string datum": "1:01",
+                                            "datum label": "Chemistry Dilution Ratio"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "Pre-Dilution Multiplier"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "Vessel ID"
+                                        }
+                                    ]
                                 }
                             },
                             "pO2": {
@@ -206,11 +290,25 @@
                                     {
                                         "device type": "solution-analyzer",
                                         "detection type": "osmolality-detection",
-                                        "custom information document": {
-                                            "Sparging O2%": 1.0,
-                                            "pH / Gas Flow Time": 1.0,
-                                            "Chemistry Flow Time": 1.0,
-                                            "Vessel Pressure (psi)": 1.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Chemistry Flow Time"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Sparging O2%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Vessel Pressure (psi)"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "pH / Gas Flow Time"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -221,11 +319,25 @@
                                 "sample identifier": "Test1",
                                 "batch identifier": "1.0",
                                 "description": "Default",
-                                "custom information document": {
-                                    "Chemistry Dilution Ratio": "1:01",
-                                    "Vessel ID": 1.0,
-                                    "Cell Inspection Type": "StandardCHO",
-                                    "Pre-Dilution Multiplier": 1.0
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "StandardCHO",
+                                            "datum label": "Cell Inspection Type"
+                                        },
+                                        {
+                                            "scalar string datum": "1:01",
+                                            "datum label": "Chemistry Dilution Ratio"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "Pre-Dilution Multiplier"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "Vessel ID"
+                                        }
+                                    ]
                                 }
                             },
                             "osmolality": {
@@ -239,11 +351,25 @@
                                     {
                                         "device type": "solution-analyzer",
                                         "detection type": "ph-detection",
-                                        "custom information document": {
-                                            "Sparging O2%": 1.0,
-                                            "pH / Gas Flow Time": 1.0,
-                                            "Chemistry Flow Time": 1.0,
-                                            "Vessel Pressure (psi)": 1.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Chemistry Flow Time"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Sparging O2%"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Vessel Pressure (psi)"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "pH / Gas Flow Time"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -254,11 +380,25 @@
                                 "sample identifier": "Test1",
                                 "batch identifier": "1.0",
                                 "description": "Default",
-                                "custom information document": {
-                                    "Chemistry Dilution Ratio": "1:01",
-                                    "Vessel ID": 1.0,
-                                    "Cell Inspection Type": "StandardCHO",
-                                    "Pre-Dilution Multiplier": 1.0
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "StandardCHO",
+                                            "datum label": "Cell Inspection Type"
+                                        },
+                                        {
+                                            "scalar string datum": "1:01",
+                                            "datum label": "Chemistry Dilution Ratio"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "Pre-Dilution Multiplier"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "Vessel ID"
+                                        }
+                                    ]
                                 }
                             },
                             "pH": {
@@ -282,7 +422,7 @@
             "file name": "SampleResultsT123456789C2020-01-01_162647.csv",
             "UNC path": "tests/parsers/novabio_flex2/testdata/SampleResultsT123456789C2020-01-01_162647.csv",
             "ASM converter name": "allotropy_novabio_flex2",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.110",
             "software name": "NovaBio Flex"
         },
         "device system document": {
