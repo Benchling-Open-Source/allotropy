@@ -10,6 +10,14 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Simulation",
+                                                    "datum label": "Reading Type"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "number of averages": {
@@ -19,9 +27,6 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -30,10 +35,15 @@
                             "sample document": {
                                 "location identifier": "A1",
                                 "sample identifier": "BNCH2345883 A1",
-                                "well plate identifier": "BNCH2345883",
-                                "custom information document": {
-                                    "Plate Number": "Plate 1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Plate 1",
+                                            "datum label": "Plate Number"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "BNCH2345883"
                             },
                             "absorbance": {
                                 "value": 2.1,
@@ -4151,7 +4161,7 @@
             "UNC path": "tests/parsers/agilent_gen5/testdata/absorbance/240411_172731_BNCH2345883_abs450_96well_non_numeric_values.txt",
             "file name": "240411_172731_BNCH2345883_abs450_96well_non_numeric_values.txt",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.90",
+            "ASM converter version": "0.1.110",
             "software name": "Gen5",
             "software version": "3.12.08"
         },

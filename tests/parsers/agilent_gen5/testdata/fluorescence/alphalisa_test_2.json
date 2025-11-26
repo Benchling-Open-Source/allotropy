@@ -10,15 +10,20 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Reader",
+                                                    "datum label": "Reading Type"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Fluorescence",
                                         "detector distance setting (plate reader)": {
                                             "value": 8.0,
                                             "unit": "mm"
                                         },
-                                        "detector gain setting": "150",
-                                        "custom information document": {
-                                            "Reading Type": "Reader"
-                                        }
+                                        "detector gain setting": "150"
                                     }
                                 ]
                             },
@@ -26,10 +31,15 @@
                             "sample document": {
                                 "location identifier": "D1",
                                 "sample identifier": "STD1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 100.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 100.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -71,10 +81,15 @@
                             "sample document": {
                                 "location identifier": "D2",
                                 "sample identifier": "STD1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 100.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 100.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -116,10 +131,15 @@
                             "sample document": {
                                 "location identifier": "D3",
                                 "sample identifier": "STD2",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 50.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 50.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -161,10 +181,15 @@
                             "sample document": {
                                 "location identifier": "D4",
                                 "sample identifier": "STD2",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 50.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 50.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -206,10 +231,15 @@
                             "sample document": {
                                 "location identifier": "D5",
                                 "sample identifier": "STD3",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 25.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 25.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -251,10 +281,15 @@
                             "sample document": {
                                 "location identifier": "D6",
                                 "sample identifier": "STD3",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 25.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 25.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -296,10 +331,15 @@
                             "sample document": {
                                 "location identifier": "D7",
                                 "sample identifier": "STD4",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 12.5
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 12.5,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -341,10 +381,15 @@
                             "sample document": {
                                 "location identifier": "D8",
                                 "sample identifier": "STD4",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 12.5
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 12.5,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -386,10 +431,15 @@
                             "sample document": {
                                 "location identifier": "D9",
                                 "sample identifier": "STD5",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 6.25
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 6.25,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -431,10 +481,15 @@
                             "sample document": {
                                 "location identifier": "D10",
                                 "sample identifier": "STD5",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 6.25
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 6.25,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -476,10 +531,15 @@
                             "sample document": {
                                 "location identifier": "D11",
                                 "sample identifier": "STD6",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 3.125
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 3.125,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -521,10 +581,15 @@
                             "sample document": {
                                 "location identifier": "D12",
                                 "sample identifier": "STD6",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 3.125
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 3.125,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -566,10 +631,15 @@
                             "sample document": {
                                 "location identifier": "D13",
                                 "sample identifier": "STD7",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 1.5625
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.5625,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -611,10 +681,15 @@
                             "sample document": {
                                 "location identifier": "D14",
                                 "sample identifier": "STD7",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 1.5625
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.5625,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -656,10 +731,15 @@
                             "sample document": {
                                 "location identifier": "D15",
                                 "sample identifier": "STD8",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 0.78125
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.78125,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -701,10 +781,15 @@
                             "sample document": {
                                 "location identifier": "D16",
                                 "sample identifier": "STD8",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 0.78125
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.78125,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -746,10 +831,15 @@
                             "sample document": {
                                 "location identifier": "D17",
                                 "sample identifier": "STD9",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 0.39063
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.39063,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -791,10 +881,15 @@
                             "sample document": {
                                 "location identifier": "D18",
                                 "sample identifier": "STD9",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 0.39063
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.39063,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -836,10 +931,15 @@
                             "sample document": {
                                 "location identifier": "D19",
                                 "sample identifier": "STD10",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 0.19531
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.19531,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -881,10 +981,15 @@
                             "sample document": {
                                 "location identifier": "D20",
                                 "sample identifier": "STD10",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 0.19531
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.19531,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -926,10 +1031,15 @@
                             "sample document": {
                                 "location identifier": "D21",
                                 "sample identifier": "STD11",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 0.097656
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.097656,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -971,10 +1081,15 @@
                             "sample document": {
                                 "location identifier": "D22",
                                 "sample identifier": "STD11",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 0.097656
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.097656,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -1016,10 +1131,15 @@
                             "sample document": {
                                 "location identifier": "D23",
                                 "sample identifier": "STD12",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 0.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -1061,10 +1181,15 @@
                             "sample document": {
                                 "location identifier": "D24",
                                 "sample identifier": "STD12",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 0.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -1106,10 +1231,15 @@
                             "sample document": {
                                 "location identifier": "E1",
                                 "sample identifier": "STD1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 100.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 100.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -1159,10 +1289,15 @@
                             "sample document": {
                                 "location identifier": "E2",
                                 "sample identifier": "STD1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 100.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 100.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -1204,10 +1339,15 @@
                             "sample document": {
                                 "location identifier": "E3",
                                 "sample identifier": "STD2",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 50.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 50.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -1249,10 +1389,15 @@
                             "sample document": {
                                 "location identifier": "E4",
                                 "sample identifier": "STD2",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 50.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 50.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -1294,10 +1439,15 @@
                             "sample document": {
                                 "location identifier": "E5",
                                 "sample identifier": "STD3",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 25.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 25.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -1339,10 +1489,15 @@
                             "sample document": {
                                 "location identifier": "E6",
                                 "sample identifier": "STD3",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 25.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 25.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -1384,10 +1539,15 @@
                             "sample document": {
                                 "location identifier": "E7",
                                 "sample identifier": "STD4",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 12.5
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 12.5,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -1429,10 +1589,15 @@
                             "sample document": {
                                 "location identifier": "E8",
                                 "sample identifier": "STD4",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 12.5
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 12.5,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -1474,10 +1639,15 @@
                             "sample document": {
                                 "location identifier": "E9",
                                 "sample identifier": "STD5",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 6.25
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 6.25,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -1519,10 +1689,15 @@
                             "sample document": {
                                 "location identifier": "E10",
                                 "sample identifier": "STD5",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 6.25
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 6.25,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -1564,10 +1739,15 @@
                             "sample document": {
                                 "location identifier": "E11",
                                 "sample identifier": "STD6",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 3.125
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 3.125,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -1609,10 +1789,15 @@
                             "sample document": {
                                 "location identifier": "E12",
                                 "sample identifier": "STD6",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 3.125
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 3.125,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -1654,10 +1839,15 @@
                             "sample document": {
                                 "location identifier": "E13",
                                 "sample identifier": "STD7",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 1.5625
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.5625,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -1699,10 +1889,15 @@
                             "sample document": {
                                 "location identifier": "E14",
                                 "sample identifier": "STD7",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 1.5625
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.5625,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -1744,10 +1939,15 @@
                             "sample document": {
                                 "location identifier": "E15",
                                 "sample identifier": "STD8",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 0.78125
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.78125,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -1789,10 +1989,15 @@
                             "sample document": {
                                 "location identifier": "E16",
                                 "sample identifier": "STD8",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 0.78125
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.78125,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -1834,10 +2039,15 @@
                             "sample document": {
                                 "location identifier": "E17",
                                 "sample identifier": "STD9",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 0.39063
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.39063,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -1879,10 +2089,15 @@
                             "sample document": {
                                 "location identifier": "E18",
                                 "sample identifier": "STD9",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 0.39063
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.39063,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -1924,10 +2139,15 @@
                             "sample document": {
                                 "location identifier": "E19",
                                 "sample identifier": "STD10",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 0.19531
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.19531,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -1969,10 +2189,15 @@
                             "sample document": {
                                 "location identifier": "E20",
                                 "sample identifier": "STD10",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 0.19531
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.19531,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -2014,10 +2239,15 @@
                             "sample document": {
                                 "location identifier": "E21",
                                 "sample identifier": "STD11",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 0.097656
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.097656,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -2059,10 +2289,15 @@
                             "sample document": {
                                 "location identifier": "E22",
                                 "sample identifier": "STD11",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 0.097656
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.097656,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -2104,10 +2339,15 @@
                             "sample document": {
                                 "location identifier": "E23",
                                 "sample identifier": "STD12",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 0.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "experimental data identifier": "Y:\\Downloads\\SureFire AlphaLISA p-ERK lysate std curve.xpt",
                             "compartment temperature": {
@@ -2149,10 +2389,15 @@
                             "sample document": {
                                 "location identifier": "E24",
                                 "sample identifier": "STD12",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 0.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -2928,7 +3173,7 @@
             "UNC path": "tests/parsers/agilent_gen5/testdata/fluorescence/alphalisa_test_2.txt",
             "file name": "alphalisa_test_2.txt",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.97",
+            "ASM converter version": "0.1.110",
             "software name": "Gen5",
             "software version": "3.12.08"
         },
