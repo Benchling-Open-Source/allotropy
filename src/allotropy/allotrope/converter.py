@@ -327,6 +327,17 @@ def _validate_structuring(val: Any, model: Any) -> None:
             raise AssertionError()
         for list_value, model_list_value in zip(val, model, strict=True):
             _validate_structuring(list_value, model_list_value)
+        return
+
+    if isinstance(model, dict):
+        if not isinstance(val, dict):
+            raise AssertionError()
+        for key, value in val.items():
+            if key not in model:
+                raise AssertionError()
+            _validate_structuring(value, model[key])
+        return
+
     if not isinstance(val, dict):
         return
 
@@ -539,7 +550,26 @@ def register_dataclass_hooks(converter: Converter) -> None:
         def structure_item(val: Any, _: Any) -> Any | None:
             if val is None:
                 return None
+            extra_custom_info_aggregate_document = None
+            if (
+                isinstance(val, dict)
+                and "custom information aggregate document" in val
+                and not any(
+                    field.name == "custom_information_aggregate_document"
+                    for field in fields(cls)
+                )
+            ):
+                val = dict(val)
+                extra_custom_info_aggregate_document = val.pop(
+                    "custom information aggregate document"
+                )
+
             structured = structure_fn(val, _)
+
+            if extra_custom_info_aggregate_document is not None:
+                structured.custom_information_aggregate_document = (
+                    extra_custom_info_aggregate_document
+                )
             # NOTE: this handles custom implementation of custom info document, not the ASM version that came
             # later. The ASM version will always be a list, so we can differentiate using that.
             if (
