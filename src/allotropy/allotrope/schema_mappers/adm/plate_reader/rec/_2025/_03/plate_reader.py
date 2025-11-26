@@ -296,7 +296,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 ],
             ),
         )
-        return add_custom_information_aggregate_document(
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
             custom_info_doc,
             CustomInformationAggregateDocument,
             CustomInformationDocumentItem,
@@ -440,7 +440,7 @@ class Mapper(SchemaMapper[Data, Model]):
             if measurement.processed_data_document
             else None,
         )
-        return add_custom_information_aggregate_document(
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
             measurement.measurement_custom_info,
             CustomInformationAggregateDocument,
             CustomInformationDocumentItem,
@@ -522,7 +522,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.error_document
             ),
         )
-        return add_custom_information_aggregate_document(
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
             measurement.measurement_custom_info,
             CustomInformationAggregateDocument,
             CustomInformationDocumentItem,
@@ -616,7 +616,7 @@ class Mapper(SchemaMapper[Data, Model]):
                 measurement.error_document
             ),
         )
-        return add_custom_information_aggregate_document(
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
             measurement.measurement_custom_info,
             CustomInformationAggregateDocument,
             CustomInformationDocumentItem,
@@ -852,7 +852,7 @@ class Mapper(SchemaMapper[Data, Model]):
             ),
             batch_identifier=measurement.batch_identifier,
         )
-        return add_custom_information_aggregate_document(
+        return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
             measurement.sample_custom_info,
             CustomInformationAggregateDocument,
             CustomInformationDocumentItem,
