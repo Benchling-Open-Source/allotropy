@@ -10,6 +10,14 @@
                                 "device control document": [
                                     {
                                         "device type": "solution-analyzer",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "HRLD150@10ml",
+                                                    "datum label": "model number"
+                                                }
+                                            ]
+                                        },
                                         "flush volume setting": {
                                             "value": 0,
                                             "unit": "mL"
@@ -22,9 +30,6 @@
                                         "sample volume setting": {
                                             "value": 0.2,
                                             "unit": "mL"
-                                        },
-                                        "custom information document": {
-                                            "model number": "HRLD150@10ml"
                                         }
                                     }
                                 ]
@@ -626,7 +631,7 @@
             "file name": "hiac_example_5.xlsx",
             "UNC path": "tests/parsers/beckman_pharmspec/testdata/hiac_example_5.xlsx",
             "ASM converter name": "allotropy_beckman_coulter_pharmspec",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.110",
             "software name": "PharmSpec",
             "software version": "3.0"
         },
