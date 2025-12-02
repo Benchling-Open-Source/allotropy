@@ -15,15 +15,41 @@
                                             "value": 2.0,
                                             "unit": "Hz"
                                         },
-                                        "custom information document": {
-                                            "ChannelDescription": "254nm",
-                                            "ChannelType": "2D",
-                                            "DataStart": "0.0",
-                                            "DataEnd": "6.0",
-                                            "device acquisition method": "LC Demo Method Set",
-                                            "total measurement duration setting": 6.0,
-                                            "Channel": "486 ",
-                                            "ScaletouV": "9.99999997475243e-07"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "486 ",
+                                                    "datum label": "Channel"
+                                                },
+                                                {
+                                                    "scalar string datum": "254nm",
+                                                    "datum label": "ChannelDescription"
+                                                },
+                                                {
+                                                    "scalar string datum": "2D",
+                                                    "datum label": "ChannelType"
+                                                },
+                                                {
+                                                    "scalar string datum": "6.0",
+                                                    "datum label": "DataEnd"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0",
+                                                    "datum label": "DataStart"
+                                                },
+                                                {
+                                                    "scalar string datum": "9.99999997475243e-07",
+                                                    "datum label": "ScaletouV"
+                                                },
+                                                {
+                                                    "scalar string datum": "LC Demo Method Set",
+                                                    "datum label": "device acquisition method"
+                                                },
+                                                {
+                                                    "scalar double datum": 6.0,
+                                                    "datum label": "total measurement duration setting"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -34,16 +60,45 @@
                                 "location identifier": "1175",
                                 "sample role type": "standard sample role",
                                 "written name": "S0102",
-                                "custom information document": {
-                                    "SampleSetAcquiring": "False",
-                                    "SampleSetAltered": "False",
-                                    "SampleSetCurrentId": "1169",
-                                    "Vial": "2",
-                                    "sample weight": 1.0,
-                                    "Label": "S0102",
-                                    "VialId": "1175",
-                                    "SampleType": "Standard",
-                                    "dilution factor setting": 1.0
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "S0102",
+                                            "datum label": "Label"
+                                        },
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "SampleSetAcquiring"
+                                        },
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "SampleSetAltered"
+                                        },
+                                        {
+                                            "scalar string datum": "1169",
+                                            "datum label": "SampleSetCurrentId"
+                                        },
+                                        {
+                                            "scalar string datum": "Standard",
+                                            "datum label": "SampleType"
+                                        },
+                                        {
+                                            "scalar string datum": "2",
+                                            "datum label": "Vial"
+                                        },
+                                        {
+                                            "scalar string datum": "1175",
+                                            "datum label": "VialId"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "dilution_factor_setting"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "sample_weight"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
@@ -107,34 +162,117 @@
                                                         "value": 15.5,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "IntType": "BB",
-                                                        "PeakType": "Found",
-                                                        "Slope": "0.0010916129004697502",
-                                                        "StartHeight": "0.0",
-                                                        "EndHeight": "0.0",
-                                                        "InflectionWidth": "3.38374645285198",
-                                                        "PointsAcrossPeak": "31",
-                                                        "Offset": "-0.0011064516101097",
-                                                        "2ndDerivativeApex": "1.2453975984273298",
-                                                        "RelativeResponse": 1.0,
-                                                        "EndTime": 1.41666666666667,
-                                                        "PctHeight": 35.32877494933769,
-                                                        "CurveId": 2310,
-                                                        "Concentration": 93.75,
-                                                        "PeakLevel": "2",
-                                                        "CurveRT": 1.24890234558306,
-                                                        "Response": 394015.0,
-                                                        "StartTime": 1.15833333333333,
-                                                        "Amount": 1875.0,
-                                                        "RF": 210.141333333333,
-                                                        "Name": "Acetone",
-                                                        "BaselineStart": 1.15833333333333,
-                                                        "Width": 15.5,
-                                                        "PeakLabel": "1",
-                                                        "PctArea": 27.9385948662659,
-                                                        "BaselineEnd": 1.41666666666667,
-                                                        "PctAmount": 99.20634920634919
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "1.2453975984273298",
+                                                                "datum label": "2ndDerivativeApex"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1875.0,
+                                                                "datum label": "Amount"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.41666666666667,
+                                                                "datum label": "BaselineEnd"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.15833333333333,
+                                                                "datum label": "BaselineStart"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 93.75,
+                                                                "datum label": "Concentration"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2310.0,
+                                                                "datum label": "CurveId"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.24890234558306,
+                                                                "datum label": "CurveRT"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "EndHeight"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.41666666666667,
+                                                                "datum label": "EndTime"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "3.38374645285198",
+                                                                "datum label": "InflectionWidth"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "BB",
+                                                                "datum label": "IntType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Acetone",
+                                                                "datum label": "Name"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "-0.0011064516101097",
+                                                                "datum label": "Offset"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 99.20634920634919,
+                                                                "datum label": "PctAmount"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 27.9385948662659,
+                                                                "datum label": "PctArea"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 35.32877494933769,
+                                                                "datum label": "PctHeight"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "1",
+                                                                "datum label": "PeakLabel"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "2",
+                                                                "datum label": "PeakLevel"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Found",
+                                                                "datum label": "PeakType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "31",
+                                                                "datum label": "PointsAcrossPeak"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 210.141333333333,
+                                                                "datum label": "RF"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.0,
+                                                                "datum label": "RelativeResponse"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 394015.0,
+                                                                "datum label": "Response"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0010916129004697502",
+                                                                "datum label": "Slope"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "StartHeight"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.15833333333333,
+                                                                "datum label": "StartTime"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 15.5,
+                                                                "datum label": "Width"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -188,34 +326,117 @@
                                                         "value": 17.5,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "IntType": "BB",
-                                                        "PeakType": "Found",
-                                                        "Slope": "0.0010422857116542",
-                                                        "StartHeight": "0.0",
-                                                        "EndHeight": "0.0",
-                                                        "InflectionWidth": "3.87499975540408",
-                                                        "PointsAcrossPeak": "35",
-                                                        "Offset": "-0.00198362856642039",
-                                                        "2ndDerivativeApex": "2.1287295434059397",
-                                                        "RelativeResponse": 1.0,
-                                                        "EndTime": 2.31666666666667,
-                                                        "PctHeight": 29.7010425337784,
-                                                        "CurveId": 2311,
-                                                        "Concentration": 0.25,
-                                                        "PeakLevel": "2",
-                                                        "CurveRT": 2.13027712302997,
-                                                        "Response": 390990.499999999,
-                                                        "StartTime": 2.025,
-                                                        "Amount": 5.0,
-                                                        "RF": 78198.09999999989,
-                                                        "Name": "Acetophenone",
-                                                        "BaselineStart": 2.025,
-                                                        "Width": 17.5,
-                                                        "PeakLabel": "2",
-                                                        "PctArea": 27.7241353147944,
-                                                        "BaselineEnd": 2.31666666666667,
-                                                        "PctAmount": 0.264550264550265
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "2.1287295434059397",
+                                                                "datum label": "2ndDerivativeApex"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.0,
+                                                                "datum label": "Amount"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2.31666666666667,
+                                                                "datum label": "BaselineEnd"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2.025,
+                                                                "datum label": "BaselineStart"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.25,
+                                                                "datum label": "Concentration"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2311.0,
+                                                                "datum label": "CurveId"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2.13027712302997,
+                                                                "datum label": "CurveRT"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "EndHeight"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2.31666666666667,
+                                                                "datum label": "EndTime"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "3.87499975540408",
+                                                                "datum label": "InflectionWidth"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "BB",
+                                                                "datum label": "IntType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Acetophenone",
+                                                                "datum label": "Name"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "-0.00198362856642039",
+                                                                "datum label": "Offset"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.264550264550265,
+                                                                "datum label": "PctAmount"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 27.7241353147944,
+                                                                "datum label": "PctArea"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 29.7010425337784,
+                                                                "datum label": "PctHeight"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "2",
+                                                                "datum label": "PeakLabel"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "2",
+                                                                "datum label": "PeakLevel"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Found",
+                                                                "datum label": "PeakType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "35",
+                                                                "datum label": "PointsAcrossPeak"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 78198.09999999989,
+                                                                "datum label": "RF"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.0,
+                                                                "datum label": "RelativeResponse"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 390990.499999999,
+                                                                "datum label": "Response"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0010422857116542",
+                                                                "datum label": "Slope"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "StartHeight"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2.025,
+                                                                "datum label": "StartTime"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 17.5,
+                                                                "datum label": "Width"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -269,34 +490,117 @@
                                                         "value": 21.0,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "IntType": "BB",
-                                                        "PeakType": "Found",
-                                                        "Slope": "0.000611428569884863",
-                                                        "StartHeight": "0.0",
-                                                        "EndHeight": "0.0",
-                                                        "InflectionWidth": "4.54123270922662",
-                                                        "PointsAcrossPeak": "42",
-                                                        "Offset": "-0.00173399999562207",
-                                                        "2ndDerivativeApex": "3.10688553071777",
-                                                        "RelativeResponse": 1.0,
-                                                        "EndTime": 3.325,
-                                                        "PctHeight": 19.7823368572697,
-                                                        "CurveId": 2312,
-                                                        "Concentration": 0.25,
-                                                        "PeakLevel": "2",
-                                                        "CurveRT": 3.10510376180895,
-                                                        "Response": 310315.5,
-                                                        "StartTime": 2.975,
-                                                        "Amount": 5.0,
-                                                        "RF": 62063.1,
-                                                        "Name": "Propiophenone",
-                                                        "BaselineStart": 2.975,
-                                                        "Width": 21.0,
-                                                        "PeakLabel": "3",
-                                                        "PctArea": 22.0036776143617,
-                                                        "BaselineEnd": 3.325,
-                                                        "PctAmount": 0.264550264550265
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "3.10688553071777",
+                                                                "datum label": "2ndDerivativeApex"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.0,
+                                                                "datum label": "Amount"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 3.325,
+                                                                "datum label": "BaselineEnd"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2.975,
+                                                                "datum label": "BaselineStart"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.25,
+                                                                "datum label": "Concentration"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2312.0,
+                                                                "datum label": "CurveId"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 3.10510376180895,
+                                                                "datum label": "CurveRT"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "EndHeight"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 3.325,
+                                                                "datum label": "EndTime"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "4.54123270922662",
+                                                                "datum label": "InflectionWidth"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "BB",
+                                                                "datum label": "IntType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Propiophenone",
+                                                                "datum label": "Name"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "-0.00173399999562207",
+                                                                "datum label": "Offset"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.264550264550265,
+                                                                "datum label": "PctAmount"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 22.0036776143617,
+                                                                "datum label": "PctArea"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 19.7823368572697,
+                                                                "datum label": "PctHeight"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "3",
+                                                                "datum label": "PeakLabel"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "2",
+                                                                "datum label": "PeakLevel"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Found",
+                                                                "datum label": "PeakType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "42",
+                                                                "datum label": "PointsAcrossPeak"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 62063.1,
+                                                                "datum label": "RF"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.0,
+                                                                "datum label": "RelativeResponse"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 310315.5,
+                                                                "datum label": "Response"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.000611428569884863",
+                                                                "datum label": "Slope"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "StartHeight"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2.975,
+                                                                "datum label": "StartTime"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 21.0,
+                                                                "datum label": "Width"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -350,118 +654,440 @@
                                                         "value": 29.0,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "IntType": "BB",
-                                                        "PeakType": "Found",
-                                                        "Slope": "0.000345517240506963",
-                                                        "StartHeight": "0.0",
-                                                        "EndHeight": "0.0",
-                                                        "InflectionWidth": "5.8726867266473795",
-                                                        "PointsAcrossPeak": "58",
-                                                        "Offset": "-0.00151262068583617",
-                                                        "2ndDerivativeApex": "4.77777281043808",
-                                                        "RelativeResponse": 1.0,
-                                                        "EndTime": 5.06666666666667,
-                                                        "PctHeight": 15.187845659614199,
-                                                        "CurveId": 2313,
-                                                        "Concentration": 0.25,
-                                                        "PeakLevel": "2",
-                                                        "CurveRT": 4.76588768992549,
-                                                        "Response": 314968.25,
-                                                        "StartTime": 4.5833333333333295,
-                                                        "Amount": 5.0,
-                                                        "RF": 62993.65,
-                                                        "Name": "Butyrophenone",
-                                                        "BaselineStart": 4.5833333333333295,
-                                                        "Width": 29.0,
-                                                        "PeakLabel": "4",
-                                                        "PctArea": 22.3335922045779,
-                                                        "BaselineEnd": 5.06666666666667,
-                                                        "PctAmount": 0.264550264550265
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "4.77777281043808",
+                                                                "datum label": "2ndDerivativeApex"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.0,
+                                                                "datum label": "Amount"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.06666666666667,
+                                                                "datum label": "BaselineEnd"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 4.5833333333333295,
+                                                                "datum label": "BaselineStart"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.25,
+                                                                "datum label": "Concentration"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2313.0,
+                                                                "datum label": "CurveId"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 4.76588768992549,
+                                                                "datum label": "CurveRT"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "EndHeight"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.06666666666667,
+                                                                "datum label": "EndTime"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "5.8726867266473795",
+                                                                "datum label": "InflectionWidth"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "BB",
+                                                                "datum label": "IntType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Butyrophenone",
+                                                                "datum label": "Name"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "-0.00151262068583617",
+                                                                "datum label": "Offset"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.264550264550265,
+                                                                "datum label": "PctAmount"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 22.3335922045779,
+                                                                "datum label": "PctArea"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 15.187845659614199,
+                                                                "datum label": "PctHeight"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "4",
+                                                                "datum label": "PeakLabel"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "2",
+                                                                "datum label": "PeakLevel"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Found",
+                                                                "datum label": "PeakType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "58",
+                                                                "datum label": "PointsAcrossPeak"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 62993.65,
+                                                                "datum label": "RF"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.0,
+                                                                "datum label": "RelativeResponse"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 314968.25,
+                                                                "datum label": "Response"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.000345517240506963",
+                                                                "datum label": "Slope"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "StartHeight"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 4.5833333333333295,
+                                                                "datum label": "StartTime"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 29.0,
+                                                                "datum label": "Width"
+                                                            }
+                                                        ]
                                                     }
                                                 }
                                             ]
                                         },
-                                        "custom information document": {
-                                            "integration algorithm type": "ApexTrack",
-                                            "data processing method": "LC PQ ApexTrack",
-                                            "data processing time": "2005-05-12T08:46:01",
-                                            "peak width": 8.159155,
-                                            "CalibrationId": "2309",
-                                            "ProcessingLocked": "False",
-                                            "Manual": "False",
-                                            "ProcessedBy": "System/Administrator",
-                                            "ProcessedAs": "Standard",
-                                            "ProcessingMethodId": "2307",
-                                            "ProcessedChannelType": "2D",
-                                            "ProcessedChanDesc": "254nm",
-                                            "Threshold": "100.0",
-                                            "SourceSoftwareInfo": "Empower Software Build 2154  DB ID: 685048692",
-                                            "SampleValuesUsedinCalculations": " Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000    Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000     Injection Volume = 20.00 SampleWeight = 1.00000 Dilution = 1.00000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000    Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000     Acetone Value = 1875.000000 Acetophenone Value = 5.000000 Propiophenone Value = 5.000000 Butyrophenone Value = 5.000000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000    Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000     Injection Volume = 20.00 SampleWeight = 1.00000 Dilution = 1.00000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000    Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000     Acetone Value = 1875.000000 Acetophenone Value = 5.000000 Propiophenone Value = 5.000000 Butyrophenone Value = 5.000000   ",
-                                            "NumOfResultsStored": "23",
-                                            "NumOfProcessOnlySampleSets": "0",
-                                            "ResultSetId": "2308",
-                                            "ResultSetName": "PQ Sample Set",
-                                            "ResultSetDate": "2005-05-12T08:46:01",
-                                            "ResultId": "2315",
-                                            "ResultType": "LC",
-                                            "ResultNum": "23",
-                                            "ResultSampleSetMethod": "!QuickSet",
-                                            "ResultSource": "Processed a Sample Set using Processing Method with clear calibration",
-                                            "ResultSuperseded": "False",
-                                            "TotalArea": "1410289.25",
-                                            "PercentUnknowns": "0.0",
-                                            "Faults": "False",
-                                            "SampleSetMethod": "!QuickSet",
-                                            "eCordMaximumTemperature": 0.0,
-                                            "InjectionVolume": 20.0,
-                                            "SummaryFaults": false,
-                                            "DetUnits": "AU",
-                                            "SampleName": "PQ Std 5.0x",
-                                            "Vial": "2",
-                                            "Injection": 1,
-                                            "Level": "2",
-                                            "SampleSetAltered": false,
-                                            "SampleType": "Standard",
-                                            "SampleSetCurrentId": 1169,
-                                            "eCordInjectionCount": 0,
-                                            "Superseded": false,
-                                            "InjectionStatus": "Pre-Empower 3 SR3",
-                                            "VialId": 1175,
-                                            "InjectionId": 1176,
-                                            "ScaletouV": 9.99999997475243e-07,
-                                            "SampleSetType": "Acquired",
-                                            "DataStart": 0.0,
-                                            "ChannelDescription": "254nm",
-                                            "Label": "S0102",
-                                            "AcqMethodSet": "LC Demo Method Set",
-                                            "SampleSetId": 1169,
-                                            "ChannelId": 1177,
-                                            "SampleWeight": 1.0,
-                                            "SystemName": "Alliance",
-                                            "SecondChannelId": 0,
-                                            "DateAcquired": "1997-09-17T17:03:14",
-                                            "DataEnd": 6.0,
-                                            "InstrumentMethodId": 1171,
-                                            "SampleSetIdResult": 1169,
-                                            "VialIdResult": 1175,
-                                            "AcquiredBy": "System",
-                                            "RunTime": 6.0,
-                                            "Node": "Pplab6",
-                                            "SampleSetAcquiring": false,
-                                            "Altered": true,
-                                            "SampleSetName": "PQ Sample Set",
-                                            "Channel": "486 ",
-                                            "SampleSetFinishDate": "1997-09-17T17:44:53",
-                                            "SamplingRate": 2.0,
-                                            "eCordMaximumPressure": 0.0,
-                                            "ChannelType": "2D",
-                                            "ProcessingNode": "Lwood",
-                                            "SampleSetStartDate": "1997-09-17T16:55:54",
-                                            "InjectionVolumeResult": 20.0,
-                                            "ChannelName": "486 ",
-                                            "NumberofSignOffs": 0,
-                                            "Dilution": 1.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "LC Demo Method Set",
+                                                    "datum label": "AcqMethodSet"
+                                                },
+                                                {
+                                                    "scalar string datum": "System",
+                                                    "datum label": "AcquiredBy"
+                                                },
+                                                {
+                                                    "scalar boolean datum": true,
+                                                    "datum label": "Altered"
+                                                },
+                                                {
+                                                    "scalar string datum": "2309",
+                                                    "datum label": "CalibrationId"
+                                                },
+                                                {
+                                                    "scalar string datum": "486 ",
+                                                    "datum label": "Channel"
+                                                },
+                                                {
+                                                    "scalar string datum": "254nm",
+                                                    "datum label": "ChannelDescription"
+                                                },
+                                                {
+                                                    "scalar double datum": 1177.0,
+                                                    "datum label": "ChannelId"
+                                                },
+                                                {
+                                                    "scalar string datum": "486 ",
+                                                    "datum label": "ChannelName"
+                                                },
+                                                {
+                                                    "scalar string datum": "2D",
+                                                    "datum label": "ChannelType"
+                                                },
+                                                {
+                                                    "scalar double datum": 6.0,
+                                                    "datum label": "DataEnd"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "DataStart"
+                                                },
+                                                {
+                                                    "scalar string datum": "1997-09-17T17:03:14",
+                                                    "datum label": "DateAcquired"
+                                                },
+                                                {
+                                                    "scalar string datum": "AU",
+                                                    "datum label": "DetUnits"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Dilution"
+                                                },
+                                                {
+                                                    "scalar string datum": "False",
+                                                    "datum label": "Faults"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Injection"
+                                                },
+                                                {
+                                                    "scalar double datum": 1176.0,
+                                                    "datum label": "InjectionId"
+                                                },
+                                                {
+                                                    "scalar string datum": "Pre-Empower 3 SR3",
+                                                    "datum label": "InjectionStatus"
+                                                },
+                                                {
+                                                    "scalar double datum": 20.0,
+                                                    "datum label": "InjectionVolume"
+                                                },
+                                                {
+                                                    "scalar double datum": 20.0,
+                                                    "datum label": "InjectionVolumeResult"
+                                                },
+                                                {
+                                                    "scalar double datum": 1171.0,
+                                                    "datum label": "InstrumentMethodId"
+                                                },
+                                                {
+                                                    "scalar string datum": "S0102",
+                                                    "datum label": "Label"
+                                                },
+                                                {
+                                                    "scalar string datum": "2",
+                                                    "datum label": "Level"
+                                                },
+                                                {
+                                                    "scalar string datum": "False",
+                                                    "datum label": "Manual"
+                                                },
+                                                {
+                                                    "scalar string datum": "Pplab6",
+                                                    "datum label": "Node"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "NumOfProcessOnlySampleSets"
+                                                },
+                                                {
+                                                    "scalar string datum": "23",
+                                                    "datum label": "NumOfResultsStored"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "NumberofSignOffs"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0",
+                                                    "datum label": "PercentUnknowns"
+                                                },
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "ProcessedAs"
+                                                },
+                                                {
+                                                    "scalar string datum": "System/Administrator",
+                                                    "datum label": "ProcessedBy"
+                                                },
+                                                {
+                                                    "scalar string datum": "254nm",
+                                                    "datum label": "ProcessedChanDesc"
+                                                },
+                                                {
+                                                    "scalar string datum": "2D",
+                                                    "datum label": "ProcessedChannelType"
+                                                },
+                                                {
+                                                    "scalar string datum": "False",
+                                                    "datum label": "ProcessingLocked"
+                                                },
+                                                {
+                                                    "scalar string datum": "2307",
+                                                    "datum label": "ProcessingMethodId"
+                                                },
+                                                {
+                                                    "scalar string datum": "Lwood",
+                                                    "datum label": "ProcessingNode"
+                                                },
+                                                {
+                                                    "scalar string datum": "2315",
+                                                    "datum label": "ResultId"
+                                                },
+                                                {
+                                                    "scalar string datum": "23",
+                                                    "datum label": "ResultNum"
+                                                },
+                                                {
+                                                    "scalar string datum": "!QuickSet",
+                                                    "datum label": "ResultSampleSetMethod"
+                                                },
+                                                {
+                                                    "scalar string datum": "2005-05-12T08:46:01",
+                                                    "datum label": "ResultSetDate"
+                                                },
+                                                {
+                                                    "scalar string datum": "2308",
+                                                    "datum label": "ResultSetId"
+                                                },
+                                                {
+                                                    "scalar string datum": "PQ Sample Set",
+                                                    "datum label": "ResultSetName"
+                                                },
+                                                {
+                                                    "scalar string datum": "Processed a Sample Set using Processing Method with clear calibration",
+                                                    "datum label": "ResultSource"
+                                                },
+                                                {
+                                                    "scalar string datum": "False",
+                                                    "datum label": "ResultSuperseded"
+                                                },
+                                                {
+                                                    "scalar string datum": "LC",
+                                                    "datum label": "ResultType"
+                                                },
+                                                {
+                                                    "scalar double datum": 6.0,
+                                                    "datum label": "RunTime"
+                                                },
+                                                {
+                                                    "scalar string datum": "PQ Std 5.0x",
+                                                    "datum label": "SampleName"
+                                                },
+                                                {
+                                                    "scalar boolean datum": false,
+                                                    "datum label": "SampleSetAcquiring"
+                                                },
+                                                {
+                                                    "scalar boolean datum": false,
+                                                    "datum label": "SampleSetAltered"
+                                                },
+                                                {
+                                                    "scalar double datum": 1169.0,
+                                                    "datum label": "SampleSetCurrentId"
+                                                },
+                                                {
+                                                    "scalar string datum": "1997-09-17T17:44:53",
+                                                    "datum label": "SampleSetFinishDate"
+                                                },
+                                                {
+                                                    "scalar double datum": 1169.0,
+                                                    "datum label": "SampleSetId"
+                                                },
+                                                {
+                                                    "scalar double datum": 1169.0,
+                                                    "datum label": "SampleSetIdResult"
+                                                },
+                                                {
+                                                    "scalar string datum": "!QuickSet",
+                                                    "datum label": "SampleSetMethod"
+                                                },
+                                                {
+                                                    "scalar string datum": "PQ Sample Set",
+                                                    "datum label": "SampleSetName"
+                                                },
+                                                {
+                                                    "scalar string datum": "1997-09-17T16:55:54",
+                                                    "datum label": "SampleSetStartDate"
+                                                },
+                                                {
+                                                    "scalar string datum": "Acquired",
+                                                    "datum label": "SampleSetType"
+                                                },
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "SampleType"
+                                                },
+                                                {
+                                                    "scalar string datum": " Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000    Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000     Injection Volume = 20.00 SampleWeight = 1.00000 Dilution = 1.00000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000    Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000     Acetone Value = 1875.000000 Acetophenone Value = 5.000000 Propiophenone Value = 5.000000 Butyrophenone Value = 5.000000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000    Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000     Injection Volume = 20.00 SampleWeight = 1.00000 Dilution = 1.00000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000    Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000   Injection Volume = 20.00 Acetone Value = 937.500000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 2.500000 Propiophenone Value = 2.500000 Butyrophenone Value = 2.500000     Acetone Value = 1875.000000 Acetophenone Value = 5.000000 Propiophenone Value = 5.000000 Butyrophenone Value = 5.000000   ",
+                                                    "datum label": "SampleValuesUsedinCalculations"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "SampleWeight"
+                                                },
+                                                {
+                                                    "scalar double datum": 2.0,
+                                                    "datum label": "SamplingRate"
+                                                },
+                                                {
+                                                    "scalar double datum": 9.99999997475243e-07,
+                                                    "datum label": "ScaletouV"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "SecondChannelId"
+                                                },
+                                                {
+                                                    "scalar string datum": "Empower Software Build 2154  DB ID: 685048692",
+                                                    "datum label": "SourceSoftwareInfo"
+                                                },
+                                                {
+                                                    "scalar boolean datum": false,
+                                                    "datum label": "SummaryFaults"
+                                                },
+                                                {
+                                                    "scalar boolean datum": false,
+                                                    "datum label": "Superseded"
+                                                },
+                                                {
+                                                    "scalar string datum": "Alliance",
+                                                    "datum label": "SystemName"
+                                                },
+                                                {
+                                                    "scalar string datum": "100.0",
+                                                    "datum label": "Threshold"
+                                                },
+                                                {
+                                                    "scalar string datum": "1410289.25",
+                                                    "datum label": "TotalArea"
+                                                },
+                                                {
+                                                    "scalar string datum": "2",
+                                                    "datum label": "Vial"
+                                                },
+                                                {
+                                                    "scalar double datum": 1175.0,
+                                                    "datum label": "VialId"
+                                                },
+                                                {
+                                                    "scalar double datum": 1175.0,
+                                                    "datum label": "VialIdResult"
+                                                },
+                                                {
+                                                    "scalar string datum": "LC PQ ApexTrack",
+                                                    "datum label": "data_processing_method"
+                                                },
+                                                {
+                                                    "scalar string datum": "2005-05-12T08:46:01",
+                                                    "datum label": "data_processing_time"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "eCordInjectionCount"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "eCordMaximumPressure"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "eCordMaximumTemperature"
+                                                },
+                                                {
+                                                    "scalar string datum": "ApexTrack",
+                                                    "datum label": "integration_algorithm_type"
+                                                },
+                                                {
+                                                    "scalar double datum": 8.159155,
+                                                    "datum label": "peak_width"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -473,9 +1099,17 @@
                                 },
                                 "injection identifier": "1176",
                                 "injection time": "1997-09-17T17:03:14+00:00",
-                                "custom information document": {
-                                    "InjectionStatus": "Pre-Empower 3 SR3",
-                                    "Injection": "1"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "Injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Pre-Empower 3 SR3",
+                                            "datum label": "InjectionStatus"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -505,37 +1139,119 @@
                                     ]
                                 }
                             },
-                            "custom information document": {
-                                "DateAcquired": "1997-09-17T17:03:14",
-                                "RunTime": "6.0",
-                                "measurement end time": "1997-09-17T17:44:53",
-                                "SampleSetMethod": "!QuickSet",
-                                "SampleSetName": "PQ Sample Set",
-                                "eCordMaximumTemperature": 0.0,
-                                "eCordInjectionCount": 0,
-                                "SampleSetFinishDate": "1997-09-17T17:44:53",
-                                "SystemName": "Alliance",
-                                "SampleSetType": "Acquired",
-                                "eCordMaximumPressure": 0.0,
-                                "Level": "2",
-                                "NumOfProcessOnlySampleSets": 0,
-                                "SampleSetStartDate": "1997-09-17T16:55:54",
-                                "SampleSetId": 1169,
-                                "ProcessingLocked": false,
-                                "NumOfResultsStored": 23,
-                                "AcquiredBy": "System",
-                                "Node": "Pplab6"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "System",
+                                        "datum label": "AcquiredBy"
+                                    },
+                                    {
+                                        "scalar string datum": "1997-09-17T17:03:14",
+                                        "datum label": "DateAcquired"
+                                    },
+                                    {
+                                        "scalar string datum": "2",
+                                        "datum label": "Level"
+                                    },
+                                    {
+                                        "scalar string datum": "Pplab6",
+                                        "datum label": "Node"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "NumOfProcessOnlySampleSets"
+                                    },
+                                    {
+                                        "scalar double datum": 23.0,
+                                        "datum label": "NumOfResultsStored"
+                                    },
+                                    {
+                                        "scalar boolean datum": false,
+                                        "datum label": "ProcessingLocked"
+                                    },
+                                    {
+                                        "scalar string datum": "6.0",
+                                        "datum label": "RunTime"
+                                    },
+                                    {
+                                        "scalar string datum": "1997-09-17T17:44:53",
+                                        "datum label": "SampleSetFinishDate"
+                                    },
+                                    {
+                                        "scalar double datum": 1169.0,
+                                        "datum label": "SampleSetId"
+                                    },
+                                    {
+                                        "scalar string datum": "!QuickSet",
+                                        "datum label": "SampleSetMethod"
+                                    },
+                                    {
+                                        "scalar string datum": "PQ Sample Set",
+                                        "datum label": "SampleSetName"
+                                    },
+                                    {
+                                        "scalar string datum": "1997-09-17T16:55:54",
+                                        "datum label": "SampleSetStartDate"
+                                    },
+                                    {
+                                        "scalar string datum": "Acquired",
+                                        "datum label": "SampleSetType"
+                                    },
+                                    {
+                                        "scalar string datum": "Alliance",
+                                        "datum label": "SystemName"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "eCordInjectionCount"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "eCordMaximumPressure"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "eCordMaximumTemperature"
+                                    },
+                                    {
+                                        "scalar string datum": "1997-09-17T17:44:53",
+                                        "datum label": "measurement_end_time"
+                                    }
+                                ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "Altered": "True",
-                        "InstrumentMethodId": "1171",
-                        "Superseded": "False",
-                        "Node": "Pplab6",
-                        "measurement method identifier": "!QuickSet",
-                        "SampleSetName": "PQ Sample Set",
-                        "SampleSetType": "Acquired"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "True",
+                                "datum label": "Altered"
+                            },
+                            {
+                                "scalar string datum": "1171",
+                                "datum label": "InstrumentMethodId"
+                            },
+                            {
+                                "scalar string datum": "Pplab6",
+                                "datum label": "Node"
+                            },
+                            {
+                                "scalar string datum": "PQ Sample Set",
+                                "datum label": "SampleSetName"
+                            },
+                            {
+                                "scalar string datum": "Acquired",
+                                "datum label": "SampleSetType"
+                            },
+                            {
+                                "scalar string datum": "False",
+                                "datum label": "Superseded"
+                            },
+                            {
+                                "scalar string datum": "!QuickSet",
+                                "datum label": "measurement_method_identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "N/A"
@@ -553,15 +1269,41 @@
                                             "value": 2.0,
                                             "unit": "Hz"
                                         },
-                                        "custom information document": {
-                                            "ChannelDescription": "254nm",
-                                            "ChannelType": "2D",
-                                            "DataStart": "0.0",
-                                            "DataEnd": "6.0",
-                                            "device acquisition method": "LC Demo Method Set",
-                                            "total measurement duration setting": 6.0,
-                                            "Channel": "486 ",
-                                            "ScaletouV": "9.99999997475243e-07"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "486 ",
+                                                    "datum label": "Channel"
+                                                },
+                                                {
+                                                    "scalar string datum": "254nm",
+                                                    "datum label": "ChannelDescription"
+                                                },
+                                                {
+                                                    "scalar string datum": "2D",
+                                                    "datum label": "ChannelType"
+                                                },
+                                                {
+                                                    "scalar string datum": "6.0",
+                                                    "datum label": "DataEnd"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0",
+                                                    "datum label": "DataStart"
+                                                },
+                                                {
+                                                    "scalar string datum": "9.99999997475243e-07",
+                                                    "datum label": "ScaletouV"
+                                                },
+                                                {
+                                                    "scalar string datum": "LC Demo Method Set",
+                                                    "datum label": "device acquisition method"
+                                                },
+                                                {
+                                                    "scalar double datum": 6.0,
+                                                    "datum label": "total measurement duration setting"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -572,16 +1314,45 @@
                                 "location identifier": "1178",
                                 "sample role type": "standard sample role",
                                 "written name": "S0103",
-                                "custom information document": {
-                                    "SampleSetAcquiring": "False",
-                                    "SampleSetAltered": "False",
-                                    "SampleSetCurrentId": "1169",
-                                    "Vial": "3",
-                                    "sample weight": 1.0,
-                                    "Label": "S0103",
-                                    "VialId": "1178",
-                                    "SampleType": "Standard",
-                                    "dilution factor setting": 1.0
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "S0103",
+                                            "datum label": "Label"
+                                        },
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "SampleSetAcquiring"
+                                        },
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "SampleSetAltered"
+                                        },
+                                        {
+                                            "scalar string datum": "1169",
+                                            "datum label": "SampleSetCurrentId"
+                                        },
+                                        {
+                                            "scalar string datum": "Standard",
+                                            "datum label": "SampleType"
+                                        },
+                                        {
+                                            "scalar string datum": "3",
+                                            "datum label": "Vial"
+                                        },
+                                        {
+                                            "scalar string datum": "1178",
+                                            "datum label": "VialId"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "dilution_factor_setting"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "sample_weight"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
@@ -645,34 +1416,117 @@
                                                         "value": 15.5,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "IntType": "BB",
-                                                        "PeakType": "Found",
-                                                        "Slope": "0.00242322580033356",
-                                                        "StartHeight": "0.0",
-                                                        "EndHeight": "0.0",
-                                                        "InflectionWidth": "3.3911104082501",
-                                                        "PointsAcrossPeak": "31",
-                                                        "Offset": "-0.002693903219005",
-                                                        "2ndDerivativeApex": "1.24447285099842",
-                                                        "RelativeResponse": 1.0,
-                                                        "EndTime": 1.41666666666667,
-                                                        "PctHeight": 35.25618253953459,
-                                                        "CurveId": 2310,
-                                                        "Concentration": 187.5,
-                                                        "PeakLevel": "3",
-                                                        "CurveRT": 1.24890234558306,
-                                                        "Response": 781447.5,
-                                                        "StartTime": 1.15833333333333,
-                                                        "Amount": 3750.0,
-                                                        "RF": 208.38600000000002,
-                                                        "Name": "Acetone",
-                                                        "BaselineStart": 1.15833333333333,
-                                                        "Width": 15.5,
-                                                        "PeakLabel": "1",
-                                                        "PctArea": 27.9699311093507,
-                                                        "BaselineEnd": 1.41666666666667,
-                                                        "PctAmount": 99.20634920634919
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "1.24447285099842",
+                                                                "datum label": "2ndDerivativeApex"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 3750.0,
+                                                                "datum label": "Amount"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.41666666666667,
+                                                                "datum label": "BaselineEnd"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.15833333333333,
+                                                                "datum label": "BaselineStart"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 187.5,
+                                                                "datum label": "Concentration"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2310.0,
+                                                                "datum label": "CurveId"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.24890234558306,
+                                                                "datum label": "CurveRT"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "EndHeight"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.41666666666667,
+                                                                "datum label": "EndTime"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "3.3911104082501",
+                                                                "datum label": "InflectionWidth"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "BB",
+                                                                "datum label": "IntType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Acetone",
+                                                                "datum label": "Name"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "-0.002693903219005",
+                                                                "datum label": "Offset"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 99.20634920634919,
+                                                                "datum label": "PctAmount"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 27.9699311093507,
+                                                                "datum label": "PctArea"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 35.25618253953459,
+                                                                "datum label": "PctHeight"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "1",
+                                                                "datum label": "PeakLabel"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "3",
+                                                                "datum label": "PeakLevel"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Found",
+                                                                "datum label": "PeakType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "31",
+                                                                "datum label": "PointsAcrossPeak"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 208.38600000000002,
+                                                                "datum label": "RF"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.0,
+                                                                "datum label": "RelativeResponse"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 781447.5,
+                                                                "datum label": "Response"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.00242322580033356",
+                                                                "datum label": "Slope"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "StartHeight"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.15833333333333,
+                                                                "datum label": "StartTime"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 15.5,
+                                                                "datum label": "Width"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -726,34 +1580,117 @@
                                                         "value": 17.5,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "IntType": "BB",
-                                                        "PeakType": "Found",
-                                                        "Slope": "0.0021428571374469503",
-                                                        "StartHeight": "0.0",
-                                                        "EndHeight": "0.0",
-                                                        "InflectionWidth": "3.9045899938577397",
-                                                        "PointsAcrossPeak": "35",
-                                                        "Offset": "-0.00422428570362042",
-                                                        "2ndDerivativeApex": "2.12840536211873",
-                                                        "RelativeResponse": 1.0,
-                                                        "EndTime": 2.31666666666667,
-                                                        "PctHeight": 29.575255987765697,
-                                                        "CurveId": 2311,
-                                                        "Concentration": 0.5,
-                                                        "PeakLevel": "3",
-                                                        "CurveRT": 2.13027712302997,
-                                                        "Response": 771815.499999999,
-                                                        "StartTime": 2.025,
-                                                        "Amount": 10.0,
-                                                        "RF": 77181.5499999999,
-                                                        "Name": "Acetophenone",
-                                                        "BaselineStart": 2.025,
-                                                        "Width": 17.5,
-                                                        "PeakLabel": "2",
-                                                        "PctArea": 27.6251781010612,
-                                                        "BaselineEnd": 2.31666666666667,
-                                                        "PctAmount": 0.264550264550265
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "2.12840536211873",
+                                                                "datum label": "2ndDerivativeApex"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 10.0,
+                                                                "datum label": "Amount"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2.31666666666667,
+                                                                "datum label": "BaselineEnd"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2.025,
+                                                                "datum label": "BaselineStart"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.5,
+                                                                "datum label": "Concentration"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2311.0,
+                                                                "datum label": "CurveId"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2.13027712302997,
+                                                                "datum label": "CurveRT"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "EndHeight"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2.31666666666667,
+                                                                "datum label": "EndTime"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "3.9045899938577397",
+                                                                "datum label": "InflectionWidth"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "BB",
+                                                                "datum label": "IntType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Acetophenone",
+                                                                "datum label": "Name"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "-0.00422428570362042",
+                                                                "datum label": "Offset"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.264550264550265,
+                                                                "datum label": "PctAmount"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 27.6251781010612,
+                                                                "datum label": "PctArea"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 29.575255987765697,
+                                                                "datum label": "PctHeight"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "2",
+                                                                "datum label": "PeakLabel"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "3",
+                                                                "datum label": "PeakLevel"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Found",
+                                                                "datum label": "PeakType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "35",
+                                                                "datum label": "PointsAcrossPeak"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 77181.5499999999,
+                                                                "datum label": "RF"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.0,
+                                                                "datum label": "RelativeResponse"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 771815.499999999,
+                                                                "datum label": "Response"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0021428571374469503",
+                                                                "datum label": "Slope"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "StartHeight"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2.025,
+                                                                "datum label": "StartTime"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 17.5,
+                                                                "datum label": "Width"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -807,34 +1744,117 @@
                                                         "value": 21.0,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "IntType": "BB",
-                                                        "PeakType": "Found",
-                                                        "Slope": "0.00120857142552008",
-                                                        "StartHeight": "0.0",
-                                                        "EndHeight": "0.0",
-                                                        "InflectionWidth": "4.53420546901881",
-                                                        "PointsAcrossPeak": "42",
-                                                        "Offset": "-0.0035054999911494703",
-                                                        "2ndDerivativeApex": "3.1078578079826897",
-                                                        "RelativeResponse": 1.0,
-                                                        "EndTime": 3.325,
-                                                        "PctHeight": 19.8511753970772,
-                                                        "CurveId": 2312,
-                                                        "Concentration": 0.5,
-                                                        "PeakLevel": "3",
-                                                        "CurveRT": 3.10510376180895,
-                                                        "Response": 614621.75,
-                                                        "StartTime": 2.975,
-                                                        "Amount": 10.0,
-                                                        "RF": 61462.175,
-                                                        "Name": "Propiophenone",
-                                                        "BaselineStart": 2.975,
-                                                        "Width": 21.0,
-                                                        "PeakLabel": "3",
-                                                        "PctArea": 21.998826544084697,
-                                                        "BaselineEnd": 3.325,
-                                                        "PctAmount": 0.264550264550265
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "3.1078578079826897",
+                                                                "datum label": "2ndDerivativeApex"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 10.0,
+                                                                "datum label": "Amount"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 3.325,
+                                                                "datum label": "BaselineEnd"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2.975,
+                                                                "datum label": "BaselineStart"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.5,
+                                                                "datum label": "Concentration"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2312.0,
+                                                                "datum label": "CurveId"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 3.10510376180895,
+                                                                "datum label": "CurveRT"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "EndHeight"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 3.325,
+                                                                "datum label": "EndTime"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "4.53420546901881",
+                                                                "datum label": "InflectionWidth"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "BB",
+                                                                "datum label": "IntType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Propiophenone",
+                                                                "datum label": "Name"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "-0.0035054999911494703",
+                                                                "datum label": "Offset"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.264550264550265,
+                                                                "datum label": "PctAmount"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 21.998826544084697,
+                                                                "datum label": "PctArea"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 19.8511753970772,
+                                                                "datum label": "PctHeight"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "3",
+                                                                "datum label": "PeakLabel"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "3",
+                                                                "datum label": "PeakLevel"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Found",
+                                                                "datum label": "PeakType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "42",
+                                                                "datum label": "PointsAcrossPeak"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 61462.175,
+                                                                "datum label": "RF"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.0,
+                                                                "datum label": "RelativeResponse"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 614621.75,
+                                                                "datum label": "Response"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.00120857142552008",
+                                                                "datum label": "Slope"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "StartHeight"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2.975,
+                                                                "datum label": "StartTime"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 21.0,
+                                                                "datum label": "Width"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -888,118 +1908,440 @@
                                                         "value": 29.0,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "IntType": "BB",
-                                                        "PeakType": "Found",
-                                                        "Slope": "0.0006744827569177851",
-                                                        "StartHeight": "0.0",
-                                                        "EndHeight": "0.0",
-                                                        "InflectionWidth": "5.871877676793599",
-                                                        "PointsAcrossPeak": "58",
-                                                        "Offset": "-0.00303037930269386",
-                                                        "2ndDerivativeApex": "4.778329197005809",
-                                                        "RelativeResponse": 1.0,
-                                                        "EndTime": 5.06666666666667,
-                                                        "PctHeight": 15.3173860756225,
-                                                        "CurveId": 2313,
-                                                        "Concentration": 0.5,
-                                                        "PeakLevel": "3",
-                                                        "CurveRT": 4.76588768992549,
-                                                        "Response": 625999.500000001,
-                                                        "StartTime": 4.5833333333333295,
-                                                        "Amount": 10.0,
-                                                        "RF": 62599.950000000106,
-                                                        "Name": "Butyrophenone",
-                                                        "BaselineStart": 4.5833333333333295,
-                                                        "Width": 29.0,
-                                                        "PeakLabel": "4",
-                                                        "PctArea": 22.4060642455034,
-                                                        "BaselineEnd": 5.06666666666667,
-                                                        "PctAmount": 0.264550264550265
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "4.778329197005809",
+                                                                "datum label": "2ndDerivativeApex"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 10.0,
+                                                                "datum label": "Amount"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.06666666666667,
+                                                                "datum label": "BaselineEnd"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 4.5833333333333295,
+                                                                "datum label": "BaselineStart"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.5,
+                                                                "datum label": "Concentration"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2313.0,
+                                                                "datum label": "CurveId"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 4.76588768992549,
+                                                                "datum label": "CurveRT"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "EndHeight"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.06666666666667,
+                                                                "datum label": "EndTime"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "5.871877676793599",
+                                                                "datum label": "InflectionWidth"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "BB",
+                                                                "datum label": "IntType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Butyrophenone",
+                                                                "datum label": "Name"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "-0.00303037930269386",
+                                                                "datum label": "Offset"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.264550264550265,
+                                                                "datum label": "PctAmount"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 22.4060642455034,
+                                                                "datum label": "PctArea"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 15.3173860756225,
+                                                                "datum label": "PctHeight"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "4",
+                                                                "datum label": "PeakLabel"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "3",
+                                                                "datum label": "PeakLevel"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Found",
+                                                                "datum label": "PeakType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "58",
+                                                                "datum label": "PointsAcrossPeak"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 62599.950000000106,
+                                                                "datum label": "RF"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.0,
+                                                                "datum label": "RelativeResponse"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 625999.500000001,
+                                                                "datum label": "Response"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0006744827569177851",
+                                                                "datum label": "Slope"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "StartHeight"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 4.5833333333333295,
+                                                                "datum label": "StartTime"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 29.0,
+                                                                "datum label": "Width"
+                                                            }
+                                                        ]
                                                     }
                                                 }
                                             ]
                                         },
-                                        "custom information document": {
-                                            "integration algorithm type": "ApexTrack",
-                                            "data processing method": "LC PQ ApexTrack",
-                                            "data processing time": "2005-05-12T08:46:01",
-                                            "peak width": 8.159155,
-                                            "CalibrationId": "2309",
-                                            "ProcessingLocked": "False",
-                                            "Manual": "False",
-                                            "ProcessedBy": "System/Administrator",
-                                            "ProcessedAs": "Standard",
-                                            "ProcessingMethodId": "2307",
-                                            "ProcessedChannelType": "2D",
-                                            "ProcessedChanDesc": "254nm",
-                                            "Threshold": "100.0",
-                                            "SourceSoftwareInfo": "Empower Software Build 2154  DB ID: 685048692",
-                                            "SampleValuesUsedinCalculations": "Injection Volume = 20.00 Acetone Value = 3750.000000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 10.000000 Propiophenone Value = 10.000000 Butyrophenone Value = 10.000000 ",
-                                            "NumOfResultsStored": "23",
-                                            "NumOfProcessOnlySampleSets": "0",
-                                            "ResultSetId": "2308",
-                                            "ResultSetName": "PQ Sample Set",
-                                            "ResultSetDate": "2005-05-12T08:46:01",
-                                            "ResultId": "2316",
-                                            "ResultType": "LC",
-                                            "ResultNum": "23",
-                                            "ResultSampleSetMethod": "!QuickSet",
-                                            "ResultSource": "Processed a Sample Set using Processing Method with clear calibration",
-                                            "ResultSuperseded": "False",
-                                            "TotalArea": "2793884.25",
-                                            "PercentUnknowns": "0.0",
-                                            "Faults": "False",
-                                            "SampleSetMethod": "!QuickSet",
-                                            "eCordMaximumTemperature": 0.0,
-                                            "InjectionVolume": 20.0,
-                                            "SummaryFaults": false,
-                                            "DetUnits": "AU",
-                                            "SampleName": "PQ Std 10x",
-                                            "Vial": "3",
-                                            "Injection": 1,
-                                            "Level": "3",
-                                            "SampleSetAltered": false,
-                                            "SampleType": "Standard",
-                                            "SampleSetCurrentId": 1169,
-                                            "eCordInjectionCount": 0,
-                                            "Superseded": false,
-                                            "InjectionStatus": "Pre-Empower 3 SR3",
-                                            "VialId": 1178,
-                                            "InjectionId": 1179,
-                                            "ScaletouV": 9.99999997475243e-07,
-                                            "SampleSetType": "Acquired",
-                                            "DataStart": 0.0,
-                                            "ChannelDescription": "254nm",
-                                            "Label": "S0103",
-                                            "AcqMethodSet": "LC Demo Method Set",
-                                            "SampleSetId": 1169,
-                                            "ChannelId": 1180,
-                                            "SampleWeight": 1.0,
-                                            "SystemName": "Alliance",
-                                            "SecondChannelId": 0,
-                                            "DateAcquired": "1997-09-17T17:10:10",
-                                            "DataEnd": 6.0,
-                                            "InstrumentMethodId": 1171,
-                                            "SampleSetIdResult": 1169,
-                                            "VialIdResult": 1178,
-                                            "AcquiredBy": "System",
-                                            "RunTime": 6.0,
-                                            "Node": "Pplab6",
-                                            "SampleSetAcquiring": false,
-                                            "Altered": true,
-                                            "SampleSetName": "PQ Sample Set",
-                                            "Channel": "486 ",
-                                            "SampleSetFinishDate": "1997-09-17T17:44:53",
-                                            "SamplingRate": 2.0,
-                                            "eCordMaximumPressure": 0.0,
-                                            "ChannelType": "2D",
-                                            "ProcessingNode": "Lwood",
-                                            "SampleSetStartDate": "1997-09-17T16:55:54",
-                                            "InjectionVolumeResult": 20.0,
-                                            "ChannelName": "486 ",
-                                            "NumberofSignOffs": 0,
-                                            "Dilution": 1.0
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "LC Demo Method Set",
+                                                    "datum label": "AcqMethodSet"
+                                                },
+                                                {
+                                                    "scalar string datum": "System",
+                                                    "datum label": "AcquiredBy"
+                                                },
+                                                {
+                                                    "scalar boolean datum": true,
+                                                    "datum label": "Altered"
+                                                },
+                                                {
+                                                    "scalar string datum": "2309",
+                                                    "datum label": "CalibrationId"
+                                                },
+                                                {
+                                                    "scalar string datum": "486 ",
+                                                    "datum label": "Channel"
+                                                },
+                                                {
+                                                    "scalar string datum": "254nm",
+                                                    "datum label": "ChannelDescription"
+                                                },
+                                                {
+                                                    "scalar double datum": 1180.0,
+                                                    "datum label": "ChannelId"
+                                                },
+                                                {
+                                                    "scalar string datum": "486 ",
+                                                    "datum label": "ChannelName"
+                                                },
+                                                {
+                                                    "scalar string datum": "2D",
+                                                    "datum label": "ChannelType"
+                                                },
+                                                {
+                                                    "scalar double datum": 6.0,
+                                                    "datum label": "DataEnd"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "DataStart"
+                                                },
+                                                {
+                                                    "scalar string datum": "1997-09-17T17:10:10",
+                                                    "datum label": "DateAcquired"
+                                                },
+                                                {
+                                                    "scalar string datum": "AU",
+                                                    "datum label": "DetUnits"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Dilution"
+                                                },
+                                                {
+                                                    "scalar string datum": "False",
+                                                    "datum label": "Faults"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Injection"
+                                                },
+                                                {
+                                                    "scalar double datum": 1179.0,
+                                                    "datum label": "InjectionId"
+                                                },
+                                                {
+                                                    "scalar string datum": "Pre-Empower 3 SR3",
+                                                    "datum label": "InjectionStatus"
+                                                },
+                                                {
+                                                    "scalar double datum": 20.0,
+                                                    "datum label": "InjectionVolume"
+                                                },
+                                                {
+                                                    "scalar double datum": 20.0,
+                                                    "datum label": "InjectionVolumeResult"
+                                                },
+                                                {
+                                                    "scalar double datum": 1171.0,
+                                                    "datum label": "InstrumentMethodId"
+                                                },
+                                                {
+                                                    "scalar string datum": "S0103",
+                                                    "datum label": "Label"
+                                                },
+                                                {
+                                                    "scalar string datum": "3",
+                                                    "datum label": "Level"
+                                                },
+                                                {
+                                                    "scalar string datum": "False",
+                                                    "datum label": "Manual"
+                                                },
+                                                {
+                                                    "scalar string datum": "Pplab6",
+                                                    "datum label": "Node"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "NumOfProcessOnlySampleSets"
+                                                },
+                                                {
+                                                    "scalar string datum": "23",
+                                                    "datum label": "NumOfResultsStored"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "NumberofSignOffs"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0",
+                                                    "datum label": "PercentUnknowns"
+                                                },
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "ProcessedAs"
+                                                },
+                                                {
+                                                    "scalar string datum": "System/Administrator",
+                                                    "datum label": "ProcessedBy"
+                                                },
+                                                {
+                                                    "scalar string datum": "254nm",
+                                                    "datum label": "ProcessedChanDesc"
+                                                },
+                                                {
+                                                    "scalar string datum": "2D",
+                                                    "datum label": "ProcessedChannelType"
+                                                },
+                                                {
+                                                    "scalar string datum": "False",
+                                                    "datum label": "ProcessingLocked"
+                                                },
+                                                {
+                                                    "scalar string datum": "2307",
+                                                    "datum label": "ProcessingMethodId"
+                                                },
+                                                {
+                                                    "scalar string datum": "Lwood",
+                                                    "datum label": "ProcessingNode"
+                                                },
+                                                {
+                                                    "scalar string datum": "2316",
+                                                    "datum label": "ResultId"
+                                                },
+                                                {
+                                                    "scalar string datum": "23",
+                                                    "datum label": "ResultNum"
+                                                },
+                                                {
+                                                    "scalar string datum": "!QuickSet",
+                                                    "datum label": "ResultSampleSetMethod"
+                                                },
+                                                {
+                                                    "scalar string datum": "2005-05-12T08:46:01",
+                                                    "datum label": "ResultSetDate"
+                                                },
+                                                {
+                                                    "scalar string datum": "2308",
+                                                    "datum label": "ResultSetId"
+                                                },
+                                                {
+                                                    "scalar string datum": "PQ Sample Set",
+                                                    "datum label": "ResultSetName"
+                                                },
+                                                {
+                                                    "scalar string datum": "Processed a Sample Set using Processing Method with clear calibration",
+                                                    "datum label": "ResultSource"
+                                                },
+                                                {
+                                                    "scalar string datum": "False",
+                                                    "datum label": "ResultSuperseded"
+                                                },
+                                                {
+                                                    "scalar string datum": "LC",
+                                                    "datum label": "ResultType"
+                                                },
+                                                {
+                                                    "scalar double datum": 6.0,
+                                                    "datum label": "RunTime"
+                                                },
+                                                {
+                                                    "scalar string datum": "PQ Std 10x",
+                                                    "datum label": "SampleName"
+                                                },
+                                                {
+                                                    "scalar boolean datum": false,
+                                                    "datum label": "SampleSetAcquiring"
+                                                },
+                                                {
+                                                    "scalar boolean datum": false,
+                                                    "datum label": "SampleSetAltered"
+                                                },
+                                                {
+                                                    "scalar double datum": 1169.0,
+                                                    "datum label": "SampleSetCurrentId"
+                                                },
+                                                {
+                                                    "scalar string datum": "1997-09-17T17:44:53",
+                                                    "datum label": "SampleSetFinishDate"
+                                                },
+                                                {
+                                                    "scalar double datum": 1169.0,
+                                                    "datum label": "SampleSetId"
+                                                },
+                                                {
+                                                    "scalar double datum": 1169.0,
+                                                    "datum label": "SampleSetIdResult"
+                                                },
+                                                {
+                                                    "scalar string datum": "!QuickSet",
+                                                    "datum label": "SampleSetMethod"
+                                                },
+                                                {
+                                                    "scalar string datum": "PQ Sample Set",
+                                                    "datum label": "SampleSetName"
+                                                },
+                                                {
+                                                    "scalar string datum": "1997-09-17T16:55:54",
+                                                    "datum label": "SampleSetStartDate"
+                                                },
+                                                {
+                                                    "scalar string datum": "Acquired",
+                                                    "datum label": "SampleSetType"
+                                                },
+                                                {
+                                                    "scalar string datum": "Standard",
+                                                    "datum label": "SampleType"
+                                                },
+                                                {
+                                                    "scalar string datum": "Injection Volume = 20.00 Acetone Value = 3750.000000 SampleWeight = 1.00000 Dilution = 1.00000 Acetophenone Value = 10.000000 Propiophenone Value = 10.000000 Butyrophenone Value = 10.000000 ",
+                                                    "datum label": "SampleValuesUsedinCalculations"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "SampleWeight"
+                                                },
+                                                {
+                                                    "scalar double datum": 2.0,
+                                                    "datum label": "SamplingRate"
+                                                },
+                                                {
+                                                    "scalar double datum": 9.99999997475243e-07,
+                                                    "datum label": "ScaletouV"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "SecondChannelId"
+                                                },
+                                                {
+                                                    "scalar string datum": "Empower Software Build 2154  DB ID: 685048692",
+                                                    "datum label": "SourceSoftwareInfo"
+                                                },
+                                                {
+                                                    "scalar boolean datum": false,
+                                                    "datum label": "SummaryFaults"
+                                                },
+                                                {
+                                                    "scalar boolean datum": false,
+                                                    "datum label": "Superseded"
+                                                },
+                                                {
+                                                    "scalar string datum": "Alliance",
+                                                    "datum label": "SystemName"
+                                                },
+                                                {
+                                                    "scalar string datum": "100.0",
+                                                    "datum label": "Threshold"
+                                                },
+                                                {
+                                                    "scalar string datum": "2793884.25",
+                                                    "datum label": "TotalArea"
+                                                },
+                                                {
+                                                    "scalar string datum": "3",
+                                                    "datum label": "Vial"
+                                                },
+                                                {
+                                                    "scalar double datum": 1178.0,
+                                                    "datum label": "VialId"
+                                                },
+                                                {
+                                                    "scalar double datum": 1178.0,
+                                                    "datum label": "VialIdResult"
+                                                },
+                                                {
+                                                    "scalar string datum": "LC PQ ApexTrack",
+                                                    "datum label": "data_processing_method"
+                                                },
+                                                {
+                                                    "scalar string datum": "2005-05-12T08:46:01",
+                                                    "datum label": "data_processing_time"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "eCordInjectionCount"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "eCordMaximumPressure"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "eCordMaximumTemperature"
+                                                },
+                                                {
+                                                    "scalar string datum": "ApexTrack",
+                                                    "datum label": "integration_algorithm_type"
+                                                },
+                                                {
+                                                    "scalar double datum": 8.159155,
+                                                    "datum label": "peak_width"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1011,9 +2353,17 @@
                                 },
                                 "injection identifier": "1179",
                                 "injection time": "1997-09-17T17:10:10+00:00",
-                                "custom information document": {
-                                    "InjectionStatus": "Pre-Empower 3 SR3",
-                                    "Injection": "1"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "Injection"
+                                        },
+                                        {
+                                            "scalar string datum": "Pre-Empower 3 SR3",
+                                            "datum label": "InjectionStatus"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -1049,37 +2399,119 @@
                                     ]
                                 }
                             },
-                            "custom information document": {
-                                "DateAcquired": "1997-09-17T17:10:10",
-                                "RunTime": "6.0",
-                                "measurement end time": "1997-09-17T17:44:53",
-                                "SampleSetMethod": "!QuickSet",
-                                "SampleSetName": "PQ Sample Set",
-                                "eCordMaximumTemperature": 0.0,
-                                "eCordInjectionCount": 0,
-                                "SampleSetFinishDate": "1997-09-17T17:44:53",
-                                "SystemName": "Alliance",
-                                "SampleSetType": "Acquired",
-                                "eCordMaximumPressure": 0.0,
-                                "Level": "3",
-                                "NumOfProcessOnlySampleSets": 0,
-                                "SampleSetStartDate": "1997-09-17T16:55:54",
-                                "SampleSetId": 1169,
-                                "ProcessingLocked": false,
-                                "NumOfResultsStored": 23,
-                                "AcquiredBy": "System",
-                                "Node": "Pplab6"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "System",
+                                        "datum label": "AcquiredBy"
+                                    },
+                                    {
+                                        "scalar string datum": "1997-09-17T17:10:10",
+                                        "datum label": "DateAcquired"
+                                    },
+                                    {
+                                        "scalar string datum": "3",
+                                        "datum label": "Level"
+                                    },
+                                    {
+                                        "scalar string datum": "Pplab6",
+                                        "datum label": "Node"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "NumOfProcessOnlySampleSets"
+                                    },
+                                    {
+                                        "scalar double datum": 23.0,
+                                        "datum label": "NumOfResultsStored"
+                                    },
+                                    {
+                                        "scalar boolean datum": false,
+                                        "datum label": "ProcessingLocked"
+                                    },
+                                    {
+                                        "scalar string datum": "6.0",
+                                        "datum label": "RunTime"
+                                    },
+                                    {
+                                        "scalar string datum": "1997-09-17T17:44:53",
+                                        "datum label": "SampleSetFinishDate"
+                                    },
+                                    {
+                                        "scalar double datum": 1169.0,
+                                        "datum label": "SampleSetId"
+                                    },
+                                    {
+                                        "scalar string datum": "!QuickSet",
+                                        "datum label": "SampleSetMethod"
+                                    },
+                                    {
+                                        "scalar string datum": "PQ Sample Set",
+                                        "datum label": "SampleSetName"
+                                    },
+                                    {
+                                        "scalar string datum": "1997-09-17T16:55:54",
+                                        "datum label": "SampleSetStartDate"
+                                    },
+                                    {
+                                        "scalar string datum": "Acquired",
+                                        "datum label": "SampleSetType"
+                                    },
+                                    {
+                                        "scalar string datum": "Alliance",
+                                        "datum label": "SystemName"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "eCordInjectionCount"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "eCordMaximumPressure"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "eCordMaximumTemperature"
+                                    },
+                                    {
+                                        "scalar string datum": "1997-09-17T17:44:53",
+                                        "datum label": "measurement_end_time"
+                                    }
+                                ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "Altered": "True",
-                        "InstrumentMethodId": "1171",
-                        "Superseded": "False",
-                        "Node": "Pplab6",
-                        "measurement method identifier": "!QuickSet",
-                        "SampleSetName": "PQ Sample Set",
-                        "SampleSetType": "Acquired"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "True",
+                                "datum label": "Altered"
+                            },
+                            {
+                                "scalar string datum": "1171",
+                                "datum label": "InstrumentMethodId"
+                            },
+                            {
+                                "scalar string datum": "Pplab6",
+                                "datum label": "Node"
+                            },
+                            {
+                                "scalar string datum": "PQ Sample Set",
+                                "datum label": "SampleSetName"
+                            },
+                            {
+                                "scalar string datum": "Acquired",
+                                "datum label": "SampleSetType"
+                            },
+                            {
+                                "scalar string datum": "False",
+                                "datum label": "Superseded"
+                            },
+                            {
+                                "scalar string datum": "!QuickSet",
+                                "datum label": "measurement_method_identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "N/A"
@@ -1087,21 +2519,50 @@
         ],
         "data system document": {
             "ASM converter name": "allotropy_benchling_waters_empower_adapter",
-            "ASM converter version": "0.1.86",
+            "ASM converter version": "0.1.110",
             "data system instance identifier": "Alliance",
             "file name": "example_01.json",
             "software name": "Waters Empower",
             "UNC path": "tests/parsers/benchling_empower/testdata/input/example_01.json",
-            "custom information document": {
-                "project": "Defaults",
-                "Node": "Pplab6",
-                "SampleSetName": "PQ Sample Set",
-                "SampleSetType": "Acquired",
-                "SampleSetMethod": "!QuickSet",
-                "SampleSetStartDate": "1997-09-17T16:55:54",
-                "sample set id": 1169,
-                "SampleSetFinishDate": "1997-09-17T17:44:53",
-                "SampleSetId": 1169
+            "custom information aggregate document": {
+                "custom information document": [
+                    {
+                        "scalar string datum": "Pplab6",
+                        "datum label": "Node"
+                    },
+                    {
+                        "scalar string datum": "1997-09-17T17:44:53",
+                        "datum label": "SampleSetFinishDate"
+                    },
+                    {
+                        "scalar double datum": 1169.0,
+                        "datum label": "SampleSetId"
+                    },
+                    {
+                        "scalar string datum": "!QuickSet",
+                        "datum label": "SampleSetMethod"
+                    },
+                    {
+                        "scalar string datum": "PQ Sample Set",
+                        "datum label": "SampleSetName"
+                    },
+                    {
+                        "scalar string datum": "1997-09-17T16:55:54",
+                        "datum label": "SampleSetStartDate"
+                    },
+                    {
+                        "scalar string datum": "Acquired",
+                        "datum label": "SampleSetType"
+                    },
+                    {
+                        "scalar string datum": "Defaults",
+                        "datum label": "project"
+                    },
+                    {
+                        "scalar double datum": 1169.0,
+                        "datum label": "sample_set_id"
+                    }
+                ]
             }
         },
         "device system document": {

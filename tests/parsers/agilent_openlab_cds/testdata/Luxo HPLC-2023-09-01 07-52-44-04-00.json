@@ -30,21 +30,35 @@
                             "sample document": {
                                 "sample identifier": "MPS23-17 60 40 10x 2",
                                 "sample role type": "sample role",
-                                "custom information document": {
-                                    "location identifier": "D1F-A8",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A8",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -627,10 +641,21 @@
                                 },
                                 "injection identifier": "c95b3a76-629a-4f29-a4d0-3881779ca709",
                                 "injection time": "2023-09-01T08:56:33.649785-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -690,21 +715,35 @@
                             },
                             "sample document": {
                                 "sample identifier": "A 200",
-                                "custom information document": {
-                                    "location identifier": "D1F-A4",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A4",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -1147,10 +1186,21 @@
                                 },
                                 "injection identifier": "5156db39-1693-4a02-9bc1-83337a567a2c",
                                 "injection time": "2023-09-01T08:16:46.105662-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -1211,21 +1261,35 @@
                             "sample document": {
                                 "sample identifier": "ACN",
                                 "sample role type": "blank role",
-                                "custom information document": {
-                                    "location identifier": "1",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -1843,10 +1907,21 @@
                                 },
                                 "injection identifier": "842ab0e3-b504-4c89-b166-836ee49b27c0",
                                 "injection time": "2023-09-01T07:52:53.641081-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -1903,21 +1978,35 @@
                             },
                             "sample document": {
                                 "sample identifier": "A 20",
-                                "custom information document": {
-                                    "location identifier": "D1F-A1",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A1",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -2395,10 +2484,21 @@
                                 },
                                 "injection identifier": "d20b7884-d7a6-4574-9d26-935d2f9ea915",
                                 "injection time": "2023-09-01T07:52:56.644349-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -2453,21 +2553,35 @@
                             },
                             "sample document": {
                                 "sample identifier": "A 20",
-                                "custom information document": {
-                                    "location identifier": "D1F-A1",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A1",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -2735,10 +2849,21 @@
                                 },
                                 "injection identifier": "d20b7884-d7a6-4574-9d26-935d2f9ea915",
                                 "injection time": "2023-09-01T07:52:56.644349-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -2807,21 +2932,35 @@
                             "sample document": {
                                 "sample identifier": "MPS23-17 60 40 10x 1",
                                 "sample role type": "sample role",
-                                "custom information document": {
-                                    "location identifier": "D1F-A7",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A7",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -2833,10 +2972,21 @@
                                 },
                                 "injection identifier": "8fabcde3-f2ba-48e7-9dfa-4f3cde4b7633",
                                 "injection time": "2023-09-01T08:48:36.086877-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             }
                         },
@@ -2864,21 +3014,35 @@
                             },
                             "sample document": {
                                 "sample identifier": "A 100",
-                                "custom information document": {
-                                    "location identifier": "D1F-A3",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A3",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -3146,10 +3310,21 @@
                                 },
                                 "injection identifier": "90acbf2a-9542-4a48-a476-7afd1c78b828",
                                 "injection time": "2023-09-01T08:08:47.951739-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -3223,21 +3398,35 @@
                             "sample document": {
                                 "sample identifier": "MPS23-17 60 40 10x 2",
                                 "sample role type": "sample role",
-                                "custom information document": {
-                                    "location identifier": "D1F-A8",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A8",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -3249,10 +3438,21 @@
                                 },
                                 "injection identifier": "c95b3a76-629a-4f29-a4d0-3881779ca709",
                                 "injection time": "2023-09-01T08:56:33.649785-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             }
                         },
@@ -3294,21 +3494,35 @@
                             "sample document": {
                                 "sample identifier": "ACN",
                                 "sample role type": "blank role",
-                                "custom information document": {
-                                    "location identifier": "1",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -3320,10 +3534,21 @@
                                 },
                                 "injection identifier": "842ab0e3-b504-4c89-b166-836ee49b27c0",
                                 "injection time": "2023-09-01T07:52:53.641081-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             }
                         },
@@ -3352,21 +3577,35 @@
                             "sample document": {
                                 "sample identifier": "MPS23-17 60 40 10x 2",
                                 "sample role type": "sample role",
-                                "custom information document": {
-                                    "location identifier": "D1F-A8",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A8",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -3809,10 +4048,21 @@
                                 },
                                 "injection identifier": "c95b3a76-629a-4f29-a4d0-3881779ca709",
                                 "injection time": "2023-09-01T08:56:33.649785-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -3872,21 +4122,35 @@
                             },
                             "sample document": {
                                 "sample identifier": "A 50",
-                                "custom information document": {
-                                    "location identifier": "D1F-A2",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A2",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -4189,10 +4453,21 @@
                                 },
                                 "injection identifier": "f7cda001-b567-4a1d-8afc-ff530fd40078",
                                 "injection time": "2023-09-01T08:00:49.183086-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -4260,21 +4535,35 @@
                             },
                             "sample document": {
                                 "sample identifier": "A 20",
-                                "custom information document": {
-                                    "location identifier": "D1F-A1",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A1",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -4286,10 +4575,21 @@
                                 },
                                 "injection identifier": "d20b7884-d7a6-4574-9d26-935d2f9ea915",
                                 "injection time": "2023-09-01T07:52:56.644349-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             }
                         },
@@ -4317,21 +4617,35 @@
                             },
                             "sample document": {
                                 "sample identifier": "A 100",
-                                "custom information document": {
-                                    "location identifier": "D1F-A3",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A3",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -4949,10 +5263,21 @@
                                 },
                                 "injection identifier": "90acbf2a-9542-4a48-a476-7afd1c78b828",
                                 "injection time": "2023-09-01T08:08:47.951739-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -5013,21 +5338,35 @@
                             "sample document": {
                                 "sample identifier": "MPS23-17 as is 10x 2",
                                 "sample role type": "sample role",
-                                "custom information document": {
-                                    "location identifier": "D1F-A6",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A6",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -5540,10 +5879,21 @@
                                 },
                                 "injection identifier": "f28e140e-8241-45c0-9cec-c926f0a0732c",
                                 "injection time": "2023-09-01T08:40:35.731755-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -5612,21 +5962,35 @@
                             "sample document": {
                                 "sample identifier": "MPS23-17 as is 10x 2",
                                 "sample role type": "sample role",
-                                "custom information document": {
-                                    "location identifier": "D1F-A6",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A6",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -5638,10 +6002,21 @@
                                 },
                                 "injection identifier": "f28e140e-8241-45c0-9cec-c926f0a0732c",
                                 "injection time": "2023-09-01T08:40:35.731755-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             }
                         },
@@ -5670,21 +6045,35 @@
                             "sample document": {
                                 "sample identifier": "MPS-23-17 as is 10x 1",
                                 "sample role type": "sample role",
-                                "custom information document": {
-                                    "location identifier": "D1F-A5",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A5",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -6267,10 +6656,21 @@
                                 },
                                 "injection identifier": "e927ca57-f728-401c-8c10-d80058d52e00",
                                 "injection time": "2023-09-01T08:32:42.639339-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -6344,21 +6744,35 @@
                             "sample document": {
                                 "sample identifier": "ACN",
                                 "sample role type": "blank role",
-                                "custom information document": {
-                                    "location identifier": "1",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -6370,10 +6784,21 @@
                                 },
                                 "injection identifier": "842ab0e3-b504-4c89-b166-836ee49b27c0",
                                 "injection time": "2023-09-01T08:24:44.056514-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             }
                         },
@@ -6414,21 +6839,35 @@
                             },
                             "sample document": {
                                 "sample identifier": "A 50",
-                                "custom information document": {
-                                    "location identifier": "D1F-A2",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A2",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -6440,10 +6879,21 @@
                                 },
                                 "injection identifier": "f7cda001-b567-4a1d-8afc-ff530fd40078",
                                 "injection time": "2023-09-01T08:00:49.183086-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             }
                         },
@@ -6484,21 +6934,35 @@
                             },
                             "sample document": {
                                 "sample identifier": "A 200",
-                                "custom information document": {
-                                    "location identifier": "D1F-A4",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A4",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -6510,10 +6974,21 @@
                                 },
                                 "injection identifier": "5156db39-1693-4a02-9bc1-83337a567a2c",
                                 "injection time": "2023-09-01T08:16:46.105662-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             }
                         },
@@ -6542,21 +7017,35 @@
                             "sample document": {
                                 "sample identifier": "ACN",
                                 "sample role type": "blank role",
-                                "custom information document": {
-                                    "location identifier": "1",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -7034,10 +7523,21 @@
                                 },
                                 "injection identifier": "842ab0e3-b504-4c89-b166-836ee49b27c0",
                                 "injection time": "2023-09-01T08:24:44.056514-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -7093,21 +7593,35 @@
                             "sample document": {
                                 "sample identifier": "ACN",
                                 "sample role type": "blank role",
-                                "custom information document": {
-                                    "location identifier": "1",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -7410,10 +7924,21 @@
                                 },
                                 "injection identifier": "842ab0e3-b504-4c89-b166-836ee49b27c0",
                                 "injection time": "2023-09-01T08:24:44.056514-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -7469,21 +7994,35 @@
                             "sample document": {
                                 "sample identifier": "MPS23-17 as is 10x 2",
                                 "sample role type": "sample role",
-                                "custom information document": {
-                                    "location identifier": "D1F-A6",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A6",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -7891,10 +8430,21 @@
                                 },
                                 "injection identifier": "f28e140e-8241-45c0-9cec-c926f0a0732c",
                                 "injection time": "2023-09-01T08:40:35.731755-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -7950,21 +8500,35 @@
                             "sample document": {
                                 "sample identifier": "ACN",
                                 "sample role type": "blank role",
-                                "custom information document": {
-                                    "location identifier": "1",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -8267,10 +8831,21 @@
                                 },
                                 "injection identifier": "842ab0e3-b504-4c89-b166-836ee49b27c0",
                                 "injection time": "2023-09-01T07:52:53.641081-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -8325,21 +8900,35 @@
                             },
                             "sample document": {
                                 "sample identifier": "A 50",
-                                "custom information document": {
-                                    "location identifier": "D1F-A2",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A2",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -8992,10 +9581,21 @@
                                 },
                                 "injection identifier": "f7cda001-b567-4a1d-8afc-ff530fd40078",
                                 "injection time": "2023-09-01T08:00:49.183086-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -9051,21 +9651,35 @@
                             "sample document": {
                                 "sample identifier": "MPS23-17 60 40 10x 1",
                                 "sample role type": "sample role",
-                                "custom information document": {
-                                    "location identifier": "D1F-A7",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A7",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -9403,10 +10017,21 @@
                                 },
                                 "injection identifier": "8fabcde3-f2ba-48e7-9dfa-4f3cde4b7633",
                                 "injection time": "2023-09-01T08:48:36.086877-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -9467,21 +10092,35 @@
                             "sample document": {
                                 "sample identifier": "MPS-23-17 as is 10x 1",
                                 "sample role type": "sample role",
-                                "custom information document": {
-                                    "location identifier": "D1F-A5",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A5",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -9889,10 +10528,21 @@
                                 },
                                 "injection identifier": "e927ca57-f728-401c-8c10-d80058d52e00",
                                 "injection time": "2023-09-01T08:32:42.639339-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -9963,21 +10613,35 @@
                             },
                             "sample document": {
                                 "sample identifier": "A 100",
-                                "custom information document": {
-                                    "location identifier": "D1F-A3",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A3",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -9989,10 +10653,21 @@
                                 },
                                 "injection identifier": "90acbf2a-9542-4a48-a476-7afd1c78b828",
                                 "injection time": "2023-09-01T08:08:47.951739-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             }
                         },
@@ -10020,21 +10695,35 @@
                             },
                             "sample document": {
                                 "sample identifier": "A 200",
-                                "custom information document": {
-                                    "location identifier": "D1F-A4",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A4",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -10337,10 +11026,21 @@
                                 },
                                 "injection identifier": "5156db39-1693-4a02-9bc1-83337a567a2c",
                                 "injection time": "2023-09-01T08:16:46.105662-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -10401,21 +11101,35 @@
                             "sample document": {
                                 "sample identifier": "MPS23-17 60 40 10x 1",
                                 "sample role type": "sample role",
-                                "custom information document": {
-                                    "location identifier": "D1F-A7",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A7",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -10998,10 +11712,21 @@
                                 },
                                 "injection identifier": "8fabcde3-f2ba-48e7-9dfa-4f3cde4b7633",
                                 "injection time": "2023-09-01T08:48:36.086877-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -11075,21 +11800,35 @@
                             "sample document": {
                                 "sample identifier": "MPS-23-17 as is 10x 1",
                                 "sample role type": "sample role",
-                                "custom information document": {
-                                    "location identifier": "D1F-A5",
-                                    "replicate": "1",
-                                    "sample amount": {
-                                        "value": 0.0,
-                                        "unit": "(unitless)"
-                                    }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D1F-A5",
+                                            "datum label": "location identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "replicate"
+                                        },
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "unit": "(unitless)",
+                                            "datum label": "sample amount"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
                                 "chromatography column part number": "G7116A",
                                 "chromatography column serial number": "DEAED27199",
                                 "product manufacturer": "Agilent",
-                                "custom information document": {
-                                    "firmware version": "D.07.34 [0006]"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D.07.34 [0006]",
+                                            "datum label": "firmware version"
+                                        }
+                                    ]
                                 }
                             },
                             "measurement time": "2023-09-01T11:52:46.852818+00:00",
@@ -11101,10 +11840,21 @@
                                 },
                                 "injection identifier": "e927ca57-f728-401c-8c10-d80058d52e00",
                                 "injection time": "2023-09-01T08:32:42.639339-04:00",
-                                "custom information document": {
-                                    "injection source": "HipAls",
-                                    "acquisition method identifier": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
-                                    "injector position": "Front"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "D:\\CDS Data\\Andrographolide\\Results\\Luxo HPLC-2023-09-01 07-52-44-04-00.rslt\\Andrographolide 38% ACN.amx",
+                                            "datum label": "acquisition method identifier"
+                                        },
+                                        {
+                                            "scalar string datum": "HipAls",
+                                            "datum label": "injection source"
+                                        },
+                                        {
+                                            "scalar string datum": "Front",
+                                            "datum label": "injector position"
+                                        }
+                                    ]
                                 }
                             }
                         }
@@ -11115,7 +11865,7 @@
         ],
         "data system document": {
             "ASM converter name": "allotropy_agilent_openlab_cds",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.110",
             "data system instance identifier": "N/A",
             "file name": "Luxo HPLC-2023-09-01 07-52-44-04-00.rslt",
             "software name": "OpenLabCDS",
@@ -11136,8 +11886,13 @@
                     "product manufacturer": "Agilent",
                     "equipment serial number": "DEAEW08816",
                     "firmware version": "D.07.33 [0003]",
-                    "custom information document": {
-                        "device name": "Quat. Pump"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "Quat. Pump",
+                                "datum label": "device name"
+                            }
+                        ]
                     }
                 },
                 {
@@ -11147,8 +11902,13 @@
                     "product manufacturer": "Agilent",
                     "equipment serial number": "DEAGY02258",
                     "firmware version": "D.07.27 [0006]",
-                    "custom information document": {
-                        "device name": "Multisampler"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "Multisampler",
+                                "datum label": "device name"
+                            }
+                        ]
                     }
                 }
             ]

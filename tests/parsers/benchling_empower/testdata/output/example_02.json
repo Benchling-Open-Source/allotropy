@@ -15,27 +15,89 @@
                                             "value": 3.4340658187866198,
                                             "unit": "Hz"
                                         },
-                                        "custom information document": {
-                                            "SolventA": "alpha",
-                                            "SolventB": "beta",
-                                            "SolventC": "gama",
-                                            "SolventD": "delta",
-                                            "ChannelDescription": "VWD: Signal A, 214 nm",
-                                            "ChannelType": "2D",
-                                            "DataStart": "0.0",
-                                            "DataEnd": "30.0",
-                                            "device acquisition method": "my_system_SEC_2018",
-                                            "total measurement duration setting": 30.0,
-                                            "Channel": "VWD.0.0",
-                                            "ScaletouV": "9.99999997475243e-07",
-                                            "device method identifier": "1004",
-                                            "name": "my_system_SEC_2018",
-                                            "comments": "my_system_SEC_2018",
-                                            "methods date": "2020-03-11T20:17:09",
-                                            "locked": false,
-                                            "version": 1,
-                                            "revision comment": "my_system_SEC_2018",
-                                            "modified by": "System"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "VWD.0.0",
+                                                    "datum label": "Channel"
+                                                },
+                                                {
+                                                    "scalar string datum": "VWD: Signal A, 214 nm",
+                                                    "datum label": "ChannelDescription"
+                                                },
+                                                {
+                                                    "scalar string datum": "2D",
+                                                    "datum label": "ChannelType"
+                                                },
+                                                {
+                                                    "scalar string datum": "30.0",
+                                                    "datum label": "DataEnd"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0",
+                                                    "datum label": "DataStart"
+                                                },
+                                                {
+                                                    "scalar string datum": "9.99999997475243e-07",
+                                                    "datum label": "ScaletouV"
+                                                },
+                                                {
+                                                    "scalar string datum": "alpha",
+                                                    "datum label": "SolventA"
+                                                },
+                                                {
+                                                    "scalar string datum": "beta",
+                                                    "datum label": "SolventB"
+                                                },
+                                                {
+                                                    "scalar string datum": "gama",
+                                                    "datum label": "SolventC"
+                                                },
+                                                {
+                                                    "scalar string datum": "delta",
+                                                    "datum label": "SolventD"
+                                                },
+                                                {
+                                                    "scalar string datum": "my_system_SEC_2018",
+                                                    "datum label": "comments"
+                                                },
+                                                {
+                                                    "scalar string datum": "my_system_SEC_2018",
+                                                    "datum label": "device acquisition method"
+                                                },
+                                                {
+                                                    "scalar string datum": "1004",
+                                                    "datum label": "device method identifier"
+                                                },
+                                                {
+                                                    "scalar boolean datum": false,
+                                                    "datum label": "locked"
+                                                },
+                                                {
+                                                    "scalar string datum": "2020-03-11T20:17:09",
+                                                    "datum label": "methods_date"
+                                                },
+                                                {
+                                                    "scalar string datum": "System",
+                                                    "datum label": "modified_by"
+                                                },
+                                                {
+                                                    "scalar string datum": "my_system_SEC_2018",
+                                                    "datum label": "name"
+                                                },
+                                                {
+                                                    "scalar string datum": "my_system_SEC_2018",
+                                                    "datum label": "revision_comment"
+                                                },
+                                                {
+                                                    "scalar double datum": 30.0,
+                                                    "datum label": "total measurement duration setting"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "version"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -45,19 +107,57 @@
                                 "batch identifier": "1002",
                                 "location identifier": "1003",
                                 "sample role type": "unknown sample role",
-                                "custom information document": {
-                                    "SampleConcentration": "0.0",
-                                    "SampleSetAcquiring": "False",
-                                    "SampleSetAltered": "True",
-                                    "SampleSetCurrentId": "1002",
-                                    "OriginalSampleSetId": "1002",
-                                    "OriginalVialId": "1003",
-                                    "Vial": "1",
-                                    "lot number": "Blank",
-                                    "sample weight": 1.0,
-                                    "VialId": "1003",
-                                    "SampleType": "Unknown",
-                                    "dilution factor setting": 1.0
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "1002",
+                                            "datum label": "OriginalSampleSetId"
+                                        },
+                                        {
+                                            "scalar string datum": "1003",
+                                            "datum label": "OriginalVialId"
+                                        },
+                                        {
+                                            "scalar string datum": "0.0",
+                                            "datum label": "SampleConcentration"
+                                        },
+                                        {
+                                            "scalar string datum": "False",
+                                            "datum label": "SampleSetAcquiring"
+                                        },
+                                        {
+                                            "scalar string datum": "True",
+                                            "datum label": "SampleSetAltered"
+                                        },
+                                        {
+                                            "scalar string datum": "1002",
+                                            "datum label": "SampleSetCurrentId"
+                                        },
+                                        {
+                                            "scalar string datum": "Unknown",
+                                            "datum label": "SampleType"
+                                        },
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "Vial"
+                                        },
+                                        {
+                                            "scalar string datum": "1003",
+                                            "datum label": "VialId"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "dilution_factor_setting"
+                                        },
+                                        {
+                                            "scalar string datum": "Blank",
+                                            "datum label": "lot_number"
+                                        },
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "sample_weight"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatography column document": {
@@ -102,11 +202,11 @@
                                                     "comments": "1",
                                                     "date": "2020-03-11T20:21:52",
                                                     "include_int_std_amounts": "True",
-                                                    "sample_value_type": "Amount",
-                                                    "update_ret_type": "Never",
-                                                    "revision_comment": "1",
-                                                    "rt_window_pct": 5.0,
                                                     "id": "1263",
+                                                    "update_ret_type": "Never",
+                                                    "rt_window_pct": 5.0,
+                                                    "sample_value_type": "Amount",
+                                                    "revision_comment": "1",
                                                     "DetectionThreshold": 5.0,
                                                     "IntegrationEnd": -50000.0,
                                                     "IntegrationStart": -50000.0,
@@ -148,11 +248,11 @@
                                                     "comments": "1",
                                                     "date": "2020-03-11T20:21:52",
                                                     "include_int_std_amounts": "True",
-                                                    "sample_value_type": "Amount",
-                                                    "update_ret_type": "Never",
-                                                    "revision_comment": "1",
-                                                    "rt_window_pct": 5.0,
                                                     "id": "1263",
+                                                    "update_ret_type": "Never",
+                                                    "rt_window_pct": 5.0,
+                                                    "sample_value_type": "Amount",
+                                                    "revision_comment": "1",
                                                     "DetectionThreshold": 5.0,
                                                     "IntegrationEnd": -50000.0,
                                                     "IntegrationStart": -50000.0,
@@ -194,11 +294,11 @@
                                                     "comments": "1",
                                                     "date": "2020-03-11T20:21:52",
                                                     "include_int_std_amounts": "True",
-                                                    "sample_value_type": "Amount",
-                                                    "update_ret_type": "Never",
-                                                    "revision_comment": "1",
-                                                    "rt_window_pct": 5.0,
                                                     "id": "1263",
+                                                    "update_ret_type": "Never",
+                                                    "rt_window_pct": 5.0,
+                                                    "sample_value_type": "Amount",
+                                                    "revision_comment": "1",
                                                     "DetectionThreshold": 5.0,
                                                     "IntegrationEnd": -50000.0,
                                                     "IntegrationStart": -50000.0,
@@ -240,11 +340,11 @@
                                                     "comments": "1",
                                                     "date": "2020-03-11T20:21:52",
                                                     "include_int_std_amounts": "True",
-                                                    "sample_value_type": "Amount",
-                                                    "update_ret_type": "Never",
-                                                    "revision_comment": "1",
-                                                    "rt_window_pct": 5.0,
                                                     "id": "1263",
+                                                    "update_ret_type": "Never",
+                                                    "rt_window_pct": 5.0,
+                                                    "sample_value_type": "Amount",
+                                                    "revision_comment": "1",
                                                     "DetectionThreshold": 5.0,
                                                     "IntegrationEnd": -50000.0,
                                                     "IntegrationStart": -50000.0,
@@ -286,11 +386,11 @@
                                                     "comments": "1",
                                                     "date": "2020-03-11T20:21:52",
                                                     "include_int_std_amounts": "True",
-                                                    "sample_value_type": "Amount",
-                                                    "update_ret_type": "Never",
-                                                    "revision_comment": "1",
-                                                    "rt_window_pct": 5.0,
                                                     "id": "1263",
+                                                    "update_ret_type": "Never",
+                                                    "rt_window_pct": 5.0,
+                                                    "sample_value_type": "Amount",
+                                                    "revision_comment": "1",
                                                     "DetectionThreshold": 5.0,
                                                     "IntegrationEnd": -50000.0,
                                                     "IntegrationStart": -50000.0,
@@ -332,11 +432,11 @@
                                                     "comments": "1",
                                                     "date": "2020-03-11T20:21:52",
                                                     "include_int_std_amounts": "True",
-                                                    "sample_value_type": "Amount",
-                                                    "update_ret_type": "Never",
-                                                    "revision_comment": "1",
-                                                    "rt_window_pct": 5.0,
                                                     "id": "1263",
+                                                    "update_ret_type": "Never",
+                                                    "rt_window_pct": 5.0,
+                                                    "sample_value_type": "Amount",
+                                                    "revision_comment": "1",
                                                     "DetectionThreshold": 5.0,
                                                     "IntegrationEnd": -50000.0,
                                                     "IntegrationStart": -50000.0,
@@ -378,11 +478,11 @@
                                                     "comments": "1",
                                                     "date": "2020-03-11T20:21:52",
                                                     "include_int_std_amounts": "True",
-                                                    "sample_value_type": "Amount",
-                                                    "update_ret_type": "Never",
-                                                    "revision_comment": "1",
-                                                    "rt_window_pct": 5.0,
                                                     "id": "1263",
+                                                    "update_ret_type": "Never",
+                                                    "rt_window_pct": 5.0,
+                                                    "sample_value_type": "Amount",
+                                                    "revision_comment": "1",
                                                     "DetectionThreshold": 5.0,
                                                     "IntegrationEnd": -50000.0,
                                                     "IntegrationStart": -50000.0,
@@ -424,11 +524,11 @@
                                                     "comments": "1",
                                                     "date": "2020-03-11T20:21:52",
                                                     "include_int_std_amounts": "True",
-                                                    "sample_value_type": "Amount",
-                                                    "update_ret_type": "Never",
-                                                    "revision_comment": "1",
-                                                    "rt_window_pct": 5.0,
                                                     "id": "1263",
+                                                    "update_ret_type": "Never",
+                                                    "rt_window_pct": 5.0,
+                                                    "sample_value_type": "Amount",
+                                                    "revision_comment": "1",
                                                     "DetectionThreshold": 5.0,
                                                     "IntegrationEnd": -50000.0,
                                                     "IntegrationStart": -50000.0,
@@ -470,11 +570,11 @@
                                                     "comments": "1",
                                                     "date": "2020-03-11T20:21:52",
                                                     "include_int_std_amounts": "True",
-                                                    "sample_value_type": "Amount",
-                                                    "update_ret_type": "Never",
-                                                    "revision_comment": "1",
-                                                    "rt_window_pct": 5.0,
                                                     "id": "1263",
+                                                    "update_ret_type": "Never",
+                                                    "rt_window_pct": 5.0,
+                                                    "sample_value_type": "Amount",
+                                                    "revision_comment": "1",
                                                     "DetectionThreshold": 5.0,
                                                     "IntegrationEnd": -50000.0,
                                                     "IntegrationStart": -50000.0,
@@ -531,37 +631,129 @@
                                                         "value": 31.7408016531667,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "IntType": "VV",
-                                                        "PeakType": "Unknown",
-                                                        "Slope": "1.95887538433766e-06",
-                                                        "StartHeight": "53.67127116108101",
-                                                        "EndHeight": "19.74983009437801",
-                                                        "InflectionWidth": "15.3360058202127",
-                                                        "PointsAcrossPeak": "109",
-                                                        "Offset": "-0.000309830067923236",
-                                                        "PctAdjustedArea": "7.85498382988878",
-                                                        "PeakCodes": "C02 C06 C26 C13 ",
-                                                        "ICH AdjArea": "0.0",
-                                                        "NG FinalResult": "0.0",
-                                                        "NG RS AdjAreaPct": "0.0",
-                                                        "RS AdjAreaPct": "0.0",
-                                                        "RS FinalResult": "0.0",
-                                                        "UnnamedRS AdjAreaPct": "0.0",
-                                                        "UnnamedRS FinalResult": "0.0",
-                                                        "AdjArea": "1000",
-                                                        "AdjAreaPct": "10",
-                                                        "FinalResult": "0.0",
-                                                        "2ndDerivativeApex": "2",
-                                                        "PeakCounter": 1.0,
-                                                        "BaselineEnd": 2.0,
-                                                        "BaselineStart": 10,
-                                                        "EndTime": 5.5853338323299,
-                                                        "Width": 31.7408016531667,
-                                                        "StartTime": 9.05632047144379,
-                                                        "PctHeight": 11.2836331878765,
-                                                        "PctArea": 7.85498382988878,
-                                                        "CorrectedArea": 1000
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "2",
+                                                                "datum label": "2ndDerivativeApex"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "1000",
+                                                                "datum label": "AdjArea"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "10",
+                                                                "datum label": "AdjAreaPct"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 2.0,
+                                                                "datum label": "BaselineEnd"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 10.0,
+                                                                "datum label": "BaselineStart"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1000.0,
+                                                                "datum label": "CorrectedArea"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "19.74983009437801",
+                                                                "datum label": "EndHeight"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 5.5853338323299,
+                                                                "datum label": "EndTime"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "FinalResult"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "ICH_AdjArea"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "15.3360058202127",
+                                                                "datum label": "InflectionWidth"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "VV",
+                                                                "datum label": "IntType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "NG_FinalResult"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "NG_RS_AdjAreaPct"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "-0.000309830067923236",
+                                                                "datum label": "Offset"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "7.85498382988878",
+                                                                "datum label": "PctAdjustedArea"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 7.85498382988878,
+                                                                "datum label": "PctArea"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 11.2836331878765,
+                                                                "datum label": "PctHeight"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "C02 C06 C26 C13 ",
+                                                                "datum label": "PeakCodes"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.0,
+                                                                "datum label": "PeakCounter"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Unknown",
+                                                                "datum label": "PeakType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "109",
+                                                                "datum label": "PointsAcrossPeak"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "RS_AdjAreaPct"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "RS_FinalResult"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "1.95887538433766e-06",
+                                                                "datum label": "Slope"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "53.67127116108101",
+                                                                "datum label": "StartHeight"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 9.05632047144379,
+                                                                "datum label": "StartTime"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "UnnamedRS_AdjAreaPct"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "UnnamedRS_FinalResult"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 31.7408016531667,
+                                                                "datum label": "Width"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -608,45 +800,161 @@
                                                         "value": 37.8560019716668,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "IntType": "VV",
-                                                        "PeakType": "Found",
-                                                        "Slope": "1.95887538433766e-06",
-                                                        "StartHeight": "119.74983009437801",
-                                                        "EndHeight": "216.682774995898",
-                                                        "InflectionWidth": "11.693542240951599",
-                                                        "PointsAcrossPeak": "130",
-                                                        "Offset": "-0.000309830067923236",
-                                                        "PctAdjustedArea": "16.210232134017897",
-                                                        "PeakCodes": "Q20 C30 C15 C17 C21 C31 C02 C06 C38 C13 ",
-                                                        "ICH AdjArea": "0.0",
-                                                        "NG FinalResult": "0.0",
-                                                        "NG RS AdjAreaPct": "0.0",
-                                                        "AdjArea": "6602.04557085683",
-                                                        "AdjAreaPct": "16.210232134017897",
-                                                        "FinalResult": "0.0",
-                                                        "2ndDerivativeApex": "10.1037716285006",
-                                                        "RelativeResponse": 1.0,
-                                                        "PeakCounter": 1.0,
-                                                        "BaselineEnd": 12.8128006670938,
-                                                        "BaselineStart": 8.52245377697157,
-                                                        "NG Factor2Result": 0.0,
-                                                        "LES Y Intercept": 0.0,
-                                                        "EndTime": 10.2162671985244,
-                                                        "Name": "Aggregate 3",
-                                                        "LES Slope": 0.0,
-                                                        "NG Factor1Result": 0.0,
-                                                        "NG Factor3Result": 0.0,
-                                                        "Response": 6602.04557085683,
-                                                        "Width": 37.8560019716668,
-                                                        "StartTime": 9.5853338323299,
-                                                        "PctHeight": 18.5490615082697,
-                                                        "CurveRT": 10.286000000000001,
-                                                        "Purity(Component)": 100.0,
-                                                        "CurveId": 1335,
-                                                        "PctArea": 16.210232134017897,
-                                                        "NG FinalAmount": 0.0,
-                                                        "CorrectedArea": 6602.04557085683
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "10.1037716285006",
+                                                                "datum label": "2ndDerivativeApex"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "6602.04557085683",
+                                                                "datum label": "AdjArea"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "16.210232134017897",
+                                                                "datum label": "AdjAreaPct"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 12.8128006670938,
+                                                                "datum label": "BaselineEnd"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 8.52245377697157,
+                                                                "datum label": "BaselineStart"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 6602.04557085683,
+                                                                "datum label": "CorrectedArea"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1335.0,
+                                                                "datum label": "CurveId"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 10.286000000000001,
+                                                                "datum label": "CurveRT"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "216.682774995898",
+                                                                "datum label": "EndHeight"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 10.2162671985244,
+                                                                "datum label": "EndTime"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "FinalResult"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "ICH_AdjArea"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "11.693542240951599",
+                                                                "datum label": "InflectionWidth"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "VV",
+                                                                "datum label": "IntType"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.0,
+                                                                "datum label": "LES_Slope"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.0,
+                                                                "datum label": "LES_Y_Intercept"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.0,
+                                                                "datum label": "NG_Factor1Result"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.0,
+                                                                "datum label": "NG_Factor2Result"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.0,
+                                                                "datum label": "NG_Factor3Result"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 0.0,
+                                                                "datum label": "NG_FinalAmount"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "NG_FinalResult"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "NG_RS_AdjAreaPct"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Aggregate 3",
+                                                                "datum label": "Name"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "-0.000309830067923236",
+                                                                "datum label": "Offset"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "16.210232134017897",
+                                                                "datum label": "PctAdjustedArea"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 16.210232134017897,
+                                                                "datum label": "PctArea"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 18.5490615082697,
+                                                                "datum label": "PctHeight"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Q20 C30 C15 C17 C21 C31 C02 C06 C38 C13 ",
+                                                                "datum label": "PeakCodes"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.0,
+                                                                "datum label": "PeakCounter"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Found",
+                                                                "datum label": "PeakType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "130",
+                                                                "datum label": "PointsAcrossPeak"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 100.0,
+                                                                "datum label": "Purity(Component)"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.0,
+                                                                "datum label": "RelativeResponse"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 6602.04557085683,
+                                                                "datum label": "Response"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "1.95887538433766e-06",
+                                                                "datum label": "Slope"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "119.74983009437801",
+                                                                "datum label": "StartHeight"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 9.5853338323299,
+                                                                "datum label": "StartTime"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 37.8560019716668,
+                                                                "datum label": "Width"
+                                                            }
+                                                        ]
                                                     }
                                                 },
                                                 {
@@ -692,153 +1000,580 @@
                                                         "value": 38.7296020171669,
                                                         "unit": "s"
                                                     },
-                                                    "custom information document": {
-                                                        "IntType": "VV",
-                                                        "PeakType": "Unknown",
-                                                        "Slope": "1.95887538433766e-06",
-                                                        "StartHeight": "216.682774995898",
-                                                        "EndHeight": "215.358729280502",
-                                                        "InflectionWidth": "16.667211758865097",
-                                                        "PointsAcrossPeak": "133",
-                                                        "Offset": "-0.000309830067923236",
-                                                        "PctAdjustedArea": "22.9430897254917",
-                                                        "PeakCodes": "C02 C06 C26 C13 ",
-                                                        "ICH AdjArea": "0.0",
-                                                        "NG FinalResult": "0.0",
-                                                        "NG RS AdjAreaPct": "0.0",
-                                                        "RS AdjAreaPct": "0.0",
-                                                        "RS FinalResult": "0.0",
-                                                        "UnnamedRS AdjAreaPct": "0.0",
-                                                        "UnnamedRS FinalResult": "0.0",
-                                                        "AdjArea": "9344.17981504928",
-                                                        "AdjAreaPct": "22.9430897254917",
-                                                        "FinalResult": "0.0",
-                                                        "2ndDerivativeApex": "10.5031067986603",
-                                                        "PeakCounter": 1.0,
-                                                        "BaselineEnd": 12.8128006670938,
-                                                        "BaselineStart": 8.52245377697157,
-                                                        "EndTime": 10.8617605654771,
-                                                        "Width": 38.7296020171669,
-                                                        "StartTime": 10.2162671985244,
-                                                        "PctHeight": 23.204848115646897,
-                                                        "PctArea": 22.9430897254917,
-                                                        "CorrectedArea": 9344.17981504928
+                                                    "custom information aggregate document": {
+                                                        "custom information document": [
+                                                            {
+                                                                "scalar string datum": "10.5031067986603",
+                                                                "datum label": "2ndDerivativeApex"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "9344.17981504928",
+                                                                "datum label": "AdjArea"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "22.9430897254917",
+                                                                "datum label": "AdjAreaPct"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 12.8128006670938,
+                                                                "datum label": "BaselineEnd"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 8.52245377697157,
+                                                                "datum label": "BaselineStart"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 9344.17981504928,
+                                                                "datum label": "CorrectedArea"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "215.358729280502",
+                                                                "datum label": "EndHeight"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 10.8617605654771,
+                                                                "datum label": "EndTime"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "FinalResult"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "ICH_AdjArea"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "16.667211758865097",
+                                                                "datum label": "InflectionWidth"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "VV",
+                                                                "datum label": "IntType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "NG_FinalResult"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "NG_RS_AdjAreaPct"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "-0.000309830067923236",
+                                                                "datum label": "Offset"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "22.9430897254917",
+                                                                "datum label": "PctAdjustedArea"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 22.9430897254917,
+                                                                "datum label": "PctArea"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 23.204848115646897,
+                                                                "datum label": "PctHeight"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "C02 C06 C26 C13 ",
+                                                                "datum label": "PeakCodes"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 1.0,
+                                                                "datum label": "PeakCounter"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "Unknown",
+                                                                "datum label": "PeakType"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "133",
+                                                                "datum label": "PointsAcrossPeak"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "RS_AdjAreaPct"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "RS_FinalResult"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "1.95887538433766e-06",
+                                                                "datum label": "Slope"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "216.682774995898",
+                                                                "datum label": "StartHeight"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 10.2162671985244,
+                                                                "datum label": "StartTime"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "UnnamedRS_AdjAreaPct"
+                                                            },
+                                                            {
+                                                                "scalar string datum": "0.0",
+                                                                "datum label": "UnnamedRS_FinalResult"
+                                                            },
+                                                            {
+                                                                "scalar double datum": 38.7296020171669,
+                                                                "datum label": "Width"
+                                                            }
+                                                        ]
                                                     }
                                                 }
                                             ]
                                         },
-                                        "custom information document": {
-                                            "integration algorithm type": "ApexTrack",
-                                            "data processing method": "SEC",
-                                            "data processing time": "2020-03-16T08:49:17",
-                                            "peak width": 5.0,
-                                            "CalculationType": "Standards Used",
-                                            "CalibrationId": "1334",
-                                            "ProcessingLocked": "False",
-                                            "Manual": "False",
-                                            "ProcessedBy": "user",
-                                            "ProcessedAs": "Unknown",
-                                            "UseForPrecision": "No",
-                                            "ProcessingMethodId": "1263",
-                                            "ProcessedChannelType": "2D",
-                                            "ProcessedChanDesc": "VWD: Signal A, 214 nm",
-                                            "PeakRatioReference": "False",
-                                            "Threshold": "5.0",
-                                            "SourceSoftwareInfo": "Empower 3 Software Build 3471 SPs Installed",
-                                            "SampleValuesUsedinCalculations": "InjectionType = Blank CalculationType = Standards Used Factor1Operator = * ICH_AdjAreaPctCutoff =  Factor2Operator = * Factor3Operator = * SampleConcentration = 0.000000 Factor1 = 1.000000 Factor2 = 1.000000 Volume = 5.00 SampleWeight = 1.000000 1.000000Dilution = 1.000000  Factor3 = 1.000000",
-                                            "NumOfResultsStored": "2",
-                                            "NumOfProcessOnlySampleSets": "0",
-                                            "Factor1": "1.0",
-                                            "Factor2": "1.0",
-                                            "Factor3": "1.0",
-                                            "Factor1Operator": "*",
-                                            "Factor2Operator": "*",
-                                            "Factor3Operator": "*",
-                                            "ResultSetId": "1333",
-                                            "ResultSetName": "sample_set1",
-                                            "ResultSetDate": "2020-03-16T08:49:05",
-                                            "ResultId": "1344",
-                                            "ResultType": "LC",
-                                            "ResultComments": "1",
-                                            "ResultCodes": "result",
-                                            "ResultNum": "1",
-                                            "ResultSampleSetMethod": "sample_set1",
-                                            "ResultSource": "Processed a Sample Set using Processing Method with clear calibration",
-                                            "ResultSuperseded": "False",
-                                            "TotalArea": "1000.6436035863",
-                                            "TotalAdjArea": "1000.6436035863",
-                                            "AdjustedTotalArea": "40727.6436035863",
-                                            "TotalRS AdjAreaPct": "0.0",
-                                            "TotalRS FinalResult": "0.0",
-                                            "Largest NG RS AdjAreaPct": "0.0",
-                                            "LargestNamedRS FinalResult": "0.0",
-                                            "LargestRS FinalResult": "0.0",
-                                            "LargestUnnamedRS FinalResult": "0.0",
-                                            "Total ICH AdjArea": "0.0",
-                                            "PercentUnknowns": "5",
-                                            "NumberofImpurityPeaks": "0",
-                                            "Faults": "False",
-                                            "SamplingRate": 3.4340658187866198,
-                                            "Node": "node",
-                                            "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed",
-                                            "ScaletouV": 9.99999997475243e-07,
-                                            "SampleSetIdResult": 1002,
-                                            "Injection": 1,
-                                            "SampleSetStartDate": "2025-05-06T13:57:24",
-                                            "RunTime": 30.0,
-                                            "ChannelName": "VWD.0.0",
-                                            "SampleConcentration": 0.0,
-                                            "SampleWeight": 1.0,
-                                            "SampleName": "Blank",
-                                            "DataStart": 0.0,
-                                            "DateAcquired": "2025-05-06T14:08:48",
-                                            "SampleSetName": "sample_set1",
-                                            "Superseded": false,
-                                            "SampleSetAltered": true,
-                                            "VialIdResult": 1003,
-                                            "SampleSetMethod": "sample_set1",
-                                            "AcqMethodSet": "my_system_SEC_2018",
-                                            "Comments": "1`",
-                                            "DilutionUnits": "mL",
-                                            "ICH AdjAreaPctCutoff": 0.0,
-                                            "NumberofSignOffs": 0,
-                                            "SampleSetId": 1002,
-                                            "InjectionStatus": "injection",
-                                            "InjectionVolumeResult": 5.0,
-                                            "ChannelDescription": "VWD: Signal A, 214 nm",
-                                            "SampleSetFinishDate": "2025-05-06T17:46:35",
-                                            "SystemCreateDate": "2017-09-15T11:53:21",
-                                            "ChannelType": "2D",
-                                            "Lot": "Blank",
-                                            "ResultSetComments": "1",
-                                            "Channel": "VWD.0.0",
-                                            "Dilution": 1.0,
-                                            "InjectionId": 1005,
-                                            "Vial": "1",
-                                            "ChannelId": 1006,
-                                            "SecondChannelId": 0,
-                                            "SampleSetType": "Acquired",
-                                            "SampleSetComments": "1`",
-                                            "Altered": false,
-                                            "ProcessingNode": "node",
-                                            "OriginalSampleSetId": 1002,
-                                            "SampleSetCurrentId": 1002,
-                                            "SampleSetAcquiring": false,
-                                            "AcquiredBy": "user",
-                                            "InjectionType": "Blank",
-                                            "SystemName": "my_system",
-                                            "InjectionVolume": 5.0,
-                                            "VialId": 1003,
-                                            "Total Number of Peaks": 5.0,
-                                            "SystemComments": "my_comment",
-                                            "OriginalVialId": 1003,
-                                            "DataEnd": 30.0,
-                                            "SampleSetAcquiredBy": "user",
-                                            "InstrumentMethodName": "my_system_SEC_2018",
-                                            "InstrumentMethodId": 1004,
-                                            "DetUnits": "AU",
-                                            "SummaryFaults": false,
-                                            "SampleType": "Unknown"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "my_system_SEC_2018",
+                                                    "datum label": "AcqMethodSet"
+                                                },
+                                                {
+                                                    "scalar string datum": "Empower 3 Software Build 3471 SPs Installed",
+                                                    "datum label": "AcqSWVersion"
+                                                },
+                                                {
+                                                    "scalar string datum": "user",
+                                                    "datum label": "AcquiredBy"
+                                                },
+                                                {
+                                                    "scalar string datum": "40727.6436035863",
+                                                    "datum label": "AdjustedTotalArea"
+                                                },
+                                                {
+                                                    "scalar boolean datum": false,
+                                                    "datum label": "Altered"
+                                                },
+                                                {
+                                                    "scalar string datum": "Standards Used",
+                                                    "datum label": "CalculationType"
+                                                },
+                                                {
+                                                    "scalar string datum": "1334",
+                                                    "datum label": "CalibrationId"
+                                                },
+                                                {
+                                                    "scalar string datum": "VWD.0.0",
+                                                    "datum label": "Channel"
+                                                },
+                                                {
+                                                    "scalar string datum": "VWD: Signal A, 214 nm",
+                                                    "datum label": "ChannelDescription"
+                                                },
+                                                {
+                                                    "scalar double datum": 1006.0,
+                                                    "datum label": "ChannelId"
+                                                },
+                                                {
+                                                    "scalar string datum": "VWD.0.0",
+                                                    "datum label": "ChannelName"
+                                                },
+                                                {
+                                                    "scalar string datum": "2D",
+                                                    "datum label": "ChannelType"
+                                                },
+                                                {
+                                                    "scalar string datum": "1`",
+                                                    "datum label": "Comments"
+                                                },
+                                                {
+                                                    "scalar double datum": 30.0,
+                                                    "datum label": "DataEnd"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "DataStart"
+                                                },
+                                                {
+                                                    "scalar string datum": "2025-05-06T14:08:48",
+                                                    "datum label": "DateAcquired"
+                                                },
+                                                {
+                                                    "scalar string datum": "AU",
+                                                    "datum label": "DetUnits"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Dilution"
+                                                },
+                                                {
+                                                    "scalar string datum": "mL",
+                                                    "datum label": "DilutionUnits"
+                                                },
+                                                {
+                                                    "scalar string datum": "1.0",
+                                                    "datum label": "Factor1"
+                                                },
+                                                {
+                                                    "scalar string datum": "*",
+                                                    "datum label": "Factor1Operator"
+                                                },
+                                                {
+                                                    "scalar string datum": "1.0",
+                                                    "datum label": "Factor2"
+                                                },
+                                                {
+                                                    "scalar string datum": "*",
+                                                    "datum label": "Factor2Operator"
+                                                },
+                                                {
+                                                    "scalar string datum": "1.0",
+                                                    "datum label": "Factor3"
+                                                },
+                                                {
+                                                    "scalar string datum": "*",
+                                                    "datum label": "Factor3Operator"
+                                                },
+                                                {
+                                                    "scalar string datum": "False",
+                                                    "datum label": "Faults"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "ICH_AdjAreaPctCutoff"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "Injection"
+                                                },
+                                                {
+                                                    "scalar double datum": 1005.0,
+                                                    "datum label": "InjectionId"
+                                                },
+                                                {
+                                                    "scalar string datum": "injection",
+                                                    "datum label": "InjectionStatus"
+                                                },
+                                                {
+                                                    "scalar string datum": "Blank",
+                                                    "datum label": "InjectionType"
+                                                },
+                                                {
+                                                    "scalar double datum": 5.0,
+                                                    "datum label": "InjectionVolume"
+                                                },
+                                                {
+                                                    "scalar double datum": 5.0,
+                                                    "datum label": "InjectionVolumeResult"
+                                                },
+                                                {
+                                                    "scalar double datum": 1004.0,
+                                                    "datum label": "InstrumentMethodId"
+                                                },
+                                                {
+                                                    "scalar string datum": "my_system_SEC_2018",
+                                                    "datum label": "InstrumentMethodName"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0",
+                                                    "datum label": "LargestNamedRS_FinalResult"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0",
+                                                    "datum label": "LargestRS_FinalResult"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0",
+                                                    "datum label": "LargestUnnamedRS_FinalResult"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0",
+                                                    "datum label": "Largest_NG_RS_AdjAreaPct"
+                                                },
+                                                {
+                                                    "scalar string datum": "Blank",
+                                                    "datum label": "Lot"
+                                                },
+                                                {
+                                                    "scalar string datum": "False",
+                                                    "datum label": "Manual"
+                                                },
+                                                {
+                                                    "scalar string datum": "node",
+                                                    "datum label": "Node"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "NumOfProcessOnlySampleSets"
+                                                },
+                                                {
+                                                    "scalar string datum": "2",
+                                                    "datum label": "NumOfResultsStored"
+                                                },
+                                                {
+                                                    "scalar string datum": "0",
+                                                    "datum label": "NumberofImpurityPeaks"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "NumberofSignOffs"
+                                                },
+                                                {
+                                                    "scalar double datum": 1002.0,
+                                                    "datum label": "OriginalSampleSetId"
+                                                },
+                                                {
+                                                    "scalar double datum": 1003.0,
+                                                    "datum label": "OriginalVialId"
+                                                },
+                                                {
+                                                    "scalar string datum": "False",
+                                                    "datum label": "PeakRatioReference"
+                                                },
+                                                {
+                                                    "scalar string datum": "5",
+                                                    "datum label": "PercentUnknowns"
+                                                },
+                                                {
+                                                    "scalar string datum": "Unknown",
+                                                    "datum label": "ProcessedAs"
+                                                },
+                                                {
+                                                    "scalar string datum": "user",
+                                                    "datum label": "ProcessedBy"
+                                                },
+                                                {
+                                                    "scalar string datum": "VWD: Signal A, 214 nm",
+                                                    "datum label": "ProcessedChanDesc"
+                                                },
+                                                {
+                                                    "scalar string datum": "2D",
+                                                    "datum label": "ProcessedChannelType"
+                                                },
+                                                {
+                                                    "scalar string datum": "False",
+                                                    "datum label": "ProcessingLocked"
+                                                },
+                                                {
+                                                    "scalar string datum": "1263",
+                                                    "datum label": "ProcessingMethodId"
+                                                },
+                                                {
+                                                    "scalar string datum": "node",
+                                                    "datum label": "ProcessingNode"
+                                                },
+                                                {
+                                                    "scalar string datum": "result",
+                                                    "datum label": "ResultCodes"
+                                                },
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "ResultComments"
+                                                },
+                                                {
+                                                    "scalar string datum": "1344",
+                                                    "datum label": "ResultId"
+                                                },
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "ResultNum"
+                                                },
+                                                {
+                                                    "scalar string datum": "sample_set1",
+                                                    "datum label": "ResultSampleSetMethod"
+                                                },
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "ResultSetComments"
+                                                },
+                                                {
+                                                    "scalar string datum": "2020-03-16T08:49:05",
+                                                    "datum label": "ResultSetDate"
+                                                },
+                                                {
+                                                    "scalar string datum": "1333",
+                                                    "datum label": "ResultSetId"
+                                                },
+                                                {
+                                                    "scalar string datum": "sample_set1",
+                                                    "datum label": "ResultSetName"
+                                                },
+                                                {
+                                                    "scalar string datum": "Processed a Sample Set using Processing Method with clear calibration",
+                                                    "datum label": "ResultSource"
+                                                },
+                                                {
+                                                    "scalar string datum": "False",
+                                                    "datum label": "ResultSuperseded"
+                                                },
+                                                {
+                                                    "scalar string datum": "LC",
+                                                    "datum label": "ResultType"
+                                                },
+                                                {
+                                                    "scalar double datum": 30.0,
+                                                    "datum label": "RunTime"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "SampleConcentration"
+                                                },
+                                                {
+                                                    "scalar string datum": "Blank",
+                                                    "datum label": "SampleName"
+                                                },
+                                                {
+                                                    "scalar string datum": "user",
+                                                    "datum label": "SampleSetAcquiredBy"
+                                                },
+                                                {
+                                                    "scalar boolean datum": false,
+                                                    "datum label": "SampleSetAcquiring"
+                                                },
+                                                {
+                                                    "scalar boolean datum": true,
+                                                    "datum label": "SampleSetAltered"
+                                                },
+                                                {
+                                                    "scalar string datum": "1`",
+                                                    "datum label": "SampleSetComments"
+                                                },
+                                                {
+                                                    "scalar double datum": 1002.0,
+                                                    "datum label": "SampleSetCurrentId"
+                                                },
+                                                {
+                                                    "scalar string datum": "2025-05-06T17:46:35",
+                                                    "datum label": "SampleSetFinishDate"
+                                                },
+                                                {
+                                                    "scalar double datum": 1002.0,
+                                                    "datum label": "SampleSetId"
+                                                },
+                                                {
+                                                    "scalar double datum": 1002.0,
+                                                    "datum label": "SampleSetIdResult"
+                                                },
+                                                {
+                                                    "scalar string datum": "sample_set1",
+                                                    "datum label": "SampleSetMethod"
+                                                },
+                                                {
+                                                    "scalar string datum": "sample_set1",
+                                                    "datum label": "SampleSetName"
+                                                },
+                                                {
+                                                    "scalar string datum": "2025-05-06T13:57:24",
+                                                    "datum label": "SampleSetStartDate"
+                                                },
+                                                {
+                                                    "scalar string datum": "Acquired",
+                                                    "datum label": "SampleSetType"
+                                                },
+                                                {
+                                                    "scalar string datum": "Unknown",
+                                                    "datum label": "SampleType"
+                                                },
+                                                {
+                                                    "scalar string datum": "InjectionType = Blank CalculationType = Standards Used Factor1Operator = * ICH_AdjAreaPctCutoff =  Factor2Operator = * Factor3Operator = * SampleConcentration = 0.000000 Factor1 = 1.000000 Factor2 = 1.000000 Volume = 5.00 SampleWeight = 1.000000 1.000000Dilution = 1.000000  Factor3 = 1.000000",
+                                                    "datum label": "SampleValuesUsedinCalculations"
+                                                },
+                                                {
+                                                    "scalar double datum": 1.0,
+                                                    "datum label": "SampleWeight"
+                                                },
+                                                {
+                                                    "scalar double datum": 3.4340658187866198,
+                                                    "datum label": "SamplingRate"
+                                                },
+                                                {
+                                                    "scalar double datum": 9.99999997475243e-07,
+                                                    "datum label": "ScaletouV"
+                                                },
+                                                {
+                                                    "scalar double datum": 0.0,
+                                                    "datum label": "SecondChannelId"
+                                                },
+                                                {
+                                                    "scalar string datum": "Empower 3 Software Build 3471 SPs Installed",
+                                                    "datum label": "SourceSoftwareInfo"
+                                                },
+                                                {
+                                                    "scalar boolean datum": false,
+                                                    "datum label": "SummaryFaults"
+                                                },
+                                                {
+                                                    "scalar boolean datum": false,
+                                                    "datum label": "Superseded"
+                                                },
+                                                {
+                                                    "scalar string datum": "my_comment",
+                                                    "datum label": "SystemComments"
+                                                },
+                                                {
+                                                    "scalar string datum": "2017-09-15T11:53:21",
+                                                    "datum label": "SystemCreateDate"
+                                                },
+                                                {
+                                                    "scalar string datum": "my_system",
+                                                    "datum label": "SystemName"
+                                                },
+                                                {
+                                                    "scalar string datum": "5.0",
+                                                    "datum label": "Threshold"
+                                                },
+                                                {
+                                                    "scalar string datum": "1000.6436035863",
+                                                    "datum label": "TotalAdjArea"
+                                                },
+                                                {
+                                                    "scalar string datum": "1000.6436035863",
+                                                    "datum label": "TotalArea"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0",
+                                                    "datum label": "TotalRS_AdjAreaPct"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0",
+                                                    "datum label": "TotalRS_FinalResult"
+                                                },
+                                                {
+                                                    "scalar string datum": "0.0",
+                                                    "datum label": "Total_ICH_AdjArea"
+                                                },
+                                                {
+                                                    "scalar double datum": 5.0,
+                                                    "datum label": "Total_Number_of_Peaks"
+                                                },
+                                                {
+                                                    "scalar string datum": "No",
+                                                    "datum label": "UseForPrecision"
+                                                },
+                                                {
+                                                    "scalar string datum": "1",
+                                                    "datum label": "Vial"
+                                                },
+                                                {
+                                                    "scalar double datum": 1003.0,
+                                                    "datum label": "VialId"
+                                                },
+                                                {
+                                                    "scalar double datum": 1003.0,
+                                                    "datum label": "VialIdResult"
+                                                },
+                                                {
+                                                    "scalar string datum": "SEC",
+                                                    "datum label": "data_processing_method"
+                                                },
+                                                {
+                                                    "scalar string datum": "2020-03-16T08:49:17",
+                                                    "datum label": "data_processing_time"
+                                                },
+                                                {
+                                                    "scalar string datum": "ApexTrack",
+                                                    "datum label": "integration_algorithm_type"
+                                                },
+                                                {
+                                                    "scalar double datum": 5.0,
+                                                    "datum label": "peak_width"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -850,10 +1585,21 @@
                                 },
                                 "injection identifier": "1005",
                                 "injection time": "2025-05-06T14:08:48+00:00",
-                                "custom information document": {
-                                    "InjectionStatus": "injection",
-                                    "InjectionType": "Blank",
-                                    "Injection": "1"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "1",
+                                            "datum label": "Injection"
+                                        },
+                                        {
+                                            "scalar string datum": "injection",
+                                            "datum label": "InjectionStatus"
+                                        },
+                                        {
+                                            "scalar string datum": "Blank",
+                                            "datum label": "InjectionType"
+                                        }
+                                    ]
                                 }
                             },
                             "chromatogram data cube": {
@@ -6947,51 +7693,175 @@
                                     ]
                                 }
                             },
-                            "custom information document": {
-                                "Comments": "1`",
-                                "DateAcquired": "2025-05-06T14:08:48",
-                                "RunTime": "30.0",
-                                "measurement end time": "2025-05-06T17:46:35",
-                                "AcquiredBy": "user",
-                                "SystemName": "my_system",
-                                "Node": "node",
-                                "SampleSetType": "Acquired",
-                                "Factor3": 1.0,
-                                "SampleSetMethod": "sample_set1",
-                                "Factor1Operator": "*",
-                                "SampleSetComments": "1`",
-                                "CalculationType": "Standards Used",
-                                "ProcessingLocked": false,
-                                "SystemComments": "my_comment",
-                                "Factor1": 1.0,
-                                "SampleSetStartDate": "2025-05-06T13:57:24",
-                                "Factor2Operator": "*",
-                                "Factor3Operator": "*",
-                                "DilutionUnits": "mL",
-                                "ICH AdjAreaPctCutoff": 0.0,
-                                "UseForPrecision": "No",
-                                "SampleSetAcquiredBy": "user",
-                                "NumOfResultsStored": 2,
-                                "SampleSetId": 1002,
-                                "SampleSetFinishDate": "2025-05-06T17:46:35",
-                                "PeakRatioReference": false,
-                                "NumOfProcessOnlySampleSets": 0,
-                                "SampleSetName": "sample_set1",
-                                "Factor2": 1.0,
-                                "SystemCreateDate": "2017-09-15T11:53:21"
+                            "custom information aggregate document": {
+                                "custom information document": [
+                                    {
+                                        "scalar string datum": "user",
+                                        "datum label": "AcquiredBy"
+                                    },
+                                    {
+                                        "scalar string datum": "Standards Used",
+                                        "datum label": "CalculationType"
+                                    },
+                                    {
+                                        "scalar string datum": "1`",
+                                        "datum label": "Comments"
+                                    },
+                                    {
+                                        "scalar string datum": "2025-05-06T14:08:48",
+                                        "datum label": "DateAcquired"
+                                    },
+                                    {
+                                        "scalar string datum": "mL",
+                                        "datum label": "DilutionUnits"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor1"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor1Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor2"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor2Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 1.0,
+                                        "datum label": "Factor3"
+                                    },
+                                    {
+                                        "scalar string datum": "*",
+                                        "datum label": "Factor3Operator"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "ICH_AdjAreaPctCutoff"
+                                    },
+                                    {
+                                        "scalar string datum": "node",
+                                        "datum label": "Node"
+                                    },
+                                    {
+                                        "scalar double datum": 0.0,
+                                        "datum label": "NumOfProcessOnlySampleSets"
+                                    },
+                                    {
+                                        "scalar double datum": 2.0,
+                                        "datum label": "NumOfResultsStored"
+                                    },
+                                    {
+                                        "scalar boolean datum": false,
+                                        "datum label": "PeakRatioReference"
+                                    },
+                                    {
+                                        "scalar boolean datum": false,
+                                        "datum label": "ProcessingLocked"
+                                    },
+                                    {
+                                        "scalar string datum": "30.0",
+                                        "datum label": "RunTime"
+                                    },
+                                    {
+                                        "scalar string datum": "user",
+                                        "datum label": "SampleSetAcquiredBy"
+                                    },
+                                    {
+                                        "scalar string datum": "1`",
+                                        "datum label": "SampleSetComments"
+                                    },
+                                    {
+                                        "scalar string datum": "2025-05-06T17:46:35",
+                                        "datum label": "SampleSetFinishDate"
+                                    },
+                                    {
+                                        "scalar double datum": 1002.0,
+                                        "datum label": "SampleSetId"
+                                    },
+                                    {
+                                        "scalar string datum": "sample_set1",
+                                        "datum label": "SampleSetMethod"
+                                    },
+                                    {
+                                        "scalar string datum": "sample_set1",
+                                        "datum label": "SampleSetName"
+                                    },
+                                    {
+                                        "scalar string datum": "2025-05-06T13:57:24",
+                                        "datum label": "SampleSetStartDate"
+                                    },
+                                    {
+                                        "scalar string datum": "Acquired",
+                                        "datum label": "SampleSetType"
+                                    },
+                                    {
+                                        "scalar string datum": "my_comment",
+                                        "datum label": "SystemComments"
+                                    },
+                                    {
+                                        "scalar string datum": "2017-09-15T11:53:21",
+                                        "datum label": "SystemCreateDate"
+                                    },
+                                    {
+                                        "scalar string datum": "my_system",
+                                        "datum label": "SystemName"
+                                    },
+                                    {
+                                        "scalar string datum": "No",
+                                        "datum label": "UseForPrecision"
+                                    },
+                                    {
+                                        "scalar string datum": "2025-05-06T17:46:35",
+                                        "datum label": "measurement_end_time"
+                                    }
+                                ]
                             }
                         }
                     ],
-                    "custom information document": {
-                        "Altered": "True",
-                        "InstrumentMethodName": "my_system_SEC_2018",
-                        "InstrumentMethodId": "1004",
-                        "Superseded": "False",
-                        "Node": "node",
-                        "measurement method identifier": "sample_set1",
-                        "SampleSetName": "sample_set1",
-                        "SampleSetType": "Acquired",
-                        "SampleSetComments": "1`"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "True",
+                                "datum label": "Altered"
+                            },
+                            {
+                                "scalar string datum": "1004",
+                                "datum label": "InstrumentMethodId"
+                            },
+                            {
+                                "scalar string datum": "my_system_SEC_2018",
+                                "datum label": "InstrumentMethodName"
+                            },
+                            {
+                                "scalar string datum": "node",
+                                "datum label": "Node"
+                            },
+                            {
+                                "scalar string datum": "1`",
+                                "datum label": "SampleSetComments"
+                            },
+                            {
+                                "scalar string datum": "sample_set1",
+                                "datum label": "SampleSetName"
+                            },
+                            {
+                                "scalar string datum": "Acquired",
+                                "datum label": "SampleSetType"
+                            },
+                            {
+                                "scalar string datum": "False",
+                                "datum label": "Superseded"
+                            },
+                            {
+                                "scalar string datum": "sample_set1",
+                                "datum label": "measurement_method_identifier"
+                            }
+                        ]
                     }
                 },
                 "analyst": "user"
@@ -6999,28 +7869,75 @@
         ],
         "data system document": {
             "ASM converter name": "allotropy_benchling_waters_empower_adapter",
-            "ASM converter version": "0.1.86",
+            "ASM converter version": "0.1.110",
             "data system instance identifier": "my_system",
             "file name": "example_02.json",
             "software name": "Waters Empower",
             "software version": "Empower 3 Software Build 3471 SPs Installed",
             "UNC path": "tests/parsers/benchling_empower/testdata/input/example_02.json",
-            "custom information document": {
-                "account identifier": "username",
-                "database": "database",
-                "project": "HPLC",
-                "password": "password",
-                "SystemCreateDate": "2017-09-15T11:53:21",
-                "SystemComments": "my_comment",
-                "Node": "node",
-                "SampleSetName": "sample_set1",
-                "SampleSetType": "Acquired",
-                "SampleSetMethod": "sample_set1",
-                "SampleSetComments": "1`",
-                "SampleSetFinishDate": "2025-05-06T17:46:35",
-                "SampleSetId": 1002,
-                "SampleSetStartDate": "2025-05-06T13:57:24",
-                "sample set id": 1002
+            "custom information aggregate document": {
+                "custom information document": [
+                    {
+                        "scalar string datum": "node",
+                        "datum label": "Node"
+                    },
+                    {
+                        "scalar string datum": "1`",
+                        "datum label": "SampleSetComments"
+                    },
+                    {
+                        "scalar string datum": "2025-05-06T17:46:35",
+                        "datum label": "SampleSetFinishDate"
+                    },
+                    {
+                        "scalar double datum": 1002.0,
+                        "datum label": "SampleSetId"
+                    },
+                    {
+                        "scalar string datum": "sample_set1",
+                        "datum label": "SampleSetMethod"
+                    },
+                    {
+                        "scalar string datum": "sample_set1",
+                        "datum label": "SampleSetName"
+                    },
+                    {
+                        "scalar string datum": "2025-05-06T13:57:24",
+                        "datum label": "SampleSetStartDate"
+                    },
+                    {
+                        "scalar string datum": "Acquired",
+                        "datum label": "SampleSetType"
+                    },
+                    {
+                        "scalar string datum": "my_comment",
+                        "datum label": "SystemComments"
+                    },
+                    {
+                        "scalar string datum": "2017-09-15T11:53:21",
+                        "datum label": "SystemCreateDate"
+                    },
+                    {
+                        "scalar string datum": "username",
+                        "datum label": "account_identifier"
+                    },
+                    {
+                        "scalar string datum": "database",
+                        "datum label": "database"
+                    },
+                    {
+                        "scalar string datum": "password",
+                        "datum label": "password"
+                    },
+                    {
+                        "scalar string datum": "HPLC",
+                        "datum label": "project"
+                    },
+                    {
+                        "scalar double datum": 1002.0,
+                        "datum label": "sample_set_id"
+                    }
+                ]
             }
         },
         "device system document": {
