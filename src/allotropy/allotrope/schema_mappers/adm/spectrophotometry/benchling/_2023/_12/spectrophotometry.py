@@ -28,10 +28,6 @@ from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectr
     UltravioletAbsorbanceSpectrumDetectionDeviceControlDocumentItem,
     UltravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems,
 )
-from allotropy.allotrope.models.adm.spectrophotometry.rec._2024._06.spectrophotometry import (
-    CustomInformationAggregateDocument,
-    CustomInformationDocumentItem,
-)
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueKiloDalton,
     TQuantityValueMicroliter,
@@ -207,8 +203,6 @@ class Mapper(SchemaMapper[Data, Model]):
             analyst=measurement_group.analyst,
             measurement_aggregate_document=add_custom_information_aggregate_document(
                 measurement_group.custom_info,
-                CustomInformationAggregateDocument,
-                CustomInformationDocumentItem,
                 aggregate_document=MeasurementAggregateDocument(
                     measurement_time=self.get_date_time(
                         assert_not_none(measurement_group.measurement_time)
@@ -254,8 +248,6 @@ class Mapper(SchemaMapper[Data, Model]):
                 device_control_document=[
                     add_custom_information_aggregate_document(
                         self._get_device_control_custom_document(measurement),
-                        CustomInformationAggregateDocument,
-                        CustomInformationDocumentItem,
                         aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
                             device_type=metadata.device_type,
                             detection_type=metadata.detection_type,
@@ -294,8 +286,6 @@ class Mapper(SchemaMapper[Data, Model]):
         }
         return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
             custom_info_doc,
-            CustomInformationAggregateDocument,
-            CustomInformationDocumentItem,
             aggregate_document=doc,
         )
 
@@ -312,8 +302,6 @@ class Mapper(SchemaMapper[Data, Model]):
                 device_control_document=[
                     add_custom_information_aggregate_document(
                         self._get_device_control_custom_document(measurement),
-                        CustomInformationAggregateDocument,
-                        CustomInformationDocumentItem,
                         aggregate_document=UltravioletAbsorbanceSpectrumDetectionDeviceControlDocumentItem(
                             device_type=metadata.device_type,
                             detection_type=metadata.detection_type,
@@ -328,8 +316,6 @@ class Mapper(SchemaMapper[Data, Model]):
         )
         return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
             measurement.custom_info,
-            CustomInformationAggregateDocument,
-            CustomInformationDocumentItem,
             aggregate_document=doc,
         )
 
@@ -346,8 +332,6 @@ class Mapper(SchemaMapper[Data, Model]):
                 device_control_document=[
                     add_custom_information_aggregate_document(
                         self._get_device_control_custom_document(measurement),
-                        CustomInformationAggregateDocument,
-                        CustomInformationDocumentItem,
                         aggregate_document=FluorescencePointDetectionDeviceControlDocumentItem(
                             device_type=metadata.device_type,
                             detector_wavelength_setting=quantity_or_none(
@@ -364,8 +348,6 @@ class Mapper(SchemaMapper[Data, Model]):
         )
         return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
             measurement.custom_info,
-            CustomInformationAggregateDocument,
-            CustomInformationDocumentItem,
             aggregate_document=doc,
         )
 
@@ -414,8 +396,6 @@ class Mapper(SchemaMapper[Data, Model]):
 
         return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
             sample_custom_info | custom_info_doc,
-            CustomInformationAggregateDocument,
-            CustomInformationDocumentItem,
             aggregate_document=SampleDocument(
                 sample_identifier=measurement.sample_identifier,
                 batch_identifier=measurement.batch_identifier,
@@ -455,8 +435,6 @@ class Mapper(SchemaMapper[Data, Model]):
             processed_data_document=[
                 add_custom_information_aggregate_document(
                     processed_data_custom_info,
-                    CustomInformationAggregateDocument,
-                    CustomInformationDocumentItem,
                     aggregate_document=ProcessedDataDocumentItem(
                         # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
                         mass_concentration=quantity_or_none(

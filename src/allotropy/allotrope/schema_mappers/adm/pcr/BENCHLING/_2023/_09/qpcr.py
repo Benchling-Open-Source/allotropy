@@ -28,10 +28,6 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
     SampleDocument,
     TCalculatedDataAggregateDocument,
 )
-from allotropy.allotrope.models.adm.pcr.rec._2024._09.qpcr import (
-    CustomInformationAggregateDocument,
-    CustomInformationDocumentItem,
-)
 from allotropy.allotrope.models.shared.definitions.custom import (
     TNullableQuantityValueUnitless,
     TQuantityValueNumber,
@@ -250,8 +246,6 @@ class Mapper(SchemaMapper[Data, Model]):
         )
         return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
             measurement.custom_info,
-            CustomInformationAggregateDocument,
-            CustomInformationDocumentItem,
             aggregate_document=measurement_doc,
         )
 
@@ -266,8 +260,6 @@ class Mapper(SchemaMapper[Data, Model]):
         )
         return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
             (measurement.sample_custom_info or {}) | custom_info_doc,
-            CustomInformationAggregateDocument,
-            CustomInformationDocumentItem,
             aggregate_document=sample_doc,
         )
 
@@ -319,8 +311,6 @@ class Mapper(SchemaMapper[Data, Model]):
             processed_data_document=[
                 add_custom_information_aggregate_document(
                     data.custom_info,
-                    CustomInformationAggregateDocument,
-                    CustomInformationDocumentItem,
                     aggregate_document=doc,
                 )
             ]

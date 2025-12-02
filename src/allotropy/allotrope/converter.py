@@ -172,15 +172,17 @@ def add_custom_information_document(
 
 def add_custom_information_aggregate_document(
     custom_info_source: Mapping[str, Any] | None,
-    custom_information_aggregate_document_class: type,
-    custom_information_document_item_class: type,
+    custom_information_aggregate_document_class: type | None = None,
+    custom_information_document_item_class: type | None = None,
     aggregate_document: Any = None,
 ) -> Any:
     """
     Args:
         custom_info_source: A flat dictionary of custom information
-        custom_information_aggregate_document_class: The aggregate document class to instantiate
-        custom_information_document_item_class: The document item class to instantiate
+        custom_information_aggregate_document_class: The aggregate document class to instantiate.
+            If None, a dynamic class will be created at runtime.
+        custom_information_document_item_class: The document item class to instantiate.
+            If None, a dynamic class will be created at runtime.
         aggregate_document: Optional aggregate document to dynamically add the field to
 
     Returns:
@@ -192,6 +194,34 @@ def add_custom_information_aggregate_document(
     """
     if not custom_info_source:
         return aggregate_document if aggregate_document is not None else None
+
+    # Create dynamic classes if not provided
+    # These match the structure of CustomInformationDocumentItem and
+    # CustomInformationAggregateDocument from schema models that have them
+    if custom_information_document_item_class is None:
+        custom_information_document_item_class = make_dataclass(
+            "CustomInformationDocumentItem",
+            [
+                ("scalar_double_datum", object, field(default=None)),
+                ("unit", object, field(default=None)),
+                ("scalar_string_datum", object, field(default=None)),
+                ("scalar_timestamp_datum", object, field(default=None)),
+                ("scalar_boolean_datum", object, field(default=None)),
+                ("datum_label", object, field(default=None)),
+            ],
+        )
+
+    if custom_information_aggregate_document_class is None:
+        custom_information_aggregate_document_class = make_dataclass(
+            "CustomInformationAggregateDocument",
+            [
+                (
+                    "custom_information_document",
+                    list,
+                    field(default_factory=list),
+                ),
+            ],
+        )
 
     # Handle dictionary input
     custom_info_dict = dict(custom_info_source)

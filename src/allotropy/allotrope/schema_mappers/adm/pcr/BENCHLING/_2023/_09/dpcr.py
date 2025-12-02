@@ -26,10 +26,6 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import (
     SampleDocument,
     TCalculatedDataAggregateDocument,
 )
-from allotropy.allotrope.models.adm.pcr.rec._2024._09.dpcr import (
-    CustomInformationAggregateDocument,
-    CustomInformationDocumentItem,
-)
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
     TQuantityValueNumberPerMicroliter,
@@ -195,8 +191,6 @@ class Mapper(SchemaMapper[Data, Model]):
         )
         sample_document = add_custom_information_aggregate_document(
             measurement.sample_custom_info,
-            CustomInformationAggregateDocument,
-            CustomInformationDocumentItem,
             aggregate_document=sample_document,
         )
         measurement_doc = MeasurementDocumentItem(
@@ -245,13 +239,15 @@ class Mapper(SchemaMapper[Data, Model]):
                         confidence_interval__95__=quantity_or_none(
                             TQuantityValueNumber, measurement.confidence_interval__95__
                         ),
-                        data_processing_document=DataProcessingDocument(
-                            fluorescence_intensity_threshold_setting=TQuantityValueUnitless(
-                                value=measurement.fluorescence_intensity_threshold_setting
+                        data_processing_document=(
+                            DataProcessingDocument(
+                                fluorescence_intensity_threshold_setting=TQuantityValueUnitless(
+                                    value=measurement.fluorescence_intensity_threshold_setting
+                                )
                             )
-                        )
-                        if measurement.fluorescence_intensity_threshold_setting
-                        else None,
+                            if measurement.fluorescence_intensity_threshold_setting
+                            else None
+                        ),
                     )
                 ]
             ),
@@ -259,8 +255,6 @@ class Mapper(SchemaMapper[Data, Model]):
 
         return add_custom_information_aggregate_document(  # type: ignore[no-any-return]
             measurement.custom_info,
-            CustomInformationAggregateDocument,
-            CustomInformationDocumentItem,
             aggregate_document=measurement_doc,
         )
 
