@@ -10,15 +10,26 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Yes",
+                                                    "datum label": "Optical response compensation"
+                                                },
+                                                {
+                                                    "scalar string datum": "96-well adapter for plate without lid",
+                                                    "datum label": "Plate adapter name"
+                                                },
+                                                {
+                                                    "scalar double datum": 2.0,
+                                                    "datum label": "Plate adapter number"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 260.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "Plate adapter name": "96-well adapter for plate without lid",
-                                            "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -53,15 +64,26 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Yes",
+                                                    "datum label": "Optical response compensation"
+                                                },
+                                                {
+                                                    "scalar string datum": "96-well adapter for plate without lid",
+                                                    "datum label": "Plate adapter name"
+                                                },
+                                                {
+                                                    "scalar double datum": 2.0,
+                                                    "datum label": "Plate adapter number"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector wavelength setting": {
                                             "value": 260.0,
                                             "unit": "nm"
-                                        },
-                                        "custom information document": {
-                                            "Plate adapter name": "96-well adapter for plate without lid",
-                                            "Optical response compensation": "Yes",
-                                            "Plate adapter number": 2.0
                                         }
                                     }
                                 ]
@@ -95,13 +117,21 @@
             "UNC path": "tests/parsers/thermo_skanit/testdata/skanit_different_plate_pattern.xlsx",
             "file name": "skanit_different_plate_pattern.xlsx",
             "ASM converter name": "allotropy_thermo_fisher_scientific_skanit",
-            "ASM converter version": "0.1.109",
+            "ASM converter version": "0.1.110",
+            "custom information aggregate document": {
+                "custom information document": [
+                    {
+                        "scalar string datum": "No",
+                        "datum label": "Dispenser"
+                    },
+                    {
+                        "scalar string datum": "1.00.38",
+                        "datum label": "ESW version"
+                    }
+                ]
+            },
             "software name": "SkanIt Software 7.0.2 RE for Microplate Readers RE",
-            "software version": "7.0.2.5",
-            "custom information document": {
-                "Dispenser": "No",
-                "ESW version": "1.00.38"
-            }
+            "software version": "7.0.2.5"
         },
         "device system document": {
             "device identifier": "Varioskan LUX",

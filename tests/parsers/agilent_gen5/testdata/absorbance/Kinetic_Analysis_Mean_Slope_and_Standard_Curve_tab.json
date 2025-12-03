@@ -10,6 +10,14 @@
                                 "device control document": [
                                     {
                                         "device type": "plate reader",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "File",
+                                                    "datum label": "Reading Type"
+                                                }
+                                            ]
+                                        },
                                         "detection type": "Absorbance",
                                         "detector carriage speed setting": "Normal",
                                         "detector wavelength setting": {
@@ -35,10 +43,15 @@
                             "sample document": {
                                 "location identifier": "A1",
                                 "sample identifier": "STD12",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 40.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 40.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "error aggregate document": {
@@ -121,10 +134,15 @@
                             "sample document": {
                                 "location identifier": "A2",
                                 "sample identifier": "STD11",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 35.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 35.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -198,10 +216,15 @@
                             "sample document": {
                                 "location identifier": "A3",
                                 "sample identifier": "STD10",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 30.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 30.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -275,10 +298,15 @@
                             "sample document": {
                                 "location identifier": "A4",
                                 "sample identifier": "STD9",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 25.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 25.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -352,10 +380,15 @@
                             "sample document": {
                                 "location identifier": "A5",
                                 "sample identifier": "STD8",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -429,10 +462,15 @@
                             "sample document": {
                                 "location identifier": "A6",
                                 "sample identifier": "STD7",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 16.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 16.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -506,10 +544,15 @@
                             "sample document": {
                                 "location identifier": "A7",
                                 "sample identifier": "STD6",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 12.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 12.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -583,10 +626,15 @@
                             "sample document": {
                                 "location identifier": "A8",
                                 "sample identifier": "STD5",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 8.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 8.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -660,10 +708,15 @@
                             "sample document": {
                                 "location identifier": "A9",
                                 "sample identifier": "STD4",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 4.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 4.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -737,10 +790,15 @@
                             "sample document": {
                                 "location identifier": "A10",
                                 "sample identifier": "STD3",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 2.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 2.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -814,10 +872,15 @@
                             "sample document": {
                                 "location identifier": "A11",
                                 "sample identifier": "STD2",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 1.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -891,10 +954,15 @@
                             "sample document": {
                                 "location identifier": "A12",
                                 "sample identifier": "STD1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 0.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -968,10 +1036,15 @@
                             "sample document": {
                                 "location identifier": "B1",
                                 "sample identifier": "STD12",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 40.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 40.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -1045,10 +1118,15 @@
                             "sample document": {
                                 "location identifier": "B2",
                                 "sample identifier": "STD11",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 35.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 35.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -1122,10 +1200,15 @@
                             "sample document": {
                                 "location identifier": "B3",
                                 "sample identifier": "STD10",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 30.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 30.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -1199,10 +1282,15 @@
                             "sample document": {
                                 "location identifier": "B4",
                                 "sample identifier": "STD9",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 25.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 25.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -1276,10 +1364,15 @@
                             "sample document": {
                                 "location identifier": "B5",
                                 "sample identifier": "STD8",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 20.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 20.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -1353,10 +1446,15 @@
                             "sample document": {
                                 "location identifier": "B6",
                                 "sample identifier": "STD7",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 16.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 16.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -1430,10 +1528,15 @@
                             "sample document": {
                                 "location identifier": "B7",
                                 "sample identifier": "STD6",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 12.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 12.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -1507,10 +1610,15 @@
                             "sample document": {
                                 "location identifier": "B8",
                                 "sample identifier": "STD5",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 8.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 8.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -1584,10 +1692,15 @@
                             "sample document": {
                                 "location identifier": "B9",
                                 "sample identifier": "STD4",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 4.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 4.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -1661,10 +1774,15 @@
                             "sample document": {
                                 "location identifier": "B10",
                                 "sample identifier": "STD3",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 2.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 2.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -1738,10 +1856,15 @@
                             "sample document": {
                                 "location identifier": "B11",
                                 "sample identifier": "STD2",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 1.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 1.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -1815,10 +1938,15 @@
                             "sample document": {
                                 "location identifier": "B12",
                                 "sample identifier": "STD1",
-                                "well plate identifier": "Plate 1",
-                                "custom information document": {
-                                    "Conc/Dil": 0.0
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar double datum": 0.0,
+                                            "datum label": "Conc/Dil"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate 1"
                             },
                             "analytical method identifier": "S:\\TempFEB\\Gen5\\Distribution\\Samples\\Absorbance\\Protocols\\Kinetic B-Galactosidase.prt",
                             "experimental data identifier": "Y:\\Downloads\\Kinetic_Analysis_Mean_Slope_and_Standard_Curve.xpt",
@@ -9902,7 +10030,7 @@
             "UNC path": "tests/parsers/agilent_gen5/testdata/absorbance/Kinetic_Analysis_Mean_Slope_and_Standard_Curve_tab.txt",
             "file name": "Kinetic_Analysis_Mean_Slope_and_Standard_Curve_tab.txt",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.97",
+            "ASM converter version": "0.1.110",
             "software name": "Gen5",
             "software version": "3.12.08"
         },

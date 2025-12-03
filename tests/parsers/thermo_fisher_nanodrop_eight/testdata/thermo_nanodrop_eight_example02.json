@@ -22,8 +22,13 @@
                             "sample document": {
                                 "sample identifier": "c36ca1fb-0722-4f79-9eb5-2509e091dd92",
                                 "location identifier": "A",
-                                "custom information document": {
-                                    "Sample Name": "Sample 1"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Sample 1",
+                                            "datum label": "Sample Name"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -57,8 +62,13 @@
                             "sample document": {
                                 "sample identifier": "c36ca1fb-0722-4f79-9eb5-2509e091dd92",
                                 "location identifier": "A",
-                                "custom information document": {
-                                    "Sample Name": "Sample 1"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Sample 1",
+                                            "datum label": "Sample Name"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -309,8 +319,13 @@
                             "sample document": {
                                 "sample identifier": "f7d3777e-97b3-4b8e-9dc2-914f70927693",
                                 "location identifier": "A",
-                                "custom information document": {
-                                    "Sample Name": "Sample 2"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Sample 2",
+                                            "datum label": "Sample Name"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -344,8 +359,13 @@
                             "sample document": {
                                 "sample identifier": "f7d3777e-97b3-4b8e-9dc2-914f70927693",
                                 "location identifier": "A",
-                                "custom information document": {
-                                    "Sample Name": "Sample 2"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Sample 2",
+                                            "datum label": "Sample Name"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -593,8 +613,13 @@
                             "sample document": {
                                 "sample identifier": "8b1a9822-6d2f-4970-b164-37eb1b7209a3",
                                 "location identifier": "A",
-                                "custom information document": {
-                                    "Sample Name": "Abc 3"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Abc 3",
+                                            "datum label": "Sample Name"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -628,8 +653,13 @@
                             "sample document": {
                                 "sample identifier": "8b1a9822-6d2f-4970-b164-37eb1b7209a3",
                                 "location identifier": "A",
-                                "custom information document": {
-                                    "Sample Name": "Abc 3"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Abc 3",
+                                            "datum label": "Sample Name"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -819,8 +849,13 @@
                             "sample document": {
                                 "sample identifier": "b6694c05-8c08-4117-a83e-e57df026498c",
                                 "location identifier": "A",
-                                "custom information document": {
-                                    "Sample Name": "Abc"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Abc",
+                                            "datum label": "Sample Name"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -854,8 +889,13 @@
                             "sample document": {
                                 "sample identifier": "b6694c05-8c08-4117-a83e-e57df026498c",
                                 "location identifier": "A",
-                                "custom information document": {
-                                    "Sample Name": "Abc"
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Abc",
+                                            "datum label": "Sample Name"
+                                        }
+                                    ]
                                 }
                             },
                             "absorbance": {
@@ -1363,7 +1403,7 @@
             "file name": "thermo_nanodrop_eight_example02.txt",
             "UNC path": "tests/parsers/thermo_fisher_nanodrop_eight/testdata/thermo_nanodrop_eight_example02.txt",
             "ASM converter name": "allotropy_thermo_fisher_scientific_nanodrop_eight",
-            "ASM converter version": "0.1.106"
+            "ASM converter version": "0.1.110"
         },
         "calculated data aggregate document": {
             "calculated data document": [

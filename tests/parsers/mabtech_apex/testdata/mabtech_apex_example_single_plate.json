@@ -25,16 +25,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 2969.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 2729.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 2729.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 2969.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -86,9 +115,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:35"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:35",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -116,16 +153,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 2988.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 2751.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 2751.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 2988.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -177,9 +243,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:39"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:39",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -207,16 +281,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 2149.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 1328.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 1328.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 2149.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -268,9 +371,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:40"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:40",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -298,16 +409,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 2187.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 1382.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 1382.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 2187.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -359,9 +499,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:45"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:45",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -389,16 +537,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 1128.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 605.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 605.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 1128.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -450,9 +627,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:46"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:46",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -480,16 +665,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 1185.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 658.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 658.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 1185.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -541,9 +755,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:50"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:50",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -571,16 +793,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 2876.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 2644.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 2644.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 2876.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -632,9 +883,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:36"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:36",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -662,16 +921,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 2964.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 2712.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 2712.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 2964.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -723,9 +1011,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:38"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:38",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -753,16 +1049,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 2026.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 1125.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 1125.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 2026.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -814,9 +1139,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:41"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:41",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -844,16 +1177,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 1998.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 1091.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 1091.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 1998.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -905,9 +1267,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:44"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:44",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -935,16 +1305,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 1466.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 732.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 732.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 1466.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -996,9 +1395,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:46"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:46",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -1026,16 +1433,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 1754.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 792.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 792.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 1754.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1087,9 +1523,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:49"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:49",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -1117,16 +1561,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 2859.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 2621.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 2621.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 2859.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1178,9 +1651,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:37"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:37",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -1208,16 +1689,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 2938.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 2684.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 2684.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 2938.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1269,9 +1779,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:37"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:37",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -1299,16 +1817,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 2186.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 1379.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 1379.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 2186.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1360,9 +1907,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:42"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:42",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -1390,16 +1945,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 2290.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 1420.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 1420.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 2290.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1451,9 +2035,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:43"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:43",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -1481,16 +2073,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 1842.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 993.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 993.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 1842.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1542,9 +2163,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:47"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:47",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -1572,16 +2201,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 1794.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 938.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 938.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 1794.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1633,9 +2291,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:48"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:48",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -1663,16 +2329,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 3077.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 2878.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 2878.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 3077.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1724,9 +2419,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:52"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:52",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -1754,16 +2457,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 3103.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 2880.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 2880.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 3103.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1815,9 +2547,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:53"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:53",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -1845,16 +2585,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 3083.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 2858.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 2858.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 3083.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1906,9 +2675,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:53"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:53",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -1936,16 +2713,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 3073.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 2843.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 2843.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 3073.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -1997,9 +2803,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:54"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:54",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -2027,16 +2841,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 3017.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 2790.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 2790.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 3017.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -2088,9 +2931,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:55"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:55",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -2118,16 +2969,45 @@
                                             "value": 400.0,
                                             "unit": "(unitless)"
                                         },
-                                        "custom information document": {
-                                            "Preset Contrast": 100.0,
-                                            "Preset AOI": 1650.0,
-                                            "Calibrated Exposure By Mabtech": 13400.0,
-                                            "Preset Brightness": 100.0,
-                                            "Max Sensor Value": 2948.0,
-                                            "Analyte Secreting Population": "White LED",
-                                            "Preset Name": "User-Defined Normal",
-                                            "Average Sensor Value": 2708.0,
-                                            "Preset Emphasis": "Normal"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "White LED",
+                                                    "datum label": "Analyte Secreting Population"
+                                                },
+                                                {
+                                                    "scalar double datum": 2708.0,
+                                                    "datum label": "Average Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 13400.0,
+                                                    "datum label": "Calibrated Exposure By Mabtech"
+                                                },
+                                                {
+                                                    "scalar double datum": 2948.0,
+                                                    "datum label": "Max Sensor Value"
+                                                },
+                                                {
+                                                    "scalar double datum": 1650.0,
+                                                    "datum label": "Preset AOI"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Brightness"
+                                                },
+                                                {
+                                                    "scalar double datum": 100.0,
+                                                    "datum label": "Preset Contrast"
+                                                },
+                                                {
+                                                    "scalar string datum": "Normal",
+                                                    "datum label": "Preset Emphasis"
+                                                },
+                                                {
+                                                    "scalar string datum": "User-Defined Normal",
+                                                    "datum label": "Preset Name"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -2179,9 +3059,17 @@
                         }
                     ],
                     "container type": "well plate",
-                    "custom information document": {
-                        "Saved Date": "2024-01-29 09:18:05",
-                        "Read Date": "2024-01-29 09:06:56"
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-01-29 09:06:56",
+                                "datum label": "Read Date"
+                            },
+                            {
+                                "scalar string datum": "2024-01-29 09:18:05",
+                                "datum label": "Saved Date"
+                            }
+                        ]
                     }
                 },
                 "analyst": "Admin"
@@ -2198,14 +3086,31 @@
             "software name": "Apex",
             "software version": "1.1.58.127",
             "ASM converter name": "allotropy_mabtech_apex",
-            "ASM converter version": "0.1.77"
+            "ASM converter version": "0.1.110"
         },
-        "custom information document": {
-            "Last Saved Date": "2024-01-29 09:18:05",
-            "Excel File Export Date": "2024-01-29 09:18:07",
-            "Plate Read Date": "2024-01-29 09:06:56",
-            "Plate Name": "mabtech_apex_example1",
-            "Exporting User": "Admin"
+        "custom information aggregate document": {
+            "custom information document": [
+                {
+                    "scalar string datum": "2024-01-29 09:18:07",
+                    "datum label": "Excel File Export Date"
+                },
+                {
+                    "scalar string datum": "Admin",
+                    "datum label": "Exporting User"
+                },
+                {
+                    "scalar string datum": "2024-01-29 09:18:05",
+                    "datum label": "Last Saved Date"
+                },
+                {
+                    "scalar string datum": "mabtech_apex_example1",
+                    "datum label": "Plate Name"
+                },
+                {
+                    "scalar string datum": "2024-01-29 09:06:56",
+                    "datum label": "Plate Read Date"
+                }
+            ]
         }
     }
 }

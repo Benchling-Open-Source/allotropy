@@ -10,6 +10,34 @@
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "7000 to 17000",
+                                                    "datum label": "DDGate"
+                                                },
+                                                {
+                                                    "scalar string datum": "Horizontal",
+                                                    "datum label": "PlateReadDirection"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolAnalysis"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolHeater"
+                                                },
+                                                {
+                                                    "scalar string datum": "Map",
+                                                    "datum label": "ProtocolMicrosphere"
+                                                },
+                                                {
+                                                    "scalar string datum": "50 sec",
+                                                    "datum label": "SampleTimeout"
+                                                }
+                                            ]
+                                        },
                                         "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
@@ -22,14 +50,6 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
-                                        },
-                                        "custom information document": {
-                                            "ProtocolHeater": "Off",
-                                            "DDGate": "7000 to 17000",
-                                            "SampleTimeout": "50 sec",
-                                            "ProtocolAnalysis": "Off",
-                                            "ProtocolMicrosphere": "Map",
-                                            "PlateReadDirection": "Horizontal"
                                         }
                                     }
                                 ]
@@ -38,11 +58,19 @@
                             "measurement time": "2024-10-18T11:36:00+00:00",
                             "sample document": {
                                 "sample identifier": "Donor14_1",
-                                "location identifier": "A1",
-                                "custom information document": {
-                                    "PanelName": "Panel-12345678910 [v1]",
-                                    "BeadType": "MagPlex"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "MagPlex",
+                                            "datum label": "BeadType"
+                                        },
+                                        {
+                                            "scalar string datum": "Panel-12345678910 [v1]",
+                                            "datum label": "PanelName"
+                                        }
+                                    ]
+                                },
+                                "location identifier": "A1"
                             },
                             "assay bead count": {
                                 "value": 428.0,
@@ -399,14 +427,19 @@
                             }
                         }
                     ],
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-10-18 12:15",
+                                "datum label": "BatchStopTime"
+                            }
+                        ]
+                    },
                     "experimental data identifier": "BATCH_1",
                     "container type": "well plate",
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "BatchStopTime": "2024-10-18 12:15"
                     }
                 }
             },
@@ -418,6 +451,34 @@
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "7000 to 17000",
+                                                    "datum label": "DDGate"
+                                                },
+                                                {
+                                                    "scalar string datum": "Horizontal",
+                                                    "datum label": "PlateReadDirection"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolAnalysis"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolHeater"
+                                                },
+                                                {
+                                                    "scalar string datum": "Map",
+                                                    "datum label": "ProtocolMicrosphere"
+                                                },
+                                                {
+                                                    "scalar string datum": "50 sec",
+                                                    "datum label": "SampleTimeout"
+                                                }
+                                            ]
+                                        },
                                         "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
@@ -430,14 +491,6 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
-                                        },
-                                        "custom information document": {
-                                            "ProtocolHeater": "Off",
-                                            "DDGate": "7000 to 17000",
-                                            "SampleTimeout": "50 sec",
-                                            "ProtocolAnalysis": "Off",
-                                            "ProtocolMicrosphere": "Map",
-                                            "PlateReadDirection": "Horizontal"
                                         }
                                     }
                                 ]
@@ -446,11 +499,19 @@
                             "measurement time": "2024-10-18T11:36:00+00:00",
                             "sample document": {
                                 "sample identifier": "Donor14_2",
-                                "location identifier": "A2",
-                                "custom information document": {
-                                    "PanelName": "Panel-12345678910 [v1]",
-                                    "BeadType": "MagPlex"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "MagPlex",
+                                            "datum label": "BeadType"
+                                        },
+                                        {
+                                            "scalar string datum": "Panel-12345678910 [v1]",
+                                            "datum label": "PanelName"
+                                        }
+                                    ]
+                                },
+                                "location identifier": "A2"
                             },
                             "assay bead count": {
                                 "value": 279.0,
@@ -807,14 +868,19 @@
                             }
                         }
                     ],
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-10-18 12:15",
+                                "datum label": "BatchStopTime"
+                            }
+                        ]
+                    },
                     "experimental data identifier": "BATCH_1",
                     "container type": "well plate",
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "BatchStopTime": "2024-10-18 12:15"
                     }
                 }
             },
@@ -826,6 +892,34 @@
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "7000 to 17000",
+                                                    "datum label": "DDGate"
+                                                },
+                                                {
+                                                    "scalar string datum": "Horizontal",
+                                                    "datum label": "PlateReadDirection"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolAnalysis"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolHeater"
+                                                },
+                                                {
+                                                    "scalar string datum": "Map",
+                                                    "datum label": "ProtocolMicrosphere"
+                                                },
+                                                {
+                                                    "scalar string datum": "50 sec",
+                                                    "datum label": "SampleTimeout"
+                                                }
+                                            ]
+                                        },
                                         "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
@@ -838,14 +932,6 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
-                                        },
-                                        "custom information document": {
-                                            "ProtocolHeater": "Off",
-                                            "DDGate": "7000 to 17000",
-                                            "SampleTimeout": "50 sec",
-                                            "ProtocolAnalysis": "Off",
-                                            "ProtocolMicrosphere": "Map",
-                                            "PlateReadDirection": "Horizontal"
                                         }
                                     }
                                 ]
@@ -854,11 +940,19 @@
                             "measurement time": "2024-10-18T11:36:00+00:00",
                             "sample document": {
                                 "sample identifier": "Donor14_3",
-                                "location identifier": "A3",
-                                "custom information document": {
-                                    "PanelName": "Panel-12345678910 [v1]",
-                                    "BeadType": "MagPlex"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "MagPlex",
+                                            "datum label": "BeadType"
+                                        },
+                                        {
+                                            "scalar string datum": "Panel-12345678910 [v1]",
+                                            "datum label": "PanelName"
+                                        }
+                                    ]
+                                },
+                                "location identifier": "A3"
                             },
                             "assay bead count": {
                                 "value": 323.0,
@@ -1215,14 +1309,19 @@
                             }
                         }
                     ],
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-10-18 12:15",
+                                "datum label": "BatchStopTime"
+                            }
+                        ]
+                    },
                     "experimental data identifier": "BATCH_1",
                     "container type": "well plate",
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "BatchStopTime": "2024-10-18 12:15"
                     }
                 }
             },
@@ -1234,6 +1333,34 @@
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "7000 to 17000",
+                                                    "datum label": "DDGate"
+                                                },
+                                                {
+                                                    "scalar string datum": "Horizontal",
+                                                    "datum label": "PlateReadDirection"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolAnalysis"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolHeater"
+                                                },
+                                                {
+                                                    "scalar string datum": "Map",
+                                                    "datum label": "ProtocolMicrosphere"
+                                                },
+                                                {
+                                                    "scalar string datum": "50 sec",
+                                                    "datum label": "SampleTimeout"
+                                                }
+                                            ]
+                                        },
                                         "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
@@ -1246,14 +1373,6 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
-                                        },
-                                        "custom information document": {
-                                            "ProtocolHeater": "Off",
-                                            "DDGate": "7000 to 17000",
-                                            "SampleTimeout": "50 sec",
-                                            "ProtocolAnalysis": "Off",
-                                            "ProtocolMicrosphere": "Map",
-                                            "PlateReadDirection": "Horizontal"
                                         }
                                     }
                                 ]
@@ -1262,11 +1381,19 @@
                             "measurement time": "2024-10-18T11:36:00+00:00",
                             "sample document": {
                                 "sample identifier": "Donor14_4",
-                                "location identifier": "A4",
-                                "custom information document": {
-                                    "PanelName": "Panel-12345678910 [v1]",
-                                    "BeadType": "MagPlex"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "MagPlex",
+                                            "datum label": "BeadType"
+                                        },
+                                        {
+                                            "scalar string datum": "Panel-12345678910 [v1]",
+                                            "datum label": "PanelName"
+                                        }
+                                    ]
+                                },
+                                "location identifier": "A4"
                             },
                             "assay bead count": {
                                 "value": 417.0,
@@ -1623,14 +1750,19 @@
                             }
                         }
                     ],
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-10-18 12:15",
+                                "datum label": "BatchStopTime"
+                            }
+                        ]
+                    },
                     "experimental data identifier": "BATCH_1",
                     "container type": "well plate",
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "BatchStopTime": "2024-10-18 12:15"
                     }
                 }
             },
@@ -1642,6 +1774,34 @@
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "7000 to 17000",
+                                                    "datum label": "DDGate"
+                                                },
+                                                {
+                                                    "scalar string datum": "Horizontal",
+                                                    "datum label": "PlateReadDirection"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolAnalysis"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolHeater"
+                                                },
+                                                {
+                                                    "scalar string datum": "Map",
+                                                    "datum label": "ProtocolMicrosphere"
+                                                },
+                                                {
+                                                    "scalar string datum": "50 sec",
+                                                    "datum label": "SampleTimeout"
+                                                }
+                                            ]
+                                        },
                                         "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
@@ -1654,14 +1814,6 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
-                                        },
-                                        "custom information document": {
-                                            "ProtocolHeater": "Off",
-                                            "DDGate": "7000 to 17000",
-                                            "SampleTimeout": "50 sec",
-                                            "ProtocolAnalysis": "Off",
-                                            "ProtocolMicrosphere": "Map",
-                                            "PlateReadDirection": "Horizontal"
                                         }
                                     }
                                 ]
@@ -1670,11 +1822,19 @@
                             "measurement time": "2024-10-18T11:36:00+00:00",
                             "sample document": {
                                 "sample identifier": "Donor14_5",
-                                "location identifier": "A5",
-                                "custom information document": {
-                                    "PanelName": "Panel-12345678910 [v1]",
-                                    "BeadType": "MagPlex"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "MagPlex",
+                                            "datum label": "BeadType"
+                                        },
+                                        {
+                                            "scalar string datum": "Panel-12345678910 [v1]",
+                                            "datum label": "PanelName"
+                                        }
+                                    ]
+                                },
+                                "location identifier": "A5"
                             },
                             "assay bead count": {
                                 "value": 390.0,
@@ -2031,14 +2191,19 @@
                             }
                         }
                     ],
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-10-18 12:15",
+                                "datum label": "BatchStopTime"
+                            }
+                        ]
+                    },
                     "experimental data identifier": "BATCH_1",
                     "container type": "well plate",
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "BatchStopTime": "2024-10-18 12:15"
                     }
                 }
             },
@@ -2050,6 +2215,34 @@
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "7000 to 17000",
+                                                    "datum label": "DDGate"
+                                                },
+                                                {
+                                                    "scalar string datum": "Horizontal",
+                                                    "datum label": "PlateReadDirection"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolAnalysis"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolHeater"
+                                                },
+                                                {
+                                                    "scalar string datum": "Map",
+                                                    "datum label": "ProtocolMicrosphere"
+                                                },
+                                                {
+                                                    "scalar string datum": "50 sec",
+                                                    "datum label": "SampleTimeout"
+                                                }
+                                            ]
+                                        },
                                         "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
@@ -2062,14 +2255,6 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
-                                        },
-                                        "custom information document": {
-                                            "ProtocolHeater": "Off",
-                                            "DDGate": "7000 to 17000",
-                                            "SampleTimeout": "50 sec",
-                                            "ProtocolAnalysis": "Off",
-                                            "ProtocolMicrosphere": "Map",
-                                            "PlateReadDirection": "Horizontal"
                                         }
                                     }
                                 ]
@@ -2078,11 +2263,19 @@
                             "measurement time": "2024-10-18T11:36:00+00:00",
                             "sample document": {
                                 "sample identifier": "Donor14_6",
-                                "location identifier": "A6",
-                                "custom information document": {
-                                    "PanelName": "Panel-12345678910 [v1]",
-                                    "BeadType": "MagPlex"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "MagPlex",
+                                            "datum label": "BeadType"
+                                        },
+                                        {
+                                            "scalar string datum": "Panel-12345678910 [v1]",
+                                            "datum label": "PanelName"
+                                        }
+                                    ]
+                                },
+                                "location identifier": "A6"
                             },
                             "assay bead count": {
                                 "value": 442.0,
@@ -2439,14 +2632,19 @@
                             }
                         }
                     ],
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-10-18 12:15",
+                                "datum label": "BatchStopTime"
+                            }
+                        ]
+                    },
                     "experimental data identifier": "BATCH_1",
                     "container type": "well plate",
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "BatchStopTime": "2024-10-18 12:15"
                     }
                 }
             },
@@ -2458,6 +2656,34 @@
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "7000 to 17000",
+                                                    "datum label": "DDGate"
+                                                },
+                                                {
+                                                    "scalar string datum": "Horizontal",
+                                                    "datum label": "PlateReadDirection"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolAnalysis"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolHeater"
+                                                },
+                                                {
+                                                    "scalar string datum": "Map",
+                                                    "datum label": "ProtocolMicrosphere"
+                                                },
+                                                {
+                                                    "scalar string datum": "50 sec",
+                                                    "datum label": "SampleTimeout"
+                                                }
+                                            ]
+                                        },
                                         "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
@@ -2470,14 +2696,6 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
-                                        },
-                                        "custom information document": {
-                                            "ProtocolHeater": "Off",
-                                            "DDGate": "7000 to 17000",
-                                            "SampleTimeout": "50 sec",
-                                            "ProtocolAnalysis": "Off",
-                                            "ProtocolMicrosphere": "Map",
-                                            "PlateReadDirection": "Horizontal"
                                         }
                                     }
                                 ]
@@ -2486,11 +2704,19 @@
                             "measurement time": "2024-10-18T11:36:00+00:00",
                             "sample document": {
                                 "sample identifier": "Donor14_1",
-                                "location identifier": "A7",
-                                "custom information document": {
-                                    "PanelName": "Panel-12345678910 [v1]",
-                                    "BeadType": "MagPlex"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "MagPlex",
+                                            "datum label": "BeadType"
+                                        },
+                                        {
+                                            "scalar string datum": "Panel-12345678910 [v1]",
+                                            "datum label": "PanelName"
+                                        }
+                                    ]
+                                },
+                                "location identifier": "A7"
                             },
                             "assay bead count": {
                                 "value": 463.0,
@@ -2847,14 +3073,19 @@
                             }
                         }
                     ],
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-10-18 12:15",
+                                "datum label": "BatchStopTime"
+                            }
+                        ]
+                    },
                     "experimental data identifier": "BATCH_1",
                     "container type": "well plate",
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "BatchStopTime": "2024-10-18 12:15"
                     }
                 }
             },
@@ -2866,6 +3097,34 @@
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "7000 to 17000",
+                                                    "datum label": "DDGate"
+                                                },
+                                                {
+                                                    "scalar string datum": "Horizontal",
+                                                    "datum label": "PlateReadDirection"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolAnalysis"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolHeater"
+                                                },
+                                                {
+                                                    "scalar string datum": "Map",
+                                                    "datum label": "ProtocolMicrosphere"
+                                                },
+                                                {
+                                                    "scalar string datum": "50 sec",
+                                                    "datum label": "SampleTimeout"
+                                                }
+                                            ]
+                                        },
                                         "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
@@ -2878,14 +3137,6 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
-                                        },
-                                        "custom information document": {
-                                            "ProtocolHeater": "Off",
-                                            "DDGate": "7000 to 17000",
-                                            "SampleTimeout": "50 sec",
-                                            "ProtocolAnalysis": "Off",
-                                            "ProtocolMicrosphere": "Map",
-                                            "PlateReadDirection": "Horizontal"
                                         }
                                     }
                                 ]
@@ -2894,11 +3145,19 @@
                             "measurement time": "2024-10-18T11:36:00+00:00",
                             "sample document": {
                                 "sample identifier": "Donor14_2",
-                                "location identifier": "A8",
-                                "custom information document": {
-                                    "PanelName": "Panel-12345678910 [v1]",
-                                    "BeadType": "MagPlex"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "MagPlex",
+                                            "datum label": "BeadType"
+                                        },
+                                        {
+                                            "scalar string datum": "Panel-12345678910 [v1]",
+                                            "datum label": "PanelName"
+                                        }
+                                    ]
+                                },
+                                "location identifier": "A8"
                             },
                             "assay bead count": {
                                 "value": 335.0,
@@ -3255,14 +3514,19 @@
                             }
                         }
                     ],
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-10-18 12:15",
+                                "datum label": "BatchStopTime"
+                            }
+                        ]
+                    },
                     "experimental data identifier": "BATCH_1",
                     "container type": "well plate",
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "BatchStopTime": "2024-10-18 12:15"
                     }
                 }
             },
@@ -3274,6 +3538,34 @@
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "7000 to 17000",
+                                                    "datum label": "DDGate"
+                                                },
+                                                {
+                                                    "scalar string datum": "Horizontal",
+                                                    "datum label": "PlateReadDirection"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolAnalysis"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolHeater"
+                                                },
+                                                {
+                                                    "scalar string datum": "Map",
+                                                    "datum label": "ProtocolMicrosphere"
+                                                },
+                                                {
+                                                    "scalar string datum": "50 sec",
+                                                    "datum label": "SampleTimeout"
+                                                }
+                                            ]
+                                        },
                                         "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
@@ -3286,14 +3578,6 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
-                                        },
-                                        "custom information document": {
-                                            "ProtocolHeater": "Off",
-                                            "DDGate": "7000 to 17000",
-                                            "SampleTimeout": "50 sec",
-                                            "ProtocolAnalysis": "Off",
-                                            "ProtocolMicrosphere": "Map",
-                                            "PlateReadDirection": "Horizontal"
                                         }
                                     }
                                 ]
@@ -3302,11 +3586,19 @@
                             "measurement time": "2024-10-18T11:36:00+00:00",
                             "sample document": {
                                 "sample identifier": "Donor14_3",
-                                "location identifier": "A9",
-                                "custom information document": {
-                                    "PanelName": "Panel-12345678910 [v1]",
-                                    "BeadType": "MagPlex"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "MagPlex",
+                                            "datum label": "BeadType"
+                                        },
+                                        {
+                                            "scalar string datum": "Panel-12345678910 [v1]",
+                                            "datum label": "PanelName"
+                                        }
+                                    ]
+                                },
+                                "location identifier": "A9"
                             },
                             "assay bead count": {
                                 "value": 429.0,
@@ -3663,14 +3955,19 @@
                             }
                         }
                     ],
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-10-18 12:15",
+                                "datum label": "BatchStopTime"
+                            }
+                        ]
+                    },
                     "experimental data identifier": "BATCH_1",
                     "container type": "well plate",
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "BatchStopTime": "2024-10-18 12:15"
                     }
                 }
             },
@@ -3682,6 +3979,34 @@
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "7000 to 17000",
+                                                    "datum label": "DDGate"
+                                                },
+                                                {
+                                                    "scalar string datum": "Horizontal",
+                                                    "datum label": "PlateReadDirection"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolAnalysis"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolHeater"
+                                                },
+                                                {
+                                                    "scalar string datum": "Map",
+                                                    "datum label": "ProtocolMicrosphere"
+                                                },
+                                                {
+                                                    "scalar string datum": "50 sec",
+                                                    "datum label": "SampleTimeout"
+                                                }
+                                            ]
+                                        },
                                         "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
@@ -3694,14 +4019,6 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
-                                        },
-                                        "custom information document": {
-                                            "ProtocolHeater": "Off",
-                                            "DDGate": "7000 to 17000",
-                                            "SampleTimeout": "50 sec",
-                                            "ProtocolAnalysis": "Off",
-                                            "ProtocolMicrosphere": "Map",
-                                            "PlateReadDirection": "Horizontal"
                                         }
                                     }
                                 ]
@@ -3710,11 +4027,19 @@
                             "measurement time": "2024-10-18T11:36:00+00:00",
                             "sample document": {
                                 "sample identifier": "Background",
-                                "location identifier": "A10",
-                                "custom information document": {
-                                    "PanelName": "Panel-12345678910 [v1]",
-                                    "BeadType": "MagPlex"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "MagPlex",
+                                            "datum label": "BeadType"
+                                        },
+                                        {
+                                            "scalar string datum": "Panel-12345678910 [v1]",
+                                            "datum label": "PanelName"
+                                        }
+                                    ]
+                                },
+                                "location identifier": "A10"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4079,14 +4404,19 @@
                             }
                         }
                     ],
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-10-18 12:15",
+                                "datum label": "BatchStopTime"
+                            }
+                        ]
+                    },
                     "experimental data identifier": "BATCH_1",
                     "container type": "well plate",
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "BatchStopTime": "2024-10-18 12:15"
                     }
                 }
             },
@@ -4098,6 +4428,34 @@
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "7000 to 17000",
+                                                    "datum label": "DDGate"
+                                                },
+                                                {
+                                                    "scalar string datum": "Horizontal",
+                                                    "datum label": "PlateReadDirection"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolAnalysis"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolHeater"
+                                                },
+                                                {
+                                                    "scalar string datum": "Map",
+                                                    "datum label": "ProtocolMicrosphere"
+                                                },
+                                                {
+                                                    "scalar string datum": "50 sec",
+                                                    "datum label": "SampleTimeout"
+                                                }
+                                            ]
+                                        },
                                         "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
@@ -4110,14 +4468,6 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
-                                        },
-                                        "custom information document": {
-                                            "ProtocolHeater": "Off",
-                                            "DDGate": "7000 to 17000",
-                                            "SampleTimeout": "50 sec",
-                                            "ProtocolAnalysis": "Off",
-                                            "ProtocolMicrosphere": "Map",
-                                            "PlateReadDirection": "Horizontal"
                                         }
                                     }
                                 ]
@@ -4126,11 +4476,19 @@
                             "measurement time": "2024-10-18T11:36:00+00:00",
                             "sample document": {
                                 "sample identifier": "Background",
-                                "location identifier": "A11",
-                                "custom information document": {
-                                    "PanelName": "Panel-12345678910 [v1]",
-                                    "BeadType": "MagPlex"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "MagPlex",
+                                            "datum label": "BeadType"
+                                        },
+                                        {
+                                            "scalar string datum": "Panel-12345678910 [v1]",
+                                            "datum label": "PanelName"
+                                        }
+                                    ]
+                                },
+                                "location identifier": "A11"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4495,14 +4853,19 @@
                             }
                         }
                     ],
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-10-18 12:15",
+                                "datum label": "BatchStopTime"
+                            }
+                        ]
+                    },
                     "experimental data identifier": "BATCH_1",
                     "container type": "well plate",
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "BatchStopTime": "2024-10-18 12:15"
                     }
                 }
             },
@@ -4514,6 +4877,34 @@
                                 "device control document": [
                                     {
                                         "device type": "multi analyte profiling analyzer",
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "7000 to 17000",
+                                                    "datum label": "DDGate"
+                                                },
+                                                {
+                                                    "scalar string datum": "Horizontal",
+                                                    "datum label": "PlateReadDirection"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolAnalysis"
+                                                },
+                                                {
+                                                    "scalar string datum": "Off",
+                                                    "datum label": "ProtocolHeater"
+                                                },
+                                                {
+                                                    "scalar string datum": "Map",
+                                                    "datum label": "ProtocolMicrosphere"
+                                                },
+                                                {
+                                                    "scalar string datum": "50 sec",
+                                                    "datum label": "SampleTimeout"
+                                                }
+                                            ]
+                                        },
                                         "detector gain setting": "xMAP INTELLIFLEXÂ® High Sensitivity",
                                         "sample volume setting": {
                                             "value": 50.0,
@@ -4526,14 +4917,6 @@
                                         "minimum assay bead count threshold setting": {
                                             "value": 100,
                                             "unit": "#"
-                                        },
-                                        "custom information document": {
-                                            "ProtocolHeater": "Off",
-                                            "DDGate": "7000 to 17000",
-                                            "SampleTimeout": "50 sec",
-                                            "ProtocolAnalysis": "Off",
-                                            "ProtocolMicrosphere": "Map",
-                                            "PlateReadDirection": "Horizontal"
                                         }
                                     }
                                 ]
@@ -4542,11 +4925,19 @@
                             "measurement time": "2024-10-18T11:36:00+00:00",
                             "sample document": {
                                 "sample identifier": "Background",
-                                "location identifier": "A12",
-                                "custom information document": {
-                                    "PanelName": "Panel-12345678910 [v1]",
-                                    "BeadType": "MagPlex"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "MagPlex",
+                                            "datum label": "BeadType"
+                                        },
+                                        {
+                                            "scalar string datum": "Panel-12345678910 [v1]",
+                                            "datum label": "PanelName"
+                                        }
+                                    ]
+                                },
+                                "location identifier": "A12"
                             },
                             "error aggregate document": {
                                 "error document": [
@@ -4911,14 +5302,19 @@
                             }
                         }
                     ],
+                    "custom information aggregate document": {
+                        "custom information document": [
+                            {
+                                "scalar string datum": "2024-10-18 12:15",
+                                "datum label": "BatchStopTime"
+                            }
+                        ]
+                    },
                     "experimental data identifier": "BATCH_1",
                     "container type": "well plate",
                     "plate well count": {
                         "value": 96.0,
                         "unit": "#"
-                    },
-                    "custom information document": {
-                        "BatchStopTime": "2024-10-18 12:15"
                     }
                 }
             }
@@ -6853,7 +7249,7 @@
             "file name": "luminex_xPONENT_missing_optional_fields.csv",
             "UNC path": "tests/parsers/luminex_xponent/testdata/luminex_xPONENT_missing_optional_fields.csv",
             "ASM converter name": "allotropy_luminex_xponent",
-            "ASM converter version": "0.1.103",
+            "ASM converter version": "0.1.110",
             "software name": "xPONENT",
             "software version": "2.1.1015"
         },
@@ -6879,9 +7275,17 @@
                     }
                 ]
             },
-            "custom information document": {
-                "Country Code": "409",
-                "Version": "1"
+            "custom information aggregate document": {
+                "custom information document": [
+                    {
+                        "scalar string datum": "409",
+                        "datum label": "Country Code"
+                    },
+                    {
+                        "scalar string datum": "1",
+                        "datum label": "Version"
+                    }
+                ]
             }
         }
     }

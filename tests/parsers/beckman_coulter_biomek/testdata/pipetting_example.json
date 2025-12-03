@@ -10,12 +10,29 @@
                                 "device control document": [
                                     {
                                         "device type": "liquid handler",
-                                        "custom information document": {
-                                            "pod": "Pod1",
-                                            "source labware name": "Source1",
-                                            "destination labware name": "Dest1",
-                                            "source liquid handling technique": "MP200",
-                                            "destination liquid handling technique": "MP200"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Dest1",
+                                                    "datum label": "destination labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "MP200",
+                                                    "datum label": "destination liquid handling technique"
+                                                },
+                                                {
+                                                    "scalar string datum": "Pod1",
+                                                    "datum label": "pod"
+                                                },
+                                                {
+                                                    "scalar string datum": "Source1",
+                                                    "datum label": "source labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "MP200",
+                                                    "datum label": "source liquid handling technique"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -44,12 +61,29 @@
                                 "device control document": [
                                     {
                                         "device type": "liquid handler",
-                                        "custom information document": {
-                                            "pod": "Pod1",
-                                            "source labware name": "Source1",
-                                            "destination labware name": "Dest1",
-                                            "source liquid handling technique": "MP200",
-                                            "destination liquid handling technique": "MP200"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Dest1",
+                                                    "datum label": "destination labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "MP200",
+                                                    "datum label": "destination liquid handling technique"
+                                                },
+                                                {
+                                                    "scalar string datum": "Pod1",
+                                                    "datum label": "pod"
+                                                },
+                                                {
+                                                    "scalar string datum": "Source1",
+                                                    "datum label": "source labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "MP200",
+                                                    "datum label": "source liquid handling technique"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -78,12 +112,29 @@
                                 "device control document": [
                                     {
                                         "device type": "liquid handler",
-                                        "custom information document": {
-                                            "pod": "Pod1",
-                                            "source labware name": "Source1",
-                                            "destination labware name": "Dest1",
-                                            "source liquid handling technique": "MP200",
-                                            "destination liquid handling technique": "MP200"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Dest1",
+                                                    "datum label": "destination labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "MP200",
+                                                    "datum label": "destination liquid handling technique"
+                                                },
+                                                {
+                                                    "scalar string datum": "Pod1",
+                                                    "datum label": "pod"
+                                                },
+                                                {
+                                                    "scalar string datum": "Source1",
+                                                    "datum label": "source labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "MP200",
+                                                    "datum label": "source liquid handling technique"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -112,12 +163,29 @@
                                 "device control document": [
                                     {
                                         "device type": "liquid handler",
-                                        "custom information document": {
-                                            "pod": "Pod1",
-                                            "source labware name": "Source1",
-                                            "destination labware name": "Dest1",
-                                            "source liquid handling technique": "MP200",
-                                            "destination liquid handling technique": "MP200"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Dest1",
+                                                    "datum label": "destination labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "MP200",
+                                                    "datum label": "destination liquid handling technique"
+                                                },
+                                                {
+                                                    "scalar string datum": "Pod1",
+                                                    "datum label": "pod"
+                                                },
+                                                {
+                                                    "scalar string datum": "Source1",
+                                                    "datum label": "source labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "MP200",
+                                                    "datum label": "source liquid handling technique"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -146,12 +214,29 @@
                                 "device control document": [
                                     {
                                         "device type": "liquid handler",
-                                        "custom information document": {
-                                            "pod": "Pod1",
-                                            "source labware name": "Source1",
-                                            "destination labware name": "Dest1",
-                                            "source liquid handling technique": "MP200",
-                                            "destination liquid handling technique": "MP200"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Dest1",
+                                                    "datum label": "destination labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "MP200",
+                                                    "datum label": "destination liquid handling technique"
+                                                },
+                                                {
+                                                    "scalar string datum": "Pod1",
+                                                    "datum label": "pod"
+                                                },
+                                                {
+                                                    "scalar string datum": "Source1",
+                                                    "datum label": "source labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "MP200",
+                                                    "datum label": "source liquid handling technique"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -180,12 +265,29 @@
                                 "device control document": [
                                     {
                                         "device type": "liquid handler",
-                                        "custom information document": {
-                                            "pod": "Pod1",
-                                            "source labware name": "Source1",
-                                            "destination labware name": "Dest1",
-                                            "source liquid handling technique": "MP200",
-                                            "destination liquid handling technique": "MP200"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Dest1",
+                                                    "datum label": "destination labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "MP200",
+                                                    "datum label": "destination liquid handling technique"
+                                                },
+                                                {
+                                                    "scalar string datum": "Pod1",
+                                                    "datum label": "pod"
+                                                },
+                                                {
+                                                    "scalar string datum": "Source1",
+                                                    "datum label": "source labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "MP200",
+                                                    "datum label": "source liquid handling technique"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -214,12 +316,29 @@
                                 "device control document": [
                                     {
                                         "device type": "liquid handler",
-                                        "custom information document": {
-                                            "pod": "Pod1",
-                                            "source labware name": "Source1",
-                                            "destination labware name": "Dest1",
-                                            "source liquid handling technique": "MP200",
-                                            "destination liquid handling technique": "MP200"
+                                        "custom information aggregate document": {
+                                            "custom information document": [
+                                                {
+                                                    "scalar string datum": "Dest1",
+                                                    "datum label": "destination labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "MP200",
+                                                    "datum label": "destination liquid handling technique"
+                                                },
+                                                {
+                                                    "scalar string datum": "Pod1",
+                                                    "datum label": "pod"
+                                                },
+                                                {
+                                                    "scalar string datum": "Source1",
+                                                    "datum label": "source labware name"
+                                                },
+                                                {
+                                                    "scalar string datum": "MP200",
+                                                    "datum label": "source liquid handling technique"
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -255,7 +374,7 @@
             "file name": "pipetting_example.log",
             "UNC path": "tests/parsers/beckman_coulter_biomek/testdata/pipetting_example.log",
             "ASM converter name": "allotropy_beckman_coulter_biomek",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.110",
             "software name": "BioMek Software"
         },
         "device system document": {

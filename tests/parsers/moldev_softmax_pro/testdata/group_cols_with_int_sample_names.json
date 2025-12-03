@@ -22,10 +22,15 @@
                             "sample document": {
                                 "location identifier": "A1",
                                 "sample identifier": "St1",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Std"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Std",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 1.785,
@@ -61,10 +66,15 @@
                             "sample document": {
                                 "location identifier": "A2",
                                 "sample identifier": "St1",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Std"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Std",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 1.672,
@@ -108,10 +118,15 @@
                             "sample document": {
                                 "location identifier": "A3",
                                 "sample identifier": "Co1",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Ctrl"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Ctrl",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 1.32,
@@ -147,10 +162,15 @@
                             "sample document": {
                                 "location identifier": "A4",
                                 "sample identifier": "62195",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.38,
@@ -186,10 +206,15 @@
                             "sample document": {
                                 "location identifier": "A5",
                                 "sample identifier": "62209",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 2.453,
@@ -225,10 +250,15 @@
                             "sample document": {
                                 "location identifier": "A6",
                                 "sample identifier": "62227",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.388,
@@ -264,10 +294,15 @@
                             "sample document": {
                                 "location identifier": "A7",
                                 "sample identifier": "62245",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.156,
@@ -303,10 +338,15 @@
                             "sample document": {
                                 "location identifier": "A8",
                                 "sample identifier": "62281",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.11,
@@ -342,10 +382,15 @@
                             "sample document": {
                                 "location identifier": "A9",
                                 "sample identifier": "62317",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.083,
@@ -381,10 +426,15 @@
                             "sample document": {
                                 "location identifier": "A10",
                                 "sample identifier": "63242",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.187,
@@ -420,10 +470,15 @@
                             "sample document": {
                                 "location identifier": "A11",
                                 "sample identifier": "63252",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.2,
@@ -459,10 +514,15 @@
                             "sample document": {
                                 "location identifier": "A12",
                                 "sample identifier": "63262",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": -0.06,
@@ -518,10 +578,15 @@
                             "sample document": {
                                 "location identifier": "B1",
                                 "sample identifier": "St2",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Std"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Std",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 1.136,
@@ -557,10 +622,15 @@
                             "sample document": {
                                 "location identifier": "B2",
                                 "sample identifier": "St2",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Std"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Std",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 1.075,
@@ -596,10 +666,15 @@
                             "sample document": {
                                 "location identifier": "B3",
                                 "sample identifier": "Co1",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Ctrl"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Ctrl",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 1.327,
@@ -635,10 +710,15 @@
                             "sample document": {
                                 "location identifier": "B4",
                                 "sample identifier": "62196",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.189,
@@ -674,10 +754,15 @@
                             "sample document": {
                                 "location identifier": "B5",
                                 "sample identifier": "62210",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 1.766,
@@ -713,10 +798,15 @@
                             "sample document": {
                                 "location identifier": "B6",
                                 "sample identifier": "62228",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.228,
@@ -752,10 +842,15 @@
                             "sample document": {
                                 "location identifier": "B7",
                                 "sample identifier": "62246",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.075,
@@ -791,10 +886,15 @@
                             "sample document": {
                                 "location identifier": "B8",
                                 "sample identifier": "62282",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.068,
@@ -830,10 +930,15 @@
                             "sample document": {
                                 "location identifier": "B9",
                                 "sample identifier": "62318",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.06,
@@ -869,10 +974,15 @@
                             "sample document": {
                                 "location identifier": "B10",
                                 "sample identifier": "63243",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.114,
@@ -908,10 +1018,15 @@
                             "sample document": {
                                 "location identifier": "B11",
                                 "sample identifier": "63253",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.128,
@@ -947,10 +1062,15 @@
                             "sample document": {
                                 "location identifier": "B12",
                                 "sample identifier": "63263",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.002,
@@ -1006,10 +1126,15 @@
                             "sample document": {
                                 "location identifier": "C1",
                                 "sample identifier": "St3",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Std"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Std",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.656,
@@ -1045,10 +1170,15 @@
                             "sample document": {
                                 "location identifier": "C2",
                                 "sample identifier": "St3",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Std"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Std",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.645,
@@ -1084,10 +1214,15 @@
                             "sample document": {
                                 "location identifier": "C3",
                                 "sample identifier": "Co2",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Ctrl"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Ctrl",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.419,
@@ -1123,10 +1258,15 @@
                             "sample document": {
                                 "location identifier": "C4",
                                 "sample identifier": "62197",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.126,
@@ -1162,10 +1302,15 @@
                             "sample document": {
                                 "location identifier": "C5",
                                 "sample identifier": "62211",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 1.066,
@@ -1201,10 +1346,15 @@
                             "sample document": {
                                 "location identifier": "C6",
                                 "sample identifier": "62229",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.158,
@@ -1240,10 +1390,15 @@
                             "sample document": {
                                 "location identifier": "C7",
                                 "sample identifier": "62247",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.063,
@@ -1279,10 +1434,15 @@
                             "sample document": {
                                 "location identifier": "C8",
                                 "sample identifier": "62283",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.061,
@@ -1318,10 +1478,15 @@
                             "sample document": {
                                 "location identifier": "C9",
                                 "sample identifier": "62319",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.053,
@@ -1377,10 +1542,15 @@
                             "sample document": {
                                 "location identifier": "C10",
                                 "sample identifier": "63244",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.082,
@@ -1416,10 +1586,15 @@
                             "sample document": {
                                 "location identifier": "C11",
                                 "sample identifier": "63254",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.089,
@@ -1455,10 +1630,15 @@
                             "sample document": {
                                 "location identifier": "C12",
                                 "sample identifier": "63264",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.089,
@@ -1494,10 +1674,15 @@
                             "sample document": {
                                 "location identifier": "D1",
                                 "sample identifier": "St4",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Std"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Std",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.354,
@@ -1541,10 +1726,15 @@
                             "sample document": {
                                 "location identifier": "D2",
                                 "sample identifier": "St4",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Std"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Std",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.355,
@@ -1588,10 +1778,15 @@
                             "sample document": {
                                 "location identifier": "D3",
                                 "sample identifier": "Co2",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Ctrl"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Ctrl",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.42,
@@ -1627,10 +1822,15 @@
                             "sample document": {
                                 "location identifier": "D4",
                                 "sample identifier": "62198",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.093,
@@ -1666,10 +1866,15 @@
                             "sample document": {
                                 "location identifier": "D5",
                                 "sample identifier": "62212",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.674,
@@ -1705,10 +1910,15 @@
                             "sample document": {
                                 "location identifier": "D6",
                                 "sample identifier": "62230",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.11,
@@ -1744,10 +1954,15 @@
                             "sample document": {
                                 "location identifier": "D7",
                                 "sample identifier": "62248",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.056,
@@ -1803,10 +2018,15 @@
                             "sample document": {
                                 "location identifier": "D8",
                                 "sample identifier": "62284",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.055,
@@ -1862,10 +2082,15 @@
                             "sample document": {
                                 "location identifier": "D9",
                                 "sample identifier": "62320",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.052,
@@ -1921,10 +2146,15 @@
                             "sample document": {
                                 "location identifier": "D10",
                                 "sample identifier": "63245",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.068,
@@ -1960,10 +2190,15 @@
                             "sample document": {
                                 "location identifier": "D11",
                                 "sample identifier": "63255",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.073,
@@ -1999,10 +2234,15 @@
                             "sample document": {
                                 "location identifier": "D12",
                                 "sample identifier": "63265",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.07,
@@ -2038,10 +2278,15 @@
                             "sample document": {
                                 "location identifier": "E1",
                                 "sample identifier": "St5",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Std"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Std",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.212,
@@ -2077,10 +2322,15 @@
                             "sample document": {
                                 "location identifier": "E2",
                                 "sample identifier": "St5",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Std"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Std",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.204,
@@ -2116,10 +2366,15 @@
                             "sample document": {
                                 "location identifier": "E3",
                                 "sample identifier": "Co3",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Ctrl"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Ctrl",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.17,
@@ -2155,10 +2410,15 @@
                             "sample document": {
                                 "location identifier": "E4",
                                 "sample identifier": "62204",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 1.814,
@@ -2194,10 +2454,15 @@
                             "sample document": {
                                 "location identifier": "E5",
                                 "sample identifier": "62218",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.276,
@@ -2233,10 +2498,15 @@
                             "sample document": {
                                 "location identifier": "E6",
                                 "sample identifier": "62236",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.444,
@@ -2272,10 +2542,15 @@
                             "sample document": {
                                 "location identifier": "E7",
                                 "sample identifier": "62263",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.076,
@@ -2311,10 +2586,15 @@
                             "sample document": {
                                 "location identifier": "E8",
                                 "sample identifier": "62299",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.074,
@@ -2350,10 +2630,15 @@
                             "sample document": {
                                 "location identifier": "E9",
                                 "sample identifier": "62335",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.078,
@@ -2389,10 +2674,15 @@
                             "sample document": {
                                 "location identifier": "E10",
                                 "sample identifier": "63247",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.199,
@@ -2428,10 +2718,15 @@
                             "sample document": {
                                 "location identifier": "E11",
                                 "sample identifier": "63257",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.231,
@@ -2467,10 +2762,15 @@
                             "sample document": {
                                 "location identifier": "E12",
                                 "sample identifier": "63267",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.119,
@@ -2506,10 +2806,15 @@
                             "sample document": {
                                 "location identifier": "F1",
                                 "sample identifier": "St6",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Std"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Std",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.142,
@@ -2545,10 +2850,15 @@
                             "sample document": {
                                 "location identifier": "F2",
                                 "sample identifier": "St6",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Std"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Std",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.135,
@@ -2592,10 +2902,15 @@
                             "sample document": {
                                 "location identifier": "F3",
                                 "sample identifier": "Co3",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Ctrl"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Ctrl",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.175,
@@ -2631,10 +2946,15 @@
                             "sample document": {
                                 "location identifier": "F4",
                                 "sample identifier": "62205",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 1.192,
@@ -2670,10 +2990,15 @@
                             "sample document": {
                                 "location identifier": "F5",
                                 "sample identifier": "62219",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.158,
@@ -2709,10 +3034,15 @@
                             "sample document": {
                                 "location identifier": "F6",
                                 "sample identifier": "62237",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.25,
@@ -2748,10 +3078,15 @@
                             "sample document": {
                                 "location identifier": "F7",
                                 "sample identifier": "62264",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.062,
@@ -2787,10 +3122,15 @@
                             "sample document": {
                                 "location identifier": "F8",
                                 "sample identifier": "62300",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.062,
@@ -2826,10 +3166,15 @@
                             "sample document": {
                                 "location identifier": "F9",
                                 "sample identifier": "62336",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.061,
@@ -2865,10 +3210,15 @@
                             "sample document": {
                                 "location identifier": "F10",
                                 "sample identifier": "63248",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.123,
@@ -2904,10 +3254,15 @@
                             "sample document": {
                                 "location identifier": "F11",
                                 "sample identifier": "63258",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.135,
@@ -2943,10 +3298,15 @@
                             "sample document": {
                                 "location identifier": "F12",
                                 "sample identifier": "63268",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.079,
@@ -2982,10 +3342,15 @@
                             "sample document": {
                                 "location identifier": "G1",
                                 "sample identifier": "St7",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Std"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Std",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.105,
@@ -3021,10 +3386,15 @@
                             "sample document": {
                                 "location identifier": "G2",
                                 "sample identifier": "St7",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Std"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Std",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.094,
@@ -3060,10 +3430,15 @@
                             "sample document": {
                                 "location identifier": "G3",
                                 "sample identifier": "Co4",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "LOQ"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "LOQ",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.116,
@@ -3099,10 +3474,15 @@
                             "sample document": {
                                 "location identifier": "G4",
                                 "sample identifier": "62206",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.7,
@@ -3138,10 +3518,15 @@
                             "sample document": {
                                 "location identifier": "G5",
                                 "sample identifier": "62220",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.099,
@@ -3177,10 +3562,15 @@
                             "sample document": {
                                 "location identifier": "G6",
                                 "sample identifier": "62238",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.157,
@@ -3216,10 +3606,15 @@
                             "sample document": {
                                 "location identifier": "G7",
                                 "sample identifier": "62265",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.053,
@@ -3275,10 +3670,15 @@
                             "sample document": {
                                 "location identifier": "G8",
                                 "sample identifier": "62301",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.054,
@@ -3334,10 +3734,15 @@
                             "sample document": {
                                 "location identifier": "G9",
                                 "sample identifier": "62337",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.056,
@@ -3393,10 +3798,15 @@
                             "sample document": {
                                 "location identifier": "G10",
                                 "sample identifier": "63249",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.089,
@@ -3432,10 +3842,15 @@
                             "sample document": {
                                 "location identifier": "G11",
                                 "sample identifier": "63259",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.093,
@@ -3471,10 +3886,15 @@
                             "sample document": {
                                 "location identifier": "G12",
                                 "sample identifier": "63269",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.063,
@@ -3510,10 +3930,15 @@
                             "sample document": {
                                 "location identifier": "H1",
                                 "sample identifier": "St8",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Std"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Std",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.055,
@@ -3561,10 +3986,15 @@
                             "sample document": {
                                 "location identifier": "H2",
                                 "sample identifier": "St8",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "Std"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "Std",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.052,
@@ -3612,10 +4042,15 @@
                             "sample document": {
                                 "location identifier": "H3",
                                 "sample identifier": "Co4",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "LOQ"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "LOQ",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.118,
@@ -3651,10 +4086,15 @@
                             "sample document": {
                                 "location identifier": "H4",
                                 "sample identifier": "62207",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.427,
@@ -3690,10 +4130,15 @@
                             "sample document": {
                                 "location identifier": "H5",
                                 "sample identifier": "62221",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.079,
@@ -3729,10 +4174,15 @@
                             "sample document": {
                                 "location identifier": "H6",
                                 "sample identifier": "62239",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_1"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_1",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.11,
@@ -3768,10 +4218,15 @@
                             "sample document": {
                                 "location identifier": "H7",
                                 "sample identifier": "62266",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.053,
@@ -3827,10 +4282,15 @@
                             "sample document": {
                                 "location identifier": "H8",
                                 "sample identifier": "62302",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.054,
@@ -3886,10 +4346,15 @@
                             "sample document": {
                                 "location identifier": "H9",
                                 "sample identifier": "62338",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_2"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_2",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.053,
@@ -3945,10 +4410,15 @@
                             "sample document": {
                                 "location identifier": "H10",
                                 "sample identifier": "63250",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.075,
@@ -3984,10 +4454,15 @@
                             "sample document": {
                                 "location identifier": "H11",
                                 "sample identifier": "63260",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.075,
@@ -4023,10 +4498,15 @@
                             "sample document": {
                                 "location identifier": "H12",
                                 "sample identifier": "63270",
-                                "well plate identifier": "Plate1",
-                                "custom information document": {
-                                    "group identifier": "group_3"
-                                }
+                                "custom information aggregate document": {
+                                    "custom information document": [
+                                        {
+                                            "scalar string datum": "group_3",
+                                            "datum label": "group_identifier"
+                                        }
+                                    ]
+                                },
+                                "well plate identifier": "Plate1"
                             },
                             "absorbance": {
                                 "value": 0.055,
@@ -13973,7 +14453,7 @@
             "UNC path": "tests/parsers/moldev_softmax_pro/testdata/group_cols_with_int_sample_names.txt",
             "file name": "group_cols_with_int_sample_names.txt",
             "ASM converter name": "allotropy_molecular_devices_softmax_pro",
-            "ASM converter version": "0.1.92",
+            "ASM converter version": "0.1.110",
             "software name": "SoftMax Pro"
         },
         "device system document": {
