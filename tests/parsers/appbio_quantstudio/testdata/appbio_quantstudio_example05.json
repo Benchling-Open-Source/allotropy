@@ -34,6 +34,14 @@
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Quantity could not be calculated: missing cycle threshold result",
+                                        "error feature": "quantity"
+                                    }
+                                ]
+                            },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -57,11 +65,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -241,6 +249,14 @@
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Quantity could not be calculated: missing cycle threshold result",
+                                        "error feature": "quantity"
+                                    }
+                                ]
+                            },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -264,11 +280,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -451,6 +467,14 @@
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Quantity could not be calculated: missing cycle threshold result",
+                                        "error feature": "quantity"
+                                    }
+                                ]
+                            },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -474,11 +498,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -658,6 +682,14 @@
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Quantity could not be calculated: missing cycle threshold result",
+                                        "error feature": "quantity"
+                                    }
+                                ]
+                            },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -681,11 +713,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -867,6 +899,14 @@
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Quantity could not be calculated: missing cycle threshold result",
+                                        "error feature": "quantity"
+                                    }
+                                ]
+                            },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -890,11 +930,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -1080,6 +1120,14 @@
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Quantity could not be calculated: missing cycle threshold result",
+                                        "error feature": "quantity"
+                                    }
+                                ]
+                            },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -1103,11 +1151,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -1312,11 +1360,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1519,11 +1567,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1727,11 +1775,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -1934,11 +1982,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2142,11 +2190,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2349,11 +2397,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2557,11 +2605,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2762,11 +2810,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -2968,11 +3016,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3173,11 +3221,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3378,11 +3426,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3585,11 +3633,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3790,11 +3838,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -3997,11 +4045,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4203,11 +4251,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4411,11 +4459,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4618,11 +4666,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -4827,11 +4875,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -5031,11 +5079,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -5238,11 +5286,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -5443,11 +5491,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -5650,11 +5698,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -5856,11 +5904,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -6062,11 +6110,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -6270,11 +6318,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -6476,11 +6524,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -6683,11 +6731,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -6889,11 +6937,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -7094,11 +7142,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -7299,11 +7347,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -7504,11 +7552,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -7710,11 +7758,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -7915,11 +7963,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -8121,11 +8169,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -8330,11 +8378,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -8535,11 +8583,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -8742,11 +8790,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -8949,11 +8997,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -9155,11 +9203,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -9360,11 +9408,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -9565,11 +9613,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -9774,11 +9822,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -9980,11 +10028,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -10185,11 +10233,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -10388,11 +10436,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -10594,11 +10642,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -10801,11 +10849,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -11008,11 +11056,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -11214,11 +11262,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -11422,11 +11470,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -11632,11 +11680,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -11840,11 +11888,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -12052,11 +12100,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -12258,11 +12306,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -12469,11 +12517,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -12680,11 +12728,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -12888,11 +12936,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -13099,11 +13147,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -13308,11 +13356,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -13515,11 +13563,11 @@
                                                 "reference sample description": "Liver",
                                                 "Analysis Type": "Singleplex",
                                                 "RQ Min/Max Confidence Level": 95.0,
-                                                "OUTLIERRG": "N",
-                                                "BADROX": "N",
-                                                "omit": false,
                                                 "CQCONF": "N",
-                                                "NOISE": "N"
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "omit": false,
+                                                "OUTLIERRG": "N"
                                             }
                                         },
                                         "cycle threshold result (qPCR)": {
@@ -16702,7 +16750,7 @@
             "file name": "appbio_quantstudio_example05.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_example05.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.111",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },

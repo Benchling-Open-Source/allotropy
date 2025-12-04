@@ -33,6 +33,14 @@
                                     "sample color": "RGB(238,238,0)"
                                 }
                             },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Quantity could not be calculated: missing cycle threshold result",
+                                        "error feature": "quantity"
+                                    }
+                                ]
+                            },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -52,13 +60,13 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
                                                 "SNP Assay Name": "CYP19_2",
-                                                "NOISE": "N",
-                                                "omit": false,
-                                                "Method": "Auto",
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "BADROX": "N",
+                                                "NOISE": "N",
+                                                "Method": "Auto"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -124,14 +132,14 @@
                                         },
                                         "genotyping qPCR result": "Negative Control (NC)",
                                         "custom information document": {
-                                            "Pass.Ref": 846041.75,
-                                            "Allele2 Amp Score": 0.0,
-                                            "Allele2 Ct Threshold": 0.132,
-                                            "Allele2 Delta Rn": 0.029,
                                             "Allele1 Cq Conf": 0.0,
                                             "Allele2 Cq Conf": 0.0,
+                                            "Allele2 Ct Threshold": 0.132,
+                                            "Allele2 Amp Score": 0.0,
+                                            "Allele2 Delta Rn": 0.029,
+                                            "Quality(%)": 100.0,
                                             "Allele1 Amp Score": 0.0,
-                                            "Quality(%)": 100.0
+                                            "Pass.Ref": 846041.75
                                         }
                                     }
                                 ]
@@ -164,12 +172,20 @@
                                 "custom information document": {
                                     "well identifier": 1,
                                     "sample color": "RGB(238,238,0)",
-                                    "SNP Assay Color": "RGB(176,23,31)",
                                     "Allele1 Color": "RGB(0,0,255)",
                                     "Allele2 Quencher": "NFQ-MGB",
+                                    "SNP Assay Color": "RGB(176,23,31)",
                                     "Allele1 Quencher": "NFQ-MGB",
                                     "Allele2 Color": "RGB(0,139,69)"
                                 }
+                            },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Quantity could not be calculated: missing cycle threshold result",
+                                        "error feature": "quantity"
+                                    }
+                                ]
                             },
                             "processed data aggregate document": {
                                 "processed data document": [
@@ -190,11 +206,11 @@
                                                 "unit": "#"
                                             },
                                             "custom information document": {
-                                                "BADROX": "N",
-                                                "NOISE": "N",
-                                                "omit": false,
+                                                "CQCONF": "N",
                                                 "OUTLIERRG": "N",
-                                                "CQCONF": "N"
+                                                "omit": false,
+                                                "BADROX": "N",
+                                                "NOISE": "N"
                                             }
                                         },
                                         "normalized reporter data cube": {
@@ -285,7 +301,7 @@
             "file name": "appbio_quantstudio_minimal_missing_results.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_missing_results.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.111",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },

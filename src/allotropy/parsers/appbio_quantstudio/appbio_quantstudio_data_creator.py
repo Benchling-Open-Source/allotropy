@@ -252,6 +252,19 @@ def _create_measurement(
         well_item.reporter_dye_setting,
         header.passive_reference_dye_setting,
     )
+
+    # Check for errors that should be reported at measurement level
+    errors: list[Error] = []
+
+    # Add error when quantity can't be calculated due to missing cycle threshold result
+    if result.cycle_threshold_result is None and result.quantity is None:
+        errors.append(
+            Error(
+                error="Quantity could not be calculated: missing cycle threshold result",
+                feature="quantity",
+            )
+        )
+
     return Measurement(
         identifier=well_item.uuid,
         timestamp=header.measurement_time,
@@ -278,6 +291,7 @@ def _create_measurement(
         reporter_dye_data_cube=reporter_dye_data_cube,
         passive_reference_dye_data_cube=passive_reference_dye_data_cube,
         melting_curve_data_cube=_create_melt_curve_data_cube(melt_curve_raw_data),
+        error_document=errors if errors else None,
     )
 
 
