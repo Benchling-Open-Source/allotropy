@@ -28,6 +28,12 @@ class BmgMarsReader:
         """Parse the BMG MARS file and populate header and data attributes."""
         reader = CsvReader(read_to_lines(named_file_contents))
         lines = list(reader.pop_until_inclusive("^,?Raw Data"))
+        # Some headers may include an extra trailing comma at the end of a line.
+        # Remove a single trailing comma from any header line before reading.
+        lines = [
+            (line[:-1].rstrip() if line.rstrip().endswith(",") else line)
+            for line in lines
+        ]
         # Store the header contents so we can parse some values that don't have key/value
         # pairs such as wavelengths and read type.
         self.header_content = "\n".join(lines)
