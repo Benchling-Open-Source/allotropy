@@ -34,6 +34,14 @@
                                     "target color": "RGB(0,0,255)"
                                 }
                             },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Quantity could not be calculated: missing cycle threshold result",
+                                        "error feature": "quantity"
+                                    }
+                                ]
+                            },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -57,13 +65,13 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "noamp": "N",
-                                                "CQCONF": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "expfail": "N",
                                                 "NOISE": "N",
                                                 "OUTLIERRG": "N",
-                                                "expfail": "N"
+                                                "noamp": "N",
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "normalized reporter result": {
@@ -216,6 +224,14 @@
                                     "target color": "RGB(176,23,31)"
                                 }
                             },
+                            "error aggregate document": {
+                                "error document": [
+                                    {
+                                        "error": "Quantity could not be calculated: missing cycle threshold result",
+                                        "error feature": "quantity"
+                                    }
+                                ]
+                            },
                             "processed data aggregate document": {
                                 "processed data document": [
                                     {
@@ -239,13 +255,13 @@
                                                 "unit": "(unitless)"
                                             },
                                             "custom information document": {
-                                                "noamp": "N",
-                                                "CQCONF": "N",
-                                                "omit": false,
-                                                "BADROX": "N",
+                                                "expfail": "N",
                                                 "NOISE": "N",
                                                 "OUTLIERRG": "N",
-                                                "expfail": "N"
+                                                "noamp": "N",
+                                                "omit": false,
+                                                "CQCONF": "N",
+                                                "BADROX": "N"
                                             }
                                         },
                                         "normalized reporter result": {
@@ -457,7 +473,7 @@
             "file name": "appbio_quantstudio_minimal_test01.txt",
             "UNC path": "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_minimal_test01.txt",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.105",
+            "ASM converter version": "0.1.111",
             "software name": "Thermo QuantStudio",
             "software version": "1.0"
         },
